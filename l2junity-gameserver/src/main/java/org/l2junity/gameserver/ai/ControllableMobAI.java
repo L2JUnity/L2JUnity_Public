@@ -186,18 +186,18 @@ public final class ControllableMobAI extends AttackableAI
 		ControllableMobAI ctrlAi = (ControllableMobAI) theTarget.getAI();
 		ctrlAi.forceAttack(_actor);
 		
-		double dist2 = _actor.calculateDistance(target, false, true);
+		double dist2 = _actor.distance2d(target);
 		int range = _actor.getPhysicalAttackRange() + _actor.getTemplate().getCollisionRadius() + target.getTemplate().getCollisionRadius();
 		int max_range = range;
 		
-		if (!_actor.isMuted() && (dist2 > ((range + 20) * (range + 20))))
+		if (!_actor.isMuted() && (dist2 > (range + 20)))
 		{
 			// check distant skills
 			for (Skill sk : _actor.getAllSkills())
 			{
 				int castRange = sk.getCastRange();
 				
-				if (((castRange * castRange) >= dist2) && !_actor.isSkillDisabled(sk) && (_actor.getCurrentMp() > _actor.getStat().getMpConsume(sk)))
+				if ((castRange >= dist2) && !_actor.isSkillDisabled(sk) && (_actor.getCurrentMp() > _actor.getStat().getMpConsume(sk)))
 				{
 					_actor.doCast(sk);
 					return;
@@ -213,7 +213,7 @@ public final class ControllableMobAI extends AttackableAI
 			
 			return;
 		}
-		_actor.doAttack(target);
+		_actor.doAutoAttack(target);
 	}
 	
 	protected void thinkForceAttack()
@@ -226,18 +226,18 @@ public final class ControllableMobAI extends AttackableAI
 		}
 		
 		setTarget(getForcedTarget());
-		double dist2 = _actor.calculateDistance(getForcedTarget(), false, true);
+		double dist2 = _actor.distance2d(getForcedTarget());
 		int range = _actor.getPhysicalAttackRange() + _actor.getTemplate().getCollisionRadius() + getForcedTarget().getTemplate().getCollisionRadius();
 		int max_range = range;
 		
-		if (!_actor.isMuted() && (dist2 > ((range + 20) * (range + 20))))
+		if (!_actor.isMuted() && (dist2 > (range + 20)))
 		{
 			// check distant skills
 			for (Skill sk : _actor.getAllSkills())
 			{
 				int castRange = sk.getCastRange();
 				
-				if (((castRange * castRange) >= dist2) && !_actor.isSkillDisabled(sk) && (_actor.getCurrentMp() > _actor.getStat().getMpConsume(sk)))
+				if ((castRange >= dist2) && !_actor.isSkillDisabled(sk) && (_actor.getCurrentMp() > _actor.getStat().getMpConsume(sk)))
 				{
 					_actor.doCast(sk);
 					return;
@@ -254,7 +254,7 @@ public final class ControllableMobAI extends AttackableAI
 			return;
 		}
 		
-		_actor.doAttack(getForcedTarget());
+		_actor.doAutoAttack(getForcedTarget());
 	}
 	
 	@Override
@@ -285,7 +285,7 @@ public final class ControllableMobAI extends AttackableAI
 						return;
 					}
 					
-					if (_actor.isInsideRadius(npc, npc.getTemplate().getClanHelpRange(), true, true))
+					if (_actor.isInRadius3d(npc, npc.getTemplate().getClanHelpRange()))
 					{
 						npc.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, finalTarget, 1);
 					}
@@ -293,18 +293,18 @@ public final class ControllableMobAI extends AttackableAI
 			}
 			
 			setTarget(target);
-			double dist2 = _actor.calculateDistance(target, false, true);
+			double dist2 = _actor.distance2d(target);
 			int range = _actor.getPhysicalAttackRange() + _actor.getTemplate().getCollisionRadius() + target.getTemplate().getCollisionRadius();
 			int max_range = range;
 			
-			if (!_actor.isMuted() && (dist2 > ((range + 20) * (range + 20))))
+			if (!_actor.isMuted() && (dist2 > (range + 20)))
 			{
 				// check distant skills
 				for (Skill sk : _actor.getAllSkills())
 				{
 					int castRange = sk.getCastRange();
 					
-					if (((castRange * castRange) >= dist2) && !_actor.isSkillDisabled(sk) && (_actor.getCurrentMp() > _actor.getStat().getMpConsume(sk)))
+					if ((castRange >= dist2) && !_actor.isSkillDisabled(sk) && (_actor.getCurrentMp() > _actor.getStat().getMpConsume(sk)))
 					{
 						_actor.doCast(sk);
 						return;
@@ -354,7 +354,7 @@ public final class ControllableMobAI extends AttackableAI
 				}
 			}
 			
-			_actor.doAttack(target);
+			_actor.doAutoAttack(target);
 		}
 	}
 	
@@ -393,7 +393,7 @@ public final class ControllableMobAI extends AttackableAI
 			return false;
 		}
 		
-		if (target.isAlikeDead() || !me.isInsideRadius(target, me.getAggroRange(), false, false) || (Math.abs(_actor.getZ() - target.getZ()) > 100))
+		if (target.isAlikeDead() || !me.isInRadius2d(target, me.getAggroRange()) || (Math.abs(_actor.getZ() - target.getZ()) > 100))
 		{
 			return false;
 		}
@@ -482,7 +482,7 @@ public final class ControllableMobAI extends AttackableAI
 		clientStopMoving(null);
 	}
 	
-	public void move(int x, int y, int z)
+	public void move(double x, double y, double z)
 	{
 		moveTo(x, y, z);
 	}

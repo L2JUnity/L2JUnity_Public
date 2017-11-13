@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.enums.MacroType;
 import org.l2junity.gameserver.enums.MacroUpdateType;
 import org.l2junity.gameserver.enums.ShortcutType;
@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
 
 public class MacroList implements IRestorable
 {
-	private static final Logger _log = LoggerFactory.getLogger(MacroList.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MacroList.class);
 	
 	private final PlayerInstance _owner;
 	private int _macroId;
@@ -156,7 +156,7 @@ public class MacroList implements IRestorable
 		}
 		catch (Exception e)
 		{
-			_log.warn("could not store macro:", e);
+			LOGGER.warn("could not store macro:", e);
 		}
 	}
 	
@@ -171,7 +171,7 @@ public class MacroList implements IRestorable
 		}
 		catch (Exception e)
 		{
-			_log.warn("could not delete macro:", e);
+			LOGGER.warn("could not delete macro:", e);
 		}
 	}
 	
@@ -217,7 +217,7 @@ public class MacroList implements IRestorable
 		}
 		catch (Exception e)
 		{
-			_log.warn("could not store shortcuts:", e);
+			LOGGER.warn("could not store shortcuts:", e);
 			return false;
 		}
 		return true;

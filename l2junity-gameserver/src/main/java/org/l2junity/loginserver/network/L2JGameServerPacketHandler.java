@@ -18,8 +18,8 @@
  */
 package org.l2junity.loginserver.network;
 
-import org.l2junity.Config;
 import org.l2junity.loginserver.GameServerThread;
+import org.l2junity.loginserver.config.EmailConfig;
 import org.l2junity.loginserver.network.gameserverpackets.BlowFishKey;
 import org.l2junity.loginserver.network.gameserverpackets.ChangeAccessLevel;
 import org.l2junity.loginserver.network.gameserverpackets.ChangePassword;
@@ -107,7 +107,7 @@ public class L2JGameServerPacketHandler
 						msg = new ReplyCharacters(data, server);
 						break;
 					case 0x09:
-						if (Config.EMAIL_SYS_ENABLED)
+						if (EmailConfig.EMAIL_SYS_ENABLED)
 						{
 							msg = new RequestSendMail(data);
 						}

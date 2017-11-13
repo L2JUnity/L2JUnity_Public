@@ -18,11 +18,14 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.gameserver.data.xml.impl.EnchantItemData;
+import java.util.List;
+
+import org.l2junity.gameserver.enums.ItemSkillType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.EnchantItemRequest;
-import org.l2junity.gameserver.model.items.enchant.EnchantScroll;
+import org.l2junity.gameserver.model.holders.ItemSkillHolder;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
+import org.l2junity.gameserver.model.skills.SkillConditionScope;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExPutEnchantScrollItemResult;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -74,10 +77,10 @@ public class RequestExAddEnchantScrollItem implements IClientIncomingPacket
 			return;
 		}
 		
-		final EnchantScroll scrollTemplate = EnchantItemData.getInstance().getEnchantScroll(scroll);
-		if ((scrollTemplate == null))
+		final List<ItemSkillHolder> skills = item.getItem().getSkills(ItemSkillType.NORMAL);
+		
+		if (!skills.stream().allMatch(skill -> skill.getSkill().checkConditions(SkillConditionScope.GENERAL, activeChar, item)))
 		{
-			// message may be custom
 			activeChar.sendPacket(SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITIONS);
 			activeChar.sendPacket(new ExPutEnchantScrollItemResult(0));
 			request.setEnchantingScroll(PlayerInstance.ID_NONE);

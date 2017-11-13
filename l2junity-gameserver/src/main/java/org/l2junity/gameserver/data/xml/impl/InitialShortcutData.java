@@ -18,15 +18,18 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.enums.MacroType;
 import org.l2junity.gameserver.enums.ShortcutType;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.Macro;
 import org.l2junity.gameserver.model.MacroCmd;
 import org.l2junity.gameserver.model.Shortcut;
@@ -58,11 +61,10 @@ public final class InitialShortcutData implements IGameXmlReader
 	 */
 	protected InitialShortcutData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_initialShortcutData.clear();
 		_initialGlobalShortcutList.clear();
@@ -75,7 +77,7 @@ public final class InitialShortcutData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -211,6 +213,11 @@ public final class InitialShortcutData implements IGameXmlReader
 				_macroPresets.put(macroId, new Macro(macroId, icon, name, description, acronym, commands));
 			}
 		}
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _initialGlobalShortcutList.size() + _macroPresets.size();
 	}
 	
 	/**
@@ -361,6 +368,7 @@ public final class InitialShortcutData implements IGameXmlReader
 	 * Gets the single instance of InitialEquipmentData.
 	 * @return single instance of InitialEquipmentData
 	 */
+	@InstanceGetter
 	public static InitialShortcutData getInstance()
 	{
 		return SingletonHolder._instance;

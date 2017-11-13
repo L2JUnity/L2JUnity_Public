@@ -32,7 +32,7 @@ public class ExCuriousHouseEnter implements IClientOutgoingPacket
 	private ExCuriousHouseEnter()
 	{
 	}
-
+	
 	@Override
 	public boolean write(PacketWriter packet)
 	{

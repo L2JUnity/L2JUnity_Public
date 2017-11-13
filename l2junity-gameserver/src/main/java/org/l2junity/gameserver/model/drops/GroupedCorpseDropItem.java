@@ -18,7 +18,10 @@
  */
 package org.l2junity.gameserver.model.drops;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.RatesConfig;
+import org.l2junity.gameserver.model.Party;
+import org.l2junity.gameserver.model.actor.Creature;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 
 /**
  * @author NosBit
@@ -33,6 +36,17 @@ public class GroupedCorpseDropItem extends GroupedGeneralDropItem
 		super(chance);
 	}
 	
+	@Override
+	protected double getChanceMultiplier(Creature killer)
+	{
+		final Party party = killer.getParty();
+		if (party != null)
+		{
+			return (party.getMembers().stream().mapToDouble(p -> p.getStat().getAdd(DoubleStat.BONUS_SPOIL) + 100).sum() / party.getMemberCount()) / 100;
+		}
+		return (killer.getStat().getAdd(DoubleStat.BONUS_SPOIL) + 100) / 100;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see org.l2junity.gameserver.model.drops.GroupedGeneralDropItem#getGlobalChanceMultiplier()
@@ -40,6 +54,6 @@ public class GroupedCorpseDropItem extends GroupedGeneralDropItem
 	@Override
 	protected double getGlobalChanceMultiplier()
 	{
-		return Config.RATE_CORPSE_DROP_CHANCE_MULTIPLIER;
+		return RatesConfig.RATE_CORPSE_DROP_CHANCE_MULTIPLIER;
 	}
 }

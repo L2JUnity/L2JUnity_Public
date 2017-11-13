@@ -43,6 +43,9 @@ import org.l2junity.gameserver.network.client.recv.awakening.RequestCallToChange
 import org.l2junity.gameserver.network.client.recv.ceremonyofchaos.RequestCancelCuriousHouse;
 import org.l2junity.gameserver.network.client.recv.ceremonyofchaos.RequestCuriousHouseHtml;
 import org.l2junity.gameserver.network.client.recv.ceremonyofchaos.RequestJoinCuriousHouse;
+import org.l2junity.gameserver.network.client.recv.changeattribute.RequestChangeAttributeCancel;
+import org.l2junity.gameserver.network.client.recv.changeattribute.RequestChangeAttributeItem;
+import org.l2junity.gameserver.network.client.recv.changeattribute.SendChangeAttributeTargetItem;
 import org.l2junity.gameserver.network.client.recv.commission.RequestCommissionBuyInfo;
 import org.l2junity.gameserver.network.client.recv.commission.RequestCommissionBuyItem;
 import org.l2junity.gameserver.network.client.recv.commission.RequestCommissionCancel;
@@ -57,11 +60,14 @@ import org.l2junity.gameserver.network.client.recv.compound.RequestNewEnchantPus
 import org.l2junity.gameserver.network.client.recv.compound.RequestNewEnchantPushTwo;
 import org.l2junity.gameserver.network.client.recv.compound.RequestNewEnchantRemoveOne;
 import org.l2junity.gameserver.network.client.recv.compound.RequestNewEnchantRemoveTwo;
+import org.l2junity.gameserver.network.client.recv.compound.RequestNewEnchantRetryToPutItems;
 import org.l2junity.gameserver.network.client.recv.compound.RequestNewEnchantTry;
 import org.l2junity.gameserver.network.client.recv.crystalization.RequestCrystallizeEstimate;
 import org.l2junity.gameserver.network.client.recv.crystalization.RequestCrystallizeItemCancel;
 import org.l2junity.gameserver.network.client.recv.ensoul.RequestItemEnsoul;
 import org.l2junity.gameserver.network.client.recv.friend.RequestFriendDetailInfo;
+import org.l2junity.gameserver.network.client.recv.luckygame.RequestLuckyGamePlay;
+import org.l2junity.gameserver.network.client.recv.luckygame.RequestLuckyGameStartInfo;
 import org.l2junity.gameserver.network.client.recv.mentoring.ConfirmMenteeAdd;
 import org.l2junity.gameserver.network.client.recv.mentoring.RequestMenteeAdd;
 import org.l2junity.gameserver.network.client.recv.mentoring.RequestMenteeWaitingList;
@@ -74,6 +80,7 @@ import org.l2junity.gameserver.network.client.recv.pledgebonus.RequestPledgeBonu
 import org.l2junity.gameserver.network.client.recv.pledgebonus.RequestPledgeBonusRewardList;
 import org.l2junity.gameserver.network.client.recv.primeshop.RequestBRBuyProduct;
 import org.l2junity.gameserver.network.client.recv.primeshop.RequestBRGamePoint;
+import org.l2junity.gameserver.network.client.recv.primeshop.RequestBRPresentBuyProduct;
 import org.l2junity.gameserver.network.client.recv.primeshop.RequestBRProductInfo;
 import org.l2junity.gameserver.network.client.recv.primeshop.RequestBRProductList;
 import org.l2junity.gameserver.network.client.recv.primeshop.RequestBRRecentProductList;
@@ -83,6 +90,7 @@ import org.l2junity.gameserver.network.client.recv.shuttle.CannotMoveAnymoreInSh
 import org.l2junity.gameserver.network.client.recv.shuttle.MoveToLocationInShuttle;
 import org.l2junity.gameserver.network.client.recv.shuttle.RequestShuttleGetOff;
 import org.l2junity.gameserver.network.client.recv.shuttle.RequestShuttleGetOn;
+import org.l2junity.gameserver.network.client.recv.training.NotifyTrainingRoomEnd;
 import org.l2junity.network.IConnectionState;
 import org.l2junity.network.IIncomingPacket;
 import org.l2junity.network.IIncomingPackets;
@@ -264,16 +272,16 @@ public enum ExIncomingPackets implements IIncomingPackets<L2GameClient>
 	REQUEST_FIRST_PLAY_START(0xAC, null, ConnectionState.IN_GAME),
 	REQUEST_FLY_MOVE_START(0xAD, RequestFlyMoveStart::new, ConnectionState.IN_GAME),
 	REQUEST_HARDWARE_INFO(0xAE, null, ConnectionState.IN_GAME),
-	SEND_CHANGE_ATTRIBUTE_TARGET_ITEM(0xB0, null, ConnectionState.IN_GAME),
-	REQUEST_CHANGE_ATTRIBUTE_ITEM(0xB1, null, ConnectionState.IN_GAME),
-	REQUEST_CHANGE_ATTRIBUTE_CANCEL(0xB2, null, ConnectionState.IN_GAME),
-	REQUEST_BR_PRESENT_BUY_PRODUCT(0xB3, null, ConnectionState.IN_GAME),
+	SEND_CHANGE_ATTRIBUTE_TARGET_ITEM(0xB0, SendChangeAttributeTargetItem::new, ConnectionState.IN_GAME),
+	REQUEST_CHANGE_ATTRIBUTE_ITEM(0xB1, RequestChangeAttributeItem::new, ConnectionState.IN_GAME),
+	REQUEST_CHANGE_ATTRIBUTE_CANCEL(0xB2, RequestChangeAttributeCancel::new, ConnectionState.IN_GAME),
+	REQUEST_BR_PRESENT_BUY_PRODUCT(0xB3, RequestBRPresentBuyProduct::new, ConnectionState.IN_GAME),
 	CONFIRM_MENTEE_ADD(0xB4, ConfirmMenteeAdd::new, ConnectionState.IN_GAME),
 	REQUEST_MENTOR_CANCEL(0xB5, RequestMentorCancel::new, ConnectionState.IN_GAME),
 	REQUEST_MENTOR_LIST(0xB6, RequestMentorList::new, ConnectionState.IN_GAME),
 	REQUEST_MENTEE_ADD(0xB7, RequestMenteeAdd::new, ConnectionState.IN_GAME),
 	REQUEST_MENTEE_WAITING_LIST(0xB8, RequestMenteeWaitingList::new, ConnectionState.IN_GAME),
-	REQUEST_CLAN_ASK_JOIN_BY_NAME(0xB9, null, ConnectionState.IN_GAME),
+	REQUEST_JOIN_PLEDGE_BY_NAME(0xB9, RequestJoinPledgeByName::new, ConnectionState.IN_GAME),
 	REQUEST_IN_ZONE_WAITING_TIME(0xBA, RequestInzoneWaitingTime::new, ConnectionState.IN_GAME),
 	REQUEST_JOIN_CURIOUS_HOUSE(0xBB, RequestJoinCuriousHouse::new, ConnectionState.IN_GAME),
 	REQUEST_CANCEL_CURIOUS_HOUSE(0xBC, RequestCancelCuriousHouse::new, ConnectionState.IN_GAME),
@@ -323,20 +331,20 @@ public enum ExIncomingPackets implements IIncomingPackets<L2GameClient>
 	REQUEST_ABILITY_LIST(0xEA, RequestAbilityList::new, ConnectionState.IN_GAME),
 	REQUEST_RESET_ABILITY_POINT(0xEB, RequestResetAbilityPoint::new, ConnectionState.IN_GAME),
 	REQUEST_CHANGE_ABILITY_POINT(0xEC, RequestChangeAbilityPoint::new, ConnectionState.IN_GAME),
-	REQUEST_STOP_MOVE(0xED, null, ConnectionState.IN_GAME),
+	REQUEST_STOP_MOVE(0xED, RequestStopMove::new, ConnectionState.IN_GAME),
 	REQUEST_ABILITY_WND_OPEN(0xEE, RequestAbilityWndOpen::new, ConnectionState.IN_GAME),
 	REQUEST_ABILITY_WND_CLOSE(0xEF, RequestAbilityWndClose::new, ConnectionState.IN_GAME),
-	EX_PC_CAFE_REQUEST_OPEN_WINDOW_WITHOUT_NPC(0xF0, null, ConnectionState.IN_GAME),
-	REQUEST_LUCKY_GAME_START_INFO(0xF1, null, ConnectionState.IN_GAME),
-	REQUEST_LUCKY_GAME_PLAY(0xF2, null, ConnectionState.IN_GAME),
-	NOTIFY_TRAINING_ROOM_END(0xF3, null, ConnectionState.IN_GAME),
+	EX_PC_CAFE_REQUEST_OPEN_WINDOW_WITHOUT_NPC(0xF0, ExPCCafeRequestOpenWindowWithoutNPC::new, ConnectionState.IN_GAME),
+	REQUEST_LUCKY_GAME_START_INFO(0xF1, RequestLuckyGameStartInfo::new, ConnectionState.IN_GAME),
+	REQUEST_LUCKY_GAME_PLAY(0xF2, RequestLuckyGamePlay::new, ConnectionState.IN_GAME),
+	NOTIFY_TRAINING_ROOM_END(0xF3, NotifyTrainingRoomEnd::new, ConnectionState.IN_GAME),
 	REQUEST_NEW_ENCHANT_PUSH_ONE(0xF4, RequestNewEnchantPushOne::new, ConnectionState.IN_GAME),
 	REQUEST_NEW_ENCHANT_REMOVE_ONE(0xF5, RequestNewEnchantRemoveOne::new, ConnectionState.IN_GAME),
 	REQUEST_NEW_ENCHANT_PUSH_TWO(0xF6, RequestNewEnchantPushTwo::new, ConnectionState.IN_GAME),
 	REQUEST_NEW_ENCHANT_REMOVE_TWO(0xF7, RequestNewEnchantRemoveTwo::new, ConnectionState.IN_GAME),
 	REQUEST_NEW_ENCHANT_CLOSE(0xF8, RequestNewEnchantClose::new, ConnectionState.IN_GAME),
 	REQUEST_NEW_ENCHANT_TRY(0xF9, RequestNewEnchantTry::new, ConnectionState.IN_GAME),
-	REQUEST_NEW_ENCHANT_RETRY_TO_PUT_ITEMS(0xFA, null, ConnectionState.IN_GAME),
+	REQUEST_NEW_ENCHANT_RETRY_TO_PUT_ITEMS(0xFA, RequestNewEnchantRetryToPutItems::new, ConnectionState.IN_GAME),
 	EX_SEND_SELECTED_QUEST_ZONE_ID(0xFF, ExSendSelectedQuestZoneID::new, ConnectionState.IN_GAME),
 	REQUEST_ALCHEMY_SKILL_LIST(0x100, RequestAlchemySkillList::new, ConnectionState.IN_GAME),
 	REQUEST_ALCHEMY_TRY_MIX_CUBE(0x101, RequestAlchemyTryMixCube::new, ConnectionState.IN_GAME),
@@ -355,28 +363,46 @@ public enum ExIncomingPackets implements IIncomingPackets<L2GameClient>
 	EX_REQUEST_VIP_INFO(0x10E, null, ConnectionState.IN_GAME),
 	REQUEST_CAPTCHA_ANSWER(0x10F, null, ConnectionState.IN_GAME),
 	REQUEST_REFRESH_CAPTCHA_IMAGE(0x110, null, ConnectionState.IN_GAME),
-	REQUEST_PLEDGE_SIGN_IN_FOR_OPEN_JOINING_METHOD(0x111, null, ConnectionState.IN_GAME),
+	REQUEST_PLEDGE_SIGN_IN_FOR_OPEN_JOINING_METHOD(0x111, RequestPledgeSignInForOpenJoiningMethod::new, ConnectionState.IN_GAME),
 	EX_REQUEST_MATCH_ARENA(0x112, null, ConnectionState.IN_GAME),
 	EX_CONFIRM_MATCH_ARENA(0x113, null, ConnectionState.IN_GAME),
 	EX_CANCEL_MATCH_ARENA(0x114, null, ConnectionState.IN_GAME),
 	EX_CHANGE_CLASS_ARENA(0x115, null, ConnectionState.IN_GAME),
 	EX_CONFIRM_CLASS_ARENA(0x116, null, ConnectionState.IN_GAME),
-	// TODO: Check 117 & 118
-	REQUEST_USER_FACTION_INFO(0x119, null, ConnectionState.IN_GAME),
+	REQUEST_OPEN_DECO_NPCUI(0x117, /* RequestOpenDecoNPCUI::new */null, ConnectionState.IN_GAME),
+	REQUEST_CHECK_AGIT_DECO_AVAILABILITY(0x118, /* RequestCheckAgitDecoAvailability::new */null, ConnectionState.IN_GAME),
+	REQUEST_USER_FACTION_INFO(0x119, RequestUserFactionInfo::new, ConnectionState.IN_GAME),
 	EX_EXIT_ARENA(0x11A, null, ConnectionState.IN_GAME),
 	REQUEST_EVENT_BALTHUS_TOKEN(0x11B, null, ConnectionState.IN_GAME),
 	REQUEST_PARTY_MATCHING_HISTORY(0x11C, null, ConnectionState.IN_GAME),
-	REQUEST_TODO_LIST(0x11D, RequestTodoList::new, ConnectionState.IN_GAME),
-	REQUEST_TODO_LIST_HTML(0x11E, null, ConnectionState.IN_GAME),
-	REQUEST_ONE_DAY_REWARD_RECEIVE(0x11F, RequestOneDayRewardReceive::new, ConnectionState.IN_GAME),
-	REQUEST_QUEUE_TICKET(0x120, null, ConnectionState.IN_GAME),
-	REQUEST_PLEDGE_BONUS_OPEN(0x121, RequestPledgeBonusOpen::new, ConnectionState.IN_GAME),
-	REQUEST_PLEDGE_BONUS_REWARD_LIST(0x122, RequestPledgeBonusRewardList::new, ConnectionState.IN_GAME),
-	REQUEST_PLEDGE_BONUS_REWARD(0x123, RequestPledgeBonusReward::new, ConnectionState.IN_GAME),
-	REQUEST_SSO_AUTHN_TOKEN(0x124, null, ConnectionState.IN_GAME),
-	REQUEST_QUEUE_TICKET_LOGIN(0x125, null, ConnectionState.IN_GAME),
-	REQUEST_BLOCK_MEMO_INFO(0x126, null, ConnectionState.IN_GAME),
-	REQUEST_TRY_EN_SOUL_EXTRACTION(0x127, null, ConnectionState.IN_GAME);
+	EX_ARENA_CUSTOM_NOTIFICATION(0x11D, null, ConnectionState.IN_GAME),
+	REQUEST_TODO_LIST(0x11E, RequestTodoList::new, ConnectionState.IN_GAME),
+	REQUEST_TODO_LIST_HTML(0x11F, null, ConnectionState.IN_GAME),
+	REQUEST_ONE_DAY_REWARD_RECEIVE(0x120, RequestOneDayRewardReceive::new, ConnectionState.IN_GAME),
+	REQUEST_QUEUE_TICKET(0x121, null, ConnectionState.IN_GAME),
+	REQUEST_PLEDGE_BONUS_OPEN(0x122, RequestPledgeBonusOpen::new, ConnectionState.IN_GAME),
+	REQUEST_PLEDGE_BONUS_REWARD_LIST(0x123, RequestPledgeBonusRewardList::new, ConnectionState.IN_GAME),
+	REQUEST_PLEDGE_BONUS_REWARD(0x124, RequestPledgeBonusReward::new, ConnectionState.IN_GAME),
+	REQUEST_SSO_AUTHN_TOKEN(0x125, null, ConnectionState.IN_GAME),
+	REQUEST_QUEUE_TICKET_LOGIN(0x126, null, ConnectionState.IN_GAME),
+	REQUEST_BLOCK_MEMO_INFO(0x127, null, ConnectionState.IN_GAME),
+	REQUEST_TRY_EN_SOUL_EXTRACTION(0x128, null, ConnectionState.IN_GAME),
+	REQUEST_RAIDBOSS_SPAWN_INFO(0x129, null, ConnectionState.IN_GAME),
+	REQUEST_RAID_SERVER_INFO(0x12A, null, ConnectionState.IN_GAME),
+	REQUEST_SHOW_AGIT_SIEGE_INFO(0x12B, null, ConnectionState.IN_GAME),
+	REQUEST_ITEM_AUCTION_STATUS(0x12C, null, ConnectionState.IN_GAME),
+	REQUEST_MONSTER_BOOK_OPEN(0x12D, null, ConnectionState.IN_GAME),
+	REQUEST_MONSTER_BOOK_CLOSE(0x12E, null, ConnectionState.IN_GAME),
+	REQUEST_MONSTER_BOOK_REWARD(0x12F, null, ConnectionState.IN_GAME),
+	EXREQUEST_MATCH_GROUP(0x130, null, ConnectionState.IN_GAME),
+	EXREQUEST_MATCH_GROUP_ASK(0x131, null, ConnectionState.IN_GAME),
+	EXREQUEST_MATCH_GROUP_ANSWER(0x132, null, ConnectionState.IN_GAME),
+	EXREQUEST_MATCH_GROUP_WITHDRAW(0x133, null, ConnectionState.IN_GAME),
+	EXREQUEST_MATCH_GROUP_OUST(0x134, null, ConnectionState.IN_GAME),
+	EXREQUEST_MATCH_GROUP_CHANGE_MASTER(0x135, null, ConnectionState.IN_GAME),
+	REQUEST_BLOCK_LIST_FOR_AD(0x136, null, ConnectionState.IN_GAME),
+	REQUEST_UPGRADE_SYSTEM_RESULT(0x137, null, ConnectionState.IN_GAME),
+	REQUEST_USER_BAN_INFO(0x138, null, ConnectionState.IN_GAME);
 	
 	public static final ExIncomingPackets[] PACKET_ARRAY;
 	

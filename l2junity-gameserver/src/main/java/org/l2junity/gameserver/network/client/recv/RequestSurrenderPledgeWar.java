@@ -56,27 +56,26 @@ public final class RequestSurrenderPledgeWar implements IClientIncomingPacket
 		final L2Clan myClan = activeChar.getClan();
 		if (myClan == null)
 		{
-			return;
-		}
-		
-		if (myClan.getMembers().stream().filter(Objects::nonNull).filter(ClanMember::isOnline).map(ClanMember::getPlayerInstance).anyMatch(p -> !p.isInCombat()))
-		{
-			activeChar.sendPacket(SystemMessageId.A_CEASE_FIRE_DURING_A_CLAN_WAR_CAN_NOT_BE_CALLED_WHILE_MEMBERS_OF_YOUR_CLAN_ARE_ENGAGED_IN_BATTLE);
-			client.sendPacket(ActionFailed.STATIC_PACKET);
+			activeChar.sendPacket(SystemMessageId.YOU_ARE_NOT_IN_A_CLAN);
 			return;
 		}
 		
 		final L2Clan targetClan = ClanTable.getInstance().getClanByName(_pledgeName);
 		if (targetClan == null)
 		{
-			activeChar.sendMessage("No such clan.");
-			client.sendPacket(ActionFailed.STATIC_PACKET);
+			activeChar.sendPacket(SystemMessageId.THAT_CLAN_DOES_NOT_EXIST);
 			return;
 		}
 		else if (!activeChar.hasClanPrivilege(ClanPrivilege.CL_PLEDGE_WAR))
 		{
 			client.sendPacket(SystemMessageId.YOU_ARE_NOT_AUTHORIZED_TO_DO_THAT);
 			client.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		if (!myClan.isAtWar())
+		{
+			activeChar.sendPacket(SystemMessageId.YOU_ARE_NOT_INVOLVED_IN_A_CLAN_WAR);
 			return;
 		}
 		
@@ -94,6 +93,13 @@ public final class RequestSurrenderPledgeWar implements IClientIncomingPacket
 		if (clanWar.getState() == ClanWarState.BLOOD_DECLARATION)
 		{
 			activeChar.sendPacket(SystemMessageId.YOU_CANNOT_DECLARE_DEFEAT_AS_IT_HAS_NOT_BEEN_7_DAYS_SINCE_STARTING_A_CLAN_WAR_WITH_CLAN_S1);
+			client.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		if (myClan.getMembers().stream().filter(Objects::nonNull).filter(ClanMember::isOnline).map(ClanMember::getPlayerInstance).anyMatch(p -> !p.isInCombat()))
+		{
+			activeChar.sendPacket(SystemMessageId.A_CEASE_FIRE_DURING_A_CLAN_WAR_CAN_NOT_BE_CALLED_WHILE_MEMBERS_OF_YOUR_CLAN_ARE_ENGAGED_IN_BATTLE);
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}

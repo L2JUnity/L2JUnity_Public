@@ -18,13 +18,17 @@
  */
 package org.l2junity.gameserver.model.variables;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map.Entry;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,12 +37,19 @@ import org.slf4j.LoggerFactory;
  */
 public class AccountVariables extends AbstractVariables
 {
-	private static final Logger _log = LoggerFactory.getLogger(AccountVariables.class);
+	static final Logger LOGGER = LoggerFactory.getLogger(AccountVariables.class);
 	
 	// SQL Queries.
 	private static final String SELECT_QUERY = "SELECT * FROM account_gsdata WHERE account_name = ?";
 	private static final String DELETE_QUERY = "DELETE FROM account_gsdata WHERE account_name = ?";
 	private static final String INSERT_QUERY = "INSERT INTO account_gsdata (account_name, var, value) VALUES (?, ?, ?)";
+	
+	public static final String PC_CAFE_POINTS = "PC_CAFE_POINTS";
+	public static final String PC_CAFE_POINTS_TODAY = "PC_CAFE_POINTS_TODAY";
+	public static final String PREMIUM_ACCOUNT = "PREMIUM_ACCOUNT";
+	public static final String TRAINING_CAMP = "TRAINING_CAMP";
+	public static final String TRAINING_CAMP_DURATION = "TRAINING_CAMP_DURATION";
+	public static final String UI_SETTINGS = "UI_SETTINGS";
 	
 	private final String _accountName;
 	
@@ -60,13 +71,23 @@ public class AccountVariables extends AbstractVariables
 			{
 				while (rset.next())
 				{
-					set(rset.getString("var"), rset.getString("value"));
+					Object deSerializedObject;
+					try (final ValidObjectInputStream objectIn = new ValidObjectInputStream(new ByteArrayInputStream(rset.getBytes("value"))))
+					{
+						deSerializedObject = objectIn.readObject();
+					}
+					catch (IOException | ClassNotFoundException e)
+					{
+						LOGGER.warn("Couldn't restore variable {} for: {}", rset.getString("var"), _accountName, e);
+						deSerializedObject = null;
+					}
+					set(rset.getString("var"), deSerializedObject);
 				}
 			}
 		}
 		catch (SQLException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't restore variables for: " + _accountName, e);
+			LOGGER.warn("Couldn't restore variables for: {}", _accountName, e);
 			return false;
 		}
 		finally
@@ -100,16 +121,30 @@ public class AccountVariables extends AbstractVariables
 				st.setString(1, _accountName);
 				for (Entry<String, Object> entry : getSet().entrySet())
 				{
-					st.setString(2, entry.getKey());
-					st.setString(3, String.valueOf(entry.getValue()));
-					st.addBatch();
+					try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+						ObjectOutputStream oos = new ObjectOutputStream(baos);)
+					{
+						
+						oos.writeObject(entry.getValue());
+						byte[] asBytes = baos.toByteArray();
+						try (ByteArrayInputStream bais = new ByteArrayInputStream(asBytes))
+						{
+							st.setString(2, entry.getKey());
+							st.setBinaryStream(3, bais, asBytes.length);
+							st.addBatch();
+						}
+					}
+					catch (IOException e)
+					{
+						LOGGER.warn("Couldn't store variable {} for account {}", entry.getKey(), _accountName);
+					}
 				}
 				st.executeBatch();
 			}
 		}
 		catch (SQLException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't update variables for: " + _accountName, e);
+			LOGGER.warn("Couldn't update variables for: {}", _accountName, e);
 			return false;
 		}
 		finally
@@ -136,9 +171,15 @@ public class AccountVariables extends AbstractVariables
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't delete variables for: " + _accountName, e);
+			LOGGER.warn("Couldn't delete variables for: {}", _accountName, e);
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean hasUiSettings()
+	{
+		final byte[] data = getObject(UI_SETTINGS, byte[].class);
+		return (data != null) && (data.length > 0);
 	}
 }

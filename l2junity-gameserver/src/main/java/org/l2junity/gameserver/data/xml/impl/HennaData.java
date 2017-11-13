@@ -18,13 +18,18 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.util.XmlReaderException;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.items.Henna;
@@ -52,11 +57,10 @@ public final class HennaData implements IGameXmlReader
 	 */
 	protected HennaData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws IOException, XmlReaderException
 	{
 		_hennaList.clear();
 		parseDatapackFile("data/stats/hennaList.xml");
@@ -64,7 +68,7 @@ public final class HennaData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -140,6 +144,11 @@ public final class HennaData implements IGameXmlReader
 		_hennaList.put(henna.getDyeId(), henna);
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _hennaList.size();
+	}
+	
 	/**
 	 * Gets the henna.
 	 * @param id of the dye.
@@ -172,6 +181,7 @@ public final class HennaData implements IGameXmlReader
 	 * Gets the single instance of HennaData.
 	 * @return single instance of HennaData
 	 */
+	@InstanceGetter
 	public static HennaData getInstance()
 	{
 		return SingletonHolder._instance;

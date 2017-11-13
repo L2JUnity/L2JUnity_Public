@@ -19,10 +19,12 @@
 package org.l2junity.gameserver.network.client.recv;
 
 import org.l2junity.gameserver.data.xml.impl.RecipeData;
-import org.l2junity.gameserver.model.RecipeList;
+import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.holders.RecipeHolder;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.RecipeBookItemList;
+import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
 
 public final class RequestRecipeBookDestroy implements IClientIncomingPacket
@@ -50,23 +52,24 @@ public final class RequestRecipeBookDestroy implements IClientIncomingPacket
 			return;
 		}
 		
-		final RecipeList rp = RecipeData.getInstance().getRecipeList(_recipeID);
-		if (rp == null)
+		if ((activeChar.getPrivateStoreType() == PrivateStoreType.MANUFACTURE) || activeChar.isCrafting())
 		{
+			activeChar.sendPacket(SystemMessageId.YOU_MAY_NOT_ALTER_YOUR_RECIPE_BOOK_WHILE_ENGAGED_IN_MANUFACTURING);
 			return;
 		}
+		
+		final RecipeHolder rp = RecipeData.getInstance().getRecipe(_recipeID);
+		if (rp == null)
+		{
+			client.sendPacket(SystemMessageId.THE_RECIPE_IS_INCORRECT);
+			return;
+		}
+		
+		// Remove the recipe from the list.
 		activeChar.unregisterRecipeList(_recipeID);
 		
-		RecipeBookItemList response = new RecipeBookItemList(rp.isDwarvenRecipe(), activeChar.getMaxMp());
-		if (rp.isDwarvenRecipe())
-		{
-			response.addRecipes(activeChar.getDwarvenRecipeBook());
-		}
-		else
-		{
-			response.addRecipes(activeChar.getCommonRecipeBook());
-		}
-		
+		// Send the new recipe book.
+		final RecipeBookItemList response = new RecipeBookItemList(activeChar, rp.isDwarvenRecipe());
 		activeChar.sendPacket(response);
 	}
 }

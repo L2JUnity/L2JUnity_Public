@@ -412,7 +412,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>9</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="8" grown="9" />
 			<height normal="23.5" grown="29" />
@@ -948,7 +948,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="9" />
 			<height normal="21.5" />
@@ -986,7 +986,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="10" />
 			<height normal="23" />
@@ -1023,7 +1023,7 @@
 			<skill id="4416" level="12" /> <!-- Bugs -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="39" />
 			<height normal="38" />
@@ -1138,7 +1138,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="6722" /> <!-- Monster Only (Ahrimanes) -->
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2758" hpRegen="8.5" mp="1540.8" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<attack physical="815.37145" magical="556.793" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="323.78455" magical="236.93149" />
 			<attribute>
@@ -1207,7 +1207,7 @@
 			<skill id="4416" level="8" /> <!-- Angels -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="13" />
 			<height normal="37.5" />
@@ -1462,7 +1462,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="6722" /> <!-- Monster Only (Ahrimanes) -->
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2758" hpRegen="8.5" mp="1540.8" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<attack physical="815.37145" magical="556.793" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="323.78455" magical="236.93149" />
 			<attribute>
@@ -1531,7 +1531,7 @@
 			<skill id="4416" level="8" /> <!-- Angels -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
 		<collision>
 			<radius normal="15" />
 			<height normal="80" />
@@ -2440,6 +2440,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="6034" max="14063" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="1.666">
+					<item id="36563" min="1" max="1" chance="95.498199279712" /> <!-- Synthetic Cokes -->
+					<item id="37724" min="1" max="1" chance="4.5018007202881" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="10.43" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="3.178" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="11" />
 			<height normal="36" />
@@ -2489,6 +2504,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3431" max="7996" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="37724" min="1" max="1" chance="100" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="3.54" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="1.016" /> <!-- Armor Fragment (Mid-grade) -->
+				<item id="45930" min="1" max="1" chance="0.3" /> <!-- Mid-grade Spirit Stone -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="8" />
 			<height normal="30.6" />
@@ -2541,6 +2571,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="6437" max="15020" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="1.448">
+					<item id="19440" min="1" max="1" chance="79.281767955801" /> <!-- Gemstone (R-grade) -->
+					<item id="37724" min="1" max="1" chance="20.718232044199" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="7.102" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="2.027" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="11" />
 			<height normal="45" />
@@ -2586,6 +2631,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="6437" max="15020" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="2.466">
+					<item id="36563" min="1" max="1" chance="87.834549878345" /> <!-- Synthetic Cokes -->
+					<item id="37724" min="1" max="1" chance="12.165450121655" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="7.163" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="2.038" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="44" />
@@ -2635,6 +2695,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="5569" max="13008" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="1.382">
+					<item id="19440" min="1" max="1" chance="78.292329956585" /> <!-- Gemstone (R-grade) -->
+					<item id="37724" min="1" max="1" chance="21.707670043415" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="6.133" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="1.818" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="10" />
 			<height normal="37.5" />
@@ -2687,6 +2762,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="4516" max="10527" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="37724" min="1" max="1" chance="100" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="4.69" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="1.378" /> <!-- Armor Fragment (Mid-grade) -->
+				<item id="45930" min="1" max="1" chance="0.3" /> <!-- Mid-grade Spirit Stone -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="55" />
@@ -2878,6 +2968,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="6034" max="14063" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="1.666">
+					<item id="36563" min="1" max="1" chance="95.498199279712" /> <!-- Synthetic Cokes -->
+					<item id="37724" min="1" max="1" chance="4.5018007202881" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="10.43" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="3.178" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="11" />
 			<height normal="36" />
@@ -2927,6 +3032,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3431" max="7996" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="37724" min="1" max="1" chance="100" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="3.54" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="1.016" /> <!-- Armor Fragment (Mid-grade) -->
+				<item id="45930" min="1" max="1" chance="0.3" /> <!-- Mid-grade Spirit Stone -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="8" />
 			<height normal="30.6" />
@@ -2979,6 +3099,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="6437" max="15020" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="1.448">
+					<item id="19440" min="1" max="1" chance="79.281767955801" /> <!-- Gemstone (R-grade) -->
+					<item id="37724" min="1" max="1" chance="20.718232044199" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="7.102" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="2.027" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="11" />
 			<height normal="45" />
@@ -3024,6 +3159,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="6437" max="15020" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="2.466">
+					<item id="36563" min="1" max="1" chance="87.834549878345" /> <!-- Synthetic Cokes -->
+					<item id="37724" min="1" max="1" chance="12.165450121655" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="7.163" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="2.038" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="44" />
@@ -3073,6 +3223,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="5569" max="13008" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="1.382">
+					<item id="19440" min="1" max="1" chance="78.292329956585" /> <!-- Gemstone (R-grade) -->
+					<item id="37724" min="1" max="1" chance="21.707670043415" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="6.133" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="1.818" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="10" />
 			<height normal="37.5" />
@@ -3125,6 +3290,21 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="4516" max="10527" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="37724" min="1" max="1" chance="100" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="4.69" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="1.378" /> <!-- Armor Fragment (Mid-grade) -->
+				<item id="45930" min="1" max="1" chance="0.3" /> <!-- Mid-grade Spirit Stone -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="55" />
@@ -3440,6 +3620,21 @@
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>8</s_npc_prop_hp_rate>
 		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="6437" max="15020" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="1.448">
+					<item id="19440" min="1" max="1" chance="79.281767955801" /> <!-- Gemstone (R-grade) -->
+					<item id="37724" min="1" max="1" chance="20.718232044199" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="7.102" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="2.027" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="11" />
 			<height normal="45" />
@@ -3490,6 +3685,21 @@
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>8</s_npc_prop_hp_rate>
 		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="6437" max="15020" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="2.466">
+					<item id="36563" min="1" max="1" chance="87.834549878345" /> <!-- Synthetic Cokes -->
+					<item id="37724" min="1" max="1" chance="12.165450121655" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="7.163" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="2.038" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="44" />
@@ -3546,6 +3756,21 @@
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>8</s_npc_prop_hp_rate>
 		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="5569" max="13008" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="1.382">
+					<item id="19440" min="1" max="1" chance="78.292329956585" /> <!-- Gemstone (R-grade) -->
+					<item id="37724" min="1" max="1" chance="21.707670043415" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="6.133" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="1.818" /> <!-- Armor Fragment (Mid-grade) -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="10" />
 			<height normal="37.5" />
@@ -3599,6 +3824,21 @@
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>8</s_npc_prop_hp_rate>
 		<ai aggroRange="300" clanHelpRange="300" isAggressive="true" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="4516" max="10527" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="37724" min="1" max="1" chance="100" /> <!-- Shilen's Energy -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36558" min="1" max="1" chance="4.69" /> <!-- Accessory Gem (Mid-grade) -->
+				<item id="36553" min="1" max="1" chance="1.378" /> <!-- Armor Fragment (Mid-grade) -->
+				<item id="45930" min="1" max="1" chance="0.3" /> <!-- Mid-grade Spirit Stone -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="55" />

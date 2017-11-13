@@ -82,4 +82,24 @@ public class MathUtil
 	{
 		return oldValue / value;
 	}
+	
+	public static byte sub(byte oldValue, byte value)
+	{
+		return (byte) (oldValue - value);
+	}
+	
+	public static short sub(short oldValue, short value)
+	{
+		return (short) (oldValue - value);
+	}
+	
+	public static int sub(int oldValue, int value)
+	{
+		return oldValue - value;
+	}
+	
+	public static double sub(double oldValue, double value)
+	{
+		return oldValue - value;
+	}
 }

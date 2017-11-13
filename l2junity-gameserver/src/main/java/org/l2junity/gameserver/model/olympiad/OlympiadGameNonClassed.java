@@ -21,7 +21,7 @@ package org.l2junity.gameserver.model.olympiad;
 import java.util.List;
 import java.util.Set;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.OlympiadConfig;
 import org.l2junity.gameserver.model.holders.ItemHolder;
 
 /**
@@ -43,13 +43,13 @@ public class OlympiadGameNonClassed extends OlympiadGameNormal
 	@Override
 	protected final int getDivider()
 	{
-		return Config.ALT_OLY_DIVIDER_NON_CLASSED;
+		return OlympiadConfig.ALT_OLY_DIVIDER_NON_CLASSED;
 	}
 	
 	@Override
 	protected final List<ItemHolder> getReward()
 	{
-		return Config.ALT_OLY_NONCLASSED_REWARD;
+		return OlympiadConfig.ALT_OLY_NONCLASSED_REWARD;
 	}
 	
 	@Override

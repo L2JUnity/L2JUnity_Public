@@ -27,10 +27,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.sql.impl.CharSummonTable;
 import org.l2junity.gameserver.data.sql.impl.SummonEffectsTable;
 import org.l2junity.gameserver.data.sql.impl.SummonEffectsTable.SummonEffect;
@@ -57,7 +58,7 @@ import org.slf4j.LoggerFactory;
  */
 public class L2ServitorInstance extends Summon implements Runnable
 {
-	protected static final Logger log = LoggerFactory.getLogger(L2ServitorInstance.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2ServitorInstance.class);
 	
 	private static final String ADD_SKILL_SAVE = "INSERT INTO character_summon_skills_save (ownerId,ownerClassIndex,summonSkillId,skill_id,skill_level,remaining_time,buff_index) VALUES (?,?,?,?,?,?,?)";
 	private static final String RESTORE_SKILL_SAVE = "SELECT skill_id,skill_level,remaining_time,buff_index FROM character_summon_skills_save WHERE ownerId=? AND ownerClassIndex=? AND summonSkillId=? ORDER BY buff_index ASC";
@@ -86,7 +87,7 @@ public class L2ServitorInstance extends Summon implements Runnable
 		super.onSpawn();
 		if ((_lifeTime > 0) && (_summonLifeTask == null))
 		{
-			_summonLifeTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this, 0, 5000);
+			_summonLifeTask = ThreadPool.scheduleAtFixedRate(this, 0, 5000, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -194,40 +195,6 @@ public class L2ServitorInstance extends Summon implements Runnable
 		
 	}
 	
-	/**
-	 * Servitors' skills automatically change their level based on the servitor's level.<br>
-	 * Until level 70, the servitor gets 1 lv of skill per 10 levels.<br>
-	 * After that, it is 1 skill level per 5 servitor levels.<br>
-	 * If the resulting skill level doesn't exist use the max that does exist!
-	 */
-	@Override
-	public void doCast(Skill skill)
-	{
-		final int petLevel = getLevel();
-		int skillLevel = petLevel / 10;
-		if (petLevel >= 70)
-		{
-			skillLevel += (petLevel - 65) / 10;
-		}
-		
-		// Adjust the level for servitors less than level 1.
-		if (skillLevel < 1)
-		{
-			skillLevel = 1;
-		}
-		
-		final Skill skillToCast = SkillData.getInstance().getSkill(skill.getId(), skillLevel);
-		
-		if (skillToCast != null)
-		{
-			super.doCast(skillToCast);
-		}
-		else
-		{
-			super.doCast(skill);
-		}
-	}
-	
 	@Override
 	public void setRestoreSummon(boolean val)
 	{
@@ -264,7 +231,7 @@ public class L2ServitorInstance extends Summon implements Runnable
 			return;
 		}
 		
-		if (Config.RESTORE_SERVITOR_ON_RECONNECT)
+		if (PlayerConfig.RESTORE_SERVITOR_ON_RECONNECT)
 		{
 			CharSummonTable.getInstance().saveSummon(this);
 		}
@@ -273,7 +240,7 @@ public class L2ServitorInstance extends Summon implements Runnable
 	@Override
 	public void storeEffect(boolean storeEffects)
 	{
-		if (!Config.SUMMON_STORE_SKILL_COOLTIME)
+		if (!PlayerConfig.SUMMON_STORE_SKILL_COOLTIME)
 		{
 			return;
 		}
@@ -335,7 +302,7 @@ public class L2ServitorInstance extends Summon implements Runnable
 						}
 						
 						// Dances and songs are not kept in retail.
-						if (skill.isDance() && !Config.ALT_STORE_DANCES)
+						if (skill.isDance() && !PlayerConfig.ALT_STORE_DANCES)
 						{
 							continue;
 						}
@@ -377,7 +344,7 @@ public class L2ServitorInstance extends Summon implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not store summon effect data: ", e);
+			LOGGER.warn("Could not store summon effect data: ", e);
 		}
 	}
 	
@@ -443,7 +410,7 @@ public class L2ServitorInstance extends Summon implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not restore " + this + " active effect data: " + e.getMessage(), e);
+			LOGGER.warn("Could not restore " + this + " active effect data: " + e.getMessage(), e);
 		}
 		finally
 		{
@@ -527,6 +494,12 @@ public class L2ServitorInstance extends Summon implements Runnable
 	}
 	
 	@Override
+	public L2ServitorInstance asServitor()
+	{
+		return this;
+	}
+	
+	@Override
 	public void run()
 	{
 		int usedtime = 5000;
@@ -574,7 +547,6 @@ public class L2ServitorInstance extends Summon implements Runnable
 		}
 		
 		sendPacket(new SetSummonRemainTime(getLifeTime(), _lifeTimeRemaining));
-		updateEffectIcons();
 	}
 	
 	@Override

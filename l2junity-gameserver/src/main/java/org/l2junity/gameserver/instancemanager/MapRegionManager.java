@@ -18,13 +18,16 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.data.xml.impl.ClanHallData;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.MapRegion;
 import org.l2junity.gameserver.model.TeleportWhereType;
@@ -52,15 +55,14 @@ public final class MapRegionManager implements IGameXmlReader
 	private static final Logger LOGGER = LoggerFactory.getLogger(MapRegionManager.class);
 	
 	private final Map<String, MapRegion> _regions = new HashMap<>();
-	private final String defaultRespawn = "talking_island_town";
+	private final String defaultRespawn = "talking_island_new";
 	
 	protected MapRegionManager()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_regions.clear();
 		parseDatapackDirectory("data/mapregion", false);
@@ -68,13 +70,12 @@ public final class MapRegionManager implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		NamedNodeMap attrs;
 		String name;
 		String town;
 		int locId;
-		int castle;
 		int bbs;
 		
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
@@ -89,10 +90,9 @@ public final class MapRegionManager implements IGameXmlReader
 						name = attrs.getNamedItem("name").getNodeValue();
 						town = attrs.getNamedItem("town").getNodeValue();
 						locId = parseInteger(attrs, "locId");
-						castle = parseInteger(attrs, "castle");
 						bbs = parseInteger(attrs, "bbs");
 						
-						MapRegion region = new MapRegion(name, town, locId, castle, bbs);
+						MapRegion region = new MapRegion(name, town, locId, bbs);
 						for (Node c = d.getFirstChild(); c != null; c = c.getNextSibling())
 						{
 							attrs = c.getAttributes();
@@ -144,11 +144,11 @@ public final class MapRegionManager implements IGameXmlReader
 	 * @param locY
 	 * @return
 	 */
-	public final MapRegion getMapRegion(int locX, int locY)
+	public final MapRegion getMapRegion(double locX, double locY)
 	{
 		for (MapRegion region : _regions.values())
 		{
-			if (region.isZoneInRegion(getMapRegionX(locX), getMapRegionY(locY)))
+			if (region.isZoneInRegion(getMapRegionX((int) locX), getMapRegionY((int) locY)))
 			{
 				return region;
 			}
@@ -161,7 +161,7 @@ public final class MapRegionManager implements IGameXmlReader
 	 * @param locY
 	 * @return
 	 */
-	public final int getMapRegionLocId(int locX, int locY)
+	public final int getMapRegionLocId(double locX, double locY)
 	{
 		MapRegion region = getMapRegion(locX, locY);
 		if (region != null)
@@ -222,22 +222,6 @@ public final class MapRegionManager implements IGameXmlReader
 		}
 		
 		return region.getTown();
-	}
-	
-	/**
-	 * @param activeChar
-	 * @return
-	 */
-	public int getAreaCastle(Creature activeChar)
-	{
-		MapRegion region = getMapRegion(activeChar);
-		
-		if (region == null)
-		{
-			return 0;
-		}
-		
-		return region.getCastle();
 	}
 	
 	/**
@@ -460,6 +444,7 @@ public final class MapRegionManager implements IGameXmlReader
 	 * Gets the single instance of {@code MapRegionManager}.
 	 * @return single instance of {@code MapRegionManager}
 	 */
+	@InstanceGetter
 	public static MapRegionManager getInstance()
 	{
 		return SingletonHolder._instance;

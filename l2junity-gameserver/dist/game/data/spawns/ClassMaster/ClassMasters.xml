@@ -1,51 +1,292 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
-	<spawn name="ClassMasters" ai="ClassMaster">
-		<group spawnByDefault="false">
-			<!-- Aden -->
-			<npc id="31756" x="147728" y="27408" z="-2198" heading="16500" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="147761" y="27408" z="-2198" heading="16500" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- Dion -->
-			<npc id="31756" x="15584" y="142784" z="-2699" heading="16500" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="15631" y="142778" z="-2699" heading="16500" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- Giran -->
-			<npc id="31756" x="83076" y="147912" z="-3467" heading="32000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="83082" y="147845" z="-3467" heading="32000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- Gludin -->
-			<npc id="31756" x="-82032" y="150160" z="-3122" heading="16500" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="-81967" y="150160" z="-3122" heading="16500" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- Goddard -->
-			<npc id="31756" x="148560" y="-57952" z="-2974" heading="53000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31756" x="147888" y="-58048" z="-2979" heading="49000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31756" x="147262" y="-56450" z="-2776" heading="33000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="148514" y="-57972" z="-2974" heading="53000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<npc id="31757" x="147924" y="-58052" z="-2979" heading="49000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<npc id="31757" x="147285" y="-56461" z="-2776" heading="11500" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- Hunters' Village -->
-			<npc id="31756" x="117200" y="75824" z="-2725" heading="25000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="117160" y="75784" z="-2725" heading="25000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- 19_21 -->
-			<npc id="31756" x="-14048" y="123184" z="-3115" heading="32000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="-14050" y="123229" z="-3115" heading="32000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- 20_23 -->
-			<npc id="31756" x="17956" y="170536" z="-3499" heading="48000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="17913" y="170536" z="-3499" heading="48000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- 23_24 -->
-			<npc id="31756" x="110592" y="220400" z="-3667" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="110592" y="220443" z="-3667" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- Oren -->
-			<npc id="31756" x="81136" y="54576" z="-1517" heading="32000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="81126" y="54519" z="-1517" heading="32000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- Rune -->
-			<npc id="31756" x="44176" y="-48732" z="-800" heading="33000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31756" x="44319" y="-47640" z="-792" heading="50000" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="44176" y="-48688" z="-800" heading="33000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<npc id="31757" x="44294" y="-47642" z="-792" heading="50000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<!-- Schuttgard -->
-			<npc id="31756" x="87824" y="-142256" z="-1336" heading="7342" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31756" x="87596" y="-140674" z="-1536" heading="16500" respawnTime="60sec" /> <!-- Mr. Cat -->
-			<npc id="31757" x="87856" y="-142272" z="-1336" heading="44000" respawnTime="60sec" /> <!-- Queen of Hearts -->
-			<npc id="31757" x="87644" y="-140674" z="-1536" heading="16500" respawnTime="60sec" /> <!-- Queen of Hearts -->
-		</group>
+	<spawn name="lyonn03_npc2418_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="lyonn03_npc2418_2c01" minZ="-2248" maxZ="-2048">
+				<node x="147612" y="27292" />
+				<node x="147812" y="27292" />
+				<node x="147812" y="27492" />
+				<node x="147612" y="27492" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="147728" y="27408" z="-2198" heading="16500" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="147761" y="27408" z="-2198" heading="16500" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="lyonn03_npc2418_2c02m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="lyonn03_npc2418_2c02" minZ="-3024" maxZ="-2824">
+				<node x="148460" y="-58068" />
+				<node x="148660" y="-58068" />
+				<node x="148660" y="-57868" />
+				<node x="148460" y="-57868" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="148560" y="-57952" z="-2974" heading="53000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="148514" y="-57972" z="-2974" heading="53000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="innadril09_npc2324_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="innadril09_npc2324_2c01" minZ="-3752" maxZ="-3552">
+				<node x="110428" y="220284" />
+				<node x="110628" y="220284" />
+				<node x="110628" y="220484" />
+				<node x="110428" y="220484" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="110592" y="220400" z="-3667" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="110592" y="220443" z="-3667" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="aden14_npc2320_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="aden14_npc2320_2c01" minZ="-2788" maxZ="-2588">
+				<node x="117116" y="75708" />
+				<node x="117316" y="75708" />
+				<node x="117316" y="75908" />
+				<node x="117116" y="75908" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="117200" y="75824" z="-2725" heading="25000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="117160" y="75784" z="-2725" heading="25000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="giran11_npc2222_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="giran11_npc2222_2c01" minZ="-3516" maxZ="-3316">
+				<node x="82972" y="147804" />
+				<node x="83172" y="147804" />
+				<node x="83172" y="148004" />
+				<node x="82972" y="148004" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="83076" y="147912" z="-3467" heading="32000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="83082" y="147845" z="-3467" heading="32000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="oren17_npc2219_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="oren17_npc2219_2c01" minZ="-1600" maxZ="-1400">
+				<node x="81036" y="54476" />
+				<node x="81236" y="54476" />
+				<node x="81236" y="54676" />
+				<node x="81036" y="54676" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="81136" y="54576" z="-1517" heading="32000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="81126" y="54519" z="-1517" heading="32000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="dion10_npc2023_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="dion10_npc2023_2c01" minZ="-3584" maxZ="-3384">
+				<node x="17852" y="170428" />
+				<node x="18052" y="170428" />
+				<node x="18052" y="170628" />
+				<node x="17852" y="170628" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="17956" y="170536" z="-3499" heading="48000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="17913" y="170536" z="-3499" heading="48000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="dion09_npc2022_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="dion09_npc2022_2c01" minZ="-2740" maxZ="-2540">
+				<node x="15484" y="142700" />
+				<node x="15684" y="142700" />
+				<node x="15684" y="142900" />
+				<node x="15484" y="142900" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="15584" y="142784" z="-2699" heading="16500" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="15631" y="142778" z="-2699" heading="16500" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="oren09_npc2018_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="oren09_npc2018_2c01" minZ="-4632" maxZ="-4432">
+				<node x="11228" y="15868" />
+				<node x="11428" y="15868" />
+				<node x="11428" y="16068" />
+				<node x="11228" y="16068" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="11340" y="15972" z="-4577" heading="14000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="11353" y="16022" z="-4577" heading="14000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="oren09_npc2018_2c02m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="oren09_npc2018_2c02" minZ="-4624" maxZ="-4424">
+				<node x="10876" y="17452" />
+				<node x="11076" y="17452" />
+				<node x="11076" y="17652" />
+				<node x="10876" y="17652" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="10968" y="17540" z="-4567" heading="55000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="10918" y="17511" z="-4567" heading="55000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="gludio08_npc1921_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="gludio08_npc1921_2c01" minZ="-3148" maxZ="-2948">
+				<node x="-14148" y="123084" />
+				<node x="-13948" y="123084" />
+				<node x="-13948" y="123284" />
+				<node x="-14148" y="123284" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="-14048" y="123184" z="-3115" heading="32000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="-14050" y="123229" z="-3115" heading="32000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="gludio25_npc1725_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="gludio25_npc1725_2c01" minZ="-1607" maxZ="-1407">
+				<node x="-114720" y="253337" />
+				<node x="-113958" y="253318" />
+				<node x="-113935" y="255281" />
+				<node x="-114701" y="255255" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="-114237" y="255046" z="-1528" heading="10296" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="-114177" y="255041" z="-1528" heading="14777" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+		<npc id="31756" x="-114203" y="253917" z="-1528" heading="63914" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="-114211" y="253866" z="-1528" heading="65228" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+		<npc id="31756" x="-114540" y="254402" z="-1528" heading="32309" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="-114546" y="254344" z="-1528" heading="30729" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="gludio06_npc1722_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="gludio06_npc1722_2c01" minZ="-3172" maxZ="-2972">
+				<node x="-82132" y="150076" />
+				<node x="-81932" y="150076" />
+				<node x="-81932" y="150276" />
+				<node x="-82132" y="150276" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="-82032" y="150160" z="-3122" heading="16500" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="-81967" y="150160" z="-3122" heading="16500" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="godard02_npc2416_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="godard02_npc2416_2c01" minZ="-3020" maxZ="-2820">
+				<node x="147806" y="-58172" />
+				<node x="148006" y="-58172" />
+				<node x="148006" y="-57972" />
+				<node x="147806" y="-57972" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="147865" y="-58047" z="-2979" heading="48999" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="147906" y="-58047" z="-2979" heading="48999" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="godard02_npc2416_2c02m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="godard02_npc2416_2c02" minZ="-2818" maxZ="-2618">
+				<node x="147202" y="-56474" />
+				<node x="147344" y="-56547" />
+				<node x="147387" y="-56460" />
+				<node x="147247" y="-56386" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="147300" y="-56466" z="-2779" heading="11500" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="147333" y="-56483" z="-2784" heading="11500" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="schuttgart20_2c01m1" ai="EVENT_MAKER" spawnByDefault="false">
+		<territories>
+			<territory name="schuttgart20_npc2213_2c01" minZ="-1576" maxZ="-1376">
+				<node x="87538" y="-140769" />
+				<node x="87738" y="-140769" />
+				<node x="87738" y="-140569" />
+				<node x="87538" y="-140569" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="87596" y="-140674" z="-1542" heading="16500" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="87644" y="-140674" z="-1542" heading="16500" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="schuttgart20_2c02m1" ai="EVENT_MAKER" spawnByDefault="false">
+		<territories>
+			<territory name="schuttgart20_npc2213_2c02" minZ="-1379" maxZ="-1179">
+				<node x="87730" y="-142301" />
+				<node x="87875" y="-142332" />
+				<node x="87880" y="-142242" />
+				<node x="87759" y="-142207" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="87824" y="-142256" z="-1343" heading="44000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="87856" y="-142272" z="-1344" heading="44000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="rune02_npc2116_2c01m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="rune02_npc2116_2c01" minZ="-864" maxZ="-664">
+				<node x="44051" y="-48834" />
+				<node x="44251" y="-48834" />
+				<node x="44251" y="-48634" />
+				<node x="44051" y="-48634" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="44176" y="-48732" z="-800" heading="33000" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="44176" y="-48688" z="-800" heading="33000" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
+	</spawn>
+	<spawn name="rune02_npc2116_2c02m1" ai="ClassMaster" spawnByDefault="false">
+		<territories>
+			<territory name="rune02_npc2116_2c02" minZ="-864" maxZ="-664">
+				<node x="44229" y="-47816" />
+				<node x="44429" y="-47816" />
+				<node x="44429" y="-47616" />
+				<node x="44229" y="-47616" />
+			</territory>
+		</territories>
+		<parameters>
+			<param name="EventName" value="test_2nd_class" />
+		</parameters>
+		<npc id="31756" x="44333" y="-47639" z="-800" heading="49999" respawnTime="1min" count="1" /> <!-- Mr. Cat -->
+		<npc id="31757" x="44371" y="-47638" z="-800" heading="49999" respawnTime="1min" count="1" /> <!-- Queen of Hearts -->
 	</spawn>
 </list>

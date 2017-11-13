@@ -24,6 +24,9 @@ import org.l2junity.gameserver.model.ClanPrivilege;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.entity.Castle;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerJoinSiege;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
@@ -49,8 +52,14 @@ public final class RequestJoinSiege implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		PlayerInstance activeChar = client.getActiveChar();
+		final PlayerInstance activeChar = client.getActiveChar();
 		if (activeChar == null)
+		{
+			return;
+		}
+		
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerJoinSiege(activeChar, _castleId), activeChar, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
 		{
 			return;
 		}

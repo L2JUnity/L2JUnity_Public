@@ -19,8 +19,9 @@
 package org.l2junity.gameserver.model.actor.tasks.player;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.SayuneRequest;
 import org.l2junity.gameserver.model.zone.ZoneType;
@@ -53,7 +54,7 @@ public class FlyMoveStartTask implements Runnable
 		if (!_player.hasRequest(SayuneRequest.class))
 		{
 			_player.sendPacket(ExNotifyFlyMoveStart.STATIC_PACKET);
-			ThreadPoolManager.getInstance().scheduleGeneral(this, 1000L);
+			ThreadPool.schedule(this, 1000L, TimeUnit.MILLISECONDS);
 		}
 	}
 }

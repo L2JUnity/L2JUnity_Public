@@ -20,7 +20,6 @@ package org.l2junity.gameserver.model.html;
 
 /**
  * @author UnAfraid
- *
  */
 public interface IBypassFormatter
 {

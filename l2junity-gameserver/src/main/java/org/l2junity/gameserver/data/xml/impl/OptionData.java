@@ -18,14 +18,19 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.commons.util.IXmlReader;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.handler.EffectHandler;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.holders.SkillHolder;
 import org.l2junity.gameserver.model.options.Options;
@@ -46,11 +51,11 @@ public class OptionData implements IGameXmlReader
 	
 	protected OptionData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Reload("options")
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = SkillData.class))
+	private void load() throws Exception
 	{
 		_optionData.clear();
 		parseDatapackDirectory("data/stats/options", false);
@@ -58,7 +63,7 @@ public class OptionData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, "list", listNode -> forEach(listNode, "option", optionNode ->
 		{
@@ -77,7 +82,7 @@ public class OptionData implements IGameXmlReader
 							final StatsSet params = new StatsSet();
 							forEach(effectNode, IXmlReader::isNode, paramNode ->
 							{
-								params.set(paramNode.getNodeName(), SkillData.getInstance().parseValue(paramNode, true, false, Collections.emptyMap()));
+								params.set(paramNode.getNodeName(), SkillData.parseValue(paramNode, true, false, Collections.emptyMap()));
 							});
 							option.addEffect(EffectHandler.getInstance().getHandlerFactory(name).apply(params));
 						});
@@ -85,12 +90,12 @@ public class OptionData implements IGameXmlReader
 					}
 					case "active_skill":
 					{
-						option.setActiveSkill(new SkillHolder(parseInteger(innerNode.getAttributes(), "id"), parseInteger(innerNode.getAttributes(), "level")));
+						option.addActiveSkill(new SkillHolder(parseInteger(innerNode.getAttributes(), "id"), parseInteger(innerNode.getAttributes(), "level")));
 						break;
 					}
 					case "passive_skill":
 					{
-						option.setPassiveSkill(new SkillHolder(parseInteger(innerNode.getAttributes(), "id"), parseInteger(innerNode.getAttributes(), "level")));
+						option.addPassiveSkill(new SkillHolder(parseInteger(innerNode.getAttributes(), "id"), parseInteger(innerNode.getAttributes(), "level")));
 						break;
 					}
 					case "attack_skill":
@@ -114,6 +119,11 @@ public class OptionData implements IGameXmlReader
 		}));
 	}
 	
+	public int getOptionCount()
+	{
+		return _optionData.size();
+	}
+	
 	public Options getOptions(int id)
 	{
 		return _optionData.get(id);
@@ -123,6 +133,7 @@ public class OptionData implements IGameXmlReader
 	 * Gets the single instance of OptionsData.
 	 * @return single instance of OptionsData
 	 */
+	@InstanceGetter
 	public static final OptionData getInstance()
 	{
 		return SingletonHolder._instance;

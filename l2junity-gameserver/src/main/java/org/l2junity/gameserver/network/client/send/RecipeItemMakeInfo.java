@@ -19,8 +19,8 @@
 package org.l2junity.gameserver.network.client.send;
 
 import org.l2junity.gameserver.data.xml.impl.RecipeData;
-import org.l2junity.gameserver.model.RecipeList;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.holders.RecipeHolder;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
@@ -28,26 +28,45 @@ public class RecipeItemMakeInfo implements IClientOutgoingPacket
 {
 	private final int _id;
 	private final PlayerInstance _activeChar;
-	private final boolean _success;
+	private final Boolean _success;
+	private final long _offeringMaximumAdena;
+	
+	public RecipeItemMakeInfo(int id, PlayerInstance player, boolean success, long offeringMaximumAdena)
+	{
+		_id = id;
+		_activeChar = player;
+		_success = success;
+		_offeringMaximumAdena = offeringMaximumAdena;
+	}
 	
 	public RecipeItemMakeInfo(int id, PlayerInstance player, boolean success)
 	{
 		_id = id;
 		_activeChar = player;
 		_success = success;
+		_offeringMaximumAdena = 0;
+	}
+	
+	public RecipeItemMakeInfo(int id, PlayerInstance player, long offeringMaximumAdena)
+	{
+		_id = id;
+		_activeChar = player;
+		_success = null;
+		_offeringMaximumAdena = offeringMaximumAdena;
 	}
 	
 	public RecipeItemMakeInfo(int id, PlayerInstance player)
 	{
 		_id = id;
 		_activeChar = player;
-		_success = true;
+		_success = null;
+		_offeringMaximumAdena = 0;
 	}
 	
 	@Override
 	public boolean write(PacketWriter packet)
 	{
-		final RecipeList recipe = RecipeData.getInstance().getRecipeList(_id);
+		final RecipeHolder recipe = RecipeData.getInstance().getRecipe(_id);
 		if (recipe != null)
 		{
 			OutgoingPackets.RECIPE_ITEM_MAKE_INFO.writeId(packet);
@@ -55,12 +74,12 @@ public class RecipeItemMakeInfo implements IClientOutgoingPacket
 			packet.writeD(recipe.isDwarvenRecipe() ? 0 : 1); // 0 = Dwarven - 1 = Common
 			packet.writeD((int) _activeChar.getCurrentMp());
 			packet.writeD(_activeChar.getMaxMp());
-			packet.writeD(_success ? 1 : 0); // item creation success/failed
-			packet.writeC(0x00);
-			packet.writeQ(0x00);
+			packet.writeD(_success == null ? -1 : (_success ? 1 : 0)); // item creation none/success/failed
+			packet.writeC(_offeringMaximumAdena > 0 ? 1 : 0); // Show offering window.
+			packet.writeQ(_offeringMaximumAdena); // Adena worth of items for maximum offering.
 			return true;
 		}
-		_log.info("Character: " + _activeChar + ": Requested unexisting recipe with id = " + _id);
+		LOGGER.info("Character: {}: Requested unexisting recipe with id = {}", _activeChar, _id);
 		return false;
 	}
 }

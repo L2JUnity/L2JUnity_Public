@@ -18,7 +18,7 @@
  */
 package org.l2junity.loginserver.network.gameserverpackets;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.loginserver.GameServerTable;
 import org.l2junity.loginserver.GameServerThread;
 import org.l2junity.util.network.BaseRecievePacket;
@@ -42,7 +42,7 @@ public class PlayerLogout extends BaseRecievePacket
 		String account = readS();
 		
 		server.removeAccountOnGameServer(account);
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			_log.info("Player " + account + " logged out from gameserver [" + server.getServerId() + "] " + GameServerTable.getInstance().getServerNameById(server.getServerId()));
 		}

@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.holders.ItemHolder;
@@ -49,7 +50,7 @@ public class RequestPackageSend implements IClientIncomingPacket
 		_objectId = packet.readD();
 		
 		int count = packet.readD();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((count <= 0) || (count > PlayerConfig.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -86,14 +87,14 @@ public class RequestPackageSend implements IClientIncomingPacket
 		}
 		
 		final Npc manager = player.getLastFolkNPC();
-		if (((manager == null) || !player.isInsideRadius(manager, Npc.INTERACTION_DISTANCE, false, false)))
+		if (((manager == null) || !player.isInRadius2d(manager, Npc.INTERACTION_DISTANCE)))
 		{
 			return;
 		}
 		
 		if (player.hasItemRequest())
 		{
-			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to use enchant Exploit!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to use enchant Exploit!", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
@@ -104,13 +105,13 @@ public class RequestPackageSend implements IClientIncomingPacket
 		}
 		
 		// Alt game - Karma punishment
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (player.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (player.getReputation() < 0))
 		{
 			return;
 		}
 		
 		// Freight price from config per item slot.
-		final int fee = _items.length * Config.ALT_FREIGHT_PRICE;
+		final int fee = _items.length * PlayerConfig.ALT_FREIGHT_PRICE;
 		long currentAdena = player.getAdena();
 		int slots = 0;
 		
@@ -121,7 +122,7 @@ public class RequestPackageSend implements IClientIncomingPacket
 			final ItemInstance item = player.checkItemManipulation(i.getId(), i.getCount(), "freight");
 			if (item == null)
 			{
-				_log.warn("Error depositing a warehouse object for char " + player.getName() + " (validity check)");
+				LOGGER.warn("Error depositing a warehouse object for char " + player.getName() + " (validity check)");
 				warehouse.deleteMe();
 				return;
 			}
@@ -163,14 +164,14 @@ public class RequestPackageSend implements IClientIncomingPacket
 		}
 		
 		// Proceed to the transfer
-		final InventoryUpdate playerIU = Config.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
+		final InventoryUpdate playerIU = GeneralConfig.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
 		for (ItemHolder i : _items)
 		{
 			// Check validity of requested item
 			final ItemInstance oldItem = player.checkItemManipulation(i.getId(), i.getCount(), "deposit");
 			if (oldItem == null)
 			{
-				_log.warn("Error depositing a warehouse object for char " + player.getName() + " (olditem == null)");
+				LOGGER.warn("Error depositing a warehouse object for char " + player.getName() + " (olditem == null)");
 				warehouse.deleteMe();
 				return;
 			}
@@ -178,7 +179,7 @@ public class RequestPackageSend implements IClientIncomingPacket
 			final ItemInstance newItem = player.getInventory().transferItem("Trade", i.getId(), i.getCount(), warehouse, player, null);
 			if (newItem == null)
 			{
-				_log.warn("Error depositing a warehouse object for char " + player.getName() + " (newitem == null)");
+				LOGGER.warn("Error depositing a warehouse object for char " + player.getName() + " (newitem == null)");
 				continue;
 			}
 			

@@ -26,14 +26,13 @@ import org.l2junity.gameserver.handler.IPlayerActionHandler;
 import org.l2junity.gameserver.handler.PlayerActionHandler;
 import org.l2junity.gameserver.model.ActionDataHolder;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.model.skills.AbnormalType;
-import org.l2junity.gameserver.model.skills.BuffInfo;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerUseAction;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.ExBasicActionList;
 import org.l2junity.gameserver.network.client.send.RecipeShopManageList;
-import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,25 +67,23 @@ public final class RequestActionUse implements IClientIncomingPacket
 			return;
 		}
 		
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerUseAction(activeChar, _actionId, _ctrlPressed, _shiftPressed), activeChar, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		if (activeChar.isSpawnProtected() && (_actionId != 10) && (_actionId != 28))
+		{
+			activeChar.onActionRequest();
+		}
+		
 		// Don't do anything if player is dead or confused
 		if ((activeChar.isFakeDeath() && (_actionId != 0)) || activeChar.isDead() || activeChar.isControlBlocked())
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
-		}
-		
-		final BuffInfo info = activeChar.getEffectList().getBuffInfoByAbnormalType(AbnormalType.BOT_PENALTY);
-		if (info != null)
-		{
-			for (AbstractEffect effect : info.getEffects())
-			{
-				if (!effect.checkCondition(_actionId))
-				{
-					activeChar.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_SO_YOUR_ACTIONS_HAVE_BEEN_RESTRICTED);
-					activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-					return;
-				}
-			}
 		}
 		
 		// Don't allow to do some action if player is transformed
@@ -96,7 +93,7 @@ public final class RequestActionUse implements IClientIncomingPacket
 			if (!(Arrays.binarySearch(allowedActions, _actionId) >= 0))
 			{
 				client.sendPacket(ActionFailed.STATIC_PACKET);
-				_log.warn("Player " + activeChar + " used action which he does not have! Id = " + _actionId + " transform: " + String.valueOf(activeChar.getTransformation().orElse(null)));
+				LOGGER.warn("Player " + activeChar + " used action which he does not have! Id = " + _actionId + " transform: " + String.valueOf(activeChar.getTransformation().orElse(null)));
 				return;
 			}
 		}
@@ -143,7 +140,7 @@ public final class RequestActionUse implements IClientIncomingPacket
 				client.sendPacket(new RecipeShopManageList(activeChar, false));
 				break;
 			default:
-				_log.warn(activeChar.getName() + ": unhandled action type " + _actionId);
+				LOGGER.warn(activeChar.getName() + ": unhandled action type " + _actionId);
 				break;
 		}
 	}

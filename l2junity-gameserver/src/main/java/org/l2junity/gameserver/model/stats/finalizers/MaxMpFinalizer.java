@@ -18,14 +18,14 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -33,27 +33,27 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class MaxMpFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
-		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
+		double baseValue = creature.getStat().getValue(DoubleStat.MAX_MP_ADD, calcEquippedItemsBaseValue(creature, stat));
 		if (creature.isPet())
 		{
 			final L2PetInstance pet = (L2PetInstance) creature;
-			baseValue = pet.getPetLevelData().getPetMaxMP();
+			baseValue += pet.getPetLevelData().getPetMaxMP();
 		}
 		else if (creature.isPlayer())
 		{
 			final PlayerInstance player = creature.getActingPlayer();
 			if (player != null)
 			{
-				baseValue = player.getTemplate().getBaseMpMax(player.getLevel());
+				baseValue += player.getTemplate().getBaseMpMax(player.getLevel());
 			}
 		}
 		final double chaBonus = creature.isPlayer() ? BaseStats.CHA.calcBonus(creature) : 1.;
 		final double menBonus = creature.getMEN() > 0 ? BaseStats.MEN.calcBonus(creature) : 1.;
 		baseValue *= menBonus * chaBonus;
-		return Stats.defaultValue(creature, stat, baseValue);
+		return DoubleStat.defaultValue(creature, stat, baseValue);
 	}
 }

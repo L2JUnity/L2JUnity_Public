@@ -23,16 +23,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.GameTimeController;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.PlayerConfig;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.model.CharEffectList;
 import org.l2junity.gameserver.model.actor.Creature;
-import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.model.effects.EffectTaskInfo;
-import org.l2junity.gameserver.model.effects.EffectTickTask;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.options.Options;
 import org.l2junity.gameserver.model.stats.Formulas;
@@ -48,6 +46,7 @@ public final class BuffInfo
 {
 	// Data
 	/** Data. */
+	private final int _effectorObjectId;
 	private final Creature _effector;
 	private final Creature _effected;
 	private final Skill _skill;
@@ -55,7 +54,7 @@ public final class BuffInfo
 	private final List<AbstractEffect> _effects = new ArrayList<>(1);
 	// Tasks
 	/** Effect tasks for ticks. */
-	private volatile Map<AbstractEffect, EffectTaskInfo> _tasks;
+	private volatile Map<AbstractEffect, ScheduledFuture<?>> _tasks;
 	/** Scheduled future. */
 	private ScheduledFuture<?> _scheduledFutureTimeTask;
 	// Time and ticks
@@ -65,9 +64,9 @@ public final class BuffInfo
 	private int _periodStartTicks;
 	// Misc
 	/** If {@code true} then this effect has been cancelled. */
-	private boolean _isRemoved = false;
+	private volatile boolean _isRemoved = false;
 	/** If {@code true} then this effect is in use (or has been stop because an Herb took place). */
-	private boolean _isInUse = true;
+	private volatile boolean _isInUse = true;
 	private final boolean _hideStartMessage;
 	private final ItemInstance _item;
 	private final Options _option;
@@ -83,11 +82,12 @@ public final class BuffInfo
 	 */
 	public BuffInfo(Creature effector, Creature effected, Skill skill, boolean hideStartMessage, ItemInstance item, Options option)
 	{
+		_effectorObjectId = (effector != null) ? effector.getObjectId() : 0;
 		_effector = effector;
 		_effected = effected;
 		_skill = skill;
 		_abnormalTime = Formulas.calcEffectAbnormalTime(effector, effected, skill);
-		_periodStartTicks = GameTimeController.getInstance().getGameTicks();
+		_periodStartTicks = GameTimeManager.getInstance().getGameTicks();
 		_hideStartMessage = hideStartMessage;
 		_item = item;
 		_option = option;
@@ -115,9 +115,9 @@ public final class BuffInfo
 	 * Adds an effect task to this buff info.<br>
 	 * Uses double-checked locking to initialize the map if it's necessary.
 	 * @param effect the effect that owns the task
-	 * @param effectTaskInfo the task info
+	 * @param scheduledFuture the task
 	 */
-	private void addTask(AbstractEffect effect, EffectTaskInfo effectTaskInfo)
+	private void addEffectTask(AbstractEffect effect, ScheduledFuture<?> scheduledFuture)
 	{
 		if (_tasks == null)
 		{
@@ -129,7 +129,7 @@ public final class BuffInfo
 				}
 			}
 		}
-		_tasks.put(effect, effectTaskInfo);
+		_tasks.put(effect, scheduledFuture);
 	}
 	
 	/**
@@ -137,7 +137,7 @@ public final class BuffInfo
 	 * @param effect the effect
 	 * @return the task
 	 */
-	private EffectTaskInfo getEffectTask(AbstractEffect effect)
+	private ScheduledFuture<?> getEffectTask(AbstractEffect effect)
 	{
 		return (_tasks == null) ? null : _tasks.get(effect);
 	}
@@ -200,7 +200,7 @@ public final class BuffInfo
 	 */
 	public int getTime()
 	{
-		return _abnormalTime - ((GameTimeController.getInstance().getGameTicks() - _periodStartTicks) / GameTimeController.TICKS_PER_SECOND);
+		return _abnormalTime - ((GameTimeManager.getInstance().getGameTicks() - _periodStartTicks) / GameTimeManager.TICKS_PER_SECOND);
 	}
 	
 	/**
@@ -237,6 +237,35 @@ public final class BuffInfo
 	public void setInUse(boolean val)
 	{
 		_isInUse = val;
+		
+		// Send message that the effect is applied or removed.
+		if ((_skill != null) && !_skill.isHidingMesseges() && _effected.isPlayer())
+		{
+			if (val)
+			{
+				if (!_hideStartMessage && !_skill.isAura())
+				{
+					final SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.S1_S_EFFECT_CAN_BE_FELT);
+					sm.addSkillName(_skill);
+					_effected.sendPacket(sm);
+				}
+			}
+			else
+			{
+				final SystemMessage sm = SystemMessage.getSystemMessage(_skill.isToggle() ? SystemMessageId.S1_HAS_BEEN_ABORTED : SystemMessageId.THE_EFFECT_OF_S1_HAS_BEEN_REMOVED);
+				sm.addSkillName(_skill);
+				_effected.sendPacket(sm);
+			}
+		}
+	}
+	
+	/**
+	 * Gets the character's object id that launched the buff.
+	 * @return the object id of the effector.
+	 */
+	public int getEffectorObjectId()
+	{
+		return _effectorObjectId;
 	}
 	
 	/**
@@ -283,7 +312,7 @@ public final class BuffInfo
 		}
 		
 		// When effects are initialized, the successfully landed.
-		if (!_hideStartMessage && _effected.isPlayer() && !_skill.isPassive() && !_skill.isHidingMesseges() && !_skill.isAura())
+		if (!_hideStartMessage && _effected.isPlayer() && !_skill.isHidingMesseges() && !_skill.isAura())
 		{
 			final SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.S1_S_EFFECT_CAN_BE_FELT);
 			sm.addSkillName(_skill);
@@ -293,35 +322,27 @@ public final class BuffInfo
 		// Creates a task that will stop all the effects.
 		if (_abnormalTime > 0)
 		{
-			_scheduledFutureTimeTask = ThreadPoolManager.getInstance().scheduleEffectAtFixedRate(new BuffTimeTask(this), 0, 1000L);
+			_scheduledFutureTimeTask = ThreadPool.scheduleAtFixedRate(new BuffTimeTask(this), 0, 1000L, TimeUnit.MILLISECONDS);
 		}
-		
-		// Reset abnormal visual effects.
-		resetAbnormalVisualEffects();
 		
 		for (AbstractEffect effect : _effects)
 		{
-			if (effect.isInstant() || (_effected.isDead() && !_skill.isPassive()))
+			if (_effected.isDead() && !_skill.isPassive())
 			{
 				continue;
 			}
 			
 			// Call on start.
-			effect.onStart(getEffector(), getEffected(), getSkill());
-			effect.onStart(this);
+			effect.pumpStart(getEffector(), getEffected(), getSkill());
 			
 			// If it's a continuous effect, if has ticks schedule a task with period, otherwise schedule a simple task to end it.
 			if (effect.getTicks() > 0)
 			{
 				// The task for the effect ticks.
-				final EffectTickTask effectTask = new EffectTickTask(this, effect);
-				final ScheduledFuture<?> scheduledFuture = ThreadPoolManager.getInstance().scheduleEffectAtFixedRate(effectTask, effect.getTicks() * Config.EFFECT_TICK_RATIO, effect.getTicks() * Config.EFFECT_TICK_RATIO);
+				final ScheduledFuture<?> effectTask = ThreadPool.scheduleAtFixedRate(() -> onTick(effect), effect.getTicks() * PlayerConfig.EFFECT_TICK_RATIO, effect.getTicks() * PlayerConfig.EFFECT_TICK_RATIO, TimeUnit.MILLISECONDS);
 				// Adds the task for ticking.
-				addTask(effect, new EffectTaskInfo(effectTask, scheduledFuture));
+				addEffectTask(effect, effectTask);
 			}
-			
-			// Recalculate all stats
-			_effected.getStat().recalculateStats(true);
 		}
 	}
 	
@@ -329,25 +350,21 @@ public final class BuffInfo
 	 * Called on each tick.<br>
 	 * Verify if the effect should end and the effect task should be cancelled.
 	 * @param effect the effect that is ticking
-	 * @param tickCount the tick count
 	 */
-	public void onTick(AbstractEffect effect, int tickCount)
+	public void onTick(AbstractEffect effect)
 	{
-		boolean continueForever = false;
-		// If the effect is in use, allow it to affect the effected.
 		if (_isInUse)
 		{
-			// Callback for on action time event.
-			continueForever = effect.onActionTime(this);
-		}
-		
-		if (!continueForever && _skill.isToggle())
-		{
-			final EffectTaskInfo task = getEffectTask(effect);
-			if (task != null)
+			effect.tick(getEffector(), getEffected(), getSkill());
+			
+			if (_skill.isToggle() && !effect.consume(getEffected(), getSkill()))
 			{
-				task.getScheduledFuture().cancel(true); // Don't allow to finish current run.
-				_effected.getEffectList().stopSkillEffects(true, getSkill()); // Remove the buff from the effect list.
+				final ScheduledFuture<?> effectTask = getEffectTask(effect);
+				if (effectTask != null)
+				{
+					effectTask.cancel(false);
+					_effected.getEffectList().stopSkillEffects(true, getSkill()); // Remove the buff from the effect list.
+				}
 			}
 		}
 	}
@@ -357,30 +374,20 @@ public final class BuffInfo
 		// Cancels the ticking task.
 		if (_tasks != null)
 		{
-			for (EffectTaskInfo effectTask : _tasks.values())
+			for (ScheduledFuture<?> effectTask : _tasks.values())
 			{
-				effectTask.getScheduledFuture().cancel(true); // Don't allow to finish current run.
+				effectTask.cancel(false);
 			}
 		}
 		
 		// Notify on exit.
 		for (AbstractEffect effect : _effects)
 		{
-			// Instant effects shouldn't call onExit(..).
-			if (!effect.isInstant())
-			{
-				effect.onExit(this);
-			}
+			effect.pumpEnd(getEffector(), getEffected(), getSkill());
 		}
 		
-		// Remove abnormal visual effects.
-		resetAbnormalVisualEffects();
-		
-		// Recalculate all stats
-		_effected.getStat().recalculateStats(true);
-		
 		// Set the proper system message.
-		if ((_skill != null) && !(_effected.isSummon() && !((Summon) _effected).getOwner().hasSummon()) && !_skill.isHidingMesseges())
+		if ((_skill != null) && _effected.isPlayer() && !_skill.isHidingMesseges())
 		{
 			SystemMessageId smId = null;
 			if (_skill.isToggle())
@@ -403,54 +410,24 @@ public final class BuffInfo
 				_effected.sendPacket(sm);
 			}
 		}
-		// Remove short buff.
-		if (this == _effected.getEffectList().getShortBuff())
-		{
-			_effected.getEffectList().shortBuffStatusUpdate(null);
-		}
-	}
-	
-	/**
-	 * Applies all the abnormal visual effects to the effected.<br>
-	 * Prevents multiple updates.
-	 */
-	private void resetAbnormalVisualEffects()
-	{
-		if ((_skill != null) && _skill.hasAbnormalVisualEffects())
-		{
-			_effected.resetCurrentAbnormalVisualEffects();
-		}
-	}
-	
-	/**
-	 * Gets the effect tick count.
-	 * @param effect the effect
-	 * @return the current tick count
-	 */
-	public int getTickCount(AbstractEffect effect)
-	{
-		if (_tasks != null)
-		{
-			final EffectTaskInfo effectTaskInfo = _tasks.get(effect);
-			if (effectTaskInfo != null)
-			{
-				return effectTaskInfo.getEffectTask().getTickCount();
-			}
-		}
-		return 0;
 	}
 	
 	public void resetAbnormalTime(int abnormalTime)
 	{
 		if (_abnormalTime > 0)
 		{
-			_periodStartTicks = GameTimeController.getInstance().getGameTicks();
+			_periodStartTicks = GameTimeManager.getInstance().getGameTicks();
 			_abnormalTime = abnormalTime;
 			if ((_scheduledFutureTimeTask != null) && !_scheduledFutureTimeTask.isCancelled())
 			{
 				_scheduledFutureTimeTask.cancel(true);
 			}
-			_scheduledFutureTimeTask = ThreadPoolManager.getInstance().scheduleEffectAtFixedRate(new BuffTimeTask(this), 0, 1000L);
+			_scheduledFutureTimeTask = ThreadPool.scheduleAtFixedRate(new BuffTimeTask(this), 0, 1000L, TimeUnit.MILLISECONDS);
 		}
+	}
+	
+	public boolean isAbnormalType(AbnormalType type)
+	{
+		return _skill.getAbnormalType().equals(type);
 	}
 }

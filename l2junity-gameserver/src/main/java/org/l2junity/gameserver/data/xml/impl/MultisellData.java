@@ -18,192 +18,170 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
-import java.io.FileFilter;
+import java.nio.file.DirectoryStream.Filter;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import org.l2junity.Config;
-import org.l2junity.commons.util.file.filter.NumericNameFilter;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.datatables.ItemTable;
+import org.l2junity.gameserver.enums.SpecialItemType;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.multisell.Entry;
-import org.l2junity.gameserver.model.multisell.Ingredient;
-import org.l2junity.gameserver.model.multisell.ListContainer;
-import org.l2junity.gameserver.model.multisell.PreparedListContainer;
+import org.l2junity.gameserver.model.holders.ItemChanceHolder;
+import org.l2junity.gameserver.model.holders.ItemHolder;
+import org.l2junity.gameserver.model.holders.MultisellEntryHolder;
+import org.l2junity.gameserver.model.holders.MultisellListHolder;
+import org.l2junity.gameserver.model.holders.PreparedMultisellListHolder;
+import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.network.client.send.MultiSellList;
-import org.l2junity.gameserver.network.client.send.SystemMessage;
-import org.l2junity.gameserver.network.client.send.UserInfo;
-import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.gameserver.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 public final class MultisellData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MultisellData.class);
 	
-	private final Map<Integer, ListContainer> _entries = new HashMap<>();
-	
 	public static final int PAGE_SIZE = 40;
-	// Special IDs.
-	public static final int PC_BANG_POINTS = -100;
-	public static final int CLAN_REPUTATION = -200;
-	public static final int FAME = -300;
-	public static final int FIELD_CYCLE_POINTS = -400;
-	public static final int RAIDBOSS_POINTS = -500;
-	// Misc
-	private static final FileFilter NUMERIC_FILTER = new NumericNameFilter();
+	
+	private final Map<Integer, MultisellListHolder> _multisells = new HashMap<>();
 	
 	protected MultisellData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("multisell")
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ItemTable.class))
+	private void load() throws Exception
 	{
-		_entries.clear();
+		_multisells.clear();
 		parseDatapackDirectory("data/multisell", false);
-		if (Config.CUSTOM_MULTISELL_LOAD)
+		if (GeneralConfig.CUSTOM_MULTISELL_LOAD)
 		{
 			parseDatapackDirectory("data/multisell/custom", false);
 		}
 		
-		verify();
-		LOGGER.info("Loaded {} multisell lists.", _entries.size());
+		LOGGER.info("Loaded {} multisell lists.", _multisells.size());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		try
 		{
-			int id = Integer.parseInt(f.getName().replaceAll(".xml", ""));
-			int entryId = 1;
-			Node att;
-			final ListContainer list = new ListContainer(id);
-			
-			for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
+			forEach(doc, "list", listNode ->
 			{
-				if ("list".equalsIgnoreCase(n.getNodeName()))
+				final StatsSet set = new StatsSet(parseAttributes(listNode));
+				final String filename = path.getFileName().toString();
+				final int listId = Integer.parseInt(filename.substring(0, filename.length() - 4));
+				final List<MultisellEntryHolder> entries = new ArrayList<>(listNode.getChildNodes().getLength());
+				
+				forEach(listNode, itemNode ->
 				{
-					list.setApplyTaxes(parseBoolean(n.getAttributes(), "applyTaxes", false));
-					list.setNewMultisell(parseBoolean(n.getAttributes(), "isNewMultisell", false));
-					list.setMaintainEnchantment(parseBoolean(n.getAttributes(), "maintainEnchantment", false));
-					
-					att = n.getAttributes().getNamedItem("useRate");
-					if (att != null)
+					if ("item".equalsIgnoreCase(itemNode.getNodeName()))
 					{
-						try
+						final List<ItemHolder> ingredients = new ArrayList<>(1);
+						final List<ItemChanceHolder> products = new ArrayList<>(1);
+						final MultisellEntryHolder entry = new MultisellEntryHolder(ingredients, products);
+						
+						for (Node d = itemNode.getFirstChild(); d != null; d = d.getNextSibling())
 						{
-							
-							list.setUseRate(Double.valueOf(att.getNodeValue()));
-							if (list.getUseRate() <= 1e-6)
+							if ("ingredient".equalsIgnoreCase(d.getNodeName()))
 							{
-								throw new NumberFormatException("The value cannot be 0"); // threat 0 as invalid value
-							}
-						}
-						catch (NumberFormatException e)
-						{
-							
-							try
-							{
-								list.setUseRate(Config.class.getField(att.getNodeValue()).getDouble(Config.class));
-							}
-							catch (Exception e1)
-							{
-								LOGGER.warn(e1.getMessage() + doc.getLocalName());
-								list.setUseRate(1.0);
-							}
-							
-						}
-						catch (DOMException e)
-						{
-							LOGGER.warn(e.getMessage() + doc.getLocalName());
-						}
-					}
-					
-					for (Node d = n.getFirstChild(); d != null; d = d.getNextSibling())
-					{
-						if ("item".equalsIgnoreCase(d.getNodeName()))
-						{
-							Entry e = parseEntry(d, entryId++, list);
-							list.getEntries().add(e);
-						}
-						else if ("npcs".equalsIgnoreCase(d.getNodeName()))
-						{
-							for (Node b = d.getFirstChild(); b != null; b = b.getNextSibling())
-							{
-								if ("npc".equalsIgnoreCase(b.getNodeName()))
+								final int id = parseInteger(d.getAttributes(), "id");
+								final long count = parseLong(d.getAttributes(), "count");
+								final ItemHolder ingredient = new ItemHolder(id, count);
+								
+								if (itemExists(ingredient))
 								{
-									if (Util.isDigit(b.getTextContent()))
+									ingredients.add(ingredient);
+								}
+								else
+								{
+									LOGGER.warn("Invalid ingredient id or count for itemId: {}, count: {} in list: {}", ingredient.getId(), ingredient.getCount(), listId);
+									continue;
+								}
+							}
+							else if ("production".equalsIgnoreCase(d.getNodeName()))
+							{
+								final int id = parseInteger(d.getAttributes(), "id");
+								final long count = parseLong(d.getAttributes(), "count");
+								final double chance = parseDouble(d.getAttributes(), "chance", Double.NaN);
+								final ItemChanceHolder product = new ItemChanceHolder(id, chance, count);
+								
+								if (itemExists(product))
+								{
+									// Check chance only of items that have set chance. Items without chance (NaN) are used for displaying purposes.
+									if ((!Double.isNaN(chance) && (chance < 0)) || (chance > 100))
 									{
-										list.allowNpc(Integer.parseInt(b.getTextContent()));
+										LOGGER.warn("Invalid chance for itemId: {}, count: {}, chance: {} in list: {}", product.getId(), product.getCount(), chance, listId);
+										continue;
 									}
+									
+									products.add(product);
+								}
+								else
+								{
+									LOGGER.warn("Invalid product id or count for itemId: {}, count: {} in list: {}", product.getId(), product.getCount(), listId);
+									continue;
 								}
 							}
 						}
+						
+						final double totalChance = products.stream().filter(i -> !Double.isNaN(i.getChance())).mapToDouble(ItemChanceHolder::getChance).sum();
+						if (totalChance > 100)
+						{
+							LOGGER.warn("Products' total chance of {}% exceeds 100% for list: {} at entry {}.", totalChance, listId, entries.size() + 1);
+						}
+						
+						entries.add(entry);
 					}
-				}
-			}
-			_entries.put(id, list);
+					else if ("npcs".equalsIgnoreCase(itemNode.getNodeName()))
+					{
+						// Initialize NPCs with the size of child nodes.
+						final Set<Integer> allowNpc = new HashSet<>(itemNode.getChildNodes().getLength());
+						forEach(itemNode, n -> "npc".equalsIgnoreCase(n.getNodeName()) && Util.isDigit(n.getTextContent()), n -> allowNpc.add(Integer.parseInt(n.getTextContent())));
+						
+						// Add npcs to stats set.
+						set.set("allowNpc", allowNpc);
+					}
+				});
+				
+				set.set("listId", listId);
+				set.set("entries", entries);
+				
+				_multisells.put(listId, new MultisellListHolder(set));
+			});
 		}
 		catch (Exception e)
 		{
-			LOGGER.error("Error in file: {}", f, e);
+			LOGGER.error("Error in file: {}", path, e);
 		}
+	}
+	
+	public int getMultisellCount()
+	{
+		return _multisells.size();
 	}
 	
 	@Override
-	public FileFilter getCurrentFileFilter()
+	public Filter<Path> getCurrentFileFilter()
 	{
-		return NUMERIC_FILTER;
-	}
-	
-	private final Entry parseEntry(Node n, int entryId, ListContainer list)
-	{
-		Node first = n.getFirstChild();
-		final Entry entry = new Entry(entryId);
-		
-		NamedNodeMap attrs;
-		Node att;
-		StatsSet set;
-		
-		for (n = first; n != null; n = n.getNextSibling())
-		{
-			if ("ingredient".equalsIgnoreCase(n.getNodeName()))
-			{
-				attrs = n.getAttributes();
-				set = new StatsSet();
-				for (int i = 0; i < attrs.getLength(); i++)
-				{
-					att = attrs.item(i);
-					set.set(att.getNodeName(), att.getNodeValue());
-				}
-				entry.addIngredient(new Ingredient(set));
-			}
-			else if ("production".equalsIgnoreCase(n.getNodeName()))
-			{
-				attrs = n.getAttributes();
-				set = new StatsSet();
-				for (int i = 0; i < attrs.getLength(); i++)
-				{
-					att = attrs.item(i);
-					set.set(att.getNodeName(), att.getNodeValue());
-				}
-				entry.addProduct(new Ingredient(set));
-			}
-		}
-		
-		return entry;
+		return NUMERIC_XML_FILTER;
 	}
 	
 	/**
@@ -232,12 +210,12 @@ public final class MultisellData implements IGameXmlReader
 	 * @param player
 	 * @param npc
 	 * @param inventoryOnly
-	 * @param productMultiplier
 	 * @param ingredientMultiplier
+	 * @param productMultiplier
 	 */
-	public final void separateAndSend(int listId, PlayerInstance player, Npc npc, boolean inventoryOnly, double productMultiplier, double ingredientMultiplier)
+	public final void separateAndSend(int listId, PlayerInstance player, Npc npc, boolean inventoryOnly, double ingredientMultiplier, double productMultiplier)
 	{
-		ListContainer template = _entries.get(listId);
+		final MultisellListHolder template = _multisells.get(listId);
 		if (template == null)
 		{
 			LOGGER.warn("Can't find list id: {} requested by player: {}, npcId: {}", listId, player.getName(), (npc != null ? npc.getId() : 0));
@@ -246,24 +224,22 @@ public final class MultisellData implements IGameXmlReader
 		
 		if (((npc != null) && !template.isNpcAllowed(npc.getId())) || ((npc == null) && template.isNpcOnly()))
 		{
-			LOGGER.warn("Player {} attempted to open multisell {} from npc {} which is not allowed!", player, listId, npc);
-			return;
-		}
-		
-		final PreparedListContainer list = new PreparedListContainer(template, inventoryOnly, player, npc);
-		
-		// Pass through this only when multipliers are different from 1
-		if ((productMultiplier != 1) || (ingredientMultiplier != 1))
-		{
-			list.getEntries().forEach(entry ->
+			if (player.isGM())
 			{
-				// Math.max used here to avoid dropping count to 0
-				entry.getProducts().forEach(product -> product.setItemCount((long) Math.max(product.getItemCount() * productMultiplier, 1)));
-				
-				// Math.max used here to avoid dropping count to 0
-				entry.getIngredients().forEach(ingredient -> ingredient.setItemCount((long) Math.max(ingredient.getItemCount() * ingredientMultiplier, 1)));
-			});
+				player.sendMessage("Multisell " + listId + " is restricted. Under current conditions cannot be used. Only GMs are allowed to use it.");
+			}
+			else
+			{
+				LOGGER.warn("Player {} attempted to open multisell {} from npc {} which is not allowed!", player, listId, npc);
+				return;
+			}
 		}
+		
+		// Check if ingredient/product multipliers are set, if not, set them to the template value.
+		ingredientMultiplier = (Double.isNaN(ingredientMultiplier) ? template.getIngredientMultiplier() : ingredientMultiplier);
+		productMultiplier = (Double.isNaN(productMultiplier) ? template.getProductMultiplier() : productMultiplier);
+		
+		final PreparedMultisellListHolder list = new PreparedMultisellListHolder(template, inventoryOnly, player.getInventory(), npc, ingredientMultiplier, productMultiplier);
 		int index = 0;
 		do
 		{
@@ -278,150 +254,22 @@ public final class MultisellData implements IGameXmlReader
 	
 	public final void separateAndSend(int listId, PlayerInstance player, Npc npc, boolean inventoryOnly)
 	{
-		separateAndSend(listId, player, npc, inventoryOnly, 1, 1);
+		separateAndSend(listId, player, npc, inventoryOnly, Double.NaN, Double.NaN);
 	}
 	
-	public static final boolean hasSpecialIngredient(int id, long amount, PlayerInstance player)
+	private final boolean itemExists(ItemHolder holder)
 	{
-		switch (id)
+		final SpecialItemType specialItem = SpecialItemType.getByClientId(holder.getId());
+		if (specialItem != null)
 		{
-			case CLAN_REPUTATION:
-			{
-				if (player.getClan() == null)
-				{
-					player.sendPacket(SystemMessageId.YOU_ARE_NOT_A_CLAN_MEMBER_AND_CANNOT_PERFORM_THIS_ACTION);
-					return false;
-				}
-				else if (!player.isClanLeader())
-				{
-					player.sendPacket(SystemMessageId.ONLY_THE_CLAN_LEADER_IS_ENABLED);
-					return false;
-				}
-				else if (player.getClan().getReputationScore() < amount)
-				{
-					player.sendPacket(SystemMessageId.THE_CLAN_REPUTATION_IS_TOO_LOW);
-					return false;
-				}
-				return true;
-			}
-			case FAME:
-			{
-				if (player.getFame() < amount)
-				{
-					player.sendPacket(SystemMessageId.YOU_DON_T_HAVE_ENOUGH_FAME_TO_DO_THAT);
-					return false;
-				}
-				return true;
-			}
-			case RAIDBOSS_POINTS:
-			{
-				if (player.getRaidbossPoints() < amount)
-				{
-					player.sendPacket(SystemMessageId.NOT_ENOUGH_RAID_POINTS);
-					return false;
-				}
-				return true;
-			}
+			return true;
 		}
-		return false;
+		
+		final L2Item template = ItemTable.getInstance().getTemplate(holder.getId());
+		return (template != null) && (template.isStackable() ? (holder.getCount() >= 1) : (holder.getCount() == 1));
 	}
 	
-	public static final boolean takeSpecialIngredient(int id, long amount, PlayerInstance player)
-	{
-		switch (id)
-		{
-			case CLAN_REPUTATION:
-			{
-				player.getClan().takeReputationScore((int) amount, true);
-				SystemMessage smsg = SystemMessage.getSystemMessage(SystemMessageId.S1_POINT_S_HAVE_BEEN_DEDUCTED_FROM_THE_CLAN_S_REPUTATION);
-				smsg.addLong(amount);
-				player.sendPacket(smsg);
-				return true;
-			}
-			case FAME:
-			{
-				player.setFame(player.getFame() - (int) amount);
-				player.sendPacket(new UserInfo(player));
-				// player.sendPacket(new ExBrExtraUserInfo(player));
-				return true;
-			}
-			case RAIDBOSS_POINTS:
-			{
-				player.setRaidbossPoints(player.getRaidbossPoints() - (int) amount);
-				player.sendPacket(new UserInfo(player));
-				player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_CONSUMED_S1_RAID_POINTS).addLong(amount));
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static final void giveSpecialProduct(int id, long amount, PlayerInstance player)
-	{
-		switch (id)
-		{
-			case CLAN_REPUTATION:
-			{
-				player.getClan().addReputationScore((int) amount, true);
-				break;
-			}
-			case FAME:
-			{
-				player.setFame((int) (player.getFame() + amount));
-				player.sendPacket(new UserInfo(player));
-				// player.sendPacket(new ExBrExtraUserInfo(player));
-				break;
-			}
-			case RAIDBOSS_POINTS:
-			{
-				player.increaseRaidbossPoints((int) amount);
-				player.sendPacket(new UserInfo(player));
-				break;
-			}
-		}
-	}
-	
-	private final void verify()
-	{
-		ListContainer list;
-		final Iterator<ListContainer> iter = _entries.values().iterator();
-		while (iter.hasNext())
-		{
-			list = iter.next();
-			
-			for (Entry ent : list.getEntries())
-			{
-				for (Ingredient ing : ent.getIngredients())
-				{
-					if (!verifyIngredient(ing))
-					{
-						LOGGER.warn("can't find ingredient with itemId: {} in list: {}", ing.getItemId(), list.getListId());
-					}
-				}
-				for (Ingredient ing : ent.getProducts())
-				{
-					if (!verifyIngredient(ing))
-					{
-						LOGGER.warn("can't find product with itemId: {} in list: {}", ing.getItemId(), list.getListId());
-					}
-				}
-			}
-		}
-	}
-	
-	private final boolean verifyIngredient(Ingredient ing)
-	{
-		switch (ing.getItemId())
-		{
-			case CLAN_REPUTATION:
-			case FAME:
-			case RAIDBOSS_POINTS:
-				return true;
-			default:
-				return ing.getTemplate() != null;
-		}
-	}
-	
+	@InstanceGetter
 	public static MultisellData getInstance()
 	{
 		return SingletonHolder._instance;

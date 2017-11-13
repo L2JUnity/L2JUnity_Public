@@ -2,37 +2,119 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./xsd/fishing.xsd">
 	<playerLevel min="85" />
 	<baitDistance min="90" max="250" />
-	<fishingTime min="45000" max="45000" />
-	<fishingTimeWait min="15000" max="15000" />
-	<expRate min="650" max="700" />
-	<spRate min="40" max="45" />
+	<rate exp="{player.level ^ 2.2 * catch.multiplier}" spRate="0.0024" />
+	<catchRate chance="40" />
+	<rods>
+		<rod id="45492" reduceFishingTime="0sec" /> <!-- Normal Fishing Rod - 30-day -->
+		<rod id="45494" reduceFishingTime="0sec" /> <!-- Sturdy Fishing Rod -->
+		<rod id="46738" reduceFishingTime="0sec" /> <!-- Practice Fishing Rod -->
+		<rod id="46740" reduceFishingTime="0sec" /> <!-- Reward Fishing Rod - 7-day -->
+		<rod id="27632" reduceFishingTime="100sec" /> <!-- Fancy Fishing Rod -->
+		<rod id="27633" reduceFishingTime="100sec" /> <!-- Fancy Fishing Rod - 1-day -->
+		<rod id="27635" reduceFishingTime="100sec" /> <!-- Fancy Fishing Rod - 7-day -->
+		<rod id="27637" reduceFishingTime="100sec" /> <!-- Fancy Fishing Rod - 30-day -->
+		<rod id="47557" reduceFishingTime="10sec" /> <!-- Master Fishing Rod - Stage 1 -->
+		<rod id="47558" reduceFishingTime="15sec" /> <!-- Master Fishing Rod - Stage 2 -->
+		<rod id="47559" reduceFishingTime="20sec" /> <!-- Master Fishing Rod - Stage 3 -->
+		<rod id="47560" reduceFishingTime="25sec" /> <!-- Master Fishing Rod - Stage 4 -->
+		<rod id="47561" reduceFishingTime="30sec" /> <!-- Master Fishing Rod - Stage 5 -->
+	</rods>
 	<baits>
-		<bait level="1" itemId="45495" chance="64"> <!-- Normal Bait -->
-			<catch itemId="45473" /> <!-- Fresh Blue Mackerel -->
-			<catch itemId="45474" /> <!-- Fresh Minnow -->
-			<catch itemId="45475" /> <!-- Fresh Flatcatch -->
-			<catch itemId="45476" /> <!-- Fresh Mandarin catch -->
-			<catch itemId="45477" /> <!-- Fresh Rockcatch -->
-			<catch itemId="45478" /> <!-- Fresh Goldcatch -->
-			<catch itemId="45479" /> <!-- Fresh Salmon -->
-			<catch itemId="45480" /> <!-- Fresh Eel -->
-			<catch itemId="45486" /> <!-- Wooden Treasure Chest -->
+		<bait id="47608" fishingTime="75sec" fishingTimeWait="15sec"> <!-- Monkey Bait - R -->
+			<catch id="47550" chance="70" multiplier="500.56706146103585" /> <!-- Ugly Fish -->
+			<catch id="47551" chance="25" multiplier="611.8041742117971" /> <!-- Nimble Fish -->
+			<catch id="47552" chance="3" multiplier="667.4227305871777" /> <!-- Powerful Fish -->
+			<catch id="47612" chance="2" multiplier="1640.7476461190906" /> <!-- Chef Monkey's Treasure Chest -->
 		</bait>
-		<bait level="2" itemId="45496" chance="64"> <!-- Special Bait -->
-			<catch itemId="45481" /> <!-- Fresh Marlin -->
-			<catch itemId="45482" /> <!-- Fresh Catcatch -->
-			<catch itemId="45483" /> <!-- Fresh Tuna -->
-			<catch itemId="45484" /> <!-- Fresh Carp -->
-			<catch itemId="45485" /> <!-- Fresh Whale -->
-			<catch itemId="45487" /> <!-- Silver Treasure Chest -->
-			<catch itemId="45488" /> <!-- Golden Treasure Chest -->
+		<bait id="47609" fishingTime="75sec" fishingTimeWait="15sec"> <!-- Monkey Bait - R95 -->
+			<catch id="47550" chance="70" multiplier="1029.2492563642155127016320262847" /> <!-- Ugly Fish -->
+			<catch id="47551" chance="25" multiplier="1257.9713278512135230515368373769" /> <!-- Nimble Fish -->
+			<catch id="47552" chance="3" multiplier="1372.3323418189540169355093683796" /> <!-- Powerful Fish -->
+			<catch id="47612" chance="2" multiplier="3373.650412890790329269726779078" /> <!-- Chef Monkey's Treasure Chest -->
 		</bait>
-		<bait level="3" itemId="46084" chance="30"> <!-- Player Commendation Special Bait -->
-			<catch itemId="46085" /> <!-- Treasure Map Piece - 1 -->
-			<catch itemId="46086" /> <!-- Treasure Map Piece - 2 -->
-			<catch itemId="46087" /> <!-- Treasure Map Piece - 3 -->
-			<catch itemId="46088" /> <!-- Treasure Map Piece - 4 -->
-			<catch itemId="46089" /> <!-- Treasure Map Piece - 5 -->
+		<bait id="47610" fishingTime="75sec" fishingTimeWait="15sec"> <!-- Monkey Bait - R99 -->
+			<catch id="47550" chance="70" multiplier="1476.0917744882762136249471634715" /> <!-- Ugly Fish -->
+			<catch id="47551" chance="25" multiplier="1804.1121776658302733970965502486" /> <!-- Nimble Fish -->
+			<catch id="47552" chance="3" multiplier="1968.1223792546073032831712436371" /> <!-- Powerful Fish -->
+			<catch id="47612" chance="2" multiplier="4838.3009070582053262894783779364" /> <!-- Chef Monkey's Treasure Chest -->
+		</bait>
+		<bait id="47547" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Bait -->
+			<catch id="47550" chance="70" multiplier="1" /> <!-- Ugly Fish -->
+			<catch id="47551" chance="25" multiplier="1" /> <!-- Nimble Fish -->
+			<catch id="47552" chance="3" multiplier="1" /> <!-- Powerful Fish -->
+			<catch id="47553" chance="2" multiplier="1" /> <!-- Blueish Box -->
+		</bait>
+		<bait id="47548" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Bait - R99 -->
+			<catch id="47550" chance="70" multiplier="1476.0917744882762136249471634715" /> <!-- Ugly Fish -->
+			<catch id="47551" chance="25" multiplier="1804.1121776658302733970965502486" /> <!-- Nimble Fish -->
+			<catch id="47552" chance="3" multiplier="1968.1223792546073032831712436371" /> <!-- Powerful Fish -->
+			<catch id="47554" chance="2" multiplier="1" /> <!-- Reddish Box -->
+		</bait>
+		<bait id="47549" fishingTime="105sec" fishingTimeWait="15sec"> <!-- PC Cafe Bait -->
+			<catch id="47550" chance="70" multiplier="1" /> <!-- Ugly Fish -->
+			<catch id="47551" chance="25" multiplier="1" /> <!-- Nimble Fish -->
+			<catch id="47552" chance="3" multiplier="1" /> <!-- Powerful Fish -->
+			<catch id="47554" chance="2" multiplier="1" /> <!-- Purplish Box -->
+		</bait>
+		<bait id="27641" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (85-89) -->
+			<catch id="27647" chance="100" multiplier="3053.225145" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="27642" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (90-94) -->
+			<catch id="27647" chance="100" multiplier="6513.807281" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="27643" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (95-98) -->
+			<catch id="27647" chance="100" multiplier="15454.113655" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="27644" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (99-) -->
+			<catch id="27647" chance="100" multiplier="22163.491326" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="27650" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (85-89) -->
+			<catch id="27656" chance="100" multiplier="3053.225145" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="27651" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (90-94) -->
+			<catch id="27656" chance="100" multiplier="6513.807281" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="27652" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (95-98) -->
+			<catch id="27656" chance="100" multiplier="15454.113655" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="27653" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (99-) -->
+			<catch id="27656" chance="100" multiplier="22163.491326" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="28389" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (85-89) -->
+			<catch id="28394" chance="100" multiplier="3053.225145" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="28390" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (90-94) -->
+			<catch id="28394" chance="100" multiplier="6513.807281" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="28391" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (95-98) -->
+			<catch id="28394" chance="100" multiplier="15454.113655" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="28392" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (99-) -->
+			<catch id="28394" chance="100" multiplier="22163.491326" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="28459" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (85-89) -->
+			<catch id="28465" chance="100" multiplier="3053.225145" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="28460" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (90-94) -->
+			<catch id="28465" chance="100" multiplier="6513.807281" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="28461" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (95-98) -->
+			<catch id="28465" chance="100" multiplier="15454.113655" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="28462" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (99+) -->
+			<catch id="28465" chance="100" multiplier="22163.491326" /> <!-- Heine Exclusive Reward Chest -->
+		</bait>
+		<bait id="46435" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (85-89) -->
+			<catch id="46440" chance="100" multiplier="3053.225145" /> <!-- Heine Treasure Chest -->
+		</bait>
+		<bait id="46436" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (90-94) -->
+			<catch id="46440" chance="100" multiplier="6513.807281" /> <!-- Heine Treasure Chest -->
+		</bait>
+		<bait id="46437" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (95-98) -->
+			<catch id="46440" chance="100" multiplier="15454.113655" /> <!-- Heine Treasure Chest -->
+		</bait>
+		<bait id="46438" fishingTime="105sec" fishingTimeWait="15sec"> <!-- Heine Exclusive Bait (99~) -->
+			<catch id="46440" chance="100" multiplier="22163.491326" /> <!-- Heine Treasure Chest -->
 		</bait>
 	</baits>
 </list>

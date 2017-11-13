@@ -21,7 +21,7 @@ package org.l2junity.gameserver.model.stats.functions;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.conditions.Condition;
 import org.l2junity.gameserver.model.skills.Skill;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,9 +36,9 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractFunction
 {
 	/** Logger. */
-	protected static final Logger LOG = LoggerFactory.getLogger(AbstractFunction.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractFunction.class);
 	/** Statistics, that is affected by this function (See L2Character.CALCULATOR_XXX constants) */
-	private final Stats _stat;
+	private final DoubleStat _stat;
 	/**
 	 * Order of functions calculation.<br>
 	 * Functions with lower order are executed first.<br>
@@ -66,7 +66,7 @@ public abstract class AbstractFunction
 	 * @param value the value
 	 * @param applayCond the apply condition
 	 */
-	public AbstractFunction(Stats stat, int order, Object owner, double value, Condition applayCond)
+	public AbstractFunction(DoubleStat stat, int order, Object owner, double value, Condition applayCond)
 	{
 		_stat = stat;
 		_order = order;
@@ -106,7 +106,7 @@ public abstract class AbstractFunction
 	 * Gets the stat.
 	 * @return the stat
 	 */
-	public final Stats getStat()
+	public final DoubleStat getStat()
 	{
 		return _stat;
 	}

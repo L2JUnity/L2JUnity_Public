@@ -29,5 +29,5 @@ import org.slf4j.LoggerFactory;
  */
 public interface IClientIncomingPacket extends IIncomingPacket<L2GameClient>
 {
-	Logger _log = LoggerFactory.getLogger(IClientIncomingPacket.class);
+	Logger LOGGER = LoggerFactory.getLogger(IClientIncomingPacket.class);
 }

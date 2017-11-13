@@ -61,9 +61,9 @@ public class ExFlyMove implements IClientOutgoingPacket
 		{
 			packet.writeD(loc.getId());
 			packet.writeD(0x00); // ??
-			packet.writeD(loc.getX());
-			packet.writeD(loc.getY());
-			packet.writeD(loc.getZ());
+			packet.writeD((int) loc.getX());
+			packet.writeD((int) loc.getY());
+			packet.writeD((int) loc.getZ());
 		}
 		return true;
 	}

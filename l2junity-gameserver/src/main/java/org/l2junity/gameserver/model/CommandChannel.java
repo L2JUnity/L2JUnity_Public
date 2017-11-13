@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Function;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.send.ExCloseMPCC;
@@ -200,7 +200,7 @@ public class CommandChannel extends AbstractPlayerGroup
 		{
 			return false;
 		}
-		return (getMemberCount() >= Config.LOOT_RAIDS_PRIVILEGE_CC_SIZE);
+		return (getMemberCount() >= PlayerConfig.LOOT_RAIDS_PRIVILEGE_CC_SIZE);
 	}
 	
 	/**

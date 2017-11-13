@@ -40,7 +40,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">7278</value>
 					<value level="2">7373</value>
@@ -82,12 +82,12 @@
 		<abnormalLvl>2</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">6960</value>
 					<value level="2">12977</value>
@@ -95,14 +95,14 @@
 					<value level="4">7373</value>
 				</power>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="14102" toLevel="1" name="Agathion Cute Trick - Magmeld Fairy">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- See the summoned spirit perform cute tricks. -->
 		<icon>icon.skill_agathion_cute</icon>
 		<operateType>A1</operateType>
@@ -119,7 +119,7 @@
 		</conditions>
 	</skill>
 	<skill id="14103" toLevel="1" name="Agathion Return - Magmeld Fairy">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>15000</hitTime>
@@ -134,6 +134,13 @@
 		<conditions>
 			<condition name="OpNeedAgathion" />
 		</conditions>
+		<effects>
+			<effect name="i_teleport">
+				<x>207528</x>
+				<y>86576</y>
+				<z>-1004</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="14104" toLevel="1" name="Transformed: Orbis' Curse">
 		<!-- AUTO GENERATED SKILL -->
@@ -203,12 +210,12 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
 		<fanRange>0;0;120;200</fanRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">7278</value>
 					<value level="2">7373</value>
@@ -218,7 +225,7 @@
 					<value level="6">7619</value>
 				</power>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>-40</amount>
 				<mode>PER</mode>
 			</effect>
@@ -240,7 +247,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>10</power>
 			</effect>
 		</effects>
@@ -265,11 +272,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -316,7 +323,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">124</value>
 					<value level="2">125</value>
@@ -371,7 +378,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>137</power>
 			</effect>
 		</effects>
@@ -401,22 +408,22 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>109060</power>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-500</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -445,7 +452,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>131624</power>
 			</effect>
 		</effects>
@@ -461,6 +468,7 @@
 		<reuseDelay>2000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-351</effectPoint>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
 		<basicProperty>PHYSICAL</basicProperty>
@@ -475,17 +483,17 @@
 		<abnormalTime>20</abnormalTime>
 		<trait>POISON</trait>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>498</power>
+			<effect name="t_hp">
+				<power>-498</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
 		<endEffects>
-			<effect name="CallSkill" fromLevel="2" toLevel="2">
+			<effect name="i_call_skill" fromLevel="2" toLevel="2">
 				<skillId>14560</skillId> <!-- Teredor Poison Paralysis -->
 				<skillLevel>1</skillLevel>
 			</effect>
@@ -500,6 +508,7 @@
 		<reuseDelay>2000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-351</effectPoint>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -513,13 +522,13 @@
 		<trait>POISON</trait>
 		<affectRange>150</affectRange>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>475</power>
+			<effect name="t_hp">
+				<power>-475</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -533,7 +542,7 @@
 		<magicLvl>90</magicLvl>
 		<targetType>NONE</targetType>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>90</amount>
 				<mode>PER</mode>
 			</effect>
@@ -548,7 +557,7 @@
 		<magicLvl>90</magicLvl>
 		<targetType>NONE</targetType>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>90</amount>
 				<mode>PER</mode>
 			</effect>
@@ -563,19 +572,19 @@
 		<magicLvl>90</magicLvl>
 		<targetType>NONE</targetType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>70</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>70</amount>
 				<mode>PER</mode>
 			</effect>
@@ -605,11 +614,11 @@
 		</abnormalLvl>
 		<abnormalTime>300</abnormalTime>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -619,7 +628,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -651,11 +660,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -669,6 +678,7 @@
 		<reuseDelay>2000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-351</effectPoint>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -682,17 +692,17 @@
 		<trait>POISON</trait>
 		<affectRange>300</affectRange>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<isSuicideAttack>true</isSuicideAttack>
 		<effects>
-			<effect name="MagicalAttack"> <!-- FIX ME : Should be i_m_attack_by_dist -->
+			<effect name="i_m_attack"> <!-- FIX ME : Should be i_m_attack_by_dist -->
 				<power>377</power>
 			</effect>
-			<effect name="DamOverTime">
-				<power>296</power>
+			<effect name="t_hp">
+				<power>-296</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -721,11 +731,11 @@
 		</abnormalLvl>
 		<abnormalTime>300</abnormalTime>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">15</value>
@@ -733,7 +743,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">15</value>
@@ -766,7 +776,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -795,7 +805,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -824,7 +834,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -853,7 +863,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -882,7 +892,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -911,7 +921,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -940,7 +950,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -969,7 +979,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1025,7 +1035,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">46622</value>
 					<value level="2">48706</value>
@@ -1059,7 +1069,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">116555</value>
 					<value level="2">121765</value>
@@ -1083,6 +1093,7 @@
 			<value level="2">-353</value>
 			<value level="3">-353</value>
 		</effectPoint>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1101,13 +1112,13 @@
 		<trait>POISON</trait>
 		<affectRange>400</affectRange>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>304</power>
+			<effect name="t_hp">
+				<power>-304</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -1138,7 +1149,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">1088</value>
 					<value level="2">412</value>
@@ -1174,7 +1185,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">7619</value>
 					<value level="2">7695</value>
@@ -1208,7 +1219,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">116555</value>
 					<value level="2">121765</value>
@@ -1242,7 +1253,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack"> <!-- FIXME : i_m_attack_by_dist -->
+			<effect name="i_m_attack"> <!-- FIXME : i_m_attack_by_dist -->
 				<power>
 					<value level="1">15</value>
 					<value level="2">165</value>
@@ -1266,6 +1277,7 @@
 			<value level="2">-353</value>
 			<value level="3">-353</value>
 		</effectPoint>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1284,16 +1296,16 @@
 		<trait>POISON</trait>
 		<affectRange>200</affectRange>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">6</value>
-					<value level="2">89</value>
-					<value level="3">314</value>
+					<value level="1">-6</value>
+					<value level="2">-89</value>
+					<value level="3">-314</value>
 				</power>
 				<ticks>1</ticks>
 			</effect>
@@ -1325,7 +1337,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">50</value>
 					<value level="2">7695</value>
@@ -1382,11 +1394,11 @@
 		</magicLvl>
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1423,15 +1435,15 @@
 		<abnormalTime>30</abnormalTime>
 		<trait>SLEEP</trait>
 		<abnormalVisualEffect>SLEEP</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -1466,12 +1478,12 @@
 		<abnormalTime>30</abnormalTime>
 		<trait>DERANGEMENT</trait>
 		<abnormalVisualEffect>TURN_FLEE</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<effect name="Fear" />
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 		</effects>
 	</skill>
 	<skill id="14143" toLevel="3" name="Exile Sword Attack">
@@ -1499,7 +1511,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">116555</value>
 					<value level="2">7695</value>
@@ -1533,7 +1545,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">46622</value>
 					<value level="2">7695</value>
@@ -1573,12 +1585,12 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>5</abnormalTime>
 		<affectRange>250</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1610,7 +1622,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">127</value>
 					<value level="2">128</value>
@@ -1646,7 +1658,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">7619</value>
 					<value level="2">7695</value>
@@ -1682,7 +1694,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">7619</value>
 					<value level="2">7695</value>
@@ -1715,12 +1727,12 @@
 		</magicLvl>
 		<trait>SHOCK</trait>
 		<fanRange>0;0;300;60</fanRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">47000</value>
 					<value level="2">32021</value>
@@ -1756,7 +1768,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">66000</value>
 					<value level="2">163870</value>
@@ -1788,7 +1800,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">58000</value>
 					<value level="2">143870</value>
@@ -1824,7 +1836,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">58000</value>
 					<value level="2">143870</value>
@@ -1860,7 +1872,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">47000</value>
 					<value level="2">115862</value>
@@ -1896,7 +1908,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">46000</value>
 					<value level="2">115862</value>
@@ -1933,7 +1945,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">46000</value>
 					<value level="2">143870</value>
@@ -1959,7 +1971,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>115</power>
 			</effect>
 		</effects>
@@ -1983,7 +1995,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>115</power>
 			</effect>
 		</effects>
@@ -2008,7 +2020,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>100</power>
 			</effect>
 		</effects>
@@ -2032,7 +2044,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>200</power>
 			</effect>
 		</effects>
@@ -2056,7 +2068,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>200</power>
 			</effect>
 		</effects>
@@ -2078,7 +2090,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>150</power>
 			</effect>
 		</effects>
@@ -2105,11 +2117,11 @@
 		<magicLvl>16</magicLvl>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2138,12 +2150,12 @@
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
 		<affectRange>300</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2168,7 +2180,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>4</power>
 			</effect>
 		</effects>
@@ -2194,7 +2206,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>4</power>
 			</effect>
 		</effects>
@@ -2211,6 +2223,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-83</effectPoint>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -2224,13 +2237,13 @@
 		<abnormalTime>20</abnormalTime>
 		<trait>POISON</trait>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>2</power>
+			<effect name="t_hp">
+				<power>-2</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -2252,7 +2265,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>150</power>
 			</effect>
 		</effects>
@@ -2278,7 +2291,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>4</power>
 			</effect>
 		</effects>
@@ -2300,7 +2313,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>120</power>
 			</effect>
 		</effects>
@@ -2326,11 +2339,11 @@
 		<magicLvl>18</magicLvl>
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2356,7 +2369,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>12</power>
 			</effect>
 		</effects>
@@ -2384,12 +2397,12 @@
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
 		<affectRange>300</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2412,7 +2425,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>5</power>
 			</effect>
 		</effects>
@@ -2439,7 +2452,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>1</power>
 			</effect>
 		</effects>
@@ -2528,22 +2541,22 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>5286</power>
 			</effect>
-			<effect name="KnockBack">
+			<effect name="i_knockback">
 				<distance>100</distance>
 				<speed>500</speed>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<KNOCKBACK>100</KNOCKBACK>
 				<AIRBIND>100</AIRBIND>
 				<HOLD>100</HOLD>
 				<SLEEP>100</SLEEP>
 				<SHOCK>100</SHOCK>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -2560,13 +2573,13 @@
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>96</magicLvl>
 		<affectRange>400</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>ALL</affectObject>
 		<effects>
-			<effect name="HealPercent">
-				<amount>-50</amount>
+			<effect name="i_hp_per_max">
+				<power>-50</power>
 			</effect>
 		</effects>
 	</skill>
@@ -2583,13 +2596,13 @@
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>96</magicLvl>
 		<affectRange>400</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>ALL</affectObject>
 		<effects>
-			<effect name="HealPercent">
-				<amount>-70</amount>
+			<effect name="i_hp_per_max">
+				<power>-70</power>
 			</effect>
 		</effects>
 	</skill>
@@ -2610,7 +2623,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>51716</power>
 			</effect>
 		</effects>
@@ -2632,7 +2645,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>51716</power>
 			</effect>
 		</effects>
@@ -2659,22 +2672,22 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>51716</power>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-500</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2701,7 +2714,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-40</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2727,7 +2740,7 @@
 		</conditions>
 	</skill>
 	<skill id="14187" toLevel="1" name="Magmeld Teleport">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Teleports to Magmeld Ancient City Arcan. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -2744,6 +2757,13 @@
 			<condition name="OpCanEscape" />
 			<condition name="OpNeedAgathion" />
 		</conditions>
+		<effects>
+			<effect name="i_teleport">
+				<x>207528</x>
+				<y>86576</y>
+				<z>-1004</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="14188" toLevel="1" name="Millipede's Gas">
 		<!-- Glory Days confirmed -->
@@ -2781,15 +2801,15 @@
 		<magicLvl>95</magicLvl>
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>1</power>
 				<criticalChance>15</criticalChance>
 			</effect>
@@ -2814,14 +2834,14 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
@@ -2841,7 +2861,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>PD_UP_SPECIAL,10</dispel>
 			</effect>
 		</effects>
@@ -2862,22 +2882,22 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
 		<abnormalVisualEffect>FLESH_STONE</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="BuffBlock" />
-			<effect name="DebuffBlock" />
-			<effect name="HpRegen">
+			<effect name="p_block_buff" />
+			<effect name="p_block_debuff" />
+			<effect name="p_hp_regen">
 				<amount>-100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2902,7 +2922,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>100</amount>
 			</effect>
 		</effects>
@@ -2927,13 +2947,13 @@
 		<trait>SHOCK</trait>
 		<affectRange>400</affectRange>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -2961,16 +2981,16 @@
 		<attributeValue>20</attributeValue>
 		<affectRange>400</affectRange>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>437</power>
 			</effect>
-			<effect name="DamOverTime">
-				<power>546</power>
+			<effect name="t_hp">
+				<power>-546</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -2991,19 +3011,21 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack"> <!-- TODO: FIXME should i_m_attack_by_dist -->
+			<effect name="i_m_attack"> <!-- TODO: FIXME should i_m_attack_by_dist -->
 				<power>160</power>
 			</effect>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
 			</effect>
-			<effect name="TargetCancel" />
-			<effect name="Transformation">
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
 				<transformationId>128</transformationId>
 			</effect>
 		</effects>
@@ -3029,13 +3051,13 @@
 		<abnormalTime>5</abnormalTime>
 		<affectRange>600</affectRange>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>5000</power>
+			<effect name="t_hp">
+				<power>-5000</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -3065,19 +3087,19 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="KnockBack">
+			<effect name="i_knockback">
 				<distance>100</distance>
 				<speed>500</speed>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<KNOCKBACK>100</KNOCKBACK>
 				<AIRBIND>100</AIRBIND>
 				<HOLD>100</HOLD>
 				<SLEEP>100</SLEEP>
 				<SHOCK>100</SHOCK>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -3103,12 +3125,12 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PullBack">
+			<effect name="i_pull">
 				<speed>600</speed>
 				<delay>600</delay>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>

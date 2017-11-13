@@ -27,8 +27,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.IdFactoryConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,8 +58,6 @@ public abstract class IdFactory
 		"SELECT charId     FROM character_skills      WHERE charId >= ? AND charId < ?",
 		"SELECT charId     FROM character_skills_save WHERE charId >= ? AND charId < ?",
 		"SELECT charId     FROM character_subclasses  WHERE charId >= ? AND charId < ?",
-		"SELECT charId     FROM character_ui_actions  WHERE charId >= ? AND charId < ?",
-		"SELECT charId     FROM character_ui_categories  WHERE charId >= ? AND charId < ?",
 		"SELECT charId      FROM characters            WHERE charId >= ?      AND charId < ?",
 		"SELECT clanid      FROM characters            WHERE clanid >= ?      AND clanid < ?",
 		"SELECT clan_id     FROM clan_data             WHERE clan_id >= ?     AND clan_id < ?",
@@ -67,7 +66,8 @@ public abstract class IdFactory
 		"SELECT leader_id   FROM clan_data             WHERE leader_id >= ?   AND leader_id < ?",
 		"SELECT item_obj_id FROM pets                  WHERE item_obj_id >= ? AND item_obj_id < ?",
 		"SELECT object_id   FROM itemsonground        WHERE object_id >= ?   AND object_id < ?",
-		"SELECT summonId	FROM characters_summons	WHERE summonId >= ?	AND summonId < ?"
+		"SELECT summonId	FROM characters_summons	WHERE summonId >= ?	AND summonId < ?",
+		"SELECT charId		FROM character_factions	WHERE charId >= ?      AND charId < ?"
 	};
 	
 	//@formatter:off
@@ -98,7 +98,7 @@ public abstract class IdFactory
 	protected IdFactory()
 	{
 		setAllCharacterOffline();
-		if (Config.DATABASE_CLEAN_UP)
+		if (GeneralConfig.DATABASE_CLEAN_UP)
 		{
 			cleanUpDB();
 		}
@@ -107,7 +107,7 @@ public abstract class IdFactory
 	
 	static
 	{
-		switch (Config.IDFACTORY_TYPE)
+		switch (IdFactoryConfig.IDFACTORY_TYPE)
 		{
 			case BitSet:
 				_instance = new BitSetIDFactory();
@@ -188,14 +188,12 @@ public abstract class IdFactory
 			cleanCount += stmt.executeUpdate("DELETE FROM character_skills_save WHERE character_skills_save.charId NOT IN (SELECT charId FROM characters);");
 			cleanCount += stmt.executeUpdate("DELETE FROM character_subclasses WHERE character_subclasses.charId NOT IN (SELECT charId FROM characters);");
 			cleanCount += stmt.executeUpdate("DELETE FROM character_instance_time WHERE character_instance_time.charId NOT IN (SELECT charId FROM characters);");
-			cleanCount += stmt.executeUpdate("DELETE FROM character_ui_actions WHERE character_ui_actions.charId NOT IN (SELECT charId FROM characters);");
-			cleanCount += stmt.executeUpdate("DELETE FROM character_ui_categories WHERE character_ui_categories.charId NOT IN (SELECT charId FROM characters);");
 			
 			// Items
 			cleanCount += stmt.executeUpdate("DELETE FROM items WHERE items.owner_id NOT IN (SELECT charId FROM characters) AND items.owner_id NOT IN (SELECT clan_id FROM clan_data) AND items.owner_id != -1;");
 			cleanCount += stmt.executeUpdate("DELETE FROM items WHERE items.owner_id = -1 AND loc LIKE 'MAIL' AND loc_data NOT IN (SELECT messageId FROM messages WHERE senderId = -1);");
 			cleanCount += stmt.executeUpdate("DELETE FROM item_auction_bid WHERE item_auction_bid.playerObjId NOT IN (SELECT charId FROM characters);");
-			cleanCount += stmt.executeUpdate("DELETE FROM item_attributes WHERE item_attributes.itemId NOT IN (SELECT object_id FROM items);");
+			cleanCount += stmt.executeUpdate("DELETE FROM item_variations WHERE item_variations.itemId NOT IN (SELECT object_id FROM items);");
 			cleanCount += stmt.executeUpdate("DELETE FROM item_elementals WHERE item_elementals.itemId NOT IN (SELECT object_id FROM items);");
 			cleanCount += stmt.executeUpdate("DELETE FROM item_special_abilities WHERE item_special_abilities.objectId NOT IN (SELECT object_id FROM items);");
 			cleanCount += stmt.executeUpdate("DELETE FROM item_variables WHERE item_variables.id NOT IN (SELECT object_id FROM items);");
@@ -217,6 +215,7 @@ public abstract class IdFactory
 			cleanCount += stmt.executeUpdate("DELETE FROM character_offline_trade_items WHERE character_offline_trade_items.charId NOT IN (SELECT charId FROM characters);");
 			cleanCount += stmt.executeUpdate("DELETE FROM character_tpbookmark WHERE character_tpbookmark.charId NOT IN (SELECT charId FROM characters);");
 			cleanCount += stmt.executeUpdate("DELETE FROM character_variables WHERE character_variables.charId NOT IN (SELECT charId FROM characters);");
+			cleanCount += stmt.executeUpdate("DELETE FROM character_factions WHERE character_factions.charId NOT IN (SELECT charId FROM characters);");
 			
 			// If the clan does not exist...
 			cleanCount += stmt.executeUpdate("DELETE FROM clan_privs WHERE clan_privs.clan_id NOT IN (SELECT clan_id FROM clan_data);");

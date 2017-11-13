@@ -21,9 +21,10 @@ package org.l2junity.gameserver.network.client.recv;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.enums.PrivateStoreType;
+import org.l2junity.gameserver.handler.AdminCommandHandler;
 import org.l2junity.gameserver.instancemanager.CursedWeaponsManager;
 import org.l2junity.gameserver.model.PcCondOverride;
 import org.l2junity.gameserver.model.World;
@@ -68,7 +69,7 @@ public final class RequestDestroyItem implements IClientIncomingPacket
 		{
 			if (_count < 0)
 			{
-				Util.handleIllegalPlayerAction(activeChar, "[RequestDestroyItem] Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to destroy item with oid " + _objectId + " but has count < 0!", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(activeChar, "[RequestDestroyItem] Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to destroy item with oid " + _objectId + " but has count < 0!", GeneralConfig.DEFAULT_PUNISH);
 			}
 			return;
 		}
@@ -108,7 +109,7 @@ public final class RequestDestroyItem implements IClientIncomingPacket
 					{
 						count = ((ItemInstance) obj).getCount();
 					}
-					activeChar.useAdminCommand("admin_delete_item " + _objectId + " " + count);
+					AdminCommandHandler.getInstance().useAdminCommand(activeChar, "admin_delete_item " + _objectId + " " + count, true);
 				}
 				return;
 			}
@@ -141,7 +142,7 @@ public final class RequestDestroyItem implements IClientIncomingPacket
 		
 		if (!itemToRemove.isStackable() && (count > 1))
 		{
-			Util.handleIllegalPlayerAction(activeChar, "[RequestDestroyItem] Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to destroy a non-stackable item with oid " + _objectId + " but has count > 1!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "[RequestDestroyItem] Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to destroy a non-stackable item with oid " + _objectId + " but has count > 1!", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
@@ -172,7 +173,7 @@ public final class RequestDestroyItem implements IClientIncomingPacket
 			}
 			catch (Exception e)
 			{
-				_log.warn("could not delete pet objectid: ", e);
+				LOGGER.warn("could not delete pet objectid: ", e);
 			}
 		}
 		if (itemToRemove.isTimeLimitedItem())
@@ -213,7 +214,7 @@ public final class RequestDestroyItem implements IClientIncomingPacket
 			return;
 		}
 		
-		if (!Config.FORCE_INVENTORY_UPDATE)
+		if (!GeneralConfig.FORCE_INVENTORY_UPDATE)
 		{
 			InventoryUpdate iu = new InventoryUpdate();
 			if (removedItem.getCount() == 0)

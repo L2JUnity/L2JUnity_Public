@@ -18,25 +18,24 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.gameserver.model.RecipeList;
+import java.util.Collection;
+
+import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.holders.RecipeHolder;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
 public class RecipeBookItemList implements IClientOutgoingPacket
 {
-	private RecipeList[] _recipes;
+	private final Collection<RecipeHolder> _recipes;
 	private final boolean _isDwarvenCraft;
 	private final int _maxMp;
 	
-	public RecipeBookItemList(boolean isDwarvenCraft, int maxMp)
+	public RecipeBookItemList(PlayerInstance player, boolean isDwarvenCraft)
 	{
 		_isDwarvenCraft = isDwarvenCraft;
-		_maxMp = maxMp;
-	}
-	
-	public void addRecipes(RecipeList[] recipeBook)
-	{
-		_recipes = recipeBook;
+		_maxMp = player.getMaxMp();
+		_recipes = (isDwarvenCraft ? player.getDwarvenRecipeBook() : player.getCommonRecipeBook());
 	}
 	
 	@Override
@@ -53,11 +52,12 @@ public class RecipeBookItemList implements IClientOutgoingPacket
 		}
 		else
 		{
-			packet.writeD(_recipes.length); // number of items in recipe book
-			for (int i = 0; i < _recipes.length; i++)
+			packet.writeD(_recipes.size()); // number of items in recipe book
+			int i = 1;
+			for (RecipeHolder recipe : _recipes)
 			{
-				packet.writeD(_recipes[i].getId());
-				packet.writeD(i + 1);
+				packet.writeD(recipe.getId());
+				packet.writeD(i++);
 			}
 		}
 		return true;

@@ -47,14 +47,13 @@ public class ExAcquireSkillInfo implements IClientOutgoingPacket
 	 * Sets a custom amount of SP.
 	 * @param player
 	 * @param skillLearn the skill learn.
-	 * @param sp the custom SP amount.
 	 */
-	public ExAcquireSkillInfo(PlayerInstance player, SkillLearn skillLearn, int sp)
+	public ExAcquireSkillInfo(PlayerInstance player, SkillLearn skillLearn)
 	{
 		_id = skillLearn.getSkillId();
 		_level = skillLearn.getSkillLevel();
 		_dualClassLevel = skillLearn.getDualClassLevel();
-		_spCost = sp;
+		_spCost = skillLearn.getLevelUpSp();
 		_minLevel = skillLearn.getGetLevel();
 		_itemReq = skillLearn.getRequiredItems();
 		_skillRem = skillLearn.getRemoveSkills().stream().map(player::getKnownSkill).filter(Objects::nonNull).collect(Collectors.toList());

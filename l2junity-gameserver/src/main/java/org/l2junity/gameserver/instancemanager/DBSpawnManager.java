@@ -27,20 +27,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.CommonUtil;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.data.xml.impl.SpawnsData;
 import org.l2junity.gameserver.datatables.SpawnTable;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.L2Spawn;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
 import org.l2junity.gameserver.model.spawns.NpcSpawnTemplate;
-import org.l2junity.gameserver.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,10 +58,10 @@ public class DBSpawnManager
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DBSpawnManager.class);
 	
-	protected final Map<Integer, Npc> _npcs = new ConcurrentHashMap<>();
-	protected final Map<Integer, L2Spawn> _spawns = new ConcurrentHashMap<>();
-	protected final Map<Integer, StatsSet> _storedInfo = new ConcurrentHashMap<>();
-	protected final Map<Integer, ScheduledFuture<?>> _schedules = new ConcurrentHashMap<>();
+	private final Map<Integer, Npc> _npcs = new ConcurrentHashMap<>();
+	private final Map<Integer, L2Spawn> _spawns = new ConcurrentHashMap<>();
+	private final Map<Integer, StatsSet> _storedInfo = new ConcurrentHashMap<>();
+	private final Map<Integer, ScheduledFuture<?>> _schedules = new ConcurrentHashMap<>();
 	
 	public static enum DBStatusType
 	{
@@ -69,14 +75,23 @@ public class DBSpawnManager
 	 */
 	protected DBSpawnManager()
 	{
-		load();
 	}
 	
 	/**
 	 * Load.
 	 */
+	@Load(group = LoadGroup.class, dependencies =
+	{
+		@Dependency(clazz = NpcData.class),
+		@Dependency(clazz = SpawnsData.class)
+	})
 	public void load()
 	{
+		if (GeneralConfig.ALT_DEV_NO_SPAWNS)
+		{
+			return;
+		}
+		
 		_npcs.clear();
 		_spawns.clear();
 		_storedInfo.clear();
@@ -92,9 +107,7 @@ public class DBSpawnManager
 				if (template != null)
 				{
 					final L2Spawn spawn = new L2Spawn(template);
-					spawn.setX(rset.getInt("x"));
-					spawn.setY(rset.getInt("y"));
-					spawn.setZ(rset.getInt("z"));
+					spawn.setXYZ(rset.getInt("x"), rset.getInt("y"), rset.getInt("z"));
 					spawn.setAmount(1);
 					spawn.setHeading(rset.getInt("heading"));
 					
@@ -156,41 +169,24 @@ public class DBSpawnManager
 		}
 	}
 	
-	private class SpawnSchedule implements Runnable
+	private void scheduleSpawn(int npcId)
 	{
-		private final Logger LOGGER = LoggerFactory.getLogger(SpawnSchedule.class);
-		
-		private final int _npcId;
-		
-		/**
-		 * Instantiates a new spawn schedule.
-		 * @param npcId the npc id
-		 */
-		public SpawnSchedule(int npcId)
+		final Npc npc = _spawns.get(npcId).doSpawn();
+		if (npc != null)
 		{
-			_npcId = npcId;
-		}
-		
-		@Override
-		public void run()
-		{
-			final Npc npc = _spawns.get(_npcId).doSpawn();
-			if (npc != null)
-			{
-				npc.setDBStatus(DBStatusType.ALIVE);
-				
-				final StatsSet info = new StatsSet();
-				info.set("currentHP", npc.getCurrentHp());
-				info.set("currentMP", npc.getCurrentMp());
-				info.set("respawnTime", 0L);
-				
-				_storedInfo.put(_npcId, info);
-				_npcs.put(_npcId, npc);
-				LOGGER.info("Spawning NPC {}", npc.getName());
-			}
+			npc.setDBStatus(DBStatusType.ALIVE);
 			
-			_schedules.remove(_npcId);
+			final StatsSet info = new StatsSet();
+			info.set("currentHP", npc.getCurrentHp());
+			info.set("currentMP", npc.getCurrentMp());
+			info.set("respawnTime", 0L);
+			
+			_storedInfo.put(npcId, info);
+			_npcs.put(npcId, npc);
+			LOGGER.info("Spawning NPC {}", npc.getName());
 		}
+		
+		_schedules.remove(npcId);
 	}
 	
 	/**
@@ -210,8 +206,8 @@ public class DBSpawnManager
 		{
 			npc.setDBStatus(DBStatusType.DEAD);
 			
-			final int respawnMinDelay = (int) (npc.getSpawn().getRespawnMinDelay() * Config.RAID_MIN_RESPAWN_MULTIPLIER);
-			final int respawnMaxDelay = (int) (npc.getSpawn().getRespawnMaxDelay() * Config.RAID_MAX_RESPAWN_MULTIPLIER);
+			final int respawnMinDelay = (int) (npc.getSpawn().getRespawnMinDelay() * NpcConfig.RAID_MIN_RESPAWN_MULTIPLIER);
+			final int respawnMaxDelay = (int) (npc.getSpawn().getRespawnMaxDelay() * NpcConfig.RAID_MAX_RESPAWN_MULTIPLIER);
 			final int respawnDelay = Rnd.get(respawnMinDelay, respawnMaxDelay);
 			final long respawnTime = System.currentTimeMillis() + respawnDelay;
 			
@@ -221,9 +217,9 @@ public class DBSpawnManager
 			
 			if (!_schedules.containsKey(npc.getId()) && ((respawnMinDelay > 0) || (respawnMaxDelay > 0)))
 			{
-				LOGGER.info("Updated {} respawn time to {}", npc.getName(), Util.formatDate(new Date(respawnTime), "dd.MM.yyyy HH:mm"));
+				LOGGER.info("Updated {} respawn time to {}", npc.getName(), CommonUtil.formatDate(new Date(respawnTime), "dd.MM.yyyy HH:mm"));
 				
-				_schedules.put(npc.getId(), ThreadPoolManager.getInstance().scheduleGeneral(new SpawnSchedule(npc.getId()), respawnDelay));
+				_schedules.put(npc.getId(), ThreadPool.schedule(() -> scheduleSpawn(npc.getId()), respawnDelay, TimeUnit.MILLISECONDS));
 				updateDb();
 			}
 		}
@@ -284,7 +280,7 @@ public class DBSpawnManager
 		else
 		{
 			final long spawnTime = respawnTime - System.currentTimeMillis();
-			_schedules.put(npcId, ThreadPoolManager.getInstance().scheduleGeneral(new SpawnSchedule(npcId), spawnTime));
+			_schedules.put(npcId, ThreadPool.schedule(() -> scheduleSpawn(npcId), spawnTime, TimeUnit.MILLISECONDS));
 		}
 		
 		_spawns.put(npcId, spawn);
@@ -295,9 +291,9 @@ public class DBSpawnManager
 				PreparedStatement statement = con.prepareStatement("INSERT INTO npc_respawns (id, x, y, z, heading, respawnTime, currentHp, currentMp) VALUES(?, ?, ?, ?, ?, ?, ?, ?)"))
 			{
 				statement.setInt(1, spawn.getId());
-				statement.setInt(2, spawn.getX());
-				statement.setInt(3, spawn.getY());
-				statement.setInt(4, spawn.getZ());
+				statement.setInt(2, (int) spawn.getX());
+				statement.setInt(3, (int) spawn.getY());
+				statement.setInt(4, (int) spawn.getZ());
 				statement.setInt(5, spawn.getHeading());
 				statement.setLong(6, respawnTime);
 				statement.setDouble(7, currentHP);
@@ -312,17 +308,18 @@ public class DBSpawnManager
 		}
 	}
 	
-	public void addNewSpawn(L2Spawn spawn, boolean storeInDb)
+	public Npc addNewSpawn(L2Spawn spawn, boolean storeInDb)
 	{
 		if (spawn == null)
 		{
-			return;
+			return null;
 		}
 		
 		final int npcId = spawn.getId();
-		if (_spawns.containsKey(npcId))
+		final L2Spawn existingSpawn = _spawns.get(npcId);
+		if (existingSpawn != null)
 		{
-			return;
+			return existingSpawn.getLastSpawn();
 		}
 		
 		SpawnTable.getInstance().addNewSpawn(spawn, false);
@@ -350,9 +347,9 @@ public class DBSpawnManager
 				PreparedStatement statement = con.prepareStatement("INSERT INTO npc_respawns (id, x, y, z, heading, respawnTime, currentHp, currentMp) VALUES(?, ?, ?, ?, ?, ?, ?, ?)"))
 			{
 				statement.setInt(1, spawn.getId());
-				statement.setInt(2, spawn.getX());
-				statement.setInt(3, spawn.getY());
-				statement.setInt(4, spawn.getZ());
+				statement.setInt(2, (int) spawn.getX());
+				statement.setInt(3, (int) spawn.getY());
+				statement.setInt(4, (int) spawn.getZ());
 				statement.setInt(5, spawn.getHeading());
 				statement.setLong(6, 0);
 				statement.setDouble(7, npc.getMaxHp());
@@ -365,6 +362,8 @@ public class DBSpawnManager
 				LOGGER.warn("Could not store npc #{} in the DB:", npcId, e);
 			}
 		}
+		
+		return npc;
 	}
 	
 	/**
@@ -624,6 +623,7 @@ public class DBSpawnManager
 	 * Gets the single instance of DBSpawnManager.
 	 * @return single instance of DBSpawnManager
 	 */
+	@InstanceGetter
 	public static DBSpawnManager getInstance()
 	{
 		return SingletonHolder._instance;

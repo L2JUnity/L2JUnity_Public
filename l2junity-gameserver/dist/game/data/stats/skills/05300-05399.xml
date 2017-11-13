@@ -2,7 +2,6 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="5300" toLevel="9" name="Burst Shot">
 		<!-- CT2.5 retail confirmed -->
-		<table name="#power"> 8711 12027 12324 12415 12497 12563 12606 12606 12606 </table>
 		<affectRange>150</affectRange>
 		<castRange>500</castRange>
 		<coolTime>800</coolTime>
@@ -40,7 +39,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">8711</value>
 					<value level="2">12027</value>
@@ -57,7 +56,6 @@
 	</skill>
 	<skill id="5301" toLevel="9" name="Stun">
 		<!-- Temporarily gets thrown into a state of shock and immobilized. -->
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
@@ -70,7 +68,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">75</value>
@@ -102,7 +100,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -115,13 +113,11 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="5302" toLevel="9" name="Poison">
 		<!-- Condition causing target to instantly decrease HP by poison. Effect 8-10. -->
-		<table name="#dot"> 286 286 314 314 314 338 338 338 338 </table>
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -134,6 +130,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -170,12 +167,12 @@
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -188,17 +185,17 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">286</value>
-					<value level="2">286</value>
-					<value level="3">314</value>
-					<value level="4">314</value>
-					<value level="5">314</value>
-					<value level="6">338</value>
-					<value level="7">338</value>
-					<value level="8">338</value>
-					<value level="9">338</value>
+					<value level="1">-286</value>
+					<value level="2">-286</value>
+					<value level="3">-314</value>
+					<value level="4">-314</value>
+					<value level="5">-314</value>
+					<value level="6">-338</value>
+					<value level="7">-338</value>
+					<value level="8">-338</value>
+					<value level="9">-338</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -206,8 +203,6 @@
 	</skill>
 	<skill id="5303" toLevel="9" name="Bleed">
 		<!-- Condition causing target to instantly decrease HP by bleeding. Effect 8-10. -->
-		<table name="#dot"> 145 145 157 157 157 168 168 168 168 </table>
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -220,6 +215,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -256,12 +252,12 @@
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>BLEED</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -274,17 +270,17 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">145</value>
-					<value level="2">145</value>
-					<value level="3">157</value>
-					<value level="4">157</value>
-					<value level="5">157</value>
-					<value level="6">168</value>
-					<value level="7">168</value>
-					<value level="8">168</value>
-					<value level="9">168</value>
+					<value level="1">-145</value>
+					<value level="2">-145</value>
+					<value level="3">-157</value>
+					<value level="4">-157</value>
+					<value level="5">-157</value>
+					<value level="6">-168</value>
+					<value level="7">-168</value>
+					<value level="8">-168</value>
+					<value level="9">-168</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -292,7 +288,6 @@
 	</skill>
 	<skill id="5304" toLevel="9" name="Paralysis">
 		<!-- A temporary paralysis which prevents movement. -->
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
@@ -307,7 +302,7 @@
 		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
 		<icon>icon.skill1170</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">75</value>
@@ -339,7 +334,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -352,15 +347,14 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="5305" toLevel="9" name="Poison">
 		<!-- Condition causing target to instantly decrease HP by poison. Effect 8-10. -->
-		<table name="#dot"> 381 381 418 418 418 450 450 450 450 </table>
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>8</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>60</activateRate>
@@ -396,13 +390,13 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<affectRange>150</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -415,17 +409,17 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">381</value>
-					<value level="2">381</value>
-					<value level="3">418</value>
-					<value level="4">418</value>
-					<value level="5">418</value>
-					<value level="6">450</value>
-					<value level="7">450</value>
-					<value level="8">450</value>
-					<value level="9">450</value>
+					<value level="1">-381</value>
+					<value level="2">-381</value>
+					<value level="3">-418</value>
+					<value level="4">-418</value>
+					<value level="5">-418</value>
+					<value level="6">-450</value>
+					<value level="7">-450</value>
+					<value level="8">-450</value>
+					<value level="9">-450</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -433,7 +427,6 @@
 	</skill>
 	<skill id="5306" toLevel="9" name="Paralysis">
 		<!-- A temporary paralysis which prevents movement. -->
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
@@ -473,13 +466,13 @@
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>PARALYZE</trait>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -492,12 +485,11 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="5307" toLevel="9" name="Stun">
 		<!-- Temporarily gets thrown into a state of shock and immobilized. -->
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
@@ -509,7 +501,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">75</value>
@@ -541,7 +533,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -554,13 +546,11 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="5308" toLevel="9" name="Poison">
 		<!-- Condition causing target to instantly decrease HP by poison. Effect 8-10. -->
-		<table name="#dot"> 286 286 314 314 314 338 338 338 338 </table>
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -573,6 +563,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -608,12 +599,12 @@
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -626,17 +617,17 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">286</value>
-					<value level="2">286</value>
-					<value level="3">314</value>
-					<value level="4">314</value>
-					<value level="5">314</value>
-					<value level="6">338</value>
-					<value level="7">338</value>
-					<value level="8">338</value>
-					<value level="9">338</value>
+					<value level="1">-286</value>
+					<value level="2">-286</value>
+					<value level="3">-314</value>
+					<value level="4">-314</value>
+					<value level="5">-314</value>
+					<value level="6">-338</value>
+					<value level="7">-338</value>
+					<value level="8">-338</value>
+					<value level="9">-338</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -644,8 +635,6 @@
 	</skill>
 	<skill id="5309" toLevel="9" name="Bleed">
 		<!-- Condition causing target to instantly decrease HP by bleeding. Effect 8-10. -->
-		<table name="#dot"> 145 145 157 157 157 168 168 168 168 </table>
-		<table name="#power"> 13066 18040 18486 18623 18745 18844 18909 18909 18909 </table>
 		<abnormalLvl>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -658,6 +647,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -667,7 +657,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">75</value>
@@ -698,7 +688,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">13066</value>
 					<value level="2">18040</value>
@@ -711,24 +701,23 @@
 					<value level="9">18909</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">145</value>
-					<value level="2">145</value>
-					<value level="3">157</value>
-					<value level="4">157</value>
-					<value level="5">157</value>
-					<value level="6">168</value>
-					<value level="7">168</value>
-					<value level="8">168</value>
-					<value level="9">168</value>
+					<value level="1">-145</value>
+					<value level="2">-145</value>
+					<value level="3">-157</value>
+					<value level="4">-157</value>
+					<value level="5">-157</value>
+					<value level="6">-168</value>
+					<value level="7">-168</value>
+					<value level="8">-168</value>
+					<value level="9">-168</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="5310" toLevel="9" name="Aura Burn">
-		<table name="#power"> 124 128 131 133 135 137 138 138 138 </table>
 		<castRange>150</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>650</effectRange>
@@ -773,7 +762,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">124</value>
 					<value level="2">128</value>
@@ -789,7 +778,6 @@
 		</effects>
 	</skill>
 	<skill id="5311" toLevel="9" name="Aura Flare">
-		<table name="#power"> 75 77 79 80 81 82 83 83 83 83 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
@@ -834,7 +822,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -851,7 +839,6 @@
 		</effects>
 	</skill>
 	<skill id="5312" toLevel="9" name="Blaze">
-		<table name="#power"> 124 128 131 133 135 137 138 138 138 </table>
 		<affectRange>40</affectRange>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
@@ -899,7 +886,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">124</value>
 					<value level="2">128</value>
@@ -915,7 +902,6 @@
 		</effects>
 	</skill>
 	<skill id="5313" toLevel="9" name="Flame Strike">
-		<table name="#power"> 75 77 79 80 81 82 83 83 83 </table>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
@@ -964,7 +950,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -980,7 +966,6 @@
 		</effects>
 	</skill>
 	<skill id="5314" toLevel="9" name="Blazing Circle">
-		<table name="#power"> 75 77 79 80 81 82 83 83 83 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<attributeType>FIRE</attributeType>
@@ -1028,7 +1013,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1044,7 +1029,6 @@
 		</effects>
 	</skill>
 	<skill id="5315" toLevel="9" name="Blazing Circle">
-		<table name="#power"> 75 77 79 80 81 82 83 83 83 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<attributeType>FIRE</attributeType>
@@ -1068,7 +1052,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1084,7 +1068,6 @@
 		</effects>
 	</skill>
 	<skill id="5316" toLevel="9" name="Hydro Blast">
-		<table name="#power"> 124 128 131 133 135 137 138 138 138 </table>
 		<affectRange>40</affectRange>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
@@ -1132,7 +1115,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">124</value>
 					<value level="2">128</value>
@@ -1148,7 +1131,6 @@
 		</effects>
 	</skill>
 	<skill id="5317" toLevel="9" name="Mass Hydro Blast">
-		<table name="#power"> 75 77 79 80 81 82 83 83 83 </table>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
@@ -1197,7 +1179,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1213,7 +1195,6 @@
 		</effects>
 	</skill>
 	<skill id="5318" toLevel="9" name="Frost Wall">
-		<table name="#power"> 75 77 79 80 81 82 83 83 83 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<attributeType>WATER</attributeType>
@@ -1261,7 +1242,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1511,7 +1492,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5328" toLevel="9" name="Unholy Strike">
-		<table name="#power"> 124 128 131 133 135 137 138 138 138 </table>
 		<affectRange>40</affectRange>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
@@ -1559,7 +1539,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">124</value>
 					<value level="2">128</value>
@@ -1575,7 +1555,6 @@
 		</effects>
 	</skill>
 	<skill id="5329" toLevel="9" name="Unholy Blast">
-		<table name="#power"> 75 77 79 80 81 82 83 83 83 </table>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
@@ -1624,7 +1603,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1640,7 +1619,6 @@
 		</effects>
 	</skill>
 	<skill id="5330" toLevel="9" name="Unholy Circle">
-		<table name="#power"> 75 77 79 80 81 82 83 83 83 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<attributeType>DARK</attributeType>
@@ -1688,7 +1666,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1739,7 +1717,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>250</power>
 			</effect>
 		</effects>
@@ -1791,7 +1769,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackMp">
+			<effect name="i_m_attack_mp">
 				<power>
 					<value level="1">186</value>
 					<value level="2">192</value>
@@ -1822,6 +1800,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -1872,13 +1851,13 @@
 		<attributeType>WATER</attributeType>
 		<attributeValue>20</attributeValue>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">75</value>
 					<value level="2">77</value>
@@ -1894,7 +1873,6 @@
 		</effects>
 	</skill>
 	<skill id="5334" toLevel="9" name="Power Strike">
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -1928,7 +1906,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -1944,7 +1922,6 @@
 		</effects>
 	</skill>
 	<skill id="5335" toLevel="9" name="Power Shot">
-		<table name="#power"> 34070 47031 48135 48433 48691 48886 49012 49012 49012 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -1977,7 +1954,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">34070</value>
 					<value level="2">47031</value>
@@ -2026,7 +2003,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>12777</power>
 			</effect>
 		</effects>
@@ -2057,7 +2034,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5338" toLevel="9" name="Power Strike">
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2093,7 +2069,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2169,7 +2145,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>12777</power>
 			</effect>
 		</effects>
@@ -2202,7 +2178,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5342" toLevel="9" name="Power Strike">
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2238,7 +2213,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2330,7 +2305,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5346" toLevel="9" name="Power Strike">
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2366,7 +2340,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2458,7 +2432,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5350" toLevel="9" name="Power Strike">
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2494,7 +2467,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2569,7 +2542,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>12777</power>
 			</effect>
 		</effects>
@@ -2686,7 +2659,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>12777</power>
 			</effect>
 		</effects>
@@ -2719,7 +2692,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5358" toLevel="9" name="Power Strike">
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2755,7 +2727,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2771,7 +2743,6 @@
 		</effects>
 	</skill>
 	<skill id="5359" toLevel="9" name="Power Shot">
-		<table name="#power"> 34070 47031 48135 48433 48691 48886 49012 49012 49012 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -2806,7 +2777,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">34070</value>
 					<value level="2">47031</value>
@@ -2857,7 +2828,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>12777</power>
 			</effect>
 		</effects>
@@ -2891,7 +2862,6 @@
 	</skill>
 	<skill id="5362" toLevel="9" name="Stun">
 		<!-- Temporarily gets thrown into a state of shock and immobilized. -->
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
@@ -2904,7 +2874,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">75</value>
@@ -2936,7 +2906,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -2949,13 +2919,11 @@
 					<value level="9">18380</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="5363" toLevel="9" name="Poison">
 		<!-- Condition causing target to instantly decrease HP by poison. Effect 8-10. -->
-		<table name="#dot"> 286 286 314 314 314 338 338 338 338 </table>
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<abnormalLvl>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -2968,6 +2936,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -3004,12 +2973,12 @@
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3022,17 +2991,17 @@
 					<value level="9">18380</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">286</value>
-					<value level="2">286</value>
-					<value level="3">314</value>
-					<value level="4">314</value>
-					<value level="5">314</value>
-					<value level="6">338</value>
-					<value level="7">338</value>
-					<value level="8">338</value>
-					<value level="9">338</value>
+					<value level="1">-286</value>
+					<value level="2">-286</value>
+					<value level="3">-314</value>
+					<value level="4">-314</value>
+					<value level="5">-314</value>
+					<value level="6">-338</value>
+					<value level="7">-338</value>
+					<value level="8">-338</value>
+					<value level="9">-338</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -3040,8 +3009,6 @@
 	</skill>
 	<skill id="5364" toLevel="9" name="Bleed">
 		<!-- Condition causing target to instantly decrease HP by bleeding. Effect 8-10. -->
-		<table name="#dot"> 145 145 157 157 157 168 168 168 168 </table>
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<abnormalLvl>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -3054,6 +3021,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -3064,7 +3032,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">75</value>
@@ -3095,7 +3063,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3108,17 +3076,17 @@
 					<value level="9">18380</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">145</value>
-					<value level="2">145</value>
-					<value level="3">157</value>
-					<value level="4">157</value>
-					<value level="5">157</value>
-					<value level="6">168</value>
-					<value level="7">168</value>
-					<value level="8">168</value>
-					<value level="9">168</value>
+					<value level="1">-145</value>
+					<value level="2">-145</value>
+					<value level="3">-157</value>
+					<value level="4">-157</value>
+					<value level="5">-157</value>
+					<value level="6">-168</value>
+					<value level="7">-168</value>
+					<value level="8">-168</value>
+					<value level="9">-168</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -3126,8 +3094,6 @@
 	</skill>
 	<skill id="5365" toLevel="9" name="Paralysis">
 		<!-- A temporary paralysis which prevents movement. -->
-		<table name="#mpConsume"> 76 78 80 82 84 84 85 86 87 </table>
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
@@ -3142,7 +3108,7 @@
 		<attributeValue>20</attributeValue>
 		<hitTime>830</hitTime>
 		<icon>icon.skill1170</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">75</value>
@@ -3163,16 +3129,29 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack" />
-			<effect name="BlockActions" />
+			<effect name="i_p_attack">
+				<power>
+					<value level="1">12777</value>
+					<value level="2">17637</value>
+					<value level="3">18051</value>
+					<value level="4">18163</value>
+					<value level="5">18259</value>
+					<value level="6">18333</value>
+					<value level="7">18380</value>
+					<value level="8">18380</value>
+					<value level="9">18380</value>
+				</power>
+			</effect>
+			<effect name="p_block_act">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5366" toLevel="9" name="Poison">
 		<!-- Condition causing target to instantly decrease HP by poison. Effect 8-10. -->
-		<table name="#dot"> 381 381 418 418 418 450 450 450 450 </table>
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<abnormalLvl>8</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>60</activateRate>
@@ -3208,13 +3187,13 @@
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3227,17 +3206,17 @@
 					<value level="9">18380</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">381</value>
-					<value level="2">381</value>
-					<value level="3">418</value>
-					<value level="4">418</value>
-					<value level="5">418</value>
-					<value level="6">450</value>
-					<value level="7">450</value>
-					<value level="8">450</value>
-					<value level="9">450</value>
+					<value level="1">-381</value>
+					<value level="2">-381</value>
+					<value level="3">-418</value>
+					<value level="4">-418</value>
+					<value level="5">-418</value>
+					<value level="6">-450</value>
+					<value level="7">-450</value>
+					<value level="8">-450</value>
+					<value level="9">-450</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -3245,8 +3224,6 @@
 	</skill>
 	<skill id="5367" toLevel="9" name="Paralysis">
 		<!-- A temporary paralysis which prevents movement. -->
-		<table name="#mpConsume"> 76 78 80 82 84 84 85 86 87 </table>
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
 		<abnormalType>PARALYZE</abnormalType>
@@ -3260,7 +3237,7 @@
 		<attributeValue>20</attributeValue>
 		<hitTime>1000</hitTime>
 		<icon>icon.skill1170</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">75</value>
@@ -3282,8 +3259,22 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack" />
-			<effect name="BlockActions" />
+			<effect name="i_p_attack">
+				<power>
+					<value level="1">12777</value>
+					<value level="2">17637</value>
+					<value level="3">18051</value>
+					<value level="4">18163</value>
+					<value level="5">18259</value>
+					<value level="6">18333</value>
+					<value level="7">18380</value>
+					<value level="8">18380</value>
+					<value level="9">18380</value>
+				</power>
+			</effect>
+			<effect name="p_block_act">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5368" toLevel="9" name="Stun">
@@ -3314,7 +3305,7 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1400</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>900</castRange>
 		<trait>SHOCK</trait>
 		<targetType>ENEMY</targetType>
@@ -3322,8 +3313,6 @@
 	</skill>
 	<skill id="5369" toLevel="9" name="Poison">
 		<!-- Condition causing target to instantly decrease HP by poison. Effect 8-10. -->
-		<table name="#dot"> 286 286 314 314 314 338 338 338 338 </table>
-		<table name="#power"> 12777 17637 18051 18163 18259 18333 18380 18380 18380 </table>
 		<abnormalLvl>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -3336,6 +3325,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -3371,12 +3361,12 @@
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">12777</value>
 					<value level="2">17637</value>
@@ -3389,17 +3379,17 @@
 					<value level="9">18380</value>
 				</power>
 			</effect>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">286</value>
-					<value level="2">286</value>
-					<value level="3">314</value>
-					<value level="4">314</value>
-					<value level="5">314</value>
-					<value level="6">338</value>
-					<value level="7">338</value>
-					<value level="8">338</value>
-					<value level="9">338</value>
+					<value level="1">-286</value>
+					<value level="2">-286</value>
+					<value level="3">-314</value>
+					<value level="4">-314</value>
+					<value level="5">-314</value>
+					<value level="6">-338</value>
+					<value level="7">-338</value>
+					<value level="8">-338</value>
+					<value level="9">-338</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -3419,6 +3409,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -3442,14 +3433,13 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1400</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>900</castRange>
 		<trait>BLEED</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5371" toLevel="9" name="Aura Burn">
-		<table name="#power"> 160 165 169 171 174 176 178 178 178 </table>
 		<castRange>150</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>650</effectRange>
@@ -3494,7 +3484,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">160</value>
 					<value level="2">165</value>
@@ -3510,7 +3500,6 @@
 		</effects>
 	</skill>
 	<skill id="5372" toLevel="9" name="Aura Flare">
-		<table name="#power"> 96 99 101 103 104 106 107 107 107 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
@@ -3555,7 +3544,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -3596,7 +3585,6 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5374" toLevel="9" name="Flame Strike">
-		<table name="#power"> 96 99 101 103 104 106 107 107 107 </table>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
@@ -3645,7 +3633,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -3688,7 +3676,6 @@
 	</skill>
 	<skill id="5376" toLevel="9" name="Blazing Circle">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 96 99 101 103 104 106 107 107 107 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<attributeType>FIRE</attributeType>
@@ -3713,7 +3700,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -3807,7 +3794,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5380" toLevel="9" name="Hurricane">
-		<table name="#power"> 160 165 169 171 174 176 178 178 178 </table>
 		<affectRange>40</affectRange>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
@@ -3855,7 +3841,20 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack" />
+			<effect name="i_m_attack_range">
+				<power>
+					<value level="1">160</value>
+					<value level="2">165</value>
+					<value level="3">169</value>
+					<value level="4">171</value>
+					<value level="5">174</value>
+					<value level="6">176</value>
+					<value level="7">178</value>
+					<value level="8">178</value>
+					<value level="9">178</value>
+				</power>
+				<shieldDefPercent>40</shieldDefPercent>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5381" toLevel="9" name="Tempest">
@@ -3886,7 +3885,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5382" toLevel="9" name="Tempest">
-		<table name="#power"> 96 99 101 103 104 106 107 107 107 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<attributeType>WIND</attributeType>
@@ -3934,11 +3932,22 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack" />
+			<effect name="i_m_attack">
+				<power>
+					<value level="1">96</value>
+					<value level="2">99</value>
+					<value level="3">101</value>
+					<value level="4">103</value>
+					<value level="5">104</value>
+					<value level="6">106</value>
+					<value level="7">107</value>
+					<value level="8">107</value>
+					<value level="9">107</value>
+				</power>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5383" toLevel="9" name="Rock Strike">
-		<table name="#power"> 160 165 169 171 174 176 178 178 178 </table>
 		<affectRange>40</affectRange>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
@@ -3986,7 +3995,20 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack" />
+			<effect name="i_m_attack_range">
+				<power>
+					<value level="1">160</value>
+					<value level="2">165</value>
+					<value level="3">169</value>
+					<value level="4">171</value>
+					<value level="5">174</value>
+					<value level="6">176</value>
+					<value level="7">178</value>
+					<value level="8">178</value>
+					<value level="9">178</value>
+				</power>
+				<shieldDefPercent>40</shieldDefPercent>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5384" toLevel="9" name="Earthquake">
@@ -4121,7 +4143,6 @@
 		<affectObject>NOT_FRIEND</affectObject>
 	</skill>
 	<skill id="5389" toLevel="9" name="Unholy Strike">
-		<table name="#power"> 160 165 169 171 174 176 178 178 178 </table>
 		<affectRange>40</affectRange>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
@@ -4169,11 +4190,23 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack" />
+			<effect name="i_m_attack_range">
+				<power>
+					<value level="1">160</value>
+					<value level="2">165</value>
+					<value level="3">169</value>
+					<value level="4">171</value>
+					<value level="5">174</value>
+					<value level="6">176</value>
+					<value level="7">178</value>
+					<value level="8">178</value>
+					<value level="9">178</value>
+				</power>
+				<shieldDefPercent>40</shieldDefPercent>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5390" toLevel="9" name="Unholy Blast">
-		<table name="#power"> 96 99 101 103 104 106 107 107 107 </table>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
@@ -4222,7 +4255,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -4238,7 +4271,6 @@
 		</effects>
 	</skill>
 	<skill id="5391" toLevel="9" name="Unholy Circle">
-		<table name="#power"> 96 99 101 103 104 106 107 107 107 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<attributeType>DARK</attributeType>
@@ -4286,7 +4318,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -4302,7 +4334,6 @@
 		</effects>
 	</skill>
 	<skill id="5392" toLevel="9" name="Drain Energy">
-		<table name="#power"> 160 165 169 171 174 176 178 178 178 </table>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
@@ -4349,7 +4380,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpDrain">
+			<effect name="i_hp_drain">
 				<power>
 					<value level="1">160</value>
 					<value level="2">165</value>
@@ -4412,7 +4443,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackMp">
+			<effect name="i_m_attack_mp">
 				<power>
 					<value level="1">240</value>
 					<value level="2">247</value>
@@ -4431,7 +4462,6 @@
 	</skill>
 	<skill id="5394" toLevel="9" name="Poison">
 		<!-- TODO: Need to be Checked in Retail -->
-		<table name="#power"> 96 99 101 103 104 106 107 107 107 </table>
 		<abnormalLvl>
 			<value level="1">8</value>
 			<value level="2">8</value>
@@ -4444,6 +4474,7 @@
 			<value level="9">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>80</activateRate>
@@ -4494,13 +4525,13 @@
 		<operateType>A2</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">96</value>
 					<value level="2">99</value>
@@ -4516,9 +4547,6 @@
 		</effects>
 	</skill>
 	<skill id="5395" toLevel="3" name="Super Might Haste">
-		<table name="#magicLvl"> 20 40 70 </table>
-		<table name="#pAtk"> 1.5 2.0 3.0 </table>
-		<table name="#pAtkSpd"> 1.33 1.33 1.5 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -4555,9 +4583,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>CLAN</affectObject>
 		<effects>
-			<effect name="Grow">
-			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -4565,7 +4591,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">33</value>
 					<value level="2">33</value>
@@ -4578,7 +4604,7 @@
 	<skill id="5396" toLevel="1" name="Spell Stance">
 		<castRange>400</castRange>
 		<channelingSkillId>5397</channelingSkillId>
-		<channelingTickInterval>2000</channelingTickInterval>
+		<channelingTickInterval>2</channelingTickInterval>
 		<hitTime>15000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<operateType>CA5</operateType>
@@ -4587,7 +4613,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>600</effectRange>
 		<magicLvl>77</magicLvl>
-		<channelingTickInitialDelay>3600</channelingTickInitialDelay>
+		<channelingStart>3.6</channelingStart>
 		<targetType>OTHERS</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -4630,7 +4656,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>657</power>
 			</effect>
 		</effects>
@@ -4645,7 +4671,7 @@
 		<basicProperty>MAGIC</basicProperty>
 		<effectPoint>-100</effectPoint>
 		<icon>icon.skill1230</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>1</magicLvl>
 		<operateType>A2</operateType>
@@ -4655,8 +4681,8 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>75</power>
+			<effect name="t_hp">
+				<power>-75</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>

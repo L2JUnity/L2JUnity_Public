@@ -24,7 +24,7 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 /**
- * @author UnAfraid
+ * @author Carlo Pelliccia
  */
 public class PastPredictor
 {
@@ -185,7 +185,7 @@ public class PastPredictor
 							hour--;
 							minute = 59;
 						}
-						if (dayOfMonth < 0)
+						if (dayOfMonth < 1)
 						{
 							dayOfMonth = 31;
 							month--;

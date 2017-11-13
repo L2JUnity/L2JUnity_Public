@@ -21,20 +21,24 @@ package org.l2junity.gameserver.model.actor;
 import org.l2junity.gameserver.ai.CtrlEvent;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
+import org.l2junity.gameserver.model.ClanWar;
+import org.l2junity.gameserver.model.ClanWar.ClanWarState;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.stat.PlayableStat;
 import org.l2junity.gameserver.model.actor.status.PlayableStatus;
 import org.l2junity.gameserver.model.actor.templates.L2CharTemplate;
-import org.l2junity.gameserver.model.effects.EffectFlag;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureDeath;
+import org.l2junity.gameserver.model.events.impl.character.OnCreatureKilled;
 import org.l2junity.gameserver.model.events.returns.TerminateReturn;
 import org.l2junity.gameserver.model.instancezone.Instance;
+import org.l2junity.gameserver.model.interfaces.ILocational;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
-import org.l2junity.gameserver.model.quest.QuestState;
+import org.l2junity.gameserver.model.skills.AbnormalType;
 import org.l2junity.gameserver.model.skills.Skill;
+import org.l2junity.gameserver.model.stats.BooleanStat;
 import org.l2junity.gameserver.network.client.send.EtcStatusUpdate;
 
 /**
@@ -118,28 +122,25 @@ public abstract class Playable extends Creature
 			setIsDead(true);
 		}
 		
-		abortAttack();
-		abortCast();
+		EventDispatcher.getInstance().notifyEvent(new OnCreatureKilled(killer, this), killer);
 		
 		// Set target to null and cancel Attack or Cast
 		setTarget(null);
-		
-		// Stop movement
-		stopMove(null);
+		stopActions();
 		
 		// Stop HP/MP/CP Regeneration task
 		getStatus().stopHpMpRegeneration();
 		
 		boolean deleteBuffs = true;
 		
-		if (isNoblesseBlessedAffected())
+		if (getStat().has(BooleanStat.PRESERVE_ABNORMAL))
 		{
-			stopEffects(EffectFlag.NOBLESS_BLESSING);
+			getEffectList().stopEffects(AbnormalType.PRESERVE_ABNORMAL);
 			deleteBuffs = false;
 		}
-		if (isResurrectSpecialAffected())
+		if (getStat().has(BooleanStat.RESURRECTION_SPECIAL))
 		{
-			stopEffects(EffectFlag.RESURRECTION_SPECIAL);
+			getEffectList().stopEffects(AbnormalType.RESURRECTION_SPECIAL);
 			deleteBuffs = false;
 		}
 		if (isPlayer())
@@ -167,16 +168,6 @@ public abstract class Playable extends Creature
 		
 		ZoneManager.getInstance().getRegion(this).onDeath(this);
 		
-		// Notify Quest of L2Playable's death
-		PlayerInstance actingPlayer = getActingPlayer();
-		
-		if (!actingPlayer.isNotifyQuestOfDeathEmpty())
-		{
-			for (QuestState qs : actingPlayer.getNotifyQuestOfDeath())
-			{
-				qs.getQuest().notifyDeath((killer == null ? this : killer), this, qs);
-			}
-		}
 		// Notify instance
 		if (isPlayer())
 		{
@@ -198,7 +189,6 @@ public abstract class Playable extends Creature
 		
 		// Notify L2Character AI
 		getAI().notifyEvent(CtrlEvent.EVT_DEAD);
-		super.updateEffectIcons();
 		return true;
 	}
 	
@@ -223,13 +213,17 @@ public abstract class Playable extends Creature
 		{
 			return true;
 		}
+		else if (player.isInParty() && player.getParty().containsPlayer(target))
+		{
+			return false;
+		}
 		
 		final L2Clan playerClan = player.getClan();
-		final L2Clan targetClan = target.getClan();
 		
-		if ((playerClan != null) && (targetClan != null) && playerClan.isAtWarWith(targetClan) && targetClan.isAtWarWith(playerClan))
+		if ((playerClan != null) && !player.isAcademyMember() && !target.isAcademyMember())
 		{
-			return (player.getPledgeType() != L2Clan.SUBUNIT_ACADEMY) && (target.getPledgeType() != L2Clan.SUBUNIT_ACADEMY);
+			final ClanWar war = playerClan.getWarWith(target.getClanId());
+			return (war != null) && (war.getState() == ClanWarState.MUTUAL);
 		}
 		return false;
 	}
@@ -243,26 +237,12 @@ public abstract class Playable extends Creature
 		return true;
 	}
 	
-	// Support for Noblesse Blessing skill, where buffs are retained after resurrect
-	public final boolean isNoblesseBlessedAffected()
-	{
-		return isAffected(EffectFlag.NOBLESS_BLESSING);
-	}
-	
-	/**
-	 * @return {@code true} if char can resurrect by himself, {@code false} otherwise
-	 */
-	public final boolean isResurrectSpecialAffected()
-	{
-		return isAffected(EffectFlag.RESURRECTION_SPECIAL);
-	}
-	
 	/**
 	 * @return {@code true} if the Silent Moving mode is active, {@code false} otherwise
 	 */
 	public boolean isSilentMovingAffected()
 	{
-		return isAffected(EffectFlag.SILENT_MOVE);
+		return getStat().has(BooleanStat.SILENT_MOVE);
 	}
 	
 	/**
@@ -271,7 +251,7 @@ public abstract class Playable extends Creature
 	 */
 	public final boolean isProtectionBlessingAffected()
 	{
-		return isAffected(EffectFlag.PROTECTION_BLESSING);
+		return getStat().has(BooleanStat.PROTECTION_BLESSING);
 	}
 	
 	@Override
@@ -307,9 +287,7 @@ public abstract class Playable extends Creature
 	
 	public abstract void doPickupItem(WorldObject object);
 	
-	public abstract int getReputation();
-	
-	public abstract boolean useMagic(Skill skill, ItemInstance item, boolean forceUse, boolean dontMove);
+	public abstract boolean useMagic(Skill skill, ILocational target, ItemInstance item, boolean forceUse, boolean dontMove);
 	
 	public abstract void storeMe();
 	
@@ -321,5 +299,11 @@ public abstract class Playable extends Creature
 	public boolean isPlayable()
 	{
 		return true;
+	}
+	
+	@Override
+	public Playable asPlayable()
+	{
+		return this;
 	}
 }

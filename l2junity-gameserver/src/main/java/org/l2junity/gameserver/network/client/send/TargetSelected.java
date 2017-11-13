@@ -36,13 +36,13 @@ public final class TargetSelected implements IClientOutgoingPacket
 	 * @param y
 	 * @param z
 	 */
-	public TargetSelected(int objectId, int targetId, int x, int y, int z)
+	public TargetSelected(int objectId, int targetId, double x, double y, double z)
 	{
 		_objectId = objectId;
 		_targetObjId = targetId;
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 	}
 	
 	@Override

@@ -21,7 +21,11 @@ package org.l2junity.gameserver.model.items.enchant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.l2junity.gameserver.data.xml.impl.EnchantItemGroupsData;
+import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.items.L2Item;
 
 /**
@@ -30,19 +34,13 @@ import org.l2junity.gameserver.model.items.L2Item;
 public final class EnchantScrollGroup
 {
 	private final int _id;
+	private final int _extendId;
 	private List<EnchantRateItem> _rateGroups;
 	
-	public EnchantScrollGroup(int id)
+	public EnchantScrollGroup(StatsSet set)
 	{
-		_id = id;
-	}
-	
-	/**
-	 * @return id of current enchant scroll group.
-	 */
-	public int getId()
-	{
-		return _id;
+		_id = set.getInt("id");
+		_extendId = set.getInt("extend", 0);
 	}
 	
 	/**
@@ -63,7 +61,7 @@ public final class EnchantScrollGroup
 	 */
 	public List<EnchantRateItem> getRateGroups()
 	{
-		return _rateGroups != null ? _rateGroups : Collections.emptyList();
+		return Stream.concat(_extendId != 0 ? EnchantItemGroupsData.getInstance().getScrollGroup(_extendId).getRateGroups().stream() : Collections.<EnchantRateItem> emptyList().stream(), _rateGroups != null ? _rateGroups.stream() : Collections.<EnchantRateItem> emptyList().stream()).collect(Collectors.toList());
 	}
 	
 	/**
@@ -80,5 +78,13 @@ public final class EnchantScrollGroup
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * @return id of current enchant scroll group.
+	 */
+	public int getId()
+	{
+		return _id;
 	}
 }

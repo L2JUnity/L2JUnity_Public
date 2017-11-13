@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/events.xsd">
+	<event name="Pc Cafe" class="org.l2junity.gameserver.instancemanager.PcCafeManager">
+		<variables>
+			<variable name="enable_timer_bonus" value="false" /> <!-- Enabled/disable Timer Bonus -->
+			<variable name="timer_points" value="10" /> <!-- Number of points gained from timer based reward -->
+			<variable name="timer_double_points_probability" value="10" /> <!-- Probability to gain x2 points -->
+			<variable name="enable_daily_bonus" value="false" /> <!-- Enabled/disable Daily Bonus -->
+			<variable name="daily_bonus_points" value="1000" /> <!-- Daily Bonus gained Points -->
+			<variable name="enable_farming_bonus" value="false" /> <!-- Enabled/disable Farming Bonus -->
+			<variable name="farming_bonus_points" value="50" /> <!-- Farming Bonus gained Points -->
+			<variable name="farming_bonus_level_diff" value="11" /> <!-- Farming Bonus level difference to get Points -->
+			<variable name="enable_pvp_bonus" value="false" /> <!-- Enabled/disable PvP Bonus -->
+			<variable name="pvp_bonus_points" value="100" /> <!-- Farming Bonus gained Points -->
+		</variables>
+		<scheduler>
+			<!-- Schedule giving points every 5 min -->
+			<schedule name="rewardPoint" minute="*/5" repeat="true">
+				<event name="#rewardPoint" />
+			</schedule>
+			
+			<!-- Schedule of the reset every day for first daily login bonus at 06:30 -->
+			<schedule name="reset" hour="06" minute="30">
+				<event name="#onReset" />
+			</schedule>
+			
+			<!-- Attach condition to reset if server boots up in after 6:30 and hasn't reset yet -->
+			<conditionalSchedule>
+				<run name="reset" if="HASNT_RUN" />
+			</conditionalSchedule>
+		</scheduler>
+	</event>
+</list>

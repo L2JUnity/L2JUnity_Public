@@ -50,7 +50,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="50">
 						<item id="23546" count="1" />
@@ -76,7 +76,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="50">
 						<item id="23547" count="1" />
@@ -102,7 +102,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="50">
 						<item id="23548" count="1" />
@@ -128,7 +128,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="50">
 						<item id="23549" count="1" />
@@ -154,7 +154,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16.6666">
 						<item id="23535" count="1" />
@@ -367,7 +367,7 @@
 			<effect name="SilentMove" fromLevel="6" toLevel="6">
 				<chance>100</chance>
 			</effect>
-			<effect name="Speed" fromLevel="6" toLevel="6">
+			<effect name="p_speed" fromLevel="6" toLevel="6">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -566,7 +566,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16.6666">
 						<item id="23590" count="1" />
@@ -735,30 +735,35 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22848" toLevel="1" name="Vitality Maintaining Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Maintains Vitality. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>600</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>icon.skilltransform4</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>1800000</reuseDelay>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="22849" toLevel="1" name="Dragon Vitality Replenishing Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.etc_potion_of_energy_i01</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -771,76 +776,95 @@
 		<reuseDelay>60000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_restore_vital_point_noncount">
+				<amount>20000</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22850" toLevel="1" name="Vitality Suspending Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Suspends Vitality, stopping inflow of Vitality Bonus. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>BranchSys3.lcon.g_vitality_potion_stop</icon>
 		<operateType>A2</operateType>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_stop_vitality_effect" />
+		</effects>
 	</skill>
 	<skill id="22851" toLevel="2" name="Chocolate Doughnut - Maintain Vitality">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Maintains Vitality for 30 min. -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<icon>BranchSys3.icon1.g_chocolate_doughnut_pl</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_KEEP</abnormalType>
 		<specialLevel>-1</specialLevel>
 		<magicCriticalRate>5</magicCriticalRate>
 		<basicProperty>NONE</basicProperty>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="22852" toLevel="1" name="Piroscki - Replenish Vitality">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 30 min., Vitality is replenished with XP gain through hunting. -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>BranchSys3.icon1.g_dumpling_pl</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>23628</itemConsumeId> <!-- Piroscki - Replenish Vitality -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22853" toLevel="1" name="Torun Gingerbread (1-hour)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1052,7 +1076,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.1">
 						<item id="36102" count="1" />
@@ -1114,7 +1138,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.05">
 						<item id="36162" count="1" />

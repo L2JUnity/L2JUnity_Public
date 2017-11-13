@@ -7,14 +7,13 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>2</slots>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4001" toLevel="12" name="Gust">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 18 26 38 52 68 85 102 110 116 122 126 129 </table>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
@@ -70,7 +69,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">18</value>
 					<value level="2">26</value>
@@ -90,7 +89,6 @@
 	</skill>
 	<skill id="4002" toLevel="12" name="Blood Siphon">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 18 26 38 52 68 85 102 110 116 122 126 129 </table>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
@@ -133,7 +131,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpDrain">
+			<effect name="i_hp_drain">
 				<power>
 					<value level="1">18</value>
 					<value level="2">26</value>
@@ -158,7 +156,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>70</BOW>
 				<BLUNT>-10</BLUNT>
 				<DAGGER>30</DAGGER>
@@ -172,7 +170,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLUNT>-10</BLUNT>
 			</effect>
 		</effects>
@@ -183,10 +181,10 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>-10</BOW>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>-15</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -198,10 +196,10 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>50</POISON>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>-15</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -213,11 +211,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>HOLY</attribute>
 			</effect>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>-20</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -229,7 +227,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>-15</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -302,7 +300,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>271</power>
 			</effect>
 		</effects>
@@ -321,7 +319,7 @@
 		<effectRange>1000</effectRange>
 		<hitTime>2200</hitTime>
 		<icon>icon.skill4018</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>3</lvlBonusRate>
 		<magicLvl>40</magicLvl>
 		<operateType>A2</operateType>
@@ -330,10 +328,10 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>542</power>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -354,7 +352,7 @@
 		<effectRange>1500</effectRange>
 		<hitTime>1700</hitTime>
 		<icon>icon.skill4019</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>3</lvlBonusRate>
 		<magicLvl>40</magicLvl>
 		<operateType>A2</operateType>
@@ -364,11 +362,11 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>30</power>
+			<effect name="t_hp">
+				<power>-30</power>
 				<ticks>3</ticks>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -388,7 +386,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>10846</power>
 			</effect>
 		</effects>
@@ -401,7 +399,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>80</BOW>
 			</effect>
 		</effects>
@@ -434,14 +432,13 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>10846</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4025" toLevel="12" name="Master Recharge">
 		<!-- Freya retail confirmed -->
-		<table name="#amount"> 23 38 52 70 90 110 129 138 144 149 153 155 </table>
 		<castRange>400</castRange>
 		<effectPoint>
 			<value level="1">138</value>
@@ -495,7 +492,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ManaHealByLevel">
+			<effect name="i_mp_by_level">
 				<power>
 					<value level="1">23</value>
 					<value level="2">38</value>
@@ -533,7 +530,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>43</power>
 			</effect>
 		</effects>
@@ -554,14 +551,13 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>628</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4028" toLevel="3" name="Might">
 		<!-- Freya retail confirmed -->
-		<table name="#pAtk"> 1.08 1.12 1.15 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -592,9 +588,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Grow">
-			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">12</value>
@@ -605,7 +599,6 @@
 		</effects>
 	</skill>
 	<skill id="4029" toLevel="3" name="Shield">
-		<table name="#pDef"> 1.08 1.12 1.15 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -635,7 +628,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">12</value>
@@ -647,7 +640,6 @@
 	</skill>
 	<skill id="4030" toLevel="3" name="Might">
 		<!-- Freya retail confirmed -->
-		<table name="#pAtk"> 1.08 1.12 1.15 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -680,7 +672,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">12</value>
@@ -692,7 +684,6 @@
 	</skill>
 	<skill id="4031" toLevel="3" name="Might">
 		<!-- Freya retail confirmed -->
-		<table name="#pDef"> 1.08 1.12 1.15 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -725,7 +716,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">12</value>
@@ -737,7 +728,6 @@
 	</skill>
 	<skill id="4032" toLevel="12" name="Power Strike">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 46 105 219 417 722 1136 1626 1876 2112 2320 2487 2617 </table>
 		<castRange>40</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -778,7 +768,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">46</value>
 					<value level="2">105</value>
@@ -798,7 +788,6 @@
 	</skill>
 	<skill id="4033" toLevel="12" name="Aura Burn">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 18 26 38 52 68 85 102 110 116 122 126 129 </table>
 		<affectRange>200</affectRange>
 		<effectPoint>-100</effectPoint>
 		<hitTime>4000</hitTime>
@@ -840,7 +829,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">18</value>
 					<value level="2">26</value>
@@ -860,7 +849,6 @@
 	</skill>
 	<skill id="4034" toLevel="12" name="Ice Bolt">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 11 16 23 31 41 51 61 66 70 73 76 78 </table>
 		<abnormalLvl>2</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>SPEED_DOWN</abnormalType>
@@ -872,7 +860,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>3100</hitTime>
 		<icon>icon.skill1184</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -912,7 +900,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">11</value>
 					<value level="2">16</value>
@@ -928,7 +916,7 @@
 					<value level="12">78</value>
 				</power>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -936,7 +924,6 @@
 	</skill>
 	<skill id="4035" toLevel="12" name="Poison">
 		<!-- Freya retail confirmed -->
-		<table name="#dmg"> 16 24 32 41 50 58 63 63 66 66 68 68 </table>
 		<abnormalLvl>
 			<value level="1">2</value>
 			<value level="2">3</value>
@@ -952,6 +939,7 @@
 			<value level="12">10</value>
 		</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>70</activateRate>
@@ -961,7 +949,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill4035</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -1001,20 +989,20 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">16</value>
-					<value level="2">24</value>
-					<value level="3">32</value>
-					<value level="4">41</value>
-					<value level="5">50</value>
-					<value level="6">58</value>
-					<value level="7">63</value>
-					<value level="8">63</value>
-					<value level="9">66</value>
-					<value level="10">66</value>
-					<value level="11">68</value>
-					<value level="12">68</value>
+					<value level="1">-16</value>
+					<value level="2">-24</value>
+					<value level="3">-32</value>
+					<value level="4">-41</value>
+					<value level="5">-50</value>
+					<value level="6">-58</value>
+					<value level="7">-63</value>
+					<value level="8">-63</value>
+					<value level="9">-66</value>
+					<value level="10">-66</value>
+					<value level="11">-68</value>
+					<value level="12">-68</value>
 				</power>
 				<ticks>3</ticks>
 			</effect>
@@ -1022,7 +1010,6 @@
 	</skill>
 	<skill id="4036" toLevel="12" name="Poison">
 		<!-- Freya retail confirmed -->
-		<table name="#dmg"> 16 24 32 41 50 58 63 63 66 66 68 68 </table>
 		<abnormalLvl>
 			<value level="1">2</value>
 			<value level="2">3</value>
@@ -1038,6 +1025,7 @@
 			<value level="12">10</value>
 		</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>35</activateRate>
@@ -1048,7 +1036,7 @@
 		<effectRange>1000</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill4036</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -1089,20 +1077,20 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">16</value>
-					<value level="2">24</value>
-					<value level="3">32</value>
-					<value level="4">41</value>
-					<value level="5">50</value>
-					<value level="6">58</value>
-					<value level="7">63</value>
-					<value level="8">63</value>
-					<value level="9">66</value>
-					<value level="10">66</value>
-					<value level="11">68</value>
-					<value level="12">68</value>
+					<value level="1">-16</value>
+					<value level="2">-24</value>
+					<value level="3">-32</value>
+					<value level="4">-41</value>
+					<value level="5">-50</value>
+					<value level="6">-58</value>
+					<value level="7">-63</value>
+					<value level="8">-63</value>
+					<value level="9">-66</value>
+					<value level="10">-66</value>
+					<value level="11">-68</value>
+					<value level="12">-68</value>
 				</power>
 				<ticks>3</ticks>
 			</effect>
@@ -1110,7 +1098,6 @@
 	</skill>
 	<skill id="4037" toLevel="3" name="Decrease P.Atk">
 		<!-- Freya retail confirmed -->
-		<table name="#pAtk"> 0.83 0.8 0.77 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1125,7 +1112,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill4037</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -1145,7 +1132,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">-17</value>
 					<value level="2">-20</value>
@@ -1157,8 +1144,6 @@
 	</skill>
 	<skill id="4038" toLevel="5" name="Decrease Atk.Spd.">
 		<!-- Freya retail confirmed -->
-		<table name="#pAtkSpd"> 0.83 0.8 0.8 0.77 0.77 </table>
-		<table name="#time"> 5 10 10 15 15 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -1175,7 +1160,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill4038</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -1199,7 +1184,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">-17</value>
 					<value level="2">-20</value>
@@ -1253,7 +1238,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>
 					<value level="1">-34</value>
 					<value level="2">-57</value>
@@ -1313,7 +1298,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">122</value>
 					<value level="2">279</value>
@@ -1333,7 +1318,6 @@
 	</skill>
 	<skill id="4041" toLevel="2" name="Cruma Blaze">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 60 68 </table>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
@@ -1355,7 +1339,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">60</value>
 					<value level="2">68</value>
@@ -1380,7 +1364,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>60</power>
 			</effect>
 		</effects>
@@ -1405,7 +1389,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>30</power>
 			</effect>
 		</effects>
@@ -1426,7 +1410,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>427</power>
 			</effect>
 		</effects>
@@ -1438,7 +1422,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
 			<!-- TODO p_abnormal_rate_limit -->
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 				<DERANGEMENT>100</DERANGEMENT>
 				<SHOCK>100</SHOCK>
@@ -1454,6 +1438,8 @@
 				<PARALYZE>100</PARALYZE>
 				<CHANGEBODY>100</CHANGEBODY>
 				<KNOCKDOWN>100</KNOCKDOWN>
+				<ZONE>100</ZONE>
+				<PSYCHIC>100</PSYCHIC>
 			</effect>
 		</effects>
 	</skill>
@@ -1470,7 +1456,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>2500</hitTime>
 		<icon>icon.skill4046</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
@@ -1511,7 +1497,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4047" toLevel="13" name="Hold">
@@ -1530,7 +1516,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>2500</hitTime>
 		<icon>icon.skill4047</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
@@ -1586,12 +1572,11 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Root" />
+			<effect name="p_block_move" />
 		</effects>
 	</skill>
 	<skill id="4048" toLevel="3" name="Dash">
 		<!-- Freya retail confirmed -->
-		<table name="#runSpd"> 1.5 1.8 2 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
 		<abnormalType>SPEED_UP_SPECIAL</abnormalType>
@@ -1612,7 +1597,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">80</value>
@@ -1625,7 +1610,6 @@
 	<skill id="4049" toLevel="16" name="Cubic Strike">
 		<!-- Cubic Skill -->
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 436 645 936 1242 1520 1792 2086 2399 2459 2542 2626 2710 2794 2878 2961 3044 </table>
 		<effectPoint>
 			<value level="1">-379</value>
 			<value level="2">-438</value>
@@ -1669,7 +1653,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">436</value>
 					<value level="2">645</value>
@@ -1694,7 +1678,6 @@
 	<skill id="4050" toLevel="16" name="Cubic Drain">
 		<!-- Cubic Skill -->
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 543 760 1084 1377 1635 1955 2262 2386 2425 2524 2632 2722 2812 2898 2986 3062 </table>
 		<effectPoint>
 			<value level="1">-408</value>
 			<value level="2">-467</value>
@@ -1739,7 +1722,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpDrain">
+			<effect name="i_hp_drain">
 				<power>
 					<value level="1">543</value>
 					<value level="2">760</value>
@@ -1766,7 +1749,6 @@
 		<!-- Cubic Skill -->
 		<!-- Confirmed CT2.5 -->
 		<!-- Levels 17, 18 and 19 doesn't exist in client. -->
-		<table name="#amount"> 201 241 281 314 339 361 382 390 398 405 413 418 422 426 430 434 0 0 0 68 </table>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">408</value>
@@ -1821,7 +1803,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">201</value>
 					<value level="2">241</value>
@@ -1850,7 +1832,6 @@
 	<skill id="4052" toLevel="15" name="Cubic Poison">
 		<!-- Cubic Skill -->
 		<!-- Confirmed CT2.5 -->
-		<table name="#dot"> 41 50 58 58 58 63 63 63 63 66 66 66 66 66 66 </table>
 		<abnormalLvl>
 			<value level="1">5</value>
 			<value level="2">6</value>
@@ -1869,6 +1850,7 @@
 			<value level="15">8</value>
 		</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>70</activateRate>
@@ -1891,7 +1873,7 @@
 			<value level="15">-689</value>
 		</effectPoint>
 		<icon>icon.skill1168</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -1918,23 +1900,23 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">41</value>
-					<value level="2">50</value>
-					<value level="3">58</value>
-					<value level="4">58</value>
-					<value level="5">58</value>
-					<value level="6">63</value>
-					<value level="7">63</value>
-					<value level="8">63</value>
-					<value level="9">63</value>
-					<value level="10">66</value>
-					<value level="11">66</value>
-					<value level="12">66</value>
-					<value level="13">66</value>
-					<value level="14">66</value>
-					<value level="15">66</value>
+					<value level="1">-41</value>
+					<value level="2">-50</value>
+					<value level="3">-58</value>
+					<value level="4">-58</value>
+					<value level="5">-58</value>
+					<value level="6">-63</value>
+					<value level="7">-63</value>
+					<value level="8">-63</value>
+					<value level="9">-63</value>
+					<value level="10">-66</value>
+					<value level="11">-66</value>
+					<value level="12">-66</value>
+					<value level="13">-66</value>
+					<value level="14">-66</value>
+					<value level="15">-66</value>
 				</power>
 				<ticks>3</ticks>
 			</effect>
@@ -1967,7 +1949,7 @@
 			<value level="16">-689</value>
 		</effectPoint>
 		<icon>icon.skill1164</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
@@ -1995,7 +1977,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2028,7 +2010,7 @@
 			<value level="16">-689</value>
 		</effectPoint>
 		<icon>icon.skill0122</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
@@ -2056,7 +2038,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2089,7 +2071,7 @@
 			<value level="16">-689</value>
 		</effectPoint>
 		<icon>icon.skill1206</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
@@ -2117,7 +2099,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2135,7 +2117,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BUG_WEAKNESS>-15</BUG_WEAKNESS>
 			</effect>
 		</effects>
@@ -2146,7 +2128,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<ANIMAL_WEAKNESS>-15</ANIMAL_WEAKNESS>
 			</effect>
 		</effects>
@@ -2157,7 +2139,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PLANT_WEAKNESS>-15</PLANT_WEAKNESS>
 			</effect>
 		</effects>
@@ -2168,7 +2150,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BEAST_WEAKNESS>-15</BEAST_WEAKNESS>
 			</effect>
 		</effects>
@@ -2179,7 +2161,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DRAGON_WEAKNESS>-15</DRAGON_WEAKNESS>
 			</effect>
 		</effects>
@@ -2192,7 +2174,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>80</BOW>
 			</effect>
 		</effects>
@@ -2211,7 +2193,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>3600</hitTime>
 		<icon>icon.skill1170</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>50</magicLvl>
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
@@ -2220,10 +2202,10 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>916</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4064" toLevel="1" name="Paralysis">
@@ -2241,7 +2223,7 @@
 		<effectRange>1300</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill1170</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>50</magicLvl>
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
@@ -2251,12 +2233,11 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4065" toLevel="12" name="Heal">
 		<!-- Freya retail confirmed -->
-		<table name="#amount"> 83 151 245 362 494 628 743 789 826 867 895 913 </table>
 		<castRange>600</castRange>
 		<effectPoint>100</effectPoint>
 		<effectRange>1100</effectRange>
@@ -2311,7 +2292,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">83</value>
 					<value level="2">151</value>
@@ -2331,7 +2312,6 @@
 	</skill>
 	<skill id="4066" toLevel="12" name="Twister">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 18 26 38 52 68 85 102 110 116 122 126 129 </table>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
@@ -2374,7 +2354,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">18</value>
 					<value level="2">26</value>
@@ -2394,7 +2374,6 @@
 	</skill>
 	<skill id="4067" toLevel="12" name="Blow">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 137 314 656 1249 2164 3408 4878 5627 6335 6960 7461 7850 </table>
 		<castRange>40</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2435,7 +2414,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">137</value>
 					<value level="2">314</value>
@@ -2450,13 +2429,12 @@
 					<value level="11">7461</value>
 					<value level="12">7850</value>
 				</power>
-				<chance>20</chance>
+				<chanceBoost>200</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4068" toLevel="12" name="Mechanical Cannon">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 46 105 219 417 722 1136 1626 1876 2112 2320 2487 2617 </table>
 		<castRange>600</castRange>
 		<coolTime>800</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2497,7 +2475,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">46</value>
 					<value level="2">105</value>
@@ -2517,7 +2495,6 @@
 	</skill>
 	<skill id="4069" toLevel="12" name="Curve Beam">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 18 26 38 52 68 85 102 110 116 122 126 129 </table>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
@@ -2558,7 +2535,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">18</value>
 					<value level="2">26</value>
@@ -2586,7 +2563,7 @@
 		<basicProperty>MAGIC</basicProperty>
 		<effectPoint>-100</effectPoint>
 		<icon>icon.skill1206</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>1</magicLvl>
 		<operateType>A2</operateType>
@@ -2596,14 +2573,13 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4071" toLevel="5" name="Bow/Crossbow Resistance">
-		<table name="#traits"> 10 20 30 40 50 </table>
 		<icon>
 			<value level="1">icon.skill4071</value>
 			<value level="2">icon.skill4071</value>
@@ -2615,7 +2591,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -2635,7 +2611,6 @@
 	</skill>
 	<skill id="4072" toLevel="12" name="Stun">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 16 35 73 139 241 379 542 626 704 774 829 873 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">3</value>
@@ -2660,7 +2635,7 @@
 		<effectPoint>-100</effectPoint>
 		<hitTime>1000</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
 			<value level="1">10</value>
@@ -2699,7 +2674,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">16</value>
 					<value level="2">35</value>
@@ -2715,13 +2690,11 @@
 					<value level="12">873</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4073" toLevel="12" name="Stun">
 		<!-- Freya retail confirmed -->
-		<table name="#mpConsume"> 13 20 28 38 50 61 71 76 80 83 84 85 </table>
-		<table name="#power"> 16 35 73 139 241 379 542 626 704 774 829 873 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">3</value>
@@ -2747,7 +2720,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>1000</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
 			<value level="1">10</value>
@@ -2771,7 +2744,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">16</value>
 					<value level="2">35</value>
@@ -2787,12 +2760,11 @@
 					<value level="12">873</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4074" toLevel="2" name="Haste">
 		<!-- Freya retail confirmed -->
-		<table name="#pAtkSpd"> 1.15 1.33 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2822,7 +2794,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">15</value>
 					<value level="2">33</value>
@@ -2845,7 +2817,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>1000</hitTime>
 		<icon>icon.skill0092</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
 			<value level="1">10</value>
@@ -2883,12 +2855,11 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4076" toLevel="3" name="Decrease Speed">
 		<!-- Freya retail confirmed -->
-		<table name="#runSpd"> 0.9 0.8 0.7 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -2903,7 +2874,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1160</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
@@ -2924,7 +2895,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-20</value>
@@ -2936,7 +2907,6 @@
 	</skill>
 	<skill id="4077" toLevel="12" name="Aura Burn">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 14 21 30 42 55 68 82 88 93 98 101 104 </table>
 		<castRange>150</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>650</effectRange>
@@ -2992,7 +2962,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">14</value>
 					<value level="2">21</value>
@@ -3012,7 +2982,6 @@
 	</skill>
 	<skill id="4078" toLevel="12" name="Flame Strike">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 9 13 19 26 34 43 51 55 58 61 63 65 </table>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
 		<effectPoint>-100</effectPoint>
@@ -3057,7 +3026,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">9</value>
 					<value level="2">13</value>
@@ -3092,7 +3061,7 @@
 			<condition name="OpSiegeHammer" />
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>665060</power>
 			</effect>
 		</effects>
@@ -3115,7 +3084,7 @@
 			<condition name="OpSiegeHammer" />
 		</conditions>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>628</power>
 			</effect>
 		</effects>
@@ -3145,7 +3114,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
 		<icon>icon.skill4082</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicLvl>-1</magicLvl>
 		<operateType>A2</operateType>
@@ -3158,12 +3127,11 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<canKill>true</canKill>
-				<power>30</power>
+			<effect name="t_hp_fatal">
+				<power>-30</power>
 				<ticks>3</ticks>
 			</effect>
-			<effect name="Root" />
+			<effect name="p_block_move" />
 		</effects>
 	</skill>
 	<skill id="4083" toLevel="1" name="Die! You fool!">
@@ -3182,20 +3150,19 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>90000</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4084" toLevel="11" name="Physical Attack Resistance">
 		<!-- Freya retail confirmed -->
-		<table name="#pDef"> 1.05 1.11 1.17 1.25 1.33 1.43 1.67 2.0 3.33 10 1001 </table>
 		<icon>icon.skill4084</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">11</value>
@@ -3220,7 +3187,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3233,7 +3200,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3241,7 +3208,6 @@
 	</skill>
 	<skill id="4087" toLevel="12" name="Blaze">
 		<!-- Freya retail confirmed -->
-		<table name="#power"> 18 26 38 52 68 85 102 110 116 122 126 129 </table>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1100</effectRange>
@@ -3284,7 +3250,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">18</value>
 					<value level="2">26</value>
@@ -3304,7 +3270,6 @@
 	</skill>
 	<skill id="4088" toLevel="12" name="Bleed">
 		<!-- Freya retail confirmed -->
-		<table name="#damage"> 18 25 34 44 54 62 67 67 70 70 71 71 </table>
 		<abnormalLvl>
 			<value level="1">2</value>
 			<value level="2">3</value>
@@ -3320,6 +3285,7 @@
 			<value level="12">10</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
@@ -3330,7 +3296,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>1000</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
@@ -3369,20 +3335,20 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">18</value>
-					<value level="2">25</value>
-					<value level="3">34</value>
-					<value level="4">44</value>
-					<value level="5">54</value>
-					<value level="6">62</value>
-					<value level="7">67</value>
-					<value level="8">67</value>
-					<value level="9">70</value>
-					<value level="10">70</value>
-					<value level="11">71</value>
-					<value level="12">71</value>
+					<value level="1">-18</value>
+					<value level="2">-25</value>
+					<value level="3">-34</value>
+					<value level="4">-44</value>
+					<value level="5">-54</value>
+					<value level="6">-62</value>
+					<value level="7">-67</value>
+					<value level="8">-67</value>
+					<value level="9">-70</value>
+					<value level="10">-70</value>
+					<value level="11">-71</value>
+					<value level="12">-71</value>
 				</power>
 				<ticks>3</ticks>
 			</effect>
@@ -3407,11 +3373,11 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3436,7 +3402,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3444,12 +3410,6 @@
 	</skill>
 	<skill id="4091" toLevel="3" name="Spirit Ogre">
 		<!-- Confirmed CT2.5 -->
-		<table name="#accCombat"> 3 7 7 </table>
-		<table name="#maxHpHeal"> 14 21 21 </table>
-		<table name="#pAtk"> 1.05 1.15 1.15 </table>
-		<table name="#pDef"> 1.1 1.3 1.3 </table>
-		<table name="#rEvas"> 10 10 5 </table>
-		<table name="#runSpd"> 0.85 0.85 0.9 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>POSSESSION</abnormalType>
@@ -3476,9 +3436,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Grow">
-			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">14</value>
 					<value level="2">21</value>
@@ -3487,7 +3445,7 @@
 				<mode>PER</mode>
 				<heal>true</heal>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">15</value>
@@ -3495,7 +3453,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">-15</value>
 					<value level="2">-15</value>
@@ -3503,7 +3461,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">30</value>
@@ -3511,7 +3469,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-10</value>
@@ -3519,7 +3477,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">7</value>
@@ -3548,15 +3506,15 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3569,7 +3527,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3630,7 +3588,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelAll" />
+			<effect name="i_dispel_all" />
 		</effects>
 	</skill>
 	<skill id="4095" toLevel="1" name="Damage Shield">
@@ -3640,15 +3598,13 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>20</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4096" toLevel="3" name="Hawk Eye">
 		<!-- Freya retail confirmed -->
-		<table name="#accCombat"> 6 8 10 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -3678,11 +3634,11 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">8</value>
@@ -3694,7 +3650,6 @@
 	</skill>
 	<skill id="4097" toLevel="12" name="Chant of Life">
 		<!-- Freya retail confirmed -->
-		<table name="#hot"> 7 12 18 27 37 46 55 23 32 42 51 58 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -3754,7 +3709,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">7</value>
 					<value level="2">12</value>
@@ -3786,7 +3741,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1064</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>
@@ -3826,19 +3781,11 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute" />
+			<effect name="p_block_spell" />
 		</effects>
 	</skill>
 	<skill id="4099" toLevel="2" name="Berserker Spirit">
 		<!-- Freya retail confirmed -->
-		<table name="#mAtk"> 1.1 1.16 </table>
-		<table name="#mAtkSpd"> 1.05 1.08 </table>
-		<table name="#mDef"> 0.9 0.84 </table>
-		<table name="#pAtk"> 1.05 1.08 </table>
-		<table name="#pAtkSpd"> 1.05 1.08 </table>
-		<table name="#pDef"> 0.95 0.92 </table>
-		<table name="#rEvas"> 5 8 </table>
-		<table name="#runSpd"> 5 8 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -3868,56 +3815,56 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">8</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">16</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">8</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-16</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">-5</value>
 					<value level="2">-8</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">-5</value>
 					<value level="2">-8</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">8</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">8</value>

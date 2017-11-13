@@ -19,10 +19,11 @@
 package org.l2junity.gameserver.model;
 
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
@@ -43,7 +44,7 @@ public class MpRewardTask
 		_creature = creature;
 		_count = new AtomicInteger(template.getMpRewardTicks());
 		_value = calculateBaseValue(npc, creature);
-		_task = ThreadPoolManager.getInstance().scheduleEffectAtFixedRate(this::run, Config.EFFECT_TICK_RATIO, Config.EFFECT_TICK_RATIO);
+		_task = ThreadPool.scheduleAtFixedRate(this::run, PlayerConfig.EFFECT_TICK_RATIO, PlayerConfig.EFFECT_TICK_RATIO, TimeUnit.MILLISECONDS);
 	}
 	
 	/**

@@ -32,11 +32,14 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.Server;
-import org.l2junity.commons.util.CommonUtil;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.AppInit;
+import org.l2junity.commons.util.AppInit.ApplicationMode;
+import org.l2junity.commons.util.HexUtil;
 import org.l2junity.loginserver.GameServerTable;
+import org.l2junity.loginserver.LoginDatabaseConfig;
+import org.l2junity.loginserver.LoginThreadPools;
+import org.l2junity.loginserver.config.LoginConfigMarker;
 
 /**
  * The Class BaseGameServerRegister.
@@ -52,6 +55,8 @@ public abstract class BaseGameServerRegister
 	 */
 	public static void main(String[] args)
 	{
+		AppInit.defaultInit(ApplicationMode.LOGIN, LoginConfigMarker.class.getPackage().getName(), LoginThreadPools.class, LoginDatabaseConfig.class);
+		
 		boolean interactive = true;
 		boolean force = false;
 		boolean fallback = false;
@@ -186,9 +191,6 @@ public abstract class BaseGameServerRegister
 	 */
 	public void load()
 	{
-		Server.serverMode = Server.MODE_LOGINSERVER;
-		
-		Config.load();
 		GameServerTable.getInstance();
 		
 		_loaded = true;
@@ -249,7 +251,7 @@ public abstract class BaseGameServerRegister
 	 */
 	public static void registerGameServer(int id, String outDir) throws IOException
 	{
-		byte[] hexId = CommonUtil.generateHex(16);
+		byte[] hexId = HexUtil.generateHex(16);
 		GameServerTable.getInstance().registerServerOnDB(hexId, id, "");
 		
 		Properties hexSetting = new Properties();
@@ -337,8 +339,8 @@ public abstract class BaseGameServerRegister
 	{
 		private final int _id;
 		private final String _outDir;
-		private boolean _force;
-		private boolean _fallback;
+		private final boolean _force;
+		private final boolean _fallback;
 		
 		/**
 		 * Instantiates a new register task.
@@ -351,18 +353,6 @@ public abstract class BaseGameServerRegister
 		{
 			_id = id;
 			_outDir = outDir;
-			_force = force;
-			_fallback = fallback;
-		}
-		
-		/**
-		 * Sets the actions.
-		 * @param force the force.
-		 * @param fallback the fallback.
-		 */
-		@SuppressWarnings("unused")
-		public void setActions(boolean force, boolean fallback)
-		{
 			_force = force;
 			_fallback = fallback;
 		}

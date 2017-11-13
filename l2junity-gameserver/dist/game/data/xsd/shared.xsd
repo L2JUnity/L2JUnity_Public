@@ -68,8 +68,37 @@
 		<xs:attribute type="xs:positiveInteger" name="level" />
 		<xs:attribute type="xs:string" name="name" />
 		<xs:attribute type="xs:positiveInteger" name="emmiterId" />
+		<xs:attribute type="xs:boolean" name="isReversed" />
 		<xs:attribute type="xs:string" name="group" />
 		<xs:attribute type="xs:positiveInteger" name="childId" />
+	</xs:complexType>
+
+	<!-- Fences related -->
+	<xs:complexType name="fence">
+		<xs:attribute type="xs:string" name="name" />
+		<xs:attribute type="xs:integer" name="x" use="required" />
+		<xs:attribute type="xs:integer" name="y" use="required" />
+		<xs:attribute type="xs:integer" name="z" use="required" />
+		<xs:attribute type="xs:positiveInteger" name="width" use="required" />
+		<xs:attribute type="xs:positiveInteger" name="length" use="required" />
+		<xs:attribute name="height" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:positiveInteger">
+					<xs:minInclusive value="1" />
+					<xs:maxInclusive value="3" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="state" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="HIDDEN" />
+					<xs:enumeration value="OPENED" />
+					<xs:enumeration value="CLOSED" />
+					<xs:enumeration value="CLOSED_HIDDEN" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:complexType>
 
 	<!-- Spawns related -->
@@ -183,9 +212,11 @@
 			<xs:element name="group" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:sequence>
+						<xs:element name="parameters" minOccurs="0" maxOccurs="1" type="parameters" />
 						<xs:element name="territories" minOccurs="0" maxOccurs="1" type="territories" />
 						<xs:element name="npc" maxOccurs="unbounded" minOccurs="0" type="npc" />
 					</xs:sequence>
+					<xs:attribute type="xs:string" name="ai" />
 					<xs:attribute type="xs:string" name="name" />
 					<xs:attribute type="xs:string" name="spawnByDefault" />
 				</xs:complexType>

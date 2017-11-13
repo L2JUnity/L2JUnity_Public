@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  */
 public class GameGuardCheckTask implements Runnable
 {
-	private static final Logger _log = LoggerFactory.getLogger(GameGuardCheckTask.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(GameGuardCheckTask.class);
 	
 	private final PlayerInstance _player;
 	
@@ -49,7 +49,7 @@ public class GameGuardCheckTask implements Runnable
 			if ((client != null) && !client.isAuthedGG() && _player.isOnline())
 			{
 				AdminData.getInstance().broadcastMessageToGMs("Client " + client + " failed to reply GameGuard query and is being kicked!");
-				_log.info("Client " + client + " failed to reply GameGuard query and is being kicked!");
+				LOGGER.info("Client " + client + " failed to reply GameGuard query and is being kicked!");
 				
 				client.close(LeaveWorld.STATIC_PACKET);
 			}

@@ -37,9 +37,9 @@ public class ExMoveToLocationInShuttle implements IClientOutgoingPacket
 	{
 		_charObjId = player.getObjectId();
 		_airShipId = player.getShuttle().getObjectId();
-		_targetX = player.getInVehiclePosition().getX();
-		_targetY = player.getInVehiclePosition().getY();
-		_targetZ = player.getInVehiclePosition().getZ();
+		_targetX = (int) player.getInVehiclePosition().getX();
+		_targetY = (int) player.getInVehiclePosition().getY();
+		_targetZ = (int) player.getInVehiclePosition().getZ();
 		_fromX = fromX;
 		_fromY = fromY;
 		_fromZ = fromZ;

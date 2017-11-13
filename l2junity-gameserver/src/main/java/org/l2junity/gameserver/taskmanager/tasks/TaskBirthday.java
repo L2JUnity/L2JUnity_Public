@@ -25,8 +25,8 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
 import org.l2junity.gameserver.enums.MailType;
 import org.l2junity.gameserver.instancemanager.MailManager;
@@ -95,7 +95,7 @@ public class TaskBirthday extends Task
 						continue;
 					}
 					
-					String text = Config.ALT_BIRTHDAY_MAIL_TEXT;
+					String text = GeneralConfig.ALT_BIRTHDAY_MAIL_TEXT;
 					
 					if (text.contains("$c1"))
 					{
@@ -106,10 +106,10 @@ public class TaskBirthday extends Task
 						text = text.replace("$s1", String.valueOf(age));
 					}
 					
-					Message msg = new Message(playerId, Config.ALT_BIRTHDAY_MAIL_SUBJECT, text, MailType.BIRTHDAY);
+					Message msg = new Message(playerId, GeneralConfig.ALT_BIRTHDAY_MAIL_SUBJECT, text, MailType.BIRTHDAY);
 					
 					Mail attachments = msg.createAttachments();
-					attachments.addItem("Birthday", Config.ALT_BIRTHDAY_GIFT, 1, null, null);
+					attachments.addItem("Birthday", GeneralConfig.ALT_BIRTHDAY_GIFT, 1, null, null);
 					
 					MailManager.getInstance().sendMessage(msg);
 					_count++;

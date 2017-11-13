@@ -18,7 +18,6 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.enums.CharacterDeleteFailType;
 import org.l2junity.gameserver.model.CharSelectInfoPackage;
 import org.l2junity.gameserver.model.events.Containers;
@@ -49,38 +48,33 @@ public final class CharacterDelete implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
+		final CharacterDeleteFailType failType;
 		if (!client.getFloodProtectors().getCharacterSelect().tryPerformAction("CharacterDelete"))
 		{
-			client.sendPacket(new CharDeleteFail(CharacterDeleteFailType.UNKNOWN));
-			return;
+			failType = CharacterDeleteFailType.UNKNOWN;
+		}
+		else
+		{
+			failType = client.markToDeleteChar(_charSlot);
 		}
 		
-		if (Config.DEBUG)
+		switch (failType)
 		{
-			_log.debug("deleting slot:" + _charSlot);
-		}
-		
-		try
-		{
-			final CharacterDeleteFailType failType = client.markToDeleteChar(_charSlot);
-			switch (failType)
+			case NONE:// Success!
 			{
-				case NONE:// Success!
-					client.sendPacket(new CharDeleteSuccess());
-					final CharSelectInfoPackage charInfo = client.getCharSelection(_charSlot);
-					EventDispatcher.getInstance().notifyEvent(new OnPlayerDelete(charInfo.getObjectId(), charInfo.getName(), client), Containers.Players());
-					break;
-				default:
-					client.sendPacket(new CharDeleteFail(failType));
-					break;
+				client.sendPacket(new CharDeleteSuccess());
+				final CharSelectInfoPackage charInfo = client.getCharSelection(_charSlot);
+				EventDispatcher.getInstance().notifyEvent(new OnPlayerDelete(charInfo.getObjectId(), charInfo.getName(), client), Containers.Players());
+				break;
+			}
+			default:
+			{
+				client.sendPacket(new CharDeleteFail(failType));
+				break;
 			}
 		}
-		catch (Exception e)
-		{
-			_log.error("Error:", e);
-		}
 		
-		CharSelectionInfo cl = new CharSelectionInfo(client.getAccountName(), client.getSessionId().playOkID1, 0);
+		final CharSelectionInfo cl = new CharSelectionInfo(client.getAccountName(), client.getSessionId().playOkID1, 0);
 		client.sendPacket(cl);
 		client.setCharSelection(cl.getCharInfo());
 	}

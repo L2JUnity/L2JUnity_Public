@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.util.Util;
@@ -52,7 +52,7 @@ public class RequestRecipeShopMessageSet implements IClientIncomingPacket
 		
 		if ((_name != null) && (_name.length() > MAX_MSG_LENGTH))
 		{
-			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to overflow recipe shop message", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to overflow recipe shop message", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		

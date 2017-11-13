@@ -19,8 +19,6 @@
 package org.l2junity.gameserver.model.actor.instance;
 
 import org.l2junity.gameserver.data.xml.impl.BuyListData;
-import org.l2junity.gameserver.datatables.MerchantPriceConfigTable;
-import org.l2junity.gameserver.datatables.MerchantPriceConfigTable.MerchantPriceConfig;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.enums.TaxType;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -29,6 +27,8 @@ import org.l2junity.gameserver.model.buylist.ProductList;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.BuyList;
 import org.l2junity.gameserver.network.client.send.ExBuySellList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class ...
@@ -36,8 +36,8 @@ import org.l2junity.gameserver.network.client.send.ExBuySellList;
  */
 public class L2MerchantInstance extends L2NpcInstance
 {
-	private MerchantPriceConfig _mpc;
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2MerchantInstance.class);
+
 	public L2MerchantInstance(L2NpcTemplate template)
 	{
 		super(template);
@@ -47,26 +47,13 @@ public class L2MerchantInstance extends L2NpcInstance
 	@Override
 	public boolean isAutoAttackable(Creature attacker)
 	{
-		if (attacker.isMonster())
-		{
-			return true;
-		}
-		
-		return super.isAutoAttackable(attacker);
-	}
-	
-	@Override
-	public void onSpawn()
-	{
-		super.onSpawn();
-		_mpc = MerchantPriceConfigTable.getInstance().getMerchantPriceConfig(this);
+		return attacker.isMonster() || super.isAutoAttackable(attacker);
 	}
 	
 	@Override
 	public String getHtmlPath(int npcId, int val)
 	{
-		String pom = "";
-		
+		String pom;
 		if (val == 0)
 		{
 			pom = "" + npcId;
@@ -75,16 +62,7 @@ public class L2MerchantInstance extends L2NpcInstance
 		{
 			pom = npcId + "-" + val;
 		}
-		
 		return "data/html/merchant/" + pom + ".htm";
-	}
-	
-	/**
-	 * @return Returns the mpc.
-	 */
-	public MerchantPriceConfig getMpc()
-	{
-		return _mpc;
 	}
 	
 	public final void showBuyWindow(PlayerInstance player, int val)
@@ -92,30 +70,26 @@ public class L2MerchantInstance extends L2NpcInstance
 		showBuyWindow(player, val, true);
 	}
 	
-	public final void showBuyWindow(PlayerInstance player, int val, boolean applyTax)
+	public final void showBuyWindow(PlayerInstance player, int val, boolean applyCastleTax)
 	{
 		final ProductList buyList = BuyListData.getInstance().getBuyList(val);
 		if (buyList == null)
 		{
-			_log.warn("BuyList not found! BuyListId:" + val);
+			LOGGER.warn("BuyList not found! BuyListId:" + val);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (!buyList.isNpcAllowed(getId()))
 		{
-			_log.warn("Npc not allowed in BuyList! BuyListId:" + val + " NpcId:" + getId());
+			LOGGER.warn("Npc not allowed in BuyList! BuyListId:" + val + " NpcId:" + getId());
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
-		final double buyTaxRate = (applyTax) ? getMpc().getTotalTaxRate(TaxType.BUY) : 0;
-		final double sellTaxRate = (applyTax) ? getMpc().getTotalTaxRate(TaxType.SELL) : 0;
-		
 		player.setInventoryBlockingStatus(true);
 		
-		player.sendPacket(new BuyList(buyList, player.getAdena(), buyTaxRate));
-		player.sendPacket(new ExBuySellList(player, false, sellTaxRate));
-		player.sendPacket(ActionFailed.STATIC_PACKET);
+		player.sendPacket(new BuyList(buyList, player, (applyCastleTax) ? getCastleTaxRate(TaxType.BUY) : 0));
+		player.sendPacket(new ExBuySellList(player, false, (applyCastleTax) ? getCastleTaxRate(TaxType.SELL) : 0));
 	}
 }

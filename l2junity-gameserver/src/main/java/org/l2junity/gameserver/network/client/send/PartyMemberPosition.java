@@ -62,9 +62,9 @@ public class PartyMemberPosition implements IClientOutgoingPacket
 		{
 			Location loc = entry.getValue();
 			packet.writeD(entry.getKey());
-			packet.writeD(loc.getX());
-			packet.writeD(loc.getY());
-			packet.writeD(loc.getZ());
+			packet.writeD((int) loc.getX());
+			packet.writeD((int) loc.getY());
+			packet.writeD((int) loc.getZ());
 		}
 		return true;
 	}

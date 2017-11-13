@@ -34,9 +34,9 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.commons.util.CommonUtil;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.ArmorSetsData;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.ItemLocation;
@@ -44,6 +44,7 @@ import org.l2junity.gameserver.enums.ItemSkillType;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.ArmorSet;
 import org.l2junity.gameserver.model.PcCondOverride;
+import org.l2junity.gameserver.model.VariationInstance;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.holders.ArmorsetSkillHolder;
@@ -79,8 +80,8 @@ public abstract class Inventory extends ItemContainer
 	public static final int AIR_STONE_ID = 39461;
 	public static final int TEMPEST_STONE_ID = 39592;
 	public static final int ELCYUM_CRYSTAL_ID = 36514;
-	
-	public static final long MAX_ADENA = Config.MAX_ADENA;
+	public static final int FORTUNE_READING_TICKET = 23767;
+	public static final int LUXURY_FORTUNE_READING_TICKET = 23768;
 	
 	public static final int PAPERDOLL_UNDER = 0;
 	public static final int PAPERDOLL_HEAD = 1;
@@ -263,13 +264,31 @@ public abstract class Inventory extends ItemContainer
 		@Override
 		public void notifyUnequiped(int slot, ItemInstance item, Inventory inventory)
 		{
-			inventory.getOwner().getStat().recalculateStats(true);
+			if (inventory.getOwner().isPlayer())
+			{
+				// TODO: Fix the issue that is causing stat changes in finallizers (such as weapon attribute attack) not being counted in recalculateStats.
+				inventory.getOwner().getStat().recalculateStats(false);
+				inventory.getOwner().getActingPlayer().broadcastUserInfo();
+			}
+			else
+			{
+				inventory.getOwner().getStat().recalculateStats(true);
+			}
 		}
 		
 		@Override
 		public void notifyEquiped(int slot, ItemInstance item, Inventory inventory)
 		{
-			inventory.getOwner().getStat().recalculateStats(true);
+			if (inventory.getOwner().isPlayer())
+			{
+				// TODO: Fix the issue that is causing stat changes in finallizers (such as weapon attribute attack) not being counted in recalculateStats.
+				inventory.getOwner().getStat().recalculateStats(false);
+				inventory.getOwner().getActingPlayer().broadcastUserInfo();
+			}
+			else
+			{
+				inventory.getOwner().getStat().recalculateStats(true);
+			}
 		}
 	}
 	
@@ -300,9 +319,6 @@ public abstract class Inventory extends ItemContainer
 			{
 				item.getAugmentation().removeBonus(player);
 			}
-			
-			// Recalculate all stats
-			player.getStat().recalculateStats(true);
 			
 			it.forEachSkill(ItemSkillType.ON_ENCHANT, holder ->
 			{
@@ -346,7 +362,7 @@ public abstract class Inventory extends ItemContainer
 					
 					itm.getItem().forEachSkill(ItemSkillType.NORMAL, holder ->
 					{
-						if (player.getSkillLevel(holder.getSkillId()) != -1)
+						if (player.getSkillLevel(holder.getSkillId()) != 0)
 						{
 							return;
 						}
@@ -364,7 +380,6 @@ public abstract class Inventory extends ItemContainer
 									if (equipDelay > 0)
 									{
 										player.addTimeStamp(skill, equipDelay);
-										player.disableSkill(skill, equipDelay);
 									}
 									updateTimestamp.compareAndSet(false, true);
 								}
@@ -372,11 +387,6 @@ public abstract class Inventory extends ItemContainer
 							update.compareAndSet(false, true);
 						}
 					});
-				}
-				
-				if (item.isWeapon())
-				{
-					player.handleAutoShots();
 				}
 			}
 			
@@ -391,6 +401,10 @@ public abstract class Inventory extends ItemContainer
 			{
 				player.sendPacket(new SkillCoolTime(player));
 			}
+			if (item.isWeapon())
+			{
+				player.unchargeAllShots();
+			}
 		}
 		
 		@Override
@@ -402,6 +416,13 @@ public abstract class Inventory extends ItemContainer
 			}
 			
 			final PlayerInstance player = (PlayerInstance) inventory.getOwner();
+			
+			// Any items equipped that result in expertise penalty do not give any skills at all.
+			if (item.getItem().getCrystalType().isGreater(player.getExpertiseLevel()))
+			{
+				return;
+			}
+			
 			final AtomicBoolean update = new AtomicBoolean();
 			final AtomicBoolean updateTimestamp = new AtomicBoolean();
 			
@@ -410,9 +431,6 @@ public abstract class Inventory extends ItemContainer
 			{
 				item.getAugmentation().applyBonus(player);
 			}
-			
-			// Recalculate all stats
-			player.getStat().recalculateStats(true);
 			
 			item.getItem().forEachSkill(ItemSkillType.ON_ENCHANT, holder ->
 			{
@@ -445,7 +463,6 @@ public abstract class Inventory extends ItemContainer
 							if (equipDelay > 0)
 							{
 								player.addTimeStamp(skill, equipDelay);
-								player.disableSkill(skill, equipDelay);
 							}
 							updateTimestamp.compareAndSet(false, true);
 						}
@@ -468,11 +485,6 @@ public abstract class Inventory extends ItemContainer
 			if (updateTimestamp.get())
 			{
 				player.sendPacket(new SkillCoolTime(player));
-			}
-			
-			if (item.isWeapon())
-			{
-				player.handleAutoShots();
 			}
 		}
 	}
@@ -543,7 +555,6 @@ public abstract class Inventory extends ItemContainer
 								if (equipDelay > 0)
 								{
 									player.addTimeStamp(itemSkill, equipDelay);
-									player.disableSkill(itemSkill, equipDelay);
 								}
 							}
 							updateTimeStamp.compareAndSet(false, true);
@@ -780,6 +791,11 @@ public abstract class Inventory extends ItemContainer
 			return null;
 		}
 		
+		if (count < 0)
+		{
+			throw new IllegalArgumentException("Negative counts while dropping an item are not permitted! Process: " + process + " Item: " + item + " Count: " + count + " Actor: " + String.valueOf(actor) + " Reference: " + String.valueOf(reference));
+		}
+		
 		synchronized (item)
 		{
 			if (!_items.containsKey(item.getObjectId()))
@@ -964,10 +980,10 @@ public abstract class Inventory extends ItemContainer
 		return (item != null) ? item.getVisualId() : 0;
 	}
 	
-	public int getPaperdollAugmentationId(int slot)
+	public VariationInstance getPaperdollAugmentation(int slot)
 	{
 		final ItemInstance item = _paperdoll[slot];
-		return ((item != null) && (item.getAugmentation() != null)) ? item.getAugmentation().getId() : 0;
+		return (item != null) ? item.getAugmentation() : null;
 	}
 	
 	/**
@@ -987,7 +1003,7 @@ public abstract class Inventory extends ItemContainer
 	 */
 	public synchronized void addPaperdollListener(PaperdollListener listener)
 	{
-		assert!_paperdollListeners.contains(listener);
+		assert !_paperdollListeners.contains(listener);
 		_paperdollListeners.add(listener);
 	}
 	
@@ -1225,7 +1241,7 @@ public abstract class Inventory extends ItemContainer
 	 */
 	public ItemInstance unEquipItemInBodySlot(int slot)
 	{
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			LOGGER.info("Unequip body slot: {}", slot);
 		}
@@ -1557,16 +1573,14 @@ public abstract class Inventory extends ItemContainer
 	@Override
 	protected void refreshWeight()
 	{
-		long weight = 0;
-		
-		for (ItemInstance item : _items.values())
+		try
 		{
-			if ((item != null) && (item.getItem() != null))
-			{
-				weight += item.getItem().getWeight() * item.getCount();
-			}
+			_totalWeight = Math.toIntExact(_items.values().stream().filter(Objects::nonNull).mapToLong(ItemInstance::getTotalWeight).reduce(Math::addExact).orElse(0L));
 		}
-		_totalWeight = (int) Math.min(weight, Integer.MAX_VALUE);
+		catch (ArithmeticException ae)
+		{
+			_totalWeight = Integer.MAX_VALUE;
+		}
 	}
 	
 	/**
@@ -1653,7 +1667,7 @@ public abstract class Inventory extends ItemContainer
 						}
 					}
 					
-					World.getInstance().storeObject(item);
+					World.getInstance().addObject(item);
 					
 					// If stackable item is found in inventory just add to current quantity
 					if (item.isStackable() && (getItemByItemId(item.getId()) != null))

@@ -21,9 +21,9 @@ package org.l2junity.gameserver.model.actor.instance;
 import java.util.List;
 import java.util.Map;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.cache.HtmCache;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
+import org.l2junity.gameserver.enums.CategoryType;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.model.SkillLearn;
 import org.l2junity.gameserver.model.actor.Npc;
@@ -32,12 +32,15 @@ import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
 import org.l2junity.gameserver.model.base.AcquireSkillType;
 import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.network.client.send.ExAcquirableSkillListByClass;
-import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class L2NpcInstance extends Npc
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2NpcInstance.class);
+
 	public L2NpcInstance(L2NpcTemplate template)
 	{
 		super(template);
@@ -57,11 +60,6 @@ public class L2NpcInstance extends Npc
 		setStatus(new FolkStatus(this));
 	}
 	
-	public List<ClassId> getClassesToTeach()
-	{
-		return getTemplate().getTeachInfo();
-	}
-	
 	/**
 	 * Displays Skill Tree for a given player, npc and class Id.
 	 * @param player the active character.
@@ -70,9 +68,9 @@ public class L2NpcInstance extends Npc
 	 */
 	public static void showSkillList(PlayerInstance player, Npc npc, ClassId classId)
 	{
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.debug("SkillList activated on: " + npc.getObjectId());
+			LOGGER.debug("SkillList activated on: " + npc.getObjectId());
 		}
 		
 		final int npcId = npc.getTemplate().getId();
@@ -101,43 +99,8 @@ public class L2NpcInstance extends Npc
 			return;
 		}
 		
-		if (!npc.getTemplate().canTeach(classId))
-		{
-			String html = "";
-			
-			if (npc instanceof L2WarehouseInstance)
-			{
-				html = HtmCache.getInstance().getHtm(player.getHtmlPrefix(), "data/html/warehouse/" + npcId + "-noteach.htm");
-			}
-			
-			final NpcHtmlMessage noTeachMsg = new NpcHtmlMessage(npc.getObjectId());
-			if (html == null)
-			{
-				_log.warn("Npc " + npcId + " missing noTeach html!");
-				noTeachMsg.setHtml("<html><body>I cannot teach you any skills.<br>You must find your current class teachers.</body></html>");
-			}
-			else
-			{
-				noTeachMsg.setHtml(html);
-				noTeachMsg.replace("%objectId%", String.valueOf(npc.getObjectId()));
-			}
-			player.sendPacket(noTeachMsg);
-			return;
-		}
-		
-		if (((L2NpcInstance) npc).getClassesToTeach().isEmpty())
-		{
-			final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
-			final String sb = "<html><body>I cannot teach you. My class list is empty.<br>Ask admin to fix it. Need add my npcid and classes to skill_learn.sql.<br>NpcId:" + npcId + ", Your classId:" + player.getClassId().getId() + "</body></html>";
-			html.setHtml(sb);
-			player.sendPacket(html);
-			return;
-		}
-		
 		// Normal skills, No LearnedByFS, no AutoGet skills.
 		final List<SkillLearn> skills = SkillTreesData.getInstance().getAvailableSkills(player, classId, false, false);
-		player.setLearningClass(classId);
-		
 		if (skills.isEmpty())
 		{
 			final Map<Long, SkillLearn> skillTree = SkillTreesData.getInstance().getCompleteClassSkillTree(classId);
@@ -150,7 +113,7 @@ public class L2NpcInstance extends Npc
 			}
 			else
 			{
-				if (player.getClassId().level() == 1)
+				if (player.isInCategory(CategoryType.SECOND_CLASS_GROUP))
 				{
 					SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.THERE_ARE_NO_OTHER_SKILLS_TO_LEARN_PLEASE_COME_BACK_AFTER_S1ND_CLASS_CHANGE);
 					sm.addInt(2);

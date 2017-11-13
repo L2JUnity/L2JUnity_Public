@@ -49,9 +49,9 @@ public class ExStopMoveInShuttle implements IClientOutgoingPacket
 		
 		packet.writeD(_charObjId);
 		packet.writeD(_boatId);
-		packet.writeD(_pos.getX());
-		packet.writeD(_pos.getY());
-		packet.writeD(_pos.getZ());
+		packet.writeD((int) _pos.getX());
+		packet.writeD((int) _pos.getY());
+		packet.writeD((int) _pos.getZ());
 		packet.writeD(_heading);
 		return true;
 	}

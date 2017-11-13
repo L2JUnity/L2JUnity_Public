@@ -19,9 +19,11 @@
 package org.l2junity.gameserver.model.quest;
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.gameserver.data.sql.impl.CharacterQuests;
 import org.l2junity.gameserver.enums.QuestSound;
 import org.l2junity.gameserver.enums.QuestType;
 import org.l2junity.gameserver.instancemanager.QuestManager;
@@ -37,28 +39,26 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Quest state class.
- * @author Luis Arias
+ * @author Luis Arias, malyelfik
  */
 public final class QuestState
 {
-	protected static final Logger _log = LoggerFactory.getLogger(QuestState.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(QuestState.class);
+	
+	// Constants
+	private static final String COND_VAR = "cond";
+	private static final String RESTART_VAR = "restartTime";
+	private static final String MEMO_VAR = "memoState";
+	private static final String MEMO_EX_VAR = "memoStateEx";
 	
 	/** The name of the quest of this QuestState */
 	private final String _questName;
-	
 	/** The "owner" of this QuestState object */
 	private final PlayerInstance _player;
-	
 	/** The current state of the quest */
 	private byte _state;
-	
 	/** A map of key->value pairs containing the quest state variables and their values */
-	private Map<String, String> _vars;
-	
-	/**
-	 * boolean flag letting QuestStateManager know to exit quest when cleaning up
-	 */
-	private boolean _isExitQuestOnCleanUp = false;
+	private volatile Map<String, String> _vars;
 	
 	/**
 	 * Constructor of the QuestState. Creates the QuestState object and sets the player's progress of the quest to this QuestState.
@@ -76,6 +76,17 @@ public final class QuestState
 	}
 	
 	/**
+	 * Create QuestState object for player's quest progress and sets initial state to {@link State#CREATED}.
+	 * @param quest the {@link Quest} associated with this quest state
+	 * @param player owner of this object
+	 */
+	public QuestState(Quest quest, PlayerInstance player)
+	{
+		this(quest, player, State.CREATED);
+	}
+	
+	/**
+	 * Get name of underlying quest.
 	 * @return the name of the quest of this QuestState
 	 */
 	public String getQuestName()
@@ -84,6 +95,16 @@ public final class QuestState
 	}
 	
 	/**
+	 * Get ID of underlying quest.
+	 * @return id of quest
+	 */
+	public int getQuestId()
+	{
+		return getQuest().getId();
+	}
+	
+	/**
+	 * Get underlying quest object.
 	 * @return the {@link Quest} object of this QuestState
 	 */
 	public Quest getQuest()
@@ -92,6 +113,7 @@ public final class QuestState
 	}
 	
 	/**
+	 * Get player associated with this quest state.
 	 * @return the {@link PlayerInstance} object of the owner of this QuestState
 	 */
 	public PlayerInstance getPlayer()
@@ -100,8 +122,8 @@ public final class QuestState
 	}
 	
 	/**
-	 * @return the current State of this QuestState
-	 * @see org.l2junity.gameserver.model.quest.State
+	 * Get current quest {@link State}.
+	 * @return the current {@link State} of this {@link QuestState}
 	 */
 	public byte getState()
 	{
@@ -109,8 +131,8 @@ public final class QuestState
 	}
 	
 	/**
+	 * Check if current state is {@link State#CREATED}.
 	 * @return {@code true} if the State of this QuestState is CREATED, {@code false} otherwise
-	 * @see org.l2junity.gameserver.model.quest.State
 	 */
 	public boolean isCreated()
 	{
@@ -118,8 +140,8 @@ public final class QuestState
 	}
 	
 	/**
+	 * Check if current state is {@link State#STARTED}.
 	 * @return {@code true} if the State of this QuestState is STARTED, {@code false} otherwise
-	 * @see org.l2junity.gameserver.model.quest.State
 	 */
 	public boolean isStarted()
 	{
@@ -127,8 +149,8 @@ public final class QuestState
 	}
 	
 	/**
+	 * Check if current state is {@link State#COMPLETED}.
 	 * @return {@code true} if the State of this QuestState is COMPLETED, {@code false} otherwise
-	 * @see org.l2junity.gameserver.model.quest.State
 	 */
 	public boolean isCompleted()
 	{
@@ -136,280 +158,133 @@ public final class QuestState
 	}
 	
 	/**
-	 * @param state the new state of the quest to set
+	 * Change the state of this quest to the specified value.
+	 * @param state the new {@link State} of the quest to set
 	 * @return {@code true} if state was changed, {@code false} otherwise
-	 * @see #setState(byte state, boolean saveInDb)
-	 * @see org.l2junity.gameserver.model.quest.State
 	 */
 	public boolean setState(byte state)
 	{
-		return setState(state, true);
-	}
-	
-	/**
-	 * Change the state of this quest to the specified value.
-	 * @param state the new state of the quest to set
-	 * @param saveInDb if {@code true}, will save the state change in the database
-	 * @return {@code true} if state was changed, {@code false} otherwise
-	 * @see org.l2junity.gameserver.model.quest.State
-	 */
-	public boolean setState(byte state, boolean saveInDb)
-	{
+		// Check if state is same
 		if (_state == state)
 		{
 			return false;
 		}
-		final boolean newQuest = isCreated();
-		_state = state;
-		if (saveInDb)
-		{
-			if (newQuest)
-			{
-				Quest.createQuestInDb(this);
-			}
-			else
-			{
-				Quest.updateQuestInDb(this);
-			}
-		}
 		
+		// Update state in memory
+		_state = state;
+		
+		// Store changes to database
+		CharacterQuests.getInstance().updateStateVar(this, State.getStateName(state));
+		
+		// Send quest list update
 		_player.sendPacket(new QuestList(_player));
 		return true;
 	}
 	
-	/**
-	 * Add parameter used in quests.
-	 * @param var String pointing out the name of the variable for quest
-	 * @param val String pointing out the value of the variable for quest
-	 * @return String (equal to parameter "val")
-	 */
-	public String setInternal(String var, String val)
+	public Map<String, String> getVars()
 	{
+		return _vars != null ? Collections.unmodifiableMap(_vars) : Collections.emptyMap();
+	}
+	
+	/**
+	 * Store quest variable.
+	 * @param key name of stored variable
+	 * @param val value of stored variable
+	 * @param save if {@code true} variable is stored persistently, otherwise variable is stored temporarily
+	 * @return previous value for variable key if any exist otherwise {@code null}
+	 */
+	public String set(String key, String val, boolean save)
+	{
+		// Lazy initialize quest vars map
 		if (_vars == null)
 		{
-			_vars = new HashMap<>();
+			synchronized (this)
+			{
+				if (_vars == null)
+				{
+					_vars = new HashMap<>();
+				}
+			}
 		}
 		
+		// Process val param
 		if (val == null)
 		{
 			val = "";
 		}
 		
-		_vars.put(var, val);
-		return val;
-	}
-	
-	public String set(String var, int val)
-	{
-		return set(var, Integer.toString(val));
+		// Store changes to memory and database
+		final String prevVal = _vars.put(key, val);
+		if (save)
+		{
+			CharacterQuests.getInstance().updateQuestVar(this, key, val);
+		}
+		return prevVal;
 	}
 	
 	/**
-	 * Return value of parameter "val" after adding the couple (var,val) in class variable "vars".<br>
-	 * Actions:<br>
-	 * <ul>
-	 * <li>Initialize class variable "vars" if is null.</li>
-	 * <li>Initialize parameter "val" if is null</li>
-	 * <li>Add/Update couple (var,val) in class variable Map "vars"</li>
-	 * <li>If the key represented by "var" exists in Map "vars", the couple (var,val) is updated in the database.<br>
-	 * The key is known as existing if the preceding value of the key (given as result of function put()) is not null.<br>
-	 * If the key doesn't exist, the couple is added/created in the database</li>
-	 * <ul>
-	 * @param var String indicating the name of the variable for quest
-	 * @param val String indicating the value of the variable for quest
-	 * @return String (equal to parameter "val")
+	 * Store quest variable persistently.<br>
+	 * <b>For cond set use {@link #setCond(int)} instead.</b>
+	 * @param key name of stored variable
+	 * @param val value of stored variable
+	 * @return previous value for variable key if any exist otherwise {@code null}
 	 */
-	public String set(String var, String val)
+	public String set(String key, String val)
 	{
-		if (_vars == null)
-		{
-			_vars = new HashMap<>();
-		}
-		
-		if (val == null)
-		{
-			val = "";
-		}
-		
-		String old = _vars.put(var, val);
-		if (old != null)
-		{
-			Quest.updateQuestVarInDb(this, var, val);
-		}
-		else
-		{
-			Quest.createQuestVarInDb(this, var, val);
-		}
-		
-		if ("cond".equals(var))
-		{
-			try
-			{
-				int previousVal = 0;
-				try
-				{
-					previousVal = Integer.parseInt(old);
-				}
-				catch (Exception ex)
-				{
-					previousVal = 0;
-				}
-				setCond(Integer.parseInt(val), previousVal);
-				getQuest().sendNpcLogList(getPlayer());
-			}
-			catch (Exception e)
-			{
-				_log.warn(_player.getName() + ", " + getQuestName() + " cond [" + val + "] is not an integer.  Value stored, but no packet was sent: " + e.getMessage(), e);
-			}
-		}
-		
-		return val;
+		return set(key, val, true);
 	}
 	
 	/**
-	 * Internally handles the progression of the quest so that it is ready for sending appropriate packets to the client.<br>
-	 * <u><i>Actions :</i></u><br>
-	 * <ul>
-	 * <li>Check if the new progress number resets the quest to a previous (smaller) step.</li>
-	 * <li>If not, check if quest progress steps have been skipped.</li>
-	 * <li>If skipped, prepare the variable completedStateFlags appropriately to be ready for sending to clients.</li>
-	 * <li>If no steps were skipped, flags do not need to be prepared...</li>
-	 * <li>If the passed step resets the quest to a previous step, reset such that steps after the parameter are not considered, while skipped steps before the parameter, if any, maintain their info.</li>
-	 * </ul>
-	 * @param cond the current quest progress condition (0 - 31 including)
-	 * @param old the previous quest progress condition to check against
+	 * Store quest variable persistently.<br>
+	 * <b>For cond set use {@link #setCond(int)} instead.</b>
+	 * @param key name of stored variable
+	 * @param val value of stored variable
+	 * @return previous value for variable key if any exist otherwise {@code null}
 	 */
-	private void setCond(int cond, int old)
+	public String set(String key, int val)
 	{
-		if (cond == old)
-		{
-			return;
-		}
-		
-		int completedStateFlags = 0;
-		// cond 0 and 1 do not need completedStateFlags. Also, if cond > 1, the 1st step must
-		// always exist (i.e. it can never be skipped). So if cond is 2, we can still safely
-		// assume no steps have been skipped.
-		// Finally, more than 31 steps CANNOT be supported in any way with skipping.
-		if ((cond < 3) || (cond > 31))
-		{
-			unset("__compltdStateFlags");
-		}
-		else
-		{
-			completedStateFlags = getInt("__compltdStateFlags");
-		}
-		
-		// case 1: No steps have been skipped so far...
-		if (completedStateFlags == 0)
-		{
-			// check if this step also doesn't skip anything. If so, no further work is needed
-			// also, in this case, no work is needed if the state is being reset to a smaller value
-			// in those cases, skip forward to informing the client about the change...
-			
-			// ELSE, if we just now skipped for the first time...prepare the flags!!!
-			if (cond > (old + 1))
-			{
-				// set the most significant bit to 1 (indicates that there exist skipped states)
-				// also, ensure that the least significant bit is an 1 (the first step is never skipped, no matter
-				// what the cond says)
-				completedStateFlags = 0x80000001;
-				
-				// since no flag had been skipped until now, the least significant bits must all
-				// be set to 1, up until "old" number of bits.
-				completedStateFlags |= ((1 << old) - 1);
-				
-				// now, just set the bit corresponding to the passed cond to 1 (current step)
-				completedStateFlags |= (1 << (cond - 1));
-				set("__compltdStateFlags", String.valueOf(completedStateFlags));
-			}
-		}
-		// case 2: There were exist previously skipped steps
-		// if this is a push back to a previous step, clear all completion flags ahead
-		else if (cond < old)
-		{
-			// note, this also unsets the flag indicating that there exist skips
-			completedStateFlags &= ((1 << cond) - 1);
-			
-			// now, check if this resulted in no steps being skipped any more
-			if (completedStateFlags == ((1 << cond) - 1))
-			{
-				unset("__compltdStateFlags");
-			}
-			else
-			{
-				// set the most significant bit back to 1 again, to correctly indicate that this skips states.
-				// also, ensure that the least significant bit is an 1 (the first step is never skipped, no matter
-				// what the cond says)
-				completedStateFlags |= 0x80000001;
-				set("__compltdStateFlags", String.valueOf(completedStateFlags));
-			}
-		}
-		// If this moves forward, it changes nothing on previously skipped steps.
-		// Just mark this state and we are done.
-		else
-		{
-			completedStateFlags |= (1 << (cond - 1));
-			set("__compltdStateFlags", String.valueOf(completedStateFlags));
-		}
-		
-		// send a packet to the client to inform it of the quest progress (step change)
-		_player.sendPacket(new QuestList(_player));
-		
-		final Quest q = getQuest();
-		if (!q.isCustomQuest() && (cond > 0))
-		{
-			_player.sendPacket(new ExShowQuestMark(q.getId(), getCond()));
-		}
+		return set(key, Integer.toString(val));
 	}
 	
 	/**
-	 * Removes a quest variable from the list of existing quest variables.
-	 * @param var the name of the variable to remove
+	 * Delete quest variable.
+	 * @param key the name of the variable to remove
 	 * @return the previous value of the variable or {@code null} if none were found
 	 */
-	public String unset(String var)
+	public String unset(String key)
 	{
 		if (_vars == null)
 		{
 			return null;
 		}
 		
-		String old = _vars.remove(var);
+		final String old = _vars.remove(key);
 		if (old != null)
 		{
-			Quest.deleteQuestVarInDb(this, var);
+			CharacterQuests.getInstance().deleteQuestVar(this, key);
 		}
 		return old;
 	}
 	
 	/**
-	 * @param var the name of the variable to get
+	 * Get value for quest variable.
+	 * @param key the name of the variable to get
 	 * @return the value of the variable from the list of quest variables
 	 */
-	public String get(String var)
+	public String get(String key)
 	{
-		if (_vars == null)
-		{
-			return null;
-		}
-		
-		return _vars.get(var);
+		return (_vars == null) ? null : _vars.get(key);
 	}
 	
 	/**
-	 * @param var the name of the variable to get
+	 * Get integer value for quest variable.
+	 * @param key the name of the variable to get
 	 * @return the integer value of the variable or 0 if the variable does not exist or its value is not an integer
 	 */
-	public int getInt(String var)
+	public int getInt(String key)
 	{
-		if (_vars == null)
-		{
-			return 0;
-		}
-		
-		final String variable = _vars.get(var);
-		if ((variable == null) || variable.isEmpty())
+		final String value = get(key);
+		if ((value == null) || value.isEmpty())
 		{
 			return 0;
 		}
@@ -417,112 +292,163 @@ public final class QuestState
 		int varint = 0;
 		try
 		{
-			varint = Integer.parseInt(variable);
+			varint = Integer.parseInt(value);
 		}
 		catch (NumberFormatException nfe)
 		{
-			_log.info("Quest " + getQuestName() + ", method getInt(" + var + "), tried to parse a non-integer value (" + variable + "). Char Id: " + _player.getObjectId(), nfe);
+			LOGGER.info("Failed to parse property {} => {} as integer at quest {} for player {}.", key, value, _questName, _player);
+		}
+		return varint;
+	}
+	
+	/**
+	 * Check if a given variable is set for this quest.
+	 * @param key the name of variable to check
+	 * @return {@code true} if the variable is set, {@code false} otherwise
+	 */
+	public boolean isSet(String key)
+	{
+		return get(key) != null;
+	}
+	
+	/**
+	 * Sets the quest state progress ({@code cond}) to the specified step.
+	 * @param value the new value of the quest state progress
+	 * @return this {@link QuestState} object
+	 * @see #setCond(int, boolean)
+	 */
+	public QuestState setCond(int value)
+	{
+		return setCond(value, false);
+	}
+	
+	/**
+	 * Sets the quest state progress ({@code cond}) to the specified step.<br>
+	 * Also send {@link ExShowQuestMark} and {@link QuestList} packet upon successful change.
+	 * @param newCond the new value of the quest state progress
+	 * @param playSound if {@code true}, plays {@link QuestSound#ITEMSOUND_QUEST_MIDDLE}
+	 * @return this {@link QuestState} object
+	 */
+	public QuestState setCond(int newCond, boolean playSound)
+	{
+		// Skip cond change if quest is not started
+		if (!isStarted())
+		{
+			return this;
 		}
 		
-		return varint;
+		// Check if cond is between bounds
+		if ((newCond < 1) || (newCond > 31))
+		{
+			LOGGER.info("Player {} requested cond change to value ({}) which is out of bounds (1-31) within quest {}!", _player, newCond, _questName);
+			return this;
+		}
+		
+		// Skip cond change if prev and new cond are equal
+		final int prevCond = getCond();
+		if (newCond == prevCond)
+		{
+			return this;
+		}
+		
+		// Compute new cond mask
+		int condMask = getInt(COND_VAR);
+		if (newCond > prevCond)
+		{
+			condMask |= 1 << (newCond - 1);
+		}
+		else
+		{
+			condMask &= (1 << newCond) - 1;
+		}
+		
+		// Store mask change
+		set(COND_VAR, condMask);
+		
+		// Play quest sound
+		if (playSound)
+		{
+			AbstractScript.playSound(_player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+		}
+		
+		// Send packets to client if not custom
+		final Quest quest = getQuest();
+		if (!quest.isCustomQuest() && (newCond > 0))
+		{
+			// If you keep that order then client send {@link RequestAddExpandQuestAlarm} packet
+			_player.sendPacket(new ExShowQuestMark(getQuestId(), newCond));
+			_player.sendPacket(new QuestList(_player));
+		}
+		return this;
+	}
+	
+	/**
+	 * Get bit set representing completed conds.
+	 * @return if none cond is set {@code 1}, otherwise cond bit set <b>with MSB set to 1</b>
+	 */
+	public int getRawCond()
+	{
+		final int raw = getInt(COND_VAR);
+		return (raw == 0) ? 1 : (raw | 0x80000000); // Set MSB to 1
+	}
+	
+	/**
+	 * Get {@code cond} number representing current quest progress.<br>
+	 * <br>
+	 * <i><b>NOTE:</b> Computed in O(log2(n)) due searching for highest one bit set.</i>
+	 * @return the current quest progress ({@code cond})
+	 */
+	public int getCond()
+	{
+		// Check if quest is started
+		if (!isStarted())
+		{
+			return 0;
+		}
+		
+		// Fetch cond bit set and return cond
+		final int condSet = getInt(COND_VAR);
+		return (condSet == 0) ? 0 : (32 - Integer.numberOfLeadingZeros(condSet));
 	}
 	
 	/**
 	 * Checks if the quest state progress ({@code cond}) is at the specified step.
 	 * @param condition the condition to check against
 	 * @return {@code true} if the quest condition is equal to {@code condition}, {@code false} otherwise
-	 * @see #getInt(String var)
 	 */
 	public boolean isCond(int condition)
 	{
-		return (getInt("cond") == condition);
+		return getCond() == condition;
 	}
 	
 	/**
-	 * Sets the quest state progress ({@code cond}) to the specified step.
-	 * @param value the new value of the quest state progress
-	 * @return this {@link QuestState} object
-	 * @see #set(String var, String val)
-	 * @see #setCond(int, boolean)
+	 * Store memo state variable.
+	 * @param value value to be set
+	 * @return self {@link QuestState}
 	 */
-	public QuestState setCond(int value)
-	{
-		if (isStarted())
-		{
-			set("cond", Integer.toString(value));
-		}
-		return this;
-	}
-	
-	/**
-	 * @return the current quest progress ({@code cond})
-	 */
-	public int getCond()
-	{
-		if (isStarted())
-		{
-			return getInt("cond");
-		}
-		return 0;
-	}
-	
-	/**
-	 * Check if a given variable is set for this quest.
-	 * @param variable the variable to check
-	 * @return {@code true} if the variable is set, {@code false} otherwise
-	 * @see #get(String)
-	 * @see #getInt(String)
-	 * @see #getCond()
-	 */
-	public boolean isSet(String variable)
-	{
-		return (get(variable) != null);
-	}
-	
-	/**
-	 * Sets the quest state progress ({@code cond}) to the specified step.
-	 * @param value the new value of the quest state progress
-	 * @param playQuestMiddle if {@code true}, plays "ItemSound.quest_middle"
-	 * @return this {@link QuestState} object
-	 * @see #setCond(int value)
-	 * @see #set(String var, String val)
-	 */
-	public QuestState setCond(int value, boolean playQuestMiddle)
-	{
-		if (!isStarted())
-		{
-			return this;
-		}
-		set("cond", String.valueOf(value));
-		
-		if (playQuestMiddle)
-		{
-			AbstractScript.playSound(_player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-		}
-		return this;
-	}
-	
 	public QuestState setMemoState(int value)
 	{
-		set("memoState", String.valueOf(value));
+		set(MEMO_VAR, value);
 		return this;
 	}
 	
 	/**
-	 * @return the current Memo State
+	 * Gets memo state variable.
+	 * @return the current memo state value
 	 */
 	public int getMemoState()
 	{
-		if (isStarted())
-		{
-			return getInt("memoState");
-		}
-		return 0;
+		return isStarted() ? getInt(MEMO_VAR) : 0;
 	}
 	
+	/**
+	 * Check if memo state is equal to {@code memoState}.
+	 * @param memoState value to be set
+	 * @return {@code true} if values are same otherwise {@code false}
+	 */
 	public boolean isMemoState(int memoState)
 	{
-		return (getInt("memoState") == memoState);
+		return getMemoState() == memoState;
 	}
 	
 	/**
@@ -532,11 +458,7 @@ public final class QuestState
 	 */
 	public int getMemoStateEx(int slot)
 	{
-		if (isStarted())
-		{
-			return getInt("memoStateEx" + slot);
-		}
-		return 0;
+		return isStarted() ? getInt(MEMO_EX_VAR + slot) : 0;
 	}
 	
 	/**
@@ -547,7 +469,7 @@ public final class QuestState
 	 */
 	public QuestState setMemoStateEx(int slot, int value)
 	{
-		set("memoStateEx" + slot, String.valueOf(value));
+		set(MEMO_EX_VAR + slot, value);
 		return this;
 	}
 	
@@ -559,53 +481,21 @@ public final class QuestState
 	 */
 	public boolean isMemoStateEx(int slot, int memoStateEx)
 	{
-		return (getMemoStateEx(slot) == memoStateEx);
-	}
-	
-	public void addRadar(int x, int y, int z)
-	{
-		_player.getRadar().addMarker(x, y, z);
-	}
-	
-	public void removeRadar(int x, int y, int z)
-	{
-		_player.getRadar().removeMarker(x, y, z);
-	}
-	
-	public void clearRadar()
-	{
-		_player.getRadar().removeAllMarkers();
+		return getMemoStateEx(slot) == memoStateEx;
 	}
 	
 	/**
-	 * @return {@code true} if quest is to be exited on clean up by QuestStateManager, {@code false} otherwise
-	 */
-	public final boolean isExitQuestOnCleanUp()
-	{
-		return _isExitQuestOnCleanUp;
-	}
-	
-	/**
-	 * @param isExitQuestOnCleanUp {@code true} if quest is to be exited on clean up by QuestStateManager, {@code false} otherwise
-	 */
-	public void setIsExitQuestOnCleanUp(boolean isExitQuestOnCleanUp)
-	{
-		_isExitQuestOnCleanUp = isExitQuestOnCleanUp;
-	}
-	
-	/**
-	 * Set condition to 1, state to STARTED and play the "ItemSound.quest_accept".<br>
-	 * Works only if state is CREATED and the quest is not a custom quest.
-	 * @return the newly created {@code QuestState} object
+	 * Set condition to {@code 1}, state to {@link State#STARTED} and play the {@link QuestSound#ITEMSOUND_QUEST_ACCEPT}.<br>
+	 * Works only if state is {@link State#CREATED} and the quest is not a custom.
+	 * @return the newly created {@link QuestState} object
 	 */
 	public QuestState startQuest()
 	{
 		if (isCreated() && !getQuest().isCustomQuest())
 		{
-			set("cond", "1");
 			setState(State.STARTED);
-			AbstractScript.playSound(getPlayer(), QuestSound.ITEMSOUND_QUEST_ACCEPT);
-			getQuest().sendNpcLogList(getPlayer());
+			setCond(1);
+			AbstractScript.playSound(_player, QuestSound.ITEMSOUND_QUEST_ACCEPT);
 		}
 		return this;
 	}
@@ -614,81 +504,29 @@ public final class QuestState
 	 * Finishes the quest and removes all quest items associated with this quest from the player's inventory.<br>
 	 * If {@code type} is {@code QuestType.ONE_TIME}, also removes all other quest data associated with this quest.
 	 * @param type the {@link QuestType} of the quest
+	 * @param playExitSound if {@code true}, plays "ItemSound.quest_finish"
 	 * @return this {@link QuestState} object
 	 * @see #exitQuest(QuestType type, boolean playExitQuest)
-	 * @see #exitQuest(boolean repeatable)
 	 * @see #exitQuest(boolean repeatable, boolean playExitQuest)
 	 */
-	public QuestState exitQuest(QuestType type)
+	public QuestState exitQuest(QuestType type, boolean playExitSound)
 	{
-		switch (type)
-		{
-			case DAILY:
-			{
-				exitQuest(false);
-				setRestartTime();
-				break;
-			}
-				// case ONE_TIME:
-				// case REPEATABLE:
-			default:
-			{
-				exitQuest(type == QuestType.REPEATABLE);
-				break;
-			}
-		}
-		
-		// Notify to scripts
-		EventDispatcher.getInstance().notifyEventAsync(new OnPlayerQuestComplete(_player, getQuest().getId(), type), _player);
-		
-		return this;
-	}
-	
-	/**
-	 * Finishes the quest and removes all quest items associated with this quest from the player's inventory.<br>
-	 * If {@code type} is {@code QuestType.ONE_TIME}, also removes all other quest data associated with this quest.
-	 * @param type the {@link QuestType} of the quest
-	 * @param playExitQuest if {@code true}, plays "ItemSound.quest_finish"
-	 * @return this {@link QuestState} object
-	 * @see #exitQuest(QuestType type)
-	 * @see #exitQuest(boolean repeatable)
-	 * @see #exitQuest(boolean repeatable, boolean playExitQuest)
-	 */
-	public QuestState exitQuest(QuestType type, boolean playExitQuest)
-	{
-		exitQuest(type);
-		if (playExitQuest)
-		{
-			AbstractScript.playSound(getPlayer(), QuestSound.ITEMSOUND_QUEST_FINISH);
-		}
-		return this;
-	}
-	
-	/**
-	 * Finishes the quest and removes all quest items associated with this quest from the player's inventory.<br>
-	 * If {@code repeatable} is set to {@code false}, also removes all other quest data associated with this quest.
-	 * @param repeatable if {@code true}, deletes all data and variables of this quest, otherwise keeps them
-	 * @return this {@link QuestState} object
-	 * @see #exitQuest(QuestType type)
-	 * @see #exitQuest(QuestType type, boolean playExitQuest)
-	 * @see #exitQuest(boolean repeatable, boolean playExitQuest)
-	 */
-	private QuestState exitQuest(boolean repeatable)
-	{
-		_player.removeNotifyQuestOfDeath(this);
-		
+		// Check if started
 		if (!isStarted())
 		{
 			return this;
 		}
 		
 		// Clean registered quest items
-		getQuest().removeRegisteredQuestItems(_player);
+		final Quest quest = getQuest();
+		quest.removeRegisteredQuestItems(_player);
 		
-		Quest.deleteQuestInDb(this, repeatable);
+		// Delete quest state
+		final boolean repeatable = (type == QuestType.REPEATABLE);
+		CharacterQuests.getInstance().deletePlayerQuest(this, repeatable);
 		if (repeatable)
 		{
-			_player.delQuestState(getQuestName());
+			_player.delQuestState(_questName);
 			_player.sendPacket(new QuestList(_player));
 		}
 		else
@@ -696,7 +534,43 @@ public final class QuestState
 			setState(State.COMPLETED);
 		}
 		_vars = null;
+		
+		// If quest is daily then set reenter time
+		if (type == QuestType.DAILY)
+		{
+			final Calendar reDo = Calendar.getInstance();
+			if (reDo.get(Calendar.HOUR_OF_DAY) >= quest.getResetHour())
+			{
+				reDo.add(Calendar.DATE, 1);
+			}
+			reDo.set(Calendar.HOUR_OF_DAY, quest.getResetHour());
+			reDo.set(Calendar.MINUTE, quest.getResetMinutes());
+			set(RESTART_VAR, String.valueOf(reDo.getTimeInMillis()));
+		}
+		
+		// Play quest exit sound
+		if (playExitSound)
+		{
+			AbstractScript.playSound(_player, QuestSound.ITEMSOUND_QUEST_FINISH);
+		}
+		
+		// Notify listeners
+		EventDispatcher.getInstance().notifyEventAsync(new OnPlayerQuestComplete(_player, quest.getId(), type), _player);
 		return this;
+	}
+	
+	/**
+	 * Finishes the quest and removes all quest items associated with this quest from the player's inventory.<br>
+	 * If {@code type} is {@code QuestType.ONE_TIME}, also removes all other quest data associated with this quest.
+	 * @param type the {@link QuestType} of the quest
+	 * @return this {@link QuestState} object
+	 * @see #exitQuest(QuestType type)
+	 * @see #exitQuest(QuestType type, boolean playExitSound)
+	 * @see #exitQuest(boolean repeatable, boolean playExitQuest)
+	 */
+	public QuestState exitQuest(QuestType type)
+	{
+		return exitQuest(type, false);
 	}
 	
 	/**
@@ -706,37 +580,13 @@ public final class QuestState
 	 * @param playExitQuest if {@code true}, plays "ItemSound.quest_finish"
 	 * @return this {@link QuestState} object
 	 * @see #exitQuest(QuestType type)
-	 * @see #exitQuest(QuestType type, boolean playExitQuest)
-	 * @see #exitQuest(boolean repeatable)
+	 * @see #exitQuest(QuestType type, boolean playExitSound)
+	 * @see #exitQuest(boolean repeatable, boolean playExitQuest)
 	 */
 	public QuestState exitQuest(boolean repeatable, boolean playExitQuest)
 	{
-		exitQuest(repeatable);
-		if (playExitQuest)
-		{
-			AbstractScript.playSound(getPlayer(), QuestSound.ITEMSOUND_QUEST_FINISH);
-		}
-		
-		// Notify to scripts
-		EventDispatcher.getInstance().notifyEventAsync(new OnPlayerQuestComplete(_player, getQuest().getId(), repeatable ? QuestType.REPEATABLE : QuestType.ONE_TIME), _player);
-		return this;
-	}
-	
-	/**
-	 * Set the restart time for the daily quests.<br>
-	 * The time is hardcoded at {@link Quest#getResetHour()} hours, {@link Quest#getResetMinutes()} minutes of the following day.<br>
-	 * It can be overridden in scripts (quests).
-	 */
-	public void setRestartTime()
-	{
-		final Calendar reDo = Calendar.getInstance();
-		if (reDo.get(Calendar.HOUR_OF_DAY) >= getQuest().getResetHour())
-		{
-			reDo.add(Calendar.DATE, 1);
-		}
-		reDo.set(Calendar.HOUR_OF_DAY, getQuest().getResetHour());
-		reDo.set(Calendar.MINUTE, getQuest().getResetMinutes());
-		set("restartTime", String.valueOf(reDo.getTimeInMillis()));
+		final QuestType type = (repeatable) ? QuestType.REPEATABLE : QuestType.ONE_TIME;
+		return exitQuest(type, playExitQuest);
 	}
 	
 	/**
@@ -745,7 +595,7 @@ public final class QuestState
 	 */
 	public boolean isNowAvailable()
 	{
-		final String val = get("restartTime");
+		final String val = get(RESTART_VAR);
 		return (val != null) && (!Util.isDigit(val) || (Long.parseLong(val) <= System.currentTimeMillis()));
 	}
 }

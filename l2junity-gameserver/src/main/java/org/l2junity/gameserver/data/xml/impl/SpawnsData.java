@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -27,8 +27,14 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.commons.util.IXmlReader;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
+import org.l2junity.gameserver.loader.PostLoadGroup;
 import org.l2junity.gameserver.model.ChanceLocation;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
@@ -49,6 +55,7 @@ import org.w3c.dom.Node;
 /**
  * @author UnAfraid
  */
+
 public class SpawnsData implements IGameXmlReader
 {
 	protected static final Logger LOGGER = LoggerFactory.getLogger(SpawnsData.class);
@@ -57,28 +64,27 @@ public class SpawnsData implements IGameXmlReader
 	
 	protected SpawnsData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = NpcData.class))
+	private void load() throws Exception
 	{
 		parseDatapackDirectory("data/spawns", true);
 		LOGGER.info("Loaded: {} spawns", _spawns.stream().flatMap(c -> c.getGroups().stream()).flatMap(c -> c.getSpawns().stream()).count());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, "list", listNode -> forEach(listNode, "spawn", spawnNode ->
 		{
 			try
 			{
-				parseSpawn(spawnNode, f, _spawns);
+				parseSpawn(spawnNode, path, _spawns);
 			}
 			catch (Exception e)
 			{
-				LOGGER.warn("Error while processing spawn in file: {}", f.getAbsolutePath(), e);
+				LOGGER.warn("Error while processing spawn in file: {}", path, e);
 			}
 		}));
 	}
@@ -86,15 +92,21 @@ public class SpawnsData implements IGameXmlReader
 	/**
 	 * Initializing all spawns
 	 */
-	public void init()
+	@Load(group = PostLoadGroup.class)
+	protected void init()
 	{
+		if (GeneralConfig.ALT_DEV_NO_SPAWNS)
+		{
+			return;
+		}
+		
 		LOGGER.info("Initializing spawns...");
 		_spawns.stream().filter(SpawnTemplate::isSpawningByDefault).forEach(template ->
 		{
 			template.spawnAll(null);
 			template.notifyActivate();
 		});
-		LOGGER.info("All spawns has been initialized!");
+		LOGGER.info("All spawns have been initialized!");
 	}
 	
 	/**
@@ -104,7 +116,7 @@ public class SpawnsData implements IGameXmlReader
 	{
 		LOGGER.info("Removing all spawns...");
 		_spawns.forEach(SpawnTemplate::despawnAll);
-		LOGGER.info("All spawns has been removed!");
+		LOGGER.info("All spawns have been removed!");
 	}
 	
 	public List<SpawnTemplate> getSpawns()
@@ -127,15 +139,15 @@ public class SpawnsData implements IGameXmlReader
 		return _spawns.stream().flatMap(template -> template.getGroups().stream()).flatMap(group -> group.getSpawns().stream()).filter(condition).collect(Collectors.toList());
 	}
 	
-	public void parseSpawn(Node spawnsNode, File file, List<SpawnTemplate> spawns)
+	public void parseSpawn(Node spawnsNode, Path path, List<SpawnTemplate> spawns)
 	{
-		final SpawnTemplate spawnTemplate = new SpawnTemplate(new StatsSet(parseAttributes(spawnsNode)), file);
+		final SpawnTemplate spawnTemplate = new SpawnTemplate(new StatsSet(parseAttributes(spawnsNode)), path);
 		SpawnGroup defaultGroup = null;
 		for (Node innerNode = spawnsNode.getFirstChild(); innerNode != null; innerNode = innerNode.getNextSibling())
 		{
 			if ("territories".equalsIgnoreCase(innerNode.getNodeName()))
 			{
-				parseTerritories(innerNode, spawnTemplate.getFile(), spawnTemplate);
+				parseTerritories(innerNode, spawnTemplate.getPath(), spawnTemplate);
 			}
 			else if ("group".equalsIgnoreCase(innerNode.getNodeName()))
 			{
@@ -165,14 +177,14 @@ public class SpawnsData implements IGameXmlReader
 	
 	/**
 	 * @param innerNode
-	 * @param file
+	 * @param path
 	 * @param spawnTemplate
 	 */
-	private void parseTerritories(Node innerNode, File file, ITerritorized spawnTemplate)
+	private void parseTerritories(Node innerNode, Path path, ITerritorized spawnTemplate)
 	{
 		forEach(innerNode, IXmlReader::isNode, territoryNode ->
 		{
-			final String name = parseString(territoryNode.getAttributes(), "name", file.getName() + "_" + (spawnTemplate.getTerritories().size() + 1));
+			final String name = parseString(territoryNode.getAttributes(), "name", path.getFileName().toString() + "_" + (spawnTemplate.getTerritories().size() + 1));
 			final int minZ = parseInteger(territoryNode.getAttributes(), "minZ");
 			final int maxZ = parseInteger(territoryNode.getAttributes(), "maxZ");
 			
@@ -211,7 +223,12 @@ public class SpawnsData implements IGameXmlReader
 			{
 				case "territories":
 				{
-					parseTerritories(npcNode, spawnTemplate.getFile(), group);
+					parseTerritories(npcNode, spawnTemplate.getPath(), group);
+					break;
+				}
+				case "paramters":
+				{
+					parseParameters(npcNode, group);
 					break;
 				}
 				case "npc":
@@ -235,13 +252,13 @@ public class SpawnsData implements IGameXmlReader
 		final L2NpcTemplate template = NpcData.getInstance().getTemplate(npcTemplate.getId());
 		if (template == null)
 		{
-			LOGGER.warn("Requested spawn for non existing npc: {} in file: {}", npcTemplate.getId(), spawnTemplate.getFile().getName());
+			LOGGER.warn("Requested spawn for non existing npc: {} in file: {}", npcTemplate.getId(), spawnTemplate.getFileName());
 			return;
 		}
 		
 		if (template.isType("L2Servitor") || template.isType("L2Pet"))
 		{
-			LOGGER.warn("Requested spawn for {} {}({}) file: {}", template.getType(), template.getName(), template.getId(), spawnTemplate.getFile().getName());
+			LOGGER.warn("Requested spawn for {} {}({}) file: {}", template.getType(), template.getName(), template.getId(), spawnTemplate.getFileName());
 			return;
 		}
 		
@@ -309,6 +326,7 @@ public class SpawnsData implements IGameXmlReader
 	 * Gets the single instance of SpawnsData.
 	 * @return single instance of SpawnsData
 	 */
+	@InstanceGetter
 	public static SpawnsData getInstance()
 	{
 		return SingletonHolder._instance;

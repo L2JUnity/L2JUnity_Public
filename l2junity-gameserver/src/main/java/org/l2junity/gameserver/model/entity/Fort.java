@@ -32,11 +32,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.FortUpdater;
 import org.l2junity.gameserver.FortUpdater.UpdaterType;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.gameserver.config.FeatureConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
 import org.l2junity.gameserver.data.xml.impl.StaticObjectData;
@@ -65,7 +65,7 @@ import org.slf4j.LoggerFactory;
 
 public final class Fort extends AbstractResidence
 {
-	protected static final Logger _log = LoggerFactory.getLogger(Fort.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(Fort.class);
 	
 	private final List<DoorInstance> _doors = new ArrayList<>();
 	private L2StaticObjectInstance _flagPole = null;
@@ -168,11 +168,11 @@ public final class Fort extends AbstractResidence
 			long currentTime = System.currentTimeMillis();
 			if (_endDate > currentTime)
 			{
-				ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(cwh), _endDate - currentTime);
+				ThreadPool.schedule(new FunctionTask(cwh), _endDate - currentTime, TimeUnit.MILLISECONDS);
 			}
 			else
 			{
-				ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(cwh), 0);
+				ThreadPool.schedule(new FunctionTask(cwh), 0, TimeUnit.MILLISECONDS);
 			}
 		}
 		
@@ -206,7 +206,7 @@ public final class Fort extends AbstractResidence
 						{
 							getOwnerClan().getWarehouse().destroyItemByItemId("CS_function_fee", Inventory.ADENA_ID, fee, null, null);
 						}
-						ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(true), getRate());
+						ThreadPool.schedule(new FunctionTask(true), getRate(), TimeUnit.MILLISECONDS);
 					}
 					else
 					{
@@ -234,7 +234,7 @@ public final class Fort extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				_log.error("Exception: Fort.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage(), e);
+				LOGGER.error("Exception: Fort.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage(), e);
 			}
 		}
 	}
@@ -261,6 +261,7 @@ public final class Fort extends AbstractResidence
 		{
 			spawnSpecialEnvoys();
 		}
+		loadDoor();
 	}
 	
 	/**
@@ -279,7 +280,7 @@ public final class Fort extends AbstractResidence
 	
 	public void endOfSiege(L2Clan clan)
 	{
-		ThreadPoolManager.getInstance().executeAi(new endFortressSiege(this, clan));
+		ThreadPool.execute(new endFortressSiege(this, clan));
 	}
 	
 	/**
@@ -297,7 +298,7 @@ public final class Fort extends AbstractResidence
 	 * @param z
 	 * @return true if object is inside the zone
 	 */
-	public boolean checkIfInZone(int x, int y, int z)
+	public boolean checkIfInZone(double x, double y, double z)
 	{
 		return getZone().isInsideZone(x, y, z);
 	}
@@ -381,7 +382,7 @@ public final class Fort extends AbstractResidence
 	{
 		if (clan == null)
 		{
-			_log.warn(getClass().getSimpleName() + ": Updating Fort owner with null clan!!!");
+			LOGGER.warn("Updating Fort owner with null clan!!!");
 			return false;
 		}
 		
@@ -407,7 +408,7 @@ public final class Fort extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				_log.warn("Exception in setOwner: " + e.getMessage(), e);
+				LOGGER.warn("Exception in setOwner: " + e.getMessage(), e);
 			}
 			removeOwner(true);
 		}
@@ -477,15 +478,15 @@ public final class Fort extends AbstractResidence
 	public void raiseSupplyLvL()
 	{
 		_supplyLvL++;
-		if (_supplyLvL > Config.FS_MAX_SUPPLY_LEVEL)
+		if (_supplyLvL > FeatureConfig.FS_MAX_SUPPLY_LEVEL)
 		{
-			_supplyLvL = Config.FS_MAX_SUPPLY_LEVEL;
+			_supplyLvL = FeatureConfig.FS_MAX_SUPPLY_LEVEL;
 		}
 	}
 	
 	public void setSupplyLvL(int val)
 	{
-		if (val <= Config.FS_MAX_SUPPLY_LEVEL)
+		if (val <= FeatureConfig.FS_MAX_SUPPLY_LEVEL)
 		{
 			_supplyLvL = val;
 		}
@@ -507,7 +508,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: saveFortVariables(): " + e.getMessage(), e);
+			LOGGER.warn("Exception: saveFortVariables(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -591,24 +592,24 @@ public final class Fort extends AbstractResidence
 				L2Clan clan = ClanTable.getInstance().getClan(ownerId); // Try to find clan instance
 				clan.setFortId(getResidenceId());
 				setOwnerClan(clan);
-				int runCount = getOwnedTime() / (Config.FS_UPDATE_FRQ * 60);
+				int runCount = getOwnedTime() / (FeatureConfig.FS_UPDATE_FRQ * 60);
 				long initial = System.currentTimeMillis() - _lastOwnedTime.getTimeInMillis();
-				while (initial > (Config.FS_UPDATE_FRQ * 60000L))
+				while (initial > (FeatureConfig.FS_UPDATE_FRQ * 60000L))
 				{
-					initial -= (Config.FS_UPDATE_FRQ * 60000L);
+					initial -= (FeatureConfig.FS_UPDATE_FRQ * 60000L);
 				}
-				initial = (Config.FS_UPDATE_FRQ * 60000L) - initial;
-				if ((Config.FS_MAX_OWN_TIME <= 0) || (getOwnedTime() < (Config.FS_MAX_OWN_TIME * 3600)))
+				initial = (FeatureConfig.FS_UPDATE_FRQ * 60000L) - initial;
+				if ((FeatureConfig.FS_MAX_OWN_TIME <= 0) || (getOwnedTime() < (FeatureConfig.FS_MAX_OWN_TIME * 3600)))
 				{
-					_FortUpdater[0] = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new FortUpdater(this, clan, runCount, UpdaterType.PERIODIC_UPDATE), initial, Config.FS_UPDATE_FRQ * 60000L); // Schedule owner tasks to start running
-					if (Config.FS_MAX_OWN_TIME > 0)
+					_FortUpdater[0] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, runCount, UpdaterType.PERIODIC_UPDATE), initial, FeatureConfig.FS_UPDATE_FRQ * 60000L, TimeUnit.MILLISECONDS); // Schedule owner tasks to start running
+					if (FeatureConfig.FS_MAX_OWN_TIME > 0)
 					{
-						_FortUpdater[1] = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new FortUpdater(this, clan, runCount, UpdaterType.MAX_OWN_TIME), 3600000, 3600000); // Schedule owner tasks to remove owener
+						_FortUpdater[1] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, runCount, UpdaterType.MAX_OWN_TIME), 3600000, 3600000, TimeUnit.MILLISECONDS); // Schedule owner tasks to remove owener
 					}
 				}
 				else
 				{
-					_FortUpdater[1] = ThreadPoolManager.getInstance().scheduleGeneral(new FortUpdater(this, clan, 0, UpdaterType.MAX_OWN_TIME), 60000); // Schedule owner tasks to remove owner
+					_FortUpdater[1] = ThreadPool.schedule(new FortUpdater(this, clan, 0, UpdaterType.MAX_OWN_TIME), 60000, TimeUnit.MILLISECONDS); // Schedule owner tasks to remove owner
 				}
 			}
 			else
@@ -619,7 +620,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: loadFortData(): " + e.getMessage(), e);
+			LOGGER.warn("Exception: loadFortData(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -640,7 +641,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.error("Exception: Fort.loadFunctions(): " + e.getMessage(), e);
+			LOGGER.error("Exception: Fort.loadFunctions(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -660,7 +661,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.error("Exception: Fort.removeFunctions(int functionType): " + e.getMessage(), e);
+			LOGGER.error("Exception: Fort.removeFunctions(int functionType): " + e.getMessage(), e);
 		}
 	}
 	
@@ -717,17 +718,12 @@ public final class Fort extends AbstractResidence
 		return true;
 	}
 	
-	public void activateInstance()
-	{
-		loadDoor();
-	}
-	
 	// This method loads fort door data from database
 	private void loadDoor()
 	{
 		for (DoorInstance door : DoorData.getInstance().getDoors())
 		{
-			if ((door.getFort() != null) && (door.getFort().getResidenceId() == getResidenceId()))
+			if (checkIfInZone(door.getX(), door.getY(), door.getZ()))
 			{
 				_doors.add(door);
 			}
@@ -767,7 +763,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: loadFortDoorUpgrade(): " + e.getMessage(), e);
+			LOGGER.warn("Exception: loadFortDoorUpgrade(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -781,7 +777,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: removeDoorUpgrade(): " + e.getMessage(), e);
+			LOGGER.warn("Exception: removeDoorUpgrade(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -798,7 +794,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: saveDoorUpgrade(int doorId, int hp, int pDef, int mDef): " + e.getMessage(), e);
+			LOGGER.warn("Exception: saveDoorUpgrade(int doorId, int hp, int pDef, int mDef): " + e.getMessage(), e);
 		}
 	}
 	
@@ -845,10 +841,10 @@ public final class Fort extends AbstractResidence
 				{
 					_FortUpdater[1].cancel(false);
 				}
-				_FortUpdater[0] = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new FortUpdater(this, clan, 0, UpdaterType.PERIODIC_UPDATE), Config.FS_UPDATE_FRQ * 60000L, Config.FS_UPDATE_FRQ * 60000L); // Schedule owner tasks to start running
-				if (Config.FS_MAX_OWN_TIME > 0)
+				_FortUpdater[0] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, 0, UpdaterType.PERIODIC_UPDATE), FeatureConfig.FS_UPDATE_FRQ * 60000L, FeatureConfig.FS_UPDATE_FRQ * 60000L, TimeUnit.MILLISECONDS); // Schedule owner tasks to start running
+				if (FeatureConfig.FS_MAX_OWN_TIME > 0)
 				{
-					_FortUpdater[1] = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new FortUpdater(this, clan, 0, UpdaterType.MAX_OWN_TIME), 3600000, 3600000); // Schedule owner tasks to remove owener
+					_FortUpdater[1] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, 0, UpdaterType.MAX_OWN_TIME), 3600000, 3600000, TimeUnit.MILLISECONDS); // Schedule owner tasks to remove owener
 				}
 			}
 			else
@@ -867,7 +863,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: updateOwnerInDB(L2Clan clan): " + e.getMessage(), e);
+			LOGGER.warn("Exception: updateOwnerInDB(L2Clan clan): " + e.getMessage(), e);
 		}
 	}
 	
@@ -958,7 +954,7 @@ public final class Fort extends AbstractResidence
 			return 0;
 		}
 		
-		return (int) (((_lastOwnedTime.getTimeInMillis() + (Config.FS_MAX_OWN_TIME * 3600000L)) - System.currentTimeMillis()) / 1000L);
+		return (int) (((_lastOwnedTime.getTimeInMillis() + (FeatureConfig.FS_MAX_OWN_TIME * 3600000L)) - System.currentTimeMillis()) / 1000L);
 	}
 	
 	public final long getTimeTillNextFortUpdate()
@@ -976,11 +972,11 @@ public final class Fort extends AbstractResidence
 		{
 			if (removePoints)
 			{
-				owner.takeReputationScore(Config.LOOSE_FORT_POINTS, true);
+				owner.takeReputationScore(FeatureConfig.LOOSE_FORT_POINTS, true);
 			}
 			else
 			{
-				owner.addReputationScore(Config.TAKE_FORT_POINTS, true);
+				owner.addReputationScore(FeatureConfig.TAKE_FORT_POINTS, true);
 			}
 		}
 	}
@@ -1005,7 +1001,7 @@ public final class Fort extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				_log.warn("Exception in endFortressSiege " + e.getMessage(), e);
+				LOGGER.warn("Exception in endFortressSiege " + e.getMessage(), e);
 			}
 		}
 		
@@ -1046,7 +1042,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: setFortState(int state, int castleId): " + e.getMessage(), e);
+			LOGGER.warn("Exception: setFortState(int state, int castleId): " + e.getMessage(), e);
 		}
 	}
 	
@@ -1179,9 +1175,7 @@ public final class Fort extends AbstractResidence
 				{
 					final L2Spawn spawnDat = new L2Spawn(rs.getInt("npcId"));
 					spawnDat.setAmount(1);
-					spawnDat.setX(rs.getInt("x"));
-					spawnDat.setY(rs.getInt("y"));
-					spawnDat.setZ(rs.getInt("z"));
+					spawnDat.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
 					spawnDat.setHeading(rs.getInt("heading"));
 					spawnDat.setRespawnDelay(60);
 					SpawnTable.getInstance().addNewSpawn(spawnDat, false);
@@ -1192,7 +1186,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Fort " + getResidenceId() + " initNpcs: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.warn("Fort " + getResidenceId() + " initNpcs: Spawn could not be initialized: " + e.getMessage(), e);
 		}
 	}
 	
@@ -1210,9 +1204,7 @@ public final class Fort extends AbstractResidence
 				{
 					final L2Spawn spawnDat = new L2Spawn(rs.getInt("npcId"));
 					spawnDat.setAmount(1);
-					spawnDat.setX(rs.getInt("x"));
-					spawnDat.setY(rs.getInt("y"));
-					spawnDat.setZ(rs.getInt("z"));
+					spawnDat.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
 					spawnDat.setHeading(rs.getInt("heading"));
 					spawnDat.setRespawnDelay(60);
 					_siegeNpcs.add(spawnDat);
@@ -1221,7 +1213,7 @@ public final class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Fort " + getResidenceId() + " initSiegeNpcs: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.warn("Fort " + getResidenceId() + " initSiegeNpcs: Spawn could not be initialized: " + e.getMessage(), e);
 		}
 	}
 	
@@ -1239,9 +1231,7 @@ public final class Fort extends AbstractResidence
 				{
 					final L2Spawn spawnDat = new L2Spawn(rs.getInt("npcId"));
 					spawnDat.setAmount(1);
-					spawnDat.setX(rs.getInt("x"));
-					spawnDat.setY(rs.getInt("y"));
-					spawnDat.setZ(rs.getInt("z"));
+					spawnDat.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
 					spawnDat.setHeading(rs.getInt("heading"));
 					spawnDat.setRespawnDelay(60);
 					_npcCommanders.add(spawnDat);
@@ -1251,7 +1241,7 @@ public final class Fort extends AbstractResidence
 		catch (Exception e)
 		{
 			// problem with initializing spawn, go to next one
-			_log.warn("Fort " + getResidenceId() + " initNpcCommanders: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.warn("Fort " + getResidenceId() + " initNpcCommanders: Spawn could not be initialized: " + e.getMessage(), e);
 		}
 	}
 	
@@ -1273,9 +1263,7 @@ public final class Fort extends AbstractResidence
 					int npcId = rs.getInt("npcId");
 					final L2Spawn spawnDat = new L2Spawn(npcId);
 					spawnDat.setAmount(1);
-					spawnDat.setX(rs.getInt("x"));
-					spawnDat.setY(rs.getInt("y"));
-					spawnDat.setZ(rs.getInt("z"));
+					spawnDat.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
 					spawnDat.setHeading(rs.getInt("heading"));
 					spawnDat.setRespawnDelay(60);
 					_specialEnvoys.add(spawnDat);
@@ -1287,7 +1275,7 @@ public final class Fort extends AbstractResidence
 		catch (Exception e)
 		{
 			// problem with initializing spawn, go to next one
-			_log.warn("Fort " + getResidenceId() + " initSpecialEnvoys: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.warn("Fort " + getResidenceId() + " initSpecialEnvoys: Spawn could not be initialized: " + e.getMessage(), e);
 		}
 	}
 	

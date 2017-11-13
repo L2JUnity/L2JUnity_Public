@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -27,15 +27,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.enums.ClanHallGrade;
 import org.l2junity.gameserver.enums.ClanHallType;
+import org.l2junity.gameserver.instancemanager.ZoneManager;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.instance.DoorInstance;
 import org.l2junity.gameserver.model.entity.ClanHall;
-import org.l2junity.gameserver.model.holders.ClanHallTeleportHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -45,29 +49,34 @@ import org.w3c.dom.Node;
 /**
  * @author St3eT
  */
+
 public final class ClanHallData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClanHallData.class);
+	
 	private static final Map<Integer, ClanHall> _clanHalls = new HashMap<>();
 	
 	protected ClanHallData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class, dependencies =
+	{
+		@Dependency(clazz = DoorData.class),
+		@Dependency(clazz = ZoneManager.class),
+		@Dependency(clazz = SkillTreesData.class)
+	})
+	private void load() throws Exception
 	{
 		parseDatapackDirectory("data/residences/clanHalls", true);
 		LOGGER.info("Succesfully loaded {} Clan Halls.", _clanHalls.size());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		final List<DoorInstance> doors = new ArrayList<>();
 		final List<Integer> npcs = new ArrayList<>();
-		final List<ClanHallTeleportHolder> teleports = new ArrayList<>();
 		final StatsSet params = new StatsSet();
 		
 		for (Node listNode = doc.getFirstChild(); listNode != null; listNode = listNode.getNextSibling())
@@ -127,25 +136,6 @@ public final class ClanHallData implements IGameXmlReader
 									params.set("doorList", doors);
 									break;
 								}
-								case "teleportList":
-								{
-									for (Node npcNode = tpNode.getFirstChild(); npcNode != null; npcNode = npcNode.getNextSibling())
-									{
-										if ("teleport".equals(npcNode.getNodeName()))
-										{
-											final NamedNodeMap np = npcNode.getAttributes();
-											final int npcStringId = parseInteger(np, "npcStringId");
-											final int x = parseInteger(np, "x");
-											final int y = parseInteger(np, "y");
-											final int z = parseInteger(np, "z");
-											final int minFunctionLevel = parseInteger(np, "minFunctionLevel");
-											final int cost = parseInteger(np, "cost");
-											teleports.add(new ClanHallTeleportHolder(npcStringId, x, y, z, minFunctionLevel, cost));
-										}
-									}
-									params.set("teleportList", teleports);
-									break;
-								}
 								case "ownerRestartPoint":
 								{
 									final NamedNodeMap ol = tpNode.getAttributes();
@@ -165,6 +155,11 @@ public final class ClanHallData implements IGameXmlReader
 			}
 		}
 		_clanHalls.put(params.getInt("id"), new ClanHall(params));
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _clanHalls.size();
 	}
 	
 	public ClanHall getClanHallById(int clanHallId)
@@ -202,6 +197,7 @@ public final class ClanHallData implements IGameXmlReader
 	 * Gets the single instance of ClanHallData.
 	 * @return single instance of ClanHallData
 	 */
+	@InstanceGetter
 	public static ClanHallData getInstance()
 	{
 		return SingletonHolder._instance;

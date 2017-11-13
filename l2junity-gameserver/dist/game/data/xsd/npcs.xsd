@@ -103,9 +103,9 @@
 									<xs:all>
 										<xs:element name="vitals" minOccurs="0" maxOccurs="1">
 											<xs:complexType>
-												<xs:attribute name="hp" type="xs:decimal" />
+												<xs:attribute name="hp" type="xs:double" />
 												<xs:attribute name="hpRegen" type="xs:decimal" />
-												<xs:attribute name="mp" type="xs:decimal" />
+												<xs:attribute name="mp" type="xs:double" />
 												<xs:attribute name="mpRegen" type="xs:decimal" />
 											</xs:complexType>
 										</xs:element>
@@ -208,6 +208,7 @@
 									<xs:attribute name="passableDoor" type="xs:boolean" />
 									<xs:attribute name="hasSummoner" type="xs:boolean" />
 									<xs:attribute name="canBeSown" type="xs:boolean" />
+									<xs:attribute name="isDeathPenalty" type="xs:boolean" />
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="skill_list" minOccurs="0" maxOccurs="1">
@@ -269,7 +270,7 @@
 									<xs:all>
 										<xs:element name="death" type="drop_list" minOccurs="0" maxOccurs="1" />
 										<xs:element name="corpse" type="drop_list" minOccurs="0" maxOccurs="1" />
-										<xs:element name="lucky_corpse" type="drop_list" minOccurs="0" maxOccurs="1" />
+										<xs:element name="luck" type="drop_list" minOccurs="0" maxOccurs="1" />
 									</xs:all>
 								</xs:complexType>
 							</xs:element>

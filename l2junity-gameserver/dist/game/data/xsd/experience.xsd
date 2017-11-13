@@ -3,13 +3,13 @@
 	<xs:element name="table">
 		<xs:complexType>
 			<xs:sequence minOccurs="1" maxOccurs="1">
-				<xs:element name="experience" minOccurs="1" maxOccurs="107">
+				<xs:element name="experience" minOccurs="1" maxOccurs="112">
 					<xs:complexType>
 						<xs:attribute name="level" use="required">
 							<xs:simpleType>
-								<xs:restriction base="xs:positiveInteger">
+								<xs:restriction base="xs:byte">
 									<xs:minInclusive value="1" />
-									<xs:maxInclusive value="107" />
+									<xs:maxInclusive value="112" />
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
@@ -26,20 +26,24 @@
 			</xs:sequence>
 			<xs:attribute name="maxLevel" use="required">
 				<xs:simpleType>
-					<xs:restriction base="xs:positiveInteger">
+					<xs:restriction base="xs:byte">
 						<xs:minInclusive value="1" />
-						<xs:maxInclusive value="107" />
+						<xs:maxInclusive value="112" />
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>
 			<xs:attribute name="maxPetLevel" use="required">
 				<xs:simpleType>
-					<xs:restriction base="xs:positiveInteger">
+					<xs:restriction base="xs:byte">
 						<xs:minInclusive value="1" />
-						<xs:maxInclusive value="107" />
+						<xs:maxInclusive value="112" />
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>
 		</xs:complexType>
+		<xs:unique name="UniqueLevel">
+			<xs:selector xpath="experience" /> 
+			<xs:field xpath="@level" /> 
+		</xs:unique>
 	</xs:element>
 </xs:schema>

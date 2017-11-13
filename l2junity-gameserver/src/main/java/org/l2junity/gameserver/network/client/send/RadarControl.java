@@ -29,13 +29,13 @@ public class RadarControl implements IClientOutgoingPacket
 	private final int _y;
 	private final int _z;
 	
-	public RadarControl(int showRadar, int type, int x, int y, int z)
+	public RadarControl(int showRadar, int type, double x, double y, double z)
 	{
 		_showRadar = showRadar; // showRader?? 0 = showradar; 1 = delete radar;
 		_type = type; // radar type??
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 	}
 	
 	@Override

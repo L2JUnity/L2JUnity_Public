@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -84,13 +84,13 @@ public final class AllyDismiss implements IClientIncomingPacket
 		}
 		
 		long currentTime = System.currentTimeMillis();
-		leaderClan.setAllyPenaltyExpiryTime(currentTime + (Config.ALT_ACCEPT_CLAN_DAYS_WHEN_DISMISSED * 86400000L), L2Clan.PENALTY_TYPE_DISMISS_CLAN); // 24*60*60*1000 = 86400000
+		leaderClan.setAllyPenaltyExpiryTime(currentTime + (PlayerConfig.ALT_ACCEPT_CLAN_DAYS_WHEN_DISMISSED * 86400000L), L2Clan.PENALTY_TYPE_DISMISS_CLAN); // 24*60*60*1000 = 86400000
 		leaderClan.updateClanInDB();
 		
 		clan.setAllyId(0);
 		clan.setAllyName(null);
 		clan.changeAllyCrest(0, true);
-		clan.setAllyPenaltyExpiryTime(currentTime + (Config.ALT_ALLY_JOIN_DAYS_WHEN_DISMISSED * 86400000L), L2Clan.PENALTY_TYPE_CLAN_DISMISSED); // 24*60*60*1000 = 86400000
+		clan.setAllyPenaltyExpiryTime(currentTime + (PlayerConfig.ALT_ALLY_JOIN_DAYS_WHEN_DISMISSED * 86400000L), L2Clan.PENALTY_TYPE_CLAN_DISMISSED); // 24*60*60*1000 = 86400000
 		clan.updateClanInDB();
 		
 		player.sendPacket(SystemMessageId.YOU_HAVE_SUCCEEDED_IN_EXPELLING_THE_CLAN);

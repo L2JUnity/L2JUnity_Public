@@ -20,6 +20,7 @@ package org.l2junity.gameserver.model;
 
 public final class VehiclePathPoint extends Location
 {
+	private static final long serialVersionUID = 7529959885098271654L;
 	private final int _moveSpeed;
 	private final int _rotationSpeed;
 	
@@ -28,14 +29,14 @@ public final class VehiclePathPoint extends Location
 		this(loc.getX(), loc.getY(), loc.getZ());
 	}
 	
-	public VehiclePathPoint(int x, int y, int z)
+	public VehiclePathPoint(double x, double y, double z)
 	{
 		super(x, y, z);
 		_moveSpeed = 350;
 		_rotationSpeed = 4000;
 	}
 	
-	public VehiclePathPoint(int x, int y, int z, int moveSpeed, int rotationSpeed)
+	public VehiclePathPoint(double x, double y, double z, int moveSpeed, int rotationSpeed)
 	{
 		super(x, y, z);
 		_moveSpeed = moveSpeed;

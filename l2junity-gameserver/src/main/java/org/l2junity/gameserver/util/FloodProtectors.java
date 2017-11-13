@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.util;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.FloodRelatedConfig;
 import org.l2junity.gameserver.network.client.L2GameClient;
 
 /**
@@ -99,22 +99,22 @@ public final class FloodProtectors
 	public FloodProtectors(final L2GameClient client)
 	{
 		super();
-		_useItem = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_USE_ITEM);
-		_rollDice = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_ROLL_DICE);
-		_firework = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_FIREWORK);
-		_itemPetSummon = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_ITEM_PET_SUMMON);
-		_heroVoice = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_HERO_VOICE);
-		_globalChat = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_GLOBAL_CHAT);
-		_subclass = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_SUBCLASS);
-		_dropItem = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_DROP_ITEM);
-		_serverBypass = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_SERVER_BYPASS);
-		_multiSell = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_MULTISELL);
-		_transaction = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_TRANSACTION);
-		_manufacture = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_MANUFACTURE);
-		_manor = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_MANOR);
-		_sendMail = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_SENDMAIL);
-		_characterSelect = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_CHARACTER_SELECT);
-		_itemAuction = new FloodProtectorAction(client, Config.FLOOD_PROTECTOR_ITEM_AUCTION);
+		_useItem = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_USE_ITEM);
+		_rollDice = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_ROLL_DICE);
+		_firework = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_FIREWORK);
+		_itemPetSummon = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_ITEM_PET_SUMMON);
+		_heroVoice = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_HERO_VOICE);
+		_globalChat = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_GLOBAL_CHAT);
+		_subclass = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_SUBCLASS);
+		_dropItem = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_DROP_ITEM);
+		_serverBypass = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_SERVER_BYPASS);
+		_multiSell = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_MULTISELL);
+		_transaction = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_TRANSACTION);
+		_manufacture = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_MANUFACTURE);
+		_manor = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_MANOR);
+		_sendMail = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_SENDMAIL);
+		_characterSelect = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_CHARACTER_SELECT);
+		_itemAuction = new FloodProtectorAction(client, FloodRelatedConfig.FLOOD_PROTECTOR_ITEM_AUCTION);
 	}
 	
 	/**

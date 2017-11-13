@@ -22,8 +22,6 @@ import org.l2junity.gameserver.ai.CharacterAI;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.actor.Creature;
-import org.l2junity.gameserver.model.actor.stat.StaticObjStat;
-import org.l2junity.gameserver.model.actor.status.StaticObjStatus;
 import org.l2junity.gameserver.model.actor.templates.L2CharTemplate;
 import org.l2junity.gameserver.model.items.Weapon;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
@@ -70,30 +68,6 @@ public final class L2StaticObjectInstance extends Creature
 		super(template);
 		setInstanceType(InstanceType.L2StaticObjectInstance);
 		_staticObjectId = staticId;
-	}
-	
-	@Override
-	public final StaticObjStat getStat()
-	{
-		return (StaticObjStat) super.getStat();
-	}
-	
-	@Override
-	public void initCharStat()
-	{
-		setStat(new StaticObjStat(this));
-	}
-	
-	@Override
-	public final StaticObjStatus getStatus()
-	{
-		return (StaticObjStatus) super.getStatus();
-	}
-	
-	@Override
-	public void initCharStatus()
-	{
-		setStatus(new StaticObjStatus(this));
 	}
 	
 	public int getType()
@@ -181,18 +155,13 @@ public final class L2StaticObjectInstance extends Creature
 	}
 	
 	@Override
-	public void updateAbnormalVisualEffects()
-	{
-	}
-	
-	@Override
 	public void sendInfo(PlayerInstance activeChar)
 	{
 		activeChar.sendPacket(new StaticObject(this));
 	}
 	
 	@Override
-	public void moveToLocation(int x, int y, int z, int offset)
+	public void moveToLocation(double x, double y, double z, int offset)
 	{
 	}
 	
@@ -202,7 +171,7 @@ public final class L2StaticObjectInstance extends Creature
 	}
 	
 	@Override
-	public void doAttack(Creature target)
+	public void doAutoAttack(Creature target)
 	{
 	}
 	

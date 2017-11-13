@@ -48,6 +48,6 @@ public final class RequestSaveBookMarkSlot implements IClientIncomingPacket
 		{
 			return;
 		}
-		activeChar.teleportBookmarkAdd(activeChar.getX(), activeChar.getY(), activeChar.getZ(), icon, tag, name);
+		activeChar.teleportBookmarkAdd((int) activeChar.getX(), (int) activeChar.getY(), (int) activeChar.getZ(), icon, tag, name);
 	}
 }

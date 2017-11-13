@@ -135,7 +135,7 @@ public abstract class AbstractMessagePacket<T extends AbstractMessagePacket<?>> 
 		{
 			_params = Arrays.copyOf(_params, _paramIndex + 1);
 			_smId.setParamCount(_paramIndex + 1);
-			_log.info("Wrong parameter count '" + (_paramIndex + 1) + "' for SystemMessageId: " + _smId);
+			LOGGER.info("Wrong parameter count '" + (_paramIndex + 1) + "' for SystemMessageId: " + _smId);
 		}
 		
 		_params[_paramIndex++] = param;
@@ -280,13 +280,13 @@ public abstract class AbstractMessagePacket<T extends AbstractMessagePacket<?>> 
 		return (T) this;
 	}
 	
-	public final T addZoneName(final int x, final int y, final int z)
+	public final T addZoneName(final double x, final double y, final double z)
 	{
 		append(new SMParam(TYPE_ZONE_NAME, new int[]
 		{
-			x,
-			y,
-			z
+			(int) x,
+			(int) y,
+			(int) z
 		}));
 		return (T) this;
 	}
@@ -297,20 +297,21 @@ public abstract class AbstractMessagePacket<T extends AbstractMessagePacket<?>> 
 		{
 			return addString(skill.getName());
 		}
-		return addSkillName(skill.getId(), skill.getLevel());
+		return addSkillName(skill.getId(), skill.getLevel(), skill.getSubLevel());
 	}
 	
 	public final T addSkillName(final int id)
 	{
-		return addSkillName(id, 1);
+		return addSkillName(id, 1, 0);
 	}
 	
-	public final T addSkillName(final int id, final int lvl)
+	public final T addSkillName(final int id, final int lvl, final int subLvl)
 	{
 		append(new SMParam(TYPE_SKILL_NAME, new int[]
 		{
 			id,
-			lvl
+			lvl,
+			subLvl
 		}));
 		return (T) this;
 	}
@@ -440,7 +441,7 @@ public abstract class AbstractMessagePacket<T extends AbstractMessagePacket<?>> 
 					final int[] array = param.getIntArrayValue();
 					packet.writeD(array[0]); // skill id
 					packet.writeH(array[1]); // skill level
-					packet.writeH(0x00); // skill sub level
+					packet.writeH(array[2]); // skill sub level
 					break;
 				}
 				
@@ -509,6 +510,7 @@ public abstract class AbstractMessagePacket<T extends AbstractMessagePacket<?>> 
 					final int[] array = param.getIntArrayValue();
 					out.println(array[0]); // SkillId
 					out.println(array[1]); // SkillLevel
+					out.println(array[2]); // SkillSubLevel
 					break;
 				}
 				

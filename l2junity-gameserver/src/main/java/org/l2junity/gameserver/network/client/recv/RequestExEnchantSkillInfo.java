@@ -22,7 +22,6 @@ import java.util.Set;
 
 import org.l2junity.gameserver.data.xml.impl.EnchantSkillGroupsData;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
-import org.l2junity.gameserver.enums.CategoryType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.network.client.L2GameClient;
@@ -62,7 +61,7 @@ public final class RequestExEnchantSkillInfo implements IClientIncomingPacket
 			return;
 		}
 		
-		if (!activeChar.isInCategory(CategoryType.AWAKEN_GROUP))
+		if (!activeChar.isAwakenedClass())
 		{
 			return;
 		}

@@ -63,7 +63,7 @@ public final class RequestBRProductList implements IClientIncomingPacket
 				}
 				default:
 				{
-					_log.warn(player + " send unhandled product list type: " + _type);
+					LOGGER.warn(player + " send unhandled product list type: " + _type);
 					break;
 				}
 			}

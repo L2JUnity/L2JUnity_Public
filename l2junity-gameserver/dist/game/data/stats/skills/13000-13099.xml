@@ -3,27 +3,26 @@
 	<skill id="13000" toLevel="1" name="Vitality Recovering Cake Buff">
 		<!-- Glory Days confirmed -->
 		<!-- Recovers vitality upon acquiring XP. The effect lasts for 20 minutes. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
 		<icon>BranchSys.icon.br_birthday_cake_i00</icon>
 		<operateType>A2</operateType>
 		<castRange>500</castRange>
 		<effectPoint>1</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>500</effectRange>
-		<abnormalLvl>2</abnormalLvl>
-		<abnormalTime>1200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>4</isMagic>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -34,27 +33,27 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<SLEEP>70</SLEEP>
 				<HOLD>70</HOLD>
 			</effect>
-			<effect name="PAtk" fromLevel="3" toLevel="4">
+			<effect name="p_physical_attack" fromLevel="3" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="MaxHp" fromLevel="2" toLevel="4">
+			<effect name="p_max_hp" fromLevel="2" toLevel="4">
 				<amount>531</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -67,40 +66,40 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<SLEEP>70</SLEEP>
 				<HOLD>70</HOLD>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="3" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_physical_attack" fromLevel="3" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="3" toLevel="4">
+			<effect name="p_speed" fromLevel="3" toLevel="4">
 				<amount>5</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy" fromLevel="2" toLevel="4">
+			<effect name="p_hit" fromLevel="2" toLevel="4">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic" fromLevel="4" toLevel="4">
+			<effect name="p_resist_dd_magic" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="MaxHp" fromLevel="2" toLevel="4">
+			<effect name="p_max_hp" fromLevel="2" toLevel="4">
 				<amount>540</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -113,31 +112,31 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk" fromLevel="3" toLevel="4">
+			<effect name="p_physical_attack" fromLevel="3" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed" fromLevel="4" toLevel="4">
+			<effect name="p_attack_speed" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp" fromLevel="2" toLevel="4">
+			<effect name="p_max_mp" fromLevel="2" toLevel="4">
 				<amount>347</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>DEX</stat>
 			</effect>
@@ -150,43 +149,43 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<PARALYZE>50</PARALYZE>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="3" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_physical_attack" fromLevel="3" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed" fromLevel="4" toLevel="4">
+			<effect name="p_attack_speed" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp" fromLevel="2" toLevel="4">
+			<effect name="p_max_mp" fromLevel="2" toLevel="4">
 				<amount>354</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CriticalDamage" fromLevel="3" toLevel="4">
+			<effect name="p_critical_damage" fromLevel="3" toLevel="4">
 				<amount>172</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="PhysicalEvasion" fromLevel="2" toLevel="4">
+			<effect name="p_avoid" fromLevel="2" toLevel="4">
 				<amount>3</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -199,34 +198,34 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
-			<effect name="MAtk" fromLevel="2" toLevel="4">
+			<effect name="p_magical_attack" fromLevel="2" toLevel="4">
 				<amount>8.47</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed" fromLevel="3" toLevel="4">
+			<effect name="p_magic_speed" fromLevel="3" toLevel="4">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="ReduceCancel" fromLevel="4" toLevel="4">
+			<effect name="p_reduce_cancel" fromLevel="4" toLevel="4">
 				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -239,43 +238,43 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="MAtk" fromLevel="2" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_magical_attack" fromLevel="2" toLevel="4">
 				<amount>8.47</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="3" toLevel="4">
+			<effect name="p_speed" fromLevel="3" toLevel="4">
 				<amount>7</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed" fromLevel="2" toLevel="4">
+			<effect name="p_magic_speed" fromLevel="2" toLevel="4">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="ReduceCancel" fromLevel="2" toLevel="4">
+			<effect name="p_reduce_cancel" fromLevel="2" toLevel="4">
 				<amount>-30</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost" fromLevel="4" toLevel="4">
+			<effect name="p_magic_mp_cost" fromLevel="4" toLevel="4">
 				<amount>-3</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -289,7 +288,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>10</chance>
 				<targetType>ENEMY</targetType>
@@ -297,15 +296,15 @@
 				<skillId>5693</skillId> <!-- PvP Armor - Speed Down -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -318,7 +317,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>10</chance>
 				<targetType>ENEMY</targetType>
@@ -326,15 +325,15 @@
 				<skillId>5693</skillId> <!-- PvP Armor - Speed Down -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -347,7 +346,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>25</chance>
 				<targetType>ENEMY</targetType>
@@ -355,15 +354,15 @@
 				<skillId>5694</skillId> <!-- PvP Armor - Mirage -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -376,7 +375,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>25</chance>
 				<targetType>ENEMY</targetType>
@@ -384,15 +383,15 @@
 				<skillId>5694</skillId> <!-- PvP Armor - Mirage -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -405,7 +404,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>25</chance>
 				<targetType>ENEMY</targetType>
@@ -413,15 +412,15 @@
 				<skillId>5691</skillId> <!-- PvP Armor - Critical Down -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -434,7 +433,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>25</chance>
 				<targetType>ENEMY</targetType>
@@ -442,15 +441,15 @@
 				<skillId>5691</skillId> <!-- PvP Armor - Critical Down -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -464,43 +463,43 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="2" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_physical_attack" fromLevel="2" toLevel="4">
 				<amount>4.26</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed" fromLevel="3" toLevel="4">
+			<effect name="p_attack_speed" fromLevel="3" toLevel="4">
 				<amount>4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="p_resist_dd_magic">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>CON</stat>
 			</effect>
@@ -514,43 +513,43 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<HOLD>50</HOLD>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="2" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_physical_attack" fromLevel="2" toLevel="4">
 				<amount>4.26</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed" fromLevel="3" toLevel="4">
+			<effect name="p_attack_speed" fromLevel="3" toLevel="4">
 				<amount>4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>DEX</stat>
 			</effect>
@@ -564,15 +563,15 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<PARALYZE>50</PARALYZE>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="MAtk" fromLevel="2" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_magical_attack" fromLevel="2" toLevel="4">
 				<amount>8.11</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">5</value>
@@ -581,27 +580,27 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>MEN</stat>
 			</effect>
@@ -615,57 +614,57 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<SLEEP>50</SLEEP>
 				<BLEED>50</BLEED>
 				<HOLD>50</HOLD>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="4" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_physical_attack" fromLevel="4" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="2" toLevel="4">
+			<effect name="p_speed" fromLevel="2" toLevel="4">
 				<amount>7</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>8.47</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy" fromLevel="3" toLevel="4">
+			<effect name="p_hit" fromLevel="3" toLevel="4">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic" fromLevel="4" toLevel="4">
+			<effect name="p_resist_dd_magic" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp" fromLevel="2" toLevel="4">
+			<effect name="p_max_hp" fromLevel="2" toLevel="4">
 				<amount>541</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -679,55 +678,55 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="PAtk" fromLevel="4" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_physical_attack" fromLevel="4" toLevel="4">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="2" toLevel="4">
+			<effect name="p_speed" fromLevel="2" toLevel="4">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5.57</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage" fromLevel="4" toLevel="4">
+			<effect name="p_critical_damage" fromLevel="4" toLevel="4">
 				<amount>182</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-3</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="MaxHp" fromLevel="2" toLevel="4">
+			<effect name="p_max_hp" fromLevel="2" toLevel="4">
 				<amount>360</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -741,55 +740,55 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="4" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="4" toLevel="4">
 				<SHOCK>50</SHOCK>
 			</effect>
-			<effect name="EnableCloak" fromLevel="4" toLevel="4" />
-			<effect name="MAtk" fromLevel="2" toLevel="4">
+			<effect name="p_set_cloak_slot" fromLevel="4" toLevel="4" />
+			<effect name="p_magical_attack" fromLevel="2" toLevel="4">
 				<amount>8.7</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>7</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed" fromLevel="3" toLevel="4">
+			<effect name="p_magic_speed" fromLevel="3" toLevel="4">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp" fromLevel="2" toLevel="4">
+			<effect name="p_max_mp" fromLevel="2" toLevel="4">
 				<amount>92</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen" fromLevel="2" toLevel="4">
+			<effect name="p_mp_regen" fromLevel="2" toLevel="4">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute" fromLevel="4" toLevel="4">
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="4">
 				<amount>5</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-1</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>2</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp" fromLevel="4" toLevel="4">
+			<effect name="p_stat_up" fromLevel="4" toLevel="4">
 				<amount>-1</amount>
 				<stat>MEN</stat>
 			</effect>
@@ -797,20 +796,12 @@
 	</skill>
 	<skill id="13019" toLevel="4" name="Elegia Heavy Armor Set">
 		<!-- 2 Pieces: Increases Max HP by 550. 3 Pieces: Increases Max HP by 550, P. Atk by 6.59%. 4 Pieces: Increases Max HP by 550, P. Atk by 6.59%, Critical Rate + 12.74, M. Def. by 2%. 5 Pieces: Increases Max HP by 550, P. Atk by 6.59%, Critical Rate + 12.74, M. Def. by 2%, Bleeding/Hold/Sleep Resistance by 50%, Fire/Water/Wind/Earth Resistance + 5, restores HP by using some of the damage inflicted upon the enemy with a certain probability. Can wear cloak. STR+ 3, CON-2. -->
-		<table name="#Trait">0 0 0 50</table>
-		<table name="#base">0 0 0 3</table>
-		<table name="#base1">0 0 0 2</table>
-		<table name="#pAtk">1 1.0659 1.0659 1.0659</table>
-		<table name="#rCrit">0 0 12.74 12.74</table>
-		<table name="#resist">0 0 0 5</table>
-		<table name="#absorbDam">0 0 0 3</table>
-		<table name="#magicSuccRes">1 1 1.02 1.02</table>
 		<icon>icon.armor_t97_u_i00</icon>
 		<magicLvl>85</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -830,12 +821,11 @@
 					<value level="4">50</value>
 				</HOLD>
 			</effect>
-			<effect name="EnableCloak" />
-			<effect name="VampiricAttack" fromLevel="4" toLevel="4">
+			<effect name="p_vampiric_attack" fromLevel="4" toLevel="4">
 				<amount>3</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">6.59</value>
@@ -844,7 +834,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="p_resist_dd_magic">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -853,7 +843,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -862,7 +852,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -871,7 +861,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -880,7 +870,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -889,7 +879,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -898,7 +888,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -907,7 +897,7 @@
 				</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">-0</value>
 					<value level="2">-0</value>
@@ -916,7 +906,7 @@
 				</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>550</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -924,19 +914,12 @@
 	</skill>
 	<skill id="13020" toLevel="4" name="Elegia Leather Armor Set">
 		<!-- 2 Pieces: Increases Speed by 3%. 3 Pieces: Increases Speed by 3%, P. Atk by 6.59%. 4 Pieces: Increases Speed by 3%, P. Atk by 6.59%, Critical Rate + 17.05. 5 Pieces: Increases Speed by 3%, P. Atk by 6.59%, Critical Rate + 17.05, P. Atk Spd by 6%, Paralysis Resistance by 50%, Fire/Water/Wind/Earth Resistance + 5. Can wear cloak. STR+ 1, DEX+ 2, CON-2. -->
-		<table name="#base">0 0 0 1</table>
-		<table name="#base1">0 0 0 2</table>
-		<table name="#Trait">0 0 0 50</table>
-		<table name="#pAtk">1 1.0659 1.0659 1.0659</table>
-		<table name="#pAtkSpd">1 1 1 1.06</table>
-		<table name="#resist">0 0 0 5</table>
-		<table name="#rCrit">0 0 17.05 17.05</table>
 		<icon>icon.armor_t98_u_i00</icon>
 		<magicLvl>85</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -944,8 +927,7 @@
 					<value level="4">50</value>
 				</PARALYZE>
 			</effect>
-			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">6.59</value>
@@ -954,11 +936,11 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -967,7 +949,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -976,7 +958,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -985,7 +967,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -994,7 +976,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1003,7 +985,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1012,7 +994,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1021,7 +1003,7 @@
 				</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">-0</value>
 					<value level="2">-0</value>
@@ -1030,7 +1012,7 @@
 				</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1043,21 +1025,12 @@
 	</skill>
 	<skill id="13021" toLevel="4" name="Elegia Robe Set">
 		<!-- 2 Pieces: Increases Speed by 7. 3 Pieces: Increases Speed by 7, Magic by 10%, Max MP + 97. 4 Pieces: Increases Speed by 7, Magic by 10%, Max MP + 97, Casting Spd. by 15%, MP Recovery Bonus by 5%. 5 Pieces: Increases Speed by 7, Magic by 10%, Max MP + 97, Casting Spd. by 15%, MP Recovery Bonus by 5%., Stun Resistance by 50%, Fire/Water/Wind/Earth Resistance + 5. Decreases Magic Skill MP Consumption by 3% . Can wear cloak. WIT+ 2, INT+ 1, MEN-2. -->
-		<table name="#base">0 0 0 2</table>
-		<table name="#base1">0 0 0 1</table>
-		<table name="#Trait">0 0 0 50</table>
-		<table name="#MpConsumeRate">1 1 1 0.97</table>
-		<table name="#maxMp">0 97 97 97</table>
-		<table name="#resist">0 0 0 5</table>
-		<table name="#mAtk">1 1.1 1.1 1.1</table>
-		<table name="#mAtkSpd">1 1 1.15 1.15</table>
-		<table name="#regMp">1 1 1.0557 1.0557</table>
 		<icon>icon.armor_t99_u_i00</icon>
 		<magicLvl>85</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1065,8 +1038,7 @@
 					<value level="4">50</value>
 				</SHOCK>
 			</effect>
-			<effect name="EnableCloak" />
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -1075,11 +1047,11 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>7</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1088,7 +1060,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">97</value>
@@ -1097,7 +1069,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1106,7 +1078,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1115,7 +1087,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1124,7 +1096,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1133,7 +1105,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1142,7 +1114,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1151,7 +1123,7 @@
 				</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1160,7 +1132,7 @@
 				</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">-0</value>
 					<value level="2">-0</value>
@@ -1169,7 +1141,7 @@
 				</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1188,7 +1160,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Armor - Speed Down -->
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
@@ -1198,15 +1170,15 @@
 				<skillId>5693</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1219,7 +1191,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1228,15 +1200,15 @@
 				<skillId>5694</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1249,7 +1221,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1258,15 +1230,15 @@
 				<skillId>5691</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1279,7 +1251,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Armor - Speed Down -->
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
@@ -1289,15 +1261,15 @@
 				<skillId>5693</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1310,7 +1282,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1319,15 +1291,15 @@
 				<skillId>5694</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1340,7 +1312,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1349,15 +1321,15 @@
 				<skillId>5691</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1370,7 +1342,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Armor - Speed Down -->
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
@@ -1380,15 +1352,15 @@
 				<skillId>5693</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1401,7 +1373,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1410,15 +1382,15 @@
 				<skillId>5694</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1431,7 +1403,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<attackerType>L2Playable</attackerType>
 				<chance>2</chance>
 				<targetType>ENEMY</targetType>
@@ -1440,15 +1412,15 @@
 				<skillId>5691</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1461,7 +1433,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>5</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -1474,7 +1446,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>5</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -1487,7 +1459,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>5</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1500,7 +1472,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>5</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -1513,20 +1485,20 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>5</amount>
 				<attribute>WIND</attribute>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13036" toLevel="1" name="Divinity Resistance">
+	<skill id="13036" toLevel="1" name="Holy Resistance">
 		<!-- Increases Divinity Resistance by 5. -->
 		<icon>icon.skill4337</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>5</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -1539,7 +1511,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -1552,7 +1524,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -1565,7 +1537,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1578,7 +1550,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -1591,20 +1563,20 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>WIND</attribute>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13042" toLevel="1" name="Divinity Resistance">
+	<skill id="13042" toLevel="1" name="Holy Resistance">
 		<!-- Increases Divinity Resistance by 10. -->
 		<icon>icon.skill4337</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -1617,7 +1589,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>15</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -1630,7 +1602,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>15</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -1643,7 +1615,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>15</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1656,7 +1628,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>15</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -1669,20 +1641,20 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>15</amount>
 				<attribute>WIND</attribute>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13048" toLevel="1" name="Divinity Resistance">
+	<skill id="13048" toLevel="1" name="Holy Resistance">
 		<!-- Increases Divinity Resistance by 15. -->
 		<operateType>P</operateType>
 		<icon>icon.skill4337</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>15</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -1695,7 +1667,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -1708,7 +1680,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -1721,7 +1693,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1734,7 +1706,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -1747,20 +1719,20 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>WIND</attribute>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13054" toLevel="1" name="Divinity Resistance">
+	<skill id="13054" toLevel="1" name="Holy Resistance">
 		<!-- Increases Divinity Resistance by 20. -->
 		<operateType>P</operateType>
 		<icon>icon.skill4337</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -1773,7 +1745,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>25</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -1786,7 +1758,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>25</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -1799,7 +1771,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>25</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1812,7 +1784,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>25</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -1825,20 +1797,20 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>25</amount>
 				<attribute>WIND</attribute>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="13060" toLevel="1" name="Divinity Resistance">
+	<skill id="13060" toLevel="1" name="Holy Resistance">
 		<!-- Increases Divinity Resistance by 25. -->
 		<operateType>P</operateType>
 		<icon>icon.skill4337</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>25</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -1851,19 +1823,19 @@
 		<magicLvl>85</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalAttackRange">
+			<effect name="p_attack_range">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1871,7 +1843,6 @@
 	</skill>
 	<skill id="13062" toLevel="5" name="Special Ability: Damage Up">
 		<!-- Increases P. Atk. Inflicts additional damage during PvP. -->
-		<table name="#pAtk"> 288 332 377 415 600 </table>
 		<icon>icon.skill1068</icon>
 		<magicLvl>
 			<value level="1">85</value>
@@ -1883,7 +1854,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">288</value>
 					<value level="2">332</value>
@@ -1893,15 +1864,15 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1914,22 +1885,15 @@
 		<magicLvl>85</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
 		</effects>
 	</skill>
 	<skill id="13064" toLevel="4" name="Set Effect - Immortal Heavy Armor 2 Piece (Defense Type)">
-		<table name="#defCritRate"> 1.0 0.967 0.967 0.967 </table>
-		<table name="#stunRes"> 0 5 5 5 </table>
-		<table name="#mDef"> 0 0 38 38 </table>
-		<table name="#pDef"> 0 0 0 77 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t501_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">5</value>
@@ -1937,7 +1901,7 @@
 					<value level="4">5</value>
 				</SHOCK>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1946,7 +1910,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1955,7 +1919,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1964,7 +1928,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1973,7 +1937,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1982,7 +1946,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1991,7 +1955,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2000,7 +1964,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-3.3</value>
@@ -2009,29 +1973,23 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>1</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>463</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="13065" toLevel="4" name="Set Effect - Immortal Heavy Armor 2 Piece (Attack Type)">
-		<table name="#maxHp"> 0 0 463 463 </table>
-		<table name="#holdRes"> 0 5 5 5 </table>
-		<table name="#pAtk"> 0 0 0 115 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#critDmgAdd"> 0 209 209 209 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t501_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">5</value>
@@ -2039,7 +1997,7 @@
 					<value level="4">5</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2048,7 +2006,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2057,7 +2015,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">209</value>
@@ -2066,7 +2024,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2075,7 +2033,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2084,7 +2042,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2093,7 +2051,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2102,11 +2060,11 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2118,19 +2076,12 @@
 		</effects>
 	</skill>
 	<skill id="13066" toLevel="4" name="Set Effect - Twilight Heavy Armor 2 Piece (Defense Type)">
-		<table name="#defCritRate"> 1.0 0.967 0.967 0.967 </table>
-		<table name="#stunRes"> 0 7 7 7 </table>
-		<table name="#maxMp"> 0 202 202 202 </table>
-		<table name="#mDef"> 0 0 44 44 </table>
-		<table name="#pDef"> 0 0 0 87 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t601_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">7</value>
@@ -2138,7 +2089,7 @@
 					<value level="4">7</value>
 				</SHOCK>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2147,7 +2098,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2156,7 +2107,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2165,7 +2116,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">202</value>
@@ -2174,7 +2125,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2183,7 +2134,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2192,7 +2143,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2201,7 +2152,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2210,7 +2161,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-3.3</value>
@@ -2219,34 +2170,27 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>487</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="13067" toLevel="4" name="Set Effect - Twilight Heavy Armor 2 Piece (Attack Type)">
-		<table name="#maxHp"> 0 0 463 463 </table>
-		<table name="#holdRes"> 0 7 7 7 </table>
-		<table name="#pAtk"> 0 0 0 180 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#critDmgAdd"> 0 242 242 242 </table>
-		<table name="#elements"> 0 0 0 10 </table>
-		<table name="#mpConsum"> 1 1 1.04 1.04 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t601_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">7</value>
@@ -2254,7 +2198,7 @@
 					<value level="4">7</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2263,7 +2207,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2272,7 +2216,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">242</value>
@@ -2281,7 +2225,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2290,7 +2234,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2299,7 +2243,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2308,7 +2252,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2317,15 +2261,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2334,7 +2278,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2344,7 +2288,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2354,7 +2298,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2367,19 +2311,12 @@
 		</effects>
 	</skill>
 	<skill id="13068" toLevel="4" name="Set Effect - Seraph Heavy Armor 2 Piece (Defense Type)">
-		<table name="#defCritRate"> 1.0 0.967 0.967 0.967 </table>
-		<table name="#stunRes"> 0 10 10 10 </table>
-		<table name="#defCritDamageAdd"> 0 0 281 281 </table>
-		<table name="#mDef"> 0 0 50 50 </table>
-		<table name="#pDef"> 0 0 0 96 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#elements"> 0 0 0 15 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t401_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -2387,7 +2324,7 @@
 					<value level="4">10</value>
 				</SHOCK>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2396,7 +2333,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2405,7 +2342,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2414,7 +2351,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2423,7 +2360,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2432,7 +2369,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2441,7 +2378,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2450,7 +2387,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2459,7 +2396,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-3.3</value>
@@ -2468,34 +2405,27 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>511</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="13069" toLevel="4" name="Set Effect - Seraph Heavy Armor 2 Piece (Attack Type)">
-		<table name="#maxHp"> 0 0 511 511 </table>
-		<table name="#holdRes"> 0 10 10 10 </table>
-		<table name="#pAtk"> 0 0 0 214 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#critDmgAdd"> 0 281 281 281 </table>
-		<table name="#elements"> 0 0 0 15 </table>
-		<table name="#skillPower"> 1 1 1.06 1.06 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t401_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -2503,7 +2433,7 @@
 					<value level="4">10</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2512,7 +2442,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2521,7 +2451,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">281</value>
@@ -2530,7 +2460,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2539,7 +2469,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2548,7 +2478,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2557,7 +2487,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2566,7 +2496,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2575,15 +2505,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2595,19 +2525,12 @@
 		</effects>
 	</skill>
 	<skill id="13070" toLevel="4" name="Set Effect - Eternal Heavy Armor 2 Piece (Defense Type)">
-		<table name="#defCritRate"> 1.0 0.967 0.967 0.967 </table>
-		<table name="#stunRes"> 0 10 10 10 </table>
-		<table name="#healEffect"> 0 0 108 108 </table>
-		<table name="#mDef"> 0 0 54 54 </table>
-		<table name="#pDef"> 0 0 0 103 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#elements"> 0 0 0 15 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t701_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -2615,7 +2538,7 @@
 					<value level="4">10</value>
 				</SHOCK>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2624,7 +2547,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2633,7 +2556,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2642,7 +2565,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2651,7 +2574,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2660,7 +2583,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2669,7 +2592,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2678,7 +2601,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-3.3</value>
@@ -2687,15 +2610,15 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2704,26 +2627,19 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>521</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="13071" toLevel="4" name="Set Effect - Eternal Heavy Armor 2 Piece (Attack Type)">
-		<table name="#maxHp"> 0 0 521 521 </table>
-		<table name="#holdRes"> 0 10 10 10 </table>
-		<table name="#pAtk"> 0 0 0 246 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#critDmgAdd"> 0 298 298 298 </table>
-		<table name="#elements"> 0 0 0 15 </table>
-		<table name="#absorbDam"> 0 0 2 2 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t701_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -2731,11 +2647,11 @@
 					<value level="4">10</value>
 				</HOLD>
 			</effect>
-			<effect name="VampiricAttack" fromLevel="3" toLevel="4">
+			<effect name="p_vampiric_attack" fromLevel="3" toLevel="4">
 				<amount>2</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2744,7 +2660,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2753,7 +2669,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">298</value>
@@ -2762,7 +2678,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2771,7 +2687,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2780,7 +2696,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2789,7 +2705,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2798,15 +2714,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2819,19 +2735,12 @@
 	</skill>
 	<skill id="13072" toLevel="4" name="Set Effect - R99 Rare Heavy Armor 2 Piece (Defense Type)">
 		<!-- CON + 4, STR -2, HP + 536. -->
-		<table name="#defCritRate"> 1.0 0.967 0.967 0.967 </table>
-		<table name="#stunRes"> 0 15 15 15 </table>
-		<table name="#reflect"> 1 1 1.20 1.20 </table>
-		<table name="#mDef"> 0 0 58 58 </table>
-		<table name="#pDef"> 0 0 0 108 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#elements"> 0 0 0 20 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t94_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">15</value>
@@ -2839,7 +2748,7 @@
 					<value level="4">15</value>
 				</SHOCK>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2848,7 +2757,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2857,7 +2766,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2866,16 +2775,15 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">1</value>
 					<value level="3">1.20</value>
 					<value level="4">1.20</value>
 				</amount>
-				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2884,7 +2792,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2893,7 +2801,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2902,7 +2810,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2911,7 +2819,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-3.3</value>
@@ -2920,15 +2828,15 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>4</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>536</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2936,20 +2844,12 @@
 	</skill>
 	<skill id="13073" toLevel="4" name="Set Effect - R99 Rare Heavy Armor 2 Piece (Attack Type)">
 		<!-- STR + 4, CON -2, Atk. Spd. + 3%. -->
-		<table name="#maxHp"> 0 0 536 536 </table>
-		<table name="#holdRes"> 0 15 15 15 </table>
-		<table name="#stunKnockProf"> 0 15 15 15 </table>
-		<table name="#pAtk"> 0 0 0 255 </table>
-		<table name="#pDefMul"> 1 1 1 1.07 </table>
-		<table name="#critDmgAdd"> 0 325 325 325 </table>
-		<table name="#elements"> 0 0 0 20 </table>
-		<table name="#absorbDam"> 0 0 2 2 </table>
 		<operateType>P</operateType>
 		<icon>icon.armor_t94_u_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">15</value>
@@ -2957,7 +2857,7 @@
 					<value level="4">15</value>
 				</HOLD>
 			</effect>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">15</value>
@@ -2971,11 +2871,11 @@
 					<value level="4">15</value>
 				</KNOCKDOWN>
 			</effect>
-			<effect name="VampiricAttack" fromLevel="3" toLevel="4">
+			<effect name="p_vampiric_attack" fromLevel="3" toLevel="4">
 				<amount>2</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2984,7 +2884,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -2993,7 +2893,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">325</value>
@@ -3002,7 +2902,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3011,7 +2911,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3020,7 +2920,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3029,7 +2929,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3038,15 +2938,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>4</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3060,20 +2960,12 @@
 	<skill id="13074" toLevel="4" name="Set Effect - Immortal Light Armor 2 Piece (Assassin Type)">
 		<!-- Updated to IO -->
 		<!-- DEX + 1 -->
-		<table name="#rEvas"> 0 2.3 2.3 2.3 </table>
-		<table name="#SLEEP"> 0 5 5 5 </table>
-		<table name="#PhysicalMpConsumeRate"> 1 1 0.96 0.96 </table>
-		<table name="#pAtkSpd"> 1 1 1 1.03 </table>
-		<table name="#pAtk"> 1 1 1 1.07 </table>
-		<table name="#healEffect"> 1 1 1 1.07 </table>
-		<table name="#rCrit"> 0 0 0 0.033 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<icon>icon.armor_t502_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">5</value>
@@ -3081,7 +2973,7 @@
 					<value level="4">5</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3090,7 +2982,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">2.3</value>
@@ -3099,7 +2991,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3108,7 +3000,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3117,7 +3009,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3126,7 +3018,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3135,7 +3027,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3144,7 +3036,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3153,7 +3045,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3162,11 +3054,11 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>1</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3181,19 +3073,12 @@
 	<skill id="13075" toLevel="4" name="Set Effect - Immortal Light Armor 2 Piece (Enchant Type)">
 		<!-- Updated to IO -->
 		<!-- STR + 1, P. Atk. + 155. -->
-		<table name="#pAtk"> 1 1 1 1.07 </table>
-		<table name="#HOLD"> 0 5 5 5 </table>
-		<table name="#MpConsume"> 1 0.96 0.96 0.96 </table>
-		<table name="#maxHp"> 0 0 463 463 </table>
-		<table name="#healEffect"> 1 1 1 1.07 </table>
-		<table name="#pAtkSpd"> 1 1 1 1.03 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<icon>icon.armor_t502_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">5</value>
@@ -3201,7 +3086,7 @@
 					<value level="4">5</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3210,11 +3095,11 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>155</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3223,7 +3108,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3232,7 +3117,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3241,7 +3126,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3250,7 +3135,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3259,7 +3144,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3268,11 +3153,11 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3281,7 +3166,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-4</value>
@@ -3291,7 +3176,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-4</value>
@@ -3306,20 +3191,12 @@
 	<skill id="13076" toLevel="4" name="Set Effect - Twilight Light Armor 2 Piece (Assassin Type)">
 		<!-- Updated to IO -->
 		<!-- DEX + 2, STR -1 -->
-		<table name="#rEvas"> 0 2.3 2.3 2.3 </table>
-		<table name="#SLEEP"> 0 7 7 7 </table>
-		<table name="#pAtkSpd"> 1 1 1 1.03 </table>
-		<table name="#pAtk"> 1 1 1 1.07 </table>
-		<table name="#pAtkAdd"> 0 0 180 180 </table>
-		<table name="#healEffect"> 1 1 1 1.07 </table>
-		<table name="#rCrit"> 0 0 0 0.033 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<icon>icon.armor_t602_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">7</value>
@@ -3327,7 +3204,7 @@
 					<value level="4">7</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3336,7 +3213,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3345,7 +3222,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">2.3</value>
@@ -3354,7 +3231,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3363,7 +3240,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3372,7 +3249,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3381,7 +3258,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3390,7 +3267,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3399,7 +3276,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3408,7 +3285,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3417,11 +3294,11 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>DEX</stat>
 			</effect>
@@ -3435,7 +3312,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">7</value>
@@ -3443,7 +3320,7 @@
 					<value level="4">7</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3452,7 +3329,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">180</value>
 					<value level="2">180</value>
@@ -3461,7 +3338,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3470,7 +3347,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3479,7 +3356,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3488,7 +3365,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3497,7 +3374,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3506,7 +3383,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3515,7 +3392,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3524,15 +3401,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3541,7 +3418,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3550,7 +3427,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-10</value>
@@ -3560,7 +3437,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-10</value>
@@ -3575,21 +3452,12 @@
 	<skill id="13078" toLevel="4" name="Set Effect - Seraph Light Armor 2 Piece (Assassin Type)">
 		<!-- Updated to IO -->
 		<!-- DEX + 3, STR -2 -->
-		<table name="#rEvas"> 0 2.3 2.3 2.3 </table>
-		<table name="#SLEEP"> 0 10 10 10 </table>
-		<table name="#MpConsume"> 1 1 0.96 0.96 </table>
-		<table name="#physicalSkillPower"> 1 1 1.06 1.06 </table>
-		<table name="#pAtkSpd"> 1 1 1 1.03 </table>
-		<table name="#pAtk"> 1 1 1 1.07 </table>
-		<table name="#healEffect"> 1 1 1 1.07 </table>
-		<table name="#rCrit"> 0 0 0 0.033 </table>
-		<table name="#elements"> 0 0 0 15 </table>
 		<icon>icon.armor_t402_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -3597,7 +3465,7 @@
 					<value level="4">10</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3606,7 +3474,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">2.3</value>
@@ -3615,7 +3483,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3624,7 +3492,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3633,7 +3501,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3642,7 +3510,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3651,7 +3519,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3660,7 +3528,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3669,7 +3537,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3678,7 +3546,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3687,15 +3555,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3710,22 +3578,12 @@
 	<skill id="13079" toLevel="4" name="Set Effect - Seraph Light Armor 2 Piece (Enchant Type)">
 		<!-- Updated to IO -->
 		<!-- STR + 3, CON -2, P. Atk. + 214. -->
-		<table name="#pAtkAdd"> 214 214 214 0 </table>
-		<table name="#HOLD"> 0 10 10 7 </table>
-		<table name="#MpConsume"> 1 0.96 0.96 0.96 </table>
-		<table name="#maxHp"> 0 0 511 511 </table>
-		<table name="#DERANGEMENT"> 0 0 20 20 </table>
-		<table name="#pAtkSpd"> 1 1 1 1.03 </table>
-		<table name="#pAtk"> 1 1 1 1.07 </table>
-		<table name="#healEffect"> 1 1 1 1.07 </table>
-		<table name="#healEffectAdd"> 0 0 0 217 </table>
-		<table name="#elements"> 0 0 0 15 </table>
 		<icon>icon.armor_t402_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -3739,7 +3597,7 @@
 					<value level="4">20</value>
 				</DERANGEMENT>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3748,7 +3606,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">214</value>
 					<value level="2">214</value>
@@ -3757,7 +3615,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3766,7 +3624,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3775,7 +3633,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3784,7 +3642,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3793,7 +3651,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3802,7 +3660,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3811,15 +3669,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3828,7 +3686,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3837,7 +3695,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-4</value>
@@ -3847,7 +3705,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-4</value>
@@ -3867,7 +3725,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -3875,11 +3733,11 @@
 					<value level="4">10</value>
 				</SLEEP>
 			</effect>
-			<effect name="VampiricAttack" fromLevel="3" toLevel="4">
+			<effect name="p_vampiric_attack" fromLevel="3" toLevel="4">
 				<amount>2</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3888,7 +3746,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">2.3</value>
@@ -3897,7 +3755,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3906,7 +3764,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3915,7 +3773,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3924,7 +3782,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3933,7 +3791,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3942,7 +3800,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3951,7 +3809,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -3960,15 +3818,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-4</value>
@@ -3983,21 +3841,12 @@
 	<skill id="13081" toLevel="4" name="Set Effect - Eternal Light Armor 2 Piece (Enchant Type)">
 		<!-- Updated to IO -->
 		<!-- STR + 3, CON -1, P. Atk. + 246. -->
-		<table name="#pAtkAdd"> 246 246 246 246 </table>
-		<table name="#HOLD"> 0 10 10 10 </table>
-		<table name="#MpConsume"> 1 0.96 0.96 0.96 </table>
-		<table name="#physicalSkillPower"> 1 1 1.06 1.06 </table>
-		<table name="#maxHp"> 0 0 521 521 </table>
-		<table name="#pAtkSpd"> 1 1 1 1.03 </table>
-		<table name="#pAtk"> 1 1 1 1.07 </table>
-		<table name="#healEffect"> 1 1 1 1.07 </table>
-		<table name="#elements"> 0 0 0 15 </table>
 		<icon>icon.armor_t702_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -4005,7 +3854,7 @@
 					<value level="4">10</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4014,7 +3863,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">246</value>
 					<value level="2">246</value>
@@ -4023,7 +3872,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4032,7 +3881,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4041,7 +3890,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4050,7 +3899,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4059,7 +3908,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4068,7 +3917,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4077,7 +3926,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4086,15 +3935,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4103,7 +3952,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-4</value>
@@ -4113,7 +3962,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-4</value>
@@ -4128,20 +3977,12 @@
 	<skill id="13082" toLevel="4" name="Set Effect - R99 Rare Light Armor 2 Piece (Assassin Type)">
 		<!-- Updated to IO -->
 		<!-- DEX + 4, STR -2. Atk. Spd. + 3%. -->
-		<table name="#pAtkSpd"> 1.03 1.03 1.03 1.13 </table>
-		<table name="#rEvas"> 0 2.3 2.3 2.3 </table>
-		<table name="#SLEEP"> 0 15 15 15 </table>
-		<table name="#MpConsume"> 1 1 0.96 0.96 </table>
-		<table name="#cAtkAdd"> 0 0 325 325 </table>
-		<table name="#rCrit"> 0 0 0 0.033 </table>
-		<table name="#pAtk"> 1 1 1 1.07 </table>
-		<table name="#elements"> 0 0 0 20 </table>
 		<icon>icon.armor_t702_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">15</value>
@@ -4149,7 +3990,7 @@
 					<value level="4">15</value>
 				</SLEEP>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4158,7 +3999,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">2.3</value>
@@ -4167,7 +4008,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -4176,7 +4017,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4185,7 +4026,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4194,7 +4035,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4203,7 +4044,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4212,7 +4053,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4221,7 +4062,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4230,15 +4071,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>4</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4248,7 +4089,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4263,21 +4104,13 @@
 	<skill id="13083" toLevel="4" name="Set Effect - R99 Rare Light Armor 2 Piece (Enchant Type)">
 		<!-- Updated to IO -->
 		<!-- STR + 4, CON -2, P. Atk. + 255. -->
-		<table name="#pAtkAdd"> 255 255 255 0 </table>
 		<!-- TODO Casting time of beneficial magic + 10% -->
-		<table name="#HOLD"> 0 15 15 15 </table>
-		<table name="#pAtkSpd"> 1 1 1.03 1.10 </table>
-		<table name="#maxHp"> 0 0 536 536 </table>
-		<table name="#pDef"> 1 1 1 1.07 </table>
-		<table name="#pDefAdd"> 0 0 0 255 </table>
-		<table name="#MpConsume"> 1 1 1 0.96 </table>
-		<table name="#elements"> 0 0 0 20 </table>
 		<icon>icon.armor_t702_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">0</value>
 					<value level="2">15</value>
@@ -4285,7 +4118,7 @@
 					<value level="4">15</value>
 				</HOLD>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">255</value>
 					<value level="2">255</value>
@@ -4294,7 +4127,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4303,7 +4136,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4312,7 +4145,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4321,7 +4154,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4330,7 +4163,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4339,7 +4172,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4348,7 +4181,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4357,15 +4190,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>4</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4374,7 +4207,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4384,7 +4217,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4399,20 +4232,12 @@
 	<skill id="13084" toLevel="4" name="Set Effect - Immortal Robe 2 Piece (Magic Type)">
 		<!-- Updated to IO -->
 		<!-- INT + 1. Casting Spd. + 3%. -->
-		<table name="#mAtkSpd"> 1.03 1.03 1.03 1.15 </table>
-		<table name="#maxMp"> 0 185 185 185 </table>
-		<table name="#SLEEP"> 0 5 5 5 </table>
-		<table name="#regMp"> 1 1 1.06 1.06 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffect"> 1 1 1 1.10 </table>
-		<table name="#mCritRate"> 1 1 1 1.03 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<icon>icon.armor_t503_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">5</value>
@@ -4420,7 +4245,7 @@
 					<value level="4">5</value>
 				</SLEEP>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4429,7 +4254,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -4438,7 +4263,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">185</value>
@@ -4447,7 +4272,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4456,7 +4281,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4465,7 +4290,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4474,7 +4299,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4483,7 +4308,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4492,7 +4317,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4501,11 +4326,11 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>1</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4519,20 +4344,12 @@
 	<skill id="13085" toLevel="4" name="Set Effect - Immortal Robe 2 Piece (Recovery Type)">
 		<!-- Updated to IO -->
 		<!-- WIT + 1. Casting Spd. + 3%. -->
-		<table name="#mAtkSpd"> 1.03 1.03 1.03 1.15 </table>
-		<table name="#maxMp"> 0 185 185 185 </table>
-		<table name="#SHOCK"> 0 5 5 5 </table>
-		<table name="#regMp"> 1 1 1.06 1.06 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffect"> 1 1 1 1.10 </table>
-		<table name="#healEffectAdd"> 0 0 0 65 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<icon>icon.armor_t503_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">5</value>
@@ -4540,7 +4357,7 @@
 					<value level="4">5</value>
 				</SHOCK>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4549,7 +4366,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -4558,7 +4375,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">185</value>
@@ -4567,7 +4384,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4576,7 +4393,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4585,7 +4402,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4594,7 +4411,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4603,7 +4420,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4612,7 +4429,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4621,11 +4438,11 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>1</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4639,20 +4456,12 @@
 	<skill id="13086" toLevel="4" name="Set Effect - Twilight Robe 2 Piece (Magic Type)">
 		<!-- Updated to IO -->
 		<!-- INT + 2. MEN -1. Casting Spd. + 3%. -->
-		<table name="#mAtkSpd"> 1.03 1.03 1.03 1.15 </table>
-		<table name="#maxMp"> 0 202 202 202 </table>
-		<table name="#SLEEP"> 0 7 7 7 </table>
-		<table name="#mAtkAdd"> 0 0 184 0 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffect"> 1 1 1 1.10 </table>
-		<table name="#mCritRate"> 1 1 1 1.03 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<icon>icon.armor_t603_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">7</value>
@@ -4660,7 +4469,7 @@
 					<value level="4">7</value>
 				</SLEEP>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4669,7 +4478,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4678,7 +4487,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -4687,7 +4496,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">202</value>
@@ -4696,7 +4505,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4705,7 +4514,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4714,7 +4523,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4723,7 +4532,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4732,7 +4541,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4741,15 +4550,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4763,20 +4572,12 @@
 	<skill id="13087" toLevel="4" name="Set Effect - Twilight Robe 2 Piece (Recovery Type)">
 		<!-- Updated to IO -->
 		<!-- WIT+ 2. MEN -1. Casting Spd. + 3%. -->
-		<table name="#mAtkSpd"> 1.03 1.03 1.03 1.15 </table>
-		<table name="#maxMp"> 0 202 202 202 </table>
-		<table name="#SHOCK"> 0 7 7 7 </table>
-		<table name="#regMp"> 1 1.07 1.07 1.07 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffect"> 1 1 1 1.10 </table>
-		<table name="#healEffectAdd"> 0 0 0 85 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<icon>icon.armor_t603_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">7</value>
@@ -4784,7 +4585,7 @@
 					<value level="4">7</value>
 				</SHOCK>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4793,7 +4594,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -4802,7 +4603,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">202</value>
@@ -4811,7 +4612,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">7</value>
@@ -4820,7 +4621,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4829,7 +4630,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4838,7 +4639,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4847,7 +4648,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4856,7 +4657,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4865,15 +4666,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4887,21 +4688,13 @@
 	<skill id="13088" toLevel="4" name="Set Effect - Seraph Robe 2 Piece (Magic Type)">
 		<!-- Updated to IO -->
 		<!-- INT + 3. MEN -2. Casting Spd. + 3%. -->
-		<table name="#mAtkSpd"> 1.03 1.03 1.03 1.15 </table>
-		<table name="#maxMp"> 0 221 221 221 </table>
-		<table name="#SLEEP"> 0 10 10 10 </table>
-		<table name="#mAtkAdd"> 0 0 222 0 </table>
 		<!-- TODO Magic Cancel Resistance. -->
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffect"> 1 1 1 1.10 </table>
-		<table name="#mCritRate"> 1 1 1 1.03 </table>
-		<table name="#elements"> 0 0 0 10 </table>
 		<icon>icon.armor_t403_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -4909,7 +4702,7 @@
 					<value level="4">10</value>
 				</SLEEP>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4918,7 +4711,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4927,7 +4720,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -4936,7 +4729,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">221</value>
@@ -4945,7 +4738,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4954,7 +4747,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4963,7 +4756,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4972,7 +4765,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4981,7 +4774,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -4990,15 +4783,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5012,21 +4805,12 @@
 	<skill id="13089" toLevel="4" name="Set Effect - Seraph Robe 2 Piece (Recovery Type)">
 		<!-- Updated to IO -->
 		<!-- WIT+ 3. MEN -2. Casting Spd. + 3%. -->
-		<table name="#mAtkSpd"> 1.03 1.03 1.03 1.15 </table>
-		<table name="#maxMp"> 0 221 221 221 </table>
-		<table name="#SHOCK"> 0 10 10 10 </table>
-		<table name="#regMp"> 1 1 1.08 1.08 </table>
-		<table name="#mCritRate"> 1 1 1.03 1.03 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffect"> 1 1 1 1.10 </table>
-		<table name="#healEffectAdd"> 0 0 0 89 </table>
-		<table name="#elements"> 0 0 0 15 </table>
 		<icon>icon.armor_t403_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -5034,7 +4818,7 @@
 					<value level="4">10</value>
 				</SHOCK>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5043,7 +4827,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -5052,7 +4836,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">221</value>
@@ -5061,7 +4845,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5070,7 +4854,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5079,7 +4863,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5088,7 +4872,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5097,7 +4881,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5106,7 +4890,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5115,15 +4899,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5132,7 +4916,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5146,21 +4930,12 @@
 	<skill id="13090" toLevel="4" name="Set Effect - Eternal Robe 2 Piece (Magic Type)">
 		<!-- Updated to IO -->
 		<!-- INT + 3. MEN -1. Casting Spd. + 3%. -->
-		<table name="#mAtkSpd"> 1.03 1.03 1.03 1.15 </table>
-		<table name="#maxMp"> 0 228 228 228 </table>
-		<table name="#SLEEP"> 0 10 10 10 </table>
-		<table name="#mAtkAdd"> 0 0 256 0 </table>
-		<table name="#mCritPowerAdd"> 0 0 297 297 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffect"> 1 1 1 1.10 </table>
-		<table name="#mCritRate"> 1 1 1 1.03 </table>
-		<table name="#elements"> 0 0 0 15 </table>
 		<icon>icon.armor_t703_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -5168,7 +4943,7 @@
 					<value level="4">10</value>
 				</SLEEP>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5177,7 +4952,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5186,7 +4961,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -5195,7 +4970,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">228</value>
@@ -5204,7 +4979,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5213,7 +4988,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5222,7 +4997,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5231,7 +5006,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5240,7 +5015,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5249,15 +5024,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5266,7 +5041,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicCriticalDamage">
+			<effect name="p_magic_critical_dmg">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5280,21 +5055,12 @@
 	<skill id="13091" toLevel="4" name="Set Effect - Eternal Robe 2 Piece (Recovery Type)">
 		<!-- Updated to IO -->
 		<!-- WIT+ 3. MEN -1. Casting Spd. + 3%. -->
-		<table name="#mAtkSpd"> 1.03 1.03 1.03 1.15 </table>
-		<table name="#maxMp"> 0 228 228 228 </table>
-		<table name="#SHOCK"> 0 10 10 10 </table>
-		<table name="#DERANGEMENT"> 0 0 15 15 </table>
-		<table name="#regMp"> 0 0 0.9 0.9 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffect"> 1 1 1 1.10 </table>
-		<table name="#healEffectAdd"> 0 0 0 108 </table>
-		<table name="#elements"> 0 0 0 15 </table>
 		<icon>icon.armor_t703_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -5302,7 +5068,7 @@
 					<value level="4">10</value>
 				</SHOCK>
 			</effect>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<DERANGEMENT>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5310,7 +5076,7 @@
 					<value level="4">15</value>
 				</DERANGEMENT>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5319,7 +5085,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -5328,7 +5094,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">228</value>
@@ -5337,7 +5103,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5346,7 +5112,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5355,7 +5121,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5364,7 +5130,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5373,7 +5139,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5382,7 +5148,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5391,15 +5157,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>3</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-1</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5413,20 +5179,12 @@
 	<skill id="13092" toLevel="4" name="Set Effect - R99 Rare Robe 2 Piece (Magic Type)">
 		<!-- Updated to IO -->
 		<!-- INT + 4. MEN -2. Casting Spd. + 15%. -->
-		<table name="#mAtkSpd"> 1.15 1.15 1.15 1.25 </table>
-		<table name="#maxMp"> 0 239 239 239 </table>
-		<table name="#SLEEP"> 0 15 15 15 </table>
-		<table name="#mAtkAdd"> 0 0 267 267 </table>
-		<table name="#DERANGEMENT"> 0 0 20 20 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#mCritRate"> 1 1 1 1.03 </table>
-		<table name="#elements"> 0 0 0 20 </table>
 		<icon>icon.armor_t703_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>
 					<value level="1">0</value>
 					<value level="2">15</value>
@@ -5434,7 +5192,7 @@
 					<value level="4">15</value>
 				</SLEEP>
 			</effect>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<DERANGEMENT>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5442,7 +5200,7 @@
 					<value level="4">20</value>
 				</DERANGEMENT>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5451,7 +5209,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5460,7 +5218,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">15</value>
 					<value level="2">15</value>
@@ -5469,7 +5227,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">239</value>
@@ -5478,7 +5236,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5487,7 +5245,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5496,7 +5254,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5505,7 +5263,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5514,15 +5272,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>4</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5536,20 +5294,12 @@
 	<skill id="13093" toLevel="4" name="Set Effect - R99 Rare Robe 2 Piece (Recovery Type)">
 		<!-- Updated to IO -->
 		<!-- WIT+ 4. MEN -2. Casting Spd. + 15%. -->
-		<table name="#mAtkSpd"> 1.15 1.15 1.15 1.25 </table>
-		<table name="#maxMp"> 0 239 239 239 </table>
-		<table name="#SHOCK"> 0 15 15 15 </table>
-		<table name="#regMp"> 0 0 1 1 </table>
-		<table name="#mAtkAdd"> 0 0 267 267 </table>
-		<table name="#mAtk"> 1 1 1 1.15 </table>
-		<table name="#healEffectAdd"> 0 0 0 111 </table>
-		<table name="#elements"> 0 0 0 20 </table>
 		<icon>icon.armor_t703_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">0</value>
 					<value level="2">15</value>
@@ -5557,7 +5307,7 @@
 					<value level="4">15</value>
 				</SHOCK>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5566,7 +5316,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5575,7 +5325,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">15</value>
 					<value level="2">15</value>
@@ -5584,7 +5334,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">239</value>
@@ -5593,7 +5343,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5602,7 +5352,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5611,7 +5361,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5620,7 +5370,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5629,7 +5379,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -5638,15 +5388,15 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>4</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>-2</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>

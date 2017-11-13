@@ -22,7 +22,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.enums.ItemLocation;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -124,7 +124,7 @@ public class Mail extends ItemContainer
 				while (inv.next())
 				{
 					final ItemInstance item = new ItemInstance(inv);
-					World.getInstance().storeObject(item);
+					World.getInstance().addObject(item);
 					
 					// If stackable item is found just add to current quantity
 					if (item.isStackable() && (getItemByItemId(item.getId()) != null))
@@ -140,7 +140,7 @@ public class Mail extends ItemContainer
 		}
 		catch (Exception e)
 		{
-			_log.warn("could not restore container:", e);
+			LOGGER.warn("could not restore container:", e);
 		}
 	}
 	

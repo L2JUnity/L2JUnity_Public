@@ -27,30 +27,12 @@ import org.l2junity.gameserver.model.Location;
 public interface IPositionable extends ILocational
 {
 	/**
-	 * Sets the X coordinate of this object.
-	 * @param x the new X coordinate
-	 */
-	void setX(int x);
-	
-	/**
-	 * Sets the Y coordinate of this object.
-	 * @param y the new Y coordinate
-	 */
-	void setY(int y);
-	
-	/**
-	 * Sets the Z coordinate of this object.
-	 * @param z the new Z coordinate
-	 */
-	void setZ(int z);
-	
-	/**
 	 * Sets all three coordinates of this object.
 	 * @param x the new X coordinate
 	 * @param y the new Y coordinate
 	 * @param z the new Z coordinate
 	 */
-	void setXYZ(int x, int y, int z);
+	void setXYZ(double x, double y, double z);
 	
 	/**
 	 * Sets all three coordinates of this object.
@@ -63,6 +45,15 @@ public interface IPositionable extends ILocational
 	 * @param heading the new heading
 	 */
 	void setHeading(int heading);
+	
+	/**
+	 * Sets the heading of this object to the target location.
+	 * @param to the target location of the heading
+	 */
+	default void setHeadingTo(ILocational to)
+	{
+		setHeading(calculateHeadingTo(to));
+	}
 	
 	/**
 	 * Changes the location of this object.

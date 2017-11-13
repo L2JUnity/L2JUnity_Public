@@ -21,9 +21,11 @@ package org.l2junity.gameserver.model.drops;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.CommonUtil;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.NpcConfig;
+import org.l2junity.gameserver.config.RatesConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.holders.ItemHolder;
@@ -54,6 +56,16 @@ public class GeneralDropItem implements IDropItem
 		_chance = chance;
 	}
 	
+	protected double getChanceMultiplier(Creature killer)
+	{
+		return 1.;
+	}
+	
+	protected double getAmountMultiplier(Creature killer)
+	{
+		return 1.;
+	}
+	
 	protected double getGlobalChanceMultiplier()
 	{
 		return 1.;
@@ -66,10 +78,10 @@ public class GeneralDropItem implements IDropItem
 	
 	private long getMinMax(Creature victim, Creature killer, long val)
 	{
-		double multiplier = 1;
+		double multiplier = getAmountMultiplier(killer);
 		
 		// individual drop amount
-		Float individualDropAmountMultiplier = Config.RATE_DROP_AMOUNT_MULTIPLIER.get(getItemId());
+		Float individualDropAmountMultiplier = RatesConfig.RATE_DROP_AMOUNT_MULTIPLIER.get(getItemId());
 		if (individualDropAmountMultiplier != null)
 		{
 			// individual amount list multiplier
@@ -82,7 +94,7 @@ public class GeneralDropItem implements IDropItem
 			if ((item != null) && item.hasExImmediateEffect())
 			{
 				// global herb amount multiplier
-				multiplier *= Config.RATE_HERB_DROP_AMOUNT_MULTIPLIER;
+				multiplier *= RatesConfig.RATE_HERB_DROP_AMOUNT_MULTIPLIER;
 			}
 			else
 			{
@@ -94,7 +106,7 @@ public class GeneralDropItem implements IDropItem
 		// global champions amount multiplier
 		if (victim.isChampion())
 		{
-			multiplier *= getItemId() != Inventory.ADENA_ID ? Config.L2JMOD_CHAMPION_REWARDS : Config.L2JMOD_CHAMPION_ADENAS_REWARDS;
+			multiplier *= getItemId() != Inventory.ADENA_ID ? L2JModsConfig.L2JMOD_CHAMPION_REWARDS : L2JModsConfig.L2JMOD_CHAMPION_ADENAS_REWARDS;
 		}
 		
 		return (long) (val * multiplier);
@@ -169,7 +181,7 @@ public class GeneralDropItem implements IDropItem
 		double multiplier = 1;
 		
 		// individual drop chance
-		Float individualDropChanceMultiplier = Config.RATE_DROP_CHANCE_MULTIPLIER.get(getItemId());
+		Float individualDropChanceMultiplier = RatesConfig.RATE_DROP_CHANCE_MULTIPLIER.get(getItemId());
 		if (individualDropChanceMultiplier != null)
 		{
 			multiplier *= individualDropChanceMultiplier;
@@ -179,7 +191,7 @@ public class GeneralDropItem implements IDropItem
 			final L2Item item = ItemTable.getInstance().getTemplate(getItemId());
 			if ((item != null) && item.hasExImmediateEffect())
 			{
-				multiplier *= Config.RATE_HERB_DROP_CHANCE_MULTIPLIER;
+				multiplier *= RatesConfig.RATE_HERB_DROP_CHANCE_MULTIPLIER;
 			}
 			else
 			{
@@ -189,10 +201,10 @@ public class GeneralDropItem implements IDropItem
 		
 		if (victim.isChampion())
 		{
-			multiplier *= Config.L2JMOD_CHAMPION_REWARDS;
+			multiplier *= L2JModsConfig.L2JMOD_CHAMPION_REWARDS;
 		}
 		
-		return (getChance() * multiplier);
+		return (getChance() * getChanceMultiplier(killer) * multiplier);
 	}
 	
 	/*
@@ -206,11 +218,11 @@ public class GeneralDropItem implements IDropItem
 		final double levelGapChanceToDrop;
 		if (getItemId() == Inventory.ADENA_ID)
 		{
-			levelGapChanceToDrop = CommonUtil.map(levelDifference, -Config.DROP_ADENA_MAX_LEVEL_DIFFERENCE, -Config.DROP_ADENA_MIN_LEVEL_DIFFERENCE, Config.DROP_ADENA_MIN_LEVEL_GAP_CHANCE, 100.0);
+			levelGapChanceToDrop = CommonUtil.map(levelDifference, -NpcConfig.DROP_ADENA_MAX_LEVEL_DIFFERENCE, -NpcConfig.DROP_ADENA_MIN_LEVEL_DIFFERENCE, NpcConfig.DROP_ADENA_MIN_LEVEL_GAP_CHANCE, 100.0);
 		}
 		else
 		{
-			levelGapChanceToDrop = CommonUtil.map(levelDifference, -Config.DROP_ITEM_MAX_LEVEL_DIFFERENCE, -Config.DROP_ITEM_MIN_LEVEL_DIFFERENCE, Config.DROP_ITEM_MIN_LEVEL_GAP_CHANCE, 100.0);
+			levelGapChanceToDrop = CommonUtil.map(levelDifference, -NpcConfig.DROP_ITEM_MAX_LEVEL_DIFFERENCE, -NpcConfig.DROP_ITEM_MIN_LEVEL_DIFFERENCE, NpcConfig.DROP_ITEM_MIN_LEVEL_GAP_CHANCE, 100.0);
 		}
 		
 		// There is a chance of level gap that it wont drop this item
@@ -221,7 +233,7 @@ public class GeneralDropItem implements IDropItem
 		
 		final double chance = getChance(victim, killer);
 		int successes;
-		if (!Config.L2JMOD_OLD_DROP_BEHAVIOR)
+		if (!L2JModsConfig.L2JMOD_OLD_DROP_BEHAVIOR)
 		{
 			successes = chance > (Rnd.nextDouble() * 100) ? 1 : 0;
 		}

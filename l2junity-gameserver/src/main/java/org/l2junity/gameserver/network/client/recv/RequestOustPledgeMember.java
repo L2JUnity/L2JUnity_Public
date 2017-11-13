@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.ClanMember;
 import org.l2junity.gameserver.model.ClanPrivilege;
 import org.l2junity.gameserver.model.L2Clan;
@@ -74,7 +74,7 @@ public final class RequestOustPledgeMember implements IClientIncomingPacket
 		ClanMember member = clan.getClanMember(_target);
 		if (member == null)
 		{
-			_log.warn("Target (" + _target + ") is not member of the clan");
+			LOGGER.warn("Target (" + _target + ") is not member of the clan");
 			return;
 		}
 		if (member.isOnline() && member.getPlayerInstance().isInCombat())
@@ -84,8 +84,8 @@ public final class RequestOustPledgeMember implements IClientIncomingPacket
 		}
 		
 		// this also updates the database
-		clan.removeClanMember(member.getObjectId(), System.currentTimeMillis() + (Config.ALT_CLAN_JOIN_DAYS * 86400000L)); // 24*60*60*1000 = 86400000
-		clan.setCharPenaltyExpiryTime(System.currentTimeMillis() + (Config.ALT_CLAN_JOIN_DAYS * 86400000L)); // 24*60*60*1000 = 86400000
+		clan.removeClanMember(member.getObjectId(), System.currentTimeMillis() + (PlayerConfig.ALT_CLAN_JOIN_DAYS * 86400000L)); // 24*60*60*1000 = 86400000
+		clan.setCharPenaltyExpiryTime(System.currentTimeMillis() + (PlayerConfig.ALT_CLAN_JOIN_DAYS * 86400000L)); // 24*60*60*1000 = 86400000
 		clan.updateClanInDB();
 		
 		SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.CLAN_MEMBER_S1_HAS_BEEN_EXPELLED);

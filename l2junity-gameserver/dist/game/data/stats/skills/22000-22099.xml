@@ -98,9 +98,8 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -125,7 +124,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>600</value>
+				<amount>600</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -148,7 +147,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>20000</value>
+				<amount>20000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -169,7 +168,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20">
 						<item id="20083" count="1" />
@@ -219,7 +218,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20">
 						<item id="20083" count="1" />
@@ -270,7 +269,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20">
 						<item id="20094" count="1" />
@@ -299,7 +298,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20">
 						<item id="20098" count="1" />
@@ -328,7 +327,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="20103" count="1" />
@@ -357,7 +356,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="10">
 						<item id="10606" count="1" />
@@ -389,45 +388,45 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>30</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -454,45 +453,45 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -519,41 +518,41 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-30</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -580,45 +579,45 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>45</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -642,7 +641,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="99.99948">
 						<item id="20107" count="1" />
@@ -671,7 +670,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="20108" count="1" />
@@ -735,7 +734,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="20199" count="1" />
@@ -761,7 +760,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="9">
 						<item id="10134" count="1" />
@@ -799,7 +798,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="14">
 						<item id="948" count="2" />
@@ -840,7 +839,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="14">
 						<item id="947" count="2" />
@@ -875,7 +874,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="14">
 						<item id="959" count="1" />
@@ -910,7 +909,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.00661">
 						<item id="6659" count="1" />
@@ -953,7 +952,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>20000</value>
+				<amount>20000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -977,7 +976,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1004,9 +1003,8 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -1030,7 +1028,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1054,7 +1052,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="8.34">
 						<item id="20255" count="1" />
@@ -1114,7 +1112,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="33">
 						<item id="20268" count="1" />
@@ -1146,7 +1144,7 @@
 			<condition name="OpCanNotUseAirship" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>106</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>1200000</despawnDelay>
@@ -1177,9 +1175,8 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -1215,7 +1212,6 @@
 	</skill>
 	<skill id="22039" toLevel="2" name="XP Rune III (Lv. 1-99) 30%">
 		<!-- Confirmed CT2.5 -->
-		<table name="#bonusExp"> 30 50 </table>
 		<icon>
 			<value level="1">br_cashtex.skill.br_cash_rune_of_exp_buff_3</value>
 			<value level="2">br_cashtex.skill.br_cash_rune_of_exp_buff_5</value>
@@ -1224,18 +1220,16 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="ExpModify">
+			<effect name="p_exp_modify">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">50</value>
 				</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="22040" toLevel="2" name="SP Rune 30%">
 		<!-- Confirmed CT2.5 -->
-		<table name="#bonusSp"> 30 50 </table>
 		<icon>
 			<value level="1">br_cashtex.skill.br_cash_rune_of_sp_buff_3</value>
 			<value level="2">br_cashtex.skill.br_cash_rune_of_sp_buff_5</value>
@@ -1244,12 +1238,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="SpModify">
+			<effect name="p_sp_modify">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">50</value>
 				</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1266,11 +1259,11 @@
 			<condition name="OpNotOlympiad" />
 		</passiveConditions>
 		<effects>
-			<effect name="CrystalGradeModify">
-				<grade>
+			<effect name="p_crystal_grade_modify">
+				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
-				</grade>
+				</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -1286,7 +1279,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>200</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1329,7 +1322,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>
 					<value level="2">800</value>
 					<value level="3">1500</value>
@@ -1389,7 +1382,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>50</power>
 			</effect>
 		</effects>
@@ -1419,7 +1412,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>1</transformationId>
 			</effect>
 		</effects>
@@ -1449,7 +1442,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>2</transformationId>
 			</effect>
 		</effects>
@@ -1479,7 +1472,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>203</transformationId>
 			</effect>
 		</effects>
@@ -1509,7 +1502,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>206</transformationId>
 			</effect>
 		</effects>
@@ -1539,7 +1532,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>209</transformationId>
 			</effect>
 		</effects>
@@ -1569,7 +1562,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>212</transformationId>
 			</effect>
 		</effects>
@@ -1599,7 +1592,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>215</transformationId>
 			</effect>
 		</effects>
@@ -1629,16 +1622,13 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>218</transformationId>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="22053" toLevel="19" name="Scroll of Escape: Talking Island Village">
 		<!-- Confirmed CT2.5 -->
-		<table name="#coordX"> -84200 46915 9723 -45208 115158 -80831 -12728 15633 17860 83378 105760 111388 82916 85289 117052 146818 147922 43840 87326 </table>
-		<table name="#coordY"> 244566 51441 15576 -112502 -178170 149808 122726 142962 170191 147999 113064 219331 53210 16225 76884 25807 -55316 -47779 -143370 </table>
-		<table name="#coordZ"> -3728 -2976 -4568 -240 -880 -3040 -3112 -2696 -3496 -3400 -3176 -3544 -1488 -3672 -2688 -2008 -2728 -792 -1319 </table>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -1678,7 +1668,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>
 					<value level="1">-84200</value>
 					<value level="2">46915</value>
@@ -1769,10 +1759,8 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-100</amount>
-				<mode>PER</mode>
-				<magicType>1</magicType>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -1796,7 +1784,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>5000</value>
+				<amount>5000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -1817,7 +1805,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1840,7 +1828,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1863,7 +1851,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1886,7 +1874,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1909,7 +1897,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1932,7 +1920,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1955,7 +1943,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1978,7 +1966,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2001,7 +1989,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>9</amount>
 				<chance>80</chance>
 			</effect>
@@ -2024,7 +2012,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2047,35 +2035,35 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>8</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2098,7 +2086,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2121,7 +2109,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2144,17 +2132,17 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -2178,7 +2166,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2201,7 +2189,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="27">
 						<item id="22009" count="2" />
@@ -2272,7 +2260,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="26.25">
 						<item id="22013" count="2" />
@@ -2335,6 +2323,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22074" toLevel="1" name="Scroll: Enchant Armor (S-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2345,6 +2347,21 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22075" toLevel="1" name="Ancient Scroll: Enchant Weapon (S-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2355,6 +2372,30 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22076" toLevel="1" name="Ancient Scroll: Enchant Armor (S-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2365,6 +2406,26 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESSORY</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22077" toLevel="1" name="Divine Scroll: Enchant Weapon (S-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2375,6 +2436,30 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>11</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>6</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>1</bonusRate>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22078" toLevel="1" name="Divine Scroll: Enchant Armor (S-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2385,6 +2470,26 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESSORY</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>6</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22079" toLevel="1" name="Water Resistance">
 		<!-- Increases resistance to water type attacks by 20% for 1 hour -->
@@ -2512,7 +2617,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>40</HOLD>
 				<DERANGEMENT>40</DERANGEMENT>
 				<SLEEP>40</SLEEP>
@@ -2540,7 +2645,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2567,7 +2672,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ReduceCancel">
+			<effect name="p_reduce_cancel">
 				<amount>-36</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2594,7 +2699,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ShieldDefenceRate">
+			<effect name="p_shield_defence_rate">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2621,7 +2726,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2648,7 +2753,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2675,7 +2780,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ShieldDefence">
+			<effect name="p_physical_shield_defence">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2688,20 +2793,19 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>5</amount>
-				<mode>DIFF</mode>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -2726,7 +2830,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20">
 						<item id="20365" count="1" />
@@ -2765,7 +2869,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="15">
 						<item id="20554" count="1" />
@@ -2801,7 +2905,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="70">
 						<item id="20581" count="1" />
@@ -2831,7 +2935,7 @@
 			<condition name="OpCanNotUseAirship" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>8</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>60000</despawnDelay>
@@ -2857,7 +2961,7 @@
 			<condition name="OpCanNotUseAirship" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>9</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>60000</despawnDelay>
@@ -2887,45 +2991,45 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>30</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -2954,45 +3058,45 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>45</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -3025,49 +3129,49 @@
 			<condition name="ConsumeBody" />
 		</conditions>
 		<effects>
-			<effect name="ConsumeBody" />
-			<effect name="PAtk">
+			<effect name="i_consume_body" />
+			<effect name="p_physical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>30</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
 		</effects>
 		<selfEffects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>60</amount>
 				<mode>PER</mode>
 			</effect>

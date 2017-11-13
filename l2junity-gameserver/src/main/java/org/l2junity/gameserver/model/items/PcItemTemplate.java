@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.holders.ItemHolder;
  */
 public final class PcItemTemplate extends ItemHolder
 {
+	private static final long serialVersionUID = -1146128544728986121L;
 	private final boolean _equipped;
 	
 	/**

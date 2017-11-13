@@ -24,7 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map.Entry;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ItemVariables extends AbstractVariables
 {
-	private static final Logger _log = LoggerFactory.getLogger(ItemVariables.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ItemVariables.class);
 	
 	// SQL Queries.
 	private static final String SELECT_QUERY = "SELECT * FROM item_variables WHERE id = ?";
@@ -71,7 +71,7 @@ public class ItemVariables extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			_log.warn(ItemVariables.class.getSimpleName() + ": Couldn't select variables count for: " + objectId, e);
+			LOGGER.warn("Couldn't select variables count for: " + objectId, e);
 			return false;
 		}
 		return true;
@@ -95,7 +95,7 @@ public class ItemVariables extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't restore variables for: " + _objectId, e);
+			LOGGER.warn("Couldn't restore variables for: " + _objectId, e);
 			return false;
 		}
 		finally
@@ -138,7 +138,7 @@ public class ItemVariables extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't update variables for: " + _objectId, e);
+			LOGGER.warn("Couldn't update variables for: " + _objectId, e);
 			return false;
 		}
 		finally
@@ -165,7 +165,7 @@ public class ItemVariables extends AbstractVariables
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't delete variables for: " + _objectId, e);
+			LOGGER.warn("Couldn't delete variables for: " + _objectId, e);
 			return false;
 		}
 		return true;

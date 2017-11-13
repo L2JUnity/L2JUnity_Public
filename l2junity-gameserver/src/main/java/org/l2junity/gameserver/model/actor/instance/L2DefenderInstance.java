@@ -18,11 +18,11 @@
  */
 package org.l2junity.gameserver.model.actor.instance;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.ai.CharacterAI;
 import org.l2junity.gameserver.ai.CtrlIntention;
 import org.l2junity.gameserver.ai.SiegeGuardAI;
 import org.l2junity.gameserver.ai.SpecialSiegeGuardAI;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.FortManager;
@@ -33,9 +33,13 @@ import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
 import org.l2junity.gameserver.model.entity.Castle;
 import org.l2junity.gameserver.model.entity.Fort;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class L2DefenderInstance extends Attackable
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2DefenderInstance.class);
+
 	private Castle _castle = null; // the castle which the instance should defend
 	private Fort _fort = null; // the fortress which the instance should defend
 	
@@ -104,18 +108,18 @@ public class L2DefenderInstance extends Attackable
 		{
 			return;
 		}
-		if (!isInsideRadius(getSpawn(), 40, false, false))
+		if (!isInRadius2d(getSpawn(), 40))
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.info(getObjectId() + ": moving home");
+				LOGGER.info(getObjectId() + ": moving home");
 			}
 			setisReturningToSpawnPoint(true);
 			clearAggroList();
 			
 			if (hasAI())
 			{
-				getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, getSpawn().getLocation());
+				getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, getSpawn());
 			}
 		}
 	}
@@ -130,7 +134,7 @@ public class L2DefenderInstance extends Attackable
 		
 		if ((_fort == null) && (_castle == null))
 		{
-			_log.warn("L2DefenderInstance spawned outside of Fortress or Castle zone!" + this);
+			LOGGER.warn("L2DefenderInstance spawned outside of Fortress or Castle zone!" + this);
 		}
 	}
 	
@@ -149,9 +153,9 @@ public class L2DefenderInstance extends Attackable
 		// Check if the L2PcInstance already target the L2NpcInstance
 		if (this != player.getTarget())
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.info("new target selected:" + getObjectId());
+				LOGGER.info("new target selected:" + getObjectId());
 			}
 			
 			// Set the target of the L2PcInstance player

@@ -8,16 +8,28 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
-				<amount>-20</amount>
+			<effect name="p_pve_magical_skill_dmg_bonus">
+				<amount>
+					<value level="1">-20</value>
+					<value level="2">-30</value>
+				</amount>
+				<type>BOSS</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
-				<amount>-20</amount>
+			<effect name="p_pve_physical_attack_dmg_bonus">
+				<amount>
+					<value level="1">-20</value>
+					<value level="2">-30</value>
+				</amount>
+				<type>BOSS</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
-				<amount>-20</amount>
+			<effect name="p_pve_physical_skill_dmg_bonus">
+				<amount>
+					<value level="1">-20</value>
+					<value level="2">-30</value>
+				</amount>
+				<type>BOSS</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -50,19 +62,19 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -94,7 +106,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>184</power>
 			</effect>
 		</effects>

@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class EnchantItemGroup
 {
-	private static final Logger _log = LoggerFactory.getLogger(EnchantItemGroup.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EnchantItemGroup.class);
 	private final List<RangeChanceHolder> _chances = new ArrayList<>();
 	private final String _name;
 	
@@ -70,10 +70,10 @@ public final class EnchantItemGroup
 					return holder.getChance();
 				}
 			}
-			_log.warn(getClass().getSimpleName() + ": Couldn't match proper chance for item group: " + _name, new IllegalStateException());
+			LOGGER.warn("Couldn't match proper chance for item group: " + _name, new IllegalStateException());
 			return _chances.get(_chances.size() - 1).getChance();
 		}
-		_log.warn(getClass().getSimpleName() + ": item group: " + _name + " doesn't have any chances!");
+		LOGGER.warn("item group: " + _name + " doesn't have any chances!");
 		return -1;
 	}
 }

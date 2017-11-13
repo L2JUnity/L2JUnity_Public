@@ -18,12 +18,16 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.datatables.ItemTable;
+import org.l2junity.gameserver.loader.LoadGroup;
+import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.holders.RangeChanceHolder;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.items.enchant.EnchantItemGroup;
@@ -48,11 +52,10 @@ public final class EnchantItemGroupsData implements IGameXmlReader
 	
 	protected EnchantItemGroupsData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Load(group = LoadGroup.class)
+	public void load() throws Exception
 	{
 		_itemGroups.clear();
 		_scrollGroups.clear();
@@ -62,7 +65,7 @@ public final class EnchantItemGroupsData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -106,8 +109,7 @@ public final class EnchantItemGroupsData implements IGameXmlReader
 					}
 					else if ("enchantScrollGroup".equals(d.getNodeName()))
 					{
-						int id = parseInteger(d.getAttributes(), "id");
-						final EnchantScrollGroup group = new EnchantScrollGroup(id);
+						final EnchantScrollGroup group = new EnchantScrollGroup(new StatsSet(parseAttributes(d)));
 						for (Node cd = d.getFirstChild(); cd != null; cd = cd.getNextSibling())
 						{
 							if ("enchantRate".equalsIgnoreCase(cd.getNodeName()))
@@ -135,11 +137,16 @@ public final class EnchantItemGroupsData implements IGameXmlReader
 								group.addRateGroup(rateGroup);
 							}
 						}
-						_scrollGroups.put(id, group);
+						_scrollGroups.put(group.getId(), group);
 					}
 				}
 			}
 		}
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _itemGroups.size() + _scrollGroups.size();
 	}
 	
 	public EnchantItemGroup getItemGroup(L2Item item, int scrollGroup)
@@ -159,6 +166,7 @@ public final class EnchantItemGroupsData implements IGameXmlReader
 		return _scrollGroups.get(id);
 	}
 	
+	@InstanceGetter
 	public static EnchantItemGroupsData getInstance()
 	{
 		return SingletonHolder._instance;

@@ -18,13 +18,14 @@
  */
 package org.l2junity.gameserver.ai;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.DoorInstance;
 import org.l2junity.gameserver.model.actor.instance.L2DefenderInstance;
+import org.l2junity.gameserver.model.interfaces.ILocational;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.skills.Skill;
 
@@ -64,7 +65,7 @@ public class DoorAI extends CharacterAI
 	}
 	
 	@Override
-	protected void onIntentionMoveTo(Location destination)
+	protected void onIntentionMoveTo(ILocational destination)
 	{
 	}
 	
@@ -91,7 +92,7 @@ public class DoorAI extends CharacterAI
 	@Override
 	protected void onEvtAttacked(Creature attacker)
 	{
-		ThreadPoolManager.getInstance().executeGeneral(new onEventAttackedDoorTask((DoorInstance) _actor, attacker));
+		ThreadPool.execute(new onEventAttackedDoorTask((DoorInstance) _actor, attacker));
 	}
 	
 	@Override
@@ -100,7 +101,7 @@ public class DoorAI extends CharacterAI
 	}
 	
 	@Override
-	protected void onEvtActionBlocked(Creature attacker)
+	protected void onEvtActionStopped(Creature attacker)
 	{
 	}
 	
@@ -160,7 +161,7 @@ public class DoorAI extends CharacterAI
 		{
 			World.getInstance().forEachVisibleObject(_door, L2DefenderInstance.class, guard ->
 			{
-				if (_actor.isInsideRadius(guard, guard.getTemplate().getClanHelpRange(), true, true))
+				if (_actor.isInRadius3d(guard, guard.getTemplate().getClanHelpRange()))
 				{
 					guard.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, _attacker, 15);
 				}

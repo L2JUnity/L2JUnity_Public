@@ -2,13 +2,14 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:element name="list">
 		<xs:complexType>
-			<xs:sequence minOccurs="1" maxOccurs="1">
+			<xs:sequence>
+				<xs:element type="xs:short" name="onePieceFactor" />
 				<xs:element name="enchantHP" minOccurs="0" maxOccurs="12">
 					<xs:complexType>
-						<xs:sequence minOccurs="1" maxOccurs="1">
-							<xs:element name="bonus" type="xs:integer" minOccurs="1" maxOccurs="20" />
+						<xs:sequence>
+							<xs:element type="xs:short" name="bonus" minOccurs="1" maxOccurs="20" />
 						</xs:sequence>
-						<xs:attribute name="grade" type="xs:token" use="required" />
+						<xs:attribute type="xs:token" name="grade" use="required" />
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>

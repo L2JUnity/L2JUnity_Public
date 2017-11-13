@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.model.actor.tasks.player;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.UserInfo;
@@ -42,11 +43,11 @@ public class FameTask implements Runnable
 	@Override
 	public void run()
 	{
-		if ((_player == null) || (_player.isDead() && !Config.FAME_FOR_DEAD_PLAYERS))
+		if ((_player == null) || (_player.isDead() && !PlayerConfig.FAME_FOR_DEAD_PLAYERS))
 		{
 			return;
 		}
-		if (((_player.getClient() == null) || _player.getClient().isDetached()) && !Config.OFFLINE_FAME)
+		if (((_player.getClient() == null) || _player.getClient().isDetached()) && !L2JModsConfig.OFFLINE_FAME)
 		{
 			return;
 		}

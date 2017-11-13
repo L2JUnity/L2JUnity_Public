@@ -20,11 +20,11 @@ package org.l2junity.gameserver.model.olympiad;
 
 import java.util.List;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.ai.CtrlIntention;
-import org.l2junity.gameserver.instancemanager.AntiFeedManager;
+import org.l2junity.gameserver.config.OlympiadConfig;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.FortManager;
+import org.l2junity.gameserver.instancemanager.MultiboxManager;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.Party;
 import org.l2junity.gameserver.model.Party.MessageType;
@@ -36,6 +36,7 @@ import org.l2junity.gameserver.model.instancezone.Instance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.network.client.send.ExOlympiadMode;
+import org.l2junity.gameserver.network.client.send.ExUserInfoCubic;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
 import org.l2junity.gameserver.network.client.send.InventoryUpdate;
 import org.l2junity.gameserver.network.client.send.SkillCoolTime;
@@ -49,8 +50,8 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractOlympiadGame
 {
-	protected static final Logger _log = LoggerFactory.getLogger(AbstractOlympiadGame.class);
-	protected static final Logger _logResults = LoggerFactory.getLogger("olympiad");
+	protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractOlympiadGame.class);
+	protected static final Logger LOG_RESULTS = LoggerFactory.getLogger("olympiad");
 	
 	protected static final String POINTS = "olympiad_points";
 	protected static final String COMP_DONE = "competitions_done";
@@ -183,13 +184,13 @@ public abstract class AbstractOlympiadGame
 			player.setIsInOlympiadMode(true);
 			player.setIsOlympiadStart(false);
 			player.setOlympiadSide(par.getSide());
-			player.setOlympiadBuffCount(Config.ALT_OLY_MAX_BUFFS);
+			player.setOlympiadBuffCount(OlympiadConfig.ALT_OLY_MAX_BUFFS);
 			player.teleToLocation(loc, instance);
 			player.sendPacket(new ExOlympiadMode(2));
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -265,6 +266,7 @@ public abstract class AbstractOlympiadGame
 			if (player.getAgathionId() > 0)
 			{
 				player.setAgathionId(0);
+				player.sendPacket(new ExUserInfoCubic(player));
 				player.broadcastUserInfo();
 			}
 			
@@ -274,18 +276,14 @@ public abstract class AbstractOlympiadGame
 			player.disableAutoShotsAll();
 			
 			// Discharge any active shots
-			ItemInstance item = player.getActiveWeaponInstance();
-			if (item != null)
-			{
-				item.unChargeAllShots();
-			}
+			player.unchargeAllShots();
 			
 			// enable skills with cool time <= 15 minutes
 			for (Skill skill : player.getAllSkills())
 			{
 				if (skill.getReuseDelay() <= 900000)
 				{
-					player.enableSkill(skill);
+					player.removeTimeStamp(skill);
 				}
 			}
 			
@@ -294,7 +292,7 @@ public abstract class AbstractOlympiadGame
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 	
@@ -307,7 +305,7 @@ public abstract class AbstractOlympiadGame
 			player.setTarget(null);
 			player.abortAttack();
 			player.abortCast();
-			player.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
+			player.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 			
 			if (player.isDead())
 			{
@@ -320,6 +318,8 @@ public abstract class AbstractOlympiadGame
 			if (player.getAgathionId() > 0)
 			{
 				player.setAgathionId(0);
+				player.sendPacket(new ExUserInfoCubic(player));
+				player.broadcastUserInfo();
 			}
 			final Summon pet = player.getPet();
 			if ((pet != null) && !pet.isDead())
@@ -327,7 +327,7 @@ public abstract class AbstractOlympiadGame
 				pet.setTarget(null);
 				pet.abortAttack();
 				pet.abortCast();
-				pet.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
+				pet.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 				pet.stopAllEffectsExceptThoseThatLastThroughDeath();
 			}
 			
@@ -336,7 +336,7 @@ public abstract class AbstractOlympiadGame
 				s.setTarget(null);
 				s.abortAttack();
 				s.abortCast();
-				s.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
+				s.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 				s.stopAllEffectsExceptThoseThatLastThroughDeath();
 			});
 			
@@ -347,7 +347,7 @@ public abstract class AbstractOlympiadGame
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 	
@@ -387,14 +387,11 @@ public abstract class AbstractOlympiadGame
 			player.setCurrentMp(player.getMaxMp());
 			player.getStatus().startHpMpRegeneration();
 			
-			if (Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP > 0)
-			{
-				AntiFeedManager.getInstance().removePlayer(AntiFeedManager.OLYMPIAD_ID, player);
-			}
+			MultiboxManager.getInstance().unregisterClient(Olympiad.getInstance(), player.getClient());
 		}
 		catch (Exception e)
 		{
-			_log.warn("playerStatusBack()", e);
+			LOGGER.warn("playerStatusBack()", e);
 		}
 	}
 	
@@ -441,7 +438,7 @@ public abstract class AbstractOlympiadGame
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 	

@@ -1,132 +1,339 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
-	<skill id="13300" toLevel="3" name="Magic One-handed Blunt Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13300" fromLevel="3" toLevel="3" name="Magic One-handed Blunt Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- M. Critical Damage + 381 and M. Accuracy + 1. -->
 		<icon>icon.weapon_vesper_caster_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_magic_critical_dmg">
+				<amount>381</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_hit">
+				<amount>2</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13301" toLevel="3" name="Magic Two-handed Blunt Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13301" fromLevel="3" toLevel="3" name="Magic Two-handed Blunt Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- M. Atk. + 44, M. Critical Damage + 381, and Casting Spd. + 1%. -->
 		<icon>icon.weapon_grangkaz_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>44</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>381</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13302" toLevel="3" name="Magic Two-handed Blunt Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13302" fromLevel="3" toLevel="3" name="Magic Two-handed Blunt Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- M. Atk. + 44, M. Critical Damage + 381, and Casting Spd. + 1%. -->
 		<icon>icon.weapon_herencia_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>44</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>381</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13303" toLevel="3" name="Magic Two-handed Blunt Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13303" fromLevel="3" toLevel="3" name="Magic Two-handed Blunt Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- M. Atk. + 44, M. Critical Damage + 381, and Casting Spd. + 1%. -->
 		<icon>icon.weapon_rupe_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>44</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>381</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13304" toLevel="3" name="Magic Two-handed Blunt Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13304" fromLevel="3" toLevel="3" name="Magic Two-handed Blunt Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- M. Atk. + 44, M. Critical Damage + 381, and Casting Spd. + 1%. -->
 		<icon>icon.weapon_shaelon_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>44</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>381</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13305" toLevel="3" name="Magic Two-handed Blunt Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13305" fromLevel="3" toLevel="3" name="Magic Two-handed Blunt Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- M. Atk. + 44, M. Critical Damage + 381, and Casting Spd. + 1%. -->
 		<icon>icon.weapon_vesper_singer_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>44</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>381</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13306" toLevel="3" name="Heavy Armor Top Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13306" fromLevel="3" toLevel="3" name="Heavy Armor Top Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- P. Def. + 34 and received P. Critical Damage by - 4.3%. -->
 		<icon>icon.armor_t501_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>34</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-4.3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13307" toLevel="3" name="Heavy Armor Top Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13307" fromLevel="3" toLevel="3" name="Heavy Armor Top Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- P. Def. + 34 and received P. Critical Damage by - 4.3%. -->
 		<icon>icon.armor_t601_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>34</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-4.3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13308" toLevel="3" name="Heavy Armor Top Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13308" fromLevel="3" toLevel="3" name="Heavy Armor Top Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- P. Def. + 34 and received P. Critical Damage by - 4.3%. -->
 		<icon>icon.armor_t401_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>34</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-4.3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13309" toLevel="3" name="Heavy Armor Top Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13309" fromLevel="3" toLevel="3" name="Heavy Armor Top Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- P. Def. + 34 and received P. Critical Damage by - 4.3%. -->
 		<icon>icon.armor_t701_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>34</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-4.3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13310" toLevel="3" name="Heavy Armor Top Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13310" fromLevel="3" toLevel="3" name="Heavy Armor Top Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- P. Def. + 34 and received P. Critical Damage by - 4.3%. -->
 		<icon>icon.armor_t501_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>34</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-4.3</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13311" toLevel="3" name="Light Armor Top Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13311" fromLevel="3" toLevel="3" name="Light Armor Top Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- P. Evasion + 2, Speed + 3, and P. Attribute Resistance + 5. Received P. Critical Rate - 3.4%. -->
 		<icon>icon.armor_t502_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_avoid">
+				<amount>2</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>3</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_physical_abnormal_resist">
+				<amount>5</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_rate">
+				<amount>-3.4</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13312" toLevel="3" name="Robe Upper Special Ability">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13312" fromLevel="3" toLevel="3" name="Robe Upper Special Ability">
+		<!-- Glory Days confirmed -->
 		<!-- M. Evasion + 3, and M. Attribute Resistance + 9. Received P. Critical Damage - 2.1%, and Received P. Critical Rate - 1.7%. -->
 		<icon>icon.armor_t503_u_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_magic_avoid">
+				<amount>3</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_abnormal_resist">
+				<amount>9</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-2.1</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_defence_critical_rate">
+				<amount>-1.7</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13313" toLevel="1" name="Blessed Antharas' Earring">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases P. Def./M. Def. Increases Holy/Dark Resistance and bleed/stun/mental attacks, bleed/stun/mental attack bonus, and the effectiveness of HP recovery magic. Decreases MP Consumption and restores HP by using some of the damage inflicted upon the enemy with a certain probability. CON+ 3, MEN+ 3 -->
 		<icon>icon.accessory_earring_of_antaras_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>30</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>30</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+			<effect name="p_defence_trait">
+				<BLEED>50</BLEED>
+				<SHOCK>40</SHOCK>
+				<DERANGEMENT>40</DERANGEMENT>
+			</effect>
+			<effect name="p_attack_trait">
+				<BLEED>50</BLEED>
+				<SHOCK>40</SHOCK>
+				<DERANGEMENT>40</DERANGEMENT>
+			</effect>
+			<effect name="p_heal_effect">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>4</amount>
+				<chance>30</chance>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13314" toLevel="1" name="Blessed Antharas' Earring">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 5 seconds, cancels stun and receives Stun Resistance. -->
 		<icon>icon.accessory_earring_of_antaras_i00</icon>
 		<operateType>A2</operateType>
@@ -143,17 +350,82 @@
 		<reuseDelay>7200000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>STUN,9</dispel>
+			</effect>
+			<effect name="p_defence_trait">
+				<SHOCK>100</SHOCK>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13315" toLevel="1" name="Blessed Valakas' Necklace">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Increases Fire/Dark Resistance, Sleep Resistance, sleep attack bonus, Max HP/ P. Atk./ M. Atk. and magic damage Critical Rate. Decreases skill Cooldown. Redirects some of the physical damage received back upon the enemy. STR+ 3, INT+ 3 -->
+		<!-- Updated to Helios -->
+		<!-- MAX MP +79, MAX HP +625, P.ATK +10%, M.ATK +20%, M.CritRate +20, STR/INT +3, Fire Attack Defence +30, Dark Attack Defence +20, Sleep Attack/Defence Success Rate +50%, Physical Skill Power +5%, Skill Cooldown -10%, Damage Reflection 5% -->
 		<icon>icon.accessory_necklace_of_valakas_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>625</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>30</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>20</amount>
+				<attribute>DARK</attribute>
+			</effect>
+			<effect name="p_attack_trait">
+				<SLEEP>50</SLEEP>
+			</effect>
+			<effect name="p_defence_trait">
+				<SLEEP>50</SLEEP>
+			</effect>
+			<effect name="p_skill_power">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_damage_shield">
+				<amount>5</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13316" toLevel="1" name="Blessed Valakas' Necklace">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 5 seconds, cancels hold and receives hold resistance. -->
 		<icon>icon.accessory_necklace_of_valakas_i00</icon>
 		<operateType>A2</operateType>
@@ -170,17 +442,76 @@
 		<reuseDelay>7200000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>ROOT_PHYSICALLY,9</dispel>
+			</effect>
+			<effect name="i_dispel_by_slot">
+				<dispel>ROOT_MAGICALLY,9</dispel>
+			</effect>
+			<effect name="p_defence_trait">
+				<HOLD>100</HOLD>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13317" toLevel="1" name="Earth Wyrm Heart Ring">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases Wind/Water Resistance, Physical/Mental/Poison Resistance, Knock Back/Knock Down/Pulling Resistance, poison attack bonus, Critical Damage, Accuracy/Atk. Spd./Casting Spd./and MP recovery speed. -->
 		<icon>icon.ring_earthworm_heart</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>30</amount>
+				<attribute>WIND</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>30</amount>
+				<attribute>WATER</attribute>
+			</effect>
+			<effect name="p_hit">
+				<amount>5</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_defence_trait">
+				<POISON>50</POISON>
+				<PULL>20</PULL>
+				<KNOCKBACK>20</KNOCKBACK>
+				<KNOCKDOWN>20</KNOCKDOWN>
+				<ZONE>20</ZONE>
+			</effect>
+			<effect name="p_attack_trait">
+				<POISON>50</POISON>
+			</effect>
+			<effect name="p_mp_regen">
+				<amount>3</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_physical_abnormal_resist">
+				<amount>15</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_abnormal_resist">
+				<amount>15</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13318" toLevel="1" name="Earth Wyrm Heart Ring">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13318" toLevel="1" name="Earth Wyrm Heart Ring - Heartbeat Accelerate">
+		<!-- Glory Days confirmed -->
 		<!-- Increases all party members' Atk. Spd./Casting Spd. by 5% for 5 minutes. In addition, 2% vampiric rate applies with a certain probability. -->
 		<icon>icon.ring_earthworm_heart</icon>
 		<operateType>A2</operateType>
@@ -199,9 +530,23 @@
 		<targetType>SELF</targetType>
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>2</amount>
+				<chance>30</chance>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13319" toLevel="1" name="Earth Wyrm Heart Ring">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13319" toLevel="1" name="Earth Wyrm Heart Ring - Blue Blood">
+		<!-- Glory Days confirmed -->
 		<!-- Removes poison effect. -->
 		<icon>icon.ring_earthworm_heart</icon>
 		<operateType>A1</operateType>
@@ -214,105 +559,269 @@
 		<reuseDelay>7200000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>POISON,-1</dispel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13320" toLevel="1" name="Istina's Ring">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Critical rate + 54.4, accuracy + 3, and Water Resistance + 20. -->
 		<icon>icon.istina_ring_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_critical_rate">
+				<amount>54.4</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_hit">
+				<amount>3</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>20</amount>
+				<attribute>WATER</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13321" toLevel="1" name="Istina's Earring">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Wind Resistance + 30, Stun Resistance + 30%, stun attack bonus + 30%, and additional 5% vampiric rage with a certain probability. -->
 		<icon>icon.istina_earring_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>30</amount>
+				<attribute>WIND</attribute>
+			</effect>
+			<effect name="p_defence_trait">
+				<SHOCK>30</SHOCK>
+			</effect>
+			<effect name="p_attack_trait">
+				<SHOCK>30</SHOCK>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>5</amount>
+				<chance>30</chance>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13322" toLevel="1" name="Istina's Necklace">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Holy Resistance + 35 and skill delay - 10%. Additionally, damage is incurred, 3% is reflected. -->
 		<icon>icon.istina_necklace_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>35</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
+			<effect name="p_damage_shield">
+				<amount>3</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13323" toLevel="1" name="Istina's Belt">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- HP recovery speed + 3.48 and item slot + 6. -->
 		<icon>icon.istina_belt_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_hp_regen">
+				<amount>3.48</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_enlarge_storage">
+				<amount>6</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13324" toLevel="1" name="Istina's Shirt">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- STR + 2, DEX + 1, CON + 2, INT + 2, WIT + 1, MEN + 2 , Speed + 7, and Water Resistance + 30. -->
 		<icon>icon.istina_shirt_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>MEN</stat>
+			</effect>
+			<effect name="p_speed">
+				<amount>7</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>30</amount>
+				<attribute>WATER</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13325" toLevel="1" name="Octavis' Ring">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Fire Resistance + 20 and Critical Damage + 15%. -->
 		<icon>icon.octavis_ring_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>20</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13326" toLevel="1" name="Octavis' Earring">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Earth Resistance + 30, Hold/Sleep Resistance + 40%, hold/sleep attack bonus + 40%. -->
 		<icon>icon.octavis_earring_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>30</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+			<effect name="p_defence_trait">
+				<HOLD>40</HOLD>
+				<SLEEP>40</SLEEP>
+			</effect>
+			<effect name="p_attack_trait">
+				<HOLD>40</HOLD>
+				<SLEEP>40</SLEEP>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13327" toLevel="1" name="Octavis' Necklace">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Dark Resistance + 35, Skill Power + 5%. -->
 		<icon>icon.octavis_necklace_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>35</amount>
+				<attribute>DARK</attribute>
+			</effect>
+			<effect name="p_skill_power">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13328" toLevel="1" name="Octavis' Belt">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- MP Recovery Rate + 2.3 and weight limit + 13000. -->
 		<icon>icon.octavis_belt_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_mp_regen">
+				<amount>2.3</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_weight_limit">
+				<amount>13000</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13329" toLevel="1" name="Bestow Fire Weapon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Bestow fire damage by 300. -->
 		<icon>icon.skill4009</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_attack_attribute">
+				<amount>300</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13330" toLevel="1" name="Bestow Water Weapon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Bestow water damage by 300. -->
 		<icon>icon.skill4010</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_attack_attribute">
+				<amount>300</amount>
+				<attribute>WATER</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13331" toLevel="1" name="Bestow Wind Weapon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Bestow wind damage by 300. -->
 		<icon>icon.skill4011</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_attack_attribute">
+				<amount>300</amount>
+				<attribute>WIND</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13332" toLevel="1" name="Bestow Earth Weapon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Bestow earth damage by 300. -->
 		<icon>icon.skill4012</icon>
 		<operateType>P</operateType>
@@ -320,39 +829,79 @@
 		<magicLvl>85</magicLvl>
 	</skill>
 	<skill id="13333" toLevel="1" name="Bestow Holy Weapon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Bestow holy damage by 300. -->
 		<icon>icon.skill4337</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_attack_attribute">
+				<amount>300</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13334" toLevel="1" name="Bestow Darkness Weapon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Bestow darkness damage by 300. -->
 		<icon>icon.skill4333</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_attack_attribute">
+				<amount>300</amount>
+				<attribute>DARK</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13335" toLevel="1" name="Bestow Fire/Wind/Darkness Armor">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Bestow Fire/Wind/Dark Resistance by 120. -->
 		<icon>icon.skill4337</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>120</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>120</amount>
+				<attribute>WIND</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>120</amount>
+				<attribute>DARK</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13336" toLevel="1" name="Bestow Water/Earth/Holy Armor">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Bestow Water/Earth/Holy Resistance by 120. -->
 		<icon>icon.skill4333</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>120</amount>
+				<attribute>WATER</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>120</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>120</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13337" toLevel="1" name="Talisman (R-grade) - M. Def. (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 10 seconds, increases M. Def. + 50% through the power of the talisman. -->
 		<icon>icon.r_talisman_mm_up_active</icon>
 		<operateType>A2</operateType>
@@ -371,9 +920,15 @@
 		<reuseDelay>120000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_magical_defence">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13338" toLevel="1" name="Talisman (R-grade) - Ranged P. Def. (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 10 seconds, increases Bow/Crossbow Resistance + 80% through the power of Talisman. -->
 		<icon>icon.r85_sp_talisman_ad_ex_passive</icon>
 		<operateType>A2</operateType>
@@ -392,54 +947,345 @@
 		<reuseDelay>120000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_defence_trait">
+				<BOW>80</BOW>
+				<CROSSBOW>80</CROSSBOW>
+				<TWOHANDCROSSBOW>80</TWOHANDCROSSBOW>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13339" toLevel="3" name="Enchant Heavy Armor Set + 6 (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13339" toLevel="5" name="Enchant Heavy Armor Set + 6 (R-grade)">
+		<!-- Updated to Helios -->
+		<!-- Glory Days confirmed -->
 		<!-- Set item is enchanted. P. Def. + 93, and MP Recovery Bonus + 32 when standing/ sitting. -->
 		<icon>icon.skill0231</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>93</amount>
+				<mode>DIFF</mode>
+				<armorType>
+					<item>HEAVY</item>
+				</armorType>
+			</effect>
+			<effect name="p_mp_regen_by_move_mode">
+				<type>STANDING</type>
+				<value>32</value>
+			</effect>
+			<effect name="p_mp_regen_by_move_mode">
+				<type>SITTING</type>
+				<value>32</value>
+			</effect>
+			<effect name="p_mp_regen_by_move_mode" fromLevel="2" toLevel="5">
+				<type>RUNNING</type>
+				<value>32</value>
+			</effect>
+			<effect name="p_magic_mp_cost" fromLevel="2" toLevel="5">
+				<amount>-7</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>
+					<value fromLevel="1" toLevel="2">0</value>
+					<value fromLevel="3" toLevel="4">11</value>
+					<value level="5">21</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reflect_skill" fromLevel="3" toLevel="5">
+				<amount>10</amount>
+				<type>PHYSICAL</type>
+			</effect>
+			<effect name="p_reflect_skill" fromLevel="3" toLevel="5">
+				<amount>10</amount>
+				<type>MAGIC</type>
+			</effect>
+			<effect name="p_pvp_magical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_attack_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_magical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_shield_resist" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+			</effect>
+			<effect name="p_stat_up" fromLevel="5" toLevel="5">
+				<amount>1</amount>
+				<stat>LUC</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="5" toLevel="5">
+				<amount>1</amount>
+				<stat>CHA</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13340" toLevel="3" name="Enchant Light Armor Set + 6 (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13340" toLevel="5" name="Enchant Light Armor Set + 6 (R-grade)">
+		<!-- Updated to Helios -->
+		<!-- Glory Days confirmed -->
 		<!-- Set item is enchanted. M. Def. + 55, P. Evasion + 2, and Debuff Resistance + 10%. MP Recovery Bonus + 8 when standing/ sitting. -->
 		<icon>icon.skill0233</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_magical_defence">
+				<amount>55</amount>
+				<mode>DIFF</mode>
+				<armorType>
+					<item>LIGHT</item>
+				</armorType>
+			</effect>
+			<effect name="p_avoid">
+				<amount>2</amount>
+				<mode>DIFF</mode>
+				<armorType>
+					<item>LIGHT</item>
+				</armorType>
+			</effect>
+			<effect name="p_mp_regen_by_move_mode">
+				<type>STANDING</type>
+				<value>8</value>
+			</effect>
+			<effect name="p_mp_regen_by_move_mode">
+				<type>SITTING</type>
+				<value>8</value>
+			</effect>
+			<effect name="p_resist_abnormal_by_category">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+			<effect name="p_skill_critical_probability" fromLevel="2" toLevel="5">
+				<amount>14</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_vampiric_attack" fromLevel="2" toLevel="5">
+				<amount>4</amount>
+				<chance>30</chance>
+			</effect>
+			<effect name="p_reuse_delay" fromLevel="3" toLevel="5">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay" fromLevel="3" toLevel="5">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_speed" fromLevel="3" toLevel="5">
+				<amount>7</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_attack_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_magical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_shield_resist" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+			</effect>
+			<effect name="p_physical_defence" fromLevel="5" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_stat_up" fromLevel="5" toLevel="5">
+				<amount>1</amount>
+				<stat>LUC</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="5" toLevel="5">
+				<amount>1</amount>
+				<stat>CHA</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13341" toLevel="3" name="Enchant Robe Set + 6 (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13341" toLevel="5" name="Enchant Robe Set + 6 (R-grade)">
+		<!-- Updated to Helios -->
+		<!-- Glory Days confirmed -->
 		<!-- Set item is enchanted. P. Def. + 60, Weight Limit + 30%, and Skill Cooldown - 3%. MP Recovery Bonus + 8 when standing/ sitting. -->
 		<icon>icon.skill0234</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>60</amount>
+				<mode>DIFF</mode>
+				<armorType>
+					<item>MAGIC</item>
+				</armorType>
+			</effect>
+			<effect name="p_weight_limit">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-3</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-3</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_mp_regen_by_move_mode">
+				<type>STANDING</type>
+				<value>8</value>
+			</effect>
+			<effect name="p_mp_regen_by_move_mode">
+				<type>SITTING</type>
+				<value>8</value>
+			</effect>
+			<effect name="p_max_hp" fromLevel="2" toLevel="5">
+				<amount>4890</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_trait" fromLevel="3" toLevel="5">
+				<DAGGER>10</DAGGER>
+				<DUALDAGGER>10</DUALDAGGER>
+				<BOW>10</BOW>
+				<CROSSBOW>10</CROSSBOW>
+				<TWOHANDCROSSBOW>10</TWOHANDCROSSBOW>
+			</effect>
+			<effect name="p_resist_abnormal_by_category" fromLevel="3" toLevel="5">
+				<amount>10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+			<effect name="p_pvp_magical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_attack_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_magical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_defence_bonus" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_shield_resist" fromLevel="4" toLevel="5">
+				<amount>10</amount>
+			</effect>
+			<effect name="p_physical_defence" fromLevel="5" toLevel="5">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_stat_up" fromLevel="5" toLevel="5">
+				<amount>1</amount>
+				<stat>LUC</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="5" toLevel="5">
+				<amount>1</amount>
+				<stat>CHA</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13342" toLevel="1" name="T-shirt of Destiny">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- STR + 1, INT + 1 -->
 		<icon>BranchSys2.icon.7anni_shirt_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13343" toLevel="1" name="Belt of Destiny">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases Weight Gauge when wearing the belt. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_weight_limit">
+				<amount>5000</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13344" toLevel="1" name="Bracelet of Insolence">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- 4 Talisman(s) can be equipped. -->
 		<icon>icon.bracelet_of_oman</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>61</magicLvl>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>4</slots>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13345" toLevel="1" name="Release Agathion's Seal - Tersi's Light">
 		<!-- AUTO GENERATED SKILL -->
@@ -488,7 +1334,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>1</abnormalTime>
 		<abnormalVisualEffect>KNOCKBACK</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -521,7 +1367,7 @@
 		</conditions>
 	</skill>
 	<skill id="13349" toLevel="1" name="Talisman (R-grade) - Damage Reflect Resistance (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 30 seconds, increases Damage Reflect Resistance by 10 through the power of the talisman. -->
 		<icon>icon.r85_talisman_md_up_passive</icon>
 		<operateType>A2</operateType>
@@ -540,9 +1386,14 @@
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_damage_shield_resist">
+				<amount>10</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13350" toLevel="1" name="Talisman (R-grade) - Lethal Strike Resistance (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 15 seconds, increases lethal strike resistance by 30 through the power of the talisman. -->
 		<icon>icon.r85_talisman_md_up_passive</icon>
 		<operateType>A2</operateType>
@@ -561,6 +1412,11 @@
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_instant_kill_resist">
+				<amount>30</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13351" toLevel="1" name="Notifier">
 		<!-- AUTO GENERATED SKILL -->
@@ -580,15 +1436,21 @@
 		</conditions>
 	</skill>
 	<skill id="13352" toLevel="1" name="Increase Hair Accessory Weight Gauge">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases Weight Gauge when wearing a hair accessory. -->
 		<icon>icon.Accessory_angel_circlet_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_weight_limit">
+				<amount>2000</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13353" toLevel="1" name="Talisman (R-grade) - M. Def. (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases M. Def. by 63 momentarily through the power of the talisman. -->
 		<icon>icon.r85_talisman_md_up_active</icon>
 		<operateType>A2</operateType>
@@ -607,265 +1469,447 @@
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_magical_defence">
+				<amount>63</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13354" toLevel="1" name="Player Commendation - Talisman - M. Def.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases M. Def. by 21 when equipped. -->
 		<icon>icon.r85_talisman_md_up_passive</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_magical_defence">
+				<amount>21</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13355" toLevel="1" name="Player Commendation - Talisman - M. Atk. (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases M. Atk. by 111 momentarily through the power of the talisman. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>120</abnormalTime>
+		<abnormalType>TALISMAN</abnormalType>
 		<icon>icon.r85_talisman_ma_up_active</icon>
 		<operateType>A2</operateType>
 		<mpConsume>50</mpConsume>
 		<hitTime>4000</hitTime>
+		<hitCancelTime>500</hitCancelTime>
 		<effectPoint>532</effectPoint>
-		<abnormalType>TALISMAN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>120</abnormalTime>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>111</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13356" toLevel="1" name="Player Commendation - Talisman - M. Atk.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases M. Atk. by 37 when equipped. -->
 		<icon>icon.r85_talisman_ma_up_passive</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>37</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13357" toLevel="1" name="Player Commendation - Talisman - P. Atk. (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases P. Atk. by 111 momentarily through the power of the talisman. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>120</abnormalTime>
+		<abnormalType>TALISMAN</abnormalType>
 		<icon>icon.r85_talisman_pa_up_active</icon>
 		<operateType>A2</operateType>
 		<mpConsume>50</mpConsume>
 		<hitTime>4000</hitTime>
+		<hitCancelTime>500</hitCancelTime>
 		<effectPoint>532</effectPoint>
-		<abnormalType>TALISMAN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>120</abnormalTime>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>111</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13358" toLevel="1" name="Player Commendation - Talisman - P. Atk.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases P. Atk by 37 when equipped. -->
 		<icon>icon.r85_talisman_pa_up_passive</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>37</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13359" toLevel="1" name="Player Commendation - Talisman - P. Def. (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases P. Def. by 114 momentarily through the power of the talisman. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>120</abnormalTime>
+		<abnormalType>TALISMAN</abnormalType>
 		<icon>icon.r85_talisman_pd_up_active</icon>
 		<operateType>A2</operateType>
 		<mpConsume>50</mpConsume>
 		<hitTime>4000</hitTime>
+		<hitCancelTime>500</hitCancelTime>
 		<effectPoint>532</effectPoint>
-		<abnormalType>TALISMAN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>120</abnormalTime>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>114</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13360" toLevel="1" name="Player Commendation - Talisman - P. Def.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases P. Def. by 38 when equipped. -->
 		<icon>icon.r85_talisman_pd_up_passive</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>38</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13361" toLevel="1" name="Player Commendation - Talisman - Max CP (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases Max CP by 297 momentarily through the power of the talisman. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>120</abnormalTime>
+		<abnormalType>TALISMAN</abnormalType>
 		<icon>icon.r85_talisman_cp_up_active</icon>
 		<operateType>A2</operateType>
 		<mpConsume>50</mpConsume>
 		<hitTime>4000</hitTime>
+		<hitCancelTime>500</hitCancelTime>
 		<effectPoint>532</effectPoint>
-		<abnormalType>TALISMAN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>120</abnormalTime>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>297</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13362" toLevel="1" name="Player Commendation - Talisman - Max CP">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 99 when equipped. -->
 		<icon>icon.r85_talisman_cp_up_passive</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>99</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13363" toLevel="1" name="Player Commendation - Talisman - Max HP (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases Max HP by 657 momentarily through the power of the talisman. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>120</abnormalTime>
+		<abnormalType>TALISMAN</abnormalType>
 		<icon>icon.r85_talisman_hp_up_active</icon>
 		<operateType>A2</operateType>
 		<mpConsume>50</mpConsume>
 		<hitTime>4000</hitTime>
+		<hitCancelTime>500</hitCancelTime>
 		<effectPoint>532</effectPoint>
-		<abnormalType>TALISMAN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>120</abnormalTime>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>657</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13364" toLevel="1" name="Player Commendation - Talisman - Max HP">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max HP by 219 when equipped. -->
 		<icon>icon.r85_talisman_hp_up_passive</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>219</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13365" toLevel="1" name="Player Commendation - Talisman - Max MP (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases Max MP by 327 momentarily through the power of the talisman. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>120</abnormalTime>
+		<abnormalType>TALISMAN</abnormalType>
 		<icon>icon.r85_talisman_mp_up_active</icon>
 		<operateType>A2</operateType>
 		<mpConsume>50</mpConsume>
 		<hitTime>4000</hitTime>
+		<hitCancelTime>500</hitCancelTime>
 		<effectPoint>532</effectPoint>
-		<abnormalType>TALISMAN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>120</abnormalTime>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_mp">
+				<amount>327</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13366" toLevel="1" name="Player Commendation - Talisman - Max MP">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max MP by 119 when equipped. -->
 		<icon>icon.r85_talisman_mp_up_passive</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_mp">
+				<amount>119</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13367" toLevel="1" name="Talisman (R-grade) - Half-kill/Lethal Strike Resistance (Active)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Momentarily increases Half-kill/Lethal Strike Resistance by 30 through the power of the talisman. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>120</abnormalTime>
+		<abnormalType>TALISMAN</abnormalType>
 		<icon>icon.r85_talisman_md_up_passive</icon>
 		<operateType>A2</operateType>
 		<mpConsume>50</mpConsume>
 		<hitTime>4000</hitTime>
 		<effectPoint>532</effectPoint>
-		<abnormalType>TALISMAN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>120</abnormalTime>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>360000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_instant_kill_resist">
+				<amount>30</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13368" toLevel="1" name="Talisman (R-grade) - Half-kill/Lethal Strike Resistance">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Half-kill/Lethal Strike Resistance by 10 when a talisman is equipped. -->
 		<icon>icon.r85_talisman_md_up_passive</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_instant_kill_resist">
+				<amount>10</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13369" toLevel="1" name="Squash Ring (Warrior)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases P. Critical attack power by 15% and P. Accuracy by 2. -->
 		<icon>icon.accessory_ring_of_gourd_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>75</magicLvl>
+		<effects>
+			<effect name="p_critical_damage">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hit">
+				<amount>2</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13370" toLevel="1" name="Squash Ring (Wizard)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases M. Critical Rate by 2% and M. Accuracy by 2. -->
 		<icon>icon.accessory_ring_of_gourd_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>75</magicLvl>
+		<effects>
+			<effect name="p_magic_critical_rate">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_hit">
+				<amount>2</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13371" toLevel="1" name="Squash Earring (Warrior)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases P. Atk. Spd. by 4%. and Speed by 5. -->
 		<icon>icon.accessory_earring_of_gourd_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>75</magicLvl>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>4</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>5</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13372" toLevel="1" name="Squash Earring (Wizard)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Casting Spd. by 4% and Speed by 5. -->
 		<icon>icon.accessory_earring_of_gourd_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>75</magicLvl>
+		<effects>
+			<effect name="p_magic_speed">
+				<amount>4</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>5</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13373" toLevel="1" name="Squash Necklace">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Sleep/Paralysis/Stun/Poison/Bleed resistance and attack rate by 20%. Decreases skill Cooldown by 5% and skill MP Consumption by 5%. -->
 		<icon>icon.accessory_necklace_of_gourd_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>75</magicLvl>
+		<effects>
+			<effect name="p_defence_trait">
+				<SLEEP>20</SLEEP>
+				<PARALYZE>20</PARALYZE>
+				<SHOCK>20</SHOCK>
+				<POISON>20</POISON>
+				<BLEED>20</BLEED>
+			</effect>
+			<effect name="p_attack_trait">
+				<SLEEP>20</SLEEP>
+				<PARALYZE>20</PARALYZE>
+				<SHOCK>20</SHOCK>
+				<POISON>20</POISON>
+				<BLEED>20</BLEED>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13374" toLevel="1" name="Circlet of Earthquake">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Earth resistance by 60. -->
 		<icon>icon.armor_leather_helmet_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>60</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13375" toLevel="1" name="Release Agathion's Seal - XP Bottle">
 		<!-- AUTO GENERATED SKILL -->
@@ -884,7 +1928,7 @@
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>85</minLevel>
-				<maxLevel>99</maxLevel>
+				<maxLevel>106</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 			<condition name="OpMainjob" />
@@ -909,7 +1953,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="13377" toLevel="1" name="Scroll: XP">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -921,10 +1965,12 @@
 		<reuseDelay>5000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>34742</itemConsumeId> <!-- Scroll: 500,000,000 XP -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>76</minLevel>
-				<maxLevel>99</maxLevel>
+				<maxLevel>106</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 			<condition name="OpAlignment">
@@ -933,22 +1979,55 @@
 			</condition>
 			<condition name="OpSubjob" />
 		</conditions>
+		<effects>
+			<effect name="i_get_exp">
+				<exp>500000000</exp>
+				<minLevel>85</minLevel>
+				<underMinLevelExpPercent>20</underMinLevelExpPercent>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13378" toLevel="1" name="Enhanced Istina's Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to IO -->
 		<!-- Can equip 5 talismans. CON + 1, MEN + 1. -->
 		<icon>icon.istina_bangel</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>5</slots>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13379" toLevel="1" name="Enhanced Octavis' Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to IO -->
 		<!-- Can equip 5 talismans. DEX + 1, WIT + 1. -->
 		<icon>icon.octavis_bangel</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>5</slots>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13380" toLevel="1" name="Seal Agathion - XP Bottle">
 		<!-- AUTO GENERATED SKILL -->
@@ -966,20 +2045,64 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="13381" toLevel="1" name="Hair Accessory Rabbit Ears: Campaign">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 3, DEX + 1, CON + 1, P. Evasion + 1, and M. Evasion + 1 when the hair accessory is equipped. -->
 		<icon>icon.accessory_rabbit_ear_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_avoid">
+				<amount>1</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_avoid">
+				<amount>1</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13382" toLevel="1" name="Hair Accessory Angel Circlet - Campaign">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- INT + 3, WIT + 1, MEN + 1, P. Def. + 1, and M. Def. + 1 when the hair accessory is equipped. -->
+		<!-- Updated to Helios -->
+		<!-- INT + 3, WIT + 1, MEN + 1, P. Attack Resistance. + 1, and M. Attack Resistance. + 1 when the hair accessory is equipped. -->
 		<icon>icon.Accessary_angel_circlet_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+			<effect name="p_physical_abnormal_resist">
+				<amount>1</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_abnormal_resist">
+				<amount>1</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13383" toLevel="1" name="Sealing Agathion">
 		<!-- AUTO GENERATED SKILL -->
@@ -1139,7 +2262,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
 			</effect>
 		</effects>
@@ -1159,7 +2282,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
 			</effect>
 		</effects>
@@ -1179,7 +2302,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
 			</effect>
 		</effects>
@@ -1199,7 +2322,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
 			</effect>
 		</effects>
@@ -1219,7 +2342,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
 			</effect>
 		</effects>
@@ -1239,41 +2362,65 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="13396" toLevel="1" name="Rabbit Ears: STR">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1 -->
 		<icon>icon.accessory_rabbit_ear_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13397" toLevel="1" name="Rabbit Ears: DEX">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- DEX + 1 -->
 		<icon>icon.accessory_rabbit_ear_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13398" toLevel="1" name="Rabbit Ears: WIT">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- WIT + 1 -->
 		<icon>icon.accessory_rabbit_ear_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13399" toLevel="1" name="Rabbit Ears: INT">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- INT + 1 -->
 		<icon>icon.accessory_rabbit_ear_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
 </list>

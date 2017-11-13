@@ -38,8 +38,8 @@ public class TradeItem
 	private long _count;
 	private long _storeCount;
 	private long _price;
-	private final byte _elemAtkType;
-	private final int _elemAtkPower;
+	private byte _elemAtkType;
+	private int _elemAtkPower;
 	private final int[] _elemDefAttr =
 	{
 		0,
@@ -49,11 +49,13 @@ public class TradeItem
 		0,
 		0
 	};
+	
 	private final int[] _enchantOptions;
-	private final Collection<EnsoulOption> _soulCrystalOptions;
-	private final Collection<EnsoulOption> _soulCrystalSpecialOptions;
+	private Collection<EnsoulOption> _soulCrystalOptions;
+	private Collection<EnsoulOption> _soulCrystalSpecialOptions;
 	private int _visualId;
-	private int _augmentId;
+	private int _augmentationOption1 = -1;
+	private int _augmentationOption2 = -1;
 	
 	public TradeItem(ItemInstance item, long count, long price)
 	{
@@ -76,7 +78,12 @@ public class TradeItem
 		_soulCrystalOptions = item.getSpecialAbilities();
 		_soulCrystalSpecialOptions = item.getAdditionalSpecialAbilities();
 		_visualId = item.getVisualId();
-		_augmentId = item.isAugmented() ? item.getAugmentation().getId() : 0;
+		
+		if (item.getAugmentation() != null)
+		{
+			_augmentationOption1 = item.getAugmentation().getOption1Id();
+			_augmentationOption1 = item.getAugmentation().getOption2Id();
+		}
 	}
 	
 	public TradeItem(L2Item item, long count, long price)
@@ -91,7 +98,7 @@ public class TradeItem
 		_count = count;
 		_storeCount = count;
 		_price = price;
-		_elemAtkType = Elementals.NONE;
+		_elemAtkType = AttributeType.NONE.getClientId();
 		_elemAtkPower = 0;
 		_enchantOptions = ItemInstance.DEFAULT_ENCHANT_OPTIONS;
 		_soulCrystalOptions = Collections.emptyList();
@@ -187,14 +194,29 @@ public class TradeItem
 		return _price;
 	}
 	
+	public void setAttackElementType(AttributeType attackElement)
+	{
+		_elemAtkType = attackElement.getClientId();
+	}
+	
 	public byte getAttackElementType()
 	{
 		return _elemAtkType;
 	}
 	
+	public void setAttackElementPower(int attackElementPower)
+	{
+		_elemAtkPower = attackElementPower;
+	}
+	
 	public int getAttackElementPower()
 	{
 		return _elemAtkPower;
+	}
+	
+	public void setElementDefAttr(AttributeType element, int value)
+	{
+		_elemDefAttr[element.getClientId()] = value;
 	}
 	
 	public int getElementDefAttr(byte i)
@@ -207,19 +229,45 @@ public class TradeItem
 		return _enchantOptions;
 	}
 	
+	public void setSoulCrystalOptions(Collection<EnsoulOption> soulCrystalOptions)
+	{
+		_soulCrystalOptions = soulCrystalOptions;
+	}
+	
 	public Collection<EnsoulOption> getSoulCrystalOptions()
 	{
-		return _soulCrystalOptions;
+		return _soulCrystalOptions == null ? Collections.emptyList() : _soulCrystalOptions;
+	}
+	
+	public void setSoulCrystalSpecialOptions(Collection<EnsoulOption> soulCrystalSpecialOptions)
+	{
+		_soulCrystalSpecialOptions = soulCrystalSpecialOptions;
 	}
 	
 	public Collection<EnsoulOption> getSoulCrystalSpecialOptions()
 	{
-		return _soulCrystalSpecialOptions;
+		return _soulCrystalSpecialOptions == null ? Collections.emptyList() : _soulCrystalSpecialOptions;
 	}
 	
-	public int getAugmentId()
+	public void setAugmentation(int option1, int option2)
 	{
-		return _augmentId;
+		_augmentationOption1 = option1;
+		_augmentationOption2 = option2;
+	}
+	
+	public int getAugmentationOption1()
+	{
+		return _augmentationOption1;
+	}
+	
+	public int getAugmentationOption2()
+	{
+		return _augmentationOption2;
+	}
+	
+	public void setVisualId(int visualItemId)
+	{
+		_visualId = visualItemId;
 	}
 	
 	public int getVisualId()

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/scripts.xsd">
+    <!--
+        With this file you can exclude/include specific classes/packages from within scripts.
+
+        You can exclude any class with: <excludeClass>org.l2junity.scripts.somepackage.SomeClass</excludeClass>
+        You can include any class with: <includeClass>org.l2junity.scripts.somepackage.SomeClass</includeClass>
+        You can exclude any package with:<excludePackage>org.l2junity.scripts.somepackage</excludePackage>
+        You can include any package with:<includePackage>org.l2junity.scripts.somepackage</includePackage>
+
+        The priority of rules goes as follows:
+            1) An included class will always run.
+            2) An excluded class will never run even if package is included.
+            3) A class inside an included package will run if class is not excluded.
+            3) A class inside an excluded package will run only if class or package is included.
+    -->
+</list>

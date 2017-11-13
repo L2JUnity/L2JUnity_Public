@@ -25,10 +25,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.instancemanager.AntiFeedManager;
+import org.l2junity.gameserver.config.OlympiadConfig;
+import org.l2junity.gameserver.instancemanager.MultiboxManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
+import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 
@@ -64,7 +64,7 @@ public class OlympiadManager
 		List<Set<Integer>> result = null;
 		for (Map.Entry<Integer, Set<Integer>> classList : _classBasedRegisters.entrySet())
 		{
-			if ((classList.getValue() != null) && (classList.getValue().size() >= Config.ALT_OLY_CLASSED))
+			if ((classList.getValue() != null) && (classList.getValue().size() >= OlympiadConfig.ALT_OLY_CLASSED))
 			{
 				if (result == null)
 				{
@@ -79,14 +79,14 @@ public class OlympiadManager
 	
 	protected final boolean hasEnoughRegisteredNonClassed()
 	{
-		return _nonClassBasedRegisters.size() >= Config.ALT_OLY_NONCLASSED;
+		return _nonClassBasedRegisters.size() >= OlympiadConfig.ALT_OLY_NONCLASSED;
 	}
 	
 	protected final void clearRegistered()
 	{
 		_nonClassBasedRegisters.clear();
 		_classBasedRegisters.clear();
-		AntiFeedManager.getInstance().clear(AntiFeedManager.OLYMPIAD_ID);
+		MultiboxManager.getInstance().clearManager(Olympiad.getInstance());
 	}
 	
 	public final boolean isRegistered(PlayerInstance noble)
@@ -195,6 +195,13 @@ public class OlympiadManager
 			return false;
 		}
 		
+		if (player.isInTraingCamp())
+		{
+			player.sendPacket(ActionFailed.STATIC_PACKET);
+			// TODO: C1_IS_CURRENTLY_IN_THE_ROYAL_TRAINING_CAMP_AND_CANNOT_PARTICIPATE_IN_THE_OLYMPIAD ?
+			return false;
+		}
+		
 		switch (type)
 		{
 			case CLASSED:
@@ -205,22 +212,15 @@ public class OlympiadManager
 					return false;
 				}
 				
-				if ((Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP > 0) && !AntiFeedManager.getInstance().tryAddPlayer(AntiFeedManager.OLYMPIAD_ID, player, Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP))
+				if (!MultiboxManager.getInstance().registerClient(Olympiad.getInstance(), player.getClient()))
 				{
-					final NpcHtmlMessage message = new NpcHtmlMessage(player.getLastHtmlActionOriginId());
-					message.setFile(player.getHtmlPrefix(), "data/html/mods/OlympiadIPRestriction.htm");
-					message.replace("%max%", String.valueOf(AntiFeedManager.getInstance().getLimit(player, Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP)));
-					player.sendPacket(message);
-					if (player.isGM() && player.isDebug())
-					{
-						player.sendMessage("HTML: data/html/mods/OlympiadIPRestriction.htm");
-					}
+					MultiboxManager.getInstance().sendDefaultRestrictionMessage(Olympiad.getInstance(), player.getClient());
 					return false;
 				}
 				
 				if (Olympiad.getInstance().getRemainingWeeklyMatchesClassed(charId) < 1)
 				{
-					player.sendPacket(SystemMessageId.YOU_CAN_ENTER_UP_TO_30_FREE_FOR_ALL_BATTLES_AND_30_CLASS_SPECIFIC_BATTLES_PER_WEEK);
+					player.sendPacket(SystemMessageId.YOU_MAY_PARTICIPATE_IN_UP_TO_30_MATCHES_PER_WEEK);
 					return false;
 				}
 				
@@ -236,22 +236,15 @@ public class OlympiadManager
 					return false;
 				}
 				
-				if ((Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP > 0) && !AntiFeedManager.getInstance().tryAddPlayer(AntiFeedManager.OLYMPIAD_ID, player, Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP))
+				if (!MultiboxManager.getInstance().registerClient(Olympiad.getInstance(), player.getClient()))
 				{
-					final NpcHtmlMessage message = new NpcHtmlMessage(player.getLastHtmlActionOriginId());
-					message.setFile(player.getHtmlPrefix(), "data/html/mods/OlympiadIPRestriction.htm");
-					message.replace("%max%", String.valueOf(AntiFeedManager.getInstance().getLimit(player, Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP)));
-					player.sendPacket(message);
-					if (player.isGM() && player.isDebug())
-					{
-						player.sendMessage("HTML: data/html/mods/OlympiadIPRestriction.htm");
-					}
+					MultiboxManager.getInstance().sendDefaultRestrictionMessage(Olympiad.getInstance(), player.getClient());
 					return false;
 				}
 				
 				if (Olympiad.getInstance().getRemainingWeeklyMatchesNonClassed(charId) < 1)
 				{
-					player.sendPacket(SystemMessageId.YOU_CAN_ENTER_UP_TO_30_FREE_FOR_ALL_BATTLES_AND_30_CLASS_SPECIFIC_BATTLES_PER_WEEK);
+					player.sendPacket(SystemMessageId.YOU_MAY_PARTICIPATE_IN_UP_TO_30_MATCHES_PER_WEEK);
 					return false;
 				}
 				
@@ -293,10 +286,7 @@ public class OlympiadManager
 		Integer objId = Integer.valueOf(noble.getObjectId());
 		if (_nonClassBasedRegisters.remove(objId))
 		{
-			if (Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP > 0)
-			{
-				AntiFeedManager.getInstance().removePlayer(AntiFeedManager.OLYMPIAD_ID, noble);
-			}
+			MultiboxManager.getInstance().unregisterClient(Olympiad.getInstance(), noble.getClient());
 			
 			noble.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REMOVED_FROM_THE_OLYMPIAD_WAITING_LIST);
 			return true;
@@ -305,10 +295,7 @@ public class OlympiadManager
 		final Set<Integer> classed = _classBasedRegisters.get(noble.getBaseClass());
 		if ((classed != null) && classed.remove(objId))
 		{
-			if (Config.L2JMOD_DUALBOX_CHECK_MAX_OLYMPIAD_PARTICIPANTS_PER_IP > 0)
-			{
-				AntiFeedManager.getInstance().removePlayer(AntiFeedManager.OLYMPIAD_ID, noble);
-			}
+			MultiboxManager.getInstance().unregisterClient(Olympiad.getInstance(), noble.getClient());
 			
 			noble.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REMOVED_FROM_THE_OLYMPIAD_WAITING_LIST);
 			return true;

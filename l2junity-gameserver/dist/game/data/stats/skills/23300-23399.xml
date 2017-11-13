@@ -17,12 +17,12 @@
 		<hitCancelTime>0</hitCancelTime>
 		<lvlBonusRate>1</lvlBonusRate>
 		<icon>icon.skill0773</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>300</power>
+			<effect name="t_hp">
+				<power>-300</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -160,11 +160,11 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="AreaDamage">
+			<effect name="p_area_damage">
 				<amount>7900</amount>
 				<mode>PER</mode>
 			</effect>
@@ -189,7 +189,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -214,7 +214,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -239,7 +239,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -266,13 +266,11 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ExpModify">
+			<effect name="p_exp_modify">
 				<amount>100</amount>
-				<mode>PER</mode>
 			</effect>
-			<effect name="SpModify">
+			<effect name="p_sp_modify">
 				<amount>100</amount>
-				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -402,6 +400,7 @@
 		<!-- FIXME: value unconfirmed -->
 		<abnormalLvl>10</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>90</activateRate>
@@ -409,7 +408,7 @@
 		<castRange>80</castRange>
 		<effectRange>200</effectRange>
 		<icon>BranchSys2.icon.br_wp_Caladbulg_i00</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>1</lvlBonusRate>
@@ -428,8 +427,8 @@
 		<affectScope>SINGLE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>170</power>
+			<effect name="t_hp">
+				<power>-170</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -439,6 +438,7 @@
 		<!-- FIXME: value unconfirmed -->
 		<abnormalLvl>10</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>90</activateRate>
@@ -446,7 +446,7 @@
 		<castRange>80</castRange>
 		<effectRange>200</effectRange>
 		<icon>BranchSys2.icon.br_wp_habus_knife_i00</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>1</lvlBonusRate>
@@ -465,8 +465,8 @@
 		<affectScope>SINGLE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>230</power>
+			<effect name="t_hp">
+				<power>-230</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -485,7 +485,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
 		<icon>BranchSys2.icon.br_wp_tiatenon_i00</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic>
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>1</lvlBonusRate>
@@ -500,7 +500,7 @@
 		<affectScope>SINGLE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 			<effect name="Fear" />
 		</effects>
 	</skill>
@@ -517,7 +517,7 @@
 		<castRange>80</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>2</lvlBonusRate>
@@ -532,7 +532,7 @@
 		<affectScope>SINGLE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -551,7 +551,7 @@
 		<castRange>80</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>200</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<lvlBonusRate>2</lvlBonusRate>
@@ -567,9 +567,9 @@
 		<affectScope>SINGLE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="BlockActions">
+			<effect name="p_condition_block_act_skill">
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -597,11 +597,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>30</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -691,7 +691,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22220</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -713,7 +713,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22220</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -735,7 +735,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22220</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -757,7 +757,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22220</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -765,29 +765,34 @@
 	</skill>
 	<skill id="23333" toLevel="1" name="Agathion's New Year's Wish">
 		<!-- Description: Through the power of the Lantern Agathion, Vitality is maintained and not consumed. -->
-		<operateType>A2</operateType>
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
 		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
+		<icon>icon.etc_pi_gift_box_i03</icon>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>2</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
-		<icon>icon.etc_pi_gift_box_i03</icon>
 		<hitTime>2000</hitTime>
 		<coolTime>1000</coolTime>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="23334" toLevel="1" name="Lantern Agathion Cute Trick">
 		<!-- Description: Able to see the summoned Lantern's perform cute tricks. -->
@@ -807,29 +812,34 @@
 	</skill>
 	<skill id="23335" toLevel="1" name="Agathion's New Year's Wish">
 		<!-- Description: Vitality is maintained with the power of Juju Agathion. -->
-		<operateType>A2</operateType>
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
 		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
+		<icon>icon.etc_pi_gift_box_i03</icon>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>2</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
-		<icon>icon.etc_pi_gift_box_i03</icon>
 		<hitTime>2000</hitTime>
 		<coolTime>1000</coolTime>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="23336" toLevel="1" name="Juju Agathion Cute Trick">
 		<!-- Description: Summoned Juju performs cute tricks. -->
@@ -863,7 +873,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22289</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -885,7 +895,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22289</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -907,7 +917,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22289</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -929,7 +939,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22289</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -958,7 +968,7 @@
 		<attributeValue>20</attributeValue>
 		<affectRange>300</affectRange>
 		<abnormalVisualEffect>FLESH_STONE</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -987,7 +997,7 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<affectRange>300</affectRange>
 		<abnormalVisualEffect>AURA_BUFF</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -1015,7 +1025,7 @@
 		</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1205,7 +1215,7 @@
 		<abnormalTime>7200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1226,7 +1236,7 @@
 		<abnormalTime>7200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1247,7 +1257,7 @@
 		<abnormalTime>7200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1268,7 +1278,7 @@
 		<abnormalTime>7200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1289,7 +1299,7 @@
 		<abnormalTime>7200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1699,7 +1709,7 @@
 		</magicLvl>
 		<trait>KNOCKDOWN</trait>
 		<staticReuse>true</staticReuse>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1719,7 +1729,7 @@
 		<effectRange>1200</effectRange>
 		<magicLvl>95</magicLvl>
 		<staticReuse>true</staticReuse>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -1976,7 +1986,7 @@
 		<attributeValue>50</attributeValue>
 		<affectRange>150</affectRange>
 		<staticReuse>true</staticReuse>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -2022,7 +2032,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>3</abnormalTime>
 		<staticReuse>true</staticReuse>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<targetConditions>
@@ -2095,7 +2105,7 @@
 		<affectLimit>5-12</affectLimit>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -2122,7 +2132,7 @@
 		<affectLimit>5-12</affectLimit>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>

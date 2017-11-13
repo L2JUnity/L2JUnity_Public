@@ -42,9 +42,9 @@ public final class ServerObjectInfo implements IClientOutgoingPacket
 		_isAttackable = _activeChar.isAutoAttackable(actor);
 		_collisionHeight = _activeChar.getCollisionHeight();
 		_collisionRadius = _activeChar.getCollisionRadius();
-		_x = _activeChar.getX();
-		_y = _activeChar.getY();
-		_z = _activeChar.getZ();
+		_x = (int) _activeChar.getX();
+		_y = (int) _activeChar.getY();
+		_z = (int) _activeChar.getZ();
 		_heading = _activeChar.getHeading();
 		_name = _activeChar.getTemplate().isUsingServerSideName() ? _activeChar.getTemplate().getName() : "";
 	}

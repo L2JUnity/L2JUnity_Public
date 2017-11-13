@@ -9,6 +9,7 @@ bin/
 # Idea
 *.iml
 /.idea/
+/out/
 
 # Gradle
 /.gradle/
@@ -22,11 +23,7 @@ gradle.properties
 
 */.gnupg/
 
-/l2junity-debug
-
-/l2junity-gameserver/log/
-/l2junity-gameserver/dist/game/log/
-/l2junity-gameserver/dist/game/data/geodata/*.l2j
-/l2junity-gameserver/dist/game/config/hexid.txt
-/l2junity-gameserver_debug/
+**/log/
+*.l2j
+**/hexid.txt
 /build/

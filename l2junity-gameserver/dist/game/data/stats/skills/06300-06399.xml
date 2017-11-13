@@ -15,15 +15,15 @@
 		<rideState>NONE</rideState>
 		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3194</power>
 			</effect>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>6662</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
@@ -32,7 +32,6 @@
 	<skill id="6301" toLevel="2" name="Cold Mana's Fragment">
 		<!-- Confirmed CT2.5 -->
 		<!-- Freya Skills -->
-		<table name="#mdot"> 60 30 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -57,10 +56,10 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="ManaHealOverTime">
+			<effect name="t_mp">
 				<power>
-					<value level="1">60</value>
-					<value level="2">30</value>
+					<value level="1">-60</value>
+					<value level="2">-30</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -86,11 +85,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -115,7 +114,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -137,7 +136,7 @@
 		<attributeValue>20</attributeValue>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>83</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -149,7 +148,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="6305" toLevel="1" name="Divine Gnosis">
@@ -171,7 +170,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -181,6 +180,7 @@
 		<!-- Monastery of Silence Skills -->
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>10</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
@@ -193,7 +193,7 @@
 		<attributeValue>20</attributeValue>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>83</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -206,8 +206,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>139</power>
+			<effect name="t_hp">
+				<power>-139</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -231,11 +231,11 @@
 		<reuseDelay>2000</reuseDelay>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>120</power>
 			</effect>
 		</effects>
@@ -259,11 +259,11 @@
 		<reuseDelay>2000</reuseDelay>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>120</power>
 			</effect>
 		</effects>
@@ -287,11 +287,11 @@
 		<reuseDelay>2000</reuseDelay>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>120</power>
 			</effect>
 		</effects>
@@ -316,7 +316,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TargetCancel">
+			<effect name="i_target_cancel">
 				<chance>80</chance>
 			</effect>
 		</effects>
@@ -340,7 +340,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -362,12 +362,12 @@
 		<reuseDelay>2000</reuseDelay>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -398,7 +398,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -424,12 +424,12 @@
 		<reuseDelay>3000</reuseDelay>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>RING_RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>125</power>
 			</effect>
 		</effects>
@@ -453,7 +453,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -476,7 +476,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>15</power>
 			</effect>
 		</effects>
@@ -504,7 +504,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>128</power>
 			</effect>
 		</effects>
@@ -534,7 +534,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -565,7 +565,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -582,7 +582,7 @@
 		<effectPoint>-100</effectPoint>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill6320</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>84</magicLvl>
@@ -597,11 +597,11 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -630,7 +630,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>121</power>
 			</effect>
 		</effects>
@@ -658,7 +658,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>121</power>
 			</effect>
 		</effects>
@@ -680,7 +680,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>85</power>
 			</effect>
 		</effects>
@@ -706,7 +706,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>121</power>
 			</effect>
 		</effects>
@@ -732,7 +732,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>85</power>
 			</effect>
 		</effects>
@@ -752,12 +752,12 @@
 		<reuseDelay>1000</reuseDelay>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>20531</power>
 			</effect>
 		</effects>
@@ -781,7 +781,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>11407</power>
 			</effect>
 		</effects>
@@ -805,12 +805,12 @@
 		<reuseDelay>3000</reuseDelay>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>205</power>
 			</effect>
 		</effects>
@@ -834,7 +834,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -854,7 +854,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>5</power>
 			</effect>
 		</effects>
@@ -867,7 +867,7 @@
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<basicProperty>MAGIC</basicProperty>
 		<hitTime>1000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>84</magicLvl>
@@ -879,7 +879,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -893,7 +893,7 @@
 		<abnormalType>SPEED_DOWN</abnormalType>
 		<basicProperty>MAGIC</basicProperty>
 		<hitTime>1000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>84</magicLvl>
@@ -905,11 +905,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -920,6 +920,7 @@
 		<!-- Sel Mahum Training Grounds Skills -->
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>3</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>1</activateRate>
@@ -930,7 +931,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>83</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -943,11 +944,11 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
-			<effect name="DamOverTime">
-				<power>200</power>
+			<effect name="t_hp">
+				<power>-200</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -967,7 +968,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>83</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -979,10 +980,10 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="6335" toLevel="1" name="Electric Rain 1">
@@ -1000,12 +1001,12 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>120</power>
 			</effect>
 		</effects>
@@ -1025,12 +1026,12 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>121</power>
 			</effect>
 		</effects>
@@ -1052,7 +1053,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -1074,7 +1075,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -1084,6 +1085,7 @@
 		<!-- Sel Mahum Training Grounds Skills -->
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>3</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>1</activateRate>
@@ -1095,7 +1097,7 @@
 		<effectRange>900</effectRange>
 		<hitTime>1000</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>84</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -1109,11 +1111,11 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
-			<effect name="DamOverTime">
-				<power>200</power>
+			<effect name="t_hp">
+				<power>-200</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -1134,7 +1136,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>83</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -1146,10 +1148,10 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="6341" toLevel="1" name="Stronghold Water Cannon">
@@ -1175,7 +1177,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
@@ -1190,20 +1192,18 @@
 		<reuseDelay>1000</reuseDelay>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>ALL</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="6343" toLevel="2" name="Maguen Plasma - Power">
 		<!-- Confirmed CT2.5 -->
-		<table name="#mAtk"> 1.08 1.15 </table>
-		<table name="#pAtk"> 1.02 1.03 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>SIGNAL_B</abnormalType>
@@ -1229,14 +1229,14 @@
 		<targetType>TARGET</targetType>
 		<affectScope>PARTY</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">3</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">15</value>
@@ -1247,8 +1247,6 @@
 	</skill>
 	<skill id="6365" toLevel="2" name="Maguen Plasma - Speed">
 		<!-- Confirmed CT2.5 -->
-		<table name="#pmAtkSpd"> 1.04 1.08 </table>
-		<table name="#runSpd"> 5 10 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>SIGNAL_B</abnormalType>
@@ -1274,21 +1272,21 @@
 		<targetType>TARGET</targetType>
 		<affectScope>PARTY</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">10</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">8</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">8</value>
@@ -1299,9 +1297,6 @@
 	</skill>
 	<skill id="6366" toLevel="2" name="Maguen Plasma - Critical">
 		<!-- Confirmed CT2.5 -->
-		<table name="#cAtk"> 1.05 1.1 </table>
-		<table name="#mCritPower"> 1.02 1.04 </table>
-		<table name="#rCrit"> 0.04 0.08 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>600</abnormalTime>
 		<abnormalType>SIGNAL_B</abnormalType>
@@ -1327,21 +1322,21 @@
 		<targetType>TARGET</targetType>
 		<affectScope>PARTY</affectScope>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">10</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">8</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicCriticalDamage">
+			<effect name="p_magic_critical_dmg">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -1460,7 +1455,7 @@
 		<effectRange>300</effectRange>
 		<icon>icon.skill0122</icon>
 		<hitTime>1500</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>150</castRange>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1529,7 +1524,7 @@
 		<effectRange>300</effectRange>
 		<icon>icon.skill0122</icon>
 		<hitTime>1500</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>150</castRange>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1544,7 +1539,7 @@
 		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitTime>3000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1558,7 +1553,7 @@
 		<abnormalResists>TURN_FLEE;KNOCKDOWN;DEPORT;SILENCE;PARALYZE;ABSORB;DISARM;SILENCE_PHYSICAL;SILENCE_ALL;CHANGEBODY;TURN_STONE;DERANGEMENT;AIRBIND;SLEEP;OBLIVION;MIRAGE;MIRAGE_TRAP;ROOT_MAGICALLY;ROOT_PHYSICALLY;STUN;PUBLIC_SLOT</abnormalResists>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitTime>3000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1586,7 +1581,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>2200</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>2000</castRange>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1636,7 +1631,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<affectRange>300</affectRange>
 		<hitTime>2000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -1645,6 +1640,7 @@
 		<!-- Profuse bleeding causes you to loss 93 HP per second for 15 seconds. -->
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
@@ -1662,7 +1658,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>200</effectRange>
 		<hitTime>1500</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>150</castRange>
 		<trait>BLEED</trait>
 		<targetType>ENEMY</targetType>
@@ -1681,7 +1677,7 @@
 		<fanRange>0;0;200;0</fanRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill1336</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>85</magicLvl>
@@ -1695,8 +1691,8 @@
 		<affectScope>RING_RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Mute" />
-			<effect name="PhysicalMute" />
+			<effect name="p_block_spell" />
+			<effect name="p_block_skill_physical" />
 		</effects>
 	</skill>
 	<skill id="6381" toLevel="2" name="Bistakon Soul Beam">
@@ -1714,7 +1710,7 @@
 		<effectRange>1500</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1336</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>85</magicLvl>
@@ -1729,13 +1725,14 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Mute" />
-			<effect name="PhysicalMute" />
+			<effect name="p_block_spell" />
+			<effect name="p_block_skill_physical" />
 		</effects>
 	</skill>
 	<skill id="6382" toLevel="1" name="Bistakon Rolling Claw">
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
@@ -1746,7 +1743,7 @@
 		<fanRange>0;0;200;0</fanRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>85</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -1760,8 +1757,8 @@
 		<affectScope>RING_RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>93</power>
+			<effect name="t_hp">
+				<power>-93</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -1778,7 +1775,7 @@
 		<effectRange>700</effectRange>
 		<hitTime>1000</hitTime>
 		<icon>icon.skill1336</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>85</magicLvl>
@@ -1791,12 +1788,11 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute" />
-			<effect name="PhysicalMute" />
+			<effect name="p_block_spell" />
+			<effect name="p_block_skill_physical" />
 		</effects>
 	</skill>
 	<skill id="6384" toLevel="2" name="Bistakon Deadly Blow">
-		<table name="#power"> 9125 13688 </table>
 		<castRange>60</castRange>
 		<coolTime>500</coolTime>
 		<effectPoint>-574</effectPoint>
@@ -1808,11 +1804,11 @@
 		<reuseDelay>1000</reuseDelay>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">9125</value>
 					<value level="2">13688</value>
@@ -1823,6 +1819,7 @@
 	<skill id="6385" toLevel="1" name="Bistakon Critical Claw">
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
@@ -1834,7 +1831,7 @@
 		<fanRange>0;0;150;100</fanRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>85</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -1848,8 +1845,8 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DamOverTime">
-				<power>95</power>
+			<effect name="t_hp">
+				<power>-95</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -1867,7 +1864,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>2500</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>83</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -1881,10 +1878,10 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9125</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="6387" toLevel="1" name="Bistakon Earthquake">
@@ -1894,7 +1891,7 @@
 		<attributeType>EARTH</attributeType>
 		<attributeValue>20</attributeValue>
 		<hitTime>2000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>85</magicLvl>
 		<mpConsume>121</mpConsume>
 		<operateType>A1</operateType>
@@ -1905,7 +1902,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>13688</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
 				<criticalChance>15</criticalChance>
@@ -1929,12 +1926,12 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
 		<icon>icon.skill1336</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>13688</power>
 			</effect>
 		</effects>
@@ -1947,7 +1944,7 @@
 		<effectPoint>1</effectPoint>
 		<effectRange>1500</effectRange>
 		<icon>icon.skill0102</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicLvl>85</magicLvl>
 		<mpConsume>88</mpConsume>
@@ -1959,7 +1956,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1974,7 +1971,7 @@
 		<fanRange>0;0;200;0</fanRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1386</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicLvl>85</magicLvl>
 		<mpConsume>88</mpConsume>
@@ -1988,7 +1985,7 @@
 		<affectScope>RING_RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2007,7 +2004,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>2500</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>85</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -2019,10 +2016,10 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>4563</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="6392" toLevel="1" name="Kokracon Sonic Shot">
@@ -2038,7 +2035,7 @@
 		<effectPoint>-100</effectPoint>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1104</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>85</magicLvl>
 		<mpConsume>88</mpConsume>
@@ -2053,7 +2050,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2077,12 +2074,12 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
 		<icon>icon.skill0122</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>13688</power>
 			</effect>
 		</effects>
@@ -2102,7 +2099,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>13688</power>
 			</effect>
 		</effects>
@@ -2110,6 +2107,7 @@
 	<skill id="6395" toLevel="1" name="Kokracon Dreadful Clow">
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>100</activateRate>
@@ -2120,7 +2118,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill0096</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>85</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -2133,8 +2131,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>93</power>
+			<effect name="t_hp">
+				<power>-93</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -2151,7 +2149,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1169</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>85</magicLvl>
@@ -2165,7 +2163,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 			<effect name="Fear" />
 		</effects>
 	</skill>
@@ -2182,7 +2180,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>83</magicLvl>
 		<mpConsume>121</mpConsume>
@@ -2196,10 +2194,10 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9125</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="6398" toLevel="1" name="Kokracon Sonic Shout">
@@ -2214,7 +2212,7 @@
 		<fanRange>0;0;200;0</fanRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1169</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>85</magicLvl>
@@ -2229,7 +2227,7 @@
 		<affectScope>RING_RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 			<effect name="Fear" />
 		</effects>
 	</skill>
@@ -2248,7 +2246,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>13688</power>
 			</effect>
 		</effects>

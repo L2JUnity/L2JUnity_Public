@@ -20,6 +20,7 @@ package org.l2junity.gameserver.network.client.send;
 
 import java.util.List;
 
+import org.l2junity.gameserver.config.HexIDConfig;
 import org.l2junity.gameserver.model.olympiad.OlympiadInfo;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -72,6 +73,7 @@ public class ExOlympiadMatchResult implements IClientOutgoingPacket
 			packet.writeD(info.getDamage());
 			packet.writeD(info.getCurrentPoints());
 			packet.writeD(info.getDiffPoints());
+			packet.writeD(HexIDConfig.SERVER_ID); // Helios new. Server ID most likely for cross-server olympiad.
 		}
 		
 		packet.writeD(_loseTeam);
@@ -85,6 +87,7 @@ public class ExOlympiadMatchResult implements IClientOutgoingPacket
 			packet.writeD(info.getDamage());
 			packet.writeD(info.getCurrentPoints());
 			packet.writeD(info.getDiffPoints());
+			packet.writeD(HexIDConfig.SERVER_ID); // Helios new. Server ID most likely for cross-server olympiad.
 		}
 		return true;
 	}

@@ -20,7 +20,7 @@ package org.l2junity.gameserver.network.client.send;
 
 import java.util.Calendar;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.FeatureConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -80,7 +80,7 @@ public class SiegeInfo implements IClientOutgoingPacket
 				}
 				else
 				{
-					_log.warn("Null owner for castle: " + _castle.getName());
+					LOGGER.warn("Null owner for castle: " + _castle.getName());
 				}
 			}
 			else
@@ -100,8 +100,8 @@ public class SiegeInfo implements IClientOutgoingPacket
 				cal.set(Calendar.SECOND, 0);
 				
 				packet.writeD(0x00);
-				packet.writeD(Config.SIEGE_HOUR_LIST.size());
-				for (int hour : Config.SIEGE_HOUR_LIST)
+				packet.writeD(FeatureConfig.SIEGE_HOUR_LIST.size());
+				for (int hour : FeatureConfig.SIEGE_HOUR_LIST)
 				{
 					cal.set(Calendar.HOUR_OF_DAY, hour);
 					packet.writeD((int) (cal.getTimeInMillis() / 1000));

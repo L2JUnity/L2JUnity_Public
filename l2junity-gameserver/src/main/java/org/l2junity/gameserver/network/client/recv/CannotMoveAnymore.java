@@ -18,8 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.ai.CtrlEvent;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
@@ -55,9 +55,9 @@ public final class CannotMoveAnymore implements IClientIncomingPacket
 			return;
 		}
 		
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.debug("client: x:" + _x + " y:" + _y + " z:" + _z + " server x:" + player.getX() + " y:" + player.getY() + " z:" + player.getZ());
+			LOGGER.debug("client: x:" + _x + " y:" + _y + " z:" + _z + " server x:" + player.getX() + " y:" + player.getY() + " z:" + player.getZ());
 		}
 		if (player.getAI() != null)
 		{

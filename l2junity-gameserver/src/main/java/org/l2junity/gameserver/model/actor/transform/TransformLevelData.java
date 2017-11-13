@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.l2junity.gameserver.model.StatsSet;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 
 /**
  * @author UnAfraid
@@ -37,15 +37,15 @@ public final class TransformLevelData
 	{
 		_level = set.getInt("val");
 		_levelMod = set.getDouble("levelMod");
-		addStats(Stats.MAX_HP, set.getDouble("hp"));
-		addStats(Stats.MAX_MP, set.getDouble("mp"));
-		addStats(Stats.MAX_CP, set.getDouble("cp"));
-		addStats(Stats.REGENERATE_HP_RATE, set.getDouble("hpRegen"));
-		addStats(Stats.REGENERATE_MP_RATE, set.getDouble("mpRegen"));
-		addStats(Stats.REGENERATE_CP_RATE, set.getDouble("cpRegen"));
+		addStats(DoubleStat.MAX_HP, set.getDouble("hp"));
+		addStats(DoubleStat.MAX_MP, set.getDouble("mp"));
+		addStats(DoubleStat.MAX_CP, set.getDouble("cp"));
+		addStats(DoubleStat.REGENERATE_HP_RATE, set.getDouble("hpRegen"));
+		addStats(DoubleStat.REGENERATE_MP_RATE, set.getDouble("mpRegen"));
+		addStats(DoubleStat.REGENERATE_CP_RATE, set.getDouble("cpRegen"));
 	}
 	
-	private void addStats(Stats stat, double val)
+	private void addStats(DoubleStat stat, double val)
 	{
 		if (_stats == null)
 		{
@@ -54,7 +54,7 @@ public final class TransformLevelData
 		_stats.put(stat.ordinal(), val);
 	}
 	
-	public double getStats(Stats stats, double defaultValue)
+	public double getStats(DoubleStat stats, double defaultValue)
 	{
 		return _stats == null ? defaultValue : _stats.getOrDefault(stats.ordinal(), defaultValue);
 	}

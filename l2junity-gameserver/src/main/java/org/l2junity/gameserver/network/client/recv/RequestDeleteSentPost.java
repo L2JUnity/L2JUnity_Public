@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.instancemanager.MailManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.entity.Message;
@@ -42,7 +43,7 @@ public final class RequestDeleteSentPost implements IClientIncomingPacket
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
 		int count = packet.readD();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((count <= 0) || (count > PlayerConfig.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -59,7 +60,7 @@ public final class RequestDeleteSentPost implements IClientIncomingPacket
 	public void run(L2GameClient client)
 	{
 		final PlayerInstance activeChar = client.getActiveChar();
-		if ((activeChar == null) || (_msgIds == null) || !Config.ALLOW_MAIL)
+		if ((activeChar == null) || (_msgIds == null) || !GeneralConfig.ALLOW_MAIL)
 		{
 			return;
 		}
@@ -79,7 +80,7 @@ public final class RequestDeleteSentPost implements IClientIncomingPacket
 			}
 			if (msg.getSenderId() != activeChar.getObjectId())
 			{
-				Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " tried to delete not own post!", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " tried to delete not own post!", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			

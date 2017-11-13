@@ -155,9 +155,12 @@
 			<skill id="27579" level="1" /> <!-- Hero's Treasure Chest -->
 		</skills>
 	</item>
-	<item id="27511" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27511" name="Novice Adventurer's Shirt" type="Armor">
+		<!-- Novice Adventurer's shirt. M. Def. + 11 when equipped. -->
 		<set name="icon" val="icon.etc_shirts_none_i00" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="underwear" />
+		<set name="immediate_effect" val="true" />
 		<set name="weight" val="130" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -166,15 +169,17 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_stackable" val="true" />
 		<stats>
 			<stat type="pDef">28</stat>
 			<stat type="mDef">11</stat>
 		</stats>
 	</item>
-	<item id="27512" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27512" name="Novice Adventurer's Circlet" type="Armor">
+		<!-- Novice Adventurer's brass-hued hair accessory. Requires 2 hair accessory slots. Critical Rate + 10 when equipped. -->
 		<set name="icon" val="icon.accessory_au_karm_i00" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="hairall" />
+		<set name="immediate_effect" val="true" />
 		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -184,11 +189,16 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="27586" level="1" /> <!-- Novice Adventurer's Circlet – Critical Rate -->
+		</skills>
 	</item>
-	<item id="27513" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27513" name="Novice Adventurer's Bracelet" type="Armor">
+		<!-- Novice Adventurer's bracelet. MP + 60 and uses 3 talisman slots when equipped. -->
 		<set name="icon" val="icon.accessory_shiny_bracelet" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="rbracelet" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -197,10 +207,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="8526" level="1" /> <!-- Shiny Bracelet -->
+		</skills>
 	</item>
-	<item id="27514" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27514" name="Novice Adventurer's Support Box" type="EtcItem">
+		<!-- Support box containing a Novice Adventurer's Shirt, Circlet, and Bracelet. -->
 		<set name="icon" val="icon.etc_jewel_box_i00" />
 		<set name="weight" val="100" />
 		<set name="is_clan_depositable" val="false" />
@@ -213,10 +225,14 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
-	<item id="27515" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27515" name="Experienced Adventurer's Shirt" type="Armor">
+		<!-- Experienced Adventurer's shirt. M. Def. + 12 and CON + 2 when equipped. -->
 		<set name="icon" val="icon.etc_shirts_c_i02" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="underwear" />
+		<set name="immediate_effect" val="true" />
 		<set name="weight" val="130" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -225,15 +241,20 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="27584" level="1" /> <!-- Novice Adventurer's Shirt Effect -->
+		</skills>
 		<stats>
 			<stat type="pDef">28</stat>
 			<stat type="mDef">12</stat>
 		</stats>
 	</item>
-	<item id="27516" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27516" name="Experienced Adventurer's Circlet" type="Armor">
+		<!-- Experienced Adventurer's silver-hued hair accessory. Requires 2 hair accessory slots. Critical Rate + 20 when equipped. -->
 		<set name="icon" val="icon.accessory_ar_karm_i00" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="hairall" />
+		<set name="immediate_effect" val="true" />
 		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -243,11 +264,16 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="27587" level="1" /> <!-- Experienced Adventurer's Circlet – Critical Rate -->
+		</skills>
 	</item>
-	<item id="27517" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27517" name="Experienced Adventurer's Bracelet" type="Armor">
+		<!-- Experienced Adventurer's bracelet. MP + 90 and uses 3 talisman slots when equipped. -->
 		<set name="icon" val="icon.accessory_shiny_bracelet" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="rbracelet" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -256,10 +282,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="8526" level="1" /> <!-- Shiny Bracelet -->
+		</skills>
 	</item>
-	<item id="27518" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27518" name="Experienced Adventurer's Support Box" type="EtcItem">
+		<!-- Support box containing an Experienced Adventurer's Shirt, Circlet, and Bracelet. -->
 		<set name="icon" val="icon.etc_treasure_box_i00" />
 		<set name="weight" val="100" />
 		<set name="is_clan_depositable" val="false" />
@@ -272,10 +300,14 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
-	<item id="27519" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27519" name="Adventurer's Shirt" type="Armor">
+		<!-- Adventurer's shirt. INT + 2, STR + 2, Speed + 7 when equipped. -->
 		<set name="icon" val="BranchIcon.icon.shirt_of_explorer_i00" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="underwear" />
+		<set name="immediate_effect" val="true" />
 		<set name="weight" val="130" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -284,31 +316,43 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="27585" level="1" /> <!-- Adventurer's Shirt Effect -->
+		</skills>
 		<stats>
 			<stat type="pDef">28</stat>
 			<stat type="mDef">13</stat>
 		</stats>
 	</item>
-	<item id="27520" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27520" name="Adventurer's Circlet" type="Armor">
+		<!-- Adventurer's circlet. Requires 2 hair accessory slots. P. Atk. + 3%, M. Atk. + 5% when equipped. -->
 		<set name="icon" val="BranchSys.icon.br_valkyrie_cap_i00" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="hairall" />
+		<set name="immediate_effect" val="true" />
 		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
-		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="27588" level="1" /> <!-- Adventurer's Circlet – Critical Rate -->
+		</skills>
 	</item>
-	<item id="27521" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27521" name="Adventurer's Bracelet" type="Armor">
+		<!-- Adventurer's Bracelet. STR/DEX/CON/INT/WIT/MEN + 1 and uses 3 talisman slots when equipped. -->
 		<set name="icon" val="BranchIcon.icon.bracelet_of_explorer_i00" />
+		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="rbracelet" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
-		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="27602" level="1" /> <!-- Adventurer's Bracelet -->
+		</skills>
 	</item>
-	<item id="27522" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27522" name="Support Cube" name_additional="30-day" type="EtcItem">
+		<!-- Cube that can be used for 30 days. Double-click to get one of the following: Specter weapon / Seraph armor / (Blessed) Scroll: Enchant Weapon (R-grade) / (Blessed) Scroll: Enchant Armor (R-grade) / Spirit Stone / Attribute Crystal. (Can only be used once a-day) -->
 		<set name="icon" val="Branchsys2.icon.cube_event_i02" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -318,26 +362,35 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
-	<item id="27523" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27523" name="Adventurer's Support Box" type="EtcItem">
+		<!-- Support box containing a Adventurer's Shirt, Circlet, and Bracelet. -->
 		<set name="icon" val="icon.etc_treasure_box_i08" />
 		<set name="weight" val="100" />
+		<set name="default_action" val="PEEL" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="27589" level="1" /> <!-- Adventurer's Support Cube -->
+		</skills>
 	</item>
-	<item id="27524" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27524" name="Talisman - Abundance Pack" type="EtcItem">
+		<!-- Double-click to get a Talisman - Abundance (War, Tactics, Morale, or Physique.) -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<skills>
+			<skill id="27590" level="1" /> <!-- Talisman - Abundance Pack -->
+		</skills>
 	</item>
-	<item id="27525" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27525" name="Requiem Weapon Coupon" type="EtcItem">
+		<!-- Take it to the Dimensional Merchant to exchange for a Requiem weapon. -->
 		<set name="icon" val="icon.fairy_encounter_letter" />
 		<set name="weight" val="1" />
 		<set name="is_freightable" val="false" />
@@ -345,8 +398,8 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
 	</item>
-	<item id="27526" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27526" name="Immortal Armor Set Coupon" type="EtcItem">
+		<!-- Take it to the Dimensional Merchant to exchange for an Immortal armor set box. -->
 		<set name="icon" val="icon.fairy_encounter_letter" />
 		<set name="weight" val="1" />
 		<set name="is_freightable" val="false" />
@@ -354,29 +407,32 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
 	</item>
-	<item id="27527" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27527" name="Immortal Heavy Armor Pack" type="EtcItem">
+		<!-- Can acquire immortal heavy armor. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
-	<item id="27528" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27528" name="Immortal Light Armor Pack" type="EtcItem">
+		<!-- Can acquire immortal light armor. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
-	<item id="27529" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27529" name="Immortal Robe Armor Pack" type="EtcItem">
+		<!-- Can acquire Immortal Robe Armor. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
-	<item id="27530" name="EP2.5 Aden Recostruction Item ID" name_additional="No translation needed" type="EtcItem">
-		<!-- No translation needed. -->
+	<item id="27530" name="Scroll of Escape Pack" type="EtcItem">
+		<!-- Pack containing Scrolls of Escape for Alligator Island/Outlaw Forest/Sea of Spores/Forsaken Plains/Fields of Massacre/Swamp of Screams/Forest of the Dead/Wall of Argos/Varka Silenos Barracks/Ketra Orc Outpost/Den of Evil/Sel Mahum Training Grounds/Plains of the Lizardmen/Field of Silence/ Field of Whispers. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i00" />
 		<set name="weight" val="100" />
 		<set name="is_clan_depositable" val="false" />
@@ -387,6 +443,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27531" name="Diana's Earring" name_additional="Quest" type="EtcItem">
 		<!-- Diana's onyx earring. Take it to Diana in the Talking Island Village. -->
@@ -448,6 +505,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27536" name="+ 8 Reflect Attack T-shirt Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to get a + 8 enchanted Reflect Attack T-shirt. -->
@@ -457,6 +515,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27537" name="+ 8 Reflect Magic T-shirt Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to get a + 8 enchanted Reflect Magic T-shirt. -->
@@ -466,6 +525,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27538" name="+ 7 Bloody Amaranthine Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to get a + 7 enchanted Bloody Amaranthine weapon. -->
@@ -475,6 +535,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27539" name="Lv. 4 Jewel Bundle" name_additional="" type="EtcItem">
 		<!-- Double-click to get 2 Lv. 4 Obsidian, Opal, Emerald, or Diamond jewels. -->
@@ -483,6 +544,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27540" name="Clan Name Change Ticket" name_additional="" type="EtcItem">
 		<!-- Put this item on the character that will receive the service, and send a support ticket on support.lineage2.com. Clan leaders only! -->
@@ -497,6 +559,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27541" name="Mysterious Abnormal State Resistance Dye" name_additional="Abnormal State/ Buff Cancellation Resistance, Abnormal State Reflect, 30-day" type="EtcItem">
 		<!-- Bring this to the village symbol maker to imprint a 30-day magic symbol that boosts stats (Hold, Sleep, Paralysis, Mental Attack, Poison, Bleed, Stun Resistance + 20 / Buff-canceling Attack Resistance + 20 / 5% chance of reflecting physical and magical abnormal status). All classes. -->
@@ -505,13 +568,14 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 	</item>
 	<item id="27542" name="Riding Manual: Wolf" name_additional="" type="EtcItem">
 		<!-- Double-click to learn how to ride a Wolf. -->
 		<set name="icon" val="icon.etc_kamael_skill_book_i01" />
 		<set name="is_freightable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="27543" name="Lv. 41 Equipment Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to receive a variety of items. -->
@@ -524,6 +588,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27544" name="Lv. 53 Equipment Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to receive a variety of items. -->
@@ -536,6 +601,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27545" name="Lv. 63 Equipment Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to receive a variety of items. -->
@@ -548,6 +614,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27546" name="Lv. 77 Equipment Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to receive a variety of items. -->
@@ -560,6 +627,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27547" name="Lv. 79 Equipment Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to receive a variety of items. -->
@@ -572,6 +640,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27548" name="Lv. 80 Equipment Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to receive a variety of items. -->
@@ -584,6 +653,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27549" name="Lv. 81 Equipment Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to receive a variety of items. -->
@@ -596,6 +666,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27550" name="Lv. 83 Equipment Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to receive a variety of items. -->
@@ -608,6 +679,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27551" name="Rare Accessory Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to get Blessed Antharas' Earring, Blessed Valakas' Necklace, Tauti's Ring, Earth Wyrm Heart Ring, Ruler's Authority, and Lindvior's Earring for 30 days. -->
@@ -616,12 +688,25 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="27552" min="1" max="1" chance="100" /> <!-- Ruler's Authority (30-day) -->
+			<item id="37667" min="1" max="1" chance="100" /> <!-- Blessed Antharas' Earring (30-day) -->
+			<item id="37668" min="1" max="1" chance="100" /> <!-- Blessed Valakas' Necklace (30-day) -->
+			<item id="37669" min="1" max="1" chance="100" /> <!-- Tauti's Ring (30-day) -->
+			<item id="37670" min="1" max="1" chance="100" /> <!-- Earth Wyrm Heart Ring (30-day) -->
+			<item id="46710" min="1" max="1" chance="100" /> <!-- Lindvior's Earring (30-day) -->
+		</capsuled_items>
 	</item>
 	<item id="27552" name="Ruler's Authority" name_additional="30-day" type="Armor">
 		<!-- Item given to the winner of the Ceremony of Chaos that takes place in the Mysterious Mansion. When equipped, increases Max HP, MP, and CP by 1000, weight by 25600, and damage by 8%. Decreases received damage by 9% and Damage Reflect Resistance by 5%. Increases the number of inventory slots by 36, and Attribute Resistance by 15. Cannot be used in the Olympiad. -->
 		<set name="icon" val="icon.belt_rulers_authority" />
 		<set name="armor_type" val="LIGHT" />
 		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="waist" />
+		<set name="immediate_effect" val="true" />
 		<set name="weight" val="440" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -630,9 +715,19 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="15145" level="1" /> <!-- Ruler's Authority -->
+		</skills>
 		<stats>
 			<stat type="pDef">50.0</stat>
+			<stat type="fireRes">15</stat>
+			<stat type="waterRes">15</stat>
+			<stat type="windRes">15</stat>
+			<stat type="earthRes">15</stat>
+			<stat type="holyRes">15</stat>
+			<stat type="darkRes">15</stat>
 		</stats>
 	</item>
 	<item id="27553" name="NoItemName" name_additional="" type="Armor">
@@ -659,6 +754,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27555" name="Lv. 3 Giant Dye Exchange Coupon" name_additional="" type="EtcItem">
 		<!-- Take it to the Dimensional Merchant to exchange for one of the Lv. 3 Giant Dyes: STR, DEX, CON, INT, WIT, or MEN. -->
@@ -705,6 +801,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="Appearance" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="27560" name="Lineage II Baseball Cap Appearance Stone" name_additional="" type="EtcItem">
 		<!-- Changes the appearance of a hair accessory to that of the Lineage II Baseball Cap. Can only be used on hair accessories that use 2 slots. -->
@@ -714,6 +813,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="Appearance" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="27561" name="Ultimate Support Cube Box" name_additional="" type="EtcItem">
 		<!-- Obtain an Ultimate Support Cube (30-day). Cubes cannot be dropped or exchanged. -->
@@ -723,6 +825,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27562" name="Noble Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to get the following: XP Rune IV (Lv. 1-99) 100% (7-day) x1, Venir's Talisman Stage 4 x1, Adventurer's Support Box x1, Talisman - Abundance Pack x1, Radiant Zodiac Agathion Pack (30-day) x1, Beauty Shop Ticket x5, Leona's Scroll: Buffs x10, Dandy's Scroll: Passion x10. -->
@@ -732,6 +835,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27563" name="Divine Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to get the following: XP Rune IV (Lv. 1-99) 100% (7-day) x2, Requiem Weapon Coupon x1, Immortal Armor Set Coupon x1, Lv. 3 Giant Dye Exchange Coupon x10, Venir's Talisman Stage 6 x1, Adventurer's Support Box x1, Talisman - Abundance Pack x1, Twinkling Zodiac Agathion Pack (30-day) x1, Beauty Shop Ticket x10, Leona's Scroll: Buffs x20, Dandy's Scroll: Passion x20, Mysterious Abnormal State Resistance Dye (30-day) x1, Rare Accessory Pack (30-day) x1. -->
@@ -741,6 +845,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27564" name="Ultimate Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to get the following: Ultimate Support Cube x1, Requiem Weapon Coupon x1, Immortal Armor Set Coupon x1, Lv. 4 Legendary Dye Exchange Coupon x10, Venir's Talisman Stage 8 x1, XP Rune IV (Lv. 1-99) 100% (7-day) x4, Adventurer's Support Box x1, Talisman - Abundance Pack x1, Giant's Energy 100-unit Pack x1, Energy of Destruction 100-unit Pack x1, Blessed Zodiac Agathion Pack (30-day) x1, Beauty Shop Ticket x20, Leona's Scroll: Buffs x40, Dandy's Scroll: Passion x40, Mysterious Abnormal State Resistance Dye x1, Rare Accessory Pack x1, Riding Manual: Riding Wolf x1. -->
@@ -750,10 +855,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27565" name="Weapon Pack (C-grade)" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a C-grade Steel weapon. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -762,10 +870,27 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38693" min="1" max="1" chance="100" />
+			<item id="38694" min="1" max="1" chance="100" />
+			<item id="38695" min="1" max="1" chance="100" />
+			<item id="38696" min="1" max="1" chance="100" />
+			<item id="38697" min="1" max="1" chance="100" />
+			<item id="38698" min="1" max="1" chance="100" />
+			<item id="38699" min="1" max="1" chance="100" />
+			<item id="38700" min="1" max="1" chance="100" />
+			<item id="38701" min="1" max="1" chance="100" />
+			<item id="38702" min="1" max="1" chance="100" />
+			<item id="38703" min="1" max="1" chance="100" />
+			<item id="40291" min="1" max="1" chance="100" />
+		</capsuled_items>
 	</item>
 	<item id="27566" name="Weapon Pack (B-grade)" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a B-grade Steel weapon. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -774,10 +899,27 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38705" min="1" max="1" chance="100" />
+			<item id="38706" min="1" max="1" chance="100" />
+			<item id="38707" min="1" max="1" chance="100" />
+			<item id="38708" min="1" max="1" chance="100" />
+			<item id="38709" min="1" max="1" chance="100" />
+			<item id="38710" min="1" max="1" chance="100" />
+			<item id="38711" min="1" max="1" chance="100" />
+			<item id="38712" min="1" max="1" chance="100" />
+			<item id="38713" min="1" max="1" chance="100" />
+			<item id="38714" min="1" max="1" chance="100" />
+			<item id="38715" min="1" max="1" chance="100" />
+			<item id="40292" min="1" max="1" chance="100" />
+		</capsuled_items>
 	</item>
 	<item id="27567" name="Weapon Pack (A-grade)" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a A-grade Steel weapon. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -786,10 +928,26 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38718" min="1" max="1" chance="100" />
+			<item id="38719" min="1" max="1" chance="100" />
+			<item id="38720" min="1" max="1" chance="100" />
+			<item id="38721" min="1" max="1" chance="100" />
+			<item id="38722" min="1" max="1" chance="100" />
+			<item id="38723" min="1" max="1" chance="100" />
+			<item id="38724" min="1" max="1" chance="100" />
+			<item id="38725" min="1" max="1" chance="100" />
+			<item id="38726" min="1" max="1" chance="100" />
+			<item id="38727" min="1" max="1" chance="100" />
+			<item id="40293" min="1" max="1" chance="100" />
+		</capsuled_items>
 	</item>
 	<item id="27568" name="Weapon Pack (S-grade)" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a S-grade Steel weapon. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -798,10 +956,27 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38728" min="1" max="1" chance="100" />
+			<item id="38729" min="1" max="1" chance="100" />
+			<item id="38730" min="1" max="1" chance="100" />
+			<item id="38731" min="1" max="1" chance="100" />
+			<item id="38732" min="1" max="1" chance="100" />
+			<item id="38733" min="1" max="1" chance="100" />
+			<item id="38734" min="1" max="1" chance="100" />
+			<item id="38735" min="1" max="1" chance="100" />
+			<item id="38736" min="1" max="1" chance="100" />
+			<item id="38737" min="1" max="1" chance="100" />
+			<item id="38738" min="1" max="1" chance="100" />
+			<item id="38598" min="1" max="1" chance="100" />
+		</capsuled_items>
 	</item>
 	<item id="27569" name="Dynasty Weapon Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a Steel Dynasty weapon. -->
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -810,6 +985,20 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="38739" min="1" max="1" chance="100" />
+			<item id="38740" min="1" max="1" chance="100" />
+			<item id="38741" min="1" max="1" chance="100" />
+			<item id="38742" min="1" max="1" chance="100" />
+			<item id="38743" min="1" max="1" chance="100" />
+			<item id="38744" min="1" max="1" chance="100" />
+			<item id="38745" min="1" max="1" chance="100" />
+			<item id="38746" min="1" max="1" chance="100" />
+			<item id="38747" min="1" max="1" chance="100" />
+			<item id="38748" min="1" max="1" chance="100" />
+			<item id="38749" min="1" max="1" chance="100" />
+		</capsuled_items>
 	</item>
 	<item id="27570" name="Weekend Login Reward Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a crafting ingredient. -->
@@ -824,6 +1013,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27571" name="Monthly Login Reward Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a crafting ingredient. -->
@@ -838,6 +1028,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27572" name="Daily Quest Reward Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a crafting ingredient. -->
@@ -852,6 +1043,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27573" name="Daily Instance Instance Zone Reward Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a crafting ingredient. -->
@@ -866,6 +1058,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27574" name="Daily Fishing Reward Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a crafting ingredient. -->
@@ -880,6 +1073,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27575" name="Olympiad Reward Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a crafting ingredient. -->
@@ -894,6 +1088,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27576" name="Ceremony of Chaos Reward Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a crafting ingredient. -->
@@ -908,6 +1103,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27577" name="Castle Siege Reward Pack" name_additional="" type="EtcItem">
 		<!-- Double-click to obtain a crafting ingredient. -->
@@ -922,6 +1118,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27578" name="XP Rune III (Lv. 1-100+) 100% Pack (1-hour)" name_additional="" type="EtcItem">
 		<!-- Premium User Only\nWrapped Pack containing XP Rune III (Lv. 1-100+) 100% (1-hour). -->
@@ -936,6 +1133,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27579" name="SP Rune 100% Pack (1-hour)" name_additional="" type="EtcItem">
 		<!-- Premium User Only\nWrapped Pack containing SP Rune 100% (1-hour). -->
@@ -950,6 +1148,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27580" name="Prestige Rune 100% Pack" name_additional="" type="EtcItem">
 		<!-- Premium User Only\nWrapped Pack containing Prestige Rune 100% (1-hour). -->
@@ -964,6 +1163,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27581" name="XP Rune III (Lv. 1-100+) 100% Pack (30-day)" name_additional="1-hour" type="EtcItem">
 		<!-- Premium User Only\nAncient charm endowed with mysterious symbols. When stored in the inventory, increases acquired XP by 100%. The remaining time decreases even when not playing. -->
@@ -1037,6 +1237,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27586" name="Special Supply Box" name_additional="Mid-grade" type="EtcItem">
 		<!-- Reward box containing various rewards. -->
@@ -1051,6 +1252,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27587" name="Special Supply Box" name_additional="High-grade" type="EtcItem">
 		<!-- Reward box containing various rewards. -->
@@ -1065,6 +1267,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27588" name="Special Supply Box" name_additional="Top-grade" type="EtcItem">
 		<!-- Reward box containing various rewards. -->
@@ -1079,6 +1282,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="27589" name="Supply Box" name_additional="Standard" type="EtcItem">
 		<!-- You can obtain a Daily Coin. If you are lucky, you may obtain a Special Supply Box. -->
@@ -1092,6 +1296,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27590" name="Supply Box" name_additional="Mid-grade" type="EtcItem">
 		<!-- You can obtain a Daily Coin. If you are lucky, you may obtain a Special Supply Box. -->
@@ -1105,6 +1310,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27591" name="Supply Box" name_additional="High-grade" type="EtcItem">
 		<!-- You can obtain a Daily Coin. If you are lucky, you may obtain a Special Supply Box. -->
@@ -1118,6 +1324,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27592" name="Supply Box" name_additional="Top-grade" type="EtcItem">
 		<!-- You can obtain a Daily Coin. If you are lucky, you may obtain a Special Supply Box. -->
@@ -1131,6 +1338,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="27593" name="Daily Coin" name_additional="" type="EtcItem">
 		<!-- Take it to High Priest Franco in Talking Island to exchange for various consumable items. -->
@@ -1159,6 +1367,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="27595" name="Vitality Maintaining Potion" name_additional="" type="EtcItem">
 		<!-- Retains Vitality for 10 min. Cooldown is 30min. Vitality item with limited usage. -->
@@ -1174,6 +1383,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="27596" name="Scroll of Blessing: Weapon (R-grade)" name_additional="" type="EtcItem">
 		<!-- There is a big chance that the Blacksmith of Mammon will exchange for you standard Requiem or Apocalypse equipment for Blessed equipment. -->

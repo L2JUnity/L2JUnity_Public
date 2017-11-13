@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.instancemanager.BoatManager;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.actor.instance.L2BoatInstance;
@@ -63,7 +63,7 @@ public final class RequestMoveToLocationInVehicle implements IClientIncomingPack
 			return;
 		}
 		
-		if ((Config.PLAYER_MOVEMENT_BLOCK_TIME > 0) && !activeChar.isGM() && (activeChar.getNotMoveUntil() > System.currentTimeMillis()))
+		if ((PlayerConfig.PLAYER_MOVEMENT_BLOCK_TIME > 0) && !activeChar.isGM() && (activeChar.getNotMoveUntil() > System.currentTimeMillis()))
 		{
 			client.sendPacket(SystemMessageId.YOU_CANNOT_MOVE_WHILE_SPEAKING_TO_AN_NPC_ONE_MOMENT_PLEASE);
 			client.sendPacket(ActionFailed.STATIC_PACKET);
@@ -115,7 +115,7 @@ public final class RequestMoveToLocationInVehicle implements IClientIncomingPack
 		else
 		{
 			boat = BoatManager.getInstance().getBoat(_boatId);
-			if ((boat == null) || !boat.isInsideRadius(activeChar, 300, true, false))
+			if ((boat == null) || !boat.isInRadius3d(activeChar, 300))
 			{
 				client.sendPacket(ActionFailed.STATIC_PACKET);
 				return;

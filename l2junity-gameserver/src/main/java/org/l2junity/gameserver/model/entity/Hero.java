@@ -34,14 +34,19 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.cache.HtmCache;
+import org.l2junity.gameserver.config.FeatureConfig;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.data.xml.impl.ClassListData;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
+import org.l2junity.gameserver.enums.ChatType;
 import org.l2junity.gameserver.instancemanager.CastleManager;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.World;
@@ -50,6 +55,7 @@ import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.olympiad.Olympiad;
+import org.l2junity.gameserver.network.client.send.CreatureSay;
 import org.l2junity.gameserver.network.client.send.InventoryUpdate;
 import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
 import org.l2junity.gameserver.network.client.send.SocialAction;
@@ -97,17 +103,12 @@ public class Hero
 	public static final int ACTION_HERO_GAINED = 2;
 	public static final int ACTION_CASTLE_TAKEN = 3;
 	
-	public static Hero getInstance()
-	{
-		return SingletonHolder._instance;
-	}
-	
 	protected Hero()
 	{
-		init();
 	}
 	
-	private void init()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = Olympiad.class))
+	private void load()
 	{
 		_heroes.clear();
 		_completeHeroes.clear();
@@ -525,7 +526,7 @@ public class Hero
 				
 				if (activeChar.isGM() && activeChar.isDebug())
 				{
-					activeChar.sendMessage("HTML: data/html/olympiad/herodiary.htm");
+					activeChar.sendPacket(new CreatureSay(0, ChatType.GENERAL, "HTML", "data/html/olympiad/herodiary.htm"));
 				}
 			}
 		}
@@ -622,7 +623,7 @@ public class Hero
 				
 				if (activeChar.isGM() && activeChar.isDebug())
 				{
-					activeChar.sendMessage("HTML: data/html/olympiad/herohistory.htm");
+					activeChar.sendPacket(new CreatureSay(0, ChatType.GENERAL, "HTML", "data/html/olympiad/herohistory.htm"));
 				}
 			}
 		}
@@ -965,10 +966,10 @@ public class Hero
 		final L2Clan clan = player.getClan();
 		if ((clan != null) && (clan.getLevel() >= 5))
 		{
-			clan.addReputationScore(Config.HERO_POINTS, true);
+			clan.addReputationScore(FeatureConfig.HERO_POINTS, true);
 			final SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.CLAN_MEMBER_C1_WAS_NAMED_A_HERO_S2_POINTS_HAVE_BEEN_ADDED_TO_YOUR_CLAN_REPUTATION);
 			sm.addString(CharNameTable.getInstance().getNameById(player.getObjectId()));
-			sm.addInt(Config.HERO_POINTS);
+			sm.addInt(FeatureConfig.HERO_POINTS);
 			clan.broadcastToOnlineMembers(sm);
 		}
 		
@@ -983,6 +984,12 @@ public class Hero
 		_heroMessage.put(player.getObjectId(), "");
 		
 		updateHeroes(false);
+	}
+	
+	@InstanceGetter
+	public static Hero getInstance()
+	{
+		return SingletonHolder._instance;
 	}
 	
 	private static class SingletonHolder

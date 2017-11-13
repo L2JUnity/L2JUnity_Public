@@ -370,7 +370,7 @@
 		<effectRange>1300</effectRange>
 		<irreplacableBuff>true</irreplacableBuff>
 		<hitTime>700</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>800</castRange>
 		<staticReuse>true</staticReuse>
 		<targetType>ENEMY_ONLY</targetType>
@@ -539,7 +539,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="WeightPenalty">
+			<effect name="p_weight_penalty">
 				<amount>9000</amount>
 			</effect>
 		</effects>
@@ -585,7 +585,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -632,7 +632,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -680,7 +680,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -953,6 +953,11 @@
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="23157" toLevel="1" name="Donateloph's Blessing">
 		<!-- For 1 hour, increases Max HP, MP, and CP by 40%. Increases physical P. Def. and magic M. Def. by 20%. Increases moving speed by 20%. Increases physical P. Atk. by 10%. Increases physical Atk. Spd. by 20%. Bestows the ability to recover as HP 10% of the standard short-range physical damage inflicted on the enemy. -->
@@ -1067,6 +1072,11 @@
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="23162" toLevel="1" name="Rudolphina's Blessing - Replenish Vitality">
 		<!-- Confirmed CT2.5 -->
@@ -1088,7 +1098,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>20000</value>
+				<amount>20000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -1180,7 +1190,7 @@
 		<effects>
 			<!-- TODO: Need new effect i_dispel_by_name. -->
 			<effect name="VitalityPointUp">
-				<value>5000</value>
+				<amount>5000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -1251,7 +1261,7 @@
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1400</effectRange>
 		<irreplacableBuff>true</irreplacableBuff>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>900</castRange>
 		<trait>ETC</trait>
 		<targetType>TARGET</targetType>
@@ -1274,7 +1284,7 @@
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1400</effectRange>
 		<irreplacableBuff>true</irreplacableBuff>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>900</castRange>
 		<trait>ETC</trait>
 		<targetType>TARGET</targetType>
@@ -1328,20 +1338,20 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="HealPercent">
+			<effect name="p_block_debuff" />
+			<effect name="i_hp_per_max">
 				<power>100</power>
 			</effect>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>100</power>
 			</effect>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>9000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1367,7 +1377,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="DispelByCategory">
+			<effect name="i_dispel_by_category">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>20</max>
@@ -1536,12 +1546,10 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-100</amount>
-				<mode>PER</mode>
-				<magicType>1</magicType>
-			</effect>
-		</effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="23180" toLevel="1" name="Joy of Vitality">
 		<!-- Confirmed CT2.5 -->
@@ -1563,7 +1571,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>20000</value>
+				<amount>20000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -1608,7 +1616,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1660,7 +1668,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -1712,7 +1720,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -1764,7 +1772,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -1816,7 +1824,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -1868,7 +1876,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -1920,7 +1928,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -1972,7 +1980,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -2024,7 +2032,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>

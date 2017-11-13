@@ -12,6 +12,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ENCHT_ATTR" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37501" name="Earth Stone" name_additional="Event" type="EtcItem">
 		<!-- Earth attack attribute increases by 5 when bestowed on a weapon. Wind defense attribute increases by 6 when bestowed on armor. Attribute Stones. levels 1- 3. Additionally, a maximum of three types of Elemental defense attribute can be bestowed, and one type of Elemental attack attribute. Opposite attributes cannot be bestowed together. -->
@@ -25,6 +26,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ENCHT_ATTR" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37502" name="Wind Stone" name_additional="Event" type="EtcItem">
 		<!-- Wind attack attribute increases by 5 when bestowed on a weapon. Earth defense attribute increases by 6 when bestowed on armor. Attribute Stones. levels 1- 3. Additionally, a maximum of three types of Elemental defense attribute can be bestowed, and one type of Elemental attack attribute. Opposite attributes cannot be bestowed together. -->
@@ -38,6 +40,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ENCHT_ATTR" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37503" name="Dark Stone" name_additional="Event" type="EtcItem">
 		<!-- Darkness Elemental attack attribute increases by 5 when bestowed on a weapon. Holy defense attribute increases by 6 when bestowed on armor. Attribute Stones. levels 1- 3. Additionally, a maximum of three types of Elemental defense attribute can be bestowed, and one type of Elemental attack attribute. Opposite attributes cannot be bestowed together. -->
@@ -51,6 +54,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ENCHT_ATTR" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37504" name="Holy Stone" name_additional="Event" type="EtcItem">
 		<!-- Holy attack attribute increases by 5 when bestowed on a weapon. Darkness Elemental defense attribute increases by 6 when bestowed on armor. Attribute Stones. levels 1- 3. Additionally, a maximum of three types of Elemental defense attribute can be bestowed, and one type of Elemental attack attribute. Opposite attributes cannot be bestowed together. -->
@@ -64,6 +68,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ENCHT_ATTR" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37505" name="Octavis Crystal" type="EtcItem">
 		<!-- Collect and take 10 of these to Lydia to exchange an Octavis' Accessory for an enhanced one. -->
@@ -101,12 +106,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="46311000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="RING" />
 		<skills>
 			<skill id="13527" level="1" /> <!-- Enhanced Octavis' Ring (Warrior) -->
 		</skills>
 		<stats>
 			<stat type="mDef">103</stat>
+			<stat type="maxMp">37</stat>
 		</stats>
 	</item>
 	<item id="37508" name="Enhanced Octavis' Earring" name_additional="Warrior" type="Armor">
@@ -117,13 +125,17 @@
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="1481" />
 		<set name="weight" val="150" />
-		<set name="is_freightable" val="false" />
 		<set name="price" val="69466000" />
+		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
+		<set name="commissionItemType" val="EARRING" />
 		<skills>
 			<skill id="13528" level="1" /> <!-- Enhanced Octavis' Earring (Warrior) -->
 		</skills>
 		<stats>
 			<stat type="mDef">154</stat>
+			<stat type="maxMp">56</stat>
 		</stats>
 	</item>
 	<item id="37509" name="Enhanced Octavis' Necklace" name_additional="Warrior" type="Armor">
@@ -136,12 +148,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="92622000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="NECKLACE" />
 		<skills>
 			<skill id="13529" level="1" /> <!-- Enhanced Octavis' Necklace (Warrior) -->
 		</skills>
 		<stats>
 			<stat type="mDef">205</stat>
+			<stat type="maxMp">74</stat>
 		</stats>
 	</item>
 	<item id="37510" name="Enhanced Istina's Ring" name_additional="Warrior" type="Armor">
@@ -154,12 +169,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="46311000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="RING" />
 		<skills>
 			<skill id="13530" level="1" /> <!-- Enhanced Istina' Ring (Warrior) -->
 		</skills>
 		<stats>
 			<stat type="mDef">103</stat>
+			<stat type="maxMp">37</stat>
 		</stats>
 	</item>
 	<item id="37511" name="Enhanced Istina's Earring" name_additional="Warrior" type="Armor">
@@ -172,12 +190,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="69466000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="EARRING" />
 		<skills>
 			<skill id="13531" level="1" /> <!-- Enhanced Istina' Earring (Warrior) -->
 		</skills>
 		<stats>
 			<stat type="mDef">154</stat>
+			<stat type="maxMp">56</stat>
 		</stats>
 	</item>
 	<item id="37512" name="Enhanced Istina's Necklace" name_additional="Warrior" type="Armor">
@@ -190,12 +211,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="92622000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="NECKLACE" />
 		<skills>
 			<skill id="13532" level="1" /> <!-- Enhanced Istina' Necklace (Warrior) -->
 		</skills>
 		<stats>
 			<stat type="mDef">205</stat>
+			<stat type="maxMp">74</stat>
 		</stats>
 	</item>
 	<item id="37513" name="Enhanced Octavis' Ring" name_additional="Wizard" type="Armor">
@@ -208,11 +232,15 @@
 		<set name="weight" val="150" />
 		<set name="is_freightable" val="false" />
 		<set name="price" val="46311000" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
+		<set name="commissionItemType" val="RING" />
 		<skills>
 			<skill id="13533" level="1" /> <!-- Enhanced Octavis' Ring (Wizard) -->
 		</skills>
 		<stats>
 			<stat type="mDef">103</stat>
+			<stat type="maxMp">37</stat>
 		</stats>
 	</item>
 	<item id="37514" name="Enhanced Octavis' Earring" name_additional="Wizard" type="Armor">
@@ -225,12 +253,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="69466000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="EARRING" />
 		<skills>
 			<skill id="13534" level="1" /> <!-- Enhanced Octavis' Earring (Wizard) -->
 		</skills>
 		<stats>
 			<stat type="mDef">154</stat>
+			<stat type="maxMp">56</stat>
 		</stats>
 	</item>
 	<item id="37515" name="Enhanced Octavis' Necklace" name_additional="Wizard" type="Armor">
@@ -241,13 +272,17 @@
 		<set name="crystal_type" val="R" />
 		<set name="crystal_count" val="1975" />
 		<set name="weight" val="150" />
-		<set name="is_freightable" val="false" />
 		<set name="price" val="92622000" />
+		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
+		<set name="commissionItemType" val="NECKLACE" />
 		<skills>
 			<skill id="13535" level="1" /> <!-- Enhanced Octavis' Necklace (Wizard) -->
 		</skills>
 		<stats>
 			<stat type="mDef">205</stat>
+			<stat type="maxMp">74</stat>
 		</stats>
 	</item>
 	<item id="37516" name="Enhanced Istina's Ring" name_additional="Wizard" type="Armor">
@@ -260,12 +295,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="46311000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="RING" />
 		<skills>
 			<skill id="13536" level="1" /> <!-- Enhanced Istina' Ring (Wizard) -->
 		</skills>
 		<stats>
 			<stat type="mDef">103</stat>
+			<stat type="maxMp">37</stat>
 		</stats>
 	</item>
 	<item id="37517" name="Enhanced Istina's Earring" name_additional="Wizard" type="Armor">
@@ -278,12 +316,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="69466000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="EARRING" />
 		<skills>
 			<skill id="13537" level="1" /> <!-- Enhanced Istina' Earring (Wizard) -->
 		</skills>
 		<stats>
 			<stat type="mDef">154</stat>
+			<stat type="maxMp">56</stat>
 		</stats>
 	</item>
 	<item id="37518" name="Enhanced Istina's Necklace" name_additional="Wizard" type="Armor">
@@ -296,12 +337,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="92622000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
+		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="NECKLACE" />
 		<skills>
 			<skill id="13538" level="1" /> <!-- Enhanced Istina' Necklace (Wizard) -->
 		</skills>
 		<stats>
 			<stat type="mDef">205</stat>
+			<stat type="maxMp">74</stat>
 		</stats>
 	</item>
 	<item id="37519" name="Bottle of Frintezza's Soul" type="EtcItem">
@@ -330,11 +374,15 @@
 		<set name="weight" val="150" />
 		<set name="is_freightable" val="false" />
 		<set name="price" val="1730000" />
+		<set name="enchant_enabled" val="1" />
+		<set name="commissionItemType" val="RING" />
+		<set name="immediate_effect" val="true" />
 		<skills>
 			<skill id="13539" level="1" /> <!-- Baium's Soul Ring -->
 		</skills>
 		<stats>
 			<stat type="mDef">79</stat>
+			<stat type="maxMp">31</stat>
 		</stats>
 	</item>
 	<item id="37522" name="Frintezza's Soul Necklace" type="Armor">
@@ -347,12 +395,15 @@
 		<set name="weight" val="150" />
 		<set name="price" val="3450000" />
 		<set name="is_freightable" val="false" />
+		<set name="enchant_enabled" val="1" />
 		<set name="commissionItemType" val="NECKLACE" />
+		<set name="immediate_effect" val="true" />
 		<skills>
 			<skill id="13540" level="1" /> <!-- Frintezza's Soul Necklace -->
 		</skills>
 		<stats>
 			<stat type="mDef">158</stat>
+			<stat type="maxMp">62</stat>
 		</stats>
 	</item>
 	<item id="37523" name="Summon Scroll: Pomona" type="EtcItem">
@@ -364,6 +415,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="37524" name="Passion Treasure Chest" type="EtcItem">
 		<!-- Treasure Chest with Pomona's gift. -->
@@ -373,6 +425,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37525" name="Agathion - Pomona" name_additional="90-day" type="Armor">
 		<!-- Bracelet for summoning Pomona Agathion. 90-day.\n(Active Skill)\nPomona Agathion Teleport\nLets you teleport to various strongholds. (Cooldown is 30 min.) -->
@@ -405,6 +458,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37528" name="Transformation Sealbook: Part-time Seller" name_additional="Smiling ParaPara Cat" type="EtcItem">
 		<!-- Sealbook for learning the skill of transforming yourself into a Smiling ParaPara Cat. -->
@@ -413,6 +467,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37529" name="Transformation Sealbook: Part-time Seller" name_additional="Charming ParaPara Cat" type="EtcItem">
 		<!-- Sealbook for learning the skill of transforming yourself into a Charming ParaPara Cat. -->
@@ -421,6 +476,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37530" name="Transformation Sealbook: Part-time Seller" name_additional="Ferocious ParaPara Cat" type="EtcItem">
 		<!-- Sealbook for learning the skill of transforming yourself into a Ferocious ParaPara Cat. -->
@@ -429,6 +485,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37531" name="Transformation Sealbook: Part-time Seller" name_additional="Merchant ParaPara Cat" type="EtcItem">
 		<!-- Sealbook for learning the skill of transforming yourself into a Merchant ParaPara Cat. -->
@@ -437,6 +494,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37532" name="Lindvior's Egg" type="EtcItem">
 		<!-- Wind Dragon's egg. 10th anniversary item that brings you luck. -->
@@ -488,6 +546,7 @@
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -507,6 +566,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37538" name="Pomona Agathion Pack" type="EtcItem">
 		<!-- Double-click to receive a Pomona Agathion (90-day). Cannot be used in the Olympiad. -->
@@ -517,6 +577,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37539" name="Enchant Scroll Pack" type="EtcItem">
 		<!-- Double-click to receive 1 Scroll: Enchant Armor (R-grade) and 1 Scroll: Enchant Weapon (R-grade). Cannot be used in the Olympiad. -->
@@ -526,6 +587,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37540" name="Giant's Enchant Scroll Pack" type="EtcItem">
 		<!-- Double-click to receive 1 Giant's Scroll: Enchant Armor (R-grade) and 1 Giant's Scroll: Enchant Weapon (R-grade). Cannot be used in the Olympiad. -->
@@ -535,6 +597,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37541" name="Blessed Enchant Scroll Pack" type="EtcItem">
 		<!-- Double-click to receive 1 Blessed Scroll: Enchant Armor (R-grade) and 1 Blessed Scroll: Enchant Weapon (R-grade). Cannot be used in the Olympiad. -->
@@ -544,6 +607,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37542" name="Summon Scroll: Bae Kisung" name_additional="Test" type="EtcItem">
 		<!-- Scroll for summoning Bae Kisung once. From the summoned Bae Kisung, you can receive power-up buff and additionally Bae Kisung's gift box that has special gifts. -->
@@ -553,6 +617,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37543" name="Nectar" type="EtcItem">
 		<!-- Go to Santa to trade in for Wintermelon Seed or Large Wintermelon Seed. You can also use it to grow Wintermelon and Large Wintermelon. -->
@@ -560,6 +625,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37544" name="Snowball" type="EtcItem">
 		<!-- Shaken off of a Wintermelon, this snow lump is popular among merchants as a bringer of fortune. Perhaps you could invest this in Aden Reconstruction for the future? -->
@@ -583,6 +649,7 @@
 		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37547" name="Rudolph's Gift" name_additional="Stage 2" type="EtcItem">
 		<!-- Winter Holiday Gift for 2013. Gives 15 Nectars for the Wintermelon Event. Deleted after event. -->
@@ -590,6 +657,7 @@
 		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37548" name="Rudolph's Gift" name_additional="Stage 3" type="EtcItem">
 		<!-- Winter Holiday Gift for 2013. Gives 25 Nectars for the Wintermelon Event. Deleted after event. -->
@@ -597,6 +665,7 @@
 		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37549" name="Rudolph's Gift" name_additional="Stage 4" type="EtcItem">
 		<!-- Winter Holiday Gift for 2013. Gives 60 Nectars for the Wintermelon Event. Deleted after event. -->
@@ -604,6 +673,7 @@
 		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37550" name="Snowman's Buff" type="EtcItem">
 		<!-- Replenishes Vitality for 3 hr. in a peace zone. -->
@@ -612,6 +682,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37551" name="Winter Holiday Gift" type="EtcItem">
 		<!-- Double click to acquire one of the following: Bottle of Orfen's Soul, Bottle of Frintezza's Soul, Bottle of Queen Ant's Soul, or Bottle of Baium's Soul. -->
@@ -619,18 +690,21 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37552" name="Wintermelon Seed" type="EtcItem">
 		<!-- Double-click to have a Young Wintermelon appear. -->
 		<set name="icon" val="icon.etc_gourd_i10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37553" name="Large Wintermelon Seed" type="EtcItem">
 		<!-- Double-click to have a Young Large Wintermelon appear. -->
 		<set name="icon" val="icon.etc_gourd_i11" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37554" name="Kisung's Cherry Nose Buff Scroll" name_additional="Event" type="EtcItem">
 		<!-- Double-click to receive Bae Kisung's Power Up buff for 30 min. Cooldown is 15 sec. Cannot be used in the Olympiad. -->
@@ -638,6 +712,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -677,6 +752,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
 		<set name="time" val="8640000" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37557" name="Promise Cube (1-time use)" type="EtcItem">
 		<!-- Double click to acquire one of the following: Dark/Bloody Eternal Enhancement Stone (Annihilation/Hellfire/Desire), Blessed Scroll of Resurrection, High-grade Elixir Box, or Energy of Destruction. Cannot be used in the Olympiad. (disappears after 1 time use) -->
@@ -692,6 +768,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37558" name="High-grade Elixir Pack" name_additional="Event" type="EtcItem">
 		<!-- Double click to acquire 5 each of high-grade elixirs of life, mind, and CP. Cannot be used in the Olympiad. -->
@@ -701,6 +778,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37559" name="Shiny Coin" type="EtcItem">
 		<!-- Sparkling coin. Used to exchange for special items through the dimensional merchant. -->
@@ -718,6 +796,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="37561" name="Emperor's Vitality Tonic (Medium)" type="EtcItem">
 		<!-- Medium vitality extract containing the emperor's strength. 2 out of 4 bars on the vitality gauge are replenished. Cooldown is 60 minutes. Cannot be used in the Olympiad. The limit on usage of 5 times per week does not apply. -->
@@ -727,6 +806,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="37562" name="Emperor's Vitality Tonic (Large)" type="EtcItem">
 		<!-- Special vitality extract containing the emperor's strength. 3 out of 4 bars on the vitality gauge are replenished. Cooldown is 60 minutes. Cannot be used in the Olympiad. The limit on usage of 5 times per week does not apply. -->
@@ -736,6 +816,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="37563" name="Emperor's Growth Scroll" type="EtcItem">
 		<!-- When used, the emperor's experience is infused so that the character's acquired XP and SP are increased by 30% for one hour. Cannot be used in the Olympiad. -->
@@ -745,6 +826,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37564" name="Emperor's Rune" type="EtcItem">
 		<!-- 8-hour limited item. While in possession, the character's acquired XP and SP increase by 30%. -->
@@ -766,6 +848,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37566" name="Blessed Lucky Enchant Stone: Weapon (R-grade)" type="EtcItem">
 		<!-- Enchant success rate + 10% for weapons (R-grade) when using Blessed Scroll: Enchant Weapon. Only for items enchanted between + 3 and + 9. Not for items enchanted to + 10 or above. -->
@@ -775,6 +858,9 @@
 		<set name="is_freightable" val="false" />
 		<set name="etcitem_type" val="BLESS_INC_PROP_ENCHT_WP" />
 		<set name="commissionItemType" val="WEAPON_ENCHANT_STONE" />
+		<skills>
+			<skill id="22965" level="1" /> <!-- Blessed Lucky Enchant Stone: Weapon (R-grade) -->
+		</skills>
 	</item>
 	<item id="37567" name="Blessed Lucky Enchant Stone: Armor (R-grade)" type="EtcItem">
 		<!-- Enchant success rate + 10% for armor (R-grade) when using Blessed Scroll: Enchant Armor. Only for items enchanted between + 3 and + 9. For one-piece armor, enchant must be between + 4 and + 9. -->
@@ -784,6 +870,9 @@
 		<set name="is_freightable" val="false" />
 		<set name="etcitem_type" val="BLESS_INC_PROP_ENCHT_AM" />
 		<set name="commissionItemType" val="ARMOR_ENCHANT_STONE" />
+		<skills>
+			<skill id="22971" level="1" /> <!-- Blessed Lucky Enchant Stone: Armor (R-grade) -->
+		</skills>
 	</item>
 	<item id="37568" name="Legendary Card Pouch: Dragon" type="EtcItem">
 		<!-- Pouch of legendary cards brimming with magic. Double-click to obtain either the Antharas, Valakas, or Lindvior. -->
@@ -792,6 +881,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37569" name="Legendary Card Pouch: Hero" type="EtcItem">
 		<!-- Pouch of legendary cards brimming with magic. Double-click to obtain either the Astair van Halter, Amadeo Cadmus, Lionel Hunter, or Elcadia. -->
@@ -800,6 +890,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37570" name="Legendary Card Pouch: Demon" type="EtcItem">
 		<!-- Pouch of legendary cards brimming with magic. Double-click to obtain either the Baium, Beleth, or Tiat card. -->
@@ -808,6 +899,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37571" name="Legendary Card: Antharas" type="EtcItem">
 		<set name="icon" val="icon.card_dragon_anta" />
@@ -928,6 +1020,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37588" name="Snake's Gift" name_additional="Not in Use" type="EtcItem">
 		<!-- Snake's Gift for the Year of the Black Snake. Double-click for a chance to obtain a card excluding the Hidden Card. -->
@@ -936,6 +1029,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37589" name="Lord of the Western Winds" type="EtcItem">
 		<!-- Golden card obtained from combining the Lord of the Western Winds. For 30 min., CON + 5, MEN + 5, and Damage Reflect + 20%. -->
@@ -944,6 +1038,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37590" name="Successors of Destiny" type="EtcItem">
 		<!-- Red card obtained from combining the Successors of Destiny. For 30 min., STR + 5, INT + 5, and P. Def. + 10%. -->
@@ -952,6 +1047,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37591" name="Dragon Rising" type="EtcItem">
 		<!-- Black card obtained from combining the Dragon Rising. For 30 min., STR + 5, INT + 5, and M. Def. + 10%. -->
@@ -960,6 +1056,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37592" name="Awakening Darkness" type="EtcItem">
 		<!-- Blue card obtained from combining the Awakening Darkness. For 30 min., STR + 5, INT + 5, and Attribute Resistance + 100. -->
@@ -968,6 +1065,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37593" name="Returning Hero's Vitality Replenishing Juice" name_additional="Event" type="EtcItem">
 		<!-- 1 out of 4 bars on the vitality gauge are replenished. -->
@@ -982,6 +1080,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37594" name="Returning Hero's Vitality Replenishing Juice 4-unit Pack" name_additional="Event" type="EtcItem">
 		<!-- It contains 4 Returning Hero's Vitality Replenishing Juices that can replenish 1 out of 4 bars on the vitality gauge. -->
@@ -995,6 +1094,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37595" name="Returning Hero's Potion Pack" name_additional="Event" type="EtcItem">
 		<!-- Gift box containing 30 Returning Hero's Health Potion, 1 Returning Hero's Vitality Replenishing Juice 4-unit Pack, and 6 Heavenly Cocktails. -->
@@ -1008,6 +1108,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37596" name="Weapon Coupon (R-grade)" type="EtcItem">
 		<!-- Take this to Snake in town to obtain a weapon (R-grade) for a small fee. Temporary event item. -->

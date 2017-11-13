@@ -40,7 +40,7 @@ public final class L2ObservationInstance extends Npc
 	{
 		String filename = null;
 		
-		if (isInsideRadius(-79884, 86529, 0, 50, false, true) || isInsideRadius(-78858, 111358, 0, 50, false, true) || isInsideRadius(-76973, 87136, 0, 50, false, true) || isInsideRadius(-75850, 111968, 0, 50, false, true))
+		if (isInRadius2d(-79884, 86529, 50) || isInRadius2d(-78858, 111358, 50) || isInRadius2d(-76973, 87136, 50) || isInRadius2d(-75850, 111968, 50))
 		{
 			if (val == 0)
 			{

@@ -18,14 +18,17 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.residences.ResidenceFunctionTemplate;
 import org.slf4j.Logger;
@@ -45,11 +48,10 @@ public final class ResidenceFunctionsData implements IGameXmlReader
 	
 	protected ResidenceFunctionsData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_functions.clear();
 		parseDatapackFile("data/ResidenceFunctions.xml");
@@ -57,7 +59,7 @@ public final class ResidenceFunctionsData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, "list", list -> forEach(list, "function", func ->
 		{
@@ -84,6 +86,11 @@ public final class ResidenceFunctionsData implements IGameXmlReader
 		}));
 	}
 	
+	public int getFunctionCount()
+	{
+		return _functions.size();
+	}
+	
 	/**
 	 * @param id
 	 * @param level
@@ -103,6 +110,7 @@ public final class ResidenceFunctionsData implements IGameXmlReader
 		return _functions.get(id);
 	}
 	
+	@InstanceGetter
 	public static final ResidenceFunctionsData getInstance()
 	{
 		return SingletonHolder.INSTANCE;

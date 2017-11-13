@@ -15,7 +15,7 @@
 		<equipment rhand="67" lhand="633" /> <!-- Orcish Sword / Zubei's Shield -->
 		<acquire expRate="1017.056710775" sp="129" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="26617" hpRegen="43.8368677449012" mp="231.96" mpRegen="1.5" />
+			<vitals hp="26617.9714173384" hpRegen="43.8368677449012" mp="231.96" mpRegen="1.5" />
 			<attack physical="125.7065529297" magical="15.8487213329514" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="286.94928" magical="139.98" evasion="-18" shield="383" shieldRate="20" />
 			<speed>
@@ -43,7 +43,7 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="21" />
 			<height normal="43.5" />
@@ -59,7 +59,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="7" /> <!-- Apprentice's Rod -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2762" hpRegen="17.1576881427546" mp="218.52" mpRegen="1.5" />
+			<vitals hp="2762.5051132335" hpRegen="17.1576881427546" mp="218.52" mpRegen="1.5" />
 			<attack physical="154.12029514765" magical="25.8557002815554" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="138.98541" magical="135.6" evasion="-18" />
 			<speed>
@@ -100,7 +100,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="123" /> <!-- Saber -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4123" hpRegen="17.1576881427546" mp="218.52" mpRegen="1.5" />
+			<vitals hp="4123.14196005" hpRegen="17.1576881427546" mp="218.52" mpRegen="1.5" />
 			<attack physical="231.186222377034" magical="58.1778709153521" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="138.98541" magical="135.6" evasion="-18" />
 			<speed>
@@ -146,7 +146,7 @@
 		<equipment rhand="124" /> <!-- Two-handed Sword -->
 		<acquire expRate="2686.5133333333" sp="580" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="141484" hpRegen="54.2850964385025" mp="329.4" mpRegen="1.5" />
+			<vitals hp="141484.138003554" hpRegen="54.2850964385025" mp="329.4" mpRegen="1.5" />
 			<attack physical="222.437554766423" magical="28.8595106837795" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="355.39281" magical="173.38" evasion="-18" />
 			<speed>
@@ -174,24 +174,24 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
 				<group chance="0.6">
 					<item id="224" min="1" max="1" chance="50" /> <!-- Maingauche -->
 					<item id="1660" min="1" max="1" chance="50" /> <!-- Cursed Maingauche -->
 				</group>
-				<group chance="5.978">
-					<item id="2378" min="1" max="1" chance="50.016728002676" /> <!-- Brigandine Gaiters -->
-					<item id="2377" min="1" max="1" chance="49.983271997324" /> <!-- Mithril Scale Gaiters -->
+				<group chance="5.942">
+					<item id="2378" min="1" max="1" chance="50.504880511612" /> <!-- Brigandine Gaiters -->
+					<item id="2377" min="1" max="1" chance="49.495119488388" /> <!-- Mithril Scale Gaiters -->
 				</group>
-				<group chance="1.868">
+				<group chance="1.863">
 					<item id="352" min="1" max="1" chance="100" /> <!-- Brigandine -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="50.09" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="51.25" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="24" grown="12" />
@@ -207,7 +207,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="271" /> <!-- Hunting Bow -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="134778" hpRegen="20.9291966395288" mp="315.12" mpRegen="1.5" />
+			<vitals hp="134778.541293282" hpRegen="20.9291966395288" mp="315.12" mpRegen="1.5" />
 			<attack physical="205.440592348721" magical="26.2255509213276" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="172.50897" magical="168.32" evasion="-18" />
 			<speed>
@@ -232,7 +232,7 @@
 			<skill id="4754" level="2" /> <!-- BOSS Power Shot -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" />
+		<ai clanHelpRange="300" dodge="15" />
 		<collision>
 			<radius normal="16" />
 			<height normal="40" />
@@ -244,7 +244,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="2" /> <!-- Long Sword -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="134778" hpRegen="20.9291966395288" mp="315.12" mpRegen="1.5" />
+			<vitals hp="134778.541293282" hpRegen="20.9291966395288" mp="315.12" mpRegen="1.5" />
 			<attack physical="205.440592348721" magical="26.2255509213276" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="172.50897" magical="168.32" evasion="-18" />
 			<speed>
@@ -288,7 +288,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="2164.4246031746" sp="916" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="91934" hpRegen="93.8588255268651" mp="531.0" mpRegen="2.1" />
+			<vitals hp="91934.7204453707" hpRegen="93.8588255268651" mp="531.0" mpRegen="2.1" />
 			<attack physical="544.203747087374" magical="108.261466821336" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="494.65539" magical="241.32" evasion="-18" />
 			<speed>
@@ -316,27 +316,32 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
 				<group chance="0.6">
 					<item id="282" min="1" max="1" chance="50" /> <!-- Elemental Bow -->
 					<item id="285" min="1" max="1" chance="50" /> <!-- Noble Elven Bow -->
 				</group>
-				<group chance="7.246">
-					<item id="418" min="1" max="1" chance="31.783052718741" /> <!-- Plated Leather Gaiters -->
-					<item id="419" min="1" max="1" chance="30.126966602263" /> <!-- Rind Leather Gaiters -->
-					<item id="398" min="1" max="1" chance="19.334805409881" /> <!-- Plated Leather Armor -->
-					<item id="399" min="1" max="1" chance="18.755175269114" /> <!-- Rind Leather Armor -->
+				<group chance="7.256">
+					<item id="418" min="1" max="1" chance="32.869349503859" /> <!-- Plated Leather Gaiters -->
+					<item id="419" min="1" max="1" chance="29.010474090408" /> <!-- Rind Leather Gaiters -->
+					<item id="399" min="1" max="1" chance="18.991179713341" /> <!-- Rind Leather Armor -->
+					<item id="398" min="1" max="1" chance="19.128996692393" /> <!-- Plated Leather Armor -->
 				</group>
 				<group chance="100">
-					<item id="8176" min="1" max="2" chance="50.89072418265" /> <!-- Destruction Tombstone -->
-					<item id="9816" min="1" max="5" chance="49.10927581735" /> <!-- Earth Egg -->
+					<item id="8176" min="1" max="2" chance="49.90302949241" /> <!-- Destruction Tombstone -->
+					<item id="9816" min="1" max="5" chance="48.190998461847" /> <!-- Earth Egg -->
+					<item id="46474" min="1" max="1" chance="0.50157159098509" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.50157159098509" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.50157159098509" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46444" min="1" max="1" chance="0.20062863639403" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.20062863639403" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="61.17" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="60.92" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="27" />
@@ -352,7 +357,7 @@
 		<race>BUG</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13875" hpRegen="35.7508086861415" mp="504.8" mpRegen="2.1" />
+			<vitals hp="13875.2863590304" hpRegen="35.7508086861415" mp="504.8" mpRegen="2.1" />
 			<attack physical="507.421642628575" magical="97.294840990695" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="241.03503" magical="235.18" evasion="-18" />
 			<speed>
@@ -389,7 +394,7 @@
 		<race>BUG</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="6937" hpRegen="35.7508086861415" mp="504.8" mpRegen="2.1" />
+			<vitals hp="6937.64317951519" hpRegen="35.7508086861415" mp="504.8" mpRegen="2.1" />
 			<attack physical="507.421642628575" magical="97.294840990695" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="241.03503" magical="235.18" evasion="-18" />
 			<speed>
@@ -461,7 +466,7 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
 				<group chance="5.015">
@@ -481,9 +486,9 @@
 					<item id="6572" min="1" max="1" chance="1.4687017040576" /> <!-- Blessed Scroll: Enchant Armor (B-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="68.78" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23" />
@@ -559,7 +564,7 @@
 			<skill id="4416" level="13" /> <!-- Fairies -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="9" />
 			<height normal="20" />
@@ -582,7 +587,7 @@
 		<equipment rhand="145" /> <!-- Sword of Whispering Death -->
 		<acquire expRate="2825.7864" sp="1695" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="140675" hpRegen="134.636584855273" mp="747.8" mpRegen="2.1" />
+			<vitals hp="140675.80872692" hpRegen="134.636584855273" mp="747.8" mpRegen="2.1" />
 			<attack physical="916.960869206271" magical="226.1107141388" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="600.71532" magical="293.06" evasion="-18" />
 			<speed>
@@ -614,7 +619,7 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="15" />
 			<height normal="39" />
@@ -629,7 +634,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="68" /> <!-- Falchion -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="21462" hpRegen="51.7193112926872" mp="720.0" mpRegen="2.1" />
+			<vitals hp="21462.6149796625" hpRegen="51.7193112926872" mp="720.0" mpRegen="2.1" />
 			<attack physical="1725.13343799437" magical="830.841572363032" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="293.49453" magical="286.36" evasion="-18" />
 			<speed>
@@ -656,7 +661,7 @@
 			<skill id="4720" level="4" /> <!-- BOSS Strike -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="11" grown="13" />
 			<height normal="25" grown="31" />
@@ -668,7 +673,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="14" /> <!-- Bow -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="10731" hpRegen="51.7193112926872" mp="720.0" mpRegen="2.1" />
+			<vitals hp="10731.3074898313" hpRegen="51.7193112926872" mp="720.0" mpRegen="2.1" />
 			<attack physical="862.566718997186" magical="207.710393090758" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="293.49453" magical="286.36" evasion="-18" />
 			<speed>
@@ -694,7 +699,7 @@
 			<skill id="4416" level="1" /> <!-- Undead -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" />
+		<ai clanHelpRange="300" dodge="15" />
 		<collision>
 			<radius normal="11" />
 			<height normal="27" />
@@ -714,7 +719,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="577.03944444444" sp="498" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="202702" hpRegen="101.297743589404" mp="1036.8" mpRegen="2.4" />
+			<vitals hp="202702.219984599" hpRegen="101.297743589404" mp="1036.8" mpRegen="2.4" />
 			<attack physical="1468.52522558981" magical="462.900273177621" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="742.95024" magical="362.44" evasion="-18" />
 			<speed>
@@ -742,30 +747,38 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="2.723">
+				<group chance="2.691">
 					<item id="268" min="1" max="1" chance="100" /> <!-- Bellion Cestus -->
 				</group>
-				<group chance="16.01">
-					<item id="2487" min="1" max="1" chance="55.384134915678" /> <!-- Sealed Blue Wolf Gloves -->
-					<item id="601" min="1" max="1" chance="23.029356652092" /> <!-- Sealed Doom Boots -->
-					<item id="2439" min="1" max="1" chance="13.279200499688" /> <!-- Sealed Blue Wolf Boots -->
-					<item id="2475" min="1" max="1" chance="8.3073079325422" /> <!-- Sealed Doom Gloves -->
+				<group chance="15.933">
+					<item id="2487" min="1" max="1" chance="55.199899579489" /> <!-- Sealed Blue Wolf Gloves -->
+					<item id="601" min="1" max="1" chance="22.908429046633" /> <!-- Sealed Doom Boots -->
+					<item id="2439" min="1" max="1" chance="13.155086926505" /> <!-- Sealed Blue Wolf Boots -->
+					<item id="2475" min="1" max="1" chance="8.7365844473734" /> <!-- Sealed Doom Gloves -->
 				</group>
-				<group chance="100">
-					<item id="8176" min="1" max="3" chance="40.823252285703" /> <!-- Destruction Tombstone -->
-					<item id="9817" min="2" max="7" chance="36.985467321436" /> <!-- Nonliving Nucleus -->
-					<item id="4620" min="1" max="1" chance="8.1945941629736" /> <!-- Greater INT Dye (Int + 4 Wit - 4) -->
-					<item id="4621" min="1" max="1" chance="7.7703916636723" /> <!-- Greater MEN Dye (Men + 4 Int - 4) -->
-					<item id="4619" min="1" max="3" chance="3.9241226494191" /> <!-- Greater INT Dye (Int + 4 Men - 4) -->
-					<item id="947" min="1" max="1" chance="2.3021719167964" /> <!-- Scroll: Enchant Weapon (B-grade) -->
+				<group chance="53.496">
+					<item id="4621" min="1" max="1" chance="30.936892477942" /> <!-- Greater MEN Dye (Men + 4 Int - 4) -->
+					<item id="4620" min="1" max="1" chance="29.834006280843" /> <!-- Greater INT Dye (Int + 4 Wit - 4) -->
+					<item id="4619" min="1" max="3" chance="14.817930312547" /> <!-- Greater INT Dye (Int + 4 Men - 4) -->
+					<item id="947" min="1" max="1" chance="8.4810079258262" /> <!-- Scroll: Enchant Weapon (B-grade) -->
+					<item id="46504" min="1" max="1" chance="2.0936144758487" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="2.011365335726" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46474" min="1" max="1" chance="2.011365335726" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46490" min="1" max="1" chance="1.4019739793629" /> <!-- Pantheon's Soul Crystal - Stage 2 -->
+					<item id="46475" min="1" max="1" chance="1.4019739793629" /> <!-- Leona's Soul Crystal - Stage 2 -->
+					<item id="46460" min="1" max="1" chance="1.4019739793629" /> <!-- Mermoden's Soul Crystal - Stage 2 -->
+					<item id="46459" min="1" max="1" chance="1.4019739793629" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
+					<item id="46445" min="1" max="1" chance="1.4019739793629" /> <!-- Kain's Soul Crystal - Stage 2 -->
+					<item id="46444" min="1" max="1" chance="1.4019739793629" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46505" min="1" max="1" chance="1.4019739793629" /> <!-- Lionel's Soul Crystal - Stage 2 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="81.65" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="79.39" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="40" />
@@ -781,7 +794,7 @@
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="31547" hpRegen="99.0136088444146" mp="1007.0" mpRegen="2.4" />
+			<vitals hp="31547.0465406432" hpRegen="99.0136088444146" mp="1007.0" mpRegen="2.4" />
 			<attack physical="2801.82135034424" magical="1701.37043744442" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="364.223895" magical="355.36" evasion="-18" />
 			<speed>
@@ -807,7 +820,7 @@
 			<skill id="4784" level="5" /> <!-- BOSS Chant of Life -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="13" />
 			<height normal="22" />
@@ -818,7 +831,7 @@
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15773" hpRegen="99.0136088444146" mp="1007.0" mpRegen="2.4" />
+			<vitals hp="15773.5232703216" hpRegen="99.0136088444146" mp="1007.0" mpRegen="2.4" />
 			<attack physical="2801.82135034424" magical="1701.37043744442" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="364.223895" magical="355.36" evasion="-18" />
 			<speed>
@@ -842,7 +855,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="13" />
 			<height normal="22" />
@@ -862,7 +875,7 @@
 		<equipment rhand="291" /> <!-- Trident -->
 		<acquire expRate="4184.9328" sp="627" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="57177" hpRegen="46.0963284168942" mp="259.2" mpRegen="1.5" />
+			<vitals hp="57177.5272680971" hpRegen="46.0963284168942" mp="259.2" mpRegen="1.5" />
 			<attack physical="148.444637760902" magical="18.7186896910546" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="305.50599" magical="149.04" evasion="-18" />
 			<speed>
@@ -893,25 +906,25 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="2.334">
-					<item id="316" min="1" max="1" chance="50.985432733505" /> <!-- Sage's Blood -->
-					<item id="317" min="1" max="1" chance="49.014567266495" /> <!-- Tome of Blood -->
+				<group chance="2.375">
+					<item id="316" min="1" max="1" chance="51.578947368421" /> <!-- Sage's Blood -->
+					<item id="317" min="1" max="1" chance="48.421052631579" /> <!-- Tome of Blood -->
 				</group>
-				<group chance="31.198">
-					<item id="415" min="1" max="1" chance="38.335790755818" /> <!-- Mithril Banded Gaiters -->
-					<item id="416" min="1" max="1" chance="37.566510673761" /> <!-- Reinforced Leather Gaiters -->
-					<item id="394" min="1" max="1" chance="24.097698570421" /> <!-- Reinforced Leather Shirt -->
+				<group chance="31.397">
+					<item id="415" min="1" max="1" chance="38.729814950473" /> <!-- Mithril Banded Gaiters -->
+					<item id="416" min="1" max="1" chance="37.678759117113" /> <!-- Reinforced Leather Gaiters -->
+					<item id="394" min="1" max="1" chance="23.591425932414" /> <!-- Reinforced Leather Shirt -->
 				</group>
-				<group chance="7.447">
+				<group chance="7.518">
 					<item id="393" min="1" max="1" chance="100" /> <!-- Mithril Banded Mail -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="40.61" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="40.81" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="42" />
@@ -933,7 +946,7 @@
 		<equipment rhand="8" /> <!-- Willow Staff -->
 		<acquire expRate="2091.5761245675" sp="580" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="43422" hpRegen="64.0320769055964" mp="387.72" mpRegen="1.8" />
+			<vitals hp="43422.5049578913" hpRegen="64.0320769055964" mp="387.72" mpRegen="1.8" />
 			<attack physical="303.485602119585" magical="48.1624477605241" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="398.8458" magical="194.58" evasion="-18" />
 			<speed>
@@ -961,32 +974,32 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
 				<group chance="100">
-					<item id="187" min="1" max="1" chance="1.7776776186278" /> <!-- Atuba Hammer -->
-					<item id="189" min="1" max="1" chance="1.7577930815067" /> <!-- Staff of Life -->
-					<item id="188" min="1" max="1" chance="1.7571302636027" /> <!-- Ghost Staff -->
-					<item id="190" min="1" max="1" chance="1.7392341801937" /> <!-- Atuba Mace -->
-					<item id="159" min="1" max="1" chance="1.7047676491837" /> <!-- Bonebreaker -->
-					<item id="2050" min="2" max="6" chance="26.850753292548" /> <!-- Ghost Staff Head -->
-					<item id="2051" min="2" max="6" chance="20.441304160508" /> <!-- Staff of Life Shaft -->
-					<item id="2048" min="3" max="9" chance="16.888600194868" /> <!-- Bonebreaker Head -->
-					<item id="2049" min="3" max="9" chance="14.038483207508" /> <!-- Atuba Hammer Head -->
-					<item id="2058" min="4" max="12" chance="13.044256351453" /> <!-- Atuba Mace Head -->
+					<item id="190" min="1" max="1" chance="1.7693535357516" /> <!-- Atuba Mace -->
+					<item id="159" min="1" max="1" chance="1.7660696576229" /> <!-- Bonebreaker -->
+					<item id="188" min="1" max="1" chance="1.7627857794942" /> <!-- Ghost Staff -->
+					<item id="187" min="1" max="1" chance="1.7378283057159" /> <!-- Atuba Hammer -->
+					<item id="189" min="1" max="1" chance="1.7181250369436" /> <!-- Staff of Life -->
+					<item id="2050" min="2" max="6" chance="26.921232899205" /> <!-- Ghost Staff Head -->
+					<item id="2051" min="2" max="6" chance="20.714703235934" /> <!-- Staff of Life Shaft -->
+					<item id="2048" min="3" max="9" chance="15.86769911795" /> <!-- Bonebreaker Head -->
+					<item id="2049" min="3" max="9" chance="14.849696898049" /> <!-- Atuba Hammer Head -->
+					<item id="2058" min="4" max="12" chance="12.892505533335" /> <!-- Atuba Mace Head -->
 				</group>
-				<group chance="10.01">
+				<group chance="9.979">
 					<item id="396" min="1" max="1" chance="100" /> <!-- Salamander Skin Mail -->
 				</group>
-				<group chance="19.177">
-					<item id="1952" min="27" max="81" chance="55.796005631746" /> <!-- Salamander Skin Mail Texture -->
-					<item id="6574" min="1" max="1" chance="44.203994368254" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
+				<group chance="19.54">
+					<item id="1952" min="27" max="81" chance="56.806550665302" /> <!-- Salamander Skin Mail Texture -->
+					<item id="6574" min="1" max="1" chance="43.193449334698" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="50.55" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="49.74" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="22" />
@@ -1002,7 +1015,7 @@
 		<race>DEMONIC</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="6589" hpRegen="24.5170941308607" mp="372.96" mpRegen="1.8" />
+			<vitals hp="6589.24427262751" hpRegen="24.5170941308607" mp="372.96" mpRegen="1.8" />
 			<attack physical="281.115059392479" magical="44.7780251490961" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="193.846425" magical="189.14" evasion="-18" />
 			<speed>
@@ -1041,7 +1054,7 @@
 		<race>DEMONIC</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3294" hpRegen="24.5170941308607" mp="372.96" mpRegen="1.8" />
+			<vitals hp="3294.62213631376" hpRegen="24.5170941308607" mp="372.96" mpRegen="1.8" />
 			<attack physical="281.115059392479" magical="44.7780251490961" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="193.846425" magical="189.14" evasion="-18" />
 			<speed>
@@ -1090,7 +1103,7 @@
 		<equipment rhand="150" /> <!-- Elemental Sword -->
 		<acquire expRate="2091.5761245675" sp="580" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="57685" hpRegen="64.0320769055964" mp="387.72" mpRegen="1.8" />
+			<vitals hp="57685.961988886" hpRegen="64.0320769055964" mp="387.72" mpRegen="1.8" />
 			<attack physical="303.485602119585" magical="48.1624477605241" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="398.8458" magical="194.58" evasion="-18" />
 			<speed>
@@ -1120,25 +1133,25 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="2.58">
+				<group chance="2.557">
 					<item id="262" min="1" max="1" chance="100" /> <!-- Scallop Jamadhr -->
 				</group>
-				<group chance="2.12">
+				<group chance="2.104">
 					<item id="380" min="1" max="1" chance="100" /> <!-- Plate Gaiters -->
 				</group>
-				<group chance="4.772">
+				<group chance="4.813">
 					<item id="353" min="1" max="1" chance="100" /> <!-- Half Plate Armor -->
 				</group>
-				<group chance="41.04">
+				<group chance="41.05">
 					<item id="951" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Weapon (C-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="50" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="50.16" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="30" />
@@ -1154,7 +1167,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="238" /> <!-- Dagger of Mana -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8734" hpRegen="24.5170941308607" mp="372.96" mpRegen="1.8" />
+			<vitals hp="8734.37505924128" hpRegen="24.5170941308607" mp="372.96" mpRegen="1.8" />
 			<attack physical="562.230118784958" magical="179.112100596385" random="5" critical="8" accuracy="0" attackSpeed="253" type="DAGGER" range="40" distance="80" width="120" />
 			<defence physical="193.846425" magical="189.14" evasion="-18" />
 			<speed>
@@ -1179,7 +1192,7 @@
 			<skill id="4730" level="3" /> <!-- BOSS Mortal Blow -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="9" grown="11" />
 			<height normal="24" grown="26.4" />
@@ -1191,7 +1204,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="144" /> <!-- Sword of Occult -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4367" hpRegen="24.5170941308607" mp="372.96" mpRegen="1.8" />
+			<vitals hp="4367.18752962064" hpRegen="24.5170941308607" mp="372.96" mpRegen="1.8" />
 			<attack physical="281.115059392479" magical="44.7780251490961" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="193.846425" magical="189.14" evasion="-18" />
 			<speed>
@@ -1236,7 +1249,7 @@
 		<equipment rhand="84" /> <!-- Homunkulus' Sword -->
 		<acquire expRate="2844.3752603082" sp="1639" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="97730" hpRegen="129.298278231718" mp="720.0" mpRegen="2.1" />
+			<vitals hp="97730.2220577233" hpRegen="129.298278231718" mp="720.0" mpRegen="2.1" />
 			<attack physical="862.566718997186" magical="207.710393090758" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="586.98906" magical="286.36" evasion="-18" />
 			<speed>
@@ -1264,29 +1277,34 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="3.84">
+				<group chance="3.766">
 					<item id="286" min="1" max="1" chance="100" /> <!-- Eminence Bow -->
 				</group>
-				<group chance="12.772">
-					<item id="886" min="1" max="1" chance="64.508299404948" /> <!-- Ring of Seal -->
-					<item id="855" min="1" max="1" chance="23.590667084247" /> <!-- Nassen's Earring -->
-					<item id="119" min="1" max="1" chance="11.901033510805" /> <!-- Necklace of Seal -->
+				<group chance="12.838">
+					<item id="886" min="1" max="1" chance="65.025704938464" /> <!-- Ring of Seal -->
+					<item id="855" min="1" max="1" chance="23.625175260944" /> <!-- Nassen's Earring -->
+					<item id="119" min="1" max="1" chance="11.349119800592" /> <!-- Necklace of Seal -->
 				</group>
 				<group chance="100">
-					<item id="9814" min="1" max="3" chance="41.332900171718" /> <!-- Memento Mori -->
-					<item id="8176" min="1" max="1" chance="40.107671601615" /> <!-- Destruction Tombstone -->
-					<item id="4609" min="1" max="1" chance="6.3581937160626" /> <!-- Greater MEN Dye (Men + 3 Int - 3) -->
-					<item id="4608" min="1" max="1" chance="6.0426045389149" /> <!-- Greater INT Dye (Int + 3 Wit - 3) -->
-					<item id="4607" min="1" max="1" chance="6.01939945236" /> <!-- Greater INT Dye (Int + 3 Men - 3) -->
-					<item id="6573" min="1" max="1" chance="0.13923051932984" /> <!-- Blessed Scroll: Enchant Weapon (C-grade) -->
+					<item id="9814" min="1" max="3" chance="41.075209426494" /> <!-- Memento Mori -->
+					<item id="8176" min="1" max="1" chance="38.870477768572" /> <!-- Destruction Tombstone -->
+					<item id="4607" min="1" max="1" chance="6.4392893307558" /> <!-- Greater INT Dye (Int + 3 Men - 3) -->
+					<item id="4608" min="1" max="1" chance="6.1953419865599" /> <!-- Greater INT Dye (Int + 3 Wit - 3) -->
+					<item id="4609" min="1" max="1" chance="5.9698057626807" /> <!-- Greater MEN Dye (Men + 3 Int - 3) -->
+					<item id="46474" min="1" max="1" chance="0.34520850593759" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.34520850593759" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.34520850593759" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="6573" min="1" max="1" chance="0.13808340237503" /> <!-- Blessed Scroll: Enchant Weapon (C-grade) -->
+					<item id="46444" min="1" max="1" chance="0.13808340237503" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.13808340237503" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="59.87" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="59.02" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -1302,7 +1320,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="279" /> <!-- Reinforced Longbow -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="9988" hpRegen="49.5883641293912" mp="692.4" mpRegen="2.1" />
+			<vitals hp="9988.15912619429" hpRegen="49.5883641293912" mp="692.4" mpRegen="2.1" />
 			<attack physical="810.398805832026" magical="191.374926873733" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="286.692045" magical="279.72" evasion="-18" />
 			<speed>
@@ -1327,7 +1345,7 @@
 			<skill id="4761" level="4" /> <!-- Stun -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" />
+		<ai clanHelpRange="300" dodge="15" />
 		<collision>
 			<radius normal="12" />
 			<height normal="27" />
@@ -1339,7 +1357,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="128" /> <!-- Knight's Sword -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="7453" hpRegen="49.5883641293912" mp="692.4" mpRegen="2.1" />
+			<vitals hp="7453.85009417485" hpRegen="49.5883641293912" mp="692.4" mpRegen="2.1" />
 			<attack physical="810.398805832026" magical="191.374926873733" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="286.692045" magical="279.72" evasion="-18" />
 			<speed>
@@ -1383,7 +1401,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="693.44428622286" sp="467" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="160338" hpRegen="82.9561669443548" mp="832.4" mpRegen="2.4" />
+			<vitals hp="160338.493476179" hpRegen="82.9561669443548" mp="832.4" mpRegen="2.4" />
 			<attack physical="1023.10031543056" magical="279.752902373776" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="642.54978" magical="313.46" evasion="-18" />
 			<speed>
@@ -1411,7 +1429,7 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
 				<group chance="12.062">
@@ -1432,9 +1450,9 @@
 					<item id="947" min="1" max="1" chance="2.1351627387124" /> <!-- Scroll: Enchant Weapon (B-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="68.79" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="45" />
@@ -1450,7 +1468,7 @@
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="24609" hpRegen="79.9874690783067" mp="804.0" mpRegen="2.4" />
+			<vitals hp="24609.2390543277" hpRegen="79.9874690783067" mp="804.0" mpRegen="2.4" />
 			<attack physical="1932.0542318512" magical="1016.89723572951" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="314.25159" magical="306.6" evasion="-18" />
 			<speed>
@@ -1476,7 +1494,7 @@
 			<skill id="4784" level="5" /> <!-- BOSS Chant of Life -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="13" />
 			<height normal="22" />
@@ -1487,7 +1505,7 @@
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="12304" hpRegen="79.9874690783067" mp="804.0" mpRegen="2.4" />
+			<vitals hp="12304.6195271638" hpRegen="79.9874690783067" mp="804.0" mpRegen="2.4" />
 			<attack physical="1932.0542318512" magical="1016.89723572951" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="314.25159" magical="306.6" evasion="-18" />
 			<speed>
@@ -1511,7 +1529,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="15" />
 			<height normal="28" />
@@ -1532,7 +1550,7 @@
 		<equipment rhand="3939" /> <!-- Monster Only (Bensh) -->
 		<acquire expRate="7376.6394173603" sp="5955" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="191433" hpRegen="174.226727590561" mp="977.4" mpRegen="2.4" />
+			<vitals hp="191433.289845858" hpRegen="174.226727590561" mp="977.4" mpRegen="2.4" />
 			<attack physical="1426.0444120344" magical="460.012771989048" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="713.98287" magical="348.3" evasion="-18" />
 			<speed>
@@ -1562,31 +1580,41 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="29.38">
-					<item id="288" min="1" max="1" chance="3.8461538461538" /> <!-- Carnage Bow -->
-					<item id="5535" min="3" max="9" chance="96.153846153846" /> <!-- Carnage Bow Shaft -->
+				<group chance="30.176">
+					<item id="288" min="1" max="1" chance="3.7977200424178" /> <!-- Carnage Bow -->
+					<item id="5535" min="3" max="9" chance="96.202279957582" /> <!-- Carnage Bow Shaft -->
 				</group>
-				<group chance="86.194">
-					<item id="5298" min="1" max="1" chance="12.100610251294" /> <!-- Sealed Dark Crystal Leggings -->
-					<item id="5297" min="1" max="1" chance="7.3868250690303" /> <!-- Sealed Dark Crystal Leather Armor -->
-					<item id="5301" min="1" max="1" chance="4.5327981065967" /> <!-- Sealed Tallum Leather Armor -->
-					<item id="5478" min="9" max="27" chance="43.355686010627" /> <!-- Sealed Dark Crystal Leather Armor Pattern -->
-					<item id="5482" min="32" max="96" chance="20.407452954962" /> <!-- Sealed Dark Crystal Legging Design -->
-					<item id="5479" min="22" max="66" chance="12.21662760749" /> <!-- Sealed Tallum Leather Armor Pattern -->
+				<group chance="86.969">
+					<item id="5298" min="1" max="1" chance="11.394864836896" /> <!-- Sealed Dark Crystal Leggings -->
+					<item id="5297" min="1" max="1" chance="7.199116926721" /> <!-- Sealed Dark Crystal Leather Armor -->
+					<item id="5301" min="1" max="1" chance="4.4245650749117" /> <!-- Sealed Tallum Leather Armor -->
+					<item id="5478" min="9" max="27" chance="44.498614448827" /> <!-- Sealed Dark Crystal Leather Armor Pattern -->
+					<item id="5482" min="32" max="96" chance="19.179247777944" /> <!-- Sealed Dark Crystal Legging Design -->
+					<item id="5479" min="22" max="66" chance="13.303590934701" /> <!-- Sealed Tallum Leather Armor Pattern -->
 				</group>
 				<group chance="100">
-					<item id="8176" min="1" max="3" chance="49.4941764523" /> <!-- Destruction Tombstone -->
-					<item id="9814" min="2" max="6" chance="47.527084877909" /> <!-- Memento Mori -->
-					<item id="6570" min="1" max="1" chance="1.5031210389113" /> <!-- Blessed Scroll: Enchant Armor (A-grade) -->
-					<item id="729" min="1" max="1" chance="1.4756176308803" /> <!-- Scroll: Enchant Weapon (A-grade) -->
+					<item id="9814" min="2" max="6" chance="47.461214940256" /> <!-- Memento Mori -->
+					<item id="8176" min="1" max="3" chance="44.987884020834" /> <!-- Destruction Tombstone -->
+					<item id="6570" min="1" max="1" chance="1.4132523744534" /> <!-- Blessed Scroll: Enchant Armor (A-grade) -->
+					<item id="729" min="1" max="1" chance="1.3931983399716" /> <!-- Scroll: Enchant Weapon (A-grade) -->
+					<item id="46504" min="1" max="1" chance="0.62557446452943" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.61109099518146" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46474" min="1" max="1" chance="0.5832381695123" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46490" min="1" max="1" chance="0.41779238503746" /> <!-- Pantheon's Soul Crystal - Stage 2 -->
+					<item id="46475" min="1" max="1" chance="0.41779238503746" /> <!-- Leona's Soul Crystal - Stage 2 -->
+					<item id="46460" min="1" max="1" chance="0.41779238503746" /> <!-- Mermoden's Soul Crystal - Stage 2 -->
+					<item id="46459" min="1" max="1" chance="0.41779238503746" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
+					<item id="46445" min="1" max="1" chance="0.41779238503746" /> <!-- Kain's Soul Crystal - Stage 2 -->
+					<item id="46444" min="1" max="1" chance="0.41779238503746" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46505" min="1" max="1" chance="0.41779238503746" /> <!-- Lionel's Soul Crystal - Stage 2 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="69.09" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="70.56" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="13.5" />
@@ -1603,7 +1631,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="5131" /> <!-- Monster Only (Parhit Staff) -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="19886" hpRegen="67.9269027462167" mp="948.0" mpRegen="1.8" />
+			<vitals hp="19886.5750334561" hpRegen="67.9269027462167" mp="948.0" mpRegen="1.8" />
 			<attack physical="1807.95708286108" magical="761.468910887132" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="349.782585" magical="341.28" evasion="-18" />
 			<speed>
@@ -1629,7 +1657,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="13" />
 			<height normal="32" />
@@ -1644,7 +1672,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="946" lhand="945" /> <!-- Skeleton Dagger / Skeleton Buckler -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="29681" hpRegen="67.9269027462167" mp="948.0" mpRegen="1.8" />
+			<vitals hp="29681.4552738151" hpRegen="67.9269027462167" mp="948.0" mpRegen="1.8" />
 			<attack physical="2712.00342437723" magical="1713.38000987148" random="5" critical="8" accuracy="0" attackSpeed="253" type="DAGGER" range="40" distance="80" width="120" />
 			<defence physical="349.782585" magical="341.28" evasion="-18" shield="534" shieldRate="20" />
 			<speed>
@@ -1671,7 +1699,7 @@
 			<skill id="4416" level="1" /> <!-- Undead -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="11" />
 			<height normal="28.5" />
@@ -1722,7 +1750,7 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="18" />
 			<height normal="63" />
@@ -1764,7 +1792,7 @@
 			<skill id="4416" level="1" /> <!-- Undead -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" />
+		<ai clanHelpRange="300" dodge="15" />
 		<collision>
 			<radius normal="11" />
 			<height normal="27" />
@@ -1802,7 +1830,7 @@
 			<skill id="4416" level="9" /> <!-- Demons -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="6" />
 			<height normal="12" />
@@ -1824,7 +1852,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="609.70408163265" sp="114" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="32329" hpRegen="20.2128543987694" mp="300.96" mpRegen="1.5" />
+			<vitals hp="32329.4220227131" hpRegen="20.2128543987694" mp="300.96" mpRegen="1.5" />
 			<attack physical="94.803457233182" magical="6.05989363604939" random="5" critical="4" accuracy="4.75" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="334.84104" magical="163.34" evasion="-18" />
 			<speed>
@@ -1856,28 +1884,28 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="17.248">
-					<item id="127" min="1" max="1" chance="48.080936920223" /> <!-- Crimson Sword -->
-					<item id="130" min="1" max="1" chance="47.57073283859" /> <!-- Elven Sword -->
-					<item id="124" min="1" max="1" chance="4.3483302411874" /> <!-- Two-handed Sword -->
+				<group chance="17.113">
+					<item id="127" min="1" max="1" chance="47.934318938818" /> <!-- Crimson Sword -->
+					<item id="130" min="1" max="1" chance="47.683047975224" /> <!-- Elven Sword -->
+					<item id="124" min="1" max="1" chance="4.382633085958" /> <!-- Two-handed Sword -->
 				</group>
-				<group chance="6.868">
+				<group chance="6.847">
 					<item id="849" min="1" max="1" chance="100" /> <!-- Tiger's Eye -->
 				</group>
-				<group chance="5.601">
-					<item id="912" min="1" max="1" chance="58.775218710944" /> <!-- Near Forest Necklace -->
-					<item id="880" min="1" max="1" chance="41.224781289056" /> <!-- Black Pearl Ring -->
+				<group chance="5.666">
+					<item id="912" min="1" max="1" chance="58.948111542534" /> <!-- Near Forest Necklace -->
+					<item id="880" min="1" max="1" chance="41.051888457466" /> <!-- Black Pearl Ring -->
 				</group>
-				<group chance="48.34">
+				<group chance="49.68">
 					<item id="955" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Weapon (D-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="40.37" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="39.65" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="28" />
@@ -1893,7 +1921,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="68" /> <!-- Falchion -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4954" hpRegen="19.561305507244" mp="286.92" mpRegen="1.5" />
+			<vitals hp="4954.91547973802" hpRegen="19.561305507244" mp="286.92" mpRegen="1.5" />
 			<attack physical="349.741327537664" magical="89.5140537497099" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="162.431505" magical="158.48" evasion="-18" />
 			<speed>
@@ -1932,7 +1960,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="2" lhand="945" /> <!-- Long Sword / Skeleton Buckler -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2477" hpRegen="19.561305507244" mp="286.92" mpRegen="1.5" />
+			<vitals hp="2477.45773986901" hpRegen="19.561305507244" mp="286.92" mpRegen="1.5" />
 			<attack physical="174.870663768832" magical="22.3785134374275" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="162.431505" magical="158.48" evasion="-18" shield="217" shieldRate="20" />
 			<speed>
@@ -1979,7 +2007,7 @@
 		<equipment rhand="221" lhand="109" /> <!-- Assassin Knife / Shield of Solar Eclipse -->
 		<acquire expRate="4470.2995918367" sp="1314" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="45836" hpRegen="66.9859801832901" mp="402.6" mpRegen="1.8" />
+			<vitals hp="45836.7151800463" hpRegen="66.9859801832901" mp="402.6" mpRegen="1.8" />
 			<attack physical="327.391297293902" magical="51.7199871013021" random="5" critical="8" accuracy="0" attackSpeed="253" type="DAGGER" range="40" distance="80" width="120" />
 			<defence physical="410.18844" magical="200.1" evasion="-18" shield="547" shieldRate="20" />
 			<speed>
@@ -2007,27 +2035,27 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="4.768">
+				<group chance="4.692">
 					<item id="262" min="1" max="1" chance="100" /> <!-- Scallop Jamadhr -->
 				</group>
-				<group chance="75.045">
-					<item id="1125" min="1" max="1" chance="29.28909321074" /> <!-- Assault Boots -->
-					<item id="2427" min="1" max="1" chance="23.73242721034" /> <!-- Salamander Skin Boots -->
-					<item id="2428" min="1" max="1" chance="19.454993670464" /> <!-- Plate Boots -->
-					<item id="2451" min="1" max="1" chance="15.830501698981" /> <!-- Sage's Worn Gloves -->
-					<item id="61" min="1" max="1" chance="7.3569191818242" /> <!-- Mithril Gloves -->
-					<item id="607" min="1" max="1" chance="4.3360650276501" /> <!-- Ogre Power Gauntlets -->
+				<group chance="75.406">
+					<item id="1125" min="1" max="1" chance="29.984351377874" /> <!-- Assault Boots -->
+					<item id="2427" min="1" max="1" chance="23.950348778612" /> <!-- Salamander Skin Boots -->
+					<item id="2428" min="1" max="1" chance="18.592684932234" /> <!-- Plate Boots -->
+					<item id="2451" min="1" max="1" chance="15.940376097393" /> <!-- Sage's Worn Gloves -->
+					<item id="61" min="1" max="1" chance="7.2898708325597" /> <!-- Mithril Gloves -->
+					<item id="607" min="1" max="1" chance="4.2423679813277" /> <!-- Ogre Power Gauntlets -->
 				</group>
-				<group chance="8.792">
+				<group chance="8.82">
 					<item id="6574" min="1" max="1" chance="100" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="51.02" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="49.77" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="30" />
@@ -2043,7 +2071,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="275" /> <!-- Longbow -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4654" hpRegen="25.6128307622386" mp="387.72" mpRegen="1.8" />
+			<vitals hp="4654.89253148595" hpRegen="25.6128307622386" mp="387.72" mpRegen="1.8" />
 			<attack physical="303.485602119585" magical="48.1624477605241" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="199.4229" magical="194.58" evasion="-18" />
 			<speed>
@@ -2068,7 +2096,7 @@
 			<skill id="4757" level="3" /> <!-- BOSS Power Shot -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" />
+		<ai clanHelpRange="300" dodge="15" />
 		<collision>
 			<radius normal="11" />
 			<height normal="21.5" />
@@ -2080,7 +2108,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="127" /> <!-- Crimson Sword -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3473" hpRegen="25.6128307622386" mp="387.72" mpRegen="1.8" />
+			<vitals hp="3473.8003966313" hpRegen="25.6128307622386" mp="387.72" mpRegen="1.8" />
 			<attack physical="303.485602119585" magical="48.1624477605241" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="199.4229" magical="194.58" evasion="-18" />
 			<speed>
@@ -2125,7 +2153,7 @@
 		<equipment rhand="70" /> <!-- Claymore -->
 		<acquire expRate="2885.4934359439" sp="1529" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="88681" hpRegen="118.685220475965" mp="665.0" mpRegen="2.1" />
+			<vitals hp="88681.6946367385" hpRegen="118.685220475965" mp="665.0" mpRegen="2.1" />
 			<attack physical="760.472752943411" magical="171.595037745389" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="559.90707" magical="273.14" evasion="-18" />
 			<speed>
@@ -2155,32 +2183,37 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="1.754">
+				<group chance="1.815">
 					<item id="228" min="1" max="1" chance="100" /> <!-- Crystal Dagger -->
 				</group>
-				<group chance="42.836">
-					<item id="2460" min="1" max="1" chance="32.005789522831" /> <!-- Theca Leather Gloves -->
-					<item id="2437" min="1" max="1" chance="17.658044635353" /> <!-- Drake Leather Boots -->
-					<item id="2438" min="1" max="1" chance="14.256699971986" /> <!-- Full Plate Boots -->
-					<item id="2461" min="1" max="1" chance="11.845176953964" /> <!-- Drake Leather Gloves -->
-					<item id="2462" min="1" max="1" chance="10.232047810253" /> <!-- Full Plate Gauntlets -->
-					<item id="2463" min="1" max="1" chance="8.9504155383322" /> <!-- Divine Gloves -->
-					<item id="2436" min="1" max="1" chance="5.0518255672799" /> <!-- Theca Leather Boots -->
+				<group chance="41.733">
+					<item id="2460" min="1" max="1" chance="30.599285936789" /> <!-- Theca Leather Gloves -->
+					<item id="2437" min="1" max="1" chance="18.127141590588" /> <!-- Drake Leather Boots -->
+					<item id="2438" min="1" max="1" chance="14.492128531378" /> <!-- Full Plate Boots -->
+					<item id="2461" min="1" max="1" chance="12.17262118707" /> <!-- Drake Leather Gloves -->
+					<item id="2462" min="1" max="1" chance="10.231711115903" /> <!-- Full Plate Gauntlets -->
+					<item id="2463" min="1" max="1" chance="9.1773895957635" /> <!-- Divine Gloves -->
+					<item id="2436" min="1" max="1" chance="5.1997220425083" /> <!-- Theca Leather Boots -->
 				</group>
 				<group chance="100">
-					<item id="8176" min="1" max="1" chance="39.861509073543" /> <!-- Destruction Tombstone -->
-					<item id="9814" min="1" max="3" chance="37.053486150907" /> <!-- Memento Mori -->
-					<item id="4604" min="1" max="1" chance="7.7172874880611" /> <!-- Greater CON Dye (Con + 3 DEX - 3) -->
-					<item id="4606" min="1" max="1" chance="7.7172874880611" /> <!-- Greater DEX Dye (Dex + 3 CON - 3) -->
-					<item id="4605" min="1" max="1" chance="7.6504297994269" /> <!-- Greater DEX Dye (Dex + 3 Str - 3) -->
+					<item id="9814" min="1" max="3" chance="38.123275068997" /> <!-- Memento Mori -->
+					<item id="8176" min="1" max="1" chance="37.253909843606" /> <!-- Destruction Tombstone -->
+					<item id="4604" min="1" max="1" chance="8.0220791168353" /> <!-- Greater CON Dye (Con + 3 DEX - 3) -->
+					<item id="4606" min="1" max="1" chance="7.6816927322907" /> <!-- Greater DEX Dye (Dex + 3 CON - 3) -->
+					<item id="4605" min="1" max="1" chance="7.608095676173" /> <!-- Greater DEX Dye (Dex + 3 Str - 3) -->
+					<item id="46489" min="1" max="1" chance="0.34498620055198" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46474" min="1" max="1" chance="0.34498620055198" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.34498620055198" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.13799448022079" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
+					<item id="46444" min="1" max="1" chance="0.13799448022079" /> <!-- Kain's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="59.02" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="59.35" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -2197,7 +2230,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="159" /> <!-- Bonebreaker -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13484" hpRegen="45.3883914788914" mp="637.8" mpRegen="2.1" />
+			<vitals hp="13484.4048343656" hpRegen="45.3883914788914" mp="637.8" mpRegen="2.1" />
 			<attack physical="712.792128573066" magical="156.181611442917" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="273.28224" magical="266.64" evasion="-18" />
 			<speed>
@@ -2223,7 +2256,7 @@
 			<skill id="4781" level="4" /> <!-- BOSS Heal -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="11" />
 			<height normal="16" />
@@ -2235,7 +2268,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="129" /> <!-- Sword of Revolution -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="6742" hpRegen="45.3883914788914" mp="637.8" mpRegen="2.1" />
+			<vitals hp="6742.20241718279" hpRegen="45.3883914788914" mp="637.8" mpRegen="2.1" />
 			<attack physical="712.792128573066" magical="156.181611442917" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="273.28224" magical="266.64" evasion="-18" />
 			<speed>
@@ -2284,7 +2317,7 @@
 		<equipment rhand="131" /> <!-- Spirit Sword -->
 		<acquire expRate="2844.3752603082" sp="1639" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="97730" hpRegen="129.298278231718" mp="720.0" mpRegen="2.1" />
+			<vitals hp="97730.2220577233" hpRegen="129.298278231718" mp="720.0" mpRegen="2.1" />
 			<attack physical="862.566718997186" magical="207.710393090758" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="586.98906" magical="286.36" evasion="-18" />
 			<speed>
@@ -2316,33 +2349,38 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="1.948">
+				<group chance="1.945">
 					<item id="228" min="1" max="1" chance="100" /> <!-- Crystal Dagger -->
 				</group>
-				<group chance="45.915">
-					<item id="2460" min="1" max="1" chance="31.863225525427" /> <!-- Theca Leather Gloves -->
-					<item id="2437" min="1" max="1" chance="17.800283131874" /> <!-- Drake Leather Boots -->
-					<item id="2438" min="1" max="1" chance="14.300337580311" /> <!-- Full Plate Boots -->
-					<item id="2461" min="1" max="1" chance="11.837090275509" /> <!-- Drake Leather Gloves -->
-					<item id="2462" min="1" max="1" chance="10.177501905695" /> <!-- Full Plate Gauntlets -->
-					<item id="2463" min="1" max="1" chance="8.9447892845475" /> <!-- Divine Gloves -->
-					<item id="2436" min="1" max="1" chance="5.0767722966351" /> <!-- Theca Leather Boots -->
+				<group chance="44.876">
+					<item id="2460" min="1" max="1" chance="30.50628398253" /> <!-- Theca Leather Gloves -->
+					<item id="2437" min="1" max="1" chance="18.24360459934" /> <!-- Drake Leather Boots -->
+					<item id="2438" min="1" max="1" chance="14.428647829575" /> <!-- Full Plate Boots -->
+					<item id="2461" min="1" max="1" chance="12.037614760674" /> <!-- Drake Leather Gloves -->
+					<item id="2462" min="1" max="1" chance="10.332917372315" /> <!-- Full Plate Gauntlets -->
+					<item id="2463" min="1" max="1" chance="9.2120509849363" /> <!-- Divine Gloves -->
+					<item id="2436" min="1" max="1" chance="5.2388804706302" /> <!-- Theca Leather Boots -->
 				</group>
 				<group chance="100">
-					<item id="8176" min="1" max="1" chance="40.90720699977" /> <!-- Destruction Tombstone -->
-					<item id="9814" min="1" max="3" chance="39.253971908819" /> <!-- Memento Mori -->
-					<item id="4610" min="1" max="1" chance="6.3458438867143" /> <!-- Greater MEN Dye (Men + 3 Wit - 3) -->
-					<item id="4611" min="1" max="1" chance="6.0234860695372" /> <!-- Greater WIT Dye (Wit + 3 Int - 3) -->
-					<item id="4612" min="1" max="1" chance="5.8715173842966" /> <!-- Greater WIT Dye (Wit + 3 Men - 3) -->
-					<item id="6574" min="1" max="1" chance="1.5979737508635" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
+					<item id="9814" min="1" max="3" chance="39.71938278706" /> <!-- Memento Mori -->
+					<item id="8176" min="1" max="1" chance="38.90869070965" /> <!-- Destruction Tombstone -->
+					<item id="4611" min="1" max="1" chance="6.1775642099828" /> <!-- Greater WIT Dye (Wit + 3 Int - 3) -->
+					<item id="4612" min="1" max="1" chance="6.1639771919257" /> <!-- Greater WIT Dye (Wit + 3 Men - 3) -->
+					<item id="4610" min="1" max="1" chance="6.1458611678495" /> <!-- Greater MEN Dye (Men + 3 Wit - 3) -->
+					<item id="6574" min="1" max="1" chance="1.5937572181033" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
+					<item id="46474" min="1" max="1" chance="0.33967545142867" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.33967545142867" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.33967545142867" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46444" min="1" max="1" chance="0.13587018057147" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.13587018057147" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="60.24" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="58.6" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -2358,7 +2396,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="71" /> <!-- Flamberge -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14907" hpRegen="49.5883641293912" mp="692.4" mpRegen="2.1" />
+			<vitals hp="14907.7001883497" hpRegen="49.5883641293912" mp="692.4" mpRegen="2.1" />
 			<attack physical="1620.79761166405" magical="765.499707494933" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="286.692045" magical="279.72" evasion="-18" />
 			<speed>
@@ -2397,7 +2435,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="74" /> <!-- Katana -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="7453" hpRegen="49.5883641293912" mp="692.4" mpRegen="2.1" />
+			<vitals hp="7453.85009417485" hpRegen="49.5883641293912" mp="692.4" mpRegen="2.1" />
 			<attack physical="810.398805832026" magical="191.374926873733" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="286.692045" magical="279.72" evasion="-18" />
 			<speed>
@@ -2443,7 +2481,7 @@
 		<equipment rhand="1472" /> <!-- Dreadbane -->
 		<acquire expRate="2820.5213379469" sp="1760" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="213901" hpRegen="139.95474844594" mp="775.8" mpRegen="2.4" />
+			<vitals hp="213901.10886374" hpRegen="139.95474844594" mp="775.8" mpRegen="2.4" />
 			<attack physical="973.55312336269" magical="271.8169963621" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="614.55582" magical="299.8" evasion="-18" />
 			<speed>
@@ -2476,29 +2514,34 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="2.62">
+				<group chance="2.627">
 					<item id="300" min="1" max="1" chance="100" /> <!-- Great Axe -->
 				</group>
-				<group chance="16.957">
-					<item id="2390" min="1" max="1" chance="53.51772129504" /> <!-- Avadon Leather Armor -->
-					<item id="2384" min="1" max="1" chance="28.920209942796" /> <!-- Zubei's Leather Shirt -->
-					<item id="2388" min="1" max="1" chance="17.562068762163" /> <!-- Zubei's Leather Gaiters -->
+				<group chance="16.88">
+					<item id="2390" min="1" max="1" chance="53.35308056872" /> <!-- Avadon Leather Armor -->
+					<item id="2384" min="1" max="1" chance="28.957345971564" /> <!-- Zubei's Leather Shirt -->
+					<item id="2388" min="1" max="1" chance="17.689573459716" /> <!-- Zubei's Leather Gaiters -->
 				</group>
 				<group chance="100">
-					<item id="9814" min="1" max="3" chance="40.794328593342" /> <!-- Memento Mori -->
-					<item id="8176" min="1" max="1" chance="39.214331449313" /> <!-- Destruction Tombstone -->
-					<item id="4610" min="1" max="1" chance="6.2969565477753" /> <!-- Greater MEN Dye (Men + 3 Wit - 3) -->
-					<item id="4611" min="1" max="1" chance="6.1495515664082" /> <!-- Greater WIT Dye (Wit + 3 Int - 3) -->
-					<item id="4612" min="1" max="1" chance="5.9745081510348" /> <!-- Greater WIT Dye (Wit + 3 Men - 3) -->
-					<item id="6574" min="1" max="1" chance="1.5703236921263" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
+					<item id="8176" min="1" max="1" chance="38.923385668752" /> <!-- Destruction Tombstone -->
+					<item id="9814" min="1" max="3" chance="38.81005784441" /> <!-- Memento Mori -->
+					<item id="4610" min="1" max="1" chance="6.4880179435722" /> <!-- Greater MEN Dye (Men + 3 Wit - 3) -->
+					<item id="4611" min="1" max="1" chance="6.4407980167631" /> <!-- Greater WIT Dye (Wit + 3 Int - 3) -->
+					<item id="4612" min="1" max="1" chance="6.3841341045921" /> <!-- Greater WIT Dye (Wit + 3 Men - 3) -->
+					<item id="6574" min="1" max="1" chance="1.6078385078503" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
+					<item id="46474" min="1" max="1" chance="0.35414945106835" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.35414945106835" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.35414945106835" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46444" min="1" max="1" chance="0.14165978042734" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.14165978042734" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="71.52" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="69.7" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="45" />
@@ -2548,34 +2591,49 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="42.716">
-					<item id="235" min="1" max="1" chance="3.5022005805787" /> <!-- Bloody Orchid -->
-					<item id="5536" min="3" max="9" chance="96.497799419421" /> <!-- Bloody Orchid Head -->
+				<group chance="42.782">
+					<item id="235" min="1" max="1" chance="3.3238277780375" /> <!-- Bloody Orchid -->
+					<item id="5536" min="3" max="9" chance="96.676172221963" /> <!-- Bloody Orchid Head -->
 				</group>
-				<group chance="57.322">
-					<item id="5288" min="1" max="1" chance="16.088063919612" /> <!-- Sealed Dark Crystal Gaiters -->
-					<item id="5520" min="10" max="30" chance="56.470465091937" /> <!-- Sealed Dark Crystal Breastplate Pattern -->
-					<item id="5524" min="32" max="96" chance="27.441470988451" /> <!-- Sealed Dark Crystal Gaiter Pattern -->
+				<group chance="57.341">
+					<item id="5288" min="1" max="1" chance="16.185626340664" /> <!-- Sealed Dark Crystal Gaiters -->
+					<item id="5520" min="10" max="30" chance="55.806490992484" /> <!-- Sealed Dark Crystal Breastplate Pattern -->
+					<item id="5524" min="32" max="96" chance="28.007882666853" /> <!-- Sealed Dark Crystal Gaiter Pattern -->
 				</group>
-				<group chance="20.21">
-					<item id="5287" min="1" max="1" chance="28.589807026225" /> <!-- Sealed Dark Crystal breastplate -->
-					<item id="5293" min="1" max="1" chance="17.575457694211" /> <!-- Sealed Tallum Plate Armor -->
-					<item id="5521" min="22" max="66" chance="53.834735279565" /> <!-- Sealed Tallum Plate Armor Pattern -->
+				<group chance="19.879">
+					<item id="5287" min="1" max="1" chance="28.764022335128" /> <!-- Sealed Dark Crystal breastplate -->
+					<item id="5293" min="1" max="1" chance="17.661854218019" /> <!-- Sealed Tallum Plate Armor -->
+					<item id="5521" min="22" max="66" chance="53.574123446853" /> <!-- Sealed Tallum Plate Armor Pattern -->
 				</group>
 				<group chance="100">
-					<item id="8176" min="2" max="3" chance="45.531006281115" /> <!-- Destruction Tombstone -->
-					<item id="9814" min="3" max="7" chance="44.177366462582" /> <!-- Memento Mori -->
-					<item id="730" min="1" max="1" chance="8.9657398859318" /> <!-- Scroll: Enchant Armor (A-grade) -->
-					<item id="729" min="1" max="1" chance="1.1559744224376" /> <!-- Scroll: Enchant Weapon (A-grade) -->
-					<item id="6569" min="1" max="1" chance="0.16991294793301" /> <!-- Blessed Scroll: Enchant Weapon (A-grade) -->
+					<item id="9814" min="3" max="7" chance="45.00085145654" /> <!-- Memento Mori -->
+					<item id="8176" min="2" max="3" chance="43.023274976516" /> <!-- Destruction Tombstone -->
+					<item id="730" min="1" max="1" chance="8.2399020000989" /> <!-- Scroll: Enchant Armor (A-grade) -->
+					<item id="729" min="1" max="1" chance="1.0992029268132" /> <!-- Scroll: Enchant Weapon (A-grade) -->
+					<item id="46505" min="1" max="1" chance="0.16479804000198" /> <!-- Lionel's Soul Crystal - Stage 2 -->
+					<item id="46504" min="1" max="1" chance="0.16479804000198" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46491" min="1" max="1" chance="0.16479804000198" /> <!-- Pantheon's Soul Crystal - Stage 3 -->
+					<item id="46490" min="1" max="1" chance="0.16479804000198" /> <!-- Pantheon's Soul Crystal - Stage 2 -->
+					<item id="46489" min="1" max="1" chance="0.16479804000198" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46476" min="1" max="1" chance="0.16479804000198" /> <!-- Leona's Soul Crystal - Stage 3 -->
+					<item id="46475" min="1" max="1" chance="0.16479804000198" /> <!-- Leona's Soul Crystal - Stage 2 -->
+					<item id="46474" min="1" max="1" chance="0.16479804000198" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46461" min="1" max="1" chance="0.16479804000198" /> <!-- Mermoden's Soul Crystal - Stage 3 -->
+					<item id="46460" min="1" max="1" chance="0.16479804000198" /> <!-- Mermoden's Soul Crystal - Stage 2 -->
+					<item id="46459" min="1" max="1" chance="0.16479804000198" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
+					<item id="46446" min="1" max="1" chance="0.16479804000198" /> <!-- Kain's Soul Crystal - Stage 3 -->
+					<item id="46445" min="1" max="1" chance="0.16479804000198" /> <!-- Kain's Soul Crystal - Stage 2 -->
+					<item id="46444" min="1" max="1" chance="0.16479804000198" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="6569" min="1" max="1" chance="0.16479804000198" /> <!-- Blessed Scroll: Enchant Weapon (A-grade) -->
+					<item id="46506" min="1" max="1" chance="0.16479804000198" /> <!-- Lionel's Soul Crystal - Stage 3 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="79.07" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="81.08" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="11" />
@@ -2617,7 +2675,7 @@
 			<skill id="4785" level="6" /> <!-- BOSS Chant of Life -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="10" />
 			<height normal="25" />
@@ -2652,7 +2710,7 @@
 			<skill id="4416" level="3" /> <!-- Beasts -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="10" />
 			<height normal="42" />
@@ -2706,7 +2764,7 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="24" grown="29" />
 			<height normal="40" grown="48" />
@@ -2748,7 +2806,7 @@
 			<skill id="4416" level="1" /> <!-- Undead -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="15" grown="25" />
 			<height normal="45" grown="52" />
@@ -2786,7 +2844,7 @@
 			<skill id="4416" level="1" /> <!-- Undead -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="12" grown="14.5" />
 			<height normal="31" grown="36" />
@@ -2806,7 +2864,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="2922.8474074074" sp="1420" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="79980" hpRegen="108.35639820142" mp="610.8" mpRegen="2.1" />
+			<vitals hp="79980.8468273312" hpRegen="108.35639820142" mp="610.8" mpRegen="2.1" />
 			<attack physical="667.348949019213" magical="142.928040387499" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="533.36238" magical="260.2" evasion="-18" />
 			<speed>
@@ -2834,28 +2892,33 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="9.197">
-					<item id="231" min="1" max="1" chance="50.048928998586" /> <!-- Grace Dagger -->
-					<item id="233" min="1" max="1" chance="49.951071001414" /> <!-- Dark Screamer -->
+				<group chance="9.255">
+					<item id="231" min="1" max="1" chance="50.048622366288" /> <!-- Grace Dagger -->
+					<item id="233" min="1" max="1" chance="49.951377633712" /> <!-- Dark Screamer -->
 				</group>
-				<group chance="7.16">
-					<item id="608" min="1" max="1" chance="76.354748603352" /> <!-- Mithril Gauntlets -->
-					<item id="64" min="1" max="1" chance="23.645251396648" /> <!-- Compound Boots -->
+				<group chance="7.142">
+					<item id="608" min="1" max="1" chance="76.89722766732" /> <!-- Mithril Gauntlets -->
+					<item id="64" min="1" max="1" chance="23.10277233268" /> <!-- Compound Boots -->
 				</group>
 				<group chance="100">
-					<item id="8176" min="1" max="1" chance="38.852500634679" /> <!-- Destruction Tombstone -->
-					<item id="9816" min="1" max="3" chance="37.913175932978" /> <!-- Earth Egg -->
-					<item id="4606" min="1" max="1" chance="8.0934247270881" /> <!-- Greater DEX Dye (Dex + 3 CON - 3) -->
-					<item id="4605" min="1" max="1" chance="7.5907590759076" /> <!-- Greater DEX Dye (Dex + 3 Str - 3) -->
-					<item id="4604" min="1" max="1" chance="7.5501396293476" /> <!-- Greater CON Dye (Con + 3 DEX - 3) -->
+					<item id="9816" min="1" max="3" chance="37.929993964997" /> <!-- Earth Egg -->
+					<item id="8176" min="1" max="1" chance="37.557835445584" /> <!-- Destruction Tombstone -->
+					<item id="4605" min="1" max="1" chance="7.8304164152082" /> <!-- Greater DEX Dye (Dex + 3 Str - 3) -->
+					<item id="4606" min="1" max="1" chance="7.7348622007644" /> <!-- Greater DEX Dye (Dex + 3 CON - 3) -->
+					<item id="4604" min="1" max="1" chance="7.5135787567894" /> <!-- Greater CON Dye (Con + 3 DEX - 3) -->
+					<item id="46489" min="1" max="1" chance="0.37718768859384" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46474" min="1" max="1" chance="0.37718768859384" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.37718768859384" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.15087507543754" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
+					<item id="46444" min="1" max="1" chance="0.15087507543754" /> <!-- Kain's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="61.25" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="60.81" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -2871,7 +2934,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="279" /> <!-- Reinforced Longbow -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8126" hpRegen="41.3470424277186" mp="584.0" mpRegen="2.1" />
+			<vitals hp="8126.84296738288" hpRegen="41.3470424277186" mp="584.0" mpRegen="2.1" />
 			<attack physical="624.124257296051" magical="130.530898435504" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="260.15328" magical="253.82" evasion="-18" />
 			<speed>
@@ -2898,7 +2961,7 @@
 			<skill id="4757" level="5" /> <!-- BOSS Power Shot -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" />
+		<ai clanHelpRange="300" dodge="15" />
 		<collision>
 			<radius normal="11" />
 			<height normal="27" />
@@ -2910,7 +2973,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="150" /> <!-- Elemental Sword -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="6064" hpRegen="41.3470424277186" mp="584.0" mpRegen="2.1" />
+			<vitals hp="6064.80818461408" hpRegen="41.3470424277186" mp="584.0" mpRegen="2.1" />
 			<attack physical="624.124257296051" magical="130.530898435504" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="260.15328" magical="253.82" evasion="-18" />
 			<speed>
@@ -2956,7 +3019,7 @@
 		<sex>FEMALE</sex>
 		<acquire expRate="897.26041666667" sp="124" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="27555" hpRegen="17.9607701717791" mp="245.52" mpRegen="1.5" />
+			<vitals hp="27555.6571557671" hpRegen="17.9607701717791" mp="245.52" mpRegen="1.5" />
 			<attack physical="68.3204528618992" magical="4.30075262894831" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="296.12757" magical="144.46" evasion="-18" />
 			<speed>
@@ -2986,27 +3049,27 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="31.744">
-					<item id="275" min="1" max="1" chance="41.519657258065" /> <!-- Longbow -->
-					<item id="276" min="1" max="1" chance="40.228074596774" /> <!-- Elven Bow -->
-					<item id="2024" min="40" max="120" chance="18.252268145161" /> <!-- Elven Bow Shaft -->
+				<group chance="30.765">
+					<item id="276" min="1" max="1" chance="40.630586705672" /> <!-- Elven Bow -->
+					<item id="275" min="1" max="1" chance="40.598082236307" /> <!-- Longbow -->
+					<item id="2024" min="40" max="120" chance="18.77133105802" /> <!-- Elven Bow Shaft -->
 				</group>
-				<group chance="10.601">
-					<item id="1123" min="1" max="1" chance="85.708895387228" /> <!-- Blue Buckskin Boots -->
-					<item id="605" min="1" max="1" chance="14.291104612772" /> <!-- Leather Gauntlets -->
+				<group chance="10.613">
+					<item id="1123" min="1" max="1" chance="85.33873551305" /> <!-- Blue Buckskin Boots -->
+					<item id="605" min="1" max="1" chance="14.66126448695" /> <!-- Leather Gauntlets -->
 				</group>
-				<group chance="40.729">
-					<item id="6387" min="4" max="12" chance="43.01603280218" /> <!-- Blessed Scroll of Resurrection (Pet) -->
-					<item id="955" min="1" max="1" chance="37.025215448452" /> <!-- Scroll: Enchant Weapon (D-grade) -->
-					<item id="956" min="7" max="21" chance="19.958751749368" /> <!-- Scroll: Enchant Armor (D-grade) -->
+				<group chance="40.119">
+					<item id="6387" min="4" max="12" chance="44.667115331888" /> <!-- Blessed Scroll of Resurrection (Pet) -->
+					<item id="955" min="1" max="1" chance="35.17036815474" /> <!-- Scroll: Enchant Weapon (D-grade) -->
+					<item id="956" min="7" max="21" chance="20.162516513373" /> <!-- Scroll: Enchant Armor (D-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="41.06" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="39.48" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -3022,7 +3085,7 @@
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2853" hpRegen="17.5347470979605" mp="231.96" mpRegen="1.5" />
+			<vitals hp="2853.44653593868" hpRegen="17.5347470979605" mp="231.96" mpRegen="1.5" />
 			<attack physical="167.604547021169" magical="28.1742719135878" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="143.47464" magical="139.98" evasion="-18" />
 			<speed>
@@ -3062,7 +3125,7 @@
 		<race>BEAST</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4258" hpRegen="17.5347470979605" mp="231.96" mpRegen="1.5" />
+			<vitals hp="4258.87542677415" hpRegen="17.5347470979605" mp="231.96" mpRegen="1.5" />
 			<attack physical="251.4131058594" magical="63.3948853318057" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="143.47464" magical="139.98" evasion="-18" />
 			<speed>
@@ -3107,7 +3170,7 @@
 		<equipment rhand="78" /> <!-- Great Sword -->
 		<acquire expRate="4470.2995918367" sp="1314" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="91673" hpRegen="66.9859801832901" mp="402.6" mpRegen="1.8" />
+			<vitals hp="91673.4303600926" hpRegen="66.9859801832901" mp="402.6" mpRegen="1.8" />
 			<attack physical="327.391297293902" magical="51.7199871013021" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="410.18844" magical="200.1" evasion="-18" />
 			<speed>
@@ -3138,24 +3201,24 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="10.585">
-					<item id="2494" min="1" max="1" chance="75.710911667454" /> <!-- Plate Shield -->
-					<item id="630" min="1" max="1" chance="17.203589985829" /> <!-- Square Shield -->
-					<item id="297" min="1" max="1" chance="7.0854983467171" /> <!-- Glaive -->
+				<group chance="10.622">
+					<item id="2494" min="1" max="1" chance="75.654302391263" /> <!-- Plate Shield -->
+					<item id="630" min="1" max="1" chance="17.284880436829" /> <!-- Square Shield -->
+					<item id="297" min="1" max="1" chance="7.0608171719074" /> <!-- Glaive -->
 				</group>
-				<group chance="3.592">
+				<group chance="3.683">
 					<item id="2412" min="1" max="1" chance="100" /> <!-- Plate Helmet -->
 				</group>
-				<group chance="28.35">
+				<group chance="28.06">
 					<item id="951" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Weapon (C-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="51.01" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="49.18" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="24" />
@@ -3179,7 +3242,7 @@
 		<equipment rhand="90" /> <!-- Goat Head Staff -->
 		<acquire expRate="2386.278125" sp="916" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="60678" hpRegen="85.0969448447131" mp="478.8" mpRegen="1.8" />
+			<vitals hp="60678.6748524136" hpRegen="85.0969448447131" mp="478.8" mpRegen="1.8" />
 			<attack physical="472.68726669442" magical="74.6516744182408" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="469.65105" magical="229.12" evasion="-18" />
 			<speed>
@@ -3209,36 +3272,41 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="19.54">
-					<item id="160" min="1" max="1" chance="14.263050153531" /> <!-- Battle Axe -->
-					<item id="173" min="1" max="1" chance="14.165813715455" /> <!-- Skull Graver -->
-					<item id="194" min="1" max="1" chance="14.155578300921" /> <!-- Heavy Doom Axe -->
-					<item id="161" min="1" max="1" chance="14.109518935517" /> <!-- Silver Axe -->
-					<item id="191" min="1" max="1" chance="14.012282497441" /> <!-- Heavy Doom Hammer -->
-					<item id="193" min="1" max="1" chance="13.9252814739" /> <!-- Stick of Faith -->
-					<item id="192" min="1" max="1" chance="13.833162743091" /> <!-- Crystal Staff -->
-					<item id="89" min="1" max="1" chance="1.5353121801433" /> <!-- Big Hammer -->
+				<group chance="19.216">
+					<item id="193" min="1" max="1" chance="14.316194837635" /> <!-- Stick of Faith -->
+					<item id="191" min="1" max="1" chance="14.217318900916" /> <!-- Heavy Doom Hammer -->
+					<item id="161" min="1" max="1" chance="14.144462947544" /> <!-- Silver Axe -->
+					<item id="194" min="1" max="1" chance="14.066402997502" /> <!-- Heavy Doom Axe -->
+					<item id="160" min="1" max="1" chance="14.024771024147" /> <!-- Battle Axe -->
+					<item id="173" min="1" max="1" chance="13.858243130724" /> <!-- Skull Graver -->
+					<item id="192" min="1" max="1" chance="13.811407160699" /> <!-- Crystal Staff -->
+					<item id="89" min="1" max="1" chance="1.5611990008326" /> <!-- Big Hammer -->
 				</group>
-				<group chance="4.001">
-					<item id="852" min="1" max="1" chance="55.586103474131" /> <!-- Moonstone Earring -->
-					<item id="883" min="1" max="1" chance="25.668582854286" /> <!-- Aquastone Ring -->
-					<item id="915" min="1" max="1" chance="18.745313671582" /> <!-- Aquastone Necklace -->
+				<group chance="4.143">
+					<item id="852" min="1" max="1" chance="54.5981173063" /> <!-- Moonstone Earring -->
+					<item id="883" min="1" max="1" chance="27.29905865315" /> <!-- Aquastone Ring -->
+					<item id="915" min="1" max="1" chance="18.10282404055" /> <!-- Aquastone Necklace -->
 				</group>
 				<group chance="100">
-					<item id="8176" min="1" max="1" chance="37.074972810919" /> <!-- Destruction Tombstone -->
-					<item id="9818" min="1" max="3" chance="36.977149663661" /> <!-- Angelic Essence -->
-					<item id="4592" min="1" max="1" chance="8.6199455642957" /> <!-- Greater CON Dye (Con + 2 DEX - 2) -->
-					<item id="4593" min="1" max="1" chance="8.4300535725589" /> <!-- Greater DEX Dye (Dex + 2 Str - 2) -->
-					<item id="951" min="1" max="1" chance="4.6103473872588" /> <!-- Scroll: Enchant Weapon (C-grade) -->
-					<item id="4591" min="1" max="3" chance="4.2875310013062" /> <!-- Greater CON Dye (Con + 2 Str - 2) -->
+					<item id="9818" min="1" max="3" chance="36.528155921003" /> <!-- Angelic Essence -->
+					<item id="8176" min="1" max="1" chance="36.171278255214" /> <!-- Destruction Tombstone -->
+					<item id="4592" min="1" max="1" chance="8.6859418980136" /> <!-- Greater CON Dye (Con + 2 DEX - 2) -->
+					<item id="4593" min="1" max="1" chance="8.1448693079451" /> <!-- Greater DEX Dye (Dex + 2 Str - 2) -->
+					<item id="951" min="1" max="1" chance="4.5991170155817" /> <!-- Scroll: Enchant Weapon (C-grade) -->
+					<item id="4591" min="1" max="3" chance="4.2301515578861" /> <!-- Greater CON Dye (Con + 2 Str - 2) -->
+					<item id="46474" min="1" max="1" chance="0.43170685377801" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.43170685377801" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.43170685377801" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46444" min="1" max="1" chance="0.1726827415112" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.1726827415112" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="61.25" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="61.03" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="19" />
@@ -3254,7 +3322,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="123" /> <!-- Saber -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="9173" hpRegen="32.4117473308651" mp="463.32" mpRegen="1.8" />
+			<vitals hp="9173.61448520467" hpRegen="32.4117473308651" mp="463.32" mpRegen="1.8" />
 			<attack physical="879.877415312974" magical="276.790243634882" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="228.70128" magical="223.14" evasion="-18" />
 			<speed>
@@ -3291,7 +3359,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="291" /> <!-- Trident -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4586" hpRegen="32.4117473308651" mp="463.32" mpRegen="1.8" />
+			<vitals hp="4586.80724260234" hpRegen="32.4117473308651" mp="463.32" mpRegen="1.8" />
 			<attack physical="439.938707656487" magical="69.1975609087206" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="228.70128" magical="223.14" evasion="-18" />
 			<speed>
@@ -3336,7 +3404,7 @@
 		<equipment rhand="71" /> <!-- Flamberge -->
 		<acquire expRate="2813.5676775148" sp="1825" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="153807" hpRegen="145.221991187936" mp="804.0" mpRegen="2.4" />
+			<vitals hp="153807.744089548" hpRegen="145.221991187936" mp="804.0" mpRegen="2.4" />
 			<attack physical="1032.30240396227" magical="293.0909536533" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="628.50318" magical="306.6" evasion="-18" />
 			<speed>
@@ -3364,30 +3432,40 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="9.616">
-					<item id="142" min="1" max="1" chance="33.621048252912" /> <!-- Keshanberk -->
-					<item id="148" min="1" max="1" chance="33.257071547421" /> <!-- Sword of Valhalla -->
-					<item id="78" min="1" max="1" chance="33.121880199667" /> <!-- Great Sword -->
+				<group chance="9.674">
+					<item id="78" min="1" max="1" chance="33.677899524499" /> <!-- Great Sword -->
+					<item id="148" min="1" max="1" chance="33.419474881125" /> <!-- Sword of Valhalla -->
+					<item id="142" min="1" max="1" chance="32.902625594377" /> <!-- Keshanberk -->
 				</group>
-				<group chance="6.843">
-					<item id="2402" min="1" max="1" chance="52.155487359345" /> <!-- Stockings of Zubei -->
-					<item id="2406" min="1" max="1" chance="32.354230600614" /> <!-- Avadon Robe -->
-					<item id="2397" min="1" max="1" chance="15.490282040041" /> <!-- Tunic of Zubei -->
+				<group chance="6.899">
+					<item id="2402" min="1" max="1" chance="52.601826351645" /> <!-- Stockings of Zubei -->
+					<item id="2406" min="1" max="1" chance="32.5554428178" /> <!-- Avadon Robe -->
+					<item id="2397" min="1" max="1" chance="14.842730830555" /> <!-- Tunic of Zubei -->
 				</group>
 				<group chance="100">
-					<item id="8176" min="1" max="3" chance="41.454821844924" /> <!-- Destruction Tombstone -->
-					<item id="9816" min="2" max="6" chance="40.633120718167" /> <!-- Earth Egg -->
-					<item id="4604" min="1" max="3" chance="8.2735032200413" /> <!-- Greater CON Dye (Con + 3 DEX - 3) -->
-					<item id="4605" min="1" max="3" chance="5.5053975492764" /> <!-- Greater DEX Dye (Dex + 3 Str - 3) -->
-					<item id="4606" min="2" max="6" chance="4.1331566675911" /> <!-- Greater DEX Dye (Dex + 3 CON - 3) -->
+					<item id="9816" min="2" max="6" chance="39.390984774619" /> <!-- Earth Egg -->
+					<item id="8176" min="1" max="3" chance="39.155978899472" /> <!-- Destruction Tombstone -->
+					<item id="4604" min="1" max="3" chance="7.6851921298032" /> <!-- Greater CON Dye (Con + 3 DEX - 3) -->
+					<item id="4605" min="1" max="3" chance="5.5301382534563" /> <!-- Greater DEX Dye (Dex + 3 Str - 3) -->
+					<item id="4606" min="2" max="6" chance="4.0101002525063" /> <!-- Greater DEX Dye (Dex + 3 CON - 3) -->
+					<item id="46474" min="1" max="1" chance="0.55051376284407" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.53351333783345" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.51851296282407" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46490" min="1" max="1" chance="0.37500937523438" /> <!-- Pantheon's Soul Crystal - Stage 2 -->
+					<item id="46475" min="1" max="1" chance="0.37500937523438" /> <!-- Leona's Soul Crystal - Stage 2 -->
+					<item id="46460" min="1" max="1" chance="0.37500937523438" /> <!-- Mermoden's Soul Crystal - Stage 2 -->
+					<item id="46459" min="1" max="1" chance="0.37500937523438" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
+					<item id="46445" min="1" max="1" chance="0.37500937523438" /> <!-- Kain's Soul Crystal - Stage 2 -->
+					<item id="46444" min="1" max="1" chance="0.37500937523438" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46505" min="1" max="1" chance="0.37500937523438" /> <!-- Lionel's Soul Crystal - Stage 2 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="69.87" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="70.34" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="30" />
@@ -3403,7 +3481,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="277" /> <!-- Dark Elven Bow -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15784" hpRegen="55.9818993783759" mp="775.8" mpRegen="2.4" />
+			<vitals hp="15784.394389895" hpRegen="55.9818993783759" mp="775.8" mpRegen="2.4" />
 			<attack physical="973.55312336269" magical="271.8169963621" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="307.27791" magical="299.8" evasion="-18" />
 			<speed>
@@ -3428,7 +3506,7 @@
 			<skill id="4755" level="4" /> <!-- BOSS Power Shot -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" />
+		<ai clanHelpRange="300" dodge="15" />
 		<collision>
 			<radius normal="14" />
 			<height normal="25" />
@@ -3440,7 +3518,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="128" lhand="633" /> <!-- Knight's Sword / Zubei's Shield -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="11779" hpRegen="55.9818993783759" mp="775.8" mpRegen="2.4" />
+			<vitals hp="11779.3987984291" hpRegen="55.9818993783759" mp="775.8" mpRegen="2.4" />
 			<attack physical="973.55312336269" magical="271.8169963621" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="307.27791" magical="299.8" evasion="-18" shield="410" shieldRate="20" />
 			<speed>
@@ -3464,7 +3542,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="23" />
 			<height normal="61" />
@@ -3512,7 +3590,7 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
 				<group chance="5.834">
@@ -3533,9 +3611,9 @@
 					<item id="6571" min="1" max="1" chance="0.15661298321631" /> <!-- Blessed Scroll: Enchant Weapon (B-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="70.85" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23" />
@@ -3666,7 +3744,7 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="50" />
 			<height normal="180" />
@@ -3709,7 +3787,7 @@
 			<skill id="4416" level="9" /> <!-- Demons -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="9" />
 			<height normal="23" />
@@ -3746,7 +3824,7 @@
 			<skill id="4416" level="9" /> <!-- Demons -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="14" />
 			<height normal="36" />
@@ -3768,7 +3846,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="4184.9328" sp="627" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="28588" hpRegen="46.0963284168942" mp="259.2" mpRegen="1.5" />
+			<vitals hp="28588.7636340486" hpRegen="46.0963284168942" mp="259.2" mpRegen="1.5" />
 			<attack physical="148.444637760902" magical="18.7186896910546" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="305.50599" magical="149.04" evasion="-18" />
 			<speed>
@@ -3798,31 +3876,31 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="10.016">
-					<item id="293" min="1" max="1" chance="50.009984025559" /> <!-- War Hammer -->
-					<item id="296" min="1" max="1" chance="49.990015974441" /> <!-- Dwarven Pike -->
+				<group chance="10.042">
+					<item id="296" min="1" max="1" chance="50.298745269867" /> <!-- Dwarven Pike -->
+					<item id="293" min="1" max="1" chance="49.701254730133" /> <!-- War Hammer -->
 				</group>
-				<group chance="32.061">
-					<item id="378" min="1" max="1" chance="37.834128692181" /> <!-- Compound Scale Gaiters -->
-					<item id="379" min="1" max="1" chance="29.833754405664" /> <!-- Dwarven Scale Gaiters -->
-					<item id="58" min="1" max="1" chance="16.65886903091" /> <!-- Mithril Breastplate -->
-					<item id="351" min="1" max="1" chance="9.2667103334269" /> <!-- Breastplate -->
-					<item id="59" min="1" max="1" chance="6.4065375378185" /> <!-- Mithril Gaiters -->
+				<group chance="32.226">
+					<item id="378" min="1" max="1" chance="38.136908086638" /> <!-- Compound Scale Gaiters -->
+					<item id="379" min="1" max="1" chance="29.743064606219" /> <!-- Dwarven Scale Gaiters -->
+					<item id="58" min="1" max="1" chance="16.260162601626" /> <!-- Mithril Breastplate -->
+					<item id="351" min="1" max="1" chance="9.2223670328306" /> <!-- Breastplate -->
+					<item id="59" min="1" max="1" chance="6.6374976726866" /> <!-- Mithril Gaiters -->
 				</group>
-				<group chance="8.106">
-					<item id="349" min="1" max="1" chance="53.330866025167" /> <!-- Compound Scale Mail -->
-					<item id="350" min="1" max="1" chance="46.669133974833" /> <!-- Dwarven Scale Mail -->
+				<group chance="8.188">
+					<item id="349" min="1" max="1" chance="54.286761113825" /> <!-- Compound Scale Mail -->
+					<item id="350" min="1" max="1" chance="45.713238886175" /> <!-- Dwarven Scale Mail -->
 				</group>
-				<group chance="2.483">
+				<group chance="2.506">
 					<item id="6575" min="1" max="1" chance="100" /> <!-- Blessed Scroll: Enchant Weapon (D-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="39.42" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="41.19" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="40" />
@@ -3837,7 +3915,7 @@
 		<race>ANIMAL</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4408" hpRegen="17.9607701717791" mp="245.52" mpRegen="1.5" />
+			<vitals hp="4408.90514492274" hpRegen="17.9607701717791" mp="245.52" mpRegen="1.5" />
 			<attack physical="273.281811447597" magical="68.8120420631729" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="148.063785" magical="144.46" evasion="-18" />
 			<speed>
@@ -3873,7 +3951,7 @@
 		<race>ANIMAL</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2204" hpRegen="17.9607701717791" mp="245.52" mpRegen="1.5" />
+			<vitals hp="2204.45257246137" hpRegen="17.9607701717791" mp="245.52" mpRegen="1.5" />
 			<attack physical="136.640905723798" magical="17.2030105157932" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="148.063785" magical="144.46" evasion="-18" />
 			<speed>
@@ -3917,7 +3995,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="2686.5133333333" sp="580" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="46689" hpRegen="54.2850964385025" mp="329.4" mpRegen="1.5" />
+			<vitals hp="46689.7655411729" hpRegen="54.2850964385025" mp="329.4" mpRegen="1.5" />
 			<attack physical="222.437554766423" magical="28.8595106837795" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="355.39281" magical="173.38" evasion="-18" />
 			<speed>
@@ -3944,23 +4022,23 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="11.87">
+				<group chance="12.23">
 					<item id="318" min="1" max="1" chance="100" /> <!-- Crucifix of Blood -->
 				</group>
-				<group chance="6.105">
-					<item id="437" min="1" max="1" chance="69.418509418509" /> <!-- Mithril Tunic -->
-					<item id="470" min="1" max="1" chance="30.581490581491" /> <!-- Mithril Stockings -->
+				<group chance="6.152">
+					<item id="437" min="1" max="1" chance="69.180754226268" /> <!-- Mithril Tunic -->
+					<item id="470" min="1" max="1" chance="30.819245773732" /> <!-- Mithril Stockings -->
 				</group>
-				<group chance="33.99">
+				<group chance="34.78">
 					<item id="955" min="1" max="3" chance="100" /> <!-- Scroll: Enchant Weapon (D-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="49.58" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="50.92" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -3977,7 +4055,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="179" /> <!-- Mace of Prayer -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="7116" hpRegen="20.9291966395288" mp="315.12" mpRegen="1.5" />
+			<vitals hp="7116.3069802853" hpRegen="20.9291966395288" mp="315.12" mpRegen="1.5" />
 			<attack physical="205.440592348721" magical="26.2255509213276" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="172.50897" magical="168.32" evasion="-18" />
 			<speed>
@@ -4003,7 +4081,7 @@
 			<skill id="4785" level="2" /> <!-- BOSS Chant of Life -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="9" />
 			<height normal="22" />
@@ -4015,7 +4093,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="218" /> <!-- Throwing Knife -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3558" hpRegen="20.9291966395288" mp="315.12" mpRegen="1.5" />
+			<vitals hp="3558.15349014265" hpRegen="20.9291966395288" mp="315.12" mpRegen="1.5" />
 			<attack physical="205.440592348721" magical="26.2255509213276" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="172.50897" magical="168.32" evasion="-18" />
 			<speed>
@@ -4040,6 +4118,23 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" />
+		<drop_lists>
+			<death>
+				<group chance="12.23">
+					<item id="318" min="1" max="1" chance="100" /> <!-- Crucifix of Blood -->
+				</group>
+				<group chance="6.152">
+					<item id="437" min="1" max="1" chance="69.180754226268" /> <!-- Mithril Tunic -->
+					<item id="470" min="1" max="1" chance="30.819245773732" /> <!-- Mithril Stockings -->
+				</group>
+				<group chance="34.78">
+					<item id="955" min="1" max="3" chance="100" /> <!-- Scroll: Enchant Weapon (D-grade) -->
+				</group>
+			</death>
+			<luck>
+				<item id="39629" min="1" max="1" chance="50.92" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="13.5" />
 			<height normal="25" />
@@ -4059,7 +4154,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="3600.3399079553" sp="1314" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="57335" hpRegen="81.0293683271628" mp="463.32" mpRegen="1.8" />
+			<vitals hp="57335.0905325292" hpRegen="81.0293683271628" mp="463.32" mpRegen="1.8" />
 			<attack physical="439.938707656487" magical="69.1975609087206" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="457.40256" magical="223.14" evasion="-18" />
 			<speed>
@@ -4087,26 +4182,26 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="14.484">
-					<item id="71" min="1" max="1" chance="50.020712510356" /> <!-- Flamberge -->
-					<item id="72" min="1" max="1" chance="49.979287489644" /> <!-- StormBringer -->
+				<group chance="14.502">
+					<item id="72" min="1" max="1" chance="50.034478003034" /> <!-- StormBringer -->
+					<item id="71" min="1" max="1" chance="49.965521996966" /> <!-- Flamberge -->
 				</group>
-				<group chance="4.479">
-					<item id="439" min="1" max="1" chance="65.929895065863" /> <!-- Karmian Tunic -->
-					<item id="471" min="1" max="1" chance="34.070104934137" /> <!-- Karmian Stockings -->
+				<group chance="4.38">
+					<item id="439" min="1" max="1" chance="66.529680365297" /> <!-- Karmian Tunic -->
+					<item id="471" min="1" max="1" chance="33.470319634703" /> <!-- Karmian Stockings -->
 				</group>
-				<group chance="42.064">
-					<item id="4590" min="1" max="1" chance="47.094903004945" /> <!-- Greater STR Dye (STR + 2 DEX - 2) -->
-					<item id="4589" min="1" max="1" chance="45.074172689235" /> <!-- Greater STR Dye (STR + 2 CON - 2) -->
-					<item id="6574" min="1" max="1" chance="7.8309243058197" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
+				<group chance="41.497">
+					<item id="4590" min="1" max="1" chance="48.075764513097" /> <!-- Greater STR Dye (STR + 2 DEX - 2) -->
+					<item id="4589" min="1" max="1" chance="43.882690314963" /> <!-- Greater STR Dye (STR + 2 CON - 2) -->
+					<item id="6574" min="1" max="1" chance="8.0415451719401" /> <!-- Blessed Scroll: Enchant Armor (C-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="50.35" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="49.45" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="13.5" />
@@ -4122,7 +4217,7 @@
 		<race>ELEMENTAL</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5807" hpRegen="30.8726873073006" mp="447.96" mpRegen="1.8" />
+			<vitals hp="5807.96463861816" hpRegen="30.8726873073006" mp="447.96" mpRegen="1.8" />
 			<attack physical="545.464279443515" magical="114.822992852265" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="222.664305" magical="217.24" evasion="-18" />
 			<speed>
@@ -4162,7 +4257,7 @@
 		<race>ELEMENTAL</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8668" hpRegen="30.8726873073006" mp="447.96" mpRegen="1.8" />
+			<vitals hp="8668.60393823606" hpRegen="30.8726873073006" mp="447.96" mpRegen="1.8" />
 			<attack physical="818.216874587137" magical="258.363037300478" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="222.664305" magical="217.24" evasion="-18" />
 			<speed>
@@ -4208,7 +4303,7 @@
 		<equipment rhand="157" /> <!-- Spiked Club -->
 		<acquire expRate="1972.1306818182" sp="916" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="103082" hpRegen="103.367606069297" mp="584.0" mpRegen="2.1" />
+			<vitals hp="103082.296230278" hpRegen="103.367606069297" mp="584.0" mpRegen="2.1" />
 			<attack physical="624.124257296051" magical="130.530898435504" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="520.30656" magical="253.82" evasion="-18" />
 			<speed>
@@ -4236,26 +4331,31 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="13.754">
-					<item id="854" min="1" max="1" chance="54.471426494111" /> <!-- Earring of Seal -->
-					<item id="917" min="1" max="1" chance="26.654064272212" /> <!-- Necklace of Mermaid -->
-					<item id="885" min="1" max="1" chance="18.874509233677" /> <!-- Ring of Ages -->
+				<group chance="13.691">
+					<item id="854" min="1" max="1" chance="55.006938864948" /> <!-- Earring of Seal -->
+					<item id="917" min="1" max="1" chance="26.360382733182" /> <!-- Necklace of Mermaid -->
+					<item id="885" min="1" max="1" chance="18.63267840187" /> <!-- Ring of Ages -->
 				</group>
 				<group chance="100">
-					<item id="9816" min="2" max="4" chance="38.612083488858" /> <!-- Earth Egg -->
-					<item id="8176" min="1" max="2" chance="38.102636012388" /> <!-- Destruction Tombstone -->
-					<item id="4603" min="1" max="1" chance="8.9380289931098" /> <!-- Greater CON Dye (Con + 3 Str - 3) -->
-					<item id="951" min="1" max="1" chance="7.0919123952102" /> <!-- Scroll: Enchant Weapon (C-grade) -->
-					<item id="4601" min="1" max="3" chance="4.3368607947381" /> <!-- Greater STR Dye (STR + 3 CON - 3) -->
-					<item id="4602" min="1" max="3" chance="2.918478315696" /> <!-- Greater STR Dye (STR + 3 DEX - 3) -->
+					<item id="8176" min="1" max="2" chance="38.335131083866" /> <!-- Destruction Tombstone -->
+					<item id="9816" min="2" max="4" chance="37.367890656255" /> <!-- Earth Egg -->
+					<item id="4603" min="1" max="1" chance="8.5481771822413" /> <!-- Greater CON Dye (Con + 3 Str - 3) -->
+					<item id="951" min="1" max="1" chance="7.0289513797102" /> <!-- Scroll: Enchant Weapon (C-grade) -->
+					<item id="4601" min="1" max="3" chance="4.3627100962683" /> <!-- Greater STR Dye (STR + 3 CON - 3) -->
+					<item id="4602" min="1" max="3" chance="2.9138750892545" /> <!-- Greater STR Dye (STR + 3 DEX - 3) -->
+					<item id="46474" min="1" max="1" chance="0.37980645063276" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.37980645063276" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.37980645063276" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46444" min="1" max="1" chance="0.1519225802531" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.1519225802531" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="59.91" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="60.43" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="24" />
@@ -4271,7 +4371,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="14" /> <!-- Bow -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="10440" hpRegen="39.4112754681274" mp="557.4" mpRegen="2.1" />
+			<vitals hp="10440.6488691544" hpRegen="39.4112754681274" mp="557.4" mpRegen="2.1" />
 			<attack physical="583.088791057736" magical="119.062093508884" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="253.701255" magical="247.54" evasion="-18" />
 			<speed>
@@ -4296,7 +4396,7 @@
 			<skill id="4760" level="4" /> <!-- Stun -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" />
+		<ai clanHelpRange="300" dodge="15" />
 		<collision>
 			<radius normal="12" />
 			<height normal="27" />
@@ -4308,7 +4408,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="68" /> <!-- Falchion -->
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="7791" hpRegen="39.4112754681274" mp="557.4" mpRegen="2.1" />
+			<vitals hp="7791.52900683166" hpRegen="39.4112754681274" mp="557.4" mpRegen="2.1" />
 			<attack physical="583.088791057736" magical="119.062093508884" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="253.701255" magical="247.54" evasion="-18" />
 			<speed>
@@ -4351,7 +4451,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="2064.9242833964" sp="916" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="194788" hpRegen="98.5281886703186" mp="557.4" mpRegen="2.1" />
+			<vitals hp="194788.225170791" hpRegen="98.5281886703186" mp="557.4" mpRegen="2.1" />
 			<attack physical="583.088791057736" magical="119.062093508884" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="507.40251" magical="247.54" evasion="-18" />
 			<speed>
@@ -4382,26 +4482,31 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="3.259">
-					<item id="227" min="1" max="1" chance="54.096348573182" /> <!-- Stiletto -->
-					<item id="242" min="1" max="1" chance="45.903651426818" /> <!-- Soulfire Dirk -->
+				<group chance="3.248">
+					<item id="227" min="1" max="1" chance="52.709359605911" /> <!-- Stiletto -->
+					<item id="242" min="1" max="1" chance="47.290640394089" /> <!-- Soulfire Dirk -->
 				</group>
-				<group chance="12.244">
-					<item id="382" min="1" max="1" chance="74.714145704018" /> <!-- Dwarven Chain Gaiters -->
-					<item id="355" min="1" max="1" chance="25.285854295982" /> <!-- Dwarven Chain Mail Shirt -->
+				<group chance="12.288">
+					<item id="382" min="1" max="1" chance="75.1220703125" /> <!-- Dwarven Chain Gaiters -->
+					<item id="355" min="1" max="1" chance="24.8779296875" /> <!-- Dwarven Chain Mail Shirt -->
 				</group>
 				<group chance="100">
-					<item id="9817" min="2" max="4" chance="49.881940228024" /> <!-- Nonliving Nucleus -->
-					<item id="8176" min="1" max="2" chance="48.714835053633" /> <!-- Destruction Tombstone -->
-					<item id="6573" min="1" max="1" chance="1.4032247183431" /> <!-- Blessed Scroll: Enchant Weapon (C-grade) -->
+					<item id="8176" min="1" max="2" chance="49.235328289916" /> <!-- Destruction Tombstone -->
+					<item id="9817" min="2" max="4" chance="47.610033746075" /> <!-- Nonliving Nucleus -->
+					<item id="6573" min="1" max="1" chance="1.2943610764802" /> <!-- Blessed Scroll: Enchant Weapon (C-grade) -->
+					<item id="46474" min="1" max="1" chance="0.48954654934956" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.48954654934956" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.48954654934956" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46444" min="1" max="1" chance="0.19581861973982" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46459" min="1" max="1" chance="0.19581861973982" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="60.32" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="59.99" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -4422,7 +4527,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="385.56075840276" sp="322" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="142037" hpRegen="178.427634150318" mp="1007.0" mpRegen="2.4" />
+			<vitals hp="142037.022357529" hpRegen="178.427634150318" mp="1007.0" mpRegen="2.4" />
 			<attack physical="1497.55052117409" magical="490.541905286893" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="728.44779" magical="355.36" evasion="-18" />
 			<speed>
@@ -4450,31 +4555,29 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="4.349">
-					<item id="171" min="1" max="1" chance="34.37571855599" /> <!-- Deadman's Glory -->
-					<item id="210" min="1" max="1" chance="33.318004138883" /> <!-- Staff of Evil Spirits -->
-					<item id="175" min="1" max="1" chance="32.306277305128" /> <!-- Art of Battle Axe -->
+				<group chance="4.344">
+					<item id="175" min="1" max="1" chance="34.185082872928" /> <!-- Art of Battle Axe -->
+					<item id="171" min="1" max="1" chance="33.793738489871" /> <!-- Deadman's Glory -->
+					<item id="210" min="1" max="1" chance="32.021178637201" /> <!-- Staff of Evil Spirits -->
 				</group>
-				<group chance="13.689">
-					<item id="864" min="1" max="1" chance="49.842939586529" /> <!-- Black Ore Earring -->
-					<item id="895" min="1" max="1" chance="27.876397107166" /> <!-- Black Ore Ring -->
-					<item id="926" min="1" max="1" chance="22.280663306304" /> <!-- Black Ore Necklace -->
+				<group chance="13.65">
+					<item id="864" min="1" max="1" chance="49.728937728938" /> <!-- Black Ore Earring -->
+					<item id="895" min="1" max="1" chance="27.457875457875" /> <!-- Black Ore Ring -->
+					<item id="926" min="1" max="1" chance="22.813186813187" /> <!-- Black Ore Necklace -->
 				</group>
-				<group chance="100">
-					<item id="9816" min="1" max="4" chance="45.318002080067" /> <!-- Earth Egg -->
-					<item id="8176" min="1" max="2" chance="37.578464446169" /> <!-- Destruction Tombstone -->
-					<item id="4618" min="1" max="1" chance="5.4746934013315" /> <!-- Greater DEX Dye (Dex + 4 CON - 4) -->
-					<item id="4616" min="1" max="1" chance="5.3057539713964" /> <!-- Greater CON Dye (Con + 4 DEX - 4) -->
-					<item id="4617" min="1" max="1" chance="5.300474614211" /> <!-- Greater DEX Dye (Dex + 4 Str - 4) -->
-					<item id="6572" min="1" max="1" chance="1.0226114868254" /> <!-- Blessed Scroll: Enchant Armor (B-grade) -->
+				<group chance="31.52">
+					<item id="4616" min="1" max="1" chance="31.757614213198" /> <!-- Greater CON Dye (Con + 4 DEX - 4) -->
+					<item id="4617" min="1" max="1" chance="31.440355329949" /> <!-- Greater DEX Dye (Dex + 4 Str - 4) -->
+					<item id="4618" min="1" max="1" chance="30.488578680203" /> <!-- Greater DEX Dye (Dex + 4 CON - 4) -->
+					<item id="6572" min="1" max="1" chance="6.3134517766497" /> <!-- Blessed Scroll: Enchant Armor (B-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="70.48" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="69.81" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="35" />
@@ -4490,7 +4593,7 @@
 		<race>ANIMAL</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14794" hpRegen="174.226727590561" mp="977.4" mpRegen="2.4" />
+			<vitals hp="14794.2980921548" hpRegen="174.226727590561" mp="977.4" mpRegen="2.4" />
 			<attack physical="1426.0444120344" magical="460.012771989048" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="713.98287" magical="348.3" evasion="-18" />
 			<speed>
@@ -4530,7 +4633,7 @@
 		<race>ANIMAL</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="22081" hpRegen="174.226727590561" mp="977.4" mpRegen="2.4" />
+			<vitals hp="22081.0419285892" hpRegen="174.226727590561" mp="977.4" mpRegen="2.4" />
 			<attack physical="1426.0444120344" magical="460.012771989048" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="713.98287" magical="348.3" evasion="-18" />
 			<speed>
@@ -4555,7 +4658,7 @@
 			<skill id="4726" level="5" /> <!-- Stun -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="19" />
 			<height normal="36" />
@@ -4608,27 +4711,39 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="4.968">
-					<item id="5315" min="1" max="1" chance="60.587761674718" /> <!-- Sealed Shield of Nightmare -->
-					<item id="305" min="1" max="1" chance="39.412238325282" /> <!-- Tallum Glaive -->
+				<group chance="5.057">
+					<item id="5315" min="1" max="1" chance="58.710698042318" /> <!-- Sealed Shield of Nightmare -->
+					<item id="305" min="1" max="1" chance="41.289301957682" /> <!-- Tallum Glaive -->
 				</group>
-				<group chance="12.038">
-					<item id="5312" min="1" max="1" chance="57.55939524838" /> <!-- Sealed Helm of Nightmare -->
-					<item id="5317" min="1" max="1" chance="42.44060475162" /> <!-- Sealed Majestic Circlet -->
+				<group chance="11.993">
+					<item id="5312" min="1" max="1" chance="56.82481447511" /> <!-- Sealed Helm of Nightmare -->
+					<item id="5317" min="1" max="1" chance="43.17518552489" /> <!-- Sealed Majestic Circlet -->
 				</group>
-				<group chance="100">
-					<item id="9814" min="3" max="7" chance="38.16049604601" /> <!-- Memento Mori -->
-					<item id="8176" min="1" max="4" chance="37.073148813803" /> <!-- Destruction Tombstone -->
-					<item id="8619" min="1" max="1" chance="23.665528396837" /> <!-- Ancient Book: Divine Inspiration (Original Language Version) -->
-					<item id="6578" min="1" max="1" chance="1.1008267433501" /> <!-- Blessed Scroll: Enchant Armor (S-grade) -->
+				<group chance="6.969">
+					<item id="6578" min="1" max="1" chance="35.42832544124" /> <!-- Blessed Scroll: Enchant Armor (S-grade) -->
+					<item id="46505" min="1" max="1" chance="4.3047783039173" /> <!-- Lionel's Soul Crystal - Stage 2 -->
+					<item id="46504" min="1" max="1" chance="4.3047783039173" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46491" min="1" max="1" chance="4.3047783039173" /> <!-- Pantheon's Soul Crystal - Stage 3 -->
+					<item id="46490" min="1" max="1" chance="4.3047783039173" /> <!-- Pantheon's Soul Crystal - Stage 2 -->
+					<item id="46489" min="1" max="1" chance="4.3047783039173" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46476" min="1" max="1" chance="4.3047783039173" /> <!-- Leona's Soul Crystal - Stage 3 -->
+					<item id="46475" min="1" max="1" chance="4.3047783039173" /> <!-- Leona's Soul Crystal - Stage 2 -->
+					<item id="46474" min="1" max="1" chance="4.3047783039173" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46461" min="1" max="1" chance="4.3047783039173" /> <!-- Mermoden's Soul Crystal - Stage 3 -->
+					<item id="46460" min="1" max="1" chance="4.3047783039173" /> <!-- Mermoden's Soul Crystal - Stage 2 -->
+					<item id="46459" min="1" max="1" chance="4.3047783039173" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
+					<item id="46446" min="1" max="1" chance="4.3047783039173" /> <!-- Kain's Soul Crystal - Stage 3 -->
+					<item id="46445" min="1" max="1" chance="4.3047783039173" /> <!-- Kain's Soul Crystal - Stage 2 -->
+					<item id="46444" min="1" max="1" chance="4.3047783039173" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46506" min="1" max="1" chance="4.3047783039173" /> <!-- Lionel's Soul Crystal - Stage 3 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="80.02" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="79.65" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="19.5" />
@@ -4669,7 +4784,7 @@
 			<skill id="4720" level="6" /> <!-- BOSS Strike -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="13" />
 			<height normal="31" />
@@ -4705,7 +4820,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<collision>
 			<radius normal="13" />
 			<height normal="29" />
@@ -4725,7 +4840,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="3110.0868014269" sp="627" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="33815" hpRegen="52.3229915988219" mp="315.12" mpRegen="1.5" />
+			<vitals hp="33815.6526966163" hpRegen="52.3229915988219" mp="315.12" mpRegen="1.5" />
 			<attack physical="205.440592348721" magical="26.2255509213276" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="345.01794" magical="168.32" evasion="-18" />
 			<speed>
@@ -4755,23 +4870,23 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="11.79">
+				<group chance="11.21">
 					<item id="279" min="1" max="1" chance="100" /> <!-- Reinforced Longbow -->
 				</group>
-				<group chance="7.376">
-					<item id="395" min="1" max="1" chance="66.973969631236" /> <!-- Manticore Skin Shirt -->
-					<item id="417" min="1" max="1" chance="33.026030368764" /> <!-- Manticore Skin Gaiters -->
+				<group chance="7.326">
+					<item id="395" min="1" max="1" chance="66.188916188916" /> <!-- Manticore Skin Shirt -->
+					<item id="417" min="1" max="1" chance="33.811083811084" /> <!-- Manticore Skin Gaiters -->
 				</group>
-				<group chance="24.71">
+				<group chance="26.45">
 					<item id="6576" min="1" max="1" chance="100" /> <!-- Blessed Scroll: Enchant Armor (D-grade) -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="39.7" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="40.43" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="7" />
@@ -4787,7 +4902,7 @@
 		<race>ANIMAL</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3465" hpRegen="20.2128543987694" mp="300.96" mpRegen="1.5" />
+			<vitals hp="3465.71404083484" hpRegen="20.2128543987694" mp="300.96" mpRegen="1.5" />
 			<attack physical="252.802899058003" magical="43.09069166722" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="167.42052" magical="163.34" evasion="-18" />
 			<speed>
@@ -4826,7 +4941,7 @@
 		<race>ANIMAL</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="5172" hpRegen="20.2128543987694" mp="300.96" mpRegen="1.5" />
+			<vitals hp="5172.70752363409" hpRegen="20.2128543987694" mp="300.96" mpRegen="1.5" />
 			<attack physical="379.213828932728" magical="96.9582981767902" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="167.42052" magical="163.34" evasion="-18" />
 			<speed>
@@ -4870,7 +4985,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="4470.2995918367" sp="1314" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="91673" hpRegen="66.9859801832901" mp="402.6" mpRegen="1.8" />
+			<vitals hp="91673.4303600926" hpRegen="66.9859801832901" mp="402.6" mpRegen="1.8" />
 			<attack physical="327.391297293902" magical="51.7199871013021" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="410.18844" magical="200.1" evasion="-18" />
 			<speed>
@@ -4901,28 +5016,28 @@
 			<skill id="14765" level="4" /> <!-- Blood Siphon Resistance -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="31.068">
-					<item id="70" min="1" max="1" chance="17.828633964208" /> <!-- Claymore -->
-					<item id="2499" min="1" max="1" chance="17.664477919403" /> <!-- Elven Long Sword -->
-					<item id="2047" min="14" max="42" chance="37.8846401442" /> <!-- Claymore Blade -->
-					<item id="2967" min="20" max="60" chance="26.62224797219" /> <!-- Elven Long Sword Blade -->
+				<group chance="31.159">
+					<item id="2499" min="1" max="1" chance="17.779774703938" /> <!-- Elven Long Sword -->
+					<item id="70" min="1" max="1" chance="17.722006482878" /> <!-- Claymore -->
+					<item id="2047" min="14" max="42" chance="37.934465162553" /> <!-- Claymore Blade -->
+					<item id="2967" min="20" max="60" chance="26.563753650631" /> <!-- Elven Long Sword Blade -->
 				</group>
-				<group chance="20.55">
+				<group chance="21.3">
 					<item id="396" min="1" max="1" chance="100" /> <!-- Salamander Skin Mail -->
 				</group>
-				<group chance="49.069">
-					<item id="4589" min="1" max="1" chance="35.602926491267" /> <!-- Greater STR Dye (STR + 2 CON - 2) -->
-					<item id="4590" min="1" max="1" chance="33.992948704885" /> <!-- Greater STR Dye (STR + 2 DEX - 2) -->
-					<item id="952" min="3" max="9" chance="22.682345268907" /> <!-- Scroll: Enchant Armor (C-grade) -->
-					<item id="1952" min="162" max="486" chance="7.7217795349406" /> <!-- Salamander Skin Mail Texture -->
+				<group chance="49.862">
+					<item id="4589" min="1" max="1" chance="36.039468934259" /> <!-- Greater STR Dye (STR + 2 CON - 2) -->
+					<item id="4590" min="1" max="1" chance="33.873490834704" /> <!-- Greater STR Dye (STR + 2 DEX - 2) -->
+					<item id="952" min="3" max="9" chance="22.381773695399" /> <!-- Scroll: Enchant Armor (C-grade) -->
+					<item id="1952" min="162" max="486" chance="7.7052665356384" /> <!-- Salamander Skin Mail Texture -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="50.67" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="50.92" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="30" />
@@ -4943,7 +5058,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="1972.1307397959" sp="1484" />
 		<stats str="164" int="188" dex="55" wit="78" con="111" men="149">
-			<vitals hp="392613" hpRegen="41.3470424277186" mp="918" mpRegen="2.1" />
+			<vitals hp="392613.026111457" hpRegen="41.3470424277186" mp="918.8" mpRegen="2.1" />
 			<attack physical="312.062128648025" magical="32.6327246088761" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="520.30656" magical="253.82" evasion="-18" />
 			<speed>
@@ -4973,32 +5088,42 @@
 			<skill id="4275" level="2" /> <!-- Holy Attack Vulnerability -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" />
+		<ai clanHelpRange="300" />
 		<drop_lists>
 			<death>
-				<group chance="15.388">
-					<item id="84" min="1" max="1" chance="24.226670132571" /> <!-- Homunkulus' Sword -->
-					<item id="145" min="1" max="1" chance="24.161684429426" /> <!-- Sword of Whispering Death -->
-					<item id="134" min="1" max="1" chance="24.02521445282" /> <!-- Sword of Nightmare -->
-					<item id="77" min="1" max="1" chance="23.687288796465" /> <!-- Tsurugi -->
-					<item id="75" min="1" max="1" chance="1.9495710943592" /> <!-- Caliburs -->
-					<item id="76" min="1" max="1" chance="1.9495710943592" /> <!-- Sword of Delusion -->
+				<group chance="15.323">
+					<item id="145" min="1" max="1" chance="24.257651895843" /> <!-- Sword of Whispering Death -->
+					<item id="134" min="1" max="1" chance="24.094498466358" /> <!-- Sword of Nightmare -->
+					<item id="84" min="1" max="1" chance="23.892188213796" /> <!-- Homunkulus' Sword -->
+					<item id="77" min="1" max="1" chance="23.839979116361" /> <!-- Tsurugi -->
+					<item id="75" min="1" max="1" chance="1.9578411538211" /> <!-- Caliburs -->
+					<item id="76" min="1" max="1" chance="1.9578411538211" /> <!-- Sword of Delusion -->
 				</group>
-				<group chance="2.13">
-					<item id="64" min="1" max="1" chance="64.788732394366" /> <!-- Compound Boots -->
-					<item id="608" min="1" max="1" chance="35.211267605634" /> <!-- Mithril Gauntlets -->
+				<group chance="2.08">
+					<item id="64" min="1" max="1" chance="63.942307692308" /> <!-- Compound Boots -->
+					<item id="608" min="1" max="1" chance="36.057692307692" /> <!-- Mithril Gauntlets -->
 				</group>
 				<group chance="100">
-					<item id="9816" min="1" max="3" chance="38.818877386999" /> <!-- Earth Egg -->
-					<item id="8176" min="1" max="1" chance="37.886581366939" /> <!-- Destruction Tombstone -->
-					<item id="4606" min="1" max="1" chance="12.328811161834" /> <!-- Greater DEX Dye (Dex + 3 CON - 3) -->
-					<item id="4604" min="1" max="3" chance="6.6225165562914" /> <!-- Greater CON Dye (Con + 3 DEX - 3) -->
-					<item id="4605" min="1" max="3" chance="4.3432135279367" /> <!-- Greater DEX Dye (Dex + 3 Str - 3) -->
+					<item id="8176" min="1" max="1" chance="36.57593839842" /> <!-- Destruction Tombstone -->
+					<item id="9816" min="1" max="3" chance="36.267728391194" /> <!-- Earth Egg -->
+					<item id="4606" min="1" max="1" chance="12.530505211781" /> <!-- Greater DEX Dye (Dex + 3 CON - 3) -->
+					<item id="4604" min="1" max="3" chance="6.2854630981674" /> <!-- Greater CON Dye (Con + 3 DEX - 3) -->
+					<item id="4605" min="1" max="3" chance="4.0400774061854" /> <!-- Greater DEX Dye (Dex + 3 Str - 3) -->
+					<item id="46474" min="1" max="1" chance="0.55629379992623" /> <!-- Leona's Soul Crystal - Stage 1 -->
+					<item id="46489" min="1" max="1" chance="0.54922012762926" /> <!-- Pantheon's Soul Crystal - Stage 1 -->
+					<item id="46504" min="1" max="1" chance="0.54214645533229" /> <!-- Lionel's Soul Crystal - Stage 1 -->
+					<item id="46490" min="1" max="1" chance="0.37894673019498" /> <!-- Pantheon's Soul Crystal - Stage 2 -->
+					<item id="46475" min="1" max="1" chance="0.37894673019498" /> <!-- Leona's Soul Crystal - Stage 2 -->
+					<item id="46460" min="1" max="1" chance="0.37894673019498" /> <!-- Mermoden's Soul Crystal - Stage 2 -->
+					<item id="46459" min="1" max="1" chance="0.37894673019498" /> <!-- Mermoden's Soul Crystal - Stage 1 -->
+					<item id="46445" min="1" max="1" chance="0.37894673019498" /> <!-- Kain's Soul Crystal - Stage 2 -->
+					<item id="46444" min="1" max="1" chance="0.37894673019498" /> <!-- Kain's Soul Crystal - Stage 1 -->
+					<item id="46505" min="1" max="1" chance="0.37894673019498" /> <!-- Lionel's Soul Crystal - Stage 2 -->
 				</group>
 			</death>
-			<lucky_corpse>
-				<item id="39629" min="1" max="1" chance="69.13" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="69.92" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="35" grown="42" />

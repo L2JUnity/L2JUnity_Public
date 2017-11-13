@@ -11,7 +11,7 @@
 		</stats>
 	</item>
 	<item id="46601" name="White Assassin Suit" name_additional="" type="Armor">
-		<set name="icon" val="icon.dark_assassin" />
+		<set name="icon" val="icon.skill1802" />
 		<set name="armor_type" val="HEAVY" />
 		<set name="default_action" val="EQUIP" />
 		<set name="is_freightable" val="false" />
@@ -40,6 +40,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="Appearance" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="46604" name="Zubei Armor Appearance Stone" name_additional="" type="EtcItem">
 		<!-- L2 Assist App item. Changes the appearance of your entire armor into that of Red Zubei. Tops and one-pieces only. Modified armor can be restored to their original appearance with a Restoration Stone. -->
@@ -48,6 +51,9 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="Appearance" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="46605" name="White Assassin Suit Appearance Stone" name_additional="" type="EtcItem">
 		<!-- L2 Assist App item. Changes the appearance of your entire armor into that of the White Assassin Suit. Tops and one-pieces only. Modified armor can be restored to their original appearance with a Restoration Stone. -->
@@ -58,6 +64,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Appearance" />
 		<set name="immediate_effect" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="46606" name="Blue Dynasty Circlet" name_additional="" type="Armor">
 		<!-- L2 Assist App item. Blue Dynasty Circlet. Uses 2 Hair Accessory slots. -->
@@ -210,6 +217,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="time" val="86400" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="46625" name="Entrance Pass: Nightmare Kamaloka" name_additional="1-day" type="EtcItem">
 		<!-- Entrance Pass to Nightmare Kamaloka received from Captain Kurtiz. Double-click to reset cooldown to Nightmare Kamaloka. Can only be used once a day outside of the instance zone. -->
@@ -223,6 +231,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="time" val="86400" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="46626" name="Growth Accelerator Feed" name_additional="Mystic Tavern - Kelbim" type="EtcItem">
 		<!-- Feed for military dogs to accelerate growth. -->
@@ -268,6 +277,7 @@
 			<stat type="mAtk">68.0</stat>
 			<stat type="pAtkSpd">379.0</stat>
 			<stat type="rCrit">8.0</stat>
+			<stat type="randomDamage">10</stat>
 		</stats>
 	</item>
 	<item id="46630" name="Twilight Necklace" name_additional="30-day" type="Armor">
@@ -284,9 +294,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">142.0</stat>
+			<stat type="maxMp">58</stat>
 		</stats>
 	</item>
 	<item id="46631" name="Twilight Earring" name_additional="30-day" type="Armor">
@@ -303,9 +314,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">107.0</stat>
+			<stat type="maxMp">43</stat>
 		</stats>
 	</item>
 	<item id="46632" name="Twilight Ring" name_additional="30-day" type="Armor">
@@ -322,9 +334,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">71.0</stat>
+			<stat type="maxMp">29</stat>
 		</stats>
 	</item>
 	<item id="46633" name="Seraph Necklace" name_additional="30-day" type="Armor">
@@ -341,9 +354,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">161.0</stat>
+			<stat type="maxMp">62</stat>
 		</stats>
 	</item>
 	<item id="46634" name="Seraph Earring" name_additional="30-day" type="Armor">
@@ -360,9 +374,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">121.0</stat>
+			<stat type="maxMp">46</stat>
 		</stats>
 	</item>
 	<item id="46635" name="Seraph Ring" name_additional="30-day" type="Armor">
@@ -379,9 +394,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">80.0</stat>
+			<stat type="maxMp">31</stat>
 		</stats>
 	</item>
 	<item id="46636" name="Eternal Necklace" name_additional="30-day" type="Armor">
@@ -398,9 +414,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">174.0</stat>
+			<stat type="maxMp">65</stat>
 		</stats>
 	</item>
 	<item id="46637" name="Eternal Earring" name_additional="30-day" type="Armor">
@@ -417,9 +434,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">130.0</stat>
+			<stat type="maxMp">49</stat>
 		</stats>
 	</item>
 	<item id="46638" name="Eternal Ring" name_additional="30-day" type="Armor">
@@ -436,9 +454,10 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 		<stats>
 			<stat type="mDef">87.0</stat>
+			<stat type="maxMp">33</stat>
 		</stats>
 	</item>
 	<item id="46639" name="Roa's Lost Item" name_additional="Event" type="EtcItem">
@@ -467,12 +486,14 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="46641" name="Entrance Pass: Crystal Caverns" name_additional="" type="EtcItem">
 		<!-- Double-click to reset cooldown to Crystal Cavern's Coral Garden, Steam Corridor, and Emerald Square. Can only be used once a day outside of the instance zone. Can enter twice each time it is used. -->
 		<set name="icon" val="icon.etc_ticket_red_i00" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="46642" name="Proof of Red" name_additional="Event" type="EtcItem">
 		<!-- Red Libra item\nProof given to those who carry out the missions given by the Red Libra merchants. Use with Elder Green to change a dual class or with Elder Black to exchange for a weapon. Deleted when the Red Libra merchants leave. -->
@@ -508,6 +529,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="46645" name="Red Libra Supplies Lv. 2" name_additional="Event" type="EtcItem">
 		<!-- Red Libra item\nReward received from Bodyguard Blue for your help. Double-click to get one random item. Deleted when the Red Libra merchants leave. -->
@@ -521,6 +543,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="46646" name="Red Libra Supplies Lv. 3" name_additional="Event" type="EtcItem">
 		<!-- Red Libra item\nReward received from Bodyguard Blue for your help. Double-click to get one random item. Deleted when the Red Libra merchants leave. -->
@@ -534,6 +557,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="46647" name="Red Libra Supplies Lv. 4" name_additional="Event" type="EtcItem">
 		<!-- Red Libra item\nReward received from Bodyguard Blue for your help. Double-click to get one random item. Deleted when the Red Libra merchants leave. -->
@@ -547,6 +571,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="46648" name="Red Libra Talisman - Resurrection" name_additional="Event" type="Armor">
 		<!-- Red Libra item\nRevives all party members. Additionally, restores 100% XP. Cannot be used in the Olympiad. Deleted when the Red Libra merchants leave. -->
@@ -556,7 +581,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="weight" val="150" />
+		<skills>
+			<skill id="13905" level="1" /> <!-- Red Libra Talisman - Resurrection -->
+		</skills>
 	</item>
 	<item id="46649" name="Red Libra Talisman - Restoration" name_additional="Event" type="Armor">
 		<!-- Red Libra item\nRestores HP/MP/CP of all party members and cancels debuffs at a set rate. Cannot be used in the Olympiad. Deleted when the Red Libra merchants leave. -->
@@ -566,7 +595,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="weight" val="150" />
+		<skills>
+			<skill id="13906" level="1" /> <!-- Red Libra Talisman - Restoration -->
+		</skills>
 	</item>
 	<item id="46650" name="Red Libra Talisman - Cancel" name_additional="Event" type="Armor">
 		<!-- Red Libra item\nCancels debuffs of all party members and makes them invincible to all debuffs for 7 seconds. Cannot be used in the Olympiad. Deleted when the Red Libra merchants leave. -->
@@ -576,7 +609,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="weight" val="150" />
+		<skills>
+			<skill id="13907" level="1" /> <!-- Red Libra Talisman - Cancel -->
+		</skills>
 	</item>
 	<item id="46651" name="Red Libra Talisman - Speed" name_additional="Event" type="Armor">
 		<!-- Red Libra item\nIncreases Speed of all party members by 70 for 10 seconds. Cannot be used in the Olympiad. Deleted when the Red Libra merchants leave. -->
@@ -586,7 +623,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="weight" val="150" />
+		<skills>
+			<skill id="13908" level="1" /> <!-- Red Libra Talisman - Speed -->
+		</skills>
 	</item>
 	<item id="46652" name="Red Libra Talisman - Resistance" name_additional="Event" type="Armor">
 		<!-- Red Libra item\nDecreases damage received by 10%. Cannot be used in the Olympiad. Deleted when the Red Libra merchants leave. -->
@@ -596,7 +637,11 @@
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="weight" val="150" />
+		<skills>
+			<skill id="13909" level="1" /> <!-- Red Libra Talisman - Resistance -->
+		</skills>
 	</item>
 	<item id="46653" name="Elysium Shaper" name_additional="Event" type="Weapon">
 		<!-- Red Libra item\nWeapon used all throughout Elysium. It cannot be enchanted in Aden. Cannot be used in the Olympiad. Deleted when the Red Libra merchants leave. -->
@@ -608,11 +653,17 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="rhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13910" level="1" /> <!-- Elysium Shaper -->
+		</skills>
 		<stats>
 			<stat type="pAtk">690.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">433.0</stat>
 			<stat type="rCrit">12.0</stat>
+			<stat type="randomDamage">5</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46654" name="Elysium Cutter" name_additional="Event" type="Weapon">
@@ -625,11 +676,17 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="rhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13911" level="1" /> <!-- Elysium Cutter -->
+		</skills>
 		<stats>
 			<stat type="pAtk">770.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">379.0</stat>
 			<stat type="rCrit">8.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46655" name="Elysium Slasher" name_additional="Event" type="Weapon">
@@ -642,11 +699,17 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="lrhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13912" level="1" /> <!-- Elysium Slasher -->
+		</skills>
 		<stats>
 			<stat type="pAtk">931.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">325.0</stat>
 			<stat type="rCrit">8.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46656" name="Elysium Avenger" name_additional="Event" type="Weapon">
@@ -659,12 +722,18 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="rhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13913" level="1" /> <!-- Elysium Avenger -->
+		</skills>
 		<stats>
 			<stat type="pAtk">770.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">379.0</stat>
 			<stat type="accCombat">8.0</stat>
 			<stat type="rCrit">6.0</stat>
+			<stat type="randomDamage">20</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46657" name="Elysium Fighter" name_additional="Event" type="Weapon">
@@ -677,12 +746,18 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="lrhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13914" level="1" /> <!-- Elysium Fighter -->
+		</skills>
 		<stats>
 			<stat type="pAtk">931.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">325.0</stat>
 			<stat type="accCombat">8.0</stat>
 			<stat type="rCrit">6.0</stat>
+			<stat type="randomDamage">5</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46658" name="Elysium Stormer" name_additional="Event" type="Weapon">
@@ -695,11 +770,17 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="lrhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13915" level="1" /> <!-- Elysium Stormer -->
+		</skills>
 		<stats>
 			<stat type="pAtk">770.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">325.0</stat>
 			<stat type="rCrit">8.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46659" name="Elysium Thrower" name_additional="Event" type="Weapon">
@@ -712,11 +793,17 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="lrhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13916" level="1" /> <!-- Elysium Thrower -->
+		</skills>
 		<stats>
 			<stat type="pAtk">1521.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">293.0</stat>
 			<stat type="rCrit">12.0</stat>
+			<stat type="randomDamage">5</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46660" name="Elysium Shooter" name_additional="Event" type="Weapon">
@@ -728,11 +815,17 @@
 		<set name="weight" val="500" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13917" level="1" /> <!-- Elysium Shooter -->
+		</skills>
 		<stats>
 			<stat type="pAtk">1286.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">325.0</stat>
 			<stat type="rCrit">12.0</stat>
+			<stat type="randomDamage">5</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46661" name="Elysium Buster" name_additional="Event" type="Weapon">
@@ -745,11 +838,17 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="rhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13918" level="1" /> <!-- Elysium Buster -->
+		</skills>
 		<stats>
 			<stat type="pAtk">643.0</stat>
 			<stat type="mAtk">481.0</stat>
 			<stat type="pAtkSpd">379.0</stat>
 			<stat type="rCrit">8.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46662" name="Elysium Caster" name_additional="Event" type="Weapon">
@@ -762,12 +861,18 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="rhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13919" level="1" /> <!-- Elysium Caster -->
+		</skills>
 		<stats>
 			<stat type="pAtk">643.0</stat>
 			<stat type="mAtk">481.0</stat>
 			<stat type="pAtkSpd">379.0</stat>
 			<stat type="accCombat">8.0</stat>
 			<stat type="rCrit">6.0</stat>
+			<stat type="randomDamage">20</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46663" name="Elysium Retributer" name_additional="Event" type="Weapon">
@@ -780,6 +885,10 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="lrhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13920" level="1" /> <!-- Elysium Retributer -->
+		</skills>
 		<stats>
 			<stat type="pAtk">776.0</stat>
 			<stat type="mAtk">518.0</stat>
@@ -787,6 +896,8 @@
 			<stat type="accCombat">8.0</stat>
 			<stat type="accMagic">8.0</stat>
 			<stat type="rCrit">6.0</stat>
+			<stat type="randomDamage">20</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46664" name="Elysium Dualsword" name_additional="Event" type="Weapon">
@@ -799,11 +910,17 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="lrhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13921" level="1" /> <!-- Elysium Dualsword -->
+		</skills>
 		<stats>
 			<stat type="pAtk">931.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">325.0</stat>
 			<stat type="rCrit">8.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46665" name="Elysium Dual Dagger" name_additional="Event" type="Weapon">
@@ -816,11 +933,17 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="lrhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13922" level="1" /> <!-- Elysium Dual Dagger -->
+		</skills>
 		<stats>
 			<stat type="pAtk">792.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">433.0</stat>
 			<stat type="rCrit">12.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46666" name="Elysium Dual Blunt Weapon" name_additional="Event" type="Weapon">
@@ -833,12 +956,18 @@
 		<set name="soulshots" val="1" />
 		<set name="bodypart" val="lrhand" />
 		<set name="spiritshots" val="1" />
+		<set name="is_oly_restricted" val="true" />
+		<skills>
+			<skill id="13923" level="1" /> <!-- Elysium Dual Blunt Weapon -->
+		</skills>
 		<stats>
 			<stat type="pAtk">931.0</stat>
 			<stat type="mAtk">388.0</stat>
 			<stat type="pAtkSpd">325.0</stat>
 			<stat type="accCombat">8.0</stat>
 			<stat type="rCrit">6.0</stat>
+			<stat type="randomDamage">20</stat>
+			<stat type="holyPower">450</stat>
 		</stats>
 	</item>
 	<item id="46667" name="Lv.5 Giant Dye Pack" name_additional="" type="EtcItem">
@@ -1084,6 +1213,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46670" min="1" max="1" chance="100" /> <!-- Vital Stone Lv. 1 -->
+		</capsuled_items>
 	</item>
 	<item id="46686" name="La Vie En Rose's Garnet Chest" name_additional="" type="EtcItem">
 		<!-- Double-click to acquire a Lv. 1 Garnet. -->
@@ -1092,6 +1227,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46675" min="1" max="1" chance="100" /> <!-- Garnet Lv. 1 -->
+		</capsuled_items>
 	</item>
 	<item id="46687" name="La Vie En Rose's Tanzanite Chest" name_additional="" type="EtcItem">
 		<!-- Double-click to acquire a Lv. 1 Tanzanite. -->
@@ -1100,6 +1241,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46680" min="1" max="1" chance="100" /> <!-- Tanzanite Lv. 1 -->
+		</capsuled_items>
 	</item>
 	<item id="46688" name="La Vie En Rose's Radiant Brooch Chest" name_additional="" type="EtcItem">
 		<!-- Double-click to acquire a La Vie En Rose's Radiant Brooch. -->
@@ -1108,6 +1255,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="46668" min="1" max="1" chance="100" /> <!-- La Vie En Rose's Radiant Brooch -->
+		</capsuled_items>
 	</item>
 	<item id="46689" name="Shadai's Jewelry Box" name_additional="" type="EtcItem">
 		<!-- Double-click to acquire 1 of the La Vie En Rose's Jewelry Boxes. -->
@@ -1116,6 +1269,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="46690" name="Shadai's Shiny Jewelry Box" name_additional="" type="EtcItem">
 		<!-- Double-click to get 1 of the following: La Vie En Rose's Vital Stone Chest, La Vie En Rose's Garnet Chest, or La Vie En Rose's Tanzanite Chest. -->
@@ -1124,6 +1278,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="46691" name="Function Test Item" name_additional="" type="EtcItem">
 		<!-- Double-click to get 1 of the following: La Vie En Rose's Vital Stone Chest, La Vie En Rose's Garnet Chest, or La Vie En Rose's Tanzanite Chest. -->
@@ -1137,6 +1292,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="46692" name="Entrance Pass: Embryo Command Post" name_additional="" type="EtcItem">
 		<!-- Double-click to reset cooldown to Embryo Command Post. Can only be used once a day outside of the instance zone. -->
@@ -1150,5 +1306,227 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
+	</item>
+	<item id="46693" name="Emperor Shunaiman's Shaper" name_additional="30-day" type="Weapon">
+		<!-- Dimensional Item\nEmperor Shunaiman's Weapon. Can be used at all levels. Must use Soulshot (No-grade)/Spiritshot/Blessed Spiritshot. -->
+		<set name="icon" val="icon.npoint_weapon_dagger" />
+		<set name="default_action" val="EQUIP" />
+		<set name="weapon_type" val="DAGGER" />
+		<set name="bodypart" val="rhand" />
+		<set name="weight" val="500" />
+		<set name="is_sellable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_tradable" val="false" />
+		<set name="is_private_storeable" val="false" />
+		<set name="is_clan_depositable" val="false" />
+		<set name="is_mailable" val="false" />
+		<set name="soulshots" val="1" />
+		<set name="spiritshots" val="1" />
+		<set name="damage_range" val="0;0;40;120" />
+		<set name="immediate_effect" val="true" />
+		<set name="time" val="43200" />
+		<skills>
+			<skill id="13925" level="1" /> <!-- Emperor Shunaiman's Authority -->
+			<skill id="13927" level="1" /> <!-- Special Ability -->
+		</skills>
+		<stats>
+			<stat type="pAtk">737.0</stat>
+			<stat type="mAtk">409.0</stat>
+			<stat type="randomDamage">5</stat>
+			<stat type="pAtkSpd">433.0</stat>
+			<stat type="rCrit">12.0</stat>
+			<stat type="holyPower">450</stat>
+		</stats>
+	</item>
+	<item id="46694" name="Emperor Shunaiman's Dicing Death" name_additional="30-day" type="Weapon">
+		<!-- Dimensional Item\nEmperor Shunaiman's Weapon. Can be used at all levels. Must use Soulshot (No-grade)/Spiritshot/Blessed Spiritshot. -->
+		<set name="icon" val="icon.npoint_weapon_onehand_sword" />
+		<set name="default_action" val="EQUIP" />
+		<set name="weapon_type" val="SWORD" />
+		<set name="bodypart" val="rhand" />
+		<set name="weight" val="500" />
+		<set name="is_sellable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_tradable" val="false" />
+		<set name="is_private_storeable" val="false" />
+		<set name="is_clan_depositable" val="false" />
+		<set name="is_mailable" val="false" />
+		<set name="soulshots" val="1" />
+		<set name="spiritshots" val="1" />
+		<set name="damage_range" val="0;0;40;120" />
+		<set name="immediate_effect" val="true" />
+		<set name="time" val="43200" />
+		<skills>
+			<skill id="13925" level="1" /> <!-- Emperor Shunaiman's Authority -->
+			<skill id="13927" level="1" /> <!-- Special Ability -->
+		</skills>
+		<stats>
+			<stat type="pAtk">827.0</stat>
+			<stat type="mAtk">409.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="pAtkSpd">379.0</stat>
+			<stat type="rCrit">8.0</stat>
+			<stat type="holyPower">450</stat>
+		</stats>
+	</item>
+	<item id="46695" name="Emperor Shunaiman's Slasher" name_additional="30-day" type="Weapon">
+		<!-- Dimensional Item\nEmperor Shunaiman's Weapon. Can be used at all levels. Must use Soulshot (No-grade)/Spiritshot/Blessed Spiritshot. -->
+		<set name="icon" val="icon.npoint_weapon_twohand_sword" />
+		<set name="default_action" val="EQUIP" />
+		<set name="weapon_type" val="SWORD" />
+		<set name="bodypart" val="lrhand" />
+		<set name="weight" val="500" />
+		<set name="is_sellable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_tradable" val="false" />
+		<set name="is_private_storeable" val="false" />
+		<set name="is_clan_depositable" val="false" />
+		<set name="is_mailable" val="false" />
+		<set name="soulshots" val="1" />
+		<set name="spiritshots" val="1" />
+		<set name="damage_range" val="0;0;40;120" />
+		<set name="immediate_effect" val="true" />
+		<set name="time" val="43200" />
+		<skills>
+			<skill id="13925" level="1" /> <!-- Emperor Shunaiman's Authority -->
+			<skill id="13927" level="1" /> <!-- Special Ability -->
+		</skills>
+		<stats>
+			<stat type="pAtk">1007.0</stat>
+			<stat type="mAtk">409.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="pAtkSpd">325.0</stat>
+			<stat type="rCrit">8.0</stat>
+			<stat type="holyPower">450</stat>
+		</stats>
+	</item>
+	<item id="46696" name="Emperor Shunaiman's Avenger" name_additional="30-day" type="Weapon">
+		<!-- Dimensional Item\nEmperor Shunaiman's Weapon. Can be used at all levels. Must use Soulshot (No-grade)/Spiritshot/Blessed Spiritshot. -->
+		<set name="icon" val="icon.npoint_weapon_onehand_blunt" />
+		<set name="default_action" val="EQUIP" />
+		<set name="weapon_type" val="BLUNT" />
+		<set name="bodypart" val="rhand" />
+		<set name="weight" val="500" />
+		<set name="is_sellable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_tradable" val="false" />
+		<set name="is_private_storeable" val="false" />
+		<set name="is_clan_depositable" val="false" />
+		<set name="is_mailable" val="false" />
+		<set name="soulshots" val="1" />
+		<set name="spiritshots" val="1" />
+		<set name="damage_range" val="0;0;40;120" />
+		<set name="immediate_effect" val="true" />
+		<set name="time" val="43200" />
+		<skills>
+			<skill id="13925" level="1" /> <!-- Emperor Shunaiman's Authority -->
+			<skill id="13927" level="1" /> <!-- Special Ability -->
+		</skills>
+		<stats>
+			<stat type="pAtk">827.0</stat>
+			<stat type="mAtk">409.0</stat>
+			<stat type="randomDamage">20</stat>
+			<stat type="pAtkSpd">379.0</stat>
+			<stat type="accCombat">8.0</stat>
+			<stat type="rCrit">6.0</stat>
+			<stat type="holyPower">450</stat>
+		</stats>
+	</item>
+	<item id="46697" name="Emperor Shunaiman's Fighter" name_additional="30-day" type="Weapon">
+		<!-- Dimensional Item\nEmperor Shunaiman's Weapon. Can be used at all levels. Must use Soulshot (No-grade)/Spiritshot/Blessed Spiritshot. -->
+		<set name="icon" val="icon.npoint_weapon_fist" />
+		<set name="default_action" val="EQUIP" />
+		<set name="weapon_type" val="DUALFIST" />
+		<set name="bodypart" val="lrhand" />
+		<set name="weight" val="500" />
+		<set name="is_sellable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_tradable" val="false" />
+		<set name="is_private_storeable" val="false" />
+		<set name="is_clan_depositable" val="false" />
+		<set name="is_mailable" val="false" />
+		<set name="soulshots" val="1" />
+		<set name="spiritshots" val="1" />
+		<set name="damage_range" val="0;0;32;120" />
+		<set name="immediate_effect" val="true" />
+		<set name="time" val="43200" />
+		<skills>
+			<skill id="13925" level="1" /> <!-- Emperor Shunaiman's Authority -->
+			<skill id="13927" level="1" /> <!-- Special Ability -->
+		</skills>
+		<stats>
+			<stat type="pAtk">1007.0</stat>
+			<stat type="mAtk">409.0</stat>
+			<stat type="randomDamage">5</stat>
+			<stat type="pAtkSpd">325.0</stat>
+			<stat type="accCombat">8.0</stat>
+			<stat type="rCrit">6.0</stat>
+			<stat type="holyPower">450</stat>
+		</stats>
+	</item>
+	<item id="46698" name="Emperor Shunaiman's Stormer" name_additional="30-day" type="Weapon">
+		<!-- Dimensional Item\nEmperor Shunaiman's Weapon. Can be used at all levels. Must use Soulshot (No-grade)/Spiritshot/Blessed Spiritshot. -->
+		<set name="icon" val="icon.npoint_weapon_spear" />
+		<set name="default_action" val="EQUIP" />
+		<set name="weapon_type" val="POLE" />
+		<set name="bodypart" val="lrhand" />
+		<set name="weight" val="500" />
+		<set name="is_sellable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_tradable" val="false" />
+		<set name="is_private_storeable" val="false" />
+		<set name="is_clan_depositable" val="false" />
+		<set name="is_mailable" val="false" />
+		<set name="soulshots" val="1" />
+		<set name="spiritshots" val="1" />
+		<set name="damage_range" val="0;0;66;120" />
+		<set name="immediate_effect" val="true" />
+		<set name="time" val="43200" />
+		<skills>
+			<skill id="13925" level="1" /> <!-- Emperor Shunaiman's Authority -->
+			<skill id="13927" level="1" /> <!-- Special Ability -->
+		</skills>
+		<stats>
+			<stat type="pAtk">827.0</stat>
+			<stat type="mAtk">409.0</stat>
+			<stat type="randomDamage">10</stat>
+			<stat type="pAtkSpd">325.0</stat>
+			<stat type="rCrit">8.0</stat>
+			<stat type="holyPower">450</stat>
+		</stats>
+	</item>
+	<item id="46699" name="Emperor Shunaiman's Thrower" name_additional="30-day" type="Weapon">
+		<!-- Dimensional Item\nEmperor Shunaiman's Weapon. Can be used at all levels. Must use Soulshot (No-grade)/Spiritshot/Blessed Spiritshot. -->
+		<set name="icon" val="icon.npoint_weapon_bow" />
+		<set name="default_action" val="EQUIP" />
+		<set name="weapon_type" val="BOW" />
+		<set name="bodypart" val="lrhand" />
+		<set name="weight" val="500" />
+		<set name="is_sellable" val="false" />
+		<set name="is_dropable" val="false" />
+		<set name="is_tradable" val="false" />
+		<set name="is_private_storeable" val="false" />
+		<set name="is_clan_depositable" val="false" />
+		<set name="is_mailable" val="false" />
+		<set name="soulshots" val="1" />
+		<set name="spiritshots" val="1" />
+		<set name="reuse_delay" val="1500" />
+		<set name="damage_range" val="0;0;10;0" />
+		<set name="immediate_effect" val="true" />
+		<set name="time" val="43200" />
+		<skills>
+			<skill id="13925" level="1" /> <!-- Emperor Shunaiman's Authority -->
+			<skill id="13927" level="1" /> <!-- Special Ability -->
+		</skills>
+		<stats>
+			<stat type="pAtk">1631.0</stat>
+			<stat type="mAtk">409.0</stat>
+			<stat type="randomDamage">5</stat>
+			<stat type="pAtkSpd">293.0</stat>
+			<stat type="rCrit">12.0</stat>
+			<stat type="pAtkRange">500</stat>
+			<stat type="holyPower">450</stat>
+		</stats>
 	</item>
 </list>

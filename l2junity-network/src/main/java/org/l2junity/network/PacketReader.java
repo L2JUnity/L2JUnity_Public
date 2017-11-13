@@ -58,7 +58,7 @@ public final class PacketReader
 	 */
 	public int readH()
 	{
-		return _buf.readUnsignedShort();
+		return _buf.readUnsignedShortLE();
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public final class PacketReader
 	 */
 	public int readD()
 	{
-		return _buf.readInt();
+		return _buf.readIntLE();
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public final class PacketReader
 	 */
 	public long readQ()
 	{
-		return _buf.readLong();
+		return _buf.readLongLE();
 	}
 	
 	/**
@@ -88,7 +88,7 @@ public final class PacketReader
 	 */
 	public float readE()
 	{
-		return _buf.readFloat();
+		return Float.intBitsToFloat(_buf.readIntLE());
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public final class PacketReader
 	 */
 	public double readF()
 	{
-		return _buf.readDouble();
+		return Double.longBitsToDouble(_buf.readLongLE());
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public final class PacketReader
 	{
 		final StringBuilder sb = new StringBuilder();
 		char chr;
-		while ((chr = _buf.readChar()) != 0)
+		while ((chr = Character.reverseBytes(_buf.readChar())) != 0)
 		{
 			sb.append(chr);
 		}
@@ -125,7 +125,7 @@ public final class PacketReader
 	public String readString()
 	{
 		final StringBuilder sb = new StringBuilder();
-		final int stringLength = _buf.readShort();
+		final int stringLength = _buf.readShortLE();
 		if ((stringLength * 2) > getReadableBytes())
 		{
 			throw new IndexOutOfBoundsException("readerIndex(" + _buf.readerIndex() + ") + length(" + (stringLength * 2) + ") exceeds writerIndex(" + _buf.writerIndex() + "): " + _buf);
@@ -133,7 +133,7 @@ public final class PacketReader
 		
 		for (int i = 0; i < stringLength; i++)
 		{
-			sb.append(_buf.readChar());
+			sb.append(Character.reverseBytes(_buf.readChar()));
 		}
 		return sb.toString();
 	}

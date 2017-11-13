@@ -50,9 +50,9 @@ public class ExCursedWeaponLocation implements IClientOutgoingPacket
 				packet.writeD(w.id);
 				packet.writeD(w.activated);
 				
-				packet.writeD(w.pos.getX());
-				packet.writeD(w.pos.getY());
-				packet.writeD(w.pos.getZ());
+				packet.writeD((int) w.pos.getX());
+				packet.writeD((int) w.pos.getY());
+				packet.writeD((int) w.pos.getZ());
 			}
 		}
 		else

@@ -2,8 +2,6 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="3600" toLevel="10" name="Special Ability: Anger">
 		<!-- Confirmed CT2.5 -->
-		<table name="#pAtk"> 20.44 22.64 24.77 26.78 28.59 30.12 31.30 39 45 78.33 </table>
-		<table name="#pvpBonus"> 1 1 1 1 1 1 1.05 1.05 1.05 1.05 </table>
 		<icon>icon.skill1062</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -20,7 +18,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">20.44</value>
 					<value level="2">22.64</value>
@@ -35,11 +33,11 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HitNumber">
+			<effect name="p_hit_number">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -54,7 +52,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -69,7 +67,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -84,7 +82,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>-15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -92,8 +90,6 @@
 	</skill>
 	<skill id="3601" toLevel="10" name="Special Ability: Haste">
 		<!-- Confirmed CT2.5 and Updated to H5 -->
-		<table name="#pAtkSpd"> 1.08 1.07 1.07 1.07 1.06 1.06 1.06 1.06 1.07 1.11 </table>
-		<table name="#pvpBonus"> 1 1 1 1 1 1 1.05 1.05 1.05 1.05 </table>
 		<icon>icon.skill1086</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -110,7 +106,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">7</value>
@@ -125,11 +121,11 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HitNumber">
+			<effect name="p_hit_number">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -144,7 +140,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -163,8 +159,6 @@
 	</skill>
 	<skill id="3602" toLevel="10" name="Special Ability: Guidance">
 		<!-- Confirmed CT2.5 -->
-		<table name="#accCombat"> 6.88 6.07 5.72 5.37 5.02 4.68 4.34 3.95 5.27 7.5 </table>
-		<table name="#pvpBonus"> 1 1 1 1 1 1 1.05 1.05 1.05 1.05 </table>
 		<icon>icon.skill1240</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -181,7 +175,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">6.88</value>
 					<value level="2">6.07</value>
@@ -196,11 +190,11 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HitNumber">
+			<effect name="p_hit_number">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -215,7 +209,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -230,7 +224,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -248,28 +242,13 @@
 		</effects>
 	</skill>
 	<skill id="3603" toLevel="10" name="Demonic Sword Zariche">
-		<table name="#absorbDam"> 22 24 26 29 32 35 38 42 47 50 </table>
-		<table name="#accCombat"> 1 4 9 16 25 36 49 64 81 100 </table>
-		<table name="#debuffVuln"> 85 86 87 88 89 90 91 92 93 94 </table>
-		<table name="#mAtk"> 3.1 3.2 3.31 3.43 3.55 3.68 3.81 3.95 4.1 4.25 </table>
-		<table name="#mAtkAdd"> 600 720 864 1036 1244 1492 1791 2149 2579 3095 </table>
-		<table name="#maxCp"> 11.5 12.02 12.57 13.15 13.76 14.4 15.07 15.77 16.51 17.28 </table>
-		<table name="#maxCpAdd"> 1300 1690 2197 2856 3712 4826 6274 8157 10604 13785 </table>
-		<table name="#mDef"> 3.06 3.12 3.18 3.25 3.31 3.38 3.45 3.53 3.6 3.68 </table>
-		<table name="#mDefAdd"> 515 530 546 562 579 597 614 633 652 671 </table>
-		<table name="#pAtk"> 3.2 3.42 3.66 3.92 4.22 4.54 4.89 5.28 5.71 6.18 </table>
-		<table name="#pAtkAdd"> 600 720 864 1036 1244 1492 1791 2149 2579 3095 </table>
-		<table name="#pDef"> 3.04 3.08 3.12 3.16 3.2 3.25 3.29 3.34 3.39 3.43 </table>
-		<table name="#pDefAdd"> 510 520 530 541 552 563 574 585 597 609 </table>
-		<table name="#regCp"> 12 13.1 14.31 15.64 17.1 18.71 20.48 22.43 24.57 26.93 </table>
-		<table name="#runSpd"> 2 4 6 8 10 12 14 16 18 20 </table>
 		<icon>icon.weapon_unique_zariche_i00</icon>
 		<magicLvl>78</magicLvl>
 		<minPledgeClass>2</minPledgeClass>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>
 					<value level="1">22</value>
 					<value level="2">24</value>
@@ -284,7 +263,7 @@
 				</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">220</value>
 					<value level="2">242</value>
@@ -299,7 +278,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">210</value>
 					<value level="2">220</value>
@@ -314,7 +293,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">600</value>
 					<value level="2">720</value>
@@ -329,7 +308,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">600</value>
 					<value level="2">720</value>
@@ -344,7 +323,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -359,7 +338,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">206</value>
 					<value level="2">212</value>
@@ -374,7 +353,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">515</value>
 					<value level="2">530</value>
@@ -389,7 +368,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">204</value>
 					<value level="2">208</value>
@@ -404,7 +383,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">510</value>
 					<value level="2">520</value>
@@ -419,7 +398,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">4</value>
@@ -434,7 +413,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">1050</value>
 					<value level="2">1102</value>
@@ -449,7 +428,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">1300</value>
 					<value level="2">1690</value>
@@ -464,7 +443,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CpRegen">
+			<effect name="p_cp_regen">
 				<amount>
 					<value level="1">1100</value>
 					<value level="2">1210</value>
@@ -479,7 +458,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>
 					<value level="1">-85</value>
 					<value level="2">-86</value>
@@ -504,34 +483,33 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<POISON>25</POISON>
 				<PARALYZE>15</PARALYZE>
 				<SLEEP>15</SLEEP>
 				<BLEED>25</BLEED>
 				<SHOCK>15</SHOCK>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>25</BLEED>
 				<SHOCK>15</SHOCK>
 				<POISON>25</POISON>
 				<SLEEP>15</SLEEP>
 				<PARALYZE>15</PARALYZE>
 			</effect>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>4</amount>
-				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>15</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -545,11 +523,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -562,11 +540,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -579,11 +557,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -591,15 +569,12 @@
 	</skill>
 	<skill id="3608" toLevel="3" name="Apella Heavy Armor Set">
 		<!-- Confirmed CT2.5 -->
-		<table name="#maxCP"> 1035 1116 1116 </table>
-		<table name="#mpConsumeRate"> 1 0.95 0.95 </table>
-		<table name="#triggeredLevel"> 1 2 2 </table>
 		<icon>icon.armor_t1004_ul_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Power of Apella -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -614,7 +589,7 @@
 					<value level="3">2</value>
 				</skillLevel>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">1035</value>
 					<value level="2">1116</value>
@@ -622,11 +597,11 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CpRegen">
+			<effect name="p_cp_regen">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -635,7 +610,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -644,7 +619,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -653,12 +628,13 @@
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>
 					<value level="1">-70</value>
 					<value level="2">-70</value>
 					<value level="3">-40</value>
 				</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>PK</type>
 			</effect>
@@ -666,15 +642,12 @@
 	</skill>
 	<skill id="3609" toLevel="3" name="Apella Light Armor Set">
 		<!-- Confirmed CT2.5 -->
-		<table name="#maxCP"> 1035 1116 1116 </table>
-		<table name="#mpConsumeRate"> 1 0.95 0.95 </table>
-		<table name="#triggeredLevel"> 1 2 2 </table>
 		<icon>icon.armor_t1005_ul_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Power of Apella -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -689,7 +662,7 @@
 					<value level="3">2</value>
 				</skillLevel>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">1035</value>
 					<value level="2">1116</value>
@@ -697,11 +670,11 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CpRegen">
+			<effect name="p_cp_regen">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -710,7 +683,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -719,7 +692,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -728,12 +701,13 @@
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>
 					<value level="1">-70</value>
 					<value level="2">-70</value>
 					<value level="3">-40</value>
 				</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>PK</type>
 			</effect>
@@ -741,15 +715,12 @@
 	</skill>
 	<skill id="3610" toLevel="3" name="Apella Robe Set">
 		<!-- Confirmed CT2.5 -->
-		<table name="#maxCP"> 1035 1116 1116 </table>
-		<table name="#mpConsumeRate"> 1 0.95 0.95 </table>
-		<table name="#triggeredLevel"> 1 2 2 </table>
 		<icon>icon.armor_t1006_ul_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Power of Apella -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -764,7 +735,7 @@
 					<value level="3">2</value>
 				</skillLevel>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">1035</value>
 					<value level="2">1116</value>
@@ -772,11 +743,11 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CpRegen">
+			<effect name="p_cp_regen">
 				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -785,7 +756,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -794,7 +765,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">-5</value>
@@ -803,12 +774,13 @@
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>
 					<value level="1">-70</value>
 					<value level="2">-70</value>
 					<value level="3">-40</value>
 				</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>PK</type>
 			</effect>
@@ -821,17 +793,15 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>STANDING</type>
 				<value>1.518</value>
 			</effect>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>SITTING</type>
 				<value>1.518</value>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>25</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -846,14 +816,14 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>14</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -869,14 +839,14 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>16</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="WeightLimit">
+			<effect name="p_weight_limit">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -889,17 +859,15 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>SITTING</type>
 				<value>2.019</value>
 			</effect>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>STANDING</type>
 				<value>2.019</value>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>38</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -914,14 +882,14 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -936,14 +904,14 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>24</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="WeightLimit">
+			<effect name="p_weight_limit">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -956,17 +924,15 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>SITTING</type>
 				<value>2.25</value>
 			</effect>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>STANDING</type>
 				<value>2.25</value>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>44</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -981,14 +947,14 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>24</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -1003,14 +969,14 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>28</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="WeightLimit">
+			<effect name="p_weight_limit">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1023,17 +989,15 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>SITTING</type>
 				<value>2.43</value>
 			</effect>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>STANDING</type>
 				<value>2.43</value>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -1048,14 +1012,14 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>27</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -1070,38 +1034,36 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>32</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="WeightLimit">
+			<effect name="p_weight_limit">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
-	<skill id="3623" toLevel="3" name="Enchant Heavy Armor (S-grade)">
+	<skill id="3623" toLevel="5" name="Enchant Heavy Armor (S-grade)">
 		<!-- TODO: Auto level parse, Requires manual update -->
-		<!-- Confirmed CT2.5 -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0231</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>SITTING</type>
 				<value>2.823</value>
 			</effect>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>STANDING</type>
 				<value>2.823</value>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>59</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -1110,21 +1072,22 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="3624" toLevel="3" name="Enchant Light Armor (S-grade)">
+	<skill id="3624" toLevel="5" name="Enchant Light Armor (S-grade)">
 		<!-- TODO: Auto level parse, Requires manual update -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0233</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -1135,19 +1098,20 @@
 	</skill>
 	<skill id="3625" toLevel="3" name="Enchant Robe (S-grade)">
 		<!-- TODO: Auto level parse, Requires manual update -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0234</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>38</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="WeightLimit">
+			<effect name="p_weight_limit">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1156,12 +1120,12 @@
 	<skill id="3626" toLevel="1" name="Kabokula">
 		<castRange>300</castRange>
 		<channelingSkillId>5106</channelingSkillId>
-		<channelingTickInterval>2000</channelingTickInterval>
+		<channelingTickInterval>2</channelingTickInterval>
 		<effectPoint>-100</effectPoint>
 		<effectRange>500</effectRange>
 		<hitTime>25000</hitTime>
 		<icon>icon.weapon_seize_mace_i00</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>8764</itemConsumeId> <!-- Trap Stone -->
@@ -1171,7 +1135,7 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<channelingTickInitialDelay>1000</channelingTickInitialDelay>
+		<channelingStart>1</channelingStart>
 		<mpPerChanneling>15</mpPerChanneling>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1188,12 +1152,12 @@
 	<skill id="3627" toLevel="1" name="Tapirawa">
 		<castRange>300</castRange>
 		<channelingSkillId>5107</channelingSkillId>
-		<channelingTickInterval>2000</channelingTickInterval>
+		<channelingTickInterval>2</channelingTickInterval>
 		<effectPoint>-100</effectPoint>
 		<effectRange>500</effectRange>
 		<hitTime>25000</hitTime>
 		<icon>icon.weapon_seize_mace_i00</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>8764</itemConsumeId> <!-- Trap Stone -->
@@ -1203,7 +1167,7 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<channelingTickInitialDelay>1000</channelingTickInitialDelay>
+		<channelingStart>1</channelingStart>
 		<mpPerChanneling>15</mpPerChanneling>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1220,12 +1184,12 @@
 	<skill id="3628" toLevel="1" name="Shabonoba">
 		<castRange>300</castRange>
 		<channelingSkillId>5108</channelingSkillId>
-		<channelingTickInterval>2000</channelingTickInterval>
+		<channelingTickInterval>2</channelingTickInterval>
 		<effectPoint>-100</effectPoint>
 		<effectRange>500</effectRange>
 		<hitTime>25000</hitTime>
 		<icon>icon.weapon_seize_mace_i00</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>8764</itemConsumeId> <!-- Trap Stone -->
@@ -1235,7 +1199,7 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
-		<channelingTickInitialDelay>1000</channelingTickInitialDelay>
+		<channelingStart>1</channelingStart>
 		<mpPerChanneling>15</mpPerChanneling>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1250,28 +1214,13 @@
 		</conditions>
 	</skill>
 	<skill id="3629" toLevel="10" name="Blood Sword Akamanah">
-		<table name="#absorbDam"> 22 24 26 29 32 35 38 42 47 50 </table>
-		<table name="#accCombat"> 1 4 9 16 25 36 49 64 81 100 </table>
-		<table name="#debuffVuln"> 85 86 87 88 89 90 91 92 93 94 </table>
-		<table name="#mAtk"> 3.1 3.2 3.31 3.43 3.55 3.68 3.81 3.95 4.1 4.25 </table>
-		<table name="#mAtkAdd"> 600 720 864 1036 1244 1492 1791 2149 2579 3095 </table>
-		<table name="#maxCp"> 11.5 12.02 12.57 13.15 13.76 14.4 15.07 15.77 16.51 17.28 </table>
-		<table name="#maxCpAdd"> 1300 1690 2197 2856 3712 4826 6274 8157 10604 13785 </table>
-		<table name="#mDef"> 3.06 3.12 3.18 3.25 3.31 3.38 3.45 3.53 3.6 3.68 </table>
-		<table name="#mDefAdd"> 515 530 546 562 579 597 614 633 652 671 </table>
-		<table name="#pAtk"> 3.2 3.42 3.66 3.92 4.22 4.54 4.89 5.28 5.71 6.18 </table>
-		<table name="#pAtkAdd"> 600 720 864 1036 1244 1492 1791 2149 2579 3095 </table>
-		<table name="#pDef"> 3.04 3.08 3.12 3.16 3.2 3.25 3.29 3.34 3.39 3.43 </table>
-		<table name="#pDefAdd"> 510 520 530 541 552 563 574 585 597 609 </table>
-		<table name="#regCp"> 12 13.1 14.31 15.64 17.1 18.71 20.48 22.43 24.57 26.93 </table>
-		<table name="#runSpd"> 2 4 6 8 10 12 14 16 18 20 </table>
 		<icon>icon.weapon_dual_sword_i00</icon>
 		<magicLvl>78</magicLvl>
 		<minPledgeClass>2</minPledgeClass>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>
 					<value level="1">22</value>
 					<value level="2">24</value>
@@ -1286,7 +1235,7 @@
 				</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">220</value>
 					<value level="2">242</value>
@@ -1301,7 +1250,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">210</value>
 					<value level="2">220</value>
@@ -1316,7 +1265,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">600</value>
 					<value level="2">720</value>
@@ -1331,7 +1280,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">600</value>
 					<value level="2">720</value>
@@ -1346,7 +1295,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -1361,7 +1310,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">206</value>
 					<value level="2">212</value>
@@ -1376,7 +1325,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">515</value>
 					<value level="2">530</value>
@@ -1391,7 +1340,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">204</value>
 					<value level="2">208</value>
@@ -1406,7 +1355,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">510</value>
 					<value level="2">520</value>
@@ -1421,7 +1370,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">4</value>
@@ -1436,7 +1385,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">1050</value>
 					<value level="2">1102</value>
@@ -1451,7 +1400,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">1300</value>
 					<value level="2">1690</value>
@@ -1466,7 +1415,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CpRegen">
+			<effect name="p_cp_regen">
 				<amount>
 					<value level="1">1100</value>
 					<value level="2">1210</value>
@@ -1481,7 +1430,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>
 					<value level="1">-85</value>
 					<value level="2">-86</value>
@@ -1514,7 +1463,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>ALL</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>11500</power>
 			</effect>
 		</effects>
@@ -1535,7 +1484,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>15000</power>
 			</effect>
 		</effects>
@@ -1561,17 +1510,16 @@
 			<condition name="OpCallPc" />
 		</conditions>
 		<effects>
-			<effect name="SendSystemMessageToClan">
+			<effect name="i_pledge_send_system_message">
 				<id>1923</id>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="3633" toLevel="2" name="Residential Stun Immunity">
 		<!-- CT2.5 retail confirmed -->
-		<table name="#trait_shock"> 80 100 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>7</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -1585,7 +1533,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">80</value>
 					<value level="2">100</value>
@@ -1600,41 +1548,40 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>504</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>7.87</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ReflectSkill">
+			<effect name="p_reflect_skill">
 				<amount>10</amount>
-				<mode>DIFF</mode>
+				<type>PHYSICAL</type>
 			</effect>
-			<effect name="ReflectSkill">
+			<effect name="p_reflect_skill">
 				<amount>10</amount>
-				<mode>DIFF</mode>
 				<type>MAGIC</type>
 			</effect>
 		</effects>
@@ -1646,23 +1593,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1675,23 +1622,22 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>15</SHOCK>
 			</effect>
-			<effect name="EnableCloak" />
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>6.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1704,24 +1650,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>6.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>282</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>29.5</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1734,20 +1679,19 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>6.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-6</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -1761,20 +1705,19 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>6.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-6</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
@@ -1788,23 +1731,22 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>15</HOLD>
 			</effect>
-			<effect name="EnableCloak" />
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>5.3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>3.24</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1817,24 +1759,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>5.3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>3.24</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>1.066</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1847,20 +1788,19 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>6.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-6</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
@@ -1874,24 +1814,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>6.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>282</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>29.5</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1904,24 +1843,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>2.66</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>2.66</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>6.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1934,24 +1872,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="ReduceCancel">
+			<effect name="p_reduce_cancel">
 				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>22</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1964,24 +1901,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="ReduceCancel">
+			<effect name="p_reduce_cancel">
 				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-6</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -1995,24 +1931,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>3.3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>3.3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -2025,20 +1960,19 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>6.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -2052,29 +1986,29 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<DERANGEMENT>10</DERANGEMENT>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DERANGEMENT>10</DERANGEMENT>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>12</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>38</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>0.23</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>30</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>105</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2087,7 +2021,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- PvP Weapon - CP Drain -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2109,7 +2043,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- PvP Weapon - Cancel -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2131,7 +2065,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- PvP Weapon - Ignore Shield Defense -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2153,7 +2087,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- PvP Weapon - Attack Chance -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2175,7 +2109,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Weapon - Casting -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2195,7 +2129,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- PvP Weapon - Rapid Fire -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2217,7 +2151,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- PvP Weapon - Decrease Range -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2239,7 +2173,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- PvP Weapon - Decrease Resist -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2261,7 +2195,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Shield - Reflect Damage -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2281,7 +2215,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Armor - Damage Down -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2301,7 +2235,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Armor - Critical Down -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2321,7 +2255,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillBySkill">
+			<effect name="p_trigger_skill_by_skill">
 				<!-- Major Heal -->
 				<!-- PvP Armor - Heal -->
 				<castSkillId>1401</castSkillId>
@@ -2339,7 +2273,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Armor - Speed Down -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2359,7 +2293,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- PvP Armor - Mirage -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2393,7 +2327,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2421,7 +2355,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CpRegen">
+			<effect name="p_cp_regen">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2434,7 +2368,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Talisman - Increase Force -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2454,7 +2388,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TransferDamageToSummon">
+			<effect name="p_transfer_damage_summon">
 				<amount>10</amount>
 			</effect>
 		</effects>
@@ -2465,7 +2399,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>1.47</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2478,7 +2412,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>9.55</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2491,7 +2425,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>0.59</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2504,7 +2438,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>0.59</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2517,11 +2451,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>2.08</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>123</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2534,11 +2468,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>0.83</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>49</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2551,11 +2485,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>0.83</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>49</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2568,11 +2502,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>1.25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>74</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2585,11 +2519,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>7.24</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>294</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2602,7 +2536,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2615,7 +2549,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>2.08</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2628,7 +2562,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>0.83</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2641,7 +2575,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>0.83</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2654,7 +2588,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="ResistDDMagic">
+			<effect name="p_resist_dd_magic">
 				<amount>2</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2667,7 +2601,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>49</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2680,7 +2614,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>49</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2693,7 +2627,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>73</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2706,7 +2640,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>122</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2719,7 +2653,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>833</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2732,7 +2666,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="ResistDDMagic">
+			<effect name="p_resist_dd_magic">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2745,11 +2679,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>1.25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="WeightPenalty">
+			<effect name="p_weight_penalty">
 				<amount>1440</amount>
 			</effect>
 		</effects>
@@ -2761,11 +2695,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>0.83</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="WeightPenalty">
+			<effect name="p_weight_penalty">
 				<amount>960</amount>
 			</effect>
 		</effects>
@@ -2777,11 +2711,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>17.08</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="WeightPenalty">
+			<effect name="p_weight_penalty">
 				<amount>11038</amount>
 			</effect>
 		</effects>
@@ -2793,11 +2727,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>0.83</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="WeightPenalty">
+			<effect name="p_weight_penalty">
 				<amount>960</amount>
 			</effect>
 		</effects>
@@ -2809,7 +2743,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>1.25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2822,7 +2756,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>0.83</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2835,11 +2769,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>17.08</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2852,7 +2786,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>0.83</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2865,11 +2799,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Breath">
+			<effect name="p_breath">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>53</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2882,11 +2816,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Breath">
+			<effect name="p_breath">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>53</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2899,11 +2833,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Breath">
+			<effect name="p_breath">
 				<amount>383</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>1093</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2916,11 +2850,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Breath">
+			<effect name="p_breath">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>80</amount>
 				<mode>DIFF</mode>
 			</effect>

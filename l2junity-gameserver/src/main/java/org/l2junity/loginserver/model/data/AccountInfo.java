@@ -20,13 +20,17 @@ package org.l2junity.loginserver.model.data;
 
 import java.util.Objects;
 
-import com.warrenstrange.googleauth.GoogleAuthenticator;
+import org.l2junity.commons.util.GoogleAuthenticator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author HorridoJoho
  */
 public final class AccountInfo
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(AccountInfo.class);
+	
 	private final String _login;
 	private final String _passHash;
 	private final int _accessLevel;
@@ -66,8 +70,15 @@ public final class AccountInfo
 			return true;
 		}
 		
-		final GoogleAuthenticator gAuth = new GoogleAuthenticator();
-		return gAuth.authorize(_otpKey, otp);
+		try
+		{
+			return GoogleAuthenticator.authorize(_otpKey, otp);
+		}
+		catch (Exception e)
+		{
+			LOGGER.warn("Failed to verify token: {} for account: {}", otp, _login, e);
+			return false;
+		}
 	}
 	
 	public boolean checkPassHash(final String passHash)

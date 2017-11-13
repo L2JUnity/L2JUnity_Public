@@ -18,12 +18,14 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.gameserver.data.xml.impl.EnchantItemData;
+import java.util.List;
+
+import org.l2junity.gameserver.enums.ItemSkillType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.EnchantItemRequest;
-import org.l2junity.gameserver.model.items.enchant.EnchantScroll;
-import org.l2junity.gameserver.model.items.enchant.EnchantSupportItem;
+import org.l2junity.gameserver.model.holders.ItemSkillHolder;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
+import org.l2junity.gameserver.model.skills.SkillConditionScope;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExPutEnchantSupportItemResult;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -60,13 +62,12 @@ public class RequestExTryToPutEnchantSupportItem implements IClientIncomingPacke
 			return;
 		}
 		
-		request.setEnchantingItem(_enchantObjectId);
 		request.setSupportItem(_supportObjectId);
 		
 		final ItemInstance item = request.getEnchantingItem();
 		final ItemInstance scroll = request.getEnchantingScroll();
 		final ItemInstance support = request.getSupportItem();
-		if ((item == null) || (scroll == null) || (support == null))
+		if ((item == null) || (scroll == null) || (support == null) || (request.getEnchantingItem().getObjectId() != _enchantObjectId))
 		{
 			// message may be custom
 			activeChar.sendPacket(SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITIONS);
@@ -75,11 +76,18 @@ public class RequestExTryToPutEnchantSupportItem implements IClientIncomingPacke
 			return;
 		}
 		
-		final EnchantScroll scrollTemplate = EnchantItemData.getInstance().getEnchantScroll(scroll);
-		final EnchantSupportItem supportTemplate = EnchantItemData.getInstance().getSupportItem(support);
-		if ((scrollTemplate == null) || (supportTemplate == null) || !scrollTemplate.isValid(item, supportTemplate))
+		final List<ItemSkillHolder> skills = support.getItem().getSkills(ItemSkillType.NORMAL);
+		if (skills == null)
 		{
-			// message may be custom
+			activeChar.sendPacket(SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITIONS);
+			request.setSupportItem(PlayerInstance.ID_NONE);
+			activeChar.sendPacket(new ExPutEnchantSupportItemResult(0));
+			LOGGER.warn("Missing skills for support item {}", support.getItem());
+			return;
+		}
+		
+		if (!skills.stream().allMatch(skill -> skill.getSkill().checkConditions(SkillConditionScope.GENERAL, activeChar, item)))
+		{
 			activeChar.sendPacket(SystemMessageId.INAPPROPRIATE_ENCHANT_CONDITIONS);
 			request.setSupportItem(PlayerInstance.ID_NONE);
 			activeChar.sendPacket(new ExPutEnchantSupportItemResult(0));

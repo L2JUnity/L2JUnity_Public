@@ -18,17 +18,24 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
-import org.l2junity.gameserver.model.FishingBaitData;
+import org.l2junity.gameserver.loader.LoadGroup;
+import org.l2junity.gameserver.model.StatsSet;
+import org.l2junity.gameserver.model.fishing.FishingBait;
+import org.l2junity.gameserver.model.fishing.FishingRod;
+import org.l2junity.gameserver.model.holders.CatchHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
+
+import net.objecthunter.exp4j.ExpressionBuilder;
 
 /**
  * This class holds the Fishing information.
@@ -37,109 +44,87 @@ import org.w3c.dom.Node;
 public final class FishingData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(FishingData.class);
-	private final Map<Integer, FishingBaitData> _baitData = new HashMap<>();
+	private final Map<Integer, FishingRod> _rodData = new HashMap<>();
+	private final Map<Integer, FishingBait> _baitData = new HashMap<>();
 	private int _minPlayerLevel;
 	private int _baitDistanceMin;
 	private int _baitDistanceMax;
-	private int _fishingTimeMin;
-	private int _fishingTimeMax;
-	private int _fishingTimeWaitMin;
-	private int _fishingTimeWaitMax;
-	private int _expRateMin;
-	private int _expRateMax;
-	private int _spRateMin;
-	private int _spRateMax;
+	private int _catchRate;
+	private ExpressionBuilder _expFormula;
+	private double _spRate;
 	
 	/**
 	 * Instantiates a new fishing data.
 	 */
 	protected FishingData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("fishing")
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
+		_rodData.clear();
 		_baitData.clear();
 		parseDatapackFile("data/fishing.xml");
 		LOGGER.info("Loaded Fishing Data.");
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
-		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
+		forEach(doc, "list", listNode ->
 		{
-			if ("list".equalsIgnoreCase(n.getNodeName()))
+			forEach(listNode, "playerLevel", playerLevelNode ->
 			{
-				for (Node listItem = n.getFirstChild(); listItem != null; listItem = listItem.getNextSibling())
+				_minPlayerLevel = parseInteger(playerLevelNode.getAttributes(), "min");
+			});
+			
+			forEach(listNode, "baitDistance", baitDistanceNode ->
+			{
+				_baitDistanceMin = parseInteger(baitDistanceNode.getAttributes(), "min");
+				_baitDistanceMax = parseInteger(baitDistanceNode.getAttributes(), "max");
+			});
+			
+			forEach(listNode, "rate", rateNode ->
+			{
+				final String expression = parseString(rateNode.getAttributes(), "exp");
+				if (expression.startsWith("{") && expression.endsWith("}"))
 				{
-					switch (listItem.getNodeName())
-					{
-						case "playerLevel":
-						{
-							_minPlayerLevel = parseInteger(listItem.getAttributes(), "min");
-							break;
-						}
-						case "baitDistance":
-						{
-							_baitDistanceMin = parseInteger(listItem.getAttributes(), "min");
-							_baitDistanceMax = parseInteger(listItem.getAttributes(), "max");
-							break;
-						}
-						case "fishingTime":
-						{
-							_fishingTimeMin = parseInteger(listItem.getAttributes(), "min");
-							_fishingTimeMax = parseInteger(listItem.getAttributes(), "max");
-							break;
-						}
-						case "fishingTimeWait":
-						{
-							_fishingTimeWaitMin = parseInteger(listItem.getAttributes(), "min");
-							_fishingTimeWaitMax = parseInteger(listItem.getAttributes(), "max");
-							break;
-						}
-						case "experienceRate":
-						{
-							_expRateMin = parseInteger(listItem.getAttributes(), "min");
-							_expRateMax = parseInteger(listItem.getAttributes(), "max");
-							break;
-						}
-						case "skillPointsRate":
-						{
-							_spRateMin = parseInteger(listItem.getAttributes(), "min");
-							_spRateMax = parseInteger(listItem.getAttributes(), "max");
-							break;
-						}
-						case "baits":
-						{
-							for (Node bait = listItem.getFirstChild(); bait != null; bait = bait.getNextSibling())
-							{
-								if ("bait".equalsIgnoreCase(bait.getNodeName()))
-								{
-									final NamedNodeMap attrs = bait.getAttributes();
-									final int itemId = parseInteger(attrs, "itemId");
-									final int level = parseInteger(attrs, "level");
-									final double chance = parseDouble(attrs, "chance");
-									final FishingBaitData baitData = new FishingBaitData(itemId, level, chance);
-									
-									for (Node c = bait.getFirstChild(); c != null; c = c.getNextSibling())
-									{
-										if ("catch".equalsIgnoreCase(c.getNodeName()))
-										{
-											baitData.addReward(parseInteger(c.getAttributes(), "itemId"));
-										}
-									}
-									_baitData.put(baitData.getItemId(), baitData);
-								}
-							}
-							break;
-						}
-					}
+					_expFormula = new ExpressionBuilder(expression);
 				}
-			}
-		}
+				else
+				{
+					throw new IllegalArgumentException("Fishing exp node should be a formula !");
+				}
+				_spRate = parseDouble(rateNode.getAttributes(), "spRate");
+			});
+			
+			forEach(listNode, "catchRate", catchRateNode ->
+			{
+				_catchRate = parseInteger(catchRateNode.getAttributes(), "chance");
+			});
+			
+			forEach(listNode, "rods", rodsNode -> forEach(rodsNode, "rod", rodNode ->
+			{
+				_rodData.put(parseInteger(rodNode.getAttributes(), "id"), new FishingRod(new StatsSet(parseAttributes(rodNode))));
+			}));
+			
+			forEach(listNode, "baits", baitsNode -> forEach(baitsNode, "bait", baitNode ->
+			{
+				final FishingBait bait = new FishingBait(new StatsSet(parseAttributes(baitNode)));
+				forEach(baitNode, "catch", catchNode ->
+				{
+					bait.addCatch(new CatchHolder(new StatsSet(parseAttributes(catchNode))));
+				});
+				_baitData.put(bait.getItemId(), bait);
+			}));
+		});
+	}
+	
+	public int getBaitDataCount()
+	{
+		return _baitData.size();
 	}
 	
 	/**
@@ -147,9 +132,14 @@ public final class FishingData implements IGameXmlReader
 	 * @param baitItemId the item id
 	 * @return A list of reward item ids
 	 */
-	public FishingBaitData getBaitData(int baitItemId)
+	public FishingBait getBaitData(int baitItemId)
 	{
 		return _baitData.get(baitItemId);
+	}
+	
+	public FishingRod getRodData(int rodItemId)
+	{
+		return _rodData.get(rodItemId);
 	}
 	
 	public int getMinPlayerLevel()
@@ -167,50 +157,26 @@ public final class FishingData implements IGameXmlReader
 		return _baitDistanceMax;
 	}
 	
-	public int getFishingTimeMin()
+	public int getCatchRate()
 	{
-		return _fishingTimeMin;
+		return _catchRate;
 	}
 	
-	public int getFishingTimeMax()
+	public long getExpReward(int level, double multiplier)
 	{
-		return _fishingTimeMax;
+		return (long) _expFormula.variable("player.level").variable("catch.multiplier").build().setVariable("player.level", level).setVariable("catch.multiplier", multiplier).evaluate();
 	}
 	
-	public int getFishingTimeWaitMin()
+	public double getSpRate()
 	{
-		return _fishingTimeWaitMin;
-	}
-	
-	public int getFishingTimeWaitMax()
-	{
-		return _fishingTimeWaitMax;
-	}
-	
-	public int getExpRateMin()
-	{
-		return _expRateMin;
-	}
-	
-	public int getExpRateMax()
-	{
-		return _expRateMax;
-	}
-	
-	public int getSpRateMin()
-	{
-		return _spRateMin;
-	}
-	
-	public int getSpRateMax()
-	{
-		return _spRateMax;
+		return _spRate;
 	}
 	
 	/**
 	 * Gets the single instance of FishingData.
 	 * @return single instance of FishingData
 	 */
+	@InstanceGetter
 	public static FishingData getInstance()
 	{
 		return SingletonHolder._instance;

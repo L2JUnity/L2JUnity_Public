@@ -18,11 +18,15 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.GameTimeController;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.enums.Position;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,15 +55,14 @@ public final class HitConditionBonusData implements IGameXmlReader
 	 */
 	protected HitConditionBonusData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		parseDatapackFile("data/stats/hitConditionBonus.xml");
 		LOGGER.info("Loaded Hit Condition bonuses.");
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			LOGGER.info("Front bonus: {}", frontBonus);
 			LOGGER.info("Side bonus: {}", sideBonus);
@@ -71,8 +74,14 @@ public final class HitConditionBonusData implements IGameXmlReader
 		}
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		// FIXME Tardish way to count "loaded elements"
+		return frontBonus + sideBonus + backBonus + highBonus + lowBonus + darkBonus + rainBonus;
+	}
+	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node d = doc.getFirstChild().getFirstChild(); d != null; d = d.getNextSibling())
 		{
@@ -138,7 +147,7 @@ public final class HitConditionBonusData implements IGameXmlReader
 		}
 		
 		// Get weather bonus
-		if (GameTimeController.getInstance().isNight())
+		if (GameTimeManager.getInstance().isNight())
 		{
 			mod += darkBonus;
 			// else if () No rain support yet.
@@ -146,17 +155,17 @@ public final class HitConditionBonusData implements IGameXmlReader
 		}
 		
 		// Get side bonus
-		if (attacker.isBehindTarget(true))
+		switch (Position.getPosition(attacker, target))
 		{
-			mod += backBonus;
-		}
-		else if (attacker.isInFrontOfTarget())
-		{
-			mod += frontBonus;
-		}
-		else
-		{
-			mod += sideBonus;
+			case SIDE:
+				mod += sideBonus;
+				break;
+			case BACK:
+				mod += backBonus;
+				break;
+			default:
+				mod += frontBonus;
+				break;
 		}
 		
 		// If (mod / 100) is less than 0, return 0, because we can't lower more than 100%.
@@ -167,6 +176,7 @@ public final class HitConditionBonusData implements IGameXmlReader
 	 * Gets the single instance of HitConditionBonus.
 	 * @return single instance of HitConditionBonus
 	 */
+	@InstanceGetter
 	public static HitConditionBonusData getInstance()
 	{
 		return SingletonHolder._instance;

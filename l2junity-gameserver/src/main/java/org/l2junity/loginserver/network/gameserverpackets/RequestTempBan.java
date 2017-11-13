@@ -23,7 +23,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.loginserver.LoginController;
 import org.l2junity.util.network.BaseRecievePacket;
 import org.slf4j.Logger;

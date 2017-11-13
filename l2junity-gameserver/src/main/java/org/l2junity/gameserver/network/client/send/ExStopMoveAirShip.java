@@ -32,9 +32,9 @@ public class ExStopMoveAirShip implements IClientOutgoingPacket
 	public ExStopMoveAirShip(Creature ship)
 	{
 		_objectId = ship.getObjectId();
-		_x = ship.getX();
-		_y = ship.getY();
-		_z = ship.getZ();
+		_x = (int) ship.getX();
+		_y = (int) ship.getY();
+		_z = (int) ship.getZ();
 		_heading = ship.getHeading();
 	}
 	

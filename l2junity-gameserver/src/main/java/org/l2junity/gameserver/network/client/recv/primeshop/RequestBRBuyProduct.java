@@ -20,7 +20,7 @@ package org.l2junity.gameserver.network.client.recv.primeshop;
 
 import java.util.Calendar;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.PrimeShopData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.PrimeShopRequest;
@@ -79,6 +79,7 @@ public final class RequestBRBuyProduct implements IClientIncomingPacket
 			if (paymentId < 0)
 			{
 				activeChar.sendPacket(new ExBRBuyProduct(ExBrProductReplyType.LACK_OF_POINT));
+				activeChar.removeRequest(PrimeShopRequest.class);
 				return;
 			}
 			else if (paymentId > 0)
@@ -86,6 +87,7 @@ public final class RequestBRBuyProduct implements IClientIncomingPacket
 				if (!activeChar.destroyItemByItemId("PrimeShop-" + item.getBrId(), paymentId, price, activeChar, true))
 				{
 					activeChar.sendPacket(new ExBRBuyProduct(ExBrProductReplyType.LACK_OF_POINT));
+					activeChar.removeRequest(PrimeShopRequest.class);
 					return;
 				}
 			}
@@ -94,6 +96,7 @@ public final class RequestBRBuyProduct implements IClientIncomingPacket
 				if (activeChar.getPrimePoints() < price)
 				{
 					activeChar.sendPacket(new ExBRBuyProduct(ExBrProductReplyType.LACK_OF_POINT));
+					activeChar.removeRequest(PrimeShopRequest.class);
 					return;
 				}
 				activeChar.setPrimePoints(activeChar.getPrimePoints() - price);
@@ -123,12 +126,12 @@ public final class RequestBRBuyProduct implements IClientIncomingPacket
 		if (item == null)
 		{
 			player.sendPacket(new ExBRBuyProduct(ExBrProductReplyType.INVALID_PRODUCT));
-			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to buy invalid brId from Prime", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to buy invalid brId from Prime", GeneralConfig.DEFAULT_PUNISH);
 			return false;
 		}
-		else if ((count < 1) && (count > 99))
+		else if ((count < 1) || (count > 99))
 		{
-			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to buy invalid itemcount [" + count + "] from Prime", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to buy invalid itemcount [" + count + "] from Prime", GeneralConfig.DEFAULT_PUNISH);
 			player.sendPacket(new ExBRBuyProduct(ExBrProductReplyType.INVALID_USER_STATE));
 			return false;
 		}

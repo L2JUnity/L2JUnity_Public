@@ -20,9 +20,10 @@ package org.l2junity.gameserver.instancemanager.tasks;
 
 import java.util.Calendar;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.instancemanager.FourSepulchersManager;
 
 /**
@@ -63,14 +64,14 @@ public final class FourSepulchersChangeAttackTimeTask implements Runnable
 				{
 					final Calendar inter = Calendar.getInstance();
 					inter.set(Calendar.MINUTE, (int) min);
-					ThreadPoolManager.getInstance().scheduleGeneral(new FourSepulchersManagerSayTask(), inter.getTimeInMillis() - Calendar.getInstance().getTimeInMillis());
+					ThreadPool.schedule(new FourSepulchersManagerSayTask(), inter.getTimeInMillis() - Calendar.getInstance().getTimeInMillis(), TimeUnit.MILLISECONDS);
 					break;
 				}
 			}
 		}
 		else
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(new FourSepulchersManagerSayTask(), 5 * 60400);
+			ThreadPool.schedule(new FourSepulchersManagerSayTask(), 5 * 60400, TimeUnit.MILLISECONDS);
 		}
 		// searching time when attack time will be ended:
 		// counting difference between time when attack time ends and
@@ -82,10 +83,10 @@ public final class FourSepulchersChangeAttackTimeTask implements Runnable
 		}
 		else
 		{
-			interval = Config.FS_TIME_ATTACK * 60000L;
+			interval = GeneralConfig.FS_TIME_ATTACK * 60000L;
 		}
 		
-		manager.setChangeCoolDownTimeTask(ThreadPoolManager.getInstance().scheduleGeneral(new FourSepulchersChangeCoolDownTimeTask(), interval));
+		manager.setChangeCoolDownTimeTask(ThreadPool.schedule(new FourSepulchersChangeCoolDownTimeTask(), interval, TimeUnit.MILLISECONDS));
 		final ScheduledFuture<?> changeAttackTimeTask = manager.getChangeAttackTimeTask();
 		
 		if (changeAttackTimeTask != null)

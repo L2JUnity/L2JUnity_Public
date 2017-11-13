@@ -18,12 +18,10 @@
  */
 package org.l2junity.gameserver.model.actor.stat;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.ExperienceData;
-import org.l2junity.gameserver.data.xml.impl.PetDataTable;
 import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
 import org.l2junity.gameserver.model.actor.Playable;
-import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayableExpChanged;
@@ -35,7 +33,7 @@ import org.slf4j.LoggerFactory;
 
 public class PlayableStat extends CharStat
 {
-	protected static final Logger _log = LoggerFactory.getLogger(PlayableStat.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(PlayableStat.class);
 	
 	public PlayableStat(Playable activeChar)
 	{
@@ -63,14 +61,7 @@ public class PlayableStat extends CharStat
 		final int oldLevel = getLevel();
 		setExp(getExp() + value);
 		
-		byte minimumLevel = 1;
-		if (getActiveChar().isPet())
-		{
-			// get minimum level from L2NpcTemplate
-			minimumLevel = (byte) PetDataTable.getInstance().getPetMinLevel(((L2PetInstance) getActiveChar()).getTemplate().getId());
-		}
-		
-		byte level = minimumLevel; // minimum level
+		byte level = 1;
 		
 		for (byte tmp = level; tmp <= getMaxLevel(); tmp++)
 		{
@@ -82,7 +73,7 @@ public class PlayableStat extends CharStat
 			break;
 		}
 		
-		if ((level != getLevel()) && (level >= minimumLevel))
+		if ((level != getLevel()) && (level >= 1))
 		{
 			addLevel((byte) (level - getLevel()));
 		}
@@ -108,13 +99,7 @@ public class PlayableStat extends CharStat
 		
 		setExp(getExp() - value);
 		
-		byte minimumLevel = 1;
-		if (getActiveChar().isPet())
-		{
-			// get minimum level from L2NpcTemplate
-			minimumLevel = (byte) PetDataTable.getInstance().getPetMinLevel(((L2PetInstance) getActiveChar()).getTemplate().getId());
-		}
-		byte level = minimumLevel;
+		byte level = 1;
 		
 		for (byte tmp = level; tmp <= getMaxLevel(); tmp++)
 		{
@@ -125,7 +110,7 @@ public class PlayableStat extends CharStat
 			level = --tmp;
 			break;
 		}
-		if ((level != getLevel()) && (level >= minimumLevel))
+		if ((level != getLevel()) && (level >= 1))
 		{
 			addLevel((byte) (level - getLevel()));
 		}
@@ -134,17 +119,8 @@ public class PlayableStat extends CharStat
 	
 	public boolean removeExpAndSp(long removeExp, long removeSp)
 	{
-		boolean expRemoved = false;
-		boolean spRemoved = false;
-		if (removeExp > 0)
-		{
-			expRemoved = removeExp(removeExp);
-		}
-		if (removeSp > 0)
-		{
-			spRemoved = removeSp(removeSp);
-		}
-		
+		final boolean expRemoved = (removeExp > 0) && removeExp(removeExp);
+		final boolean spRemoved = (removeSp > 0) && removeSp(removeSp);
 		return expRemoved || spRemoved;
 	}
 	
@@ -172,7 +148,7 @@ public class PlayableStat extends CharStat
 			setExp(getExpForLevel(getLevel()));
 		}
 		
-		if (!levelIncreased && (getActiveChar() instanceof PlayerInstance) && !getActiveChar().isGM() && Config.DECREASE_SKILL_LEVEL)
+		if (!levelIncreased && (getActiveChar() instanceof PlayerInstance) && !getActiveChar().isGM() && PlayerConfig.DECREASE_SKILL_LEVEL)
 		{
 			((PlayerInstance) getActiveChar()).checkPlayerSkills();
 		}
@@ -192,18 +168,18 @@ public class PlayableStat extends CharStat
 	{
 		if (value < 0)
 		{
-			_log.warn("wrong usage");
+			LOGGER.warn("wrong usage");
 			return false;
 		}
 		long currentSp = getSp();
-		if (currentSp >= Config.MAX_SP)
+		if (currentSp >= PlayerConfig.MAX_SP)
 		{
 			return false;
 		}
 		
-		if (currentSp > (Config.MAX_SP - value))
+		if (currentSp > (PlayerConfig.MAX_SP - value))
 		{
-			value = Config.MAX_SP - currentSp;
+			value = PlayerConfig.MAX_SP - currentSp;
 		}
 		
 		setSp(currentSp + value);

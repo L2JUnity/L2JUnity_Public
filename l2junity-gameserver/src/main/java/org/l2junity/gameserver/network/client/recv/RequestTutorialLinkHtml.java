@@ -18,6 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
+import org.l2junity.gameserver.handler.AdminCommandHandler;
 import org.l2junity.gameserver.handler.BypassHandler;
 import org.l2junity.gameserver.handler.IBypassHandler;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -47,7 +48,7 @@ public class RequestTutorialLinkHtml implements IClientIncomingPacket
 		
 		if (_bypass.startsWith("admin_"))
 		{
-			player.useAdminCommand(_bypass);
+			AdminCommandHandler.getInstance().useAdminCommand(player, _bypass, true);
 		}
 		else
 		{

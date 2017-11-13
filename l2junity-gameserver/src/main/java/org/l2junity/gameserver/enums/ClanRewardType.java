@@ -29,8 +29,8 @@ import org.l2junity.gameserver.model.pledge.ClanRewardBonus;
  */
 public enum ClanRewardType
 {
-	MEMBERS_ONLINE(0, L2Clan::getPreviousMaxOnlinePlayers),
-	HUNTING_MONSTERS(1, L2Clan::getPreviousHuntingPoints);
+	MEMBERS_ONLINE(0, L2Clan::getMaxOnlineMembers),
+	HUNTING_MONSTERS(1, L2Clan::getHuntingPoints);
 	
 	final int _clientId;
 	final int _mask;

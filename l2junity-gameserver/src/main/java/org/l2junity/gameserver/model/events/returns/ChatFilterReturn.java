@@ -23,14 +23,14 @@ import org.l2junity.gameserver.enums.ChatType;
 /**
  * @author UnAfraid
  */
-public class ChatFilterReturn extends AbstractEventReturn
+public class ChatFilterReturn extends TerminateReturn
 {
 	private final String _filteredText;
 	private final ChatType _chatType;
 	
-	public ChatFilterReturn(String filteredText, ChatType newChatType, boolean override, boolean abort)
+	public ChatFilterReturn(String filteredText, ChatType newChatType, boolean override, boolean abort, boolean terminate)
 	{
-		super(override, abort);
+		super(override, abort, terminate);
 		_filteredText = filteredText;
 		_chatType = newChatType;
 	}

@@ -19,17 +19,18 @@
 package org.l2junity.gameserver.model.stats.finalizers;
 
 import java.util.HashSet;
-import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.Set;
 
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.ArmorSetsData;
 import org.l2junity.gameserver.model.ArmorSet;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -37,7 +38,7 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class BaseStatsFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
@@ -64,7 +65,7 @@ public class BaseStatsFinalizer implements IStatsFunction
 			// Henna calculation
 			baseValue += player.getHennaValue(BaseStats.valueOf(stat));
 		}
-		return validateValue(creature, Stats.defaultValue(creature, stat, baseValue), 1, BaseStats.MAX_STAT_VALUE - 1);
+		return validateValue(creature, DoubleStat.defaultValue(creature, stat, baseValue), 1, PlayerConfig.MAX_BASE_STAT);
 	}
 	
 }

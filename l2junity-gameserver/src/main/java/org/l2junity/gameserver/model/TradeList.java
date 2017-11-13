@@ -18,18 +18,18 @@
  */
 package org.l2junity.gameserver.model;
 
-import static org.l2junity.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
-
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.AdminConfig;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.itemcontainer.PcInventory;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
@@ -45,7 +45,7 @@ import org.slf4j.LoggerFactory;
  */
 public class TradeList
 {
-	private static final Logger _log = LoggerFactory.getLogger(TradeList.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TradeList.class);
 	
 	private final PlayerInstance _owner;
 	private PlayerInstance _partner;
@@ -205,45 +205,45 @@ public class TradeList
 	{
 		if (isLocked())
 		{
-			_log.warn(_owner.getName() + ": Attempt to modify locked TradeList!");
+			LOGGER.warn(_owner.getName() + ": Attempt to modify locked TradeList!");
 			return null;
 		}
 		
 		WorldObject o = World.getInstance().findObject(objectId);
 		if (!(o instanceof ItemInstance))
 		{
-			_log.warn(_owner.getName() + ": Trying to add something other than an item!");
+			LOGGER.warn(_owner.getName() + ": Trying to add something other than an item!");
 			return null;
 		}
 		
 		ItemInstance item = (ItemInstance) o;
-		if (!(item.isTradeable() || (getOwner().isGM() && Config.GM_TRADE_RESTRICTED_ITEMS)) || item.isQuestItem())
+		if (!(item.isTradeable() || (getOwner().isGM() && AdminConfig.GM_TRADE_RESTRICTED_ITEMS)) || item.isQuestItem())
 		{
-			_log.warn(_owner.getName() + ": Attempt to add a restricted item!");
+			LOGGER.warn(_owner.getName() + ": Attempt to add a restricted item!");
 			return null;
 		}
 		
 		if (!getOwner().getInventory().canManipulateWithItemId(item.getId()))
 		{
-			_log.warn(_owner.getName() + ": Attempt to add an item that can't manipualte!");
+			LOGGER.warn(_owner.getName() + ": Attempt to add an item that can't manipualte!");
 			return null;
 		}
 		
 		if ((count <= 0) || (count > item.getCount()))
 		{
-			_log.warn(_owner.getName() + ": Attempt to add an item with invalid item count!");
+			LOGGER.warn(_owner.getName() + ": Attempt to add an item with invalid item count!");
 			return null;
 		}
 		
 		if (!item.isStackable() && (count > 1))
 		{
-			_log.warn(_owner.getName() + ": Attempt to add non-stackable item to TradeList with count > 1!");
+			LOGGER.warn(_owner.getName() + ": Attempt to add non-stackable item to TradeList with count > 1!");
 			return null;
 		}
 		
-		if ((Inventory.MAX_ADENA / count) < price)
+		if (!ItemContainer.validateCount(Inventory.ADENA_ID, price * count))
 		{
-			_log.warn(_owner.getName() + ": Attempt to overflow adena !");
+			LOGGER.warn(_owner.getName() + ": Attempt to overflow adena !");
 			return null;
 		}
 		
@@ -251,7 +251,7 @@ public class TradeList
 		{
 			if (checkitem.getObjectId() == objectId)
 			{
-				_log.warn(_owner.getName() + ": Attempt to add an item that is already present!");
+				LOGGER.warn(_owner.getName() + ": Attempt to add an item that is already present!");
 				return null;
 			}
 		}
@@ -275,14 +275,14 @@ public class TradeList
 	{
 		if (isLocked())
 		{
-			_log.warn(_owner.getName() + ": Attempt to modify locked TradeList!");
+			LOGGER.warn(_owner.getName() + ": Attempt to modify locked TradeList!");
 			return null;
 		}
 		
 		L2Item item = ItemTable.getInstance().getTemplate(itemId);
 		if (item == null)
 		{
-			_log.warn(_owner.getName() + ": Attempt to add invalid item to TradeList!");
+			LOGGER.warn(_owner.getName() + ": Attempt to add invalid item to TradeList!");
 			return null;
 		}
 		
@@ -293,13 +293,13 @@ public class TradeList
 		
 		if (!item.isStackable() && (count > 1))
 		{
-			_log.warn(_owner.getName() + ": Attempt to add non-stackable item to TradeList with count > 1!");
+			LOGGER.warn(_owner.getName() + ": Attempt to add non-stackable item to TradeList with count > 1!");
 			return null;
 		}
 		
-		if ((Inventory.MAX_ADENA / count) < price)
+		if (!ItemContainer.validateCount(Inventory.ADENA_ID, price * count))
 		{
-			_log.warn(_owner.getName() + ": Attempt to overflow adena !");
+			LOGGER.warn(_owner.getName() + ": Attempt to overflow adena !");
 			return null;
 		}
 		
@@ -322,7 +322,13 @@ public class TradeList
 	{
 		if (isLocked())
 		{
-			_log.warn(_owner.getName() + ": Attempt to modify locked TradeList!");
+			LOGGER.warn(_owner.getName() + ": Attempt to modify locked TradeList!");
+			return null;
+		}
+		
+		if (count < 0)
+		{
+			LOGGER.warn(_owner.getName() + ": Attempt to remove " + count + " items from TradeList!");
 			return null;
 		}
 		
@@ -336,7 +342,7 @@ public class TradeList
 					TradeList partnerList = _partner.getActiveTradeList();
 					if (partnerList == null)
 					{
-						_log.warn(_partner.getName() + ": Trading partner (" + _partner.getName() + ") is invalid in this trade!");
+						LOGGER.warn(_partner.getName() + ": Trading partner (" + _partner.getName() + ") is invalid in this trade!");
 						return null;
 					}
 					partnerList.invalidateConfirmation();
@@ -411,7 +417,7 @@ public class TradeList
 			TradeList partnerList = _partner.getActiveTradeList();
 			if (partnerList == null)
 			{
-				_log.warn(_partner.getName() + ": Trading partner (" + _partner.getName() + ") is invalid in this trade!");
+				LOGGER.warn(_partner.getName() + ": Trading partner (" + _partner.getName() + ") is invalid in this trade!");
 				return false;
 			}
 			
@@ -480,7 +486,7 @@ public class TradeList
 		// Check for Owner validity
 		if ((_owner == null) || (World.getInstance().getPlayer(_owner.getObjectId()) == null))
 		{
-			_log.warn("Invalid owner of TradeList");
+			LOGGER.warn("Invalid owner of TradeList");
 			return false;
 		}
 		
@@ -490,7 +496,7 @@ public class TradeList
 			ItemInstance item = _owner.checkItemManipulation(titem.getObjectId(), titem.getCount(), "transfer");
 			if ((item == null) || (item.getCount() < 1))
 			{
-				_log.warn(_owner.getName() + ": Invalid Item in TradeList");
+				LOGGER.warn(_owner.getName() + ": Invalid Item in TradeList");
 				return false;
 			}
 		}
@@ -626,8 +632,8 @@ public class TradeList
 		else
 		{
 			// Prepare inventory update packet
-			InventoryUpdate ownerIU = Config.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
-			InventoryUpdate partnerIU = Config.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
+			InventoryUpdate ownerIU = GeneralConfig.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
+			InventoryUpdate partnerIU = GeneralConfig.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
 			
 			// Transfer items
 			partnerList.TransferItems(getOwner(), partnerIU, ownerIU);
@@ -713,7 +719,7 @@ public class TradeList
 			{
 				if (isPackaged())
 				{
-					Util.handleIllegalPlayerAction(player, "[TradeList.privateStoreBuy()] Player " + player.getName() + " tried to cheat the package sell and buy only a part of the package! Ban this player for bot usage!", Config.DEFAULT_PUNISH);
+					Util.handleIllegalPlayerAction(player, "[TradeList.privateStoreBuy()] Player " + player.getName() + " tried to cheat the package sell and buy only a part of the package! Ban this player for bot usage!", GeneralConfig.DEFAULT_PUNISH);
 					return 2;
 				}
 				
@@ -722,7 +728,7 @@ public class TradeList
 			}
 			
 			// check for overflow in the single item
-			if ((MAX_ADENA / item.getCount()) < item.getPrice())
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, item.getCount() * item.getPrice()))
 			{
 				// private store attempting to overflow - disable it
 				lock();
@@ -731,7 +737,7 @@ public class TradeList
 			
 			totalPrice += item.getCount() * item.getPrice();
 			// check for overflow of the total price
-			if ((MAX_ADENA < totalPrice) || (totalPrice < 0))
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, totalPrice))
 			{
 				// private store attempting to overflow - disable it
 				lock();
@@ -884,10 +890,10 @@ public class TradeList
 	/**
 	 * Sell items to this PrivateStore list
 	 * @param player
-	 * @param items
+	 * @param requestedItems
 	 * @return : boolean true if success
 	 */
-	public synchronized boolean privateStoreSell(PlayerInstance player, ItemRequest[] items)
+	public synchronized boolean privateStoreSell(PlayerInstance player, ItemRequest[] requestedItems)
 	{
 		if (_locked)
 		{
@@ -910,12 +916,14 @@ public class TradeList
 		
 		long totalPrice = 0;
 		
-		for (ItemRequest item : items)
+		final TradeItem[] sellerItems = _items.toArray(new TradeItem[0]);
+		
+		for (ItemRequest item : requestedItems)
 		{
 			// searching item in tradelist using itemId
 			boolean found = false;
 			
-			for (TradeItem ti : _items)
+			for (TradeItem ti : sellerItems)
 			{
 				if (ti.getItem().getId() == item.getItemId())
 				{
@@ -940,7 +948,7 @@ public class TradeList
 			}
 			
 			// check for overflow in the single item
-			if ((MAX_ADENA / item.getCount()) < item.getPrice())
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, item.getCount() * item.getPrice()))
 			{
 				lock();
 				break;
@@ -948,7 +956,7 @@ public class TradeList
 			
 			long _totalPrice = totalPrice + (item.getCount() * item.getPrice());
 			// check for overflow of the total price
-			if ((MAX_ADENA < _totalPrice) || (_totalPrice < 0))
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, totalPrice))
 			{
 				lock();
 				break;
@@ -959,8 +967,19 @@ public class TradeList
 				continue;
 			}
 			
+			if ((item.getObjectId() < 1) || (item.getObjectId() > sellerItems.length))
+			{
+				continue;
+			}
+			
+			final TradeItem tradeItem = sellerItems[item.getObjectId() - 1];
+			if ((tradeItem == null) || (tradeItem.getItem().getId() != item.getItemId()))
+			{
+				continue;
+			}
+			
 			// Check if requested item is available for manipulation
-			int objectId = item.getObjectId();
+			int objectId = tradeItem.getObjectId();
 			ItemInstance oldItem = player.checkItemManipulation(objectId, item.getCount(), "sell");
 			// private store - buy use same objectId for buying several non-stackable items
 			if (oldItem == null)
@@ -980,7 +999,7 @@ public class TradeList
 			}
 			if (oldItem.getId() != item.getItemId())
 			{
-				Util.handleIllegalPlayerAction(player, player + " is cheating with sell items", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, player + " is cheating with sell items", GeneralConfig.DEFAULT_PUNISH);
 				return false;
 			}
 			

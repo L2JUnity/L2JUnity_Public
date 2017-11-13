@@ -18,14 +18,15 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -33,11 +34,11 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class MAttackFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
-		double baseValue = calcWeaponBaseValue(creature, stat);
+		double baseValue = creature.getStat().getValue(DoubleStat.MAGIC_ATTACK_ADD, calcWeaponBaseValue(creature, stat));
 		baseValue += calcEnchantedItemBonus(creature, stat);
 		if (creature.isPlayer())
 		{
@@ -45,20 +46,20 @@ public class MAttackFinalizer implements IStatsFunction
 			baseValue += calcEnchantBodyPart(creature, L2Item.SLOT_CHEST, L2Item.SLOT_FULL_ARMOR);
 		}
 		
-		if (Config.L2JMOD_CHAMPION_ENABLE && creature.isChampion())
+		if (L2JModsConfig.L2JMOD_CHAMPION_ENABLE && creature.isChampion())
 		{
-			baseValue *= Config.L2JMOD_CHAMPION_ATK;
+			baseValue *= L2JModsConfig.L2JMOD_CHAMPION_ATK;
 		}
 		if (creature.isRaid())
 		{
-			baseValue *= Config.RAID_MATTACK_MULTIPLIER;
+			baseValue *= NpcConfig.RAID_MATTACK_MULTIPLIER;
 		}
 		
 		// Calculate modifiers Magic Attack
 		final double chaMod = creature.isPlayer() ? BaseStats.CHA.calcBonus(creature) : 1.;
 		final double intBonus = BaseStats.INT.calcBonus(creature);
 		baseValue *= Math.pow(intBonus, 2) * Math.pow(creature.getLevelMod(), 2) * chaMod;
-		return Stats.defaultValue(creature, stat, baseValue);
+		return DoubleStat.defaultValue(creature, stat, baseValue);
 	}
 	
 	@Override

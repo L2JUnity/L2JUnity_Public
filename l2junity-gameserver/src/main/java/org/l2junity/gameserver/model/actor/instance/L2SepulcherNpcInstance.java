@@ -19,11 +19,12 @@
 package org.l2junity.gameserver.model.actor.instance;
 
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.ai.CtrlIntention;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
 import org.l2junity.gameserver.enums.ChatType;
 import org.l2junity.gameserver.enums.InstanceType;
@@ -41,12 +42,16 @@ import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
 import org.l2junity.gameserver.network.client.send.SocialAction;
 import org.l2junity.gameserver.network.client.send.string.NpcStringId;
 import org.l2junity.gameserver.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author sandman
  */
 public class L2SepulcherNpcInstance extends Npc
 {
+	protected static final Logger LOGGER = LoggerFactory.getLogger(L2SepulcherNpcInstance.class);
+	
 	protected Future<?> _closeTask = null;
 	protected Future<?> _spawnNextMysteriousBoxTask = null;
 	protected Future<?> _spawnMonsterTask = null;
@@ -116,9 +121,9 @@ public class L2SepulcherNpcInstance extends Npc
 		// Check if the L2PcInstance already target the L2NpcInstance
 		if (this != player.getTarget())
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.info("new target selected:" + getObjectId());
+				LOGGER.info("new target selected:" + getObjectId());
 			}
 			
 			// Set the target of the L2PcInstance player
@@ -209,7 +214,7 @@ public class L2SepulcherNpcInstance extends Npc
 				{
 					_spawnMonsterTask.cancel(true);
 				}
-				_spawnMonsterTask = ThreadPoolManager.getInstance().scheduleEffect(new SpawnMonster(getId()), 3500);
+				_spawnMonsterTask = ThreadPool.schedule(new SpawnMonster(getId()), 3500, TimeUnit.MILLISECONDS);
 				break;
 			
 			case 31455:
@@ -361,12 +366,12 @@ public class L2SepulcherNpcInstance extends Npc
 		{
 			_closeTask.cancel(true);
 		}
-		_closeTask = ThreadPoolManager.getInstance().scheduleEffect(new CloseNextDoor(doorId), 10000);
+		_closeTask = ThreadPool.schedule(new CloseNextDoor(doorId), 10000, TimeUnit.MILLISECONDS);
 		if (_spawnNextMysteriousBoxTask != null)
 		{
 			_spawnNextMysteriousBoxTask.cancel(true);
 		}
-		_spawnNextMysteriousBoxTask = ThreadPoolManager.getInstance().scheduleEffect(new SpawnNextMysteriousBox(npcId), 0);
+		_spawnNextMysteriousBoxTask = ThreadPool.schedule(new SpawnNextMysteriousBox(npcId), 0, TimeUnit.MILLISECONDS);
 	}
 	
 	private static class CloseNextDoor implements Runnable
@@ -389,7 +394,7 @@ public class L2SepulcherNpcInstance extends Npc
 			}
 			catch (Exception e)
 			{
-				_log.warn(e.getMessage());
+				LOGGER.warn(e.getMessage());
 			}
 		}
 	}

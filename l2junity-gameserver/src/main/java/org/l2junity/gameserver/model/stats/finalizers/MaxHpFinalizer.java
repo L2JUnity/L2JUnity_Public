@@ -18,16 +18,17 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.EnchantItemHPBonusData;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -35,7 +36,7 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class MaxHpFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
@@ -60,8 +61,8 @@ public class MaxHpFinalizer implements IStatsFunction
 			}
 		}
 		final double chaBonus = creature.isPlayer() ? BaseStats.CHA.calcBonus(creature) : 1.;
-		final double conBonus = creature.getCON() > 0 ? BaseStats.CON.calcBonus(creature) : 1.;
+		final double conBonus = creature.getCON() > 1 ? BaseStats.CON.calcBonus(creature) : 1.;
 		baseValue *= conBonus * chaBonus;
-		return Stats.defaultValue(creature, stat, baseValue);
+		return validateValue(creature, DoubleStat.defaultValue(creature, stat, baseValue), 1, creature.isPlayer() ? PlayerConfig.MAX_HP : Double.MAX_VALUE);
 	}
 }

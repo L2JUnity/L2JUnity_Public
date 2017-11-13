@@ -71,7 +71,7 @@ public class MoveToLocationAirShip implements IClientIncomingPacket
 			return;
 		}
 		
-		int z = ship.getZ();
+		double z = ship.getZ();
 		
 		switch (_command)
 		{

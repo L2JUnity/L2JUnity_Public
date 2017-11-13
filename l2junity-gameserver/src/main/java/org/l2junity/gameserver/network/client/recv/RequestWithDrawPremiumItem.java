@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.PremiumItem;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
@@ -60,12 +60,12 @@ public final class RequestWithDrawPremiumItem implements IClientIncomingPacket
 		}
 		else if (activeChar.getObjectId() != _charId)
 		{
-			Util.handleIllegalPlayerAction(activeChar, "[RequestWithDrawPremiumItem] Incorrect owner, Player: " + activeChar.getName(), Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "[RequestWithDrawPremiumItem] Incorrect owner, Player: " + activeChar.getName(), GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		else if (activeChar.getPremiumItemList().isEmpty())
 		{
-			Util.handleIllegalPlayerAction(activeChar, "[RequestWithDrawPremiumItem] Player: " + activeChar.getName() + " try to get item with empty list!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "[RequestWithDrawPremiumItem] Player: " + activeChar.getName() + " try to get item with empty list!", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		else if ((activeChar.getWeightPenalty() >= 3) || !activeChar.isInventoryUnder90(false))

@@ -46,12 +46,12 @@ public class SpawnTerritory
 		return _territory.getRandomPoint();
 	}
 	
-	public boolean isInsideZone(int x, int y, int z)
+	public boolean isInsideZone(double x, double y, double z)
 	{
 		return _territory.isInsideZone(x, y, z);
 	}
 	
-	public void visualizeZone(int z)
+	public void visualizeZone(double z)
 	{
 		_territory.visualizeZone(z);
 	}

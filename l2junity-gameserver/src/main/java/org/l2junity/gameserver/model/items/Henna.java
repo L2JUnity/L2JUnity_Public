@@ -26,7 +26,7 @@ import java.util.Map;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.stats.BaseStats;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 
 /**
  * Class for the Henna object.
@@ -88,7 +88,7 @@ public class Henna
 		return _dyeItemId;
 	}
 	
-	public int getBaseStats(Stats stat)
+	public int getBaseStats(DoubleStat stat)
 	{
 		return _baseStats.getOrDefault(stat, 0);
 	}

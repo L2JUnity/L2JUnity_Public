@@ -18,6 +18,7 @@
  */
 package org.l2junity.gameserver.ai;
 
+import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_ACTIVE;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_ATTACK;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_CAST;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_IDLE;
@@ -26,13 +27,15 @@ import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_MOVE_TO;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_PICK_UP;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_REST;
 
-import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.L2StaticObjectInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerAttack;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
+import org.l2junity.gameserver.model.interfaces.ILocational;
 import org.l2junity.gameserver.model.skills.Skill;
-import org.l2junity.gameserver.model.skills.targets.TargetType;
 
 public class PlayerAI extends PlayableAI
 {
@@ -87,7 +90,10 @@ public class PlayerAI extends PlayableAI
 		}
 		
 		// save current intention so it can be used after cast
-		saveNextIntention(_intention, globalArg0, globalArg1);
+		if ((_intention != AI_INTENTION_ACTIVE) && (_intention != AI_INTENTION_IDLE))
+		{
+			saveNextIntention(_intention, globalArg0, globalArg1);
+		}
 		super.changeIntention(intention, args);
 	}
 	
@@ -135,25 +141,7 @@ public class PlayerAI extends PlayableAI
 	{
 		if (getIntention() == AI_INTENTION_CAST)
 		{
-			// run interrupted or next intention
-			
-			IntentionCommand nextIntention = _nextIntention;
-			if (nextIntention != null)
-			{
-				if (nextIntention._crtlIntention != AI_INTENTION_CAST) // previous state shouldn't be casting
-				{
-					setIntention(nextIntention._crtlIntention, nextIntention._arg0, nextIntention._arg1);
-				}
-				else
-				{
-					setIntention(AI_INTENTION_IDLE);
-				}
-			}
-			else
-			{
-				// set intention to idle if skill doesn't change intention.
-				setIntention(AI_INTENTION_IDLE);
-			}
+			setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 		}
 	}
 	
@@ -195,7 +183,20 @@ public class PlayerAI extends PlayableAI
 	@Override
 	protected void onIntentionActive()
 	{
-		setIntention(AI_INTENTION_IDLE);
+		if (getIntention() != AI_INTENTION_ACTIVE)
+		{
+			final IntentionCommand nextIntention = _nextIntention;
+			if (nextIntention != null)
+			{
+				_nextIntention = null;
+				setIntention(nextIntention._crtlIntention, nextIntention._arg0, nextIntention._arg1);
+			}
+			else
+			{
+				changeIntention(AI_INTENTION_ACTIVE);
+			}
+		}
+		// Do nothing, no need for evtThink, because player is the thinker...
 	}
 	
 	/**
@@ -208,7 +209,7 @@ public class PlayerAI extends PlayableAI
 	 * </ul>
 	 */
 	@Override
-	protected void onIntentionMoveTo(Location loc)
+	protected void onIntentionMoveTo(ILocational loc)
 	{
 		if (getIntention() == AI_INTENTION_REST)
 		{
@@ -264,15 +265,15 @@ public class PlayerAI extends PlayableAI
 			return;
 		}
 		
-		_actor.doAttack((Creature) target);
+		_actor.doAutoAttack((Creature) target);
 	}
 	
 	private void thinkCast()
 	{
 		WorldObject target = _skill.getTarget(_actor, _forceUse, _dontMove, false);
-		if ((_skill.getTargetType() == TargetType.GROUND) && (_actor instanceof PlayerInstance))
+		if ((target == _actor) && _actor.isPlayer() && (_actor.asPlayer().getCurrentSkillWorldPosition() != null))
 		{
-			if (maybeMoveToPosition(((PlayerInstance) _actor).getCurrentSkillWorldPosition(), _actor.getMagicalAttackRange(_skill)))
+			if (maybeMoveToPosition(_actor.asPlayer().getCurrentSkillWorldPosition(), _actor.getMagicalAttackRange(_skill)))
 			{
 				return;
 			}
@@ -312,7 +313,7 @@ public class PlayerAI extends PlayableAI
 		{
 			return;
 		}
-		setIntention(AI_INTENTION_IDLE);
+		setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 		getActor().doPickupItem(target);
 	}
 	
@@ -335,7 +336,7 @@ public class PlayerAI extends PlayableAI
 		{
 			getActor().doInteract((Creature) target);
 		}
-		setIntention(AI_INTENTION_IDLE);
+		setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 	}
 	
 	@Override
@@ -370,6 +371,32 @@ public class PlayerAI extends PlayableAI
 		{
 			_thinking = false;
 		}
+	}
+	
+	@Override
+	protected void onIntentionAttack(Creature target)
+	{
+		final PlayerInstance activeChar = getActor();
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerAttack(activeChar, target), activeChar, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
+			return;
+		}
+		
+		super.onIntentionAttack(target);
+	}
+	
+	@Override
+	protected void onEvtForgetObject(WorldObject object)
+	{
+		// Remove any leaving/faraway player from the actor's list of known relations.
+		// That should ensure propper update of RelationChanged packet and prevent memory leaks.
+		if (object.isPlayer())
+		{
+			getActor().getKnownRelations().remove(object.getObjectId());
+		}
+		
+		super.onEvtForgetObject(object);
 	}
 	
 	@Override

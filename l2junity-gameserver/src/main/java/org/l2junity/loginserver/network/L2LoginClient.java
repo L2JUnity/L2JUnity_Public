@@ -25,8 +25,8 @@ import java.security.interfaces.RSAPrivateKey;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.loginserver.LoginController;
 import org.l2junity.loginserver.SessionKey;
 import org.l2junity.loginserver.network.serverpackets.L2LoginServerPacket;
@@ -264,7 +264,7 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
 	@Override
 	public void onDisconnection()
 	{
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			_log.info("DISCONNECTED: " + toString());
 		}

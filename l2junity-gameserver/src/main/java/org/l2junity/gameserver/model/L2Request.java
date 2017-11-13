@@ -18,7 +18,9 @@
  */
 package org.l2junity.gameserver.model;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import java.util.concurrent.TimeUnit;
+
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
@@ -125,7 +127,7 @@ public class L2Request
 	{
 		_isRequestor = isRequestor;
 		_isAnswerer = !isRequestor;
-		ThreadPoolManager.getInstance().scheduleGeneral(() -> clear(), REQUEST_TIMEOUT * 1000);
+		ThreadPool.schedule(() -> clear(), REQUEST_TIMEOUT * 1000, TimeUnit.MILLISECONDS);
 	}
 	
 	/**

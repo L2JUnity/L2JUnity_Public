@@ -69,6 +69,12 @@ public final class TutorialShowHtml extends AbstractHtmlPacket
 	}
 	
 	@Override
+	protected String getChatName()
+	{
+		return "Tutorial HTML";
+	}
+	
+	@Override
 	public HtmlActionScope getScope()
 	{
 		return HtmlActionScope.TUTORIAL_HTML;

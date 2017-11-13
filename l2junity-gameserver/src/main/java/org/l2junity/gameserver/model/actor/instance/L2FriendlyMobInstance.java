@@ -40,7 +40,7 @@ public class L2FriendlyMobInstance extends Attackable
 	{
 		if (attacker.isPlayer())
 		{
-			return ((PlayerInstance) attacker).getReputation() < 0;
+			return attacker.getReputation() < 0;
 		}
 		
 		return super.isAutoAttackable(attacker);

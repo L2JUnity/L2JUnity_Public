@@ -1,2 +1,2 @@
 #!/bin/sh
-java -cp ./../libs/*:l2jlogin.jar org.l2junity.tools.gsregistering.GameServerRegister
+java -cp ./../libs/*:l2junity-login.jar org.l2junity.tools.gsregistering.GameServerRegister

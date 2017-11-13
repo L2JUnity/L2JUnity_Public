@@ -18,11 +18,15 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.transform.Transform;
 import org.l2junity.gameserver.model.actor.transform.TransformLevelData;
@@ -48,11 +52,11 @@ public final class TransformData implements IGameXmlReader
 	
 	protected TransformData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Reload("transform")
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_transformData.clear();
 		parseDatapackDirectory("data/stats/transformations", false);
@@ -60,7 +64,7 @@ public final class TransformData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -220,11 +224,17 @@ public final class TransformData implements IGameXmlReader
 		}
 	}
 	
+	public int getTransformCount()
+	{
+		return _transformData.size();
+	}
+	
 	public Transform getTransform(int id)
 	{
 		return _transformData.get(id);
 	}
 	
+	@InstanceGetter
 	public static TransformData getInstance()
 	{
 		return SingletonHolder._instance;

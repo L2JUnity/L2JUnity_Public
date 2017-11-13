@@ -31,7 +31,8 @@ public enum ItemGrade
 	B,
 	A,
 	S,
-	R;
+	R,
+	EVENT;
 	
 	public static ItemGrade valueOf(CrystalType type)
 	{
@@ -57,6 +58,9 @@ public enum ItemGrade
 			case R95:
 			case R99:
 				return R;
+			case EVENT:
+				return EVENT;
+			
 		}
 		return null;
 	}

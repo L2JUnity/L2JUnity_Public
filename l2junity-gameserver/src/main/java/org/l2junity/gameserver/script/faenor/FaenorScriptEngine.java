@@ -18,15 +18,22 @@
  */
 package org.l2junity.gameserver.script.faenor;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 
 import javax.script.ScriptContext;
 
-import org.l2junity.Config;
-import org.l2junity.commons.util.file.filter.XMLFilter;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.util.BasePathProvider;
+import org.l2junity.gameserver.config.ServerConfig;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.script.Parser;
 import org.l2junity.gameserver.script.ParserNotCreatedException;
 import org.l2junity.gameserver.script.ScriptDocument;
@@ -38,29 +45,39 @@ import org.w3c.dom.Node;
 /**
  * @author Luis Arias
  */
-public class FaenorScriptEngine extends ScriptEngine
+public final class FaenorScriptEngine
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(FaenorScriptEngine.class);
-	public static final String PACKAGE_DIRECTORY = "data/faenor/";
 	
 	protected FaenorScriptEngine()
 	{
-		final File packDirectory = new File(Config.DATAPACK_ROOT, PACKAGE_DIRECTORY);
-		final File[] files = packDirectory.listFiles(new XMLFilter());
-		for (File file : files)
+	}
+	
+	@Load(group = LoadGroup.class)
+	private void load()
+	{
+		try
 		{
-			try (InputStream in = new FileInputStream(file))
+			Files.walkFileTree(BasePathProvider.resolveDatapackPath(ServerConfig.DATAPACK_ROOT, Paths.get("data", "faenor")), new SimpleFileVisitor<Path>()
 			{
-				parseScript(new ScriptDocument(file.getName(), in), null);
-			}
-			catch (IOException e)
-			{
-				LOGGER.warn(e.getMessage(), e);
-			}
+				@Override
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException
+				{
+					try (final InputStream in = Files.newInputStream(file))
+					{
+						parseScript(new ScriptDocument(file.getFileName().toString(), in), null);
+					}
+					return super.visitFile(file, attrs);
+				}
+			});
+		}
+		catch (IOException e)
+		{
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 	
-	public void parseScript(ScriptDocument script, ScriptContext context)
+	protected void parseScript(ScriptDocument script, ScriptContext context)
 	{
 		Node node = script.getDocument().getFirstChild();
 		String parserClass = "faenor.Faenor" + node.getNodeName() + "Parser";
@@ -68,7 +85,7 @@ public class FaenorScriptEngine extends ScriptEngine
 		Parser parser = null;
 		try
 		{
-			parser = createParser(parserClass);
+			parser = ScriptEngine.createParser(parserClass);
 		}
 		catch (ParserNotCreatedException e)
 		{
@@ -92,13 +109,14 @@ public class FaenorScriptEngine extends ScriptEngine
 		}
 	}
 	
+	@InstanceGetter
 	public static FaenorScriptEngine getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final FaenorScriptEngine _instance = new FaenorScriptEngine();
+		protected static final FaenorScriptEngine INSTANCE = new FaenorScriptEngine();
 	}
 }

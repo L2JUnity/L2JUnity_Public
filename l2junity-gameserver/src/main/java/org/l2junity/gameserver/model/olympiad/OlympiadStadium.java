@@ -184,7 +184,7 @@ public class OlympiadStadium
 			final List<Location> spectatorSpawns = nextArena.getStadium().getZone().getSpectatorSpawns();
 			if (spectatorSpawns.isEmpty())
 			{
-				LOGGER.warn(getClass().getSimpleName() + ": Zone: " + nextArena.getStadium().getZone() + " doesn't have specatator spawns defined!");
+				LOGGER.warn("Zone: " + nextArena.getStadium().getZone() + " doesn't have specatator spawns defined!");
 				return;
 			}
 			final Location loc = spectatorSpawns.get(Rnd.get(spectatorSpawns.size()));

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,8 +26,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.datatables.ItemTable;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.ArmorSet;
 import org.l2junity.gameserver.model.holders.ArmorsetSkillHolder;
 import org.l2junity.gameserver.model.items.L2Item;
@@ -51,11 +56,11 @@ public final class ArmorSetsData implements IGameXmlReader
 	
 	protected ArmorSetsData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("sets")
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ItemTable.class))
+	private void load() throws Exception
 	{
 		_armorSets.clear();
 		parseDatapackDirectory("data/stats/armorsets", false);
@@ -63,7 +68,7 @@ public final class ArmorSetsData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -77,10 +82,7 @@ public final class ArmorSetsData implements IGameXmlReader
 						final int minimumPieces = parseInteger(setNode.getAttributes(), "minimumPieces", 0);
 						final boolean isVisual = parseBoolean(setNode.getAttributes(), "visual", false);
 						final ArmorSet set = new ArmorSet(id, minimumPieces, isVisual);
-						if (_armorSets.putIfAbsent(id, set) != null)
-						{
-							LOGGER.warn("Duplicate set entry with id: {} in file: {}", id, f.getName());
-						}
+						_armorSets.put(id, set);
 						for (Node innerSetNode = setNode.getFirstChild(); innerSetNode != null; innerSetNode = innerSetNode.getNextSibling())
 						{
 							switch (innerSetNode.getNodeName())
@@ -94,11 +96,11 @@ public final class ArmorSetsData implements IGameXmlReader
 										final L2Item item = ItemTable.getInstance().getTemplate(itemId);
 										if (item == null)
 										{
-											LOGGER.warn("Attempting to register non existing required item: {} to a set: {}", itemId, f.getName());
+											LOGGER.warn("Attempting to register non existing required item: {} to a set: {}", itemId, path);
 										}
 										else if (!set.addRequiredItem(itemId))
 										{
-											LOGGER.warn("Attempting to register duplicate required item {} to a set: {}", item, f.getName());
+											LOGGER.warn("Attempting to register duplicate required item {} to a set: {}", item, path);
 										}
 									});
 									break;
@@ -112,11 +114,11 @@ public final class ArmorSetsData implements IGameXmlReader
 										final L2Item item = ItemTable.getInstance().getTemplate(itemId);
 										if (item == null)
 										{
-											LOGGER.warn("Attempting to register non existing optional item: {} to a set: {}", itemId, f.getName());
+											LOGGER.warn("Attempting to register non existing optional item: {} to a set: {}", itemId, path);
 										}
 										else if (!set.addOptionalItem(itemId))
 										{
-											LOGGER.warn("Attempting to register duplicate optional item {} to a set: {}", item, f.getName());
+											LOGGER.warn("Attempting to register duplicate optional item {} to a set: {}", item, path);
 										}
 									});
 									break;
@@ -154,6 +156,11 @@ public final class ArmorSetsData implements IGameXmlReader
 		}
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _armorSets.size();
+	}
+	
 	/**
 	 * @param setId the set id that is attached to a set
 	 * @return the armor set associated to the given item id
@@ -176,6 +183,7 @@ public final class ArmorSetsData implements IGameXmlReader
 	 * Gets the single instance of ArmorSetsData
 	 * @return single instance of ArmorSetsData
 	 */
+	@InstanceGetter
 	public static ArmorSetsData getInstance()
 	{
 		return SingletonHolder._instance;

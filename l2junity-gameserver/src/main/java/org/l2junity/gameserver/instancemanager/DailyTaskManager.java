@@ -18,13 +18,18 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.TrainingCampConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.data.xml.impl.OneDayRewardData;
 import org.l2junity.gameserver.model.ClanMember;
@@ -37,8 +42,12 @@ import org.l2junity.gameserver.model.base.SubClass;
 import org.l2junity.gameserver.model.eventengine.AbstractEvent;
 import org.l2junity.gameserver.model.eventengine.AbstractEventManager;
 import org.l2junity.gameserver.model.eventengine.ScheduleTarget;
+import org.l2junity.gameserver.model.events.Containers;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.server.OnDailyReset;
 import org.l2junity.gameserver.model.holders.SkillHolder;
 import org.l2junity.gameserver.model.olympiad.Olympiad;
+import org.l2junity.gameserver.model.variables.AccountVariables;
 import org.l2junity.gameserver.model.variables.PlayerVariables;
 import org.l2junity.gameserver.network.client.send.ExVoteSystemInfo;
 import org.l2junity.gameserver.network.client.send.ExWorldChatCnt;
@@ -70,6 +79,10 @@ public class DailyTaskManager extends AbstractEventManager<AbstractEvent<?>>
 		resetWorldChatPoints();
 		resetOneDayReward();
 		resetRecommends();
+		resetTrainingCamp();
+		
+		// Notify to scripts
+		EventDispatcher.getInstance().notifyEventAsync(new OnDailyReset(), Containers.Global());
 	}
 	
 	@ScheduleTarget
@@ -160,11 +173,11 @@ public class DailyTaskManager extends AbstractEventManager<AbstractEvent<?>>
 		// Update data for online players.
 		World.getInstance().getPlayers().stream().forEach(player ->
 		{
-			player.getVariables().set(PlayerVariables.EXTEND_DROP, "");
+			player.getVariables().remove(PlayerVariables.EXTEND_DROP);
 			player.getVariables().storeMe();
 		});
 		
-		LOGGER.info("Daily world chat points has been resetted.");
+		LOGGER.info("Extend drop has been resetted.");
 	}
 	
 	private void resetDailySkills()
@@ -174,7 +187,7 @@ public class DailyTaskManager extends AbstractEventManager<AbstractEvent<?>>
 			final List<SkillHolder> dailySkills = getVariables().getList("reset_skills", SkillHolder.class, Collections.emptyList());
 			for (SkillHolder skill : dailySkills)
 			{
-				try (PreparedStatement ps = con.prepareStatement("DELETE FROM character_skills_save WHERE skill_id=?;"))
+				try (PreparedStatement ps = con.prepareStatement("DELETE FROM character_skills_save WHERE skill_id = ?"))
 				{
 					ps.setInt(1, skill.getSkillId());
 					ps.execute();
@@ -192,9 +205,9 @@ public class DailyTaskManager extends AbstractEventManager<AbstractEvent<?>>
 	{
 		// Update data for offline players.
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement ps = con.prepareStatement("UPDATE character_variables SET val = ? WHERE var = ?"))
+			PreparedStatement ps = con.prepareStatement("UPDATE character_variables SET value = ? WHERE var = ?"))
 		{
-			ps.setInt(1, Config.WORLD_CHAT_POINTS_PER_DAY);
+			serializeObject(1, PlayerVariables.WORLD_CHAT_VARIABLE_NAME, 0, ps);
 			ps.setString(2, PlayerVariables.WORLD_CHAT_VARIABLE_NAME);
 			ps.executeUpdate();
 		}
@@ -206,7 +219,7 @@ public class DailyTaskManager extends AbstractEventManager<AbstractEvent<?>>
 		// Update data for online players.
 		World.getInstance().getPlayers().stream().forEach(player ->
 		{
-			player.setWorldChatPoints(Config.WORLD_CHAT_POINTS_PER_DAY);
+			player.setWorldChatUsed(0);
 			player.sendPacket(new ExWorldChatCnt(player));
 			player.getVariables().storeMe();
 		});
@@ -244,9 +257,54 @@ public class DailyTaskManager extends AbstractEventManager<AbstractEvent<?>>
 		});
 	}
 	
+	public void resetTrainingCamp()
+	{
+		if (TrainingCampConfig.ENABLE)
+		{
+			// Update data for offline players.
+			try (Connection con = DatabaseFactory.getInstance().getConnection();
+				PreparedStatement ps = con.prepareStatement("DELETE FROM account_gsdata WHERE var = ?"))
+			{
+				ps.setString(1, AccountVariables.TRAINING_CAMP_DURATION);
+				ps.executeUpdate();
+			}
+			catch (Exception e)
+			{
+				LOGGER.error("Could not reset Training Camp: ", e);
+			}
+			
+			// Update data for online players.
+			World.getInstance().getPlayers().stream().forEach(player ->
+			{
+				player.getAccountVariables().remove(AccountVariables.TRAINING_CAMP_DURATION);
+				player.getAccountVariables().storeMe();
+			});
+			
+			LOGGER.info("Training Camp daily time has been resetted.");
+		}
+	}
+	
 	private void resetOneDayReward()
 	{
 		OneDayRewardData.getInstance().getOneDayRewardData().forEach(OneDayRewardDataHolder::reset);
+	}
+	
+	private void serializeObject(int index, String key, Object value, PreparedStatement ps) throws SQLException
+	{
+		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(baos))
+		{
+			oos.writeObject(value);
+			final byte[] valueAsByteArray = baos.toByteArray();
+			try (ByteArrayInputStream stream = new ByteArrayInputStream(valueAsByteArray))
+			{
+				ps.setBinaryStream(index, stream, valueAsByteArray.length);
+			}
+		}
+		catch (IOException e)
+		{
+			LOGGER.warn("Failed to serialize entry {} during reset", key, e);
+		}
 	}
 	
 	public static DailyTaskManager getInstance()

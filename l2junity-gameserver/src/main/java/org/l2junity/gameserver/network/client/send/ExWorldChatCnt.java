@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -32,7 +32,7 @@ public class ExWorldChatCnt implements IClientOutgoingPacket
 	
 	public ExWorldChatCnt(PlayerInstance activeChar)
 	{
-		_points = activeChar.getLevel() < Config.WORLD_CHAT_MIN_LEVEL ? 0 : activeChar.getWorldChatPoints();
+		_points = activeChar.getLevel() < GeneralConfig.WORLD_CHAT_MIN_LEVEL ? 0 : Math.max(activeChar.getWorldChatPoints() - activeChar.getWorldChatUsed(), 0);
 	}
 	
 	@Override

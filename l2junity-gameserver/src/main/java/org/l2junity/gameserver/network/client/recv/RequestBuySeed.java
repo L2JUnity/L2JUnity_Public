@@ -18,14 +18,13 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import static org.l2junity.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.CastleManorManager;
@@ -35,6 +34,8 @@ import org.l2junity.gameserver.model.actor.instance.L2MerchantInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.entity.Castle;
 import org.l2junity.gameserver.model.holders.ItemHolder;
+import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
@@ -57,7 +58,7 @@ public class RequestBuySeed implements IClientIncomingPacket
 	{
 		_manorId = packet.readD();
 		final int count = packet.readD();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((count <= 0) || (count > PlayerConfig.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -125,7 +126,7 @@ public class RequestBuySeed implements IClientIncomingPacket
 		for (ItemHolder ih : _items)
 		{
 			final SeedProduction sp = manor.getSeedProduct(_manorId, ih.getId(), false);
-			if ((sp == null) || (sp.getPrice() <= 0) || (sp.getAmount() < ih.getCount()) || ((MAX_ADENA / ih.getCount()) < sp.getPrice()))
+			if ((sp == null) || (sp.getPrice() <= 0) || (sp.getAmount() < ih.getCount()) || !ItemContainer.validateCount(Inventory.ADENA_ID, ih.getCount() * sp.getPrice()))
 			{
 				client.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
@@ -133,9 +134,9 @@ public class RequestBuySeed implements IClientIncomingPacket
 			
 			// Calculate price
 			totalPrice += (sp.getPrice() * ih.getCount());
-			if (totalPrice > MAX_ADENA)
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, totalPrice))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + MAX_ADENA + " adena worth of goods.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase " + totalPrice + " adena worth of goods.", GeneralConfig.DEFAULT_PUNISH);
 				client.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
@@ -199,7 +200,7 @@ public class RequestBuySeed implements IClientIncomingPacket
 			sm.addLong(totalPrice);
 			player.sendPacket(sm);
 			
-			if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
+			if (GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS)
 			{
 				manor.updateCurrentProduction(_manorId, _productInfo.values());
 			}

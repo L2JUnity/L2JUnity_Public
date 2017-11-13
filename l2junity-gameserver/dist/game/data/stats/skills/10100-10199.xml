@@ -30,7 +30,7 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>600000</reuseDelay>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -39,7 +39,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">70</value>
@@ -48,7 +48,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">70</value>
@@ -57,7 +57,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">6</value>
@@ -70,7 +70,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -83,7 +83,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">40</value>
@@ -96,7 +96,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">40</value>
@@ -109,7 +109,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -118,7 +118,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -127,7 +127,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -136,7 +136,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -145,7 +145,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -154,7 +154,7 @@
 				</amount>
 				<attribute>HOLY</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -163,7 +163,7 @@
 				</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="DefenceCriticalDamage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_defence_critical_damage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{-1 - ((subIndex - 1} * 0.5)}</value>
 				</amount>
@@ -201,7 +201,7 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>600000</reuseDelay>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -210,7 +210,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">65</value>
@@ -219,7 +219,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">65</value>
@@ -228,7 +228,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">6</value>
@@ -241,7 +241,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">15</value>
@@ -254,7 +254,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">40</value>
@@ -267,7 +267,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">7</value>
@@ -276,7 +276,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">40</value>
@@ -289,7 +289,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="DefenceCriticalDamage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_defence_critical_damage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{-1 - ((subIndex - 1} * 0.5)}</value>
 				</amount>
@@ -339,13 +339,13 @@
 			<value level="5">-3561</value>
 			<value level="6">-3561</value>
 		</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>KNOCKDOWN</trait>
 		<conditions>
 			<condition name="EquipShield" />
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">33505</value>
 					<value level="2">34353</value>
@@ -357,7 +357,7 @@
 				</power>
 				<overHit>true</overHit>
 			</effect>
-			<effect name="KnockBack">
+			<effect name="i_knockback">
 				<speed>700</speed>
 				<distance>50</distance>
 				<knockDown>true</knockDown>
@@ -407,9 +407,9 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>60000</reuseDelay>
 		<effectPoint>-828</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">18151</value>
 					<value level="2">18641</value>
@@ -420,7 +420,7 @@
 					<value fromLevel="3" toLevel="6" fromSubLevel="1001" toSubLevel="1030">{base + base / 100 * subIndex}</value>
 				</power>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-100</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -436,7 +436,7 @@
 		<operateType>AU</operateType>
 		<reuseDelay>1000</reuseDelay>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Paladin's Aura -->
 				<skillId>10108</skillId>
 				<skillLevel>1</skillLevel>
@@ -446,21 +446,25 @@
 				</skillSubLevel>
 				<ticks>7</ticks>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value fromLevel="1" toLevel="1">25</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_magical_defence">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_heal_effect">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
 				<amount>
 					<value fromLevel="1" toLevel="1">-25</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{-0.7 - 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base - 0.7 - 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -476,7 +480,7 @@
 		<operateType>AU</operateType>
 		<reuseDelay>1000</reuseDelay>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Avenger's Aura -->
 				<skillId>10109</skillId>
 				<skillLevel>1</skillLevel>
@@ -485,26 +489,26 @@
 				</skillSubLevel>
 				<ticks>7</ticks>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value fromLevel="1" toLevel="1">25</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>80</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -520,7 +524,7 @@
 		<operateType>AU</operateType>
 		<reuseDelay>1000</reuseDelay>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Sentinel's Aura -->
 				<skillId>10110</skillId>
 				<skillLevel>1</skillLevel>
@@ -530,56 +534,60 @@
 				</skillSubLevel>
 				<ticks>7</ticks>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_physical_defence">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
 				<amount>
 					<value fromLevel="1" toLevel="1">25</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-20</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">50</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">50</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">50</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">50</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">50</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>HOLY</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">50</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -595,7 +603,7 @@
 		<operateType>AU</operateType>
 		<reuseDelay>1000</reuseDelay>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Templar's Aura -->
 				<skillId>10111</skillId>
 				<skillLevel>1</skillLevel>
@@ -605,24 +613,24 @@
 				</skillSubLevel>
 				<ticks>7</ticks>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value fromLevel="1" toLevel="1">15</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value fromLevel="1" toLevel="1">10</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{subIndex * 0.5}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base +subIndex * 0.5}</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value fromLevel="1" toLevel="1">15</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -633,6 +641,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>11</abnormalTime>
 		<abnormalType>AURA</abnormalType>
+		<abnormalVisualEffect>PHOENIX_AURA</abnormalVisualEffect>
 		<affectRange>1000</affectRange>
 		<canBeDispelled>false</canBeDispelled>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -646,21 +655,25 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>1000</reuseDelay>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value fromLevel="1" toLevel="1">20</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_magical_defence">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_heal_effect">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>
 					<value fromLevel="1" toLevel="1">-20</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{-0.7 - 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base - 0.7 - 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -671,6 +684,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>11</abnormalTime>
 		<abnormalType>AURA</abnormalType>
+		<abnormalVisualEffect>REVENGE_AURA</abnormalVisualEffect>
 		<affectRange>300</affectRange>
 		<canBeDispelled>false</canBeDispelled>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -683,35 +697,35 @@
 		<hitTime>500</hitTime>
 		<reuseDelay>1000</reuseDelay>
 		<effectPoint>2</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value fromLevel="1" toLevel="1">-30</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{-0.7 - 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base - 0.7 - 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value fromLevel="1" toLevel="1">-30</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{-0.7 - 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base - 0.7 - 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -722,6 +736,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>11</abnormalTime>
 		<abnormalType>AURA</abnormalType>
+		<abnormalVisualEffect>EVAS_AURA</abnormalVisualEffect>
 		<affectRange>1000</affectRange>
 		<canBeDispelled>false</canBeDispelled>
 		<magicLvl>85</magicLvl>
@@ -734,56 +749,60 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>1000</reuseDelay>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_physical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
 				<amount>
 					<value fromLevel="1" toLevel="1">20</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-20</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">40</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">40</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">40</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">40</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">40</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>HOLY</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value fromLevel="1" toLevel="1">40</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{5 + subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 5 + subIndex}</value>
 				</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -794,6 +813,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>11</abnormalTime>
 		<abnormalType>AURA</abnormalType>
+		<abnormalVisualEffect>TEMPLAR_AURA</abnormalVisualEffect>
 		<affectRange>1000</affectRange>
 		<canBeDispelled>false</canBeDispelled>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -807,35 +827,35 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>1000</reuseDelay>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value fromLevel="1" toLevel="1">10</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value fromLevel="1" toLevel="1">10</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{subIndex * 0.5}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + subIndex * 0.5}</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value fromLevel="1" toLevel="1">10</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value fromLevel="1" toLevel="1">10</value>
-					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{0.7 + 0.3 * subIndex}</value>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + 0.7 + 0.3 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>

@@ -18,15 +18,15 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.nio.file.Path;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 /**
@@ -37,46 +37,52 @@ public final class ExperienceData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExperienceData.class);
 	
-	private final Map<Integer, Long> _expTable = new HashMap<>();
-	
 	private byte MAX_LEVEL;
 	private byte MAX_PET_LEVEL;
+	private long[] EXPERIENCE_TO_LEVEL;
+	private double[] TRAINING_RATE;
 	
 	/**
 	 * Instantiates a new experience table.
 	 */
 	protected ExperienceData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
-		_expTable.clear();
 		parseDatapackFile("data/stats/experience.xml");
-		LOGGER.info("Loaded {} levels.", _expTable.size());
+		
+		LOGGER.info("Loaded {} levels.", EXPERIENCE_TO_LEVEL.length - 1);
 		LOGGER.info("Max Player Level is: {}", (MAX_LEVEL - 1));
 		LOGGER.info("Max Pet Level is: {}", (MAX_PET_LEVEL - 1));
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		final Node table = doc.getFirstChild();
-		final NamedNodeMap tableAttr = table.getAttributes();
 		
-		MAX_LEVEL = (byte) (Byte.parseByte(tableAttr.getNamedItem("maxLevel").getNodeValue()) + 1);
-		MAX_PET_LEVEL = (byte) (Byte.parseByte(tableAttr.getNamedItem("maxPetLevel").getNodeValue()) + 1);
+		MAX_LEVEL = (byte) (parseByte(table.getAttributes(), "maxLevel") + 1);
+		MAX_PET_LEVEL = (byte) (parseByte(table.getAttributes(), "maxPetLevel") + 1);
+		EXPERIENCE_TO_LEVEL = new long[MAX_LEVEL + 1];
+		TRAINING_RATE = new double[MAX_LEVEL + 1];
 		
-		for (Node n = table.getFirstChild(); n != null; n = n.getNextSibling())
+		forEach(table, "experience", expNode ->
 		{
-			if ("experience".equals(n.getNodeName()))
+			final byte level = parseByte(expNode.getAttributes(), "level");
+			if (level <= MAX_LEVEL)
 			{
-				NamedNodeMap attrs = n.getAttributes();
-				_expTable.put(parseInteger(attrs, "level"), parseLong(attrs, "tolevel"));
+				EXPERIENCE_TO_LEVEL[level] = parseLong(expNode.getAttributes(), "tolevel");
+				TRAINING_RATE[level] = parseDouble(expNode.getAttributes(), "trainingRate");
 			}
-		}
+		});
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return EXPERIENCE_TO_LEVEL.length;
 	}
 	
 	/**
@@ -86,7 +92,12 @@ public final class ExperienceData implements IGameXmlReader
 	 */
 	public long getExpForLevel(int level)
 	{
-		return _expTable.get(level);
+		return EXPERIENCE_TO_LEVEL[level];
+	}
+	
+	public double getTrainingRate(int level)
+	{
+		return TRAINING_RATE[level];
 	}
 	
 	/**
@@ -111,6 +122,7 @@ public final class ExperienceData implements IGameXmlReader
 	 * Gets the single instance of ExperienceTable.
 	 * @return single instance of ExperienceTable
 	 */
+	@InstanceGetter
 	public static ExperienceData getInstance()
 	{
 		return SingletonHolder._instance;

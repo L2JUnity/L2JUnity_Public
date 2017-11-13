@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.handler.CommunityBoardHandler;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.network.PacketReader;
@@ -42,6 +42,6 @@ public final class RequestShowBoard implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		CommunityBoardHandler.getInstance().handleParseCommand(Config.BBS_DEFAULT, client.getActiveChar());
+		CommunityBoardHandler.getInstance().handleParseCommand(GeneralConfig.BBS_DEFAULT, client.getActiveChar());
 	}
 }

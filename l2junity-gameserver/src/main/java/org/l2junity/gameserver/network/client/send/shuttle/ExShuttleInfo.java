@@ -47,9 +47,9 @@ public class ExShuttleInfo implements IClientOutgoingPacket
 		OutgoingPackets.EX_SHUTTLE_INFO.writeId(packet);
 		
 		packet.writeD(_shuttle.getObjectId());
-		packet.writeD(_shuttle.getX());
-		packet.writeD(_shuttle.getY());
-		packet.writeD(_shuttle.getZ());
+		packet.writeD((int) _shuttle.getX());
+		packet.writeD((int) _shuttle.getY());
+		packet.writeD((int) _shuttle.getZ());
 		packet.writeD(_shuttle.getHeading());
 		packet.writeD(_shuttle.getId());
 		packet.writeD(_stops.size());
@@ -58,9 +58,9 @@ public class ExShuttleInfo implements IClientOutgoingPacket
 			packet.writeD(stop.getId());
 			for (Location loc : stop.getDimensions())
 			{
-				packet.writeD(loc.getX());
-				packet.writeD(loc.getY());
-				packet.writeD(loc.getZ());
+				packet.writeD((int) loc.getX());
+				packet.writeD((int) loc.getY());
+				packet.writeD((int) loc.getZ());
 			}
 			packet.writeD(stop.isDoorOpen() ? 0x01 : 0x00);
 			packet.writeD(stop.hasDoorChanged() ? 0x01 : 0x00);

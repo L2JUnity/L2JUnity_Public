@@ -27,7 +27,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.l2junity.Config;
+import org.l2junity.loginserver.config.EmailConfig;
+import org.l2junity.loginserver.config.LoginServerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -62,7 +63,7 @@ public class MailSystem
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setValidating(false);
 		factory.setIgnoringComments(true);
-		File file = new File(Config.DATAPACK_ROOT, "data/mail/MailList.xml");
+		File file = new File(LoginServerConfig.DATAPACK_ROOT.toFile(), "data/mail/MailList.xml");
 		Document doc = null;
 		if (file.exists())
 		{
@@ -86,7 +87,7 @@ public class MailSystem
 					String subject = d.getAttributes().getNamedItem("subject").getNodeValue();
 					String maFile = d.getAttributes().getNamedItem("file").getNodeValue();
 					
-					mailFile = new File(Config.DATAPACK_ROOT, "data/mail/" + maFile);
+					mailFile = new File(LoginServerConfig.DATAPACK_ROOT.toFile(), "data/mail/" + maFile);
 					try (FileInputStream fis = new FileInputStream(mailFile);
 						BufferedInputStream bis = new BufferedInputStream(fis))
 					{
@@ -96,8 +97,8 @@ public class MailSystem
 						bis.read(raw);
 						String html = new String(raw, "UTF-8");
 						html = html.replaceAll(System.lineSeparator(), "\n");
-						html = html.replace("%servermail%", Config.EMAIL_SERVERINFO_ADDRESS);
-						html = html.replace("%servername%", Config.EMAIL_SERVERINFO_NAME);
+						html = html.replace("%servermail%", EmailConfig.EMAIL_SERVERINFO_ADDRESS);
+						html = html.replace("%servername%", EmailConfig.EMAIL_SERVERINFO_NAME);
 						
 						_mailData.put(mailId, new MailContent(subject, html));
 					}

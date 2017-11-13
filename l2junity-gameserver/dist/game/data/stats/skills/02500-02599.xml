@@ -17,7 +17,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>6645</itemId>
 				<itemCount>500</itemCount>
 			</effect>
@@ -40,7 +40,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>6646</itemId>
 				<itemCount>500</itemCount>
 			</effect>
@@ -63,7 +63,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>6647</itemId>
 				<itemCount>500</itemCount>
 			</effect>
@@ -86,7 +86,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="6471" count="20" />
@@ -131,7 +131,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1517</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -167,7 +167,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1518</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -203,7 +203,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1519</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -228,7 +228,7 @@
 			<condition name="OpCanNotUseAirship" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>12774</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>180000</despawnDelay>
@@ -254,7 +254,7 @@
 			<condition name="OpCanNotUseAirship" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>12777</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>180000</despawnDelay>
@@ -280,7 +280,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="22">
 						<item id="10635" count="1" />
@@ -357,7 +357,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>107</transformationId>
 			</effect>
 		</effects>
@@ -381,7 +381,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
@@ -412,11 +412,11 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -441,7 +441,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -456,6 +456,19 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>D</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon_rate">
+				<bonusRate>20</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2516" toLevel="1" name="Lucky Clover (C-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -466,6 +479,19 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>C</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon_rate">
+				<bonusRate>18</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2517" toLevel="1" name="Lucky Clover (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -476,6 +502,19 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon_rate">
+				<bonusRate>15</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2518" toLevel="1" name="Lucky Clover (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -486,6 +525,19 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon_rate">
+				<bonusRate>12</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2519" toLevel="1" name="Lucky Clover (S-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -496,6 +548,19 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon_rate">
+				<bonusRate>10</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2520" toLevel="1" name="Lucky Clover (D-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -506,6 +571,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>D</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor_rate">
+				<bonusRate>35</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2521" toLevel="1" name="Lucky Clover (C-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -516,6 +595,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>C</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor_rate">
+				<bonusRate>27</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2522" toLevel="1" name="Lucky Clover (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -526,6 +619,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor_rate">
+				<bonusRate>23</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2523" toLevel="1" name="Lucky Clover (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -536,6 +643,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor_rate">
+				<bonusRate>18</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2524" toLevel="1" name="Lucky Clover (S-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -546,6 +667,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor_rate">
+				<bonusRate>10</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="2525" toLevel="1" name="Scroll of Escape: Kamael Village">
 		<!-- Confirmed CT2.5 -->
@@ -567,7 +702,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>-120050</x>
 				<y>44500</y>
 				<z>360</z>
@@ -604,7 +739,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>818</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -640,7 +775,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>819</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -676,7 +811,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>820</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -719,7 +854,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>821</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -738,7 +873,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>DEATH_PENALTY,-1</dispel>
 			</effect>
 		</effects>
@@ -758,7 +893,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
@@ -782,7 +917,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="4" />
@@ -812,7 +947,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="4" />
@@ -844,7 +979,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="4" />
@@ -874,7 +1009,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="2" />
@@ -907,7 +1042,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="5" />
@@ -940,7 +1075,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="7" />
@@ -974,7 +1109,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="5" />
@@ -1004,7 +1139,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="7" />
@@ -1037,7 +1172,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="6" />
@@ -1067,7 +1202,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="11" />
@@ -1101,7 +1236,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="7" />
@@ -1134,7 +1269,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="9" />
@@ -1167,7 +1302,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1201,7 +1336,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="7" />
@@ -1231,7 +1366,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="5" />
@@ -1264,7 +1399,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="11" />
@@ -1294,7 +1429,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="7" />
@@ -1328,7 +1463,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="6" />
@@ -1360,7 +1495,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1393,7 +1528,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1427,7 +1562,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="6" />
@@ -1457,7 +1592,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1489,7 +1624,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="8" />
@@ -1521,7 +1656,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="15" />
@@ -1555,7 +1690,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="4" />
@@ -1588,7 +1723,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1621,7 +1756,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="15" />
@@ -1654,7 +1789,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="5" />
@@ -1684,7 +1819,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1716,7 +1851,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="5" />
@@ -1746,7 +1881,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="4" />
@@ -1779,7 +1914,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1811,7 +1946,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="3" />
@@ -1844,7 +1979,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="6" />
@@ -1877,7 +2012,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="9" />
@@ -1907,7 +2042,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1939,7 +2074,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="10" />
@@ -1972,7 +2107,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="12" />
@@ -2004,7 +2139,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="6" />
@@ -2037,7 +2172,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="1539" count="15" />
@@ -2070,7 +2205,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="3.2">
 						<item id="947" count="1" />
@@ -2098,7 +2233,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="1.6111">
 						<item id="729" count="1" />
@@ -2126,7 +2261,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="1.14">
 						<item id="959" count="1" />
@@ -2154,7 +2289,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="19.8">
 						<item id="9546" count="1" />
@@ -2233,7 +2368,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="26.4">
 						<item id="9546" count="1" />
@@ -2293,14 +2428,14 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
@@ -2317,7 +2452,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>POISON,9</dispel>
 			</effect>
 		</effects>
@@ -2333,7 +2468,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>DEATH_CLACK,1</dispel>
 			</effect>
 		</effects>
@@ -2358,9 +2493,8 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -2422,7 +2556,6 @@
 	</skill>
 	<skill id="2586" toLevel="2" name="Vitality Replenishing Potion">
 		<!-- Confirmed CT2.5 -->
-		<table name="#value"> 10000 20000 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
@@ -2440,10 +2573,10 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>
+				<amount>
 					<value level="1">10000</value>
 					<value level="2">20000</value>
-				</value>
+				</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -2464,7 +2597,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="AddTeleportBookmarkSlot">
+			<effect name="i_bookmark_add_slot">
 				<amount>3</amount>
 			</effect>
 		</effects>
@@ -2525,7 +2658,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>30</power>
 			</effect>
 		</effects>
@@ -2545,7 +2678,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>40</BOW>
 				<CROSSBOW>20</CROSSBOW>
 			</effect>
@@ -2566,7 +2699,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
@@ -2587,7 +2720,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
@@ -2611,7 +2744,7 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="Resurrection">
+			<effect name="i_resurrection">
 				<power>100</power>
 			</effect>
 		</effects>

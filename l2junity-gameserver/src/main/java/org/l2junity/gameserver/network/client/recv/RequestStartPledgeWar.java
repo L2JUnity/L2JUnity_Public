@@ -18,12 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import java.util.Objects;
-
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
-import org.l2junity.gameserver.enums.UserInfoType;
-import org.l2junity.gameserver.model.ClanMember;
 import org.l2junity.gameserver.model.ClanPrivilege;
 import org.l2junity.gameserver.model.ClanWar;
 import org.l2junity.gameserver.model.ClanWar.ClanWarState;
@@ -61,7 +57,7 @@ public final class RequestStartPledgeWar implements IClientIncomingPacket
 			return;
 		}
 		
-		if ((clanDeclaringWar.getLevel() < 5) || (clanDeclaringWar.getMembersCount() < Config.ALT_CLAN_MEMBERS_FOR_WAR))
+		if ((clanDeclaringWar.getLevel() < 5) || (clanDeclaringWar.getMembersCount() < PlayerConfig.ALT_CLAN_MEMBERS_FOR_WAR))
 		{
 			client.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.A_CLAN_WAR_CAN_ONLY_BE_DECLARED_IF_THE_CLAN_IS_LEVEL_5_OR_ABOVE_AND_THE_NUMBER_OF_CLAN_MEMBERS_IS_FIFTEEN_OR_GREATER));
 			client.sendPacket(ActionFailed.STATIC_PACKET);
@@ -99,7 +95,7 @@ public final class RequestStartPledgeWar implements IClientIncomingPacket
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
-		else if ((clanDeclaredWar.getLevel() < 5) || (clanDeclaredWar.getMembersCount() < Config.ALT_CLAN_MEMBERS_FOR_WAR))
+		else if ((clanDeclaredWar.getLevel() < 5) || (clanDeclaredWar.getMembersCount() < PlayerConfig.ALT_CLAN_MEMBERS_FOR_WAR))
 		{
 			client.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.A_CLAN_WAR_CAN_ONLY_BE_DECLARED_IF_THE_CLAN_IS_LEVEL_5_OR_ABOVE_AND_THE_NUMBER_OF_CLAN_MEMBERS_IS_FIFTEEN_OR_GREATER));
 			client.sendPacket(ActionFailed.STATIC_PACKET);
@@ -132,11 +128,6 @@ public final class RequestStartPledgeWar implements IClientIncomingPacket
 		}
 		
 		final ClanWar newClanWar = new ClanWar(clanDeclaringWar, clanDeclaredWar);
-		
-		ClanTable.getInstance().storeclanswars(newClanWar);
-		
-		clanDeclaringWar.getMembers().stream().filter(Objects::nonNull).filter(ClanMember::isOnline).forEach(p -> p.getPlayerInstance().broadcastUserInfo(UserInfoType.CLAN));
-		
-		clanDeclaredWar.getMembers().stream().filter(Objects::nonNull).filter(ClanMember::isOnline).forEach(p -> p.getPlayerInstance().broadcastUserInfo(UserInfoType.CLAN));
+		newClanWar.declareWar();
 	}
 }

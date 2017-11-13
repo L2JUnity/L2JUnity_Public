@@ -54,7 +54,8 @@ public class RequestTodoList implements IClientIncomingPacket
 		{
 			case 9: // Daily Rewards
 			{
-				player.sendPacket(new ExOneDayReceiveRewardList(player));
+				// Initial EW request should be false
+				player.sendPacket(new ExOneDayReceiveRewardList(player, true));
 				break;
 			}
 		}

@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class BaseSendablePacket
 {
-	private static final Logger _log = LoggerFactory.getLogger(BaseSendablePacket.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(BaseSendablePacket.class);
 	
 	private final ByteArrayOutputStream _bao;
 	
@@ -82,7 +82,7 @@ public abstract class BaseSendablePacket
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": " + e.getMessage());
+			LOGGER.warn("", e);
 		}
 		
 		_bao.write(0);
@@ -97,7 +97,7 @@ public abstract class BaseSendablePacket
 		}
 		catch (IOException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": " + e.getMessage());
+			LOGGER.warn(getClass().getSimpleName() + ": " + e.getMessage());
 		}
 	}
 	

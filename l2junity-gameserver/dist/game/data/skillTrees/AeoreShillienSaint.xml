@@ -2,6 +2,56 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/skillTrees.xsd">
 	<!-- Aeore Shilien Saint -->
 	<skillTree type="classSkillTree" classId="181" parentClassId="112">
+		<!-- Awakening race skills -->
+		<skill skillName="Aim" skillId="1901" skillLvl="1" getLevel="85" autoGet="true">
+			<race>HUMAN</race>
+		</skill>
+		<skill skillName="Mental Fortress" skillId="1902" skillLvl="1" getLevel="85" autoGet="true">
+			<race>HUMAN</race>
+		</skill>
+		<skill skillName="Blessing of Water" skillId="1906" skillLvl="1" getLevel="85" autoGet="true">
+			<race>ELF</race>
+		</skill>
+		<skill skillName="Delicacy" skillId="1908" skillLvl="1" getLevel="85" autoGet="true">
+			<race>ELF</race>
+		</skill>
+		<skill skillName="Sharpness" skillId="1909" skillLvl="1" getLevel="85" autoGet="true">
+			<race>DARK_ELF</race>
+		</skill>
+		<skill skillName="Blessing of Wind" skillId="1911" skillLvl="1" getLevel="85" autoGet="true">
+			<race>DARK_ELF</race>
+		</skill>
+		<skill skillName="Blessing of Fire" skillId="1915" skillLvl="1" getLevel="85" autoGet="true">
+			<race>ORC</race>
+		</skill>
+		<skill skillName="Energetic" skillId="1916" skillLvl="1" getLevel="85" autoGet="true">
+			<race>ORC</race>
+		</skill>
+		<skill skillName="Dexterity" skillId="1919" skillLvl="1" getLevel="85" autoGet="true">
+			<race>DWARF</race>
+		</skill>
+		<skill skillName="Blessing of Earth" skillId="1921" skillLvl="1" getLevel="85" autoGet="true">
+			<race>DWARF</race>
+		</skill>
+		<skill skillName="Battle Instinct" skillId="1923" skillLvl="1" getLevel="85" autoGet="true">
+			<race>KAMAEL</race>
+		</skill>
+		<skill skillName="Dark Silence" skillId="1924" skillLvl="1" getLevel="85" autoGet="true">
+			<race>KAMAEL</race>
+		</skill>
+		<skill skillName="Body Reinforcement" skillId="1926" skillLvl="1" getLevel="85" autoGet="true">
+			<race>KAMAEL</race>
+		</skill>
+		<skill skillName="Flying Body Reinforcement" skillId="1954" skillLvl="1" getLevel="85" autoGet="true">
+			<race>KAMAEL</race>
+		</skill>
+
+		<!-- This have also in dualjob_sharing -->
+		<skill skillName="Dual Maximum HP" skillId="1986" skillLvl="1" getLevel="85" getDualClassLevel="85" levelUpSp="10000" />
+		<skill skillName="Dual Maximum HP" skillId="1986" skillLvl="2" getLevel="90" getDualClassLevel="90" levelUpSp="370000" />
+		<skill skillName="Dual Maximum HP" skillId="1986" skillLvl="3" getLevel="95" getDualClassLevel="95" levelUpSp="1000000" />
+		<skill skillName="Dual Maximum HP" skillId="1986" skillLvl="4" getLevel="99" getDualClassLevel="99" levelUpSp="5000000" />
+		
 		<skill skillName="Aeore Aura" skillId="1939" skillLvl="1" getLevel="85" autoGet="true" />
 		<skill skillName="Blessing of Saha" skillId="11830" skillLvl="1" getLevel="85" levelUpSp="10000">
 			<removeSkill id="1311" /> <!-- Body of Avatar -->
@@ -64,6 +114,11 @@
 		<skill skillName="Mark of Lumi" skillId="11777" skillLvl="1" getLevel="85" levelUpSp="10000">
 			<removeSkill id="1524" /> <!-- Surrender to Holy -->
 		</skill>
+		<skill skillName="Crystallize" skillId="248" skillLvl="1" getLevel="85" autoGet="true" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="2" getLevel="85" autoGet="true" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="3" getLevel="85" autoGet="true" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="4" getLevel="85" autoGet="true" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="5" getLevel="85" autoGet="true" />
 		<skill skillName="Crystallize" skillId="248" skillLvl="6" getLevel="85" autoGet="true" />
 		<skill skillName="Crystal Regeneration" skillId="11765" skillLvl="1" getLevel="85" levelUpSp="10000">
 			<removeSkill id="1430" /> <!-- Invocation -->
@@ -316,7 +371,7 @@
 		<skill skillName="Erase Impact" skillId="11831" skillLvl="7" getLevel="97" levelUpSp="4980000" />
 		<skill skillName="Fairy of Life" skillId="11754" skillLvl="5" getLevel="97" levelUpSp="4980000" />
 		<skill skillName="Dark Vampirism" skillId="11859" skillLvl="1" getLevel="97" levelUpSp="4980000">
-			<item id="39738" count="4" />
+			<item id="39738" count="4" /> <!-- Rune Stone -->
 		</skill>
 
 		<skill skillName="Fatal Sleep" skillId="11778" skillLvl="6" getLevel="98" levelUpSp="4990000" />
@@ -328,7 +383,7 @@
 		<skill skillName="Mass Dark Veil" skillId="11767" skillLvl="8" getLevel="98" levelUpSp="4990000" />
 		<skill skillName="Dark Devour" skillId="11780" skillLvl="6" getLevel="98" levelUpSp="4990000" />
 		<skill skillName="Dark Vampirism" skillId="11859" skillLvl="2" getLevel="98" levelUpSp="4990000">
-			<item id="39738" count="4" />
+			<item id="39738" count="4" /> <!-- Rune Stone -->
 		</skill>
 
 		<skill skillName="Brilliant Recharge" skillId="11761" skillLvl="5" getLevel="99" levelUpSp="5000000" />
@@ -350,16 +405,21 @@
 		<skill skillName="Mass Mana Gain" skillId="11854" skillLvl="4" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Sustain" skillId="11752" skillLvl="8" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Create Item" skillId="172" skillLvl="14" getLevel="99" autoGet="true" />
-		<skill skillName="Healer Hidden Trigger" skillId="19185" skillLvl="1" getLevel="99" autoGet="true" />
 		<skill skillName="Dark Backfire" skillId="11769" skillLvl="6" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Dark Rain" skillId="11817" skillLvl="8" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Dark Blast" skillId="11766" skillLvl="8" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Erase Impact" skillId="11831" skillLvl="8" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Dark Vampirism" skillId="11859" skillLvl="3" getLevel="99" levelUpSp="5000000">
-			<item id="39738" count="8" />
+			<item id="39738" count="8" /> <!-- Rune Stone -->
 		</skill>
 		<skill skillName="Limited Range Weapon Resistance" skillId="11863" skillLvl="1" getLevel="99" levelUpSp="5000000">
-			<item id="39738" count="8" />
+			<item id="39738" count="8" /> <!-- Rune Stone -->
+		</skill>
+		<skill skillName="Divine Inspiration" skillId="1405" skillLvl="5" getLevel="99" levelUpSp="5000000">
+			<item id="40064" count="1" /> <!-- Ancient Book: Divine Inspiration (Beginner) -->
+		</skill>
+		<skill skillName="Divine Inspiration" skillId="1405" skillLvl="6" getLevel="99" levelUpSp="5000000">
+			<item id="40065" count="1" /> <!-- Ancient Book: Divine Inspiration (Intermediate) -->
 		</skill>
 
 		<skill skillName="Superior Anti Magic" skillId="11789" skillLvl="5" getLevel="100" levelUpSp="88099899" />
@@ -368,12 +428,14 @@
 		<skill skillName="Superior Casting Mastery" skillId="11788" skillLvl="5" getLevel="100" levelUpSp="88099899" />
 		<skill skillName="Superior Magic Weapon Mastery" skillId="11751" skillLvl="5" getLevel="100" levelUpSp="88099899" />
 		<skill skillName="Superior Mental Attack Resistance" skillId="11792" skillLvl="5" getLevel="100" levelUpSp="88099899" />
+		<skill skillName="Divine Expansion" skillId="10956" skillLvl="1" getLevel="100" levelUpSp="88099899">
+			<item id="39738" count="8" /> <!-- Rune Stone -->
+		</skill>
 
 		<skill skillName="Brilliant Recharge" skillId="11761" skillLvl="6" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Brilliant Heal" skillId="11757" skillLvl="9" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Fatal Sleep" skillId="11778" skillLvl="7" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Giant's Favor" skillId="11772" skillLvl="5" getLevel="101" levelUpSp="211440000" />
-		<skill skillName="Shillien Protection" skillId="19212" skillLvl="1" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Mark of Lumi" skillId="11777" skillLvl="6" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Crystal Regeneration" skillId="11765" skillLvl="5" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Mass Fatal Sleep" skillId="11832" skillLvl="7" getLevel="101" levelUpSp="211440000" />
@@ -389,7 +451,10 @@
 		<skill skillName="Dark Blast" skillId="11766" skillLvl="9" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Erase Impact" skillId="11831" skillLvl="9" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Dark Vampirism" skillId="11859" skillLvl="4" getLevel="101" levelUpSp="211440000">
-			<item id="39738" count="8" />
+			<item id="39738" count="8" /> <!-- Rune Stone -->
+		</skill>
+		<skill skillName="Shillien Protection" skillId="19212" skillLvl="1" getLevel="101" levelUpSp="211440000">
+			<item id="39738" count="8" /> <!-- Rune Stone -->
 		</skill>
 
 		<skill skillName="Superior Anti Magic" skillId="11789" skillLvl="6" getLevel="102" levelUpSp="507455418" />
@@ -418,7 +483,7 @@
 		<skill skillName="Dark Blast" skillId="11766" skillLvl="10" getLevel="103" levelUpSp="608946501" />
 		<skill skillName="Erase Impact" skillId="11831" skillLvl="10" getLevel="103" levelUpSp="608946501" />
 		<skill skillName="Dark Vampirism" skillId="11859" skillLvl="5" getLevel="103" levelUpSp="608946501">
-			<item id="39738" count="8" />
+			<item id="39738" count="8" /> <!-- Rune Stone -->
 		</skill>
 
 		<skill skillName="Superior Anti Magic" skillId="11789" skillLvl="7" getLevel="104" levelUpSp="1461471604" />
@@ -447,7 +512,7 @@
 		<skill skillName="Dark Blast" skillId="11766" skillLvl="11" getLevel="105" levelUpSp="1753765925" />
 		<skill skillName="Erase Impact" skillId="11831" skillLvl="11" getLevel="105" levelUpSp="1753765925" />
 		<skill skillName="Dark Vampirism" skillId="11859" skillLvl="6" getLevel="105" levelUpSp="1753765925">
-			<item id="39738" count="8" />
+			<item id="39738" count="8" /> <!-- Rune Stone -->
 		</skill>
 	</skillTree>
 </list>

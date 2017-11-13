@@ -24,12 +24,15 @@ import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.RatesConfig;
+import org.l2junity.gameserver.config.ServerConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.data.xml.impl.ExperienceData;
 import org.l2junity.gameserver.model.CharSelectInfoPackage;
 import org.l2junity.gameserver.model.L2Clan;
+import org.l2junity.gameserver.model.VariationInstance;
 import org.l2junity.gameserver.model.entity.Hero;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
 import org.l2junity.gameserver.network.client.L2GameClient;
@@ -40,7 +43,7 @@ import org.slf4j.LoggerFactory;
 
 public class CharSelectionInfo implements IClientOutgoingPacket
 {
-	private static Logger _log = LoggerFactory.getLogger(CharSelectionInfo.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CharSelectionInfo.class);
 	private final String _loginName;
 	private final int _sessionId;
 	private int _activeId;
@@ -93,8 +96,8 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 		packet.writeD(size); // How many char there is on this account
 		
 		// Can prevent players from creating new characters (if 0); (if 1, the client will ask if chars may be created (0x13) Response: (0x0D) )
-		packet.writeD(Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT);
-		packet.writeC(size == Config.MAX_CHARACTERS_NUMBER_PER_ACCOUNT ? 0x01 : 0x00); // if 1 can't create new char
+		packet.writeD(ServerConfig.MAX_CHARACTERS_NUMBER_PER_ACCOUNT);
+		packet.writeC(size == ServerConfig.MAX_CHARACTERS_NUMBER_PER_ACCOUNT ? 0x01 : 0x00); // if 1 can't create new char
 		packet.writeC(0x01); // play mode, if 1 can create only 2 char in regular lobby
 		packet.writeD(0x02); // if 1, korean client
 		packet.writeC(0x00); // if 1 suggest premium account
@@ -193,7 +196,8 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 			packet.writeD(i == _activeId ? 1 : 0);
 			
 			packet.writeC(charInfoPackage.getEnchantEffect() > 127 ? 127 : charInfoPackage.getEnchantEffect());
-			packet.writeQ(charInfoPackage.getAugmentationId());
+			packet.writeD(charInfoPackage.getAugmentation() != null ? charInfoPackage.getAugmentation().getOption1Id() : 0);
+			packet.writeD(charInfoPackage.getAugmentation() != null ? charInfoPackage.getAugmentation().getOption2Id() : 0);
 			
 			// packet.writeD(charInfoPackage.getTransformId()); // Used to display Transformations
 			packet.writeD(0x00); // Currently on retail when you are on character select you don't see your transformation.
@@ -207,7 +211,7 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 			packet.writeF(0x00); // cur Hp
 			
 			packet.writeD(charInfoPackage.getVitalityPoints()); // H5 Vitality
-			packet.writeD((int) Config.RATE_VITALITY_EXP_MULTIPLIER * 100); // Vitality Exp Bonus
+			packet.writeD((int) RatesConfig.RATE_VITALITY_EXP_MULTIPLIER * 100); // Vitality Exp Bonus
 			packet.writeD(charInfoPackage.getVitalityItemsUsed()); // Vitality items used, such as potion
 			packet.writeD(charInfoPackage.getAccessLevel() == -100 ? 0x00 : 0x01); // Char is active or not
 			packet.writeC(charInfoPackage.isNoble() ? 0x01 : 0x00);
@@ -241,7 +245,7 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not restore char info: " + e.getMessage(), e);
+			LOGGER.warn("Could not restore char info: " + e.getMessage(), e);
 		}
 		return new CharSelectInfoPackage[0];
 	}
@@ -258,7 +262,7 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 				if (charList.next())
 				{
 					charInfopackage.setExp(charList.getLong("exp"));
-					charInfopackage.setSp(charList.getInt("sp"));
+					charInfopackage.setSp(charList.getLong("sp"));
 					charInfopackage.setLevel(charList.getInt("level"));
 					charInfopackage.setVitalityPoints(charList.getInt("vitality_points"));
 				}
@@ -266,7 +270,7 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not restore char subclass info: " + e.getMessage(), e);
+			LOGGER.warn("Could not restore char subclass info: " + e.getMessage(), e);
 		}
 	}
 	
@@ -287,7 +291,7 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 					clan.removeClanMember(objectId, 0);
 				}
 				
-				L2GameClient.deleteCharByObjId(objectId);
+				L2GameClient.delete(objectId);
 				return null;
 			}
 		}
@@ -321,12 +325,12 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 		charInfopackage.setY(chardata.getInt("y"));
 		charInfopackage.setZ(chardata.getInt("z"));
 		
-		if (Config.L2JMOD_MULTILANG_ENABLE)
+		if (L2JModsConfig.L2JMOD_MULTILANG_ENABLE)
 		{
 			String lang = chardata.getString("language");
-			if (!Config.L2JMOD_MULTILANG_ALLOWED.contains(lang))
+			if (!L2JModsConfig.L2JMOD_MULTILANG_ALLOWED.contains(lang))
 			{
-				lang = Config.L2JMOD_MULTILANG_DEFAULT;
+				lang = L2JModsConfig.L2JMOD_MULTILANG_DEFAULT;
 			}
 			charInfopackage.setHtmlPrefix("data/lang/" + lang + "/");
 		}
@@ -349,21 +353,26 @@ public class CharSelectionInfo implements IClientOutgoingPacket
 		if (weaponObjId > 0)
 		{
 			try (Connection con = DatabaseFactory.getInstance().getConnection();
-				PreparedStatement statement = con.prepareStatement("SELECT augAttributes FROM item_attributes WHERE itemId=?"))
+				PreparedStatement statement = con.prepareStatement("SELECT mineralId,option1,option2 FROM item_variations WHERE itemId=?"))
 			{
 				statement.setInt(1, weaponObjId);
 				try (ResultSet result = statement.executeQuery())
 				{
 					if (result.next())
 					{
-						int augment = result.getInt("augAttributes");
-						charInfopackage.setAugmentationId(augment == -1 ? 0 : augment);
+						int mineralId = result.getInt("mineralId");
+						int option1 = result.getInt("option1");
+						int option2 = result.getInt("option2");
+						if ((option1 != -1) && (option2 != -1))
+						{
+							charInfopackage.setAugmentation(new VariationInstance(mineralId, option1, option2));
+						}
 					}
 				}
 			}
 			catch (Exception e)
 			{
-				_log.warn("Could not restore augmentation info: " + e.getMessage(), e);
+				LOGGER.warn("Could not restore augmentation info: " + e.getMessage(), e);
 			}
 		}
 		

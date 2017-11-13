@@ -31,20 +31,17 @@ public class ExFishingStart implements IClientOutgoingPacket
 {
 	private final PlayerInstance _player;
 	private final int _fishType;
-	private final int _baitType;
 	private final ILocational _baitLocation;
 	
 	/**
 	 * @param player
 	 * @param fishType
-	 * @param baitType - 0 = newbie, 1 = normal, 2 = night
 	 * @param baitLocation
 	 */
-	public ExFishingStart(PlayerInstance player, int fishType, int baitType, ILocational baitLocation)
+	public ExFishingStart(PlayerInstance player, int fishType, ILocational baitLocation)
 	{
 		_player = player;
 		_fishType = fishType;
-		_baitType = baitType;
 		_baitLocation = baitLocation;
 	}
 	
@@ -54,10 +51,10 @@ public class ExFishingStart implements IClientOutgoingPacket
 		OutgoingPackets.EX_FISHING_START.writeId(packet);
 		packet.writeD(_player.getObjectId());
 		packet.writeC(_fishType);
-		packet.writeD(_baitLocation.getX());
-		packet.writeD(_baitLocation.getY());
-		packet.writeD(_baitLocation.getZ());
-		packet.writeC(_baitType);
+		packet.writeD((int) _baitLocation.getX());
+		packet.writeD((int) _baitLocation.getY());
+		packet.writeD((int) _baitLocation.getZ());
+		packet.writeC(0x01); // baitType - 0 = newbie, 1 = normal, 2 = night
 		return true;
 	}
 }

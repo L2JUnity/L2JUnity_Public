@@ -20,9 +20,11 @@ package org.l2junity.gameserver.model.actor.tasks.npc;
 
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_ACTIVE;
 
-import org.l2junity.Config;
+import java.util.concurrent.TimeUnit;
+
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +34,8 @@ import org.slf4j.LoggerFactory;
  */
 public class RandomAnimationTask implements Runnable
 {
-	private static final Logger _log = LoggerFactory.getLogger(RandomAnimationTask.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(RandomAnimationTask.class);
+	
 	private final Npc _npc;
 	private boolean _stopTask;
 	
@@ -71,7 +74,7 @@ public class RandomAnimationTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.error("Execution of RandomAnimationTask has failed.", e);
+			LOGGER.error("Execution of RandomAnimationTask has failed.", e);
 		}
 	}
 	
@@ -85,14 +88,14 @@ public class RandomAnimationTask implements Runnable
 			return;
 		}
 		
-		int minWait = _npc.isAttackable() ? Config.MIN_MONSTER_ANIMATION : Config.MIN_NPC_ANIMATION;
-		int maxWait = _npc.isAttackable() ? Config.MAX_MONSTER_ANIMATION : Config.MAX_NPC_ANIMATION;
+		int minWait = _npc.isAttackable() ? GeneralConfig.MIN_MONSTER_ANIMATION : GeneralConfig.MIN_NPC_ANIMATION;
+		int maxWait = _npc.isAttackable() ? GeneralConfig.MAX_MONSTER_ANIMATION : GeneralConfig.MAX_NPC_ANIMATION;
 		
 		// Calculate the delay before the next animation
 		int interval = Rnd.get(minWait, maxWait) * 1000;
 		
 		// Create a RandomAnimation Task that will be launched after the calculated delay
-		ThreadPoolManager.getInstance().scheduleGeneral(this, interval);
+		ThreadPool.schedule(this, interval, TimeUnit.MILLISECONDS);
 	}
 	
 	/**

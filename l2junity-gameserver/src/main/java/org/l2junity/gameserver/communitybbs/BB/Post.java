@@ -24,7 +24,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.communitybbs.Manager.PostBBSManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

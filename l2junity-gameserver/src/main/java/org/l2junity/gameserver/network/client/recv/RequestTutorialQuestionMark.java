@@ -26,13 +26,14 @@ import org.l2junity.network.PacketReader;
 
 public class RequestTutorialQuestionMark implements IClientIncomingPacket
 {
-	private int _number = 0;
+	private int _cond = 0;
+	private int _questId = 0;
 	
 	@Override
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
-		packet.readC(); // index ?
-		_number = packet.readD();
+		_cond = packet.readC();
+		_questId = packet.readD();
 		return true;
 	}
 	
@@ -46,6 +47,6 @@ public class RequestTutorialQuestionMark implements IClientIncomingPacket
 		}
 		
 		// Notify scripts
-		EventDispatcher.getInstance().notifyEventAsync(new OnPlayerPressTutorialMark(player, _number), player);
+		EventDispatcher.getInstance().notifyEventAsync(new OnPlayerPressTutorialMark(player, _questId, _cond), player);
 	}
 }

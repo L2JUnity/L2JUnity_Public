@@ -18,11 +18,11 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.l2junity.gameserver.model.actor.Creature;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author Sdw
@@ -30,13 +30,13 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class VampiricChanceFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
-		final double amount = creature.getStat().getValue(Stats.ABSORB_DAMAGE_PERCENT, 0) * 100;
+		final double amount = creature.getStat().getValue(DoubleStat.ABSORB_DAMAGE_PERCENT, 0) * 100;
 		final double vampiricSum = creature.getStat().getVampiricSum();
 		
-		return amount > 0 ? Stats.defaultValue(creature, stat, Math.min(1.0, vampiricSum / amount / 100)) : 0;
+		return amount > 0 ? DoubleStat.defaultValue(creature, stat, Math.min(1.0, vampiricSum / amount / 100)) : 0;
 	}
 }

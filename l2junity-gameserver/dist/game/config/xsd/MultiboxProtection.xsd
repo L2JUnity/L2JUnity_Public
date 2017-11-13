@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="protection" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType mixed="true">
+						<xs:sequence>
+							<xs:element name="whitelist" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute type="xs:string" name="source" use="required" />
+									<xs:attribute type="xs:integer" name="maxClients" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute type="xs:string" name="name" use="required" />
+						<xs:attribute name="type" use="optional">
+							<xs:simpleType>
+								<xs:restriction base="xs:token">
+									<xs:enumeration value="IP" />
+									<xs:enumeration value="HWID" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute type="xs:integer" name="maxClients" use="optional" />
+						<xs:attribute type="xs:string" name="restrictionHtmlFile" use="optional" />
+						<xs:attribute type="xs:boolean" name="unregisterOnDisconnected" use="optional" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

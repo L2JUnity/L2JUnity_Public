@@ -5,7 +5,7 @@ title Game Server Console
 echo Starting L2J Game Server.
 echo.
 
-java -Xms1024m -Xmx1536m -jar l2jserver.jar
+java -Xms1024m -Xmx1536m -jar l2junity-game.jar
 
 REM NOTE: If you have a powerful machine, you could modify/add some extra parameters for performance, like:
 REM -Xms1536m

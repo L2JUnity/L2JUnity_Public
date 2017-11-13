@@ -41,9 +41,9 @@ public final class GetItem implements IClientOutgoingPacket
 		packet.writeD(_playerId);
 		packet.writeD(_item.getObjectId());
 		
-		packet.writeD(_item.getX());
-		packet.writeD(_item.getY());
-		packet.writeD(_item.getZ());
+		packet.writeD((int) _item.getX());
+		packet.writeD((int) _item.getY());
+		packet.writeD((int) _item.getZ());
 		return true;
 	}
 }

@@ -18,11 +18,14 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.ActionDataHolder;
 import org.l2junity.gameserver.model.StatsSet;
 import org.slf4j.Logger;
@@ -41,11 +44,10 @@ public class ActionData implements IGameXmlReader
 	
 	protected ActionData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	protected void load() throws Exception
 	{
 		_actionData.clear();
 		_actionSkillsData.clear();
@@ -55,13 +57,18 @@ public class ActionData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, "list", listNode -> forEach(listNode, "action", actionNode ->
 		{
 			final ActionDataHolder holder = new ActionDataHolder(new StatsSet(parseAttributes(actionNode)));
 			_actionData.put(holder.getId(), holder);
 		}));
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _actionData.size() + _actionSkillsData.size();
 	}
 	
 	/**
@@ -86,6 +93,7 @@ public class ActionData implements IGameXmlReader
 	 * Gets the single instance of ActionData.
 	 * @return single instance of ActionData
 	 */
+	@InstanceGetter
 	public static final ActionData getInstance()
 	{
 		return SingletonHolder._instance;

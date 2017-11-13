@@ -24,7 +24,6 @@ import java.util.function.Function;
 
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.skills.ISkillCondition;
-import org.l2junity.gameserver.scripting.ScriptEngineManager;
 
 /**
  * @author NosBit
@@ -48,25 +47,17 @@ public final class SkillConditionHandler
 		return _skillConditionHandlerFactories.size();
 	}
 	
-	public void executeScript()
+	protected SkillConditionHandler()
 	{
-		try
-		{
-			ScriptEngineManager.getInstance().executeSkillConditionMasterHandler();
-		}
-		catch (Exception e)
-		{
-			throw new Error("Problems while running SkillMasterHandler", e);
-		}
+	}
+
+	public static SkillConditionHandler getInstance()
+	{
+		return SingletonHolder._instance;
 	}
 	
 	private static final class SingletonHolder
 	{
 		protected static final SkillConditionHandler _instance = new SkillConditionHandler();
-	}
-	
-	public static SkillConditionHandler getInstance()
-	{
-		return SingletonHolder._instance;
 	}
 }

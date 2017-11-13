@@ -20,8 +20,8 @@ package org.l2junity.gameserver.network.client.recv;
 
 import java.util.Arrays;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.ai.CtrlIntention;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.AdminTeleportType;
 import org.l2junity.gameserver.enums.SayuneType;
 import org.l2junity.gameserver.model.Location;
@@ -56,6 +56,7 @@ public class MoveBackwardToLocation implements IClientIncomingPacket
 	private int _originX;
 	private int _originY;
 	private int _originZ;
+	@SuppressWarnings("unused")
 	private int _moveMovement;
 	
 	// For geodata
@@ -86,7 +87,18 @@ public class MoveBackwardToLocation implements IClientIncomingPacket
 			return;
 		}
 		
-		if ((Config.PLAYER_MOVEMENT_BLOCK_TIME > 0) && !activeChar.isGM() && (activeChar.getNotMoveUntil() > System.currentTimeMillis()))
+		if (activeChar.isInTraingCamp())
+		{
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		if (activeChar.isSpawnProtected())
+		{
+			activeChar.onActionRequest();
+		}
+		
+		if ((PlayerConfig.PLAYER_MOVEMENT_BLOCK_TIME > 0) && !activeChar.isGM() && (activeChar.getNotMoveUntil() > System.currentTimeMillis()))
 		{
 			activeChar.sendPacket(SystemMessageId.YOU_CANNOT_MOVE_WHILE_SPEAKING_TO_AN_NPC_ONE_MOMENT_PLEASE);
 			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
@@ -107,19 +119,16 @@ public class MoveBackwardToLocation implements IClientIncomingPacket
 		// Validate position packets sends head level.
 		_targetZ += activeChar.getTemplate().getCollisionHeight();
 		
-		if (_moveMovement == 1)
+		final TerminateReturn terminate = EventDispatcher.getInstance().notifyEvent(new OnPlayerMoveRequest(activeChar, new Location(_targetX, _targetY, _targetZ)), activeChar, TerminateReturn.class);
+		if ((terminate != null) && terminate.terminate())
 		{
-			final TerminateReturn terminate = EventDispatcher.getInstance().notifyEvent(new OnPlayerMoveRequest(activeChar, new Location(_targetX, _targetY, _targetZ)), activeChar, TerminateReturn.class);
-			if ((terminate != null) && terminate.terminate())
-			{
-				activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-				return;
-			}
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
 		}
 		
-		_curX = activeChar.getX();
-		_curY = activeChar.getY();
-		_curZ = activeChar.getZ();
+		_curX = (int) activeChar.getX();
+		_curY = (int) activeChar.getY();
+		_curZ = (int) activeChar.getZ();
 		
 		switch (activeChar.getTeleMode())
 		{
@@ -152,7 +161,7 @@ public class MoveBackwardToLocation implements IClientIncomingPacket
 				double dx = _targetX - _curX;
 				double dy = _targetY - _curY;
 				// Can't move if character is confused, or trying to move a huge distance
-				if (activeChar.isControlBlocked() || (((dx * dx) + (dy * dy)) > 98010000)) // 9900*9900
+				if (((dx * dx) + (dy * dy)) > 98010000) // 9900*9900
 				{
 					activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 					return;

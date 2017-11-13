@@ -26,14 +26,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GameTimeController;
-import org.l2junity.gameserver.GeoData;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.enums.AISkillScope;
+import org.l2junity.gameserver.geodata.GeoData;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.model.AggroInfo;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.World;
@@ -53,7 +55,6 @@ import org.l2junity.gameserver.model.events.impl.character.npc.OnAttackableFacti
 import org.l2junity.gameserver.model.events.impl.character.npc.OnAttackableHate;
 import org.l2junity.gameserver.model.events.returns.TerminateReturn;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
-import org.l2junity.gameserver.model.skills.BuffInfo;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.skills.SkillCaster;
 import org.l2junity.gameserver.model.zone.ZoneId;
@@ -166,12 +167,12 @@ public class AttackableAI extends CharacterAI implements Runnable
 		{
 			// depending on config, do not allow mobs to attack _new_ players in peacezones,
 			// unless they are already following those players from outside the peacezone.
-			if (!Config.ALT_MOB_AGRO_IN_PEACEZONE && target.isInsideZone(ZoneId.PEACE))
+			if (!NpcConfig.ALT_MOB_AGRO_IN_PEACEZONE && target.isInsideZone(ZoneId.PEACE))
 			{
 				return false;
 			}
 			
-			if (me.isChampion() && Config.L2JMOD_CHAMPION_PASSIVE)
+			if (me.isChampion() && L2JModsConfig.L2JMOD_CHAMPION_PASSIVE)
 			{
 				return false;
 			}
@@ -190,7 +191,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 		// If not idle - create an AI task (schedule onEvtThink repeatedly)
 		if (_aiTask == null)
 		{
-			_aiTask = ThreadPoolManager.getInstance().scheduleAiAtFixedRate(this, 1000, 1000);
+			_aiTask = ThreadPool.scheduleAtFixedRate(this, 1000, 1000, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -214,44 +215,17 @@ public class AttackableAI extends CharacterAI implements Runnable
 	@Override
 	synchronized void changeIntention(CtrlIntention intention, Object... args)
 	{
-		if ((intention == AI_INTENTION_IDLE) || (intention == AI_INTENTION_ACTIVE))
+		if (intention == AI_INTENTION_IDLE)
 		{
-			// Check if actor is not dead
-			Attackable npc = getActiveChar();
-			if (!npc.isAlikeDead())
-			{
-				// If its _knownPlayer isn't empty set the Intention to AI_INTENTION_ACTIVE
-				if (!World.getInstance().getVisibleObjects(npc, PlayerInstance.class).isEmpty())
-				{
-					intention = AI_INTENTION_ACTIVE;
-				}
-				else
-				{
-					if (npc.getSpawn() != null)
-					{
-						final Location loc = npc.getSpawn().getLocation();
-						final int range = Config.MAX_DRIFT_RANGE;
-						
-						if (!npc.isInsideRadius(loc, range + range, true, false))
-						{
-							intention = AI_INTENTION_ACTIVE;
-						}
-					}
-				}
-			}
+			// Set the Intention of this L2AttackableAI to AI_INTENTION_IDLE
+			super.changeIntention(AI_INTENTION_IDLE);
 			
-			if (intention == AI_INTENTION_IDLE)
-			{
-				// Set the Intention of this L2AttackableAI to AI_INTENTION_IDLE
-				super.changeIntention(AI_INTENTION_IDLE);
-				
-				stopAITask();
-				
-				// Cancel the AI
-				_actor.detachAI();
-				
-				return;
-			}
+			stopAITask();
+			
+			// Cancel the AI
+			_actor.detachAI();
+			
+			return;
 		}
 		
 		// Set the Intention of this L2AttackableAI to intention
@@ -277,10 +251,10 @@ public class AttackableAI extends CharacterAI implements Runnable
 	protected void onIntentionAttack(Creature target)
 	{
 		// Calculate the attack timeout
-		_attackTimeout = MAX_ATTACK_TIMEOUT + GameTimeController.getInstance().getGameTicks();
+		_attackTimeout = MAX_ATTACK_TIMEOUT + GameTimeManager.getInstance().getGameTicks();
 		
 		// self and buffs
-		if ((lastBuffTick + 30) < GameTimeController.getInstance().getGameTicks())
+		if ((lastBuffTick + 30) < GameTimeManager.getInstance().getGameTicks())
 		{
 			for (Skill buff : getActiveChar().getTemplate().getAISkills(AISkillScope.BUFF))
 			{
@@ -293,7 +267,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 					break;
 				}
 			}
-			lastBuffTick = GameTimeController.getInstance().getGameTicks();
+			lastBuffTick = GameTimeManager.getInstance().getGameTicks();
 		}
 		
 		// Manage the Attack Intention : Stop current Attack (if necessary), Start a new Attack and Launch Think Event
@@ -348,7 +322,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 			if (npc.isAggressive() || (npc instanceof L2GuardInstance))
 			{
 				final int range = npc instanceof L2GuardInstance ? 500 : npc.getAggroRange(); // TODO Make sure how guards behave towards players.
-				World.getInstance().forEachVisibleObjectInRange(npc, Creature.class, range, t ->
+				World.getInstance().forEachVisibleObjectInRadius(npc, Creature.class, range, t ->
 				{
 					// For each L2Character check if the target is autoattackable
 					if (isAggressiveTowards(t)) // check aggression
@@ -459,11 +433,11 @@ public class AttackableAI extends CharacterAI implements Runnable
 				npc.setWalking();
 			}
 			
-			if (npc.calculateDistance(leader, false, true) > (offset * offset))
+			if (npc.distance2d(leader) > offset)
 			{
-				int x1, y1, z1;
+				double x1, y1, z1;
 				x1 = Rnd.get(minRadius * 2, offset * 2); // x
-				y1 = Rnd.get(x1, offset * 2); // distance
+				y1 = Rnd.get((int) x1, offset * 2); // distance
 				y1 = (int) Math.sqrt((y1 * y1) - (x1 * x1)); // y
 				if (x1 > (offset + minRadius))
 				{
@@ -504,10 +478,10 @@ public class AttackableAI extends CharacterAI implements Runnable
 		// Order to the L2MonsterInstance to random walk (1/100)
 		else if ((npc.getSpawn() != null) && (Rnd.nextInt(RANDOM_WALK_RATE) == 0) && npc.isRandomWalkingEnabled())
 		{
-			int x1 = 0;
-			int y1 = 0;
-			int z1 = 0;
-			final int range = Config.MAX_DRIFT_RANGE;
+			double x1 = 0;
+			double y1 = 0;
+			double z1 = 0;
+			final int range = NpcConfig.MAX_DRIFT_RANGE;
 			
 			for (Skill sk : npc.getTemplate().getAISkills(AISkillScope.BUFF))
 			{
@@ -524,7 +498,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 			y1 = npc.getSpawn().getY();
 			z1 = npc.getSpawn().getZ();
 			
-			if (!npc.isInsideRadius(x1, y1, 0, range, false, false))
+			if (!npc.isInRadius2d(npc.getSpawn(), range))
 			{
 				npc.setisReturningToSpawnPoint(true);
 			}
@@ -571,7 +545,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 		}
 		
 		// Check if target is dead or if timeout is expired to stop this attack
-		if ((target == null) || target.isAlikeDead() || ((_attackTimeout < GameTimeController.getInstance().getGameTicks()) && npc.canStopAttackByTime()))
+		if ((target == null) || target.isAlikeDead() || ((_attackTimeout < GameTimeManager.getInstance().getGameTicks()) && npc.canStopAttackByTime()))
 		{
 			// Stop hating this target after the attack timeout or if target is dead
 			npc.stopHating(target);
@@ -595,7 +569,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 			try
 			{
 				final Creature finalTarget = target;
-				World.getInstance().forEachVisibleObjectInRange(npc, Npc.class, factionRange, called ->
+				World.getInstance().forEachVisibleObjectInRadius(npc, Npc.class, factionRange, called ->
 				{
 					if (!getActiveChar().getTemplate().isClan(called.getTemplate().getClans()))
 					{
@@ -605,7 +579,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 					// Check if the L2Object is inside the Faction Range of the actor
 					if (called.hasAI())
 					{
-						if ((Math.abs(finalTarget.getZ() - called.getZ()) < 600) && npc.getAttackByList().contains(finalTarget) && ((called.getAI()._intention == CtrlIntention.AI_INTENTION_IDLE) || (called.getAI()._intention == CtrlIntention.AI_INTENTION_ACTIVE)))
+						if ((Math.abs(finalTarget.getZ() - called.getZ()) < 600) && npc.getAttackByList().stream().anyMatch(o -> o.get() == finalTarget) && (called.getAI()._intention == CtrlIntention.AI_INTENTION_ACTIVE))
 						{
 							if (finalTarget.isPlayable())
 							{
@@ -625,7 +599,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 			}
 			catch (NullPointerException e)
 			{
-				LOGGER.warn(getClass().getSimpleName() + ": thinkAttack() faction call failed: " + e.getMessage());
+				LOGGER.warn("thinkAttack() faction call failed: " + e.getMessage());
 			}
 		}
 		
@@ -658,9 +632,9 @@ public class AttackableAI extends CharacterAI implements Runnable
 		{
 			for (Attackable nearby : World.getInstance().getVisibleObjects(npc, Attackable.class))
 			{
-				if (npc.isInsideRadius(nearby, collision, false, false) && (nearby != target))
+				if (npc.isInRadius2d(nearby, collision) && (nearby != target))
 				{
-					int newX = combinedCollision + Rnd.get(40);
+					double newX = combinedCollision + Rnd.get(40);
 					if (Rnd.nextBoolean())
 					{
 						newX = target.getX() + newX;
@@ -669,7 +643,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 					{
 						newX = target.getX() - newX;
 					}
-					int newY = combinedCollision + Rnd.get(40);
+					double newY = combinedCollision + Rnd.get(40);
 					if (Rnd.nextBoolean())
 					{
 						newY = target.getY() + newY;
@@ -679,9 +653,9 @@ public class AttackableAI extends CharacterAI implements Runnable
 						newY = target.getY() - newY;
 					}
 					
-					if (!npc.isInsideRadius(newX, newY, 0, collision, false, false))
+					if (!npc.isInRadius2d(newX, newY, collision))
 					{
-						int newZ = npc.getZ() + 30;
+						double newZ = npc.getZ() + 30;
 						if (GeoData.getInstance().canMove(npc, newX, newY, newZ))
 						{
 							moveTo(newX, newY, newZ);
@@ -697,12 +671,11 @@ public class AttackableAI extends CharacterAI implements Runnable
 			if (Rnd.get(100) <= npc.getTemplate().getDodge())
 			{
 				// Micht: kepping this one otherwise we should do 2 sqrt
-				double distance2 = npc.calculateDistance(target, false, true);
-				if (Math.sqrt(distance2) <= (60 + combinedCollision))
+				if (npc.distance2d(target) <= (60 + combinedCollision))
 				{
-					int posX = npc.getX();
-					int posY = npc.getY();
-					int posZ = npc.getZ() + 30;
+					double posX = npc.getX();
+					double posY = npc.getY();
+					double posZ = npc.getZ() + 30;
 					
 					if (target.getX() < posX)
 					{
@@ -737,17 +710,17 @@ public class AttackableAI extends CharacterAI implements Runnable
 		{
 			chaostime++;
 			boolean changeTarget = false;
-			if ((npc instanceof L2RaidBossInstance) && (chaostime > Config.RAID_CHAOS_TIME))
+			if ((npc instanceof L2RaidBossInstance) && (chaostime > NpcConfig.RAID_CHAOS_TIME))
 			{
 				double multiplier = ((L2MonsterInstance) npc).hasMinions() ? 200 : 100;
 				changeTarget = Rnd.get(100) <= (100 - ((npc.getCurrentHp() * multiplier) / npc.getMaxHp()));
 			}
-			else if ((npc instanceof L2GrandBossInstance) && (chaostime > Config.GRAND_CHAOS_TIME))
+			else if ((npc instanceof L2GrandBossInstance) && (chaostime > NpcConfig.GRAND_CHAOS_TIME))
 			{
 				double chaosRate = 100 - ((npc.getCurrentHp() * 300) / npc.getMaxHp());
 				changeTarget = ((chaosRate <= 10) && (Rnd.get(100) <= 10)) || ((chaosRate > 10) && (Rnd.get(100) <= chaosRate));
 			}
-			else if (chaostime > Config.MINION_CHAOS_TIME)
+			else if (chaostime > NpcConfig.MINION_CHAOS_TIME)
 			{
 				changeTarget = Rnd.get(100) <= (100 - ((npc.getCurrentHp() * 200) / npc.getMaxHp()));
 			}
@@ -878,7 +851,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 		
 		// Check if target is within range or move.
 		int range = npc.getPhysicalAttackRange() + combinedCollision;
-		if (npc.calculateDistance(target, false, false) > range)
+		if (npc.distance2d(target) > range)
 		{
 			if (checkTarget(target))
 			{
@@ -896,7 +869,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 		}
 		
 		// Attacks target
-		_actor.doAttack(target);
+		_actor.doAutoAttack(target);
 	}
 	
 	private boolean checkSkillTarget(Skill skill, WorldObject target)
@@ -917,8 +890,13 @@ public class AttackableAI extends CharacterAI implements Runnable
 			// Skip if target is already affected by such skill.
 			if (skill.isContinuous())
 			{
-				final BuffInfo info = ((Creature) target).getEffectList().getBuffInfoByAbnormalType(skill.getAbnormalType());
-				if ((info != null) && (info.getSkill().getAbnormalLvl() >= skill.getAbnormalLvl()))
+				if (((Creature) target).getEffectList().hasAbnormalType(skill.getAbnormalType(), i -> (i.getSkill().getAbnormalLvl() >= skill.getAbnormalLvl())))
+				{
+					return false;
+				}
+				
+				// There are cases where bad skills (negative effect points) are actually buffs and NPCs cast them on players, but they shouldn't.
+				if ((!skill.isDebuff() || !skill.isBad()) && target.isAutoAttackable(getActiveChar()))
 				{
 					return false;
 				}
@@ -929,12 +907,12 @@ public class AttackableAI extends CharacterAI implements Runnable
 			{
 				if (skill.isBad())
 				{
-					if (!((Creature) target).getEffectList().hasBuffs() && !((Creature) target).getEffectList().hasDances())
+					if (((Creature) target).getEffectList().getBuffCount() == 0)
 					{
 						return false;
 					}
 				}
-				else if (!((Creature) target).getEffectList().hasDebuffs())
+				else if (((Creature) target).getEffectList().getDebuffCount() == 0)
 				{
 					return false;
 				}
@@ -967,7 +945,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 			
 			if (npc.isMovementDisabled())
 			{
-				if (!npc.isInsideRadius(target, npc.getPhysicalAttackRange() + npc.getTemplate().getCollisionRadius() + ((Creature) target).getTemplate().getCollisionRadius(), false, true))
+				if (!npc.isInRadius2d(target, npc.getPhysicalAttackRange() + npc.getTemplate().getCollisionRadius() + ((Creature) target).getTemplate().getCollisionRadius()))
 				{
 					return false;
 				}
@@ -996,11 +974,14 @@ public class AttackableAI extends CharacterAI implements Runnable
 			return null;
 		}
 		
+		// There are cases where bad skills (negative effect points) are actually buffs and NPCs cast them on players, but they shouldn't.
+		final boolean isBad = skill.isContinuous() ? skill.isDebuff() : skill.isBad();
+		
 		// Check current target first.
 		final int range = insideCastRange ? skill.getCastRange() + getActiveChar().getTemplate().getCollisionRadius() : 2000; // TODO need some forget range
 		
 		Stream<Creature> stream;
-		if (skill.isBad())
+		if (isBad)
 		{
 			//@formatter:off
 			stream = npc.getAggroList().values().stream()
@@ -1116,7 +1097,7 @@ public class AttackableAI extends CharacterAI implements Runnable
 		final Attackable me = getActiveChar();
 		final WorldObject target = getTarget();
 		// Calculate the attack timeout
-		_attackTimeout = MAX_ATTACK_TIMEOUT + GameTimeController.getInstance().getGameTicks();
+		_attackTimeout = MAX_ATTACK_TIMEOUT + GameTimeManager.getInstance().getGameTicks();
 		
 		// Set the _globalAggro to 0 to permit attack even just after spawn
 		if (_globalAggro < 0)

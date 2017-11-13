@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="15200" toLevel="1" name="Tauti Ultra Whirlwind">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Being hurled away from shock. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
@@ -17,13 +17,35 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>3</abnormalTime>
 		<affectRange>400</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_real_damage">
+				<power>100000</power>
+			</effect>
+			<effect name="FlyAway"> <!-- TODO: {i_fly_away;curve;push;300} -->
+				<radius>300</radius>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="p_defence_trait">
+				<KNOCKBACK>100</KNOCKBACK>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>-20</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15201" toLevel="1" name="Tauti Ultra Whirlwind">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Being hurled away from shock. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
@@ -39,13 +61,35 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>3</abnormalTime>
 		<affectRange>400</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_real_damage">
+				<power>100000</power>
+			</effect>
+			<effect name="FlyAway"> <!-- TODO: {i_fly_away;curve;push;300} -->
+				<radius>300</radius>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="p_defence_trait">
+				<KNOCKBACK>100</KNOCKBACK>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15202" toLevel="1" name="Tauti Ultra Typhoon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Being flung away from shock. Attached characters are fine, but long-range characters are affected by this skill. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
@@ -62,13 +106,35 @@
 		<abnormalTime>3</abnormalTime>
 		<affectRange>1500</affectRange>
 		<fanRange>0;0;600;0</fanRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>RING_RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_real_damage">
+				<power>100000</power>
+			</effect>
+			<effect name="FlyAway"> <!-- TODO: {i_fly_away;curve;push;300} -->
+				<radius>300</radius>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="p_defence_trait">
+				<KNOCKBACK>100</KNOCKBACK>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>-20</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15203" toLevel="1" name="Tauti Ultra Typhoon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Being flung away from shock. Attached characters are fine, but long-range characters are affected by this skill. -->
 		<icon>icon.skill3080</icon>
 		<operateType>A2</operateType>
@@ -85,13 +151,35 @@
 		<abnormalTime>3</abnormalTime>
 		<affectRange>1500</affectRange>
 		<fanRange>0;0;600;0</fanRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>RING_RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_real_damage">
+				<power>100000</power>
+			</effect>
+			<effect name="FlyAway"> <!-- TODO: {i_fly_away;curve;push;300} -->
+				<radius>300</radius>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="p_defence_trait">
+				<KNOCKBACK>100</KNOCKBACK>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15204" toLevel="1" name="Tauti Omega Whirlwind">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Becomes knocked down after receiving Tauti's ultimate attack. -->
 		<icon>icon.skill10266</icon>
 		<operateType>A2</operateType>
@@ -111,13 +199,33 @@
 		<affectRange>200</affectRange>
 		<affectLimit>10-10</affectLimit>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_p_attack">
+				<power>270000</power>
+			</effect>
+			<effect name="i_knockback">
+				<distance>50</distance>
+				<speed>400</speed>
+				<knockDown>true</knockDown>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="p_defence_trait">
+				<DERANGEMENT>100</DERANGEMENT>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<CHANGEBODY>100</CHANGEBODY>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15205" toLevel="1" name="Tauti Omega Whirlwind">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Becomes knocked down after receiving Tauti's ultimate attack. -->
 		<icon>icon.skill10266</icon>
 		<operateType>A2</operateType>
@@ -137,13 +245,33 @@
 		<affectRange>200</affectRange>
 		<affectLimit>10-10</affectLimit>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_p_attack">
+				<power>270000</power>
+			</effect>
+			<effect name="i_knockback">
+				<distance>50</distance>
+				<speed>400</speed>
+				<knockDown>true</knockDown>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="p_defence_trait">
+				<DERANGEMENT>100</DERANGEMENT>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<CHANGEBODY>100</CHANGEBODY>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15206" toLevel="1" name="Explosion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<effectPoint>-574</effectPoint>
@@ -156,16 +284,24 @@
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
+		<pveEffects>
+			<effect name="i_m_attack">
+				<power>1</power>
+			</effect>
+		</pveEffects>
 	</skill>
 	<skill id="15207" toLevel="1" name="Debuff Immunity">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
+		<effects>
+			<effect name="p_block_debuff" />
+		</effects>
 	</skill>
 	<skill id="15208" toLevel="9" name="Weakened Chaos Shield">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lethal Strike Resistance is weakened through the armor destruction skill. -->
 		<icon>
 			<value level="1">icon.skill0035</value>
@@ -203,9 +339,32 @@
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>950</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>950</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_instant_kill_resist">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+					<value level="6">60</value>
+					<value level="7">70</value>
+					<value level="8">80</value>
+					<value level="9">90</value>
+				</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15209" toLevel="1" name="Pa'agrio's Gift 1">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Gives a gift. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -224,14 +383,14 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>34864</itemId>
 				<itemCount>3</itemCount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="15210" toLevel="1" name="Pa'agrio's Gift 2">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Gives a gift. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -250,14 +409,14 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>34865</itemId>
 				<itemCount>1</itemCount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="15211" toLevel="1" name="Pa'agrio's Gift 3">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Gives a gift. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -276,14 +435,14 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>34864</itemId>
 				<itemCount>7</itemCount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="15212" toLevel="1" name="Pa'agrio's Gift 4">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Gives a gift. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -302,14 +461,14 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>34865</itemId>
 				<itemCount>1</itemCount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="15213" toLevel="1" name="Guillotine's Advent">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Flying away due to the twisted space. -->
 		<icon>icon.skill4107</icon>
 		<operateType>A2</operateType>
@@ -326,13 +485,21 @@
 		<abnormalTime>3</abnormalTime>
 		<affectRange>400</affectRange>
 		<affectLimit>10-10</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_p_attack">
+				<power>180000</power>
+			</effect>
+			<effect name="FlyAway"> <!-- TODO: {i_fly_away;curve;push;300} -->
+				<radius>300</radius>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15214" toLevel="1" name="Tauti">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Tauti is the lord who rules over the Seed of Hellfire. It is one of the 9 seeds sown in Gracia by Shilen's command. It is one of Bremnon's weapons that has the appearance of an enormous axe. It uses the conflict between the classes in order to carry out Shilen's command and to grow its own power. It does not personally appear while ruling over the Seed of Hellfire. No one knows the extent of its hidden power. -->
 		<icon>icon.skillboss</icon>
 		<operateType>P</operateType>
@@ -340,7 +507,7 @@
 		<magicLvl>1</magicLvl>
 	</skill>
 	<skill id="15215" toLevel="1" name="Raid Boss (Lv. 97)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- The Guillotine was once an executioner. After drinking the blood of Shilen that permeated the Execution Grounds, it became the 'Guillotine of Death' that kills to bring about the resurrection of Shilen. It is trapped in the illusion of the blood. It manages the criminals near the guillotine and it sends the blood that they have gathered to the spirit world of darkness. -->
 		<icon>icon.skillraid</icon>
 		<operateType>P</operateType>
@@ -348,7 +515,7 @@
 		<magicLvl>1</magicLvl>
 	</skill>
 	<skill id="15216" toLevel="1" name="Raid Boss (Lv. 97)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- This is an undead monster that was created through the blood of Shilen from the corpse of a criminal who went insane from the torture in the fortress. It is trapped in the illusion of the blood. It seeks to bring about the resurrection of Shilen by killing everything, thereby taking sacrifices for the darkness. -->
 		<icon>icon.skillraid</icon>
 		<operateType>P</operateType>
@@ -356,7 +523,7 @@
 		<magicLvl>1</magicLvl>
 	</skill>
 	<skill id="15217" toLevel="1" name="Raid Boss (Lv. 97)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- The master criminal who resurrected after drinking the blood of Shilen that seeped into the Execution Grounds. It is trapped in the madness of blood. It is a warden who manages the monsters in the Guillotine Fortress. -->
 		<icon>icon.skillraid</icon>
 		<operateType>P</operateType>
@@ -382,7 +549,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TargetCancel">
+			<effect name="i_target_cancel">
 				<chance>50</chance>
 			</effect>
 		</effects>
@@ -407,7 +574,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>40000</power>
 			</effect>
 		</effects>
@@ -420,6 +587,7 @@
 		<mpConsume>10</mpConsume>
 		<hitTime>2000</hitTime>
 		<effectPoint>-100</effectPoint>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
@@ -432,17 +600,17 @@
 		<trait>BLEED</trait>
 		<affectRange>150</affectRange>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isSuicideAttack>true</isSuicideAttack>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>40000</power>
 			</effect>
-			<effect name="DamOverTime">
-				<power>1000</power>
+			<effect name="t_hp">
+				<power>-1000</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -450,7 +618,6 @@
 	<skill id="15221" toLevel="3" name="Blood Spear">
 		<!-- Glory Days confirmed -->
 		<!-- Attacks the target with an arrow of darkness. -->
-		<table name="#power"> 1000 1500 2000 </table>
 		<icon>icon.skill0122</icon>
 		<operateType>A1</operateType>
 		<mpConsume>10</mpConsume>
@@ -471,7 +638,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">1000</value>
 					<value level="2">1500</value>
@@ -483,7 +650,6 @@
 	<skill id="15222" toLevel="3" name="Home Thrust">
 		<!-- Glory Days confirmed -->
 		<!-- Launches a powerful attack on the target. -->
-		<table name="#power"> 30000 40000 50000 </table>
 		<icon>icon.skill0003</icon>
 		<operateType>A1</operateType>
 		<mpConsume>10</mpConsume>
@@ -502,7 +668,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">30000</value>
 					<value level="2">40000</value>
@@ -530,7 +696,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>40000</power>
 			</effect>
 		</effects>
@@ -557,16 +723,16 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>5</abnormalTime>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -592,7 +758,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>40000</power>
 			</effect>
 		</effects>
@@ -617,10 +783,10 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>40000</power>
 			</effect>
-			<effect name="MagicalAttackByAbnormalSlot">
+			<effect name="i_m_attack_by_abnormal_slot">
 				<power>500</power>
 				<abnormalType>PD_DOWN</abnormalType>
 			</effect>
@@ -640,7 +806,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>30000</power>
 			</effect>
 		</effects>
@@ -663,7 +829,7 @@
 		<affectScope>FAN_PB</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttackByAbnormalSlot">
+			<effect name="i_m_attack_by_abnormal_slot">
 				<abnormalType>PD_DOWN</abnormalType>
 				<power>500</power>
 			</effect>
@@ -687,10 +853,10 @@
 		<affectScope>FAN_PB</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>40000</power>
 			</effect>
-			<effect name="MagicalAttackByAbnormalSlot">
+			<effect name="i_m_attack_by_abnormal_slot">
 				<power>500</power>
 				<abnormalType>PD_DOWN</abnormalType>
 			</effect>
@@ -710,14 +876,14 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackByAbnormalSlot">
+			<effect name="i_m_attack_by_abnormal_slot">
 				<abnormalType>PD_DOWN</abnormalType>
 				<power>500</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="15231" toLevel="1" name="Quick Thrust">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Inflicts a powerful attack on the target. -->
 		<icon>icon.skill11508</icon>
 		<operateType>DA2</operateType>
@@ -739,6 +905,18 @@
 		<reuseDelay>5000</reuseDelay>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_p_attack">
+				<power>40000</power>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="i_knockback">
+				<distance>200</distance>
+				<speed>400</speed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15232" toLevel="1" name="Speed Up">
 		<!-- Glory Days confirmed -->
@@ -758,7 +936,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -782,7 +960,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>40000</power>
 			</effect>
 		</effects>
@@ -807,10 +985,10 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>200000</power>
 			</effect>
-			<effect name="MagicalAttackByAbnormalSlot">
+			<effect name="i_m_attack_by_abnormal_slot">
 				<power>500</power>
 				<abnormalType>PD_DOWN</abnormalType>
 			</effect>
@@ -840,14 +1018,14 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>180000</power>
 			</effect>
-			<effect name="MagicalAttackByAbnormalSlot">
+			<effect name="i_m_attack_by_abnormal_slot">
 				<power>500</power>
 				<abnormalType>PD_DOWN</abnormalType>
 			</effect>
-			<effect name="KnockBack">
+			<effect name="i_knockback">
 				<distance>200</distance>
 				<speed>400</speed>
 				<knockDown>true</knockDown>
@@ -871,7 +1049,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>200000</power>
 			</effect>
 		</effects>
@@ -895,13 +1073,13 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>200000</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="15238" toLevel="1" name="Dark Breath">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Absorb the souls of enemies within 180 degrees of you and decrease their P. Def. and M. Def. by 30%. -->
 		<icon>icon.skill11769</icon>
 		<operateType>A2</operateType>
@@ -921,13 +1099,23 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
 		<fanRange>0;0;200;180</fanRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15239" toLevel="1" name="Added Blow">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Additional damage received when debuffed with Soul Drain. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -939,9 +1127,14 @@
 		<reuseDelay>5000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_p_attack">
+				<power>100000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15240" toLevel="1" name="Toad Cannon Explosion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- A broken Toad Cannon sparks into explosion, knocking back nearby targets. -->
 		<icon>icon.skill0036</icon>
 		<operateType>A2</operateType>
@@ -961,9 +1154,16 @@
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_knockback">
+				<distance>200</distance>
+				<speed>400</speed>
+				<knockDown>true</knockDown>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15241" toLevel="1" name="">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<effectPoint>100</effectPoint>
@@ -977,7 +1177,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15242" toLevel="1" name="Presentation - Summon Attack Robot">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Summons an Attack Robot that attacks nearby Helper Robots. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -990,7 +1190,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15243" toLevel="1" name="Presentation - Summon Stone Gathering Robot">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Summons a Zombie Robot that attacks nearby Stone Gathering Robots. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1003,7 +1203,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15244" toLevel="1" name="Presentation - Destroy Dark Summon Circle">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Activate the Gathering Device to make the Dark Summon Circle disappear. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1015,7 +1215,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15245" toLevel="1" name="Presentation - Summon Robot">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Summon Device summons either a Repair Robot, or one of the two Destroyer Robots. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1028,7 +1228,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15246" toLevel="1" name="Nurka Blow">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Inflicts powerful damage on target and nearby enemies. -->
 		<icon>icon.skill0036</icon>
 		<operateType>A1</operateType>
@@ -1046,9 +1246,14 @@
 		<targetType>TARGET</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_p_attack">
+				<power>200000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15247" toLevel="1" name="Nurka Strike">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Inflicts damage on the target and knocks them down. -->
 		<icon>icon.skill10549</icon>
 		<operateType>A2</operateType>
@@ -1069,12 +1274,32 @@
 		<abnormalTime>1</abnormalTime>
 		<trait>KNOCKDOWN</trait>
 		<abnormalVisualEffect>KNOCKBACK</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_p_attack">
+				<power>250000</power>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="i_knockback">
+				<distance>100</distance>
+				<speed>400</speed>
+				<knockDown>true</knockDown>
+			</effect>
+			<effect name="p_defence_trait">
+				<KNOCKBACK>100</KNOCKBACK>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15248" toLevel="1" name="Nurka Howl">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Nurka's P. Atk. and Atk. Spd. increased and P. Def. decreased. -->
 		<icon>icon.skill1068</icon>
 		<operateType>A2</operateType>
@@ -1092,9 +1317,23 @@
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>-10</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15249" toLevel="1" name="Nurka Fireball">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Inflicts powerful magical damage on the target. -->
 		<icon>icon.skill0003</icon>
 		<operateType>A1</operateType>
@@ -1113,9 +1352,14 @@
 		<isMagic>1</isMagic>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_m_attack">
+				<power>3000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15250" toLevel="1" name="Nurka's Cold Shoulders">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Inflicts Aerial Yoke on nearby enemies. -->
 		<icon>icon.skill1042</icon>
 		<operateType>A2</operateType>
@@ -1135,13 +1379,33 @@
 		<trait>AIRBIND</trait>
 		<affectRange>150</affectRange>
 		<abnormalVisualEffect>AIRBIND</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="p_block_controll" />
+			<effect name="t_hp">
+				<power>-100</power>
+				<ticks>1</ticks>
+			</effect>
+			<effect name="p_defence_trait">
+				<DERANGEMENT>100</DERANGEMENT>
+				<CHANGEBODY>100</CHANGEBODY>
+				<KNOCKBACK>100</KNOCKBACK>
+				<KNOCKDOWN>100</KNOCKDOWN>
+				<SLEEP>100</SLEEP>
+				<HOLD>100</HOLD>
+				<SHOCK>100</SHOCK>
+				<AIRBIND>100</AIRBIND>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15251" toLevel="1" name="Invincible Nurka">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- No attacks are working on Nurka. -->
 		<icon>icon.skill11758</icon>
 		<operateType>A2</operateType>
@@ -1162,9 +1426,25 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_block_getdamage">
+				<type>BLOCK_HP</type>
+			</effect>
+			<effect name="p_block_getdamage">
+				<type>BLOCK_MP</type>
+			</effect>
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
+				<amount>-100</amount>
+				<slot>BUFF</slot>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>INVINCIBILITY_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15252" toLevel="1" name="With Nurka">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Target is pulled to Nurka. -->
 		<icon>icon.skill10015</icon>
 		<operateType>A2</operateType>
@@ -1185,12 +1465,21 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>1</abnormalTime>
 		<trait>PULL</trait>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_pull">
+				<speed>90</speed>
+				<delay>600</delay>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15253" toLevel="1" name="Earth-rumbling Nurka">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Damages nearby enemies and decreases their Spd. -->
 		<icon>icon.skill11509</icon>
 		<operateType>A2</operateType>
@@ -1210,13 +1499,22 @@
 		<attributeType>EARTH</attributeType>
 		<attributeValue>50</attributeValue>
 		<affectRange>100</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_p_attack">
+				<power>200000</power>
+			</effect>
+			<effect name="p_speed">
+				<amount>-20</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15254" toLevel="1" name="Nurka's Healing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Restores your HP and allies' HP. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1233,9 +1531,14 @@
 		<targetType>SELF</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_heal">
+				<power>123690</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15255" toLevel="1" name="Defensive Nurka">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Nurka's P. Def. + 50%. -->
 		<icon>icon.skill11252</icon>
 		<operateType>A2</operateType>
@@ -1254,9 +1557,19 @@
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15256" toLevel="1" name="Aggressive Nurka">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Nurka's P. Atk. + 50%. -->
 		<icon>icon.skill10252</icon>
 		<operateType>A2</operateType>
@@ -1275,9 +1588,19 @@
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15257" toLevel="1" name="Resistance Blaze">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Decreased Spd. -->
 		<icon>icon.skill0003</icon>
 		<operateType>A2</operateType>
@@ -1298,12 +1621,21 @@
 		<abnormalTime>10</abnormalTime>
 		<attributeType>FIRE</attributeType>
 		<attributeValue>50</attributeValue>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_m_attack">
+				<power>3000</power>
+			</effect>
+			<effect name="p_speed">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15258" toLevel="1" name="Resistance Treatment">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Restores allies' HP. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1320,9 +1652,14 @@
 		<isMagic>1</isMagic>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_heal">
+				<power>63690</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15259" toLevel="1" name="Fireworks">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Congratulations! You have broken the record! -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1334,7 +1671,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15260" toLevel="1" name="Time Up">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Enough for Now. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1346,7 +1683,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15261" toLevel="1" name="Lindvior's Skill 1">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Wave Skill Presentation -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1359,7 +1696,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15262" toLevel="1" name="Lindvior's Skill 2">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Wave Skill Range -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1372,7 +1709,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15263" toLevel="1" name="Bombing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Wave Skill Damage -->
 		<icon>icon.skill1296</icon>
 		<operateType>A2</operateType>
@@ -1382,12 +1719,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15264" toLevel="1" name="Lindvior's Skill 4">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's AoE Skill Presentation -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1400,7 +1737,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15265" toLevel="1" name="Lindvior's AoE 2">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's AoE Skill Range -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1415,7 +1752,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15266" toLevel="1" name="Lindvior's Skill 6">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's AoE Skill Damage -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1428,7 +1765,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15267" toLevel="1" name="Cyclone">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Summon Whirlwind Skill Presentation -->
 		<icon>icon.skill10263</icon>
 		<operateType>A2</operateType>
@@ -1438,12 +1775,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15268" toLevel="1" name="Cyclone">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Whirlwind Knockback Skill -->
 		<icon>icon.skill10263</icon>
 		<operateType>A2</operateType>
@@ -1453,12 +1790,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15269" toLevel="1" name="Lindvior's Wrath">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Aerial Yoke for All Skill Presentation -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1472,7 +1809,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15270" toLevel="1" name="Lindvior's Mass Yoke">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Aerial Yoke for All Skill Area Data -->
 		<icon>icon.skill1042</icon>
 		<operateType>A2</operateType>
@@ -1483,12 +1820,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15271" toLevel="1" name="Body Slam">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's stun -->
 		<icon>icon.skill0100</icon>
 		<operateType>A2</operateType>
@@ -1500,12 +1837,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15272" toLevel="1" name="Wind Breath">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Landing Breath Skill -->
 		<icon>icon.skill10549</icon>
 		<operateType>A2</operateType>
@@ -1517,12 +1854,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15273" toLevel="1" name="Tail Swipe">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Landing Range -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1537,7 +1874,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15274" toLevel="1" name="Mighty Wind Strike">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Long-range projectile -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1553,7 +1890,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15275" toLevel="1" name="Tornado">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's Takeoff Presentation -->
 		<icon>icon.skill10263</icon>
 		<operateType>A2</operateType>
@@ -1564,12 +1901,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15276" toLevel="1" name="Bleed">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Bleeding -->
 		<icon>icon.skill0096</icon>
 		<operateType>A2</operateType>
@@ -1581,12 +1918,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15277" toLevel="1" name="Knock Back">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Knock back -->
 		<icon>icon.skill10549</icon>
 		<operateType>A2</operateType>
@@ -1598,12 +1935,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15278" toLevel="1" name="Yoke">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior's aerial yoke -->
 		<icon>icon.skill1042</icon>
 		<operateType>A2</operateType>
@@ -1616,12 +1953,12 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15279" toLevel="1" name="Soar">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior Raid's PC Chain Skill -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1634,7 +1971,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15280" toLevel="1" name="Lindvior's Berserk">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior Raid's Berserk -->
 		<icon>icon.skill0000</icon>
 		<operateType>A2</operateType>
@@ -1649,7 +1986,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15281" toLevel="1" name="Lindvior's Skill 21">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Atk. Spd. and Speed + 30%. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A2</operateType>
@@ -1664,7 +2001,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15282" toLevel="1" name="Lindvior's Skill 22">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lindvior Raid's Structure Repair Skill -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1734,7 +2071,7 @@
 		</conditions>
 	</skill>
 	<skill id="15286" toLevel="1" name="Blood Siphon Master">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Steals a large portion of the target's HP. -->
 		<icon>icon.skill1147</icon>
 		<operateType>A1</operateType>
@@ -1752,10 +2089,20 @@
 		<isMagic>1</isMagic>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_hp_drain">
+				<power>800</power>
+				<percentage>10</percentage>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15287" toLevel="1" name="Twister">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Inflicts magical damage on PCs near the target and immobilizes them. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3</abnormalTime>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<icon>icon.skill0100</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
@@ -1763,7 +2110,6 @@
 		<hitTime>2500</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<abnormalType>STUN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
@@ -1771,88 +2117,115 @@
 		<lvlBonusRate>1</lvlBonusRate>
 		<activateRate>150</activateRate>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3</abnormalTime>
 		<trait>SHOCK</trait>
 		<attributeType>WIND</attributeType>
 		<attributeValue>50</attributeValue>
 		<affectRange>100</affectRange>
-		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			</effect>
+			<effect name="i_m_attack">
+				<power>1000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15288" toLevel="1" name="Increase Recovery Rate">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Lidia's HP Recovery Rate is greatly increased. -->
+		<abnormalLvl>11</abnormalLvl>
+		<abnormalTime>15</abnormalTime>
+		<abnormalType>HP_REGEN_DOWN</abnormalType>
 		<icon>icon.skill1044</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<hitTime>1000</hitTime>
-		<abnormalType>HP_REGEN_DOWN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>11</abnormalLvl>
-		<abnormalTime>15</abnormalTime>
 		<reuseDelay>5000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_hp_regen">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15289" toLevel="1" name="Decrease Atk. Spd.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Energy that formed in Lidia's room because Giselle von Hellmann and Alfred von Hellmann were not eliminated. Atk. Spd. is decreased. -->
+		<abnormalLvl>5</abnormalLvl>
+		<abnormalTime>0</abnormalTime>
+		<abnormalType>SPEED_UP</abnormalType>
 		<icon>icon.skill11509</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<coolTime>300</coolTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-687</effectPoint>
-		<abnormalType>SPEED_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>5</abnormalLvl>
-		<abnormalTime>0</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>-50</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15290" toLevel="1" name="Decrease Casting Spd.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Energy that formed in Lidia's room because Giselle von Hellmann and Alfred von Hellmann were not eliminated. Casting Spd. is decreased. -->
+		<abnormalLvl>5</abnormalLvl>
+		<abnormalTime>0</abnormalTime>
+		<abnormalType>SPEED_DOWN</abnormalType>
 		<icon>icon.skill11509</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<coolTime>300</coolTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-687</effectPoint>
-		<abnormalType>SPEED_DOWN</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>5</abnormalLvl>
-		<abnormalTime>0</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_magic_speed">
+				<amount>-50</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15291" toLevel="1" name="Bleed">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Energy that formed in Lidia's room because Giselle von Hellmann and Alfred von Hellmann were not eliminated. HP continues to decrease. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>20</abnormalTime>
+		<abnormalType>BLEEDING</abnormalType>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
+		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<icon>icon.skill0096</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<abnormalType>BLEEDING</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
@@ -1860,53 +2233,78 @@
 		<lvlBonusRate>2</lvlBonusRate>
 		<activateRate>100</activateRate>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>2</abnormalLvl>
-		<abnormalTime>20</abnormalTime>
 		<trait>BLEED</trait>
-		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="t_hp">
+				<power>-900</power>
+				<ticks>5</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15292" toLevel="1" name="Logan's Revenge">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Logan's revenge left in his dying breath. Lidia's Atk. Spd. is greatly increased. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>180</abnormalTime>
+		<abnormalType>SPEED_UP</abnormalType>
 		<icon>icon.skill0168</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<reuseDelay>5000</reuseDelay>
-		<abnormalType>SPEED_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>180</abnormalTime>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15293" toLevel="1" name="Logan's Revenge">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Logan's revenge left in his dying breath. Momentarily invincible. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>40</abnormalTime>
+		<abnormalType>INVINCIBILITY_SPECIAL</abnormalType>
+		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
 		<icon>icon.skill11758</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>867</effectPoint>
-		<abnormalType>INVINCIBILITY_SPECIAL</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>40</abnormalTime>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_block_getdamage">
+				<type>BLOCK_HP</type>
+			</effect>
+			<effect name="p_block_getdamage">
+				<type>BLOCK_MP</type>
+			</effect>
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
+				<amount>-100</amount>
+				<slot>ALL</slot>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>INVINCIBILITY_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15294" toLevel="1" name="Logan's Revenge">
 		<!-- AUTO GENERATED SKILL -->
@@ -1925,44 +2323,66 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15295" toLevel="1" name="Logan's Mistake">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Logan's mistake left in his escape. Lidia's Atk. Spd. is great increased. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>180</abnormalTime>
+		<abnormalType>SPEED_UP</abnormalType>
 		<icon>icon.skill0168</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<reuseDelay>5000</reuseDelay>
-		<abnormalType>SPEED_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>180</abnormalTime>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15296" toLevel="1" name="Logan's Mistake">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Logan's mistake left in his escape. Momentarily invincible. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>40</abnormalTime>
+		<abnormalType>INVINCIBILITY_SPECIAL</abnormalType>
+		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
 		<icon>icon.skill11758</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>867</effectPoint>
-		<abnormalType>INVINCIBILITY_SPECIAL</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>40</abnormalTime>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_block_getdamage">
+				<type>BLOCK_HP</type>
+			</effect>
+			<effect name="p_block_getdamage">
+				<type>BLOCK_MP</type>
+			</effect>
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
+				<amount>-100</amount>
+				<slot>ALL</slot>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>INVINCIBILITY_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15297" toLevel="1" name="Logan's Mistake">
 		<!-- AUTO GENERATED SKILL -->
@@ -1981,46 +2401,58 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="15298" toLevel="1" name="Logan's Token of Gratitude">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Logan's token of gratitude left in his escape. Character's HP Recovery Rate is greatly increased temporarily. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>60</abnormalTime>
+		<abnormalType>HP_REGEN_UP</abnormalType>
 		<icon>icon.skill1044</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<hitTime>1000</hitTime>
 		<reuseDelay>5000</reuseDelay>
-		<abnormalType>HP_REGEN_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>60</abnormalTime>
 		<affectRange>500</affectRange>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="p_hp_regen">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15299" toLevel="1" name="Blood Siphon Energy">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Giselle von Hellmann attacks to recover her own HP. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>60</abnormalTime>
+		<abnormalType>VAMPIRIC_ATTACK</abnormalType>
 		<icon>icon.skill1268</icon>
 		<operateType>A2</operateType>
 		<mpConsume>10</mpConsume>
 		<hitTime>1000</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>285</effectPoint>
-		<abnormalType>VAMPIRIC_ATTACK</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>95</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>60</abnormalTime>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_vampiric_attack">
+				<amount>30</amount>
+				<chance>99</chance>
+			</effect>
+		</effects>
 	</skill>
 </list>

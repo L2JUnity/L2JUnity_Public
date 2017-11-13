@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.l2junity.gameserver.enums.CategoryType;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.TeleportWhereType;
@@ -35,6 +36,7 @@ import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.ListenersContainer;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureZoneEnter;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureZoneExit;
+import org.l2junity.gameserver.model.instancezone.Instance;
 import org.l2junity.gameserver.model.interfaces.ILocational;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
 import org.slf4j.Logger;
@@ -46,10 +48,11 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class ZoneType extends ListenersContainer
 {
-	protected static final Logger _log = LoggerFactory.getLogger(ZoneType.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(ZoneType.class);
 	
 	private final int _id;
 	protected L2ZoneForm _zone;
+	protected List<L2ZoneForm> _blockedZone;
 	protected Map<Integer, Creature> _characterList = new ConcurrentHashMap<>();
 	
 	/** Parameters to affect specific characters */
@@ -64,6 +67,8 @@ public abstract class ZoneType extends ListenersContainer
 	private boolean _allowStore;
 	private boolean _enabled;
 	private AbstractZoneSettings _settings;
+	private int _instanceTemplateId;
+	private Map<Integer, Boolean> _enabledInInstance;
 	
 	protected ZoneType(int id)
 	{
@@ -184,9 +189,13 @@ public abstract class ZoneType extends ListenersContainer
 		{
 			_enabled = Boolean.parseBoolean(value);
 		}
+		else if (name.equals("instanceId"))
+		{
+			_instanceTemplateId = Integer.parseInt(value);
+		}
 		else
 		{
-			_log.info(getClass().getSimpleName() + ": Unknown parameter - " + name + " in zone: " + getId());
+			LOGGER.warn("Unknown parameter - " + name + " in zone: " + getId());
 		}
 	}
 	
@@ -196,6 +205,24 @@ public abstract class ZoneType extends ListenersContainer
 	 */
 	private boolean isAffected(Creature character)
 	{
+		// Check instance
+		final Instance world = character.getInstanceWorld();
+		if (world != null)
+		{
+			if (world.getTemplateId() != getInstanceTemplateId())
+			{
+				return false;
+			}
+			if (!isEnabled(character.getInstanceId()))
+			{
+				return false;
+			}
+		}
+		else if (getInstanceTemplateId() > 0)
+		{
+			return false;
+		}
+		
 		// Check lvl
 		if ((character.getLevel() < _minLvl) || (character.getLevel() > _maxLvl))
 		{
@@ -213,7 +240,7 @@ public abstract class ZoneType extends ListenersContainer
 			// Check class type
 			if (_classType != 0)
 			{
-				if (((PlayerInstance) character).isMageClass())
+				if (character.isInCategory(CategoryType.MAGE_GROUP))
 				{
 					if (_classType == 1)
 					{
@@ -291,6 +318,20 @@ public abstract class ZoneType extends ListenersContainer
 		return _zone;
 	}
 	
+	public void setBlockedZones(List<L2ZoneForm> blockedZones)
+	{
+		if (_blockedZone != null)
+		{
+			throw new IllegalStateException("Blocked zone already set");
+		}
+		_blockedZone = blockedZones;
+	}
+	
+	public List<L2ZoneForm> getBlockedZones()
+	{
+		return _blockedZone;
+	}
+	
 	/**
 	 * Set the zone name.
 	 * @param name
@@ -310,14 +351,37 @@ public abstract class ZoneType extends ListenersContainer
 	}
 	
 	/**
+	 * Checks if the given coordinates are within the zone, ignores instanceId check
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return
+	 */
+	public boolean isInsideZone(double x, double y, double z)
+	{
+		return _zone.isInsideZone(x, y, z) && !isInsideBannedZone(x, y, z);
+	}
+	
+	/**
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return {@code true} if this location is within banned zone boundaries, {@code false} otherwise
+	 */
+	public boolean isInsideBannedZone(double x, double y, double z)
+	{
+		return (_blockedZone != null) && _blockedZone.stream().allMatch(zone -> !zone.isInsideZone(x, y, z));
+	}
+	
+	/**
 	 * Checks if the given coordinates are within zone's plane
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	public boolean isInsideZone(int x, int y)
+	public boolean isInsideZone(double x, double y)
 	{
-		return _zone.isInsideZone(x, y, _zone.getHighZ());
+		return isInsideZone(x, y, _zone.getHighZ());
 	}
 	
 	/**
@@ -327,19 +391,7 @@ public abstract class ZoneType extends ListenersContainer
 	 */
 	public boolean isInsideZone(ILocational loc)
 	{
-		return _zone.isInsideZone(loc.getX(), loc.getY(), loc.getZ());
-	}
-	
-	/**
-	 * Checks if the given coordinates are within the zone, ignores instanceId check
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @return
-	 */
-	public boolean isInsideZone(int x, int y, int z)
-	{
-		return _zone.isInsideZone(x, y, z);
+		return isInsideZone(loc.getX(), loc.getY(), loc.getZ());
 	}
 	
 	/**
@@ -364,48 +416,44 @@ public abstract class ZoneType extends ListenersContainer
 	
 	public void revalidateInZone(Creature character)
 	{
-		// If the character can't be affected by this zone return
-		if (_checkAffected)
-		{
-			if (!isAffected(character))
-			{
-				return;
-			}
-		}
-		
 		// If the object is inside the zone...
 		if (isInsideZone(character))
 		{
-			// Was the character not yet inside this zone?
-			if (!_characterList.containsKey(character.getObjectId()))
+			// If the character can't be affected by this zone return
+			if (_checkAffected)
+			{
+				if (!isAffected(character))
+				{
+					return;
+				}
+			}
+			
+			if (_characterList.putIfAbsent(character.getObjectId(), character) == null)
 			{
 				// Notify to scripts.
 				EventDispatcher.getInstance().notifyEventAsync(new OnCreatureZoneEnter(character, this), this);
-				
-				// Register player.
-				_characterList.put(character.getObjectId(), character);
-				
 				// Notify Zone implementation.
 				onEnter(character);
 			}
 		}
 		else
 		{
-			removeCharacter(character);
+			removeCharacter(character, false);
 		}
 	}
 	
 	/**
 	 * Force fully removes a character from the zone Should use during teleport / logoff
 	 * @param character
+	 * @param isLogout
 	 */
-	public void removeCharacter(Creature character)
+	public void removeCharacter(Creature character, boolean isLogout)
 	{
 		// Was the character inside this zone?
 		if (_characterList.containsKey(character.getObjectId()))
 		{
 			// Notify to scripts.
-			EventDispatcher.getInstance().notifyEventAsync(new OnCreatureZoneExit(character, this), this);
+			EventDispatcher.getInstance().notifyEventAsync(new OnCreatureZoneExit(character, this, isLogout), this);
 			
 			// Unregister player.
 			_characterList.remove(character.getObjectId());
@@ -519,13 +567,18 @@ public abstract class ZoneType extends ListenersContainer
 		return _allowStore;
 	}
 	
+	public int getInstanceTemplateId()
+	{
+		return _instanceTemplateId;
+	}
+	
 	@Override
 	public String toString()
 	{
-		return getClass().getSimpleName() + "[" + _id + "]";
+		return getClass().getSimpleName() + "[" + _name + "/" + _id + "]";
 	}
 	
-	public void visualizeZone(int z)
+	public void visualizeZone(double z)
 	{
 		getZone().visualizeZone(z);
 	}
@@ -538,6 +591,32 @@ public abstract class ZoneType extends ListenersContainer
 	public boolean isEnabled()
 	{
 		return _enabled;
+	}
+	
+	public void setEnabled(boolean state, int instanceId)
+	{
+		if (_enabledInInstance == null)
+		{
+			synchronized (this)
+			{
+				if (_enabledInInstance == null)
+				{
+					_enabledInInstance = new ConcurrentHashMap<>();
+				}
+			}
+		}
+		
+		_enabledInInstance.put(instanceId, state);
+	}
+	
+	public boolean isEnabled(int instanceId)
+	{
+		if (_enabledInInstance != null)
+		{
+			return _enabledInInstance.getOrDefault(instanceId, isEnabled());
+		}
+		
+		return isEnabled();
 	}
 	
 	public void oustAllPlayers()

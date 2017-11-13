@@ -22,7 +22,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
+import org.l2junity.gameserver.config.ServerConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
 import org.l2junity.gameserver.enums.InstanceType;
@@ -58,7 +59,7 @@ import org.slf4j.LoggerFactory;
  */
 public class L2VillageMasterInstance extends L2NpcInstance
 {
-	private static Logger _log = LoggerFactory.getLogger(L2VillageMasterInstance.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2VillageMasterInstance.class);
 	
 	public L2VillageMasterInstance(L2NpcTemplate template)
 	{
@@ -237,7 +238,7 @@ public class L2VillageMasterInstance extends L2NpcInstance
 				return;
 			}
 			
-			if (Config.ALT_CLAN_LEADER_INSTANT_ACTIVATION)
+			if (PlayerConfig.ALT_CLAN_LEADER_INSTANT_ACTIVATION)
 			{
 				clan.setNewLeader(member);
 			}
@@ -247,11 +248,11 @@ public class L2VillageMasterInstance extends L2NpcInstance
 				if (clan.getNewLeaderId() == 0)
 				{
 					clan.setNewLeaderId(member.getObjectId(), true);
-					msg.setFile(player.getHtmlPrefix(), "data/scripts/village_master/Clan/9000-07-success.htm");
+					msg.setFile(player.getHtmlPrefix(), "data/scripts/org/l2junity/scripts/village_master/ClanPleaseReworkMeIWantToDie/9000-07-success.htm");
 				}
 				else
 				{
-					msg.setFile(player.getHtmlPrefix(), "data/scripts/village_master/Clan/9000-07-in-progress.htm");
+					msg.setFile(player.getHtmlPrefix(), "data/scripts/org/l2junity/scripts/village_master/ClanPleaseReworkMeIWantToDie/9000-07-in-progress.htm");
 				}
 				player.sendPacket(msg);
 			}
@@ -269,7 +270,7 @@ public class L2VillageMasterInstance extends L2NpcInstance
 			if (clan.getNewLeaderId() != 0)
 			{
 				clan.setNewLeaderId(0, true);
-				msg.setFile(player.getHtmlPrefix(), "data/scripts/village_master/Clan/9000-07-canceled.htm");
+				msg.setFile(player.getHtmlPrefix(), "data/scripts/org/l2junity/scripts/village_master/ClanPleaseReworkMeIWantToDie/9000-07-canceled.htm");
 			}
 			else
 			{
@@ -353,7 +354,7 @@ public class L2VillageMasterInstance extends L2NpcInstance
 			return;
 		}
 		
-		clan.setDissolvingExpiryTime(System.currentTimeMillis() + (Config.ALT_CLAN_DISSOLVE_DAYS * 86400000L)); // 24*60*60*1000 = 86400000
+		clan.setDissolvingExpiryTime(System.currentTimeMillis() + (PlayerConfig.ALT_CLAN_DISSOLVE_DAYS * 86400000L)); // 24*60*60*1000 = 86400000
 		clan.updateClanInDB();
 		
 		// The clan leader should take the XP penalty of a full death.
@@ -626,11 +627,11 @@ public class L2VillageMasterInstance extends L2NpcInstance
 		Pattern pattern;
 		try
 		{
-			pattern = Pattern.compile(Config.CLAN_NAME_TEMPLATE);
+			pattern = Pattern.compile(ServerConfig.CLAN_NAME_TEMPLATE);
 		}
 		catch (PatternSyntaxException e)
 		{
-			_log.warn("ERROR: Wrong pattern for clan name!");
+			LOGGER.warn("ERROR: Wrong pattern for clan name!");
 			pattern = Pattern.compile(".*");
 		}
 		return pattern.matcher(name).matches();

@@ -31,8 +31,6 @@ import org.l2junity.network.PacketWriter;
 public class Attack implements IClientOutgoingPacket
 {
 	private final int _attackerObjId;
-	private final boolean _soulshot;
-	private final int _ssGrade;
 	private final Location _attackerLoc;
 	private final Location _targetLoc;
 	private final List<Hit> _hits = new ArrayList<>();
@@ -40,29 +38,26 @@ public class Attack implements IClientOutgoingPacket
 	/**
 	 * @param attacker
 	 * @param target
-	 * @param useShots
-	 * @param ssGrade
 	 */
-	public Attack(Creature attacker, Creature target, boolean useShots, int ssGrade)
+	public Attack(Creature attacker, Creature target)
 	{
 		_attackerObjId = attacker.getObjectId();
-		_soulshot = useShots;
-		_ssGrade = Math.min(ssGrade, 6);
 		_attackerLoc = new Location(attacker);
 		_targetLoc = new Location(target);
 	}
 	
 	/**
 	 * Adds hit to the attack (Attacks such as dual dagger/sword/fist has two hits)
-	 * @param target
-	 * @param damage
-	 * @param miss
-	 * @param crit
-	 * @param shld
+	 * @param hit
 	 */
-	public void addHit(Creature target, int damage, boolean miss, boolean crit, byte shld)
+	public void addHit(Hit hit)
 	{
-		_hits.add(new Hit(target, damage, miss, crit, shld, _soulshot, _ssGrade));
+		_hits.add(hit);
+	}
+	
+	public List<Hit> getHits()
+	{
+		return _hits;
 	}
 	
 	/**
@@ -71,14 +66,6 @@ public class Attack implements IClientOutgoingPacket
 	public boolean hasHits()
 	{
 		return !_hits.isEmpty();
-	}
-	
-	/**
-	 * @return {@code true} if attack has soul shot charged.
-	 */
-	public boolean hasSoulshot()
-	{
-		return _soulshot;
 	}
 	
 	/**
@@ -107,9 +94,9 @@ public class Attack implements IClientOutgoingPacket
 		packet.writeD(firstHit.getDamage());
 		packet.writeD(firstHit.getFlags());
 		packet.writeD(firstHit.getGrade()); // GOD
-		packet.writeD(_attackerLoc.getX());
-		packet.writeD(_attackerLoc.getY());
-		packet.writeD(_attackerLoc.getZ());
+		packet.writeD((int) _attackerLoc.getX());
+		packet.writeD((int) _attackerLoc.getY());
+		packet.writeD((int) _attackerLoc.getZ());
 		
 		packet.writeH(_hits.size() - 1);
 		while (it.hasNext())
@@ -117,9 +104,9 @@ public class Attack implements IClientOutgoingPacket
 			writeHit(packet, it.next());
 		}
 		
-		packet.writeD(_targetLoc.getX());
-		packet.writeD(_targetLoc.getY());
-		packet.writeD(_targetLoc.getZ());
+		packet.writeD((int) _targetLoc.getX());
+		packet.writeD((int) _targetLoc.getY());
+		packet.writeD((int) _targetLoc.getZ());
 		return true;
 	}
 }

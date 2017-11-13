@@ -22,11 +22,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.instancemanager.CursedWeaponsManager;
 import org.l2junity.gameserver.model.Party.MessageType;
@@ -51,7 +52,7 @@ import org.slf4j.LoggerFactory;
 
 public class CursedWeapon implements INamable
 {
-	private static final Logger _log = LoggerFactory.getLogger(CursedWeapon.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CursedWeapon.class);
 	
 	// _name is the name of the cursed weapon associated with its ID.
 	private final String _name;
@@ -97,7 +98,7 @@ public class CursedWeapon implements INamable
 			if ((_player != null) && _player.isOnline())
 			{
 				// Remove from player
-				_log.info(_name + " being removed online.");
+				LOGGER.info(_name + " being removed online.");
 				
 				_player.abortAttack();
 				
@@ -112,7 +113,7 @@ public class CursedWeapon implements INamable
 				
 				// Destroy
 				ItemInstance removedItem = _player.getInventory().destroyItemByItemId("", _itemId, 1, _player, null);
-				if (!Config.FORCE_INVENTORY_UPDATE)
+				if (!GeneralConfig.FORCE_INVENTORY_UPDATE)
 				{
 					InventoryUpdate iu = new InventoryUpdate();
 					if (removedItem.getCount() == 0)
@@ -136,7 +137,7 @@ public class CursedWeapon implements INamable
 			else
 			{
 				// Remove from Db
-				_log.info(_name + " being removed offline.");
+				LOGGER.info(_name + " being removed offline.");
 				
 				try (Connection con = DatabaseFactory.getInstance().getConnection();
 					PreparedStatement del = con.prepareStatement("DELETE FROM items WHERE owner_id=? AND item_id=?");
@@ -147,7 +148,7 @@ public class CursedWeapon implements INamable
 					del.setInt(2, _itemId);
 					if (del.executeUpdate() != 1)
 					{
-						_log.warn("Error while deleting itemId " + _itemId + " from userId " + _playerId);
+						LOGGER.warn("Error while deleting itemId " + _itemId + " from userId " + _playerId);
 					}
 					
 					// Restore the reputation
@@ -156,12 +157,12 @@ public class CursedWeapon implements INamable
 					ps.setInt(3, _playerId);
 					if (ps.executeUpdate() != 1)
 					{
-						_log.warn("Error while updating karma & pkkills for userId " + _playerId);
+						LOGGER.warn("Error while updating karma & pkkills for userId " + _playerId);
 					}
 				}
 				catch (Exception e)
 				{
-					_log.warn("Could not delete : " + e.getMessage(), e);
+					LOGGER.warn("Could not delete : " + e.getMessage(), e);
 				}
 			}
 		}
@@ -173,7 +174,7 @@ public class CursedWeapon implements INamable
 			{
 				// Destroy
 				ItemInstance removedItem = _player.getInventory().destroyItemByItemId("", _itemId, 1, _player, null);
-				if (!Config.FORCE_INVENTORY_UPDATE)
+				if (!GeneralConfig.FORCE_INVENTORY_UPDATE)
 				{
 					InventoryUpdate iu = new InventoryUpdate();
 					if (removedItem.getCount() == 0)
@@ -198,8 +199,7 @@ public class CursedWeapon implements INamable
 			else if (_item != null)
 			{
 				_item.decayMe();
-				World.getInstance().removeObject(_item);
-				_log.info(_name + " item has been removed from World.");
+				LOGGER.info(_name + " item has been removed from World.");
 			}
 		}
 		
@@ -353,7 +353,7 @@ public class CursedWeapon implements INamable
 		{
 			_player.stopTransformation(true);
 			
-			ThreadPoolManager.getInstance().scheduleGeneral(() -> _player.transform(transformationId, true), 500);
+			ThreadPool.schedule(() -> _player.transform(transformationId, true), 500, TimeUnit.MILLISECONDS);
 		}
 		else
 		{
@@ -377,7 +377,7 @@ public class CursedWeapon implements INamable
 		}
 		else
 		{
-			_removeTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new RemoveTask(), _durationLost * 12000L, _durationLost * 12000L);
+			_removeTask = ThreadPool.scheduleAtFixedRate(new RemoveTask(), _durationLost * 12000L, _durationLost * 12000L, TimeUnit.MILLISECONDS);
 		}
 		
 	}
@@ -391,7 +391,7 @@ public class CursedWeapon implements INamable
 			
 			// Start the Life Task
 			_endTime = System.currentTimeMillis() + (_duration * 60000L);
-			_removeTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new RemoveTask(), _durationLost * 12000L, _durationLost * 12000L);
+			_removeTask = ThreadPool.scheduleAtFixedRate(new RemoveTask(), _durationLost * 12000L, _durationLost * 12000L, TimeUnit.MILLISECONDS);
 			
 			return true;
 		}
@@ -448,7 +448,7 @@ public class CursedWeapon implements INamable
 		_player.setCurrentCp(_player.getMaxCp());
 		
 		// Refresh inventory
-		if (!Config.FORCE_INVENTORY_UPDATE)
+		if (!GeneralConfig.FORCE_INVENTORY_UPDATE)
 		{
 			InventoryUpdate iu = new InventoryUpdate();
 			iu.addItem(_item);
@@ -474,14 +474,14 @@ public class CursedWeapon implements INamable
 	
 	public void saveData()
 	{
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.info("CursedWeapon: Saving data to disk.");
+			LOGGER.info("CursedWeapon: Saving data to disk.");
 		}
 		
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
 			PreparedStatement del = con.prepareStatement("DELETE FROM cursed_weapons WHERE itemId = ?");
-			PreparedStatement ps = con.prepareStatement("INSERT INTO cursed_weapons (itemId, charId, playerKarma, playerPkKills, nbKills, endTime) VALUES (?, ?, ?, ?, ?, ?)"))
+			PreparedStatement ps = con.prepareStatement("INSERT INTO cursed_weapons (itemId, charId, playerReputation, playerPkKills, nbKills, endTime) VALUES (?, ?, ?, ?, ?, ?)"))
 		{
 			// Delete previous datas
 			del.setInt(1, _itemId);
@@ -500,7 +500,7 @@ public class CursedWeapon implements INamable
 		}
 		catch (SQLException e)
 		{
-			_log.error("CursedWeapon: Failed to save data.", e);
+			LOGGER.error("CursedWeapon: Failed to save data.", e);
 		}
 	}
 	

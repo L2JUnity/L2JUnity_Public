@@ -35,12 +35,12 @@ public class MoveToPawn implements IClientOutgoingPacket
 		_charObjId = cha.getObjectId();
 		_targetId = target.getObjectId();
 		_distance = distance;
-		_x = cha.getX();
-		_y = cha.getY();
-		_z = cha.getZ();
-		_tx = target.getX();
-		_ty = target.getY();
-		_tz = target.getZ();
+		_x = (int) cha.getX();
+		_y = (int) cha.getY();
+		_z = (int) cha.getZ();
+		_tx = (int) target.getX();
+		_ty = (int) target.getY();
+		_tz = (int) target.getZ();
 	}
 	
 	@Override

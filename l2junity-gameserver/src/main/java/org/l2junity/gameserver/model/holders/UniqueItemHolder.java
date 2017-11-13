@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.interfaces.IUniqueId;
  */
 public class UniqueItemHolder extends ItemHolder implements IUniqueId
 {
+	private static final long serialVersionUID = 2551768460805505053L;
 	private final int _objectId;
 	
 	public UniqueItemHolder(int id, int objectId)

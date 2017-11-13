@@ -20,8 +20,9 @@ package org.l2junity.gameserver.network.client.send;
 
 import java.util.Set;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.AdminConfig;
 import org.l2junity.gameserver.instancemanager.CursedWeaponsManager;
+import org.l2junity.gameserver.model.VariationInstance;
 import org.l2junity.gameserver.model.actor.instance.L2DecoyInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.ceremonyofchaos.CeremonyOfChaosEvent;
@@ -74,21 +75,21 @@ public class CharInfo implements IClientOutgoingPacket
 		_objId = cha.getObjectId();
 		if ((_activeChar.getVehicle() != null) && (_activeChar.getInVehiclePosition() != null))
 		{
-			_x = _activeChar.getInVehiclePosition().getX();
-			_y = _activeChar.getInVehiclePosition().getY();
-			_z = _activeChar.getInVehiclePosition().getZ();
+			_x = (int) _activeChar.getInVehiclePosition().getX();
+			_y = (int) _activeChar.getInVehiclePosition().getY();
+			_z = (int) _activeChar.getInVehiclePosition().getZ();
 			_vehicleId = _activeChar.getVehicle().getObjectId();
 		}
 		else
 		{
-			_x = _activeChar.getX();
-			_y = _activeChar.getY();
-			_z = _activeChar.getZ();
+			_x = (int) _activeChar.getX();
+			_y = (int) _activeChar.getY();
+			_z = (int) _activeChar.getZ();
 		}
 		_heading = _activeChar.getHeading();
 		_mAtkSpd = _activeChar.getMAtkSpd();
 		_pAtkSpd = _activeChar.getPAtkSpd();
-		_attackSpeedMultiplier = _activeChar.getAttackSpeedMultiplier();
+		_attackSpeedMultiplier = (float) _activeChar.getAttackSpeedMultiplier();
 		_moveMultiplier = cha.getMovementSpeedMultiplier();
 		_runSpd = (int) Math.round(cha.getRunSpeed() / _moveMultiplier);
 		_walkSpd = (int) Math.round(cha.getWalkSpeed() / _moveMultiplier);
@@ -105,9 +106,9 @@ public class CharInfo implements IClientOutgoingPacket
 	{
 		this(decoy.getActingPlayer(), gmSeeInvis); // init
 		_objId = decoy.getObjectId();
-		_x = decoy.getX();
-		_y = decoy.getY();
-		_z = decoy.getZ();
+		_x = (int) decoy.getX();
+		_y = (int) decoy.getY();
+		_z = (int) decoy.getZ();
 		_heading = decoy.getHeading();
 	}
 	
@@ -117,6 +118,7 @@ public class CharInfo implements IClientOutgoingPacket
 		OutgoingPackets.CHAR_INFO.writeId(packet);
 		final CeremonyOfChaosEvent event = _activeChar.getEvent(CeremonyOfChaosEvent.class);
 		final CeremonyOfChaosMember cocPlayer = event != null ? event.getMember(_activeChar.getObjectId()) : null;
+		packet.writeC(0x00); // if 1, character is deleted for the player
 		packet.writeD(_x); // Confirmed
 		packet.writeD(_y); // Confirmed
 		packet.writeD(_z); // Confirmed
@@ -135,7 +137,9 @@ public class CharInfo implements IClientOutgoingPacket
 		
 		for (int slot : getPaperdollOrderAugument())
 		{
-			packet.writeQ(_activeChar.getInventory().getPaperdollAugmentationId(slot)); // Confirmed
+			final VariationInstance augment = _activeChar.getInventory().getPaperdollAugmentation(slot);
+			packet.writeD(augment != null ? augment.getOption1Id() : 0); // Confirmed
+			packet.writeD(augment != null ? augment.getOption2Id() : 0); // Confirmed
 		}
 		
 		packet.writeC(_armorEnchant);
@@ -203,15 +207,15 @@ public class CharInfo implements IClientOutgoingPacket
 		packet.writeC(_activeChar.getTeam().getId()); // Confirmed
 		
 		packet.writeD(_activeChar.getClanCrestLargeId());
-		packet.writeC(_activeChar.isNoble() ? 1 : 0); // Confirmed
-		packet.writeC(_activeChar.isHero() || (_activeChar.isGM() && Config.GM_HERO_AURA) ? 1 : 0); // Confirmed
+		packet.writeC(_activeChar.getNobleStatus().getClientId()); // Confirmed
+		packet.writeC(_activeChar.isHero() || (_activeChar.isGM() && AdminConfig.GM_HERO_AURA) ? 1 : 0); // Confirmed
 		
 		packet.writeC(_activeChar.isFishing() ? 1 : 0); // Confirmed
-
+		
 		final ILocational baitLocation = _activeChar.getFishing().getBaitLocation();
-		packet.writeD(baitLocation.getX()); // Confirmed
-		packet.writeD(baitLocation.getY()); // Confirmed
-		packet.writeD(baitLocation.getZ()); // Confirmed
+		packet.writeD((int) baitLocation.getX()); // Confirmed
+		packet.writeD((int) baitLocation.getY()); // Confirmed
+		packet.writeD((int) baitLocation.getZ()); // Confirmed
 		
 		packet.writeD(_activeChar.getAppearance().getNameColor()); // Confirmed
 		
@@ -237,7 +241,7 @@ public class CharInfo implements IClientOutgoingPacket
 		packet.writeD((int) Math.round(_activeChar.getCurrentMp())); // Confirmed
 		
 		packet.writeC(0x00); // TODO: Find me!
-		final Set<AbnormalVisualEffect> abnormalVisualEffects = _activeChar.getCurrentAbnormalVisualEffects();
+		final Set<AbnormalVisualEffect> abnormalVisualEffects = _activeChar.getEffectList().getCurrentAbnormalVisualEffects();
 		packet.writeD(abnormalVisualEffects.size() + (_gmSeeInvis ? 1 : 0)); // Confirmed
 		for (AbnormalVisualEffect abnormalVisualEffect : abnormalVisualEffects)
 		{

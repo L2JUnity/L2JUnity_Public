@@ -19,7 +19,6 @@
 package org.l2junity.gameserver.model.items.instance;
 
 import static org.l2junity.gameserver.model.itemcontainer.Inventory.ADENA_ID;
-import static org.l2junity.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,12 +32,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.GeoData;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.OlympiadConfig;
 import org.l2junity.gameserver.data.xml.impl.AppearanceItemData;
 import org.l2junity.gameserver.data.xml.impl.EnchantItemOptionsData;
 import org.l2junity.gameserver.data.xml.impl.EnsoulData;
@@ -48,15 +48,15 @@ import org.l2junity.gameserver.enums.AttributeType;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.enums.ItemLocation;
 import org.l2junity.gameserver.enums.ItemSkillType;
-import org.l2junity.gameserver.enums.ShotType;
 import org.l2junity.gameserver.enums.UserInfoType;
+import org.l2junity.gameserver.geodata.GeoData;
 import org.l2junity.gameserver.idfactory.IdFactory;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.ItemsOnGroundManager;
 import org.l2junity.gameserver.instancemanager.SiegeGuardManager;
-import org.l2junity.gameserver.model.Augmentation;
 import org.l2junity.gameserver.model.DropProtection;
 import org.l2junity.gameserver.model.Location;
+import org.l2junity.gameserver.model.VariationInstance;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.WorldRegion;
@@ -73,6 +73,7 @@ import org.l2junity.gameserver.model.events.impl.item.OnItemBypassEvent;
 import org.l2junity.gameserver.model.events.impl.item.OnItemTalk;
 import org.l2junity.gameserver.model.instancezone.Instance;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.items.Armor;
 import org.l2junity.gameserver.model.items.EtcItem;
 import org.l2junity.gameserver.model.items.L2Item;
@@ -88,6 +89,7 @@ import org.l2junity.gameserver.model.variables.ItemVariables;
 import org.l2junity.gameserver.network.client.send.DropItem;
 import org.l2junity.gameserver.network.client.send.GetItem;
 import org.l2junity.gameserver.network.client.send.InventoryUpdate;
+import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
 import org.l2junity.gameserver.network.client.send.SpawnItem;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -102,7 +104,7 @@ import org.slf4j.LoggerFactory;
 public final class ItemInstance extends WorldObject
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ItemInstance.class);
-	private static final Logger _logItems = LoggerFactory.getLogger("item");
+	private static final Logger LOG_ITEMS = LoggerFactory.getLogger("item");
 	
 	/** ID of the owner */
 	private int _ownerId;
@@ -138,7 +140,7 @@ public final class ItemInstance extends WorldObject
 	private boolean _wear;
 	
 	/** Augmented Item */
-	private Augmentation _augmentation = null;
+	private VariationInstance _augmentation = null;
 	
 	/** Shadow item */
 	private int _mana = -1;
@@ -177,8 +179,6 @@ public final class ItemInstance extends WorldObject
 	private ScheduledFuture<?> _appearanceLifeTimeTask;
 	
 	private final DropProtection _dropProtection = new DropProtection();
-	
-	private int _shotsMask = 0;
 	
 	private final List<Options> _enchantOptions = new ArrayList<>();
 	private final Map<Integer, EnsoulOption> _ensoulOptions = new LinkedHashMap<>(3);
@@ -332,17 +332,17 @@ public final class ItemInstance extends WorldObject
 	{
 		setOwnerId(owner_id);
 		
-		if (Config.LOG_ITEMS)
+		if (GeneralConfig.LOG_ITEMS)
 		{
-			if (!Config.LOG_ITEMS_SMALL_LOG || (Config.LOG_ITEMS_SMALL_LOG && (getItem().isEquipable() || (getItem().getId() == ADENA_ID))))
+			if (!GeneralConfig.LOG_ITEMS_SMALL_LOG || (GeneralConfig.LOG_ITEMS_SMALL_LOG && (getItem().isEquipable() || (getItem().getId() == ADENA_ID))))
 			{
 				if (getEnchantLevel() > 0)
 				{
-					_logItems.info("SETOWNER:{}, item {}:+{} {}({}), {}, {}", process, getObjectId(), getEnchantLevel(), getItem().getName(), _count, creator, reference);
+					LOG_ITEMS.info("SETOWNER:{}, item {}:+{} {}({}), {}, {}", process, getObjectId(), getEnchantLevel(), getItem().getName(), _count, creator, reference);
 				}
 				else
 				{
-					_logItems.info("SETOWNER:{}, item {}:{}({}), {}, {}", process, getObjectId(), getItem().getName(), _count, creator, reference);
+					LOG_ITEMS.info("SETOWNER:{}, item {}:{}({}), {}, {}", process, getObjectId(), getItem().getName(), _count, creator, reference);
 				}
 			}
 		}
@@ -361,7 +361,7 @@ public final class ItemInstance extends WorldObject
 					referenceName = (String) reference;
 				}
 				String targetName = (creator.getTarget() != null ? creator.getTarget().getName() : "no-target");
-				if (Config.GMAUDIT)
+				if (GeneralConfig.GMAUDIT)
 				{
 					GMAudit.auditGMAction(creator.getName() + " [" + creator.getObjectId() + "]", process + "(id: " + getId() + " name: " + getName() + ")", targetName, "L2Object referencing this action is: " + referenceName);
 				}
@@ -375,20 +375,18 @@ public final class ItemInstance extends WorldObject
 	 */
 	public void setOwnerId(int owner_id)
 	{
-		if (owner_id == _ownerId)
+		if (owner_id != _ownerId)
 		{
-			return;
+			// Remove any inventory skills from the old owner.
+			removeSkillsFromOwner();
+			
+			_ownerId = owner_id;
+			_storedInDb = false;
+			
+			// Give any inventory skills to the new owner only if the item is in inventory
+			// else the skills will be given when location is set to inventory.
+			giveSkillsToOwner();
 		}
-		
-		// Remove any inventory skills from the old owner.
-		removeSkillsFromOwner();
-		
-		_ownerId = owner_id;
-		_storedInDb = false;
-		
-		// Give any inventory skills to the new owner only if the item is in inventory
-		// else the skills will be given when location is set to inventory.
-		giveSkillsToOwner();
 	}
 	
 	/**
@@ -447,13 +445,11 @@ public final class ItemInstance extends WorldObject
 	 */
 	public void setCount(long count)
 	{
-		if (_count == count)
+		if (_count != count)
 		{
-			return;
+			_count = count >= -1 ? count : 0;
+			_storedInDb = false;
 		}
-		
-		_count = count >= -1 ? count : 0;
-		_storedInDb = false;
 	}
 	
 	/**
@@ -480,7 +476,7 @@ public final class ItemInstance extends WorldObject
 			return;
 		}
 		long old = _count;
-		long max = getId() == ADENA_ID ? MAX_ADENA : Integer.MAX_VALUE;
+		long max = ItemContainer.getMaximumAllowedCount(getId());
 		
 		if ((count > 0) && (_count > (max - count)))
 		{
@@ -498,17 +494,17 @@ public final class ItemInstance extends WorldObject
 		
 		_storedInDb = false;
 		
-		if (Config.LOG_ITEMS && (process != null))
+		if (GeneralConfig.LOG_ITEMS && (process != null))
 		{
-			if (!Config.LOG_ITEMS_SMALL_LOG || (Config.LOG_ITEMS_SMALL_LOG && (_item.isEquipable() || (_item.getId() == ADENA_ID))))
+			if (!GeneralConfig.LOG_ITEMS_SMALL_LOG || (GeneralConfig.LOG_ITEMS_SMALL_LOG && (_item.isEquipable() || (_item.getId() == ADENA_ID))))
 			{
 				if (getEnchantLevel() > 0)
 				{
-					_logItems.info("CHANGE:{}, item {}:+{} {}({}), PrevCount({}), {}, {}", process, getObjectId(), getEnchantLevel(), getItem().getName(), _count, old, creator, reference);
+					LOG_ITEMS.info("CHANGE:{}, item {}:+{} {}({}), PrevCount({}), {}, {}", process, getObjectId(), getEnchantLevel(), getItem().getName(), _count, old, creator, reference);
 				}
 				else
 				{
-					_logItems.info("CHANGE:{}, item {}:{}({}), PrevCount({}), {}, {}", process, getObjectId(), getItem().getName(), _count, old, creator, reference);
+					LOG_ITEMS.info("CHANGE:{}, item {}:{}({}), PrevCount({}), {}, {}", process, getObjectId(), getItem().getName(), _count, old, creator, reference);
 				}
 			}
 		}
@@ -527,7 +523,7 @@ public final class ItemInstance extends WorldObject
 					referenceName = (String) reference;
 				}
 				String targetName = (creator.getTarget() != null ? creator.getTarget().getName() : "no-target");
-				if (Config.GMAUDIT)
+				if (GeneralConfig.GMAUDIT)
 				{
 					GMAudit.auditGMAction(creator.getName() + " [" + creator.getObjectId() + "]", process + "(id: " + getId() + " objId: " + getObjectId() + " name: " + getName() + " count: " + count + ")", targetName, "L2Object referencing this action is: " + referenceName);
 				}
@@ -545,13 +541,9 @@ public final class ItemInstance extends WorldObject
 	 * Return true if item can be enchanted
 	 * @return boolean
 	 */
-	public int isEnchantable()
+	public boolean isEnchantable()
 	{
-		if ((getItemLocation() == ItemLocation.INVENTORY) || (getItemLocation() == ItemLocation.PAPERDOLL))
-		{
-			return getItem().isEnchantable();
-		}
-		return 0;
+		return ((getItemLocation() == ItemLocation.INVENTORY) || (getItemLocation() == ItemLocation.PAPERDOLL)) && getItem().isEnchantable();
 	}
 	
 	/**
@@ -578,7 +570,7 @@ public final class ItemInstance extends WorldObject
 	 */
 	public int getLocationSlot()
 	{
-		assert (_loc == ItemLocation.PAPERDOLL) || (_loc == ItemLocation.PET_EQUIP) || (_loc == ItemLocation.INVENTORY) || (_loc == ItemLocation.MAIL) || (_loc == ItemLocation.FREIGHT);
+		assert (_loc == ItemLocation.PAPERDOLL) || (_loc == ItemLocation.PET_EQUIP) || (_loc == ItemLocation.INVENTORY) || (_loc == ItemLocation.MAIL) || (_loc == ItemLocation.FREIGHT) || (_loc == ItemLocation.LEASE);
 		return _locData;
 	}
 	
@@ -619,6 +611,22 @@ public final class ItemInstance extends WorldObject
 	public long getDropTime()
 	{
 		return _dropTime;
+	}
+	
+	/**
+	 * @return the total weight of the item (item weight multiplied by item count).<br>
+	 *         If the weight count overflows the long's maximum value it will return {@link Long#MAX_VALUE}.
+	 */
+	public long getTotalWeight()
+	{
+		try
+		{
+			return Math.multiplyExact(getItem().getWeight(), getCount());
+		}
+		catch (ArithmeticException ae)
+		{
+			return Long.MAX_VALUE;
+		}
 	}
 	
 	/**
@@ -676,11 +684,7 @@ public final class ItemInstance extends WorldObject
 	 */
 	public EtcItem getEtcItem()
 	{
-		if (_item instanceof EtcItem)
-		{
-			return (EtcItem) _item;
-		}
-		return null;
+		return (_item instanceof EtcItem) ? (EtcItem) _item : null;
 	}
 	
 	/**
@@ -688,11 +692,7 @@ public final class ItemInstance extends WorldObject
 	 */
 	public Weapon getWeaponItem()
 	{
-		if (_item instanceof Weapon)
-		{
-			return (Weapon) _item;
-		}
-		return null;
+		return (_item instanceof Weapon) ? (Weapon) _item : null;
 	}
 	
 	/**
@@ -700,11 +700,7 @@ public final class ItemInstance extends WorldObject
 	 */
 	public Armor getArmorItem()
 	{
-		if (_item instanceof Armor)
-		{
-			return (Armor) _item;
-		}
-		return null;
+		return (_item instanceof Armor) ? (Armor) _item : null;
 	}
 	
 	/**
@@ -718,7 +714,7 @@ public final class ItemInstance extends WorldObject
 	/**
 	 * @return the reference price of the item.
 	 */
-	public int getReferencePrice()
+	public long getReferencePrice()
 	{
 		return _item.getReferencePrice();
 	}
@@ -882,7 +878,6 @@ public final class ItemInstance extends WorldObject
 		final Summon pet = player.getPet();
 		
 		return ((!isEquipped()) // Not equipped
-			&& (getItem().getType2() != L2Item.TYPE2_QUEST) // Not Quest Item
 			&& ((getItem().getType2() != L2Item.TYPE2_MONEY) || (getItem().getType1() != L2Item.TYPE1_SHIELD_ARMOR)) // not money, not shield
 			&& ((pet == null) || (getObjectId() != pet.getControlObjectId())) // Not Control item of currently summoned pet
 			&& !(player.isProcessingItem(getObjectId())) // Not momentarily used enchant scroll
@@ -935,7 +930,7 @@ public final class ItemInstance extends WorldObject
 	 * Returns the augmentation object for this item
 	 * @return augmentation
 	 */
-	public Augmentation getAugmentation()
+	public VariationInstance getAugmentation()
 	{
 		return _augmentation;
 	}
@@ -943,9 +938,10 @@ public final class ItemInstance extends WorldObject
 	/**
 	 * Sets a new augmentation
 	 * @param augmentation
+	 * @param updateDatabase
 	 * @return return true if successfully
 	 */
-	public boolean setAugmentation(Augmentation augmentation)
+	public boolean setAugmentation(VariationInstance augmentation, boolean updateDatabase)
 	{
 		// there shall be no previous augmentation..
 		if (_augmentation != null)
@@ -955,13 +951,9 @@ public final class ItemInstance extends WorldObject
 		}
 		
 		_augmentation = augmentation;
-		try (Connection con = DatabaseFactory.getInstance().getConnection())
+		if (updateDatabase)
 		{
-			updateItemAttributes(con);
-		}
-		catch (SQLException e)
-		{
-			LOGGER.error("Could not update atributes for item: " + this + " from DB:", e);
+			updateItemOptions();
 		}
 		EventDispatcher.getInstance().notifyEventAsync(new OnPlayerAugment(getActingPlayer(), this, augmentation, true), getItem());
 		return true;
@@ -978,11 +970,11 @@ public final class ItemInstance extends WorldObject
 		}
 		
 		// Copy augmentation before removing it.
-		final Augmentation augment = _augmentation;
+		final VariationInstance augment = _augmentation;
 		_augmentation = null;
 		
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement ps = con.prepareStatement("DELETE FROM item_attributes WHERE itemId = ?"))
+			PreparedStatement ps = con.prepareStatement("DELETE FROM item_variations WHERE itemId = ?"))
 		{
 			ps.setInt(1, getObjectId());
 			ps.executeUpdate();
@@ -999,7 +991,7 @@ public final class ItemInstance extends WorldObject
 	public void restoreAttributes()
 	{
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement ps1 = con.prepareStatement("SELECT augAttributes FROM item_attributes WHERE itemId=?");
+			PreparedStatement ps1 = con.prepareStatement("SELECT mineralId,option1,option2 FROM item_variations WHERE itemId=?");
 			PreparedStatement ps2 = con.prepareStatement("SELECT elemType,elemValue FROM item_elementals WHERE itemId=?"))
 		{
 			ps1.setInt(1, getObjectId());
@@ -1007,10 +999,12 @@ public final class ItemInstance extends WorldObject
 			{
 				if (rs.next())
 				{
-					int aug_attributes = rs.getInt(1);
-					if (aug_attributes != -1)
+					int mineralId = rs.getInt("mineralId");
+					int option1 = rs.getInt("option1");
+					int option2 = rs.getInt("option2");
+					if ((option1 != -1) && (option2 != -1))
 					{
-						_augmentation = new Augmentation(rs.getInt("augAttributes"));
+						_augmentation = new VariationInstance(mineralId, option1, option2);
 					}
 				}
 			}
@@ -1035,17 +1029,43 @@ public final class ItemInstance extends WorldObject
 		}
 	}
 	
-	private void updateItemAttributes(Connection con)
+	public void updateItemOptions()
 	{
-		try (PreparedStatement ps = con.prepareStatement("REPLACE INTO item_attributes VALUES(?,?)"))
+		try (Connection con = DatabaseFactory.getInstance().getConnection())
+		{
+			updateItemOptions(con);
+		}
+		catch (SQLException e)
+		{
+			LOGGER.error("Could not update atributes for item: " + this + " from DB:", e);
+		}
+	}
+	
+	private void updateItemOptions(Connection con)
+	{
+		try (PreparedStatement ps = con.prepareStatement("REPLACE INTO item_variations VALUES(?,?,?,?)"))
 		{
 			ps.setInt(1, getObjectId());
-			ps.setInt(2, _augmentation != null ? _augmentation.getId() : -1);
+			ps.setInt(2, _augmentation != null ? _augmentation.getMineralId() : 0);
+			ps.setInt(3, _augmentation != null ? _augmentation.getOption1Id() : -1);
+			ps.setInt(4, _augmentation != null ? _augmentation.getOption2Id() : -1);
 			ps.executeUpdate();
 		}
 		catch (SQLException e)
 		{
 			LOGGER.error("Could not update atributes for item: {} from DB:", toString(), e);
+		}
+	}
+	
+	public void updateItemElementals()
+	{
+		try (Connection con = DatabaseFactory.getInstance().getConnection())
+		{
+			updateItemElements(con);
+		}
+		catch (SQLException e)
+		{
+			LOGGER.error("Could not update elementals for item: " + this + " from DB:", e);
 		}
 	}
 	
@@ -1174,17 +1194,14 @@ public final class ItemInstance extends WorldObject
 	/**
 	 * Add elemental attribute to item and save to db
 	 * @param holder
+	 * @param updateDatabase
 	 */
-	public void setAttribute(AttributeHolder holder)
+	public void setAttribute(AttributeHolder holder, boolean updateDatabase)
 	{
 		applyAttribute(holder);
-		try (Connection con = DatabaseFactory.getInstance().getConnection())
+		if (updateDatabase)
 		{
-			updateItemElements(con);
-		}
-		catch (SQLException e)
-		{
-			LOGGER.error("Could not update elementals for item: " + this + " from DB:", e);
+			updateItemElementals();
 		}
 	}
 	
@@ -1238,37 +1255,6 @@ public final class ItemInstance extends WorldObject
 		catch (Exception e)
 		{
 			LOGGER.error("Could not remove all elemental enchant for item: {} from DB:", toString(), e);
-		}
-	}
-	
-	/**
-	 * Used to decrease mana (mana means life time for shadow items)
-	 */
-	public static class ScheduleConsumeManaTask implements Runnable
-	{
-		private static final Logger _log = LoggerFactory.getLogger(ScheduleConsumeManaTask.class);
-		private final ItemInstance _shadowItem;
-		
-		public ScheduleConsumeManaTask(ItemInstance item)
-		{
-			_shadowItem = item;
-		}
-		
-		@Override
-		public void run()
-		{
-			try
-			{
-				// decrease mana
-				if (_shadowItem != null)
-				{
-					_shadowItem.decreaseMana(true);
-				}
-			}
-			catch (Exception e)
-			{
-				_log.error("", e);
-			}
 		}
 	}
 	
@@ -1365,7 +1351,6 @@ public final class ItemInstance extends WorldObject
 					InventoryUpdate iu = new InventoryUpdate();
 					for (ItemInstance item : unequiped)
 					{
-						item.unChargeAllShots();
 						iu.addModifiedItem(item);
 					}
 					player.sendInventoryUpdate(iu);
@@ -1386,9 +1371,6 @@ public final class ItemInstance extends WorldObject
 				{
 					player.getWarehouse().destroyItem("L2ItemInstance", this, player, null);
 				}
-				
-				// delete from world
-				World.getInstance().removeObject(this);
 			}
 			else
 			{
@@ -1414,7 +1396,7 @@ public final class ItemInstance extends WorldObject
 			return;
 		}
 		_consumingMana = true;
-		ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleConsumeManaTask(this), MANA_CONSUMPTION_RATE);
+		ThreadPool.schedule(() -> decreaseMana(true), MANA_CONSUMPTION_RATE, TimeUnit.MILLISECONDS);
 	}
 	
 	/**
@@ -1432,7 +1414,7 @@ public final class ItemInstance extends WorldObject
 	 */
 	public void updateDatabase()
 	{
-		this.updateDatabase(false);
+		updateDatabase(false);
 	}
 	
 	/**
@@ -1451,7 +1433,7 @@ public final class ItemInstance extends WorldObject
 				{
 					removeFromDb();
 				}
-				else if (!Config.LAZY_ITEMS_UPDATE || force)
+				else if (!GeneralConfig.LAZY_ITEMS_UPDATE || force)
 				{
 					updateInDb();
 				}
@@ -1493,11 +1475,11 @@ public final class ItemInstance extends WorldObject
 	 */
 	public class ItemDropTask implements Runnable
 	{
-		private int _x, _y, _z;
+		private double _x, _y, _z;
 		private final Creature _dropper;
 		private final ItemInstance _itеm;
 		
-		public ItemDropTask(ItemInstance item, Creature dropper, int x, int y, int z)
+		public ItemDropTask(ItemInstance item, Creature dropper, double x, double y, double z)
 		{
 			_x = x;
 			_y = y;
@@ -1537,7 +1519,7 @@ public final class ItemInstance extends WorldObject
 			
 			// Add the L2ItemInstance dropped in the world as a visible object
 			World.getInstance().addVisibleObject(_itеm, _itеm.getWorldRegion());
-			if (Config.SAVE_DROPPED_ITEM)
+			if (GeneralConfig.SAVE_DROPPED_ITEM)
 			{
 				ItemsOnGroundManager.getInstance().save(_itеm);
 			}
@@ -1545,9 +1527,9 @@ public final class ItemInstance extends WorldObject
 		}
 	}
 	
-	public final void dropMe(Creature dropper, int x, int y, int z)
+	public final void dropMe(Creature dropper, double x, double y, double z)
 	{
-		ThreadPoolManager.getInstance().executeGeneral(new ItemDropTask(this, dropper, x, y, z));
+		ThreadPool.execute(new ItemDropTask(this, dropper, x, y, z));
 		if ((dropper != null) && dropper.isPlayer())
 		{
 			// Notify to scripts
@@ -1628,11 +1610,15 @@ public final class ItemInstance extends WorldObject
 			
 			if (_augmentation != null)
 			{
-				updateItemAttributes(con);
+				updateItemOptions(con);
 			}
 			if (_elementals != null)
 			{
 				updateItemElements(con);
+			}
+			if ((_ensoulOptions != null) || (_ensoulSpecialOptions != null))
+			{
+				updateSpecialAbilities(con);
 			}
 		}
 		catch (Exception e)
@@ -1661,7 +1647,7 @@ public final class ItemInstance extends WorldObject
 				ps.executeUpdate();
 			}
 			
-			try (PreparedStatement ps = con.prepareStatement("DELETE FROM item_attributes WHERE itemId = ?"))
+			try (PreparedStatement ps = con.prepareStatement("DELETE FROM item_variations WHERE itemId = ?"))
 			{
 				ps.setInt(1, getObjectId());
 				ps.executeUpdate();
@@ -1793,7 +1779,6 @@ public final class ItemInstance extends WorldObject
 				final InventoryUpdate iu = new InventoryUpdate();
 				for (ItemInstance item : unequiped)
 				{
-					item.unChargeAllShots();
 					iu.addModifiedItem(item);
 				}
 				player.sendInventoryUpdate(iu);
@@ -1814,8 +1799,6 @@ public final class ItemInstance extends WorldObject
 				player.getWarehouse().destroyItem("L2ItemInstance", this, player, null);
 			}
 			player.sendPacket(SystemMessageId.THE_LIMITED_TIME_ITEM_HAS_DISAPPEARED_BECAUSE_THE_REMAINING_TIME_RAN_OUT);
-			// delete from world
-			World.getInstance().removeObject(this);
 		}
 	}
 	
@@ -1835,7 +1818,7 @@ public final class ItemInstance extends WorldObject
 			{
 				_lifeTimeTask.cancel(true);
 			}
-			_lifeTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleLifeTimeTask(this), getRemainingTime());
+			_lifeTimeTask = ThreadPool.schedule(new ScheduleLifeTimeTask(this), getRemainingTime(), TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -1902,7 +1885,7 @@ public final class ItemInstance extends WorldObject
 	@Override
 	public boolean decayMe()
 	{
-		if (Config.SAVE_DROPPED_ITEM)
+		if (GeneralConfig.SAVE_DROPPED_ITEM)
 		{
 			ItemsOnGroundManager.getInstance().removeObject(this);
 		}
@@ -1944,9 +1927,9 @@ public final class ItemInstance extends WorldObject
 			return enchant;
 		}
 		
-		if (player.isInOlympiadMode() && (Config.ALT_OLY_ENCHANT_LIMIT >= 0) && (enchant > Config.ALT_OLY_ENCHANT_LIMIT))
+		if (player.isInOlympiadMode() && (OlympiadConfig.ALT_OLY_ENCHANT_LIMIT >= 0) && (enchant > OlympiadConfig.ALT_OLY_ENCHANT_LIMIT))
 		{
-			enchant = Config.ALT_OLY_ENCHANT_LIMIT;
+			enchant = OlympiadConfig.ALT_OLY_ENCHANT_LIMIT;
 		}
 		
 		return enchant;
@@ -2006,6 +1989,12 @@ public final class ItemInstance extends WorldObject
 	}
 	
 	@Override
+	public ItemInstance asItem()
+	{
+		return this;
+	}
+	
+	@Override
 	public PlayerInstance getActingPlayer()
 	{
 		return World.getInstance().getPlayer(getOwnerId());
@@ -2022,49 +2011,47 @@ public final class ItemInstance extends WorldObject
 	 */
 	public void onBypassFeedback(PlayerInstance activeChar, String command)
 	{
-		if (command.startsWith("Quest"))
+		String event = null;
+		
+		// If no command, open default html and replace objectId.
+		if (command == null)
+		{
+			final NpcHtmlMessage html = new NpcHtmlMessage(0, getId());
+			html.setFile(activeChar.getHtmlPrefix(), getItem().getHtml());
+			html.replace("%objectId%", getObjectId());
+			activeChar.sendPacket(html);
+		}
+		else if (command.startsWith("Quest"))
 		{
 			String questName = command.substring(6);
-			String event = null;
 			int idx = questName.indexOf(' ');
 			if (idx > 0)
 			{
 				event = questName.substring(idx).trim();
 			}
+		}
+		else if (command.startsWith("html"))
+		{
+			final String path = command.substring(5);
 			
-			if (event != null)
+			// Check if nobody is trying to get out of html folder
+			if (path.indexOf("..") == -1)
 			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnItemBypassEvent(this, activeChar, event), getItem());
-			}
-			else
-			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnItemTalk(this, activeChar), getItem());
+				final NpcHtmlMessage html = new NpcHtmlMessage(0, getId());
+				html.setFile(activeChar.getHtmlPrefix(), "data/html/item/" + path);
+				html.replace("%objectId%", getObjectId());
+				activeChar.sendPacket(html);
 			}
 		}
-	}
-	
-	@Override
-	public boolean isChargedShot(ShotType type)
-	{
-		return (_shotsMask & type.getMask()) == type.getMask();
-	}
-	
-	@Override
-	public void setChargedShot(ShotType type, boolean charged)
-	{
-		if (charged)
+		
+		if (event != null)
 		{
-			_shotsMask |= type.getMask();
+			EventDispatcher.getInstance().notifyEventAsync(new OnItemBypassEvent(this, activeChar, event), getItem());
 		}
 		else
 		{
-			_shotsMask &= ~type.getMask();
+			EventDispatcher.getInstance().notifyEventAsync(new OnItemTalk(this, activeChar), getItem());
 		}
-	}
-	
-	public void unChargeAllShots()
-	{
-		_shotsMask = 0;
 	}
 	
 	/**
@@ -2224,10 +2211,21 @@ public final class ItemInstance extends WorldObject
 		}
 	}
 	
-	private void updateSpecialAbilities()
+	public void updateSpecialAbilities()
 	{
-		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement ps = con.prepareStatement("INSERT INTO item_special_abilities (`objectId`, `type`, `optionId`, `position`) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE type = ?, optionId = ?, position = ?"))
+		try (Connection con = DatabaseFactory.getInstance().getConnection())
+		{
+			updateSpecialAbilities(con);
+		}
+		catch (Exception e)
+		{
+			LOGGER.warn("Couldn't update item special abilities", e);
+		}
+	}
+	
+	private void updateSpecialAbilities(Connection con)
+	{
+		try (PreparedStatement ps = con.prepareStatement("INSERT INTO item_special_abilities (`objectId`, `type`, `optionId`, `position`) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE type = ?, optionId = ?, position = ?"))
 		{
 			ps.setInt(1, getObjectId());
 			for (Entry<Integer, EnsoulOption> entry : _ensoulOptions.entrySet())
@@ -2266,16 +2264,11 @@ public final class ItemInstance extends WorldObject
 	public void clearEnchantStats()
 	{
 		final PlayerInstance player = getActingPlayer();
-		if (player == null)
+		if (player != null)
 		{
-			_enchantOptions.clear();
-			return;
+			_enchantOptions.forEach(op -> op.remove(player));
 		}
 		
-		for (Options op : _enchantOptions)
-		{
-			op.remove(player);
-		}
 		_enchantOptions.clear();
 	}
 	
@@ -2303,6 +2296,8 @@ public final class ItemInstance extends WorldObject
 				LOGGER.info("applyEnchantStats: Couldn't find option: " + id);
 			}
 		}
+		
+		player.broadcastUserInfo();
 	}
 	
 	@Override
@@ -2381,11 +2376,11 @@ public final class ItemInstance extends WorldObject
 			final long time = getVisualLifeTime() - System.currentTimeMillis();
 			if (time > 0)
 			{
-				_appearanceLifeTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(this::onVisualLifeTimeEnd, time);
+				_appearanceLifeTimeTask = ThreadPool.schedule(this::onVisualLifeTimeEnd, time, TimeUnit.MILLISECONDS);
 			}
 			else
 			{
-				ThreadPoolManager.getInstance().executeGeneral(this::onVisualLifeTimeEnd);
+				ThreadPool.execute(this::onVisualLifeTimeEnd);
 			}
 		}
 	}
@@ -2405,7 +2400,15 @@ public final class ItemInstance extends WorldObject
 			iu.addModifiedItem(this);
 			player.broadcastUserInfo(UserInfoType.APPAREANCE);
 			player.sendInventoryUpdate(iu);
-			player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_HAS_BEEN_RESTORED_TO_ITS_PREVIOUS_APPEARANCE_AS_ITS_TEMPORARY_MODIFICATION_HAS_EXPIRED).addItemName(this));
+			
+			if (isEnchanted())
+			{
+				player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_S2_HAS_BEEN_RESTORED_TO_ITS_PREVIOUS_APPEARANCE_AS_ITS_TEMPORARY_MODIFICATION_HAS_EXPIRED).addInt(getEnchantLevel()).addItemName(this));
+			}
+			else
+			{
+				player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_HAS_BEEN_RESTORED_TO_ITS_PREVIOUS_APPEARANCE_AS_ITS_TEMPORARY_MODIFICATION_HAS_EXPIRED).addItemName(this));
+			}
 		}
 	}
 }

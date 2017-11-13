@@ -26,7 +26,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>104</power>
 			</effect>
 		</effects>
@@ -47,7 +47,7 @@
 		<itemConsume>17604</itemConsume>
 		<itemConsumeCount>1</itemConsumeCount>
 		<selfEffects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>12011</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
@@ -87,7 +87,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>2730</power>
 			</effect>
 		</effects>
@@ -136,7 +136,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>33156</npcId>
 			</effect>
 		</effects>
@@ -148,6 +148,7 @@
 		<operateType>A2</operateType>
 		<castRange>150</castRange>
 		<hitTime>3000</hitTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -161,7 +162,7 @@
 		<staticReuse>true</staticReuse>
 		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -172,6 +173,7 @@
 		<operateType>A2</operateType>
 		<castRange>150</castRange>
 		<hitTime>3000</hitTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -185,7 +187,7 @@
 		<staticReuse>true</staticReuse>
 		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -196,6 +198,7 @@
 		<operateType>A2</operateType>
 		<castRange>150</castRange>
 		<hitTime>3000</hitTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -209,7 +212,7 @@
 		<staticReuse>true</staticReuse>
 		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -232,7 +235,7 @@
 		<magicLvl>1</magicLvl>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>1</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -249,7 +252,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="12009" toLevel="1" name="Teredor Antidote">
@@ -270,10 +273,10 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>POISON,7</dispel>
 			</effect>
-			<effect name="DebuffBlock" />
+			<effect name="p_block_debuff" />
 		</effects>
 	</skill>
 	<skill id="12010" toLevel="1" name="Bonus Hall Key">
@@ -334,7 +337,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12013" toLevel="1" name="Check Item">
@@ -359,7 +362,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12014" toLevel="1" name="Check Item">
@@ -384,7 +387,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12015" toLevel="1" name="Check Item">
@@ -409,7 +412,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12016" toLevel="1" name="Check Item">
@@ -434,7 +437,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12017" toLevel="1" name="Check Item">
@@ -459,7 +462,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12018" toLevel="1" name="Check Item">
@@ -484,7 +487,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12019" toLevel="1" name="Check Item">
@@ -509,7 +512,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12020" toLevel="1" name="Check Item">
@@ -534,7 +537,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12021" toLevel="1" name="Check Item">
@@ -559,7 +562,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12022" toLevel="1" name="Check Item">
@@ -584,7 +587,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12023" toLevel="1" name="Check Item">
@@ -609,7 +612,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12024" toLevel="1" name="Check Item">
@@ -634,7 +637,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12025" toLevel="1" name="Check Item">
@@ -659,7 +662,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12026" toLevel="1" name="Check Item">
@@ -684,7 +687,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12027" toLevel="1" name="Check Item">
@@ -709,7 +712,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12028" toLevel="1" name="Check Item">
@@ -734,7 +737,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12029" toLevel="1" name="Check Item">
@@ -759,7 +762,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12030" toLevel="1" name="Check Item">
@@ -784,7 +787,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12031" toLevel="1" name="Check Item">
@@ -809,7 +812,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12032" toLevel="1" name="Check Item">
@@ -834,7 +837,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12033" toLevel="1" name="Check Item">
@@ -859,7 +862,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12034" toLevel="1" name="Check Item">
@@ -884,7 +887,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12035" toLevel="1" name="Check Item">
@@ -909,7 +912,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12036" toLevel="1" name="Check Item">
@@ -934,7 +937,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12037" toLevel="1" name="Check Item">
@@ -959,7 +962,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12038" toLevel="1" name="Check Item">
@@ -984,7 +987,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12039" toLevel="1" name="Check Item">
@@ -1009,7 +1012,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12040" toLevel="1" name="Check Item">
@@ -1034,7 +1037,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12041" toLevel="1" name="Check Item">
@@ -1059,7 +1062,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12042" toLevel="1" name="Check Item">
@@ -1084,7 +1087,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12043" toLevel="1" name="Check Item">
@@ -1109,7 +1112,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12044" toLevel="1" name="Check Item">
@@ -1134,7 +1137,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12045" toLevel="1" name="Check Item">
@@ -1159,7 +1162,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12046" toLevel="1" name="Check Item">
@@ -1184,7 +1187,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12047" toLevel="1" name="Check Item">
@@ -1209,7 +1212,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12048" toLevel="1" name="Check Item">
@@ -1234,7 +1237,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12049" toLevel="1" name="Check Item">
@@ -1259,7 +1262,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12050" toLevel="1" name="Check Item">
@@ -1284,7 +1287,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12051" toLevel="1" name="Check Item">
@@ -1309,7 +1312,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12052" toLevel="1" name="Check Item">
@@ -1334,7 +1337,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12053" toLevel="1" name="Check Item">
@@ -1359,7 +1362,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12054" toLevel="1" name="Check Item">
@@ -1384,7 +1387,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12055" toLevel="1" name="Check Item">
@@ -1409,7 +1412,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12056" toLevel="1" name="Check Item">
@@ -1434,7 +1437,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12057" toLevel="1" name="Check Item">
@@ -1459,7 +1462,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12058" toLevel="1" name="Check Item">
@@ -1484,7 +1487,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12059" toLevel="1" name="Check Item">
@@ -1509,7 +1512,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12060" toLevel="1" name="Check Item">
@@ -1534,7 +1537,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12061" toLevel="1" name="Check Item">
@@ -1559,7 +1562,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12062" toLevel="1" name="Check Item">
@@ -1584,7 +1587,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12063" toLevel="1" name="Check Item">
@@ -1609,7 +1612,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12064" toLevel="1" name="Check Item">
@@ -1634,7 +1637,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12065" toLevel="1" name="Check Item">
@@ -1659,7 +1662,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12066" toLevel="1" name="Check Item">
@@ -1684,7 +1687,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12067" toLevel="1" name="Check Item">
@@ -1709,7 +1712,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12068" toLevel="1" name="Check Item">
@@ -1734,7 +1737,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12069" toLevel="1" name="Check Item">
@@ -1759,7 +1762,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12070" toLevel="1" name="Check Item">
@@ -1784,7 +1787,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12071" toLevel="1" name="Check Item">
@@ -1809,7 +1812,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12072" toLevel="1" name="Check Item">
@@ -1834,7 +1837,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12073" toLevel="1" name="Check Item">
@@ -1859,7 +1862,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12074" toLevel="1" name="Check Item">
@@ -1884,7 +1887,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12075" toLevel="1" name="Check Item">
@@ -1909,7 +1912,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12076" toLevel="1" name="Check Item">
@@ -1934,7 +1937,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12077" toLevel="1" name="Check Item">
@@ -1959,7 +1962,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12078" toLevel="1" name="Check Item">
@@ -1984,7 +1987,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12079" toLevel="1" name="Check Item">
@@ -2009,7 +2012,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12080" toLevel="1" name="Check Item">
@@ -2034,7 +2037,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12081" toLevel="1" name="Check Item">
@@ -2059,7 +2062,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12082" toLevel="1" name="Check Item">
@@ -2084,7 +2087,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12083" toLevel="1" name="Check Item">
@@ -2109,7 +2112,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12084" toLevel="1" name="Check Item">
@@ -2134,7 +2137,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12085" toLevel="1" name="Check Item">
@@ -2159,7 +2162,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12086" toLevel="1" name="Check Item">
@@ -2184,7 +2187,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12087" toLevel="1" name="Check Item">
@@ -2209,7 +2212,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12088" toLevel="1" name="Check Item">
@@ -2234,7 +2237,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12089" toLevel="1" name="Check Item">
@@ -2259,7 +2262,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12090" toLevel="1" name="Check Item">
@@ -2284,7 +2287,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12091" toLevel="1" name="Check Item">
@@ -2309,7 +2312,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12092" toLevel="1" name="Check Item">
@@ -2334,7 +2337,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12093" toLevel="1" name="Check Item">
@@ -2359,7 +2362,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12094" toLevel="1" name="Check Item">
@@ -2384,7 +2387,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12095" toLevel="1" name="Check Item">
@@ -2409,7 +2412,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12096" toLevel="1" name="Check Item">
@@ -2434,7 +2437,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12097" toLevel="1" name="Check Item">
@@ -2459,7 +2462,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12098" toLevel="1" name="Check Item">
@@ -2484,7 +2487,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="12099" toLevel="1" name="Check Item">
@@ -2509,7 +2512,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 </list>

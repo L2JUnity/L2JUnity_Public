@@ -29,7 +29,11 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.Crest;
 import org.l2junity.gameserver.model.Crest.CrestType;
 import org.l2junity.gameserver.model.L2Clan;
@@ -49,9 +53,9 @@ public final class CrestTable
 	
 	protected CrestTable()
 	{
-		load();
 	}
 	
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ClanTable.class))
 	public synchronized void load()
 	{
 		_crests.clear();
@@ -219,6 +223,7 @@ public final class CrestTable
 		return _nextId.getAndIncrement();
 	}
 	
+	@InstanceGetter
 	public static CrestTable getInstance()
 	{
 		return SingletonHolder._instance;

@@ -25,6 +25,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class IgnoreSkillHolder extends SkillHolder
 {
+	private static final long serialVersionUID = 5390641853521384336L;
 	private final AtomicInteger _instances = new AtomicInteger(1);
 	
 	public IgnoreSkillHolder(int skillId, int skillLevel)

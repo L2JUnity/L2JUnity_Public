@@ -31,21 +31,13 @@ public class MonsterRace
 {
 	protected static final Logger LOGGER = LoggerFactory.getLogger(MonsterRace.class);
 	
-	private final Npc[] _monsters;
-	private int[][] _speeds;
-	private final int[] _first, _second;
+	private final Npc[] _monsters = new Npc[8];
+	private int[][] _speeds = new int[8][20];
+	private final int[] _first = new int[2];
+	private final int[] _second = new int[2];
 	
 	protected MonsterRace()
 	{
-		_monsters = new Npc[8];
-		_speeds = new int[8][20];
-		_first = new int[2];
-		_second = new int[2];
-	}
-	
-	public static MonsterRace getInstance()
-	{
-		return SingletonHolder._instance;
 	}
 	
 	public void newRace()
@@ -145,8 +137,13 @@ public class MonsterRace
 		return _second[0];
 	}
 	
+	public static MonsterRace getInstance()
+	{
+		return SingletonHolder.INSTANCE;
+	}
+	
 	private static class SingletonHolder
 	{
-		protected static final MonsterRace _instance = new MonsterRace();
+		protected static final MonsterRace INSTANCE = new MonsterRace();
 	}
 }

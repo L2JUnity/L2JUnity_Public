@@ -18,7 +18,7 @@
  */
 package org.l2junity.loginserver.network.gameserverpackets;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.loginserver.LoginController;
 import org.l2junity.util.network.BaseRecievePacket;
 import org.slf4j.Logger;
@@ -45,7 +45,7 @@ public class PlayerTracert extends BaseRecievePacket
 		String hop4 = readS();
 		
 		LoginController.getInstance().setAccountLastTracert(account, pcIp, hop1, hop2, hop3, hop4);
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			_log.info("Saved " + account + " last tracert");
 		}

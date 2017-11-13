@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Tauti Warzone -->
+<instance id="218" maxWorlds="100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/instance.xsd">
+	<time duration="60" empty="3" />
+	<removeBuffs type="ALL" />
+	<locations>
+		<enter type="FIXED">
+			<location x="-146030" y="186498" z="-11757" />
+		</enter>
+		<exit type="ORIGIN" />
+	</locations>
+	<conditions>
+		<condition type="Party" />
+		<condition type="PartyLeader" />
+		<condition type="CommandChannel" />
+		<condition type="CommandChannelLeader" />
+		<condition type="GroupMin">
+			<param name="limit" value="7" />
+		</condition>
+		<condition type="GroupMax">
+			<param name="limit" value="35" />
+		</condition>
+		<condition type="Level">
+			<param name="min" value="97" />
+		</condition>
+		<condition type="Distance" />
+		<condition type="Reenter" />
+	</conditions>
+	<reenter apply="ON_FINISH">
+		<reset day="WEDNESDAY" hour="6" minute="30" />
+	</reenter>
+	<doorlist>
+		<door id="15240001">
+			<openStatus default="open" />
+		</door>
+		<door id="15240002">
+			<openStatus default="open" />
+		</door>
+	</doorlist>
+	<spawnlist>
+		<group name="kadif03_1523_004m1">
+			<territories>
+				<territory name="kadif03_1523_004" minZ="-10972" maxZ="-10772">
+					<node x="-149358" y="174805" />
+					<node x="-146004" y="174818" />
+					<node x="-145972" y="177290" />
+					<node x="-149333" y="177279" />
+				</territory>
+			</territories>
+			<npc id="19266" x="-147678" y="174848" z="-10920" heading="16384" count="1" /> <!-- Zahak -->
+			<npc id="19265" x="-147409" y="175000" z="-10920" heading="16384" count="1" /> <!-- Kunda Lord -->
+			<npc id="19262" x="-147681" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-147881" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-148081" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-148281" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-148481" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-148681" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-148881" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-147481" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-147281" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-147081" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-146881" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-146681" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19262" x="-146481" y="176224" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-147681" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-147881" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-148081" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-148281" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-148481" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-148681" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-148881" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-147481" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-147281" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-147081" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-146881" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-146681" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19263" x="-146481" y="176024" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-147681" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-147881" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-148081" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-148281" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-148481" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-148681" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-148881" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-147481" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-147281" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-147081" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-146881" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-146681" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+			<npc id="19264" x="-146481" y="175824" z="-10920" heading="16384" count="1" /> <!-- Kunda -->
+		</group>
+		<group name="kadif03_1523_gate_001m1">
+			<territories>
+				<territory name="kadif03_1523_gate_001" minZ="-10982" maxZ="-10782">
+					<node x="-147981" y="174272" />
+					<node x="-147395" y="174278" />
+					<node x="-147400" y="174627" />
+					<node x="-147974" y="174631" />
+				</territory>
+			</territories>
+			<npc id="33678" x="-147682" y="174379" z="-10872" heading="16384" respawnTime="1min" count="1" /> <!-- Teleport Device -->
+		</group>
+		<group name="kadif03_1523_bonus_001m1" spawnByDefault="false">
+			<territories>
+				<territory name="kadif03_1523_bonus_001" minZ="-11636" maxZ="-11436">
+					<node x="-149595" y="180693" />
+					<node x="-145738" y="180697" />
+					<node x="-145742" y="184046" />
+					<node x="-149611" y="184050" />
+				</territory>
+			</territories>
+			<npc id="33727" count="10" /> <!-- Kunda -->
+			<npc id="33728" count="10" /> <!-- Kunda -->
+			<npc id="33729" count="10" /> <!-- Kunda -->
+		</group>
+		<group name="kadif03_1523_010m1">
+			<territories>
+				<territory name="kadif03_1523_010" minZ="-11636" maxZ="-11436">
+					<node x="-149595" y="180693" />
+					<node x="-145738" y="180697" />
+					<node x="-145742" y="184046" />
+					<node x="-149611" y="184050" />
+				</territory>
+			</territories>
+			<npc id="19262" count="10" /> <!-- Kunda -->
+			<npc id="19263" count="10" /> <!-- Kunda -->
+			<npc id="19264" count="10" /> <!-- Kunda -->
+		</group>
+		<group name="kadif03_1523_enter_001m1">
+			<territories>
+				<territory name="kadif03_1523_enter_001" minZ="-11766" maxZ="-11566">
+					<node x="-146475" y="186157" />
+					<node x="-145675" y="186174" />
+					<node x="-145679" y="186870" />
+					<node x="-146476" y="186912" />
+				</territory>
+			</territories>
+			<npc id="33675" x="-146238" y="186523" z="-11728" respawnTime="1min" count="1" /> <!-- Finaria -->
+		</group>
+		<group name="kadif03_1523_001m1">
+			<territories>
+				<territory name="kadif03_1523_001" minZ="-11636" maxZ="-11436">
+					<node x="-149595" y="180693" />
+					<node x="-145738" y="180697" />
+					<node x="-145742" y="184046" />
+					<node x="-149611" y="184050" />
+				</territory>
+			</territories>
+			<npc id="33679" count="30" /> <!-- Zofan -->
+			<npc id="33680" count="30" /> <!-- Zofan -->
+		</group>
+		<group name="kadif003_1524_tel_001m1">
+			<territories>
+				<territory name="kadif003_1524_tel_001" minZ="-10127" maxZ="-9927">
+					<node x="-147417" y="210522" />
+					<node x="-147106" y="210523" />
+					<node x="-147106" y="210835" />
+					<node x="-147418" y="210834" />
+				</territory>
+			</territories>
+			<npc id="18919" x="-147265" y="210693" z="-10095" respawnTime="1min" count="1"> <!-- -->
+				<parameters>
+					<param name="i_difficult" value="1" />
+					<param name="i_opening_number" value="70" />
+					<param name="i_opening_time" value="15000" />
+					<param name="s_tauti_maker" value="kadif03_1524_tauti_001m1" />
+					<param name="s_tauti_axe_maker" value="kadif03_1524_tauti_002m1" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="kadif03_1524_tauti_001m1" spawnByDefault="false">
+			<territories>
+				<territory name="kadif03_1524_tauti_001" minZ="-10091" maxZ="-8091">
+					<node x="-145624" y="212213" />
+					<node x="-145628" y="213575" />
+					<node x="-146582" y="214544" />
+					<node x="-147947" y="214547" />
+					<node x="-148904" y="213580" />
+					<node x="-148900" y="212231" />
+					<node x="-147944" y="211255" />
+					<node x="-146558" y="211264" />
+				</territory>
+			</territories>
+			<npc id="29233" x="-147264" y="212896" z="-10032" heading="-16384" respawnTime="60min" count="1" /> <!-- Tauti -->
+		</group>
+		<group name="kadif03_1524_tauti_002m1" spawnByDefault="false">
+			<territories>
+				<territory name="kadif03_1524_tauti_002" minZ="-10091" maxZ="-8091">
+					<node x="-145624" y="212213" />
+					<node x="-145628" y="213575" />
+					<node x="-146582" y="214544" />
+					<node x="-147947" y="214547" />
+					<node x="-148904" y="213580" />
+					<node x="-148900" y="212231" />
+					<node x="-147944" y="211255" />
+					<node x="-146558" y="211264" />
+				</territory>
+			</territories>
+			<npc id="29236" x="-147264" y="212896" z="-10032" heading="-16384" respawnTime="60min" count="1" /> <!-- Tauti -->
+		</group>
+	</spawnlist>
+</instance>

@@ -21,7 +21,6 @@ package org.l2junity.gameserver.network.client.send;
 import java.util.Set;
 
 import org.l2junity.gameserver.enums.NpcInfoType;
-import org.l2junity.gameserver.enums.Team;
 import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.skills.AbnormalVisualEffect;
@@ -64,7 +63,7 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 		_attacker = attacker;
 		_title = (summon.getOwner() != null) && summon.getOwner().isOnline() ? summon.getOwner().getName() : "";
 		_val = val;
-		_abnormalVisualEffects = summon.getCurrentAbnormalVisualEffects();
+		_abnormalVisualEffects = summon.getEffectList().getCurrentAbnormalVisualEffects();
 		
 		if (summon.getTemplate().getDisplayId() != summon.getTemplate().getId())
 		{
@@ -72,7 +71,7 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 			addComponentType(NpcInfoType.NAME);
 		}
 		
-		addComponentType(NpcInfoType.ATTACKABLE, NpcInfoType.UNKNOWN1, NpcInfoType.TITLE, NpcInfoType.ID, NpcInfoType.POSITION, NpcInfoType.ALIVE, NpcInfoType.RUNNING);
+		addComponentType(NpcInfoType.ATTACKABLE, NpcInfoType.UNKNOWN1, NpcInfoType.TITLE, NpcInfoType.ID, NpcInfoType.POSITION, NpcInfoType.ALIVE, NpcInfoType.RUNNING, NpcInfoType.TEAM);
 		
 		if (summon.getHeading() > 0)
 		{
@@ -92,11 +91,6 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 		if ((summon.getWeapon() > 0) || (summon.getArmor() > 0))
 		{
 			addComponentType(NpcInfoType.EQUIPPED);
-		}
-		
-		if (summon.getTeam() != Team.NONE)
-		{
-			addComponentType(NpcInfoType.TEAM);
 		}
 		
 		if (summon.isInsideZone(ZoneId.WATER) || summon.isFlying())
@@ -149,6 +143,11 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 			addComponentType(NpcInfoType.SUMMONED);
 		}
 		
+		if (summon.getReputation() != 0)
+		{
+			addComponentType(NpcInfoType.REPUTATION);
+		}
+		
 		if (summon.getOwner().getClan() != null)
 		{
 			_clanId = summon.getOwner().getAppearance().getVisibleClanId();
@@ -162,7 +161,6 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 		
 		addComponentType(NpcInfoType.UNKNOWN8);
 		
-		// TODO: Confirm me
 		if (summon.isInCombat())
 		{
 			_statusMask |= 0x01;
@@ -176,7 +174,7 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 			_statusMask |= 0x04;
 		}
 		
-		_statusMask |= 0x08;
+		_statusMask |= 0x08; // show name
 		
 		if (_statusMask != 0)
 		{
@@ -258,9 +256,9 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (containsMask(NpcInfoType.POSITION))
 		{
-			packet.writeD(_summon.getX());
-			packet.writeD(_summon.getY());
-			packet.writeD(_summon.getZ());
+			packet.writeD((int) _summon.getX());
+			packet.writeD((int) _summon.getY());
+			packet.writeD((int) _summon.getZ());
 		}
 		if (containsMask(NpcInfoType.HEADING))
 		{
@@ -278,7 +276,7 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 		if (containsMask(NpcInfoType.SPEED_MULTIPLIER))
 		{
 			packet.writeE((float) _summon.getStat().getMovementSpeedMultiplier());
-			packet.writeE(_summon.getStat().getAttackSpeedMultiplier());
+			packet.writeE((float) _summon.getStat().getAttackSpeedMultiplier());
 		}
 		if (containsMask(NpcInfoType.EQUIPPED))
 		{
@@ -368,9 +366,9 @@ public class SummonInfo extends AbstractMaskPacket<NpcInfoType>
 		{
 			packet.writeC(_summon.getPvpFlag()); // PVP flag
 		}
-		if (containsMask(NpcInfoType.NAME_COLOR))
+		if (containsMask(NpcInfoType.REPUTATION))
 		{
-			packet.writeD(0x00); // Name color
+			packet.writeD(_summon.getReputation()); // Name color
 		}
 		if (containsMask(NpcInfoType.CLAN))
 		{

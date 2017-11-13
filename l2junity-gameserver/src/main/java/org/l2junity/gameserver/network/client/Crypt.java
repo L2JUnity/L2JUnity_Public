@@ -18,12 +18,12 @@
  */
 package org.l2junity.gameserver.network.client;
 
-import io.netty.buffer.ByteBuf;
-
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.server.OnPacketReceived;
 import org.l2junity.gameserver.model.events.impl.server.OnPacketSent;
 import org.l2junity.network.ICrypt;
+
+import io.netty.buffer.ByteBuf;
 
 /**
  * @author UnAfraid, Nos

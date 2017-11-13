@@ -28,12 +28,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.GameTimeController;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.InventoryBlockType;
 import org.l2junity.gameserver.enums.ItemLocation;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.model.TradeItem;
 import org.l2junity.gameserver.model.TradeList;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -53,12 +53,14 @@ import org.slf4j.LoggerFactory;
 
 public class PcInventory extends Inventory
 {
-	private static final Logger _log = LoggerFactory.getLogger(PcInventory.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PcInventory.class);
 	
 	private final PlayerInstance _owner;
 	private ItemInstance _adena;
 	private ItemInstance _ancientAdena;
 	private ItemInstance _beautyTickets;
+	private ItemInstance _fortuneReadingTickets;
+	private ItemInstance _luxuryFortuneReadingTickets;
 	
 	private Collection<Integer> _blockItems = null;
 	
@@ -113,6 +115,28 @@ public class PcInventory extends Inventory
 		return _beautyTickets;
 	}
 	
+	public ItemInstance getFortuneReadingTicketsInstance()
+	{
+		return _fortuneReadingTickets;
+	}
+	
+	public ItemInstance getLuxuryFortuneReadingTicketsInstance()
+	{
+		return _luxuryFortuneReadingTickets;
+	}
+	
+	@Override
+	public long getFortuneReadingTickets()
+	{
+		return _fortuneReadingTickets != null ? _fortuneReadingTickets.getCount() : 0;
+	}
+	
+	@Override
+	public long getLuxuryFortuneReadingTickets()
+	{
+		return _luxuryFortuneReadingTickets != null ? _luxuryFortuneReadingTickets.getCount() : 0;
+	}
+	
 	@Override
 	public long getBeautyTickets()
 	{
@@ -152,50 +176,6 @@ public class PcInventory extends Inventory
 					break;
 				}
 			}
-			if (!isDuplicate && (!onlyAvailable || (item.isSellable() && item.isAvailable(getOwner(), false, false))))
-			{
-				list.add(item);
-			}
-		}
-		
-		return list;
-	}
-	
-	/**
-	 * Returns the list of items in inventory available for transaction Allows an item to appear twice if and only if there is a difference in enchantment level.
-	 * @param allowAdena
-	 * @param allowAncientAdena
-	 * @return L2ItemInstance : items in inventory
-	 */
-	public Collection<ItemInstance> getUniqueItemsByEnchantLevel(boolean allowAdena, boolean allowAncientAdena)
-	{
-		return getUniqueItemsByEnchantLevel(allowAdena, allowAncientAdena, true);
-	}
-	
-	public Collection<ItemInstance> getUniqueItemsByEnchantLevel(boolean allowAdena, boolean allowAncientAdena, boolean onlyAvailable)
-	{
-		final Collection<ItemInstance> list = new LinkedList<>();
-		for (ItemInstance item : _items.values())
-		{
-			if (!allowAdena && (item.getId() == ADENA_ID))
-			{
-				continue;
-			}
-			if (!allowAncientAdena && (item.getId() == ANCIENT_ADENA_ID))
-			{
-				continue;
-			}
-			
-			boolean isDuplicate = false;
-			for (ItemInstance litem : list)
-			{
-				if ((litem.getId() == item.getId()) && (litem.getEnchantLevel() == item.getEnchantLevel()))
-				{
-					isDuplicate = true;
-					break;
-				}
-			}
-			
 			if (!isDuplicate && (!onlyAvailable || (item.isSellable() && item.isAvailable(getOwner(), false, false))))
 			{
 				list.add(item);
@@ -447,11 +427,19 @@ public class PcInventory extends Inventory
 			{
 				_beautyTickets = item;
 			}
+			else if ((item.getId() == FORTUNE_READING_TICKET) && !item.equals(_fortuneReadingTickets))
+			{
+				_fortuneReadingTickets = item;
+			}
+			else if ((item.getId() == LUXURY_FORTUNE_READING_TICKET) && !item.equals(_luxuryFortuneReadingTickets))
+			{
+				_luxuryFortuneReadingTickets = item;
+			}
 			
 			if (actor != null)
 			{
 				// Send inventory update packet
-				if (!Config.FORCE_INVENTORY_UPDATE)
+				if (!GeneralConfig.FORCE_INVENTORY_UPDATE)
 				{
 					InventoryUpdate playerIU = new InventoryUpdate();
 					playerIU.addItem(item);
@@ -460,11 +448,6 @@ public class PcInventory extends Inventory
 				else
 				{
 					actor.sendItemList(false);
-				}
-				
-				if (item.isEtcItem() && (item.getItemType() == EtcItemType.SOULSHOT))
-				{
-					actor.handleAutoShots();
 				}
 				
 				// Notify to scripts
@@ -487,6 +470,11 @@ public class PcInventory extends Inventory
 	@Override
 	public ItemInstance addItem(String process, int itemId, long count, PlayerInstance actor, Object reference)
 	{
+		return addItem(process, itemId, count, actor, reference, true);
+	}
+	
+	public ItemInstance addItem(String process, int itemId, long count, PlayerInstance actor, Object reference, boolean sendInventoryUpdate)
+	{
 		final ItemInstance item = super.addItem(process, itemId, count, actor, reference);
 		if (item != null)
 		{
@@ -502,25 +490,31 @@ public class PcInventory extends Inventory
 			{
 				_beautyTickets = item;
 			}
+			else if ((item.getId() == FORTUNE_READING_TICKET) && !item.equals(_fortuneReadingTickets))
+			{
+				_fortuneReadingTickets = item;
+			}
+			else if ((item.getId() == LUXURY_FORTUNE_READING_TICKET) && !item.equals(_luxuryFortuneReadingTickets))
+			{
+				_luxuryFortuneReadingTickets = item;
+			}
 		}
 		
 		if ((item != null) && (actor != null))
 		{
-			// Send inventory update packet
-			if (!Config.FORCE_INVENTORY_UPDATE)
+			if (sendInventoryUpdate)
 			{
-				InventoryUpdate playerIU = new InventoryUpdate();
-				playerIU.addItem(item);
-				actor.sendInventoryUpdate(playerIU);
-			}
-			else
-			{
-				actor.sendItemList(false);
-			}
-			
-			if (item.isEtcItem() && (item.getItemType() == EtcItemType.SOULSHOT))
-			{
-				actor.handleAutoShots();
+				// Send inventory update packet
+				if (!GeneralConfig.FORCE_INVENTORY_UPDATE)
+				{
+					InventoryUpdate playerIU = new InventoryUpdate();
+					playerIU.addItem(item);
+					actor.sendInventoryUpdate(playerIU);
+				}
+				else
+				{
+					actor.sendItemList(false);
+				}
 			}
 			
 			// Notify to scripts
@@ -747,6 +741,14 @@ public class PcInventory extends Inventory
 		{
 			_beautyTickets = null;
 		}
+		else if ((item.getId() == FORTUNE_READING_TICKET))
+		{
+			_fortuneReadingTickets = null;
+		}
+		else if ((item.getId() == LUXURY_FORTUNE_READING_TICKET))
+		{
+			_luxuryFortuneReadingTickets = null;
+		}
 		
 		return super.removeItem(item);
 	}
@@ -771,6 +773,8 @@ public class PcInventory extends Inventory
 		_adena = getItemByItemId(ADENA_ID);
 		_ancientAdena = getItemByItemId(ANCIENT_ADENA_ID);
 		_beautyTickets = getItemByItemId(BEAUTY_TICKET_ID);
+		_fortuneReadingTickets = getItemByItemId(FORTUNE_READING_TICKET);
+		_luxuryFortuneReadingTickets = getItemByItemId(LUXURY_FORTUNE_READING_TICKET);
 	}
 	
 	public static int[][] restoreVisibleInventory(int objectId)
@@ -795,7 +799,7 @@ public class PcInventory extends Inventory
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not restore inventory: " + e.getMessage(), e);
+			LOGGER.warn("Could not restore inventory: " + e.getMessage(), e);
 		}
 		return paperdoll;
 	}
@@ -874,7 +878,7 @@ public class PcInventory extends Inventory
 	
 	public boolean validateCapacity(long slots, boolean questItem)
 	{
-		return (getSize(item -> !item.isQuestItem() || questItem) + slots) <= _owner.getQuestInventoryLimit();
+		return (getSize(item -> item.isQuestItem() == questItem) + slots) <= (questItem ? _owner.getQuestInventoryLimit() : _owner.getInventoryLimit());
 	}
 	
 	@Override
@@ -1005,7 +1009,7 @@ public class PcInventory extends Inventory
 	{
 		if ((type != EtcItemType.ARROW) && (type != EtcItemType.BOLT))
 		{
-			_log.warn(type.toString(), " which is not arrow type passed to PlayerInstance.reduceArrowCount()");
+			LOGGER.warn(type.toString(), " which is not arrow type passed to PlayerInstance.reduceArrowCount()");
 			return;
 		}
 		
@@ -1021,7 +1025,7 @@ public class PcInventory extends Inventory
 			return;
 		}
 		
-		if ((GameTimeController.getInstance().getGameTicks() % 10) == 0)
+		if ((GameTimeManager.getInstance().getGameTicks() % 10) == 0)
 		{
 			updateItemCount(null, arrows, -1, _owner, null);
 		}
@@ -1077,7 +1081,7 @@ public class PcInventory extends Inventory
 		}
 		finally
 		{
-			if (Config.FORCE_INVENTORY_UPDATE)
+			if (GeneralConfig.FORCE_INVENTORY_UPDATE)
 			{
 				_owner.sendItemList(false);
 			}

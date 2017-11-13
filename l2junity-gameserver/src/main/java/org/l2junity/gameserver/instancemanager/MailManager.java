@@ -28,12 +28,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.enums.MailType;
 import org.l2junity.gameserver.idfactory.IdFactory;
 import org.l2junity.gameserver.instancemanager.tasks.MessageDeletionTask;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.entity.Message;
@@ -53,11 +58,16 @@ public final class MailManager
 	
 	protected MailManager()
 	{
-		load();
 	}
 	
+	@Load(group = LoadGroup.class)
 	private void load()
 	{
+		if (!GeneralConfig.ALLOW_MAIL)
+		{
+			return;
+		}
+		
 		int count = 0;
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
 			Statement ps = con.createStatement();
@@ -77,11 +87,11 @@ public final class MailManager
 				
 				if (expiration < System.currentTimeMillis())
 				{
-					ThreadPoolManager.getInstance().scheduleGeneral(new MessageDeletionTask(msgId), 10000);
+					ThreadPool.schedule(new MessageDeletionTask(msgId), 10000, TimeUnit.MILLISECONDS);
 				}
 				else
 				{
-					ThreadPoolManager.getInstance().scheduleGeneral(new MessageDeletionTask(msgId), expiration - System.currentTimeMillis());
+					ThreadPool.schedule(new MessageDeletionTask(msgId), expiration - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 				}
 			}
 		}
@@ -212,7 +222,7 @@ public final class MailManager
 			receiver.sendPacket(new ExUnReadMailCount(receiver));
 		}
 		
-		ThreadPoolManager.getInstance().scheduleGeneral(new MessageDeletionTask(msg.getId()), msg.getExpiration() - System.currentTimeMillis());
+		ThreadPool.schedule(new MessageDeletionTask(msg.getId()), msg.getExpiration() - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 	}
 	
 	public final void markAsReadInDb(int msgId)
@@ -292,13 +302,14 @@ public final class MailManager
 	 * Gets the single instance of {@code MailManager}.
 	 * @return single instance of {@code MailManager}
 	 */
+	@InstanceGetter
 	public static MailManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final MailManager _instance = new MailManager();
+		protected static final MailManager INSTANCE = new MailManager();
 	}
 }

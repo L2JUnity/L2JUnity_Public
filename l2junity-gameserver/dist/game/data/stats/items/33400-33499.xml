@@ -1097,6 +1097,7 @@
 			<stat type="waterRes">60</stat>
 			<stat type="earthRes">60</stat>
 			<stat type="holyRes">60</stat>
+			<stat type="maxMp">637</stat>
 		</stats>
 	</item>
 	<item id="33434" name="Vesper Stockings of Destiny (Fire, Wind, Dark)" type="Armor">
@@ -1124,6 +1125,7 @@
 			<stat type="waterRes">60</stat>
 			<stat type="earthRes">60</stat>
 			<stat type="holyRes">60</stat>
+			<stat type="maxMp">415</stat>
 		</stats>
 	</item>
 	<item id="33435" name="Vesper Gloves of Destiny (Fire, Wind, Dark)" type="Armor">
@@ -1546,6 +1548,7 @@
 			<stat type="fireRes">60</stat>
 			<stat type="windRes">60</stat>
 			<stat type="darkRes">60</stat>
+			<stat type="maxMp">637</stat>
 		</stats>
 	</item>
 	<item id="33451" name="Vesper Stockings of Destiny (Water, Earth, Holy)" type="Armor">
@@ -1573,6 +1576,7 @@
 			<stat type="fireRes">60</stat>
 			<stat type="windRes">60</stat>
 			<stat type="darkRes">60</stat>
+			<stat type="maxMp">415</stat>
 		</stats>
 	</item>
 	<item id="33452" name="Vesper Gloves of Destiny (Water, Earth, Holy)" type="Armor">
@@ -1885,6 +1889,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="12869" level="1" /> <!-- Lesser Giant's Fortune Box -->
 		</skills>
@@ -1899,6 +1904,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="12867" level="1" /> <!-- Weapon Pouch -->
 		</skills>
@@ -1913,6 +1919,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="12868" level="1" /> <!-- Armor Pouch -->
 		</skills>
@@ -1932,6 +1939,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="32316" min="50" max="50" chance="100" /> <!-- Elixir of Blessing -->
 			<item id="30275" min="20" max="20" chance="100" /> <!-- Scroll: 1,000,000 SP -->
@@ -1968,6 +1976,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="32255" min="1" max="1" chance="100" /> <!-- Infinite Orichalcum Quiver -->
 			<item id="32262" min="1" max="1" chance="100" /> <!-- Infinite Orichalcum Bolt Container -->
@@ -2122,6 +2131,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="12871" level="1" /> <!-- Hero's Treasure Chest -->
 		</skills>
@@ -2423,6 +2433,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="33481" min="12" max="12" chance="100" /> <!-- Fire Stone - Super -->
 			<item id="33482" min="12" max="12" chance="100" /> <!-- Water Stone - Super -->
@@ -2471,6 +2482,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17290" min="1" max="1" chance="100" /> <!-- Requiem Shaper -->
 			<item id="17291" min="1" max="1" chance="100" /> <!-- Requiem Cutter -->
@@ -2501,6 +2513,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17304" min="1" max="1" chance="100" /> <!-- Immortal Helmet - Heavy Armor -->
 			<item id="17305" min="1" max="1" chance="100" /> <!-- Immortal Breastplate - Heavy Armor -->
@@ -2523,6 +2536,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17310" min="1" max="1" chance="100" /> <!-- Immortal Leather Helmet - Light Armor -->
 			<item id="17311" min="1" max="1" chance="100" /> <!-- Immortal Leather Armor - Light Armor -->
@@ -2544,6 +2558,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17315" min="1" max="1" chance="100" /> <!-- Immortal Circlet - Robe -->
 			<item id="17316" min="1" max="1" chance="100" /> <!-- Immortal Tunic - Robe -->
@@ -2566,6 +2581,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="icon" val="icon.event_hero_treasure_box_i00" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17321" min="1" max="1" chance="100" /> <!-- Immortal Necklace -->
 			<item id="17322" min="2" max="2" chance="100" /> <!-- Immortal Earring -->

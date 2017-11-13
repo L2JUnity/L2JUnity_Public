@@ -30,12 +30,12 @@ public final class TeleportToLocation implements IClientOutgoingPacket
 	private final int _z;
 	private final int _heading;
 	
-	public TeleportToLocation(WorldObject obj, int x, int y, int z, int heading)
+	public TeleportToLocation(WorldObject obj, double x, double y, double z, int heading)
 	{
 		_targetObjId = obj.getObjectId();
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 		_heading = heading;
 	}
 	

@@ -27,26 +27,26 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * Loads name and access level for all players.
- * @version 2005/03/27
+ * @since 2005/03/27
  */
 public class CharNameTable
 {
-	private static Logger _log = LoggerFactory.getLogger(CharNameTable.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CharNameTable.class);
 	
 	private final Map<Integer, String> _chars = new ConcurrentHashMap<>();
 	private final Map<Integer, Integer> _accessLevels = new ConcurrentHashMap<>();
 	
 	protected CharNameTable()
 	{
-		if (Config.CACHE_CHAR_NAMES)
+		if (GeneralConfig.CACHE_CHAR_NAMES)
 		{
 			loadAll();
 		}
@@ -93,7 +93,7 @@ public class CharNameTable
 			}
 		}
 		
-		if (Config.CACHE_CHAR_NAMES)
+		if (GeneralConfig.CACHE_CHAR_NAMES)
 		{
 			return -1;
 		}
@@ -116,7 +116,7 @@ public class CharNameTable
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't retrieve class for id: {}", e.getMessage(), e);
+			LOGGER.warn("Couldn't retrieve class for id: {}", e.getMessage(), e);
 		}
 		
 		if (id > 0)
@@ -142,7 +142,7 @@ public class CharNameTable
 			return name;
 		}
 		
-		if (Config.CACHE_CHAR_NAMES)
+		if (GeneralConfig.CACHE_CHAR_NAMES)
 		{
 			return null;
 		}
@@ -164,7 +164,7 @@ public class CharNameTable
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't retrieve class for id: {}", e.getMessage(), e);
+			LOGGER.warn("Couldn't retrieve class for id: {}", e.getMessage(), e);
 		}
 		
 		return null; // not found
@@ -197,7 +197,7 @@ public class CharNameTable
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't retrieve char name for id: {}", e.getMessage(), e);
+			LOGGER.warn("Couldn't retrieve char name for id: {}", e.getMessage(), e);
 		}
 		return result;
 	}
@@ -218,7 +218,7 @@ public class CharNameTable
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't retrieve account for id: {}", e.getMessage(), e);
+			LOGGER.warn("Couldn't retrieve account for id: {}", e.getMessage(), e);
 		}
 		return 0;
 	}
@@ -239,7 +239,7 @@ public class CharNameTable
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't retrieve level for id: {}", e.getMessage(), e);
+			LOGGER.warn("Couldn't retrieve level for id: {}", e.getMessage(), e);
 		}
 		return 0;
 	}
@@ -260,7 +260,7 @@ public class CharNameTable
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't retrieve class for id: {}" + e.getMessage(), e);
+			LOGGER.warn("Couldn't retrieve class for id: {}" + e.getMessage(), e);
 		}
 		return 0;
 	}
@@ -281,7 +281,7 @@ public class CharNameTable
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't retrieve clan for id: {}" + e.getMessage(), e);
+			LOGGER.warn("Couldn't retrieve clan for id: {}" + e.getMessage(), e);
 		}
 		return 0;
 	}
@@ -301,9 +301,9 @@ public class CharNameTable
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't retrieve all char id/name/access: {}", e.getMessage(), e);
+			LOGGER.warn("Couldn't retrieve all char id/name/access: {}", e.getMessage(), e);
 		}
-		_log.info("Loaded " + _chars.size() + " char names.");
+		LOGGER.info("Loaded " + _chars.size() + " char names.");
 	}
 	
 	public static CharNameTable getInstance()

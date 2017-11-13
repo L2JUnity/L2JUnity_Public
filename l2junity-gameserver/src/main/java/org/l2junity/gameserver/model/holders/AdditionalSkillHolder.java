@@ -23,6 +23,7 @@ package org.l2junity.gameserver.model.holders;
  */
 public class AdditionalSkillHolder extends SkillHolder
 {
+	private static final long serialVersionUID = 1471191240653148142L;
 	private final int _minLevel;
 	
 	public AdditionalSkillHolder(int skillId, int skillLevel, int minLevel)

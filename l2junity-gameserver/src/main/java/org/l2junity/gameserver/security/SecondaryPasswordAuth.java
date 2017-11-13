@@ -21,14 +21,12 @@ package org.l2junity.gameserver.security;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Base64;
 
-import org.l2junity.DatabaseFactory;
 import org.l2junity.gameserver.LoginServerThread;
 import org.l2junity.gameserver.data.xml.impl.SecondaryAuthData;
+import org.l2junity.gameserver.model.variables.AccountVariables;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.Ex2ndPasswordAck;
 import org.l2junity.gameserver.network.client.send.Ex2ndPasswordCheck;
@@ -38,75 +36,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author mrTJO
+ * @author mrTJO, UnAfraid
  */
 public class SecondaryPasswordAuth
 {
-	private final Logger _log = LoggerFactory.getLogger(SecondaryPasswordAuth.class);
-	private final L2GameClient _activeClient;
-	
-	private String _password;
-	private int _wrongAttempts;
-	private boolean _authed;
-	
+	private final Logger LOGGER = LoggerFactory.getLogger(SecondaryPasswordAuth.class);
 	private static final String VAR_PWD = "secauth_pwd";
 	private static final String VAR_WTE = "secauth_wte";
 	
-	private static final String SELECT_PASSWORD = "SELECT var, value FROM account_gsdata WHERE account_name=? AND var LIKE 'secauth_%'";
-	private static final String INSERT_PASSWORD = "INSERT INTO account_gsdata VALUES (?, ?, ?)";
-	private static final String UPDATE_PASSWORD = "UPDATE account_gsdata SET value=? WHERE account_name=? AND var=?";
+	private final L2GameClient _activeClient;
+	private final AccountVariables _vars;
+	private boolean _authed;
 	
-	private static final String INSERT_ATTEMPT = "INSERT INTO account_gsdata VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE value=?";
-	
-	/**
-	 * @param activeClient
-	 */
 	public SecondaryPasswordAuth(L2GameClient activeClient)
 	{
 		_activeClient = activeClient;
-		_password = null;
-		_wrongAttempts = 0;
-		_authed = false;
-		loadPassword();
-	}
-	
-	private void loadPassword()
-	{
-		String var, value = null;
-		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement(SELECT_PASSWORD))
-		{
-			statement.setString(1, _activeClient.getAccountName());
-			try (ResultSet rs = statement.executeQuery())
-			{
-				while (rs.next())
-				{
-					var = rs.getString("var");
-					value = rs.getString("value");
-					
-					if (var.equals(VAR_PWD))
-					{
-						_password = value;
-					}
-					else if (var.equals(VAR_WTE))
-					{
-						_wrongAttempts = Integer.parseInt(value);
-					}
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			_log.error("Error while reading password.", e);
-		}
+		_vars = new AccountVariables(_activeClient.getAccountName());
 	}
 	
 	public boolean savePassword(String password)
 	{
 		if (passwordExist())
 		{
-			_log.warn("[SecondaryPasswordAuth]" + _activeClient.getAccountName() + " forced savePassword");
-			_activeClient.closeNow();
+			LOGGER.warn("{} forced savePassword", _activeClient.getAccountName());
+			Disconnection.of(_activeClient).defaultSequence(false);
 			return false;
 		}
 		
@@ -118,39 +71,15 @@ public class SecondaryPasswordAuth
 		
 		password = cryptPassword(password);
 		
-		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement(INSERT_PASSWORD))
-		{
-			statement.setString(1, _activeClient.getAccountName());
-			statement.setString(2, VAR_PWD);
-			statement.setString(3, password);
-			statement.execute();
-		}
-		catch (Exception e)
-		{
-			_log.error("Error while writing password.", e);
-			return false;
-		}
-		_password = password;
+		_vars.set(VAR_PWD, password);
+		_vars.storeMe();
 		return true;
 	}
 	
 	public boolean insertWrongAttempt(int attempts)
 	{
-		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement(INSERT_ATTEMPT))
-		{
-			statement.setString(1, _activeClient.getAccountName());
-			statement.setString(2, VAR_WTE);
-			statement.setString(3, Integer.toString(attempts));
-			statement.setString(4, Integer.toString(attempts));
-			statement.execute();
-		}
-		catch (Exception e)
-		{
-			_log.error("Error while writing wrong attempts.", e);
-			return false;
-		}
+		_vars.set(VAR_WTE, attempts);
+		_vars.storeMe();
 		return true;
 	}
 	
@@ -158,8 +87,8 @@ public class SecondaryPasswordAuth
 	{
 		if (!passwordExist())
 		{
-			_log.warn("[SecondaryPasswordAuth]" + _activeClient.getAccountName() + " forced changePassword");
-			_activeClient.closeNow();
+			LOGGER.warn("{} forced changePassword", _activeClient.getAccountName());
+			Disconnection.of(_activeClient).defaultSequence(false);
 			return false;
 		}
 		
@@ -176,21 +105,8 @@ public class SecondaryPasswordAuth
 		
 		newPassword = cryptPassword(newPassword);
 		
-		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement statement = con.prepareStatement(UPDATE_PASSWORD))
-		{
-			statement.setString(1, newPassword);
-			statement.setString(2, _activeClient.getAccountName());
-			statement.setString(3, VAR_PWD);
-			statement.execute();
-		}
-		catch (Exception e)
-		{
-			_log.error("Error while reading password.", e);
-			return false;
-		}
-		
-		_password = newPassword;
+		_vars.set(VAR_PWD, newPassword);
+		_vars.storeMe();
 		_authed = false;
 		return true;
 	}
@@ -199,19 +115,21 @@ public class SecondaryPasswordAuth
 	{
 		password = cryptPassword(password);
 		
-		if (!password.equals(_password))
+		final String currentPassword = _vars.getString(VAR_PWD, null);
+		int wrongAttempts = _vars.getInt(VAR_WTE, 0);
+		if (!password.equals(currentPassword))
 		{
-			_wrongAttempts++;
-			if (_wrongAttempts < SecondaryAuthData.getInstance().getMaxAttempts())
+			wrongAttempts++;
+			if (wrongAttempts < SecondaryAuthData.getInstance().getMaxAttempts())
 			{
-				_activeClient.sendPacket(new Ex2ndPasswordVerify(Ex2ndPasswordVerify.PASSWORD_WRONG, _wrongAttempts));
-				insertWrongAttempt(_wrongAttempts);
+				_activeClient.sendPacket(new Ex2ndPasswordVerify(Ex2ndPasswordVerify.PASSWORD_WRONG, wrongAttempts));
+				insertWrongAttempt(wrongAttempts);
 			}
 			else
 			{
-				LoginServerThread.getInstance().sendTempBan(_activeClient.getAccountName(), _activeClient.getConnectionAddress().getHostAddress(), SecondaryAuthData.getInstance().getBanTime());
-				LoginServerThread.getInstance().sendMail(_activeClient.getAccountName(), "SATempBan", _activeClient.getConnectionAddress().getHostAddress(), Integer.toString(SecondaryAuthData.getInstance().getMaxAttempts()), Long.toString(SecondaryAuthData.getInstance().getBanTime()), SecondaryAuthData.getInstance().getRecoveryLink());
-				_log.warn(_activeClient.getAccountName() + " - (" + _activeClient.getConnectionAddress().getHostAddress() + ") has inputted the wrong password " + _wrongAttempts + " times in row.");
+				LoginServerThread.getInstance().sendTempBan(_activeClient.getAccountName(), _activeClient.getIP(), SecondaryAuthData.getInstance().getBanTime());
+				LoginServerThread.getInstance().sendMail(_activeClient.getAccountName(), "SATempBan", _activeClient.getIP(), Integer.toString(SecondaryAuthData.getInstance().getMaxAttempts()), Long.toString(SecondaryAuthData.getInstance().getBanTime()), SecondaryAuthData.getInstance().getRecoveryLink());
+				LOGGER.warn("{} - ({}) has inputted the wrong password {} times in row.", _activeClient.getAccountName(), _activeClient.getIP(), wrongAttempts);
 				insertWrongAttempt(0);
 				_activeClient.close(new Ex2ndPasswordVerify(Ex2ndPasswordVerify.PASSWORD_BAN, SecondaryAuthData.getInstance().getMaxAttempts()));
 			}
@@ -220,7 +138,7 @@ public class SecondaryPasswordAuth
 		if (!skipAuth)
 		{
 			_authed = true;
-			_activeClient.sendPacket(new Ex2ndPasswordVerify(Ex2ndPasswordVerify.PASSWORD_OK, _wrongAttempts));
+			_activeClient.sendPacket(new Ex2ndPasswordVerify(Ex2ndPasswordVerify.PASSWORD_OK, wrongAttempts));
 		}
 		insertWrongAttempt(0);
 		return true;
@@ -228,7 +146,8 @@ public class SecondaryPasswordAuth
 	
 	public boolean passwordExist()
 	{
-		return _password != null;
+		final String password = _vars.getString(VAR_PWD, null);
+		return (password != null) && !password.isEmpty();
 	}
 	
 	public void openDialog()
@@ -259,11 +178,11 @@ public class SecondaryPasswordAuth
 		}
 		catch (NoSuchAlgorithmException e)
 		{
-			_log.error("[SecondaryPasswordAuth]Unsupported Algorythm");
+			LOGGER.error("Unsupported Algorythm", e);
 		}
 		catch (UnsupportedEncodingException e)
 		{
-			_log.error("[SecondaryPasswordAuth]Unsupported Encoding");
+			LOGGER.error("Unsupported Encoding", e);
 		}
 		return null;
 	}

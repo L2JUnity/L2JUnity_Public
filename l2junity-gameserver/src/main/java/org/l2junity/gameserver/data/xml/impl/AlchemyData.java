@@ -18,11 +18,16 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.alchemy.AlchemyCraftData;
 import org.l2junity.gameserver.model.holders.ItemHolder;
@@ -43,11 +48,11 @@ public class AlchemyData implements IGameXmlReader
 	
 	protected AlchemyData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("alchemy")
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = SkillData.class))
+	private void load() throws Exception
 	{
 		_alchemy.clear();
 		parseDatapackFile("data/AlchemyData.xml");
@@ -55,7 +60,7 @@ public class AlchemyData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		StatsSet set;
 		Node att;
@@ -121,6 +126,11 @@ public class AlchemyData implements IGameXmlReader
 		}
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _alchemy.size();
+	}
+	
 	public AlchemyCraftData getCraftData(int skillId, int skillLevel)
 	{
 		return _alchemy.get(SkillData.getSkillHashCode(skillId, skillLevel));
@@ -130,6 +140,7 @@ public class AlchemyData implements IGameXmlReader
 	 * Gets the single instance of AlchemyData.
 	 * @return single instance of AlchemyData
 	 */
+	@InstanceGetter
 	public static final AlchemyData getInstance()
 	{
 		return SingletonHolder._instance;

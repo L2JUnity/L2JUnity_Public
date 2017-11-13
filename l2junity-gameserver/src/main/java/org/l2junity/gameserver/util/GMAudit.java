@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public class GMAudit
 {
-	private static final Logger _log = LoggerFactory.getLogger(GMAudit.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(GMAudit.class);
 	
 	static
 	{
@@ -50,7 +50,7 @@ public class GMAudit
 	{
 		final SimpleDateFormat _formatter = new SimpleDateFormat("dd/MM/yyyy H:mm:ss");
 		final String date = _formatter.format(new Date());
-		String name = org.l2junity.commons.util.CommonUtil.replaceIllegalCharacters(gmName);
+		String name = org.l2junity.commons.util.StringUtil.replaceIllegalCharacters(gmName);
 		if (!org.l2junity.commons.util.CommonUtil.isValidFileName(name))
 		{
 			name = "INVALID_GM_NAME_" + date;
@@ -63,7 +63,7 @@ public class GMAudit
 		}
 		catch (IOException e)
 		{
-			_log.error("GMAudit for GM " + gmName + " could not be saved: ", e);
+			LOGGER.error("GMAudit for GM " + gmName + " could not be saved: ", e);
 		}
 	}
 	

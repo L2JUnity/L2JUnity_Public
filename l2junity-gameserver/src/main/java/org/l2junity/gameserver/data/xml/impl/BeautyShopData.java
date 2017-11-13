@@ -18,13 +18,16 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.enums.Race;
 import org.l2junity.gameserver.enums.Sex;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.beautyshop.BeautyData;
 import org.l2junity.gameserver.model.beautyshop.BeautyItem;
@@ -42,11 +45,10 @@ public final class BeautyShopData implements IGameXmlReader
 	
 	protected BeautyShopData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_beautyList.clear();
 		_beautyData.clear();
@@ -54,7 +56,7 @@ public final class BeautyShopData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		NamedNodeMap attrs;
 		StatsSet set;
@@ -141,6 +143,11 @@ public final class BeautyShopData implements IGameXmlReader
 		}
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _beautyData.size();
+	}
+	
 	public boolean hasBeautyData(Race race, Sex sex)
 	{
 		return _beautyList.containsKey(race) && _beautyList.get(race).containsKey(sex);
@@ -155,6 +162,7 @@ public final class BeautyShopData implements IGameXmlReader
 		return null;
 	}
 	
+	@InstanceGetter
 	public static BeautyShopData getInstance()
 	{
 		return SingletonHolder._instance;

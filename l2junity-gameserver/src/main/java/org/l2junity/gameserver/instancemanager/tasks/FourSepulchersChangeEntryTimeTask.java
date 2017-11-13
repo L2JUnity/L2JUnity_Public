@@ -20,9 +20,10 @@ package org.l2junity.gameserver.instancemanager.tasks;
 
 import java.util.Calendar;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.instancemanager.FourSepulchersManager;
 
 /**
@@ -52,13 +53,13 @@ public final class FourSepulchersChangeEntryTimeTask implements Runnable
 		}
 		else
 		{
-			interval = Config.FS_TIME_ENTRY * 60000L; // else use stupid
+			interval = GeneralConfig.FS_TIME_ENTRY * 60000L; // else use stupid
 			// method
 		}
 		
 		// launching saying process...
-		ThreadPoolManager.getInstance().scheduleGeneral(new FourSepulchersManagerSayTask(), 0);
-		manager.setChangeWarmUpTimeTask(ThreadPoolManager.getInstance().scheduleEffect(new FourSepulchersChangeWarmUpTimeTask(), interval));
+		ThreadPool.schedule(new FourSepulchersManagerSayTask(), 0, TimeUnit.MILLISECONDS);
+		manager.setChangeWarmUpTimeTask(ThreadPool.schedule(new FourSepulchersChangeWarmUpTimeTask(), interval, TimeUnit.MILLISECONDS));
 		final ScheduledFuture<?> changeEntryTimeTask = manager.getChangeEntryTimeTask();
 		
 		if (changeEntryTimeTask != null)

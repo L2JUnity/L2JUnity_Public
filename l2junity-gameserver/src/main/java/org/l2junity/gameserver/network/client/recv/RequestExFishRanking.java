@@ -36,6 +36,6 @@ public final class RequestExFishRanking implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		_log.info("C5: RequestExFishRanking");
+		LOGGER.info("C5: RequestExFishRanking");
 	}
 }

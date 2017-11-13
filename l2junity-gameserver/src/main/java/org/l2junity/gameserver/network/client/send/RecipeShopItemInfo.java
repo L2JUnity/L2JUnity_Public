@@ -24,13 +24,28 @@ import org.l2junity.network.PacketWriter;
 
 public class RecipeShopItemInfo implements IClientOutgoingPacket
 {
-	private final PlayerInstance _player;
+	private final PlayerInstance _manufacturer;
 	private final int _recipeId;
+	private final Boolean _success;
+	private final long _manufacturePrice;
+	private final long _offeringMaximumAdena;
 	
-	public RecipeShopItemInfo(PlayerInstance player, int recipeId)
+	public RecipeShopItemInfo(PlayerInstance manufacturer, int recipeId, boolean success, long manufacturePrice, long offeringMaximumAdena)
 	{
-		_player = player;
+		_manufacturer = manufacturer;
 		_recipeId = recipeId;
+		_success = success;
+		_manufacturePrice = manufacturePrice;
+		_offeringMaximumAdena = offeringMaximumAdena;
+	}
+	
+	public RecipeShopItemInfo(PlayerInstance manufacturer, int recipeId, long manufacturePrice, long offeringMaximumAdena)
+	{
+		_manufacturer = manufacturer;
+		_recipeId = recipeId;
+		_success = null;
+		_manufacturePrice = manufacturePrice;
+		_offeringMaximumAdena = offeringMaximumAdena;
 	}
 	
 	@Override
@@ -38,14 +53,14 @@ public class RecipeShopItemInfo implements IClientOutgoingPacket
 	{
 		OutgoingPackets.RECIPE_SHOP_ITEM_INFO.writeId(packet);
 		
-		packet.writeD(_player.getObjectId());
+		packet.writeD(_manufacturer.getObjectId());
 		packet.writeD(_recipeId);
-		packet.writeD((int) _player.getCurrentMp());
-		packet.writeD(_player.getMaxMp());
-		packet.writeD(0xffffffff);
-		packet.writeQ(0x00);
-		packet.writeC(0x00); // Trigger offering window if 1
-		packet.writeQ(0x00);
+		packet.writeD((int) _manufacturer.getCurrentMp());
+		packet.writeD(_manufacturer.getMaxMp());
+		packet.writeD(_success == null ? -1 : (_success ? 1 : 0)); // item creation none/success/failed
+		packet.writeQ(_manufacturePrice);
+		packet.writeC(_offeringMaximumAdena > 0 ? 1 : 0); // Trigger offering window if 1
+		packet.writeQ(_offeringMaximumAdena);
 		return true;
 	}
 }

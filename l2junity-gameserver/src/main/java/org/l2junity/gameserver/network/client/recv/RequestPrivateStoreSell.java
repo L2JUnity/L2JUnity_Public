@@ -20,7 +20,7 @@ package org.l2junity.gameserver.network.client.recv;
 
 import static org.l2junity.gameserver.model.actor.Npc.INTERACTION_DISTANCE;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.ItemRequest;
 import org.l2junity.gameserver.model.TradeList;
@@ -38,8 +38,6 @@ import org.l2junity.network.PacketReader;
  */
 public final class RequestPrivateStoreSell implements IClientIncomingPacket
 {
-	private static final int BATCH_LENGTH = 32; // length of the one item
-	
 	private int _storePlayerId;
 	private ItemRequest[] _items = null;
 	
@@ -47,28 +45,40 @@ public final class RequestPrivateStoreSell implements IClientIncomingPacket
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
 		_storePlayerId = packet.readD();
-		int count = packet.readD();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		int itemsCount = packet.readD();
+		if ((itemsCount <= 0) || (itemsCount > PlayerConfig.MAX_ITEM_IN_PACKET))
 		{
 			return false;
 		}
-		_items = new ItemRequest[count];
+		_items = new ItemRequest[itemsCount];
 		
-		for (int i = 0; i < count; i++)
+		for (int i = 0; i < itemsCount; i++)
 		{
-			int objectId = packet.readD();
-			int itemId = packet.readD();
+			final int slot = packet.readD();
+			final int itemId = packet.readD();
 			packet.readH(); // TODO analyse this
 			packet.readH(); // TODO analyse this
-			long cnt = packet.readQ();
-			long price = packet.readQ();
-			
-			if ((objectId < 1) || (itemId < 1) || (cnt < 1) || (price < 0))
+			final long count = packet.readQ();
+			final long price = packet.readQ();
+			packet.readD(); // visual id
+			packet.readD(); // option 1
+			packet.readD(); // option 2
+			int soulCrystals = packet.readC();
+			for (int s = 0; s < soulCrystals; s++)
+			{
+				packet.readD(); // soul crystal option
+			}
+			int soulCrystals2 = packet.readC();
+			for (int s = 0; s < soulCrystals2; s++)
+			{
+				packet.readD(); // soul crystal option
+			}
+			if ((slot < 1) || (itemId < 1) || (count < 1) || (price < 0))
 			{
 				_items = null;
 				return false;
 			}
-			_items[i] = new ItemRequest(objectId, itemId, cnt, price);
+			_items[i] = new ItemRequest(slot, itemId, count, price);
 		}
 		return true;
 	}
@@ -76,7 +86,7 @@ public final class RequestPrivateStoreSell implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		PlayerInstance player = client.getActiveChar();
+		final PlayerInstance player = client.getActiveChar();
 		if (player == null)
 		{
 			return;
@@ -102,7 +112,7 @@ public final class RequestPrivateStoreSell implements IClientIncomingPacket
 		}
 		
 		final PlayerInstance storePlayer = World.getInstance().getPlayer(_storePlayerId);
-		if ((storePlayer == null) || !player.isInsideRadius(storePlayer, INTERACTION_DISTANCE, true, false))
+		if ((storePlayer == null) || !player.isInRadius3d(storePlayer, INTERACTION_DISTANCE))
 		{
 			return;
 		}
@@ -133,7 +143,7 @@ public final class RequestPrivateStoreSell implements IClientIncomingPacket
 		if (!storeList.privateStoreSell(player, _items))
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
-			_log.warn("PrivateStore sell has failed due to invalid list or request. Player: " + player.getName() + ", Private store of: " + storePlayer.getName());
+			LOGGER.warn("PrivateStore sell has failed due to invalid list or request. Player: " + player.getName() + ", Private store of: " + storePlayer.getName());
 			return;
 		}
 		

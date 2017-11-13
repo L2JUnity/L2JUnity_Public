@@ -37,8 +37,8 @@ public class MySqlConnect
 	{
 		try (Formatter form = new Formatter())
 		{
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			final String formattedText = form.format("jdbc:mysql://%1$s:%2$s", host, port).toString();
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			final String formattedText = form.format("jdbc:mysql://%1$s:%2$s?useSSL=false&serverTimezone=Europe/Paris", host, port).toString();
 			con = DriverManager.getConnection(formattedText, user, password);
 			
 			try (Statement s = con.createStatement())

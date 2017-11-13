@@ -23,6 +23,7 @@ package org.l2junity.gameserver.model.holders;
  */
 public class ExtendDropItemHolder extends ItemHolder
 {
+	private static final long serialVersionUID = -2700972537356675373L;
 	private final long _maxCount;
 	private final double _chance;
 	private final double _additionalChance;

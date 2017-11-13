@@ -18,11 +18,14 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.options.EnchantOptions;
 import org.l2junity.gameserver.util.Util;
@@ -42,18 +45,17 @@ public class EnchantItemOptionsData implements IGameXmlReader
 	
 	protected EnchantItemOptionsData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_data.clear();
 		parseDatapackFile("data/enchantItemOptions.xml");
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		int counter = 0;
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
@@ -94,6 +96,11 @@ public class EnchantItemOptionsData implements IGameXmlReader
 		LOGGER.info("Loaded: {} Items and {} Options.", _data.size(), counter);
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _data.size();
+	}
+	
 	/**
 	 * @param itemId
 	 * @param enchantLevel
@@ -121,6 +128,7 @@ public class EnchantItemOptionsData implements IGameXmlReader
 	 * Gets the single instance of EnchantOptionsData.
 	 * @return single instance of EnchantOptionsData
 	 */
+	@InstanceGetter
 	public static EnchantItemOptionsData getInstance()
 	{
 		return SingletonHolder._instance;

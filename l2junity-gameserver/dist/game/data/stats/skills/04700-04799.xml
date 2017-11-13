@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="4700" toLevel="13" name="Gift of Queen">
-		<table name="#accCombat"> 2 2 3 3 3 3 3 3 3 3 3 3 3 </table>
-		<table name="#pAtk"> 1.06 1.08 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 </table>
-		<table name="#time"> 120 120 120 150 165 180 195 210 225 240 255 270 285 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -93,7 +90,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">8</value>
@@ -111,7 +108,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">2</value>
@@ -131,8 +128,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="4701" toLevel="13" name="Cure of Queen">
-		<table name="#power"> 40 45 50 55 60 65 70 75 80 85 90 95 100 </table> <!-- Base Land Rate -->
+	<skill id="4701" toLevel="13" name="Cure of Queen"> <!-- Base Land Rate -->
 		<affectRange>1000</affectRange>
 		<effectPoint>
 			<value level="1">541</value>
@@ -189,7 +185,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>ATTACK_TIME_UP;HIT_DOWN;PA_DOWN</dispel>
 				<rate>
 					<value level="1">40</value>
@@ -210,8 +206,6 @@
 		</effects>
 	</skill>
 	<skill id="4702" toLevel="13" name="Blessing of Seraphim">
-		<table name="#regMp"> 1.3 1.32 1.35 1.35 1.35 1.35 1.35 1.35 1.35 1.35 1.35 1.35 1.35 </table>
-		<table name="#time"> 120 120 120 150 165 180 195 210 225 240 255 270 285 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -301,7 +295,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">32</value>
@@ -322,8 +316,6 @@
 		</effects>
 	</skill>
 	<skill id="4703" toLevel="13" name="Gift of Seraphim">
-		<table name="#mReuse"> 0.7 0.68 0.65 0.65 0.65 0.65 0.65 0.65 0.65 0.65 0.65 0.65 0.65 </table>
-		<table name="#time"> 120 120 120 150 165 180 195 210 225 240 255 270 285 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -413,7 +405,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">-30</value>
 					<value level="2">-32</value>
@@ -434,8 +426,7 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="4704" toLevel="13" name="Cure of Seraphim">
-		<table name="#power"> 40 45 50 55 60 65 70 75 80 85 90 95 100 </table> <!-- Base Land Rate -->
+	<skill id="4704" toLevel="13" name="Cure of Seraphim"> <!-- Base Land Rate -->
 		<affectRange>1000</affectRange>
 		<effectPoint>
 			<value level="1">541</value>
@@ -492,7 +483,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>SLEEP;ROOT_MAGICALLY;STUN;PARALYZE;SILENCE</dispel>
 				<rate>
 					<value level="1">40</value>
@@ -515,7 +506,6 @@
 	<skill id="4705" toLevel="13" name="Curse of Shade">
 		<!-- Confirmed CT2.5 -->
 		<!-- Summon Nightshade Skill -->
-		<table name="#mpDef"> 0.94 0.92 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -570,7 +560,7 @@
 		<attributeValue>20</attributeValue>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1333</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -625,10 +615,10 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TargetMeProbability">
+			<effect name="i_target_me">
 				<chance>80</chance>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">-6</value>
 					<value level="2">-8</value>
@@ -646,7 +636,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">-6</value>
 					<value level="2">-8</value>
@@ -669,7 +659,6 @@
 	<skill id="4706" toLevel="13" name="Mass Curse of Shade">
 		<!-- Confirmed CT2.5 -->
 		<!-- Summon Nightshade Skill -->
-		<table name="#mpDef"> 0.94 0.92 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -724,7 +713,7 @@
 		<attributeValue>20</attributeValue>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1333</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -781,10 +770,10 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="TargetMeProbability">
+			<effect name="i_target_me">
 				<chance>40</chance>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">-6</value>
 					<value level="2">-8</value>
@@ -802,7 +791,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">-6</value>
 					<value level="2">-8</value>
@@ -825,7 +814,6 @@
 	<skill id="4707" toLevel="13" name="Shade Sacrifice">
 		<!-- Confirmed CT2.5 -->
 		<!-- Summon Nightshade Skill -->
-		<table name="#amount"> 541 611 659 666 669 673 676 679 681 684 687 689 692 </table>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">589</value>
@@ -883,7 +871,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">541</value>
 					<value level="2">611</value>
@@ -904,9 +892,6 @@
 	</skill>
 	<skill id="4708" toLevel="17" name="Cursed Strike">
 		<!-- Confirmed CT2.5 and Updated to Ertheia -->
-		<!-- Guessed -->
-		<!-- Guessed -->
-		<table name="#power"> 1046 1230 1425 1626 1727 1827 1925 2020 2067 2112 6459 6593 7004 7443 7863 8288 8713 </table> <!-- Confirmed -->
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
@@ -936,7 +921,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
 			<value level="1">58</value>
@@ -984,7 +969,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">1046</value>
 					<value level="2">1230</value>
@@ -1005,14 +990,11 @@
 					<value level="17">8713</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4709" toLevel="17" name="Cursed Blow">
 		<!-- Confirmed CT2.5 and Updated to Ertheia -->
-		<!-- Guessed -->
-		<!-- Guessed -->
-		<table name="#power"> 4181 4920 5700 6503 6906 7305 7698 8079 8265 8447 8743 8918 9101 9283 9465 9648 9830 </table> <!-- Confirmed -->
 		<castRange>40</castRange>
 		<effectPoint>
 			<value level="1">-279</value>
@@ -1080,7 +1062,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">4181</value>
 					<value level="2">4920</value>
@@ -1101,12 +1083,11 @@
 					<value level="17">9830</value>
 				</power>
 				<criticalChance>10</criticalChance>
-				<chance>20</chance>
+				<chanceBoost>200</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4710" toLevel="12" name="Wild Stun">
-		<table name="#power"> 16 35 73 138 238 375 537 619 697 766 821 864 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>9</abnormalTime>
 		<abnormalType>STUN</abnormalType>
@@ -1132,7 +1113,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>1100</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
 			<value level="1">10</value>
@@ -1170,7 +1151,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">16</value>
 					<value level="2">35</value>
@@ -1186,7 +1167,7 @@
 					<value level="12">864</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4711" toLevel="12" name="Wild Defense">
@@ -1260,28 +1241,27 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockMove">
+			<effect name="p_block_move">
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-90</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>400</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>400</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-70</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4712" toLevel="12" name="Bright Burst">
-		<table name="#power"> 6 9 13 17 23 28 34 36 39 41 42 43 </table>
 		<castRange>600</castRange>
 		<coolTime>500</coolTime>
 		<effectPoint>
@@ -1337,7 +1317,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">6</value>
 					<value level="2">9</value>
@@ -1356,7 +1336,6 @@
 		</effects>
 	</skill>
 	<skill id="4713" toLevel="12" name="Bright Heal">
-		<table name="#amount"> 33 61 98 145 198 251 298 316 330 338 341 342 </table>
 		<coolTime>1000</coolTime>
 		<effectPoint>
 			<value level="1">33</value>
@@ -1411,7 +1390,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">33</value>
 					<value level="2">61</value>
@@ -1505,8 +1484,21 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
-				<item>power</item>
+			<effect name="i_heal">
+				<power>
+					<value level="1">9</value>
+					<value level="2">16</value>
+					<value level="3">25</value>
+					<value level="4">37</value>
+					<value level="5">50</value>
+					<value level="6">63</value>
+					<value level="7">75</value>
+					<value level="8">79</value>
+					<value level="9">83</value>
+					<value level="10">87</value>
+					<value level="11">90</value>
+					<value level="12">92</value>
+				</power>
 			</effect>
 		</effects>
 	</skill>
@@ -1565,14 +1557,26 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
-				<item>power</item>
+			<effect name="i_heal">
+				<power>
+					<value level="1">37</value>
+					<value level="2">64</value>
+					<value level="3">99</value>
+					<value level="4">139</value>
+					<value level="5">171</value>
+					<value level="6">205</value>
+					<value level="7">236</value>
+					<value level="8">266</value>
+					<value level="9">300</value>
+					<value level="10">332</value>
+					<value level="11">355</value>
+					<value level="12">368</value>
+				</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4719" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 112 302 834 2177 5631 11008 17044 20119 23243 26363 29567 32796 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -1612,7 +1616,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">112</value>
 					<value level="2">302</value>
@@ -1632,7 +1636,6 @@
 	</skill>
 	<skill id="4720" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 95 255 705 1840 4754 9291 14390 16978 19710 22699 25871 28860 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -1672,7 +1675,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">95</value>
 					<value level="2">255</value>
@@ -1692,7 +1695,6 @@
 	</skill>
 	<skill id="4721" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 51 136 375 982 2536 4958 7667 9037 10483 12074 13778 15349 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -1732,7 +1734,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">51</value>
 					<value level="2">136</value>
@@ -1752,7 +1754,6 @@
 	</skill>
 	<skill id="4722" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 48 128 352 922 2377 4651 7195 8489 9855 11363 12921 14430 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -1792,7 +1793,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">48</value>
 					<value level="2">128</value>
@@ -1812,7 +1813,6 @@
 	</skill>
 	<skill id="4723" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 45 120 330 858 2218 4344 6724 7942 9228 10625 12093 13512 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -1852,7 +1852,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">45</value>
 					<value level="2">120</value>
@@ -1871,7 +1871,6 @@
 		</effects>
 	</skill>
 	<skill id="4724" toLevel="12" name="Stun">
-		<table name="#power"> 56 151 417 1089 2816 5504 8522 10060 11622 13182 14784 16398 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -1897,7 +1896,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -1933,7 +1932,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">56</value>
 					<value level="2">151</value>
@@ -1949,11 +1948,10 @@
 					<value level="12">16398</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4725" toLevel="12" name="Stun">
-		<table name="#power"> 48 128 352 920 2377 4645 7195 8490 9855 11350 12936 14430 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -1979,7 +1977,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -2015,7 +2013,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">48</value>
 					<value level="2">128</value>
@@ -2031,11 +2029,10 @@
 					<value level="12">14430</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4726" toLevel="12" name="Stun">
-		<table name="#power"> 26 68 188 491 1268 2479 3834 4519 5242 6037 6889 7675 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -2061,7 +2058,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -2097,7 +2094,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">26</value>
 					<value level="2">68</value>
@@ -2113,11 +2110,10 @@
 					<value level="12">7675</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4727" toLevel="12" name="Stun">
-		<table name="#power"> 24 64 176 461 1189 2326 3598 4245 4928 5682 6461 7215 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -2143,7 +2139,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -2179,7 +2175,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">24</value>
 					<value level="2">64</value>
@@ -2195,11 +2191,10 @@
 					<value level="12">7215</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4728" toLevel="12" name="Stun">
-		<table name="#power"> 23 60 165 429 1109 2172 3362 3971 4614 5313 6047 6756 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -2225,7 +2220,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -2261,7 +2256,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">23</value>
 					<value level="2">60</value>
@@ -2277,12 +2272,11 @@
 					<value level="12">6756</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4729" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 168 453 1251 3265 7446 16511 25566 30178 34864 39544 44350 49193 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2322,7 +2316,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">168</value>
 					<value level="2">453</value>
@@ -2337,13 +2331,12 @@
 					<value level="11">44350</value>
 					<value level="12">49193</value>
 				</power>
-				<chance>115</chance>
+				<chanceBoost>1150</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4730" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 142 382 1056 2760 7131 13935 21585 25467 29565 34048 38806 43290 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2383,7 +2376,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">142</value>
 					<value level="2">382</value>
@@ -2398,13 +2391,12 @@
 					<value level="11">38806</value>
 					<value level="12">43290</value>
 				</power>
-				<chance>115</chance>
+				<chanceBoost>1150</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4731" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 76 204 563 1473 3804 7437 11500 13555 15724 18112 20667 23023 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2444,7 +2436,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">76</value>
 					<value level="2">204</value>
@@ -2459,13 +2451,12 @@
 					<value level="11">20667</value>
 					<value level="12">23023</value>
 				</power>
-				<chance>115</chance>
+				<chanceBoost>1150</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4732" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 71 191 528 1382 3566 6977 10793 12734 14783 17044 19381 21645 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2505,7 +2496,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">71</value>
 					<value level="2">191</value>
@@ -2520,13 +2511,12 @@
 					<value level="11">19381</value>
 					<value level="12">21645</value>
 				</power>
-				<chance>115</chance>
+				<chanceBoost>1150</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4733" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 67 179 494 1287 3327 6516 10085 11913 13841 15937 18140 20268 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2566,7 +2556,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">67</value>
 					<value level="2">179</value>
@@ -2581,13 +2571,12 @@
 					<value level="11">18140</value>
 					<value level="12">20268</value>
 				</power>
-				<chance>115</chance>
+				<chanceBoost>1150</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4734" toLevel="12" name="Spinning Slasher">
 		<!-- Boss Skill -->
-		<table name="#power"> 56 151 417 1089 2816 5504 8522 10060 11622 13182 14784 16398 </table>
 		<affectRange>200</affectRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2627,7 +2616,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">56</value>
 					<value level="2">151</value>
@@ -2647,7 +2636,6 @@
 	</skill>
 	<skill id="4735" toLevel="12" name="Spinning Slasher">
 		<!-- Boss Skill -->
-		<table name="#power"> 48 128 352 920 2377 4645 7195 8490 9855 11350 12936 14430 </table>
 		<affectRange>200</affectRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2687,7 +2675,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">48</value>
 					<value level="2">128</value>
@@ -2707,7 +2695,6 @@
 	</skill>
 	<skill id="4736" toLevel="12" name="Spinning Slasher">
 		<!-- Boss Skill -->
-		<table name="#power"> 26 68 188 491 1268 2479 3834 4519 5242 6037 6889 7675 </table>
 		<affectRange>200</affectRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2747,7 +2734,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">26</value>
 					<value level="2">68</value>
@@ -2767,7 +2754,6 @@
 	</skill>
 	<skill id="4737" toLevel="12" name="Spinning Slasher">
 		<!-- Boss Skill -->
-		<table name="#power"> 24 64 176 461 1189 2326 3598 4245 4928 5682 6461 7215 </table>
 		<affectRange>200</affectRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2807,7 +2793,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">24</value>
 					<value level="2">64</value>
@@ -2827,7 +2813,6 @@
 	</skill>
 	<skill id="4738" toLevel="12" name="Spinning Slasher">
 		<!-- Boss Skill -->
-		<table name="#power"> 23 60 165 429 1109 2172 3362 3971 4614 5313 6047 6756 </table>
 		<affectRange>200</affectRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2867,7 +2852,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">23</value>
 					<value level="2">60</value>
@@ -2887,7 +2872,6 @@
 	</skill>
 	<skill id="4739" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 112 302 834 2177 5631 11008 17044 20119 23243 26363 29567 32796 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2927,7 +2911,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">112</value>
 					<value level="2">302</value>
@@ -2947,7 +2931,6 @@
 	</skill>
 	<skill id="4740" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 95 255 705 1840 4754 9291 14390 16978 19710 22699 25871 28860 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -2987,7 +2970,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">95</value>
 					<value level="2">255</value>
@@ -3007,7 +2990,6 @@
 	</skill>
 	<skill id="4741" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 51 136 375 982 2536 4958 7667 9037 10483 12074 13778 15349 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -3047,7 +3029,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">51</value>
 					<value level="2">136</value>
@@ -3067,7 +3049,6 @@
 	</skill>
 	<skill id="4742" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 48 128 352 922 2377 4651 7195 8489 9855 11363 12921 14430 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -3107,7 +3088,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">48</value>
 					<value level="2">128</value>
@@ -3127,7 +3108,6 @@
 	</skill>
 	<skill id="4743" toLevel="12" name="Power Strike">
 		<!-- Boss Skill -->
-		<table name="#power"> 45 120 330 858 2218 4344 6724 7942 9228 10625 12093 13512 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -3167,7 +3147,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">45</value>
 					<value level="2">120</value>
@@ -3186,7 +3166,6 @@
 		</effects>
 	</skill>
 	<skill id="4744" toLevel="12" name="Stun">
-		<table name="#power"> 56 151 417 1089 2816 5504 8522 10060 11622 13182 14784 16398 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -3212,7 +3191,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -3248,7 +3227,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">56</value>
 					<value level="2">151</value>
@@ -3264,11 +3243,10 @@
 					<value level="12">16398</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4745" toLevel="12" name="Stun">
-		<table name="#power"> 48 128 352 920 2377 4645 7195 8490 9855 11350 12936 14430 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -3294,7 +3272,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -3330,7 +3308,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">48</value>
 					<value level="2">128</value>
@@ -3346,11 +3324,10 @@
 					<value level="12">14430</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4746" toLevel="12" name="Stun">
-		<table name="#power"> 26 68 188 491 1268 2479 3834 4519 5242 6037 6889 7675 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -3376,7 +3353,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -3412,7 +3389,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">26</value>
 					<value level="2">68</value>
@@ -3428,11 +3405,10 @@
 					<value level="12">7675</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4747" toLevel="12" name="Stun">
-		<table name="#power"> 24 64 176 461 1189 2326 3598 4245 4928 5682 6461 7215 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -3458,7 +3434,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -3494,7 +3470,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">24</value>
 					<value level="2">64</value>
@@ -3510,11 +3486,10 @@
 					<value level="12">7215</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4748" toLevel="12" name="Stun">
-		<table name="#power"> 23 60 165 429 1109 2172 3362 3971 4614 5313 6047 6756 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -3540,7 +3515,7 @@
 		<effectRange>200</effectRange>
 		<hitTime>830</hitTime>
 		<icon>icon.skill0100</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -3576,7 +3551,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">23</value>
 					<value level="2">60</value>
@@ -3592,12 +3567,11 @@
 					<value level="12">6756</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4749" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 280 755 2084 5441 14076 27518 42610 50296 58107 65907 73917 81989 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -3637,7 +3611,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">280</value>
 					<value level="2">755</value>
@@ -3652,13 +3626,12 @@
 					<value level="11">73917</value>
 					<value level="12">81989</value>
 				</power>
-				<chance>67</chance>
+				<chanceBoost>670</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4750" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 236 637 1761 4600 11884 23226 35974 42445 49275 56746 64677 72150 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -3698,7 +3671,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">236</value>
 					<value level="2">637</value>
@@ -3713,13 +3686,12 @@
 					<value level="11">64677</value>
 					<value level="12">72150</value>
 				</power>
-				<chance>67</chance>
+				<chanceBoost>670</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4751" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 126 339 937 2455 6339 12395 19166 22591 26206 30185 34445 38371 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -3759,7 +3731,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">126</value>
 					<value level="2">339</value>
@@ -3774,13 +3746,12 @@
 					<value level="11">34445</value>
 					<value level="12">38371</value>
 				</power>
-				<chance>67</chance>
+				<chanceBoost>670</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4752" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 118 319 879 2303 5942 11627 17987 21223 24638 28406 32302 36075 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -3820,7 +3791,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">118</value>
 					<value level="2">319</value>
@@ -3835,13 +3806,12 @@
 					<value level="11">32302</value>
 					<value level="12">36075</value>
 				</power>
-				<chance>67</chance>
+				<chanceBoost>670</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4753" toLevel="12" name="Mortal Blow">
 		<!-- Boss Skill -->
-		<table name="#power"> 111 298 824 2145 5545 10860 16808 19855 23069 26561 30232 33780 </table>
 		<castRange>40</castRange>
 		<coolTime>660</coolTime>
 		<effectPoint>-100</effectPoint>
@@ -3881,7 +3851,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>
 					<value level="1">111</value>
 					<value level="2">298</value>
@@ -3896,13 +3866,12 @@
 					<value level="11">30232</value>
 					<value level="12">33780</value>
 				</power>
-				<chance>67</chance>
+				<chanceBoost>670</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="4754" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 327 882 2435 6357 16445 32150 49783 58763 67888 77001 86359 95790 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -3941,7 +3910,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">327</value>
 					<value level="2">882</value>
@@ -3961,7 +3930,6 @@
 	</skill>
 	<skill id="4755" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 275 744 2057 5374 13885 27135 42030 49590 57569 66298 75565 84295 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4000,7 +3968,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">275</value>
 					<value level="2">744</value>
@@ -4020,7 +3988,6 @@
 	</skill>
 	<skill id="4756" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 147 396 1095 2868 7407 14481 22392 26393 30618 35267 40244 44830 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4059,7 +4026,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">147</value>
 					<value level="2">396</value>
@@ -4079,7 +4046,6 @@
 	</skill>
 	<skill id="4757" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 138 372 1027 2691 6943 13584 21015 24795 28785 33188 37739 42148 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4118,7 +4084,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">138</value>
 					<value level="2">372</value>
@@ -4138,7 +4104,6 @@
 	</skill>
 	<skill id="4758" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 129 348 962 2506 6479 12688 19638 23198 26952 31032 35321 39466 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4177,7 +4142,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">129</value>
 					<value level="2">348</value>
@@ -4196,7 +4161,6 @@
 		</effects>
 	</skill>
 	<skill id="4759" toLevel="12" name="Stun">
-		<table name="#power"> 164 441 1218 3179 8223 16075 24892 29382 33944 38501 43180 47895 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -4221,7 +4185,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -4257,7 +4221,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">164</value>
 					<value level="2">441</value>
@@ -4273,11 +4237,10 @@
 					<value level="12">47895</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4760" toLevel="12" name="Stun">
-		<table name="#power"> 138 372 1029 2687 6943 13568 21015 24795 28785 33149 37783 42148 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -4302,7 +4265,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -4338,7 +4301,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">138</value>
 					<value level="2">372</value>
@@ -4354,11 +4317,10 @@
 					<value level="12">42148</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4761" toLevel="12" name="Stun">
-		<table name="#power"> 74 198 548 1434 3704 7241 11196 13197 15309 17634 20122 22415 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -4383,7 +4345,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -4419,7 +4381,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">74</value>
 					<value level="2">198</value>
@@ -4435,11 +4397,10 @@
 					<value level="12">22415</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4762" toLevel="12" name="Stun">
-		<table name="#power"> 69 186 514 1346 3472 6792 10508 12398 14393 16594 18870 21074 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -4464,7 +4425,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -4500,7 +4461,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">69</value>
 					<value level="2">186</value>
@@ -4516,11 +4477,10 @@
 					<value level="12">21074</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4763" toLevel="12" name="Stun">
-		<table name="#power"> 65 174 481 1253 3240 6344 9819 11599 13476 15516 17661 19733 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -4545,7 +4505,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -4581,7 +4541,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">65</value>
 					<value level="2">174</value>
@@ -4597,12 +4557,11 @@
 					<value level="12">19733</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4764" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 327 882 2435 6357 16445 32150 49783 58763 67888 77001 86359 95790 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4641,7 +4600,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">327</value>
 					<value level="2">882</value>
@@ -4661,7 +4620,6 @@
 	</skill>
 	<skill id="4765" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 275 744 2057 5374 13885 27135 42030 49590 57569 66298 75565 84295 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4700,7 +4658,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">275</value>
 					<value level="2">744</value>
@@ -4720,7 +4678,6 @@
 	</skill>
 	<skill id="4766" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 147 396 1095 2868 7407 14481 22392 26393 30618 35267 40244 44830 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4759,7 +4716,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">147</value>
 					<value level="2">396</value>
@@ -4779,7 +4736,6 @@
 	</skill>
 	<skill id="4767" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 138 372 1027 2691 6943 13584 21015 24795 28785 33188 37739 42148 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4818,7 +4774,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">138</value>
 					<value level="2">372</value>
@@ -4838,7 +4794,6 @@
 	</skill>
 	<skill id="4768" toLevel="12" name="Power Shot">
 		<!-- Boss Skill -->
-		<table name="#power"> 129 348 962 2506 6479 12688 19638 23198 26952 31032 35321 39466 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -4877,7 +4832,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">129</value>
 					<value level="2">348</value>
@@ -4896,7 +4851,6 @@
 		</effects>
 	</skill>
 	<skill id="4769" toLevel="12" name="Stun">
-		<table name="#power"> 164 441 1218 3179 8223 16075 24892 29382 33944 38501 43180 47895 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -4921,7 +4875,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -4957,7 +4911,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">164</value>
 					<value level="2">441</value>
@@ -4973,11 +4927,10 @@
 					<value level="12">47895</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4770" toLevel="12" name="Stun">
-		<table name="#power"> 138 372 1029 2687 6943 13568 21015 24795 28785 33149 37783 42148 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -5002,7 +4955,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -5038,7 +4991,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">138</value>
 					<value level="2">372</value>
@@ -5054,11 +5007,10 @@
 					<value level="12">42148</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4771" toLevel="12" name="Stun">
-		<table name="#power"> 74 198 548 1434 3704 7241 11196 13197 15309 17634 20122 22415 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -5083,7 +5035,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -5119,7 +5071,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">74</value>
 					<value level="2">198</value>
@@ -5135,11 +5087,10 @@
 					<value level="12">22415</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4772" toLevel="12" name="Stun">
-		<table name="#power"> 69 186 514 1346 3472 6792 10508 12398 14393 16594 18870 21074 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -5164,7 +5115,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -5200,7 +5151,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">69</value>
 					<value level="2">186</value>
@@ -5216,11 +5167,10 @@
 					<value level="12">21074</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4773" toLevel="12" name="Stun">
-		<table name="#power"> 65 174 481 1253 3240 6344 9819 11599 13476 15516 17661 19733 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">5</value>
@@ -5245,7 +5195,7 @@
 		<effectRange>1400</effectRange>
 		<hitTime>4500</hitTime>
 		<icon>icon.skill0101</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">14</value>
 			<value level="2">24</value>
@@ -5281,7 +5231,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">65</value>
 					<value level="2">174</value>
@@ -5297,12 +5247,11 @@
 					<value level="12">19733</value>
 				</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="4774" toLevel="12" name="Spear Attack">
 		<!-- Boss Skill -->
-		<table name="#power"> 352 949 2607 6828 17184 33213 51007 59177 67888 77001 86359 95790 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -5341,7 +5290,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">352</value>
 					<value level="2">949</value>
@@ -5361,7 +5310,6 @@
 	</skill>
 	<skill id="4775" toLevel="12" name="Spear Attack">
 		<!-- Boss Skill -->
-		<table name="#power"> 352 949 2607 6828 17184 33213 51007 59177 67888 77001 86359 95790 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -5400,7 +5348,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">352</value>
 					<value level="2">949</value>
@@ -5420,7 +5368,6 @@
 	</skill>
 	<skill id="4776" toLevel="12" name="Spear Attack">
 		<!-- Boss Skill -->
-		<table name="#power"> 352 949 2607 6828 17184 33213 51007 59177 67888 77001 86359 95790 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -5459,7 +5406,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">352</value>
 					<value level="2">949</value>
@@ -5479,7 +5426,6 @@
 	</skill>
 	<skill id="4777" toLevel="12" name="Spear Attack">
 		<!-- Boss Skill -->
-		<table name="#power"> 352 949 2607 6828 17184 33213 51007 59177 67888 77001 86359 95790 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -5518,7 +5464,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">352</value>
 					<value level="2">949</value>
@@ -5538,7 +5484,6 @@
 	</skill>
 	<skill id="4778" toLevel="12" name="Spear Attack">
 		<!-- Boss Skill -->
-		<table name="#power"> 352 949 2607 6828 17184 33213 51007 59177 67888 77001 86359 95790 </table>
 		<castRange>900</castRange>
 		<effectPoint>-100</effectPoint>
 		<effectRange>1400</effectRange>
@@ -5577,7 +5522,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">352</value>
 					<value level="2">949</value>
@@ -5597,7 +5542,6 @@
 	</skill>
 	<skill id="4779" toLevel="12" name="Heal">
 		<!-- Boss Skill -->
-		<table name="#amount"> 1640 2824 4501 6612 9334 11649 12865 13406 13624 13544 13303 13157 </table>
 		<castRange>700</castRange>
 		<effectPoint>100</effectPoint>
 		<effectRange>1200</effectRange>
@@ -5637,7 +5581,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">1640</value>
 					<value level="2">2824</value>
@@ -5657,7 +5601,6 @@
 	</skill>
 	<skill id="4780" toLevel="12" name="Heal">
 		<!-- Boss Skill -->
-		<table name="#amount"> 1382 2381 3802 5590 7881 9832 10862 11314 11553 11661 11640 11578 </table>
 		<castRange>700</castRange>
 		<effectPoint>100</effectPoint>
 		<effectRange>1200</effectRange>
@@ -5697,7 +5640,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">1382</value>
 					<value level="2">2381</value>
@@ -5717,7 +5660,6 @@
 	</skill>
 	<skill id="4781" toLevel="12" name="Heal">
 		<!-- Boss Skill -->
-		<table name="#amount"> 736 1267 2024 2983 4204 5247 5787 6022 6144 6203 6199 6158 </table>
 		<castRange>700</castRange>
 		<effectPoint>100</effectPoint>
 		<effectRange>1200</effectRange>
@@ -5757,7 +5699,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">736</value>
 					<value level="2">1267</value>
@@ -5777,7 +5719,6 @@
 	</skill>
 	<skill id="4782" toLevel="12" name="Heal">
 		<!-- Boss Skill -->
-		<table name="#amount"> 691 1191 1899 2799 3941 4922 5431 5657 5777 5838 5813 5789 </table>
 		<castRange>700</castRange>
 		<effectPoint>100</effectPoint>
 		<effectRange>1200</effectRange>
@@ -5817,7 +5758,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">691</value>
 					<value level="2">1191</value>
@@ -5837,7 +5778,6 @@
 	</skill>
 	<skill id="4783" toLevel="12" name="Heal">
 		<!-- Boss Skill -->
-		<table name="#amount"> 647 1115 1778 2607 3677 4597 5075 5293 5409 5458 5441 5421 </table>
 		<castRange>700</castRange>
 		<effectPoint>100</effectPoint>
 		<effectRange>1200</effectRange>
@@ -5877,7 +5817,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">647</value>
 					<value level="2">1115</value>
@@ -5897,7 +5837,6 @@
 	</skill>
 	<skill id="4784" toLevel="12" name="Chant of Life">
 		<!-- Boss Skill -->
-		<table name="#hot"> 167 210 315 507 784 1026 1195 1283 1358 1427 951 940 </table>
 		<abnormalLvl>
 			<value level="1">11</value>
 			<value level="2">12</value>
@@ -5956,7 +5895,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">167</value>
 					<value level="2">210</value>
@@ -5977,7 +5916,6 @@
 	</skill>
 	<skill id="4785" toLevel="12" name="Chant of Life">
 		<!-- Boss Skill -->
-		<table name="#hot"> 141 177 266 428 662 866 1009 1083 1152 1229 832 827 </table>
 		<abnormalLvl>
 			<value level="1">11</value>
 			<value level="2">12</value>
@@ -6036,7 +5974,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">141</value>
 					<value level="2">177</value>
@@ -6057,7 +5995,6 @@
 	</skill>
 	<skill id="4786" toLevel="12" name="Chant of Life">
 		<!-- Boss Skill -->
-		<table name="#hot"> 75 94 142 229 353 463 538 576 613 654 443 440 </table>
 		<abnormalLvl>
 			<value level="1">11</value>
 			<value level="2">12</value>
@@ -6116,7 +6053,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">75</value>
 					<value level="2">94</value>
@@ -6137,7 +6074,6 @@
 	</skill>
 	<skill id="4787" toLevel="12" name="Chant of Life">
 		<!-- Boss Skill -->
-		<table name="#hot"> 71 89 133 215 331 434 505 542 576 615 416 414 </table>
 		<abnormalLvl>
 			<value level="1">11</value>
 			<value level="2">12</value>
@@ -6196,7 +6132,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">71</value>
 					<value level="2">89</value>
@@ -6217,7 +6153,6 @@
 	</skill>
 	<skill id="4788" toLevel="12" name="Chant of Life">
 		<!-- Boss Skill -->
-		<table name="#hot"> 66 83 125 200 309 405 472 507 539 576 389 388 </table>
 		<abnormalLvl>
 			<value level="1">11</value>
 			<value level="2">12</value>
@@ -6276,7 +6211,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">66</value>
 					<value level="2">83</value>
@@ -6296,13 +6231,11 @@
 		</effects>
 	</skill>
 	<skill id="4789" toLevel="10" name="High Lv.">
-		<table name="#mDef"> 1.03 1.06 1.09 1.12 1.15 1.18 1.21 1.24 1.27 1.3 </table>
-		<table name="#rEvas"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -6317,7 +6250,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>

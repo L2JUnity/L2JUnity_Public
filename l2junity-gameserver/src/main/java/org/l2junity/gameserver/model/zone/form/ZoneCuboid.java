@@ -21,7 +21,7 @@ package org.l2junity.gameserver.model.zone.form;
 import java.awt.Rectangle;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GeoData;
+import org.l2junity.gameserver.geodata.GeoData;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
 import org.l2junity.gameserver.model.zone.L2ZoneForm;
@@ -49,19 +49,19 @@ public class ZoneCuboid extends L2ZoneForm
 	}
 	
 	@Override
-	public boolean isInsideZone(int x, int y, int z)
+	public boolean isInsideZone(double x, double y, double z)
 	{
 		return (_r.contains(x, y) && (z >= _z1) && (z <= _z2));
 	}
 	
 	@Override
-	public boolean intersectsRectangle(int ax1, int ax2, int ay1, int ay2)
+	public boolean intersectsRectangle(double ax1, double ax2, double ay1, double ay2)
 	{
 		return (_r.intersects(Math.min(ax1, ax2), Math.min(ay1, ay2), Math.abs(ax2 - ax1), Math.abs(ay2 - ay1)));
 	}
 	
 	@Override
-	public double getDistanceToZone(int x, int y)
+	public double getDistanceToZone(double x, double y)
 	{
 		int _x1 = _r.x;
 		int _x2 = _r.x + _r.width;
@@ -106,7 +106,7 @@ public class ZoneCuboid extends L2ZoneForm
 	}
 	
 	@Override
-	public void visualizeZone(int z)
+	public void visualizeZone(double z)
 	{
 		int _x1 = _r.x;
 		int _x2 = _r.x + _r.width;

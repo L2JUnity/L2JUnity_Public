@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class FaenorInterface implements EngineInterface
 {
-	protected static final Logger _log = LoggerFactory.getLogger(FaenorInterface.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(FaenorInterface.class);
 	
 	public static FaenorInterface getInstance()
 	{

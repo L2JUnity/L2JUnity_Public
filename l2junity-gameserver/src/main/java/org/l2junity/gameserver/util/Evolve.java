@@ -20,14 +20,14 @@ package org.l2junity.gameserver.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.data.xml.impl.PetDataTable;
 import org.l2junity.gameserver.model.PetData;
-import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
@@ -47,7 +47,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class Evolve
 {
-	protected static final Logger _log = LoggerFactory.getLogger(Evolve.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(Evolve.class);
 	
 	public static final boolean doEvolve(PlayerInstance player, Npc npc, int itemIdtake, int itemIdgive, int petminlvl)
 	{
@@ -65,16 +65,16 @@ public final class Evolve
 		final L2PetInstance currentPet = (L2PetInstance) pet;
 		if (currentPet.isAlikeDead())
 		{
-			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to use death pet exploit!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to use death pet exploit!", GeneralConfig.DEFAULT_PUNISH);
 			return false;
 		}
 		
 		ItemInstance item = null;
 		long petexp = currentPet.getStat().getExp();
 		String oldname = currentPet.getName();
-		int oldX = currentPet.getX();
-		int oldY = currentPet.getY();
-		int oldZ = currentPet.getZ();
+		double oldX = currentPet.getX();
+		double oldY = currentPet.getY();
+		double oldZ = currentPet.getZ();
 		
 		PetData oldData = PetDataTable.getInstance().getPetDataByItemId(itemIdtake);
 		
@@ -141,16 +141,15 @@ public final class Evolve
 		
 		player.sendPacket(new MagicSkillUse(npc, 2046, 1, 1000, 600000));
 		player.sendPacket(SystemMessageId.SUMMONING_YOUR_PET);
-		// L2World.getInstance().storeObject(petSummon);
 		petSummon.spawnMe(oldX, oldY, oldZ);
 		petSummon.startFeed();
 		item.setEnchantLevel(petSummon.getLevel());
 		
-		ThreadPoolManager.getInstance().scheduleGeneral(new EvolveFinalizer(player, petSummon), 900);
+		ThreadPool.schedule(new EvolveFinalizer(player, petSummon), 900, TimeUnit.MILLISECONDS);
 		
 		if (petSummon.getCurrentFed() <= 0)
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(new EvolveFeedWait(player, petSummon), 60000);
+			ThreadPool.schedule(new EvolveFeedWait(player, petSummon), 60000, TimeUnit.MILLISECONDS);
 		}
 		else
 		{
@@ -229,7 +228,6 @@ public final class Evolve
 		
 		player.sendPacket(new MagicSkillUse(npc, 2046, 1, 1000, 600000));
 		player.sendPacket(SystemMessageId.SUMMONING_YOUR_PET);
-		// L2World.getInstance().storeObject(petSummon);
 		petSummon.spawnMe(player.getX(), player.getY(), player.getZ());
 		petSummon.startFeed();
 		addedItem.setEnchantLevel(petSummon.getLevel());
@@ -241,14 +239,11 @@ public final class Evolve
 		
 		player.broadcastUserInfo();
 		
-		World world = World.getInstance();
-		world.removeObject(removedItem);
-		
-		ThreadPoolManager.getInstance().scheduleGeneral(new EvolveFinalizer(player, petSummon), 900);
+		ThreadPool.schedule(new EvolveFinalizer(player, petSummon), 900, TimeUnit.MILLISECONDS);
 		
 		if (petSummon.getCurrentFed() <= 0)
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(new EvolveFeedWait(player, petSummon), 60000);
+			ThreadPool.schedule(new EvolveFeedWait(player, petSummon), 60000, TimeUnit.MILLISECONDS);
 		}
 		else
 		{
@@ -295,7 +290,7 @@ public final class Evolve
 			}
 			catch (Exception e)
 			{
-				_log.warn("", e);
+				LOGGER.warn("", e);
 			}
 		}
 	}
@@ -322,7 +317,7 @@ public final class Evolve
 			}
 			catch (Throwable e)
 			{
-				_log.warn("", e);
+				LOGGER.warn("", e);
 			}
 		}
 	}

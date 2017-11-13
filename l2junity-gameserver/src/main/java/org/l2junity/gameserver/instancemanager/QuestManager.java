@@ -21,10 +21,10 @@ package org.l2junity.gameserver.instancemanager;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
-import org.l2junity.commons.util.CommonUtil;
+import org.l2junity.commons.util.StringUtil;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.quest.Quest;
-import org.l2junity.gameserver.scripting.ScriptEngineManager;
+import org.l2junity.gameserver.scripting.ScriptsManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,10 +34,11 @@ import org.slf4j.LoggerFactory;
  */
 public final class QuestManager
 {
-	protected static final Logger LOGGER = LoggerFactory.getLogger(QuestManager.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(QuestManager.class);
 	
 	/** Map containing all the quests. */
 	private final Map<String, Quest> _quests = new ConcurrentHashMap<>();
+	
 	/** Map containing all the scripts. */
 	private final Map<String, Quest> _scripts = new ConcurrentHashMap<>();
 	
@@ -95,11 +96,12 @@ public final class QuestManager
 				script.unload(false);
 			}
 		}
+		
 		_scripts.clear();
 		
 		try
 		{
-			ScriptEngineManager.getInstance().executeScriptList();
+			ScriptsManager.getInstance().load();
 		}
 		catch (Exception e)
 		{
@@ -124,16 +126,10 @@ public final class QuestManager
 	public void save()
 	{
 		// Save quests.
-		for (Quest quest : _quests.values())
-		{
-			quest.onSave();
-		}
+		_quests.values().forEach(Quest::onSave);
 		
 		// Save scripts.
-		for (Quest script : _scripts.values())
-		{
-			script.onSave();
-		}
+		_scripts.values().forEach(Quest::onSave);
 	}
 	
 	/**
@@ -144,11 +140,7 @@ public final class QuestManager
 	 */
 	public Quest getQuest(String name)
 	{
-		if (_quests.containsKey(name))
-		{
-			return _quests.get(name);
-		}
-		return _scripts.get(name);
+		return _quests.getOrDefault(name, _scripts.get(name));
 	}
 	
 	/**
@@ -158,14 +150,7 @@ public final class QuestManager
 	 */
 	public Quest getQuest(int questId)
 	{
-		for (Quest q : _quests.values())
-		{
-			if (q.getId() == questId)
-			{
-				return q;
-			}
-		}
-		return null;
+		return _quests.values().stream().filter(quest -> quest.getId() == questId).findFirst().orElse(null);
 	}
 	
 	/**
@@ -196,10 +181,10 @@ public final class QuestManager
 			
 		}
 		
-		if (Config.ALT_DEV_SHOW_QUESTS_LOAD_IN_LOGS)
+		if (GeneralConfig.ALT_DEV_SHOW_QUESTS_LOAD_IN_LOGS)
 		{
 			final String questName = quest.getName().contains("_") ? quest.getName().substring(quest.getName().indexOf('_') + 1) : quest.getName();
-			LOGGER.info("Loaded quest {}.", CommonUtil.splitWords(questName));
+			LOGGER.info("Loaded quest {}.", StringUtil.splitWords(questName));
 		}
 	}
 	
@@ -249,16 +234,16 @@ public final class QuestManager
 	 */
 	public void addScript(Quest script)
 	{
-		final Quest old = _scripts.put(script.getClass().getSimpleName(), script);
+		final Quest old = _scripts.put(script.getName(), script);
 		if (old != null)
 		{
 			old.unload();
 			LOGGER.info("Replaced script {} with a new version!", old.getName());
 		}
 		
-		if (Config.ALT_DEV_SHOW_SCRIPTS_LOAD_IN_LOGS)
+		if (GeneralConfig.ALT_DEV_SHOW_SCRIPTS_LOAD_IN_LOGS)
 		{
-			LOGGER.info("Loaded script {}.", CommonUtil.splitWords(script.getClass().getSimpleName()));
+			LOGGER.info("Loaded script {}.", StringUtil.splitWords(script.getName()));
 		}
 	}
 	
@@ -268,11 +253,11 @@ public final class QuestManager
 	 */
 	public static QuestManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final QuestManager _instance = new QuestManager();
+		protected static final QuestManager INSTANCE = new QuestManager();
 	}
 }

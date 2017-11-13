@@ -32,8 +32,7 @@ public class TradeUpdate extends AbstractItemPacket
 	
 	public TradeUpdate(PlayerInstance player, TradeItem item)
 	{
-		_item = item;
-		_item.setCount(player.getInventory().getItemByObjectId(item.getObjectId()).getCount() - item.getCount());
+		_item = new TradeItem(item, player.getInventory().getItemByObjectId(item.getObjectId()).getCount() - item.getCount(), item.getPrice());
 	}
 	
 	@Override

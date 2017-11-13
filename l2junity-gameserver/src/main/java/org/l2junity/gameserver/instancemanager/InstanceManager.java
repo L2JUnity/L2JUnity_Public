@@ -18,8 +18,8 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
-import java.io.File;
 import java.lang.reflect.Constructor;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,15 +34,20 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.commons.util.IXmlReader;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.RatesConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
 import org.l2junity.gameserver.data.xml.impl.SpawnsData;
 import org.l2junity.gameserver.enums.InstanceReenterType;
 import org.l2junity.gameserver.enums.InstanceRemoveBuffType;
 import org.l2junity.gameserver.enums.InstanceTeleportType;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -65,6 +70,7 @@ import org.w3c.dom.Node;
 public final class InstanceManager implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(InstanceManager.class);
+	
 	// Database query
 	private static final String DELETE_INSTANCE_TIME = "DELETE FROM character_instance_time WHERE charId=? AND instanceId=?";
 	
@@ -80,15 +86,19 @@ public final class InstanceManager implements IGameXmlReader
 	
 	protected InstanceManager()
 	{
-		load();
 	}
 	
 	// --------------------------------------------------------------------
 	// Instance data loader
 	// --------------------------------------------------------------------
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class, dependencies =
+	{
+		@Dependency(clazz = DoorData.class),
+		@Dependency(clazz = SpawnsData.class)
+	
+	})
+	private void load() throws Exception
 	{
 		// Load instance names
 		_instanceNames.clear();
@@ -105,7 +115,7 @@ public final class InstanceManager implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, IXmlReader::isNode, listNode ->
 		{
@@ -118,7 +128,7 @@ public final class InstanceManager implements IGameXmlReader
 				}
 				case "instance":
 				{
-					parseInstanceTemplate(listNode, f);
+					parseInstanceTemplate(listNode, path);
 					break;
 				}
 			}
@@ -141,9 +151,9 @@ public final class InstanceManager implements IGameXmlReader
 	/**
 	 * Parse instance template from XML file.
 	 * @param instanceNode start XML tag
-	 * @param file currently parsed file
+	 * @param path currently parsed file
 	 */
-	private void parseInstanceTemplate(Node instanceNode, File file)
+	private void parseInstanceTemplate(Node instanceNode, Path path)
 	{
 		// Parse "instance" node
 		final int id = parseInteger(instanceNode.getAttributes(), "id");
@@ -184,10 +194,10 @@ public final class InstanceManager implements IGameXmlReader
 				case "rates":
 				{
 					final NamedNodeMap attrs = innerNode.getAttributes();
-					template.setExpRate(parseFloat(attrs, "exp", Config.RATE_INSTANCE_XP));
-					template.setSPRate(parseFloat(attrs, "sp", Config.RATE_INSTANCE_SP));
-					template.setExpPartyRate(parseFloat(attrs, "partyExp", Config.RATE_INSTANCE_PARTY_XP));
-					template.setSPPartyRate(parseFloat(attrs, "partySp", Config.RATE_INSTANCE_PARTY_SP));
+					template.setExpRate(parseFloat(attrs, "exp", RatesConfig.RATE_INSTANCE_XP));
+					template.setSPRate(parseFloat(attrs, "sp", RatesConfig.RATE_INSTANCE_SP));
+					template.setExpPartyRate(parseFloat(attrs, "partyExp", RatesConfig.RATE_INSTANCE_PARTY_XP));
+					template.setSPPartyRate(parseFloat(attrs, "partySp", RatesConfig.RATE_INSTANCE_PARTY_SP));
 					break;
 				}
 				case "locations":
@@ -233,7 +243,7 @@ public final class InstanceManager implements IGameXmlReader
 				case "spawnlist":
 				{
 					final List<SpawnTemplate> spawns = new ArrayList<>();
-					SpawnsData.getInstance().parseSpawn(innerNode, file, spawns);
+					SpawnsData.getInstance().parseSpawn(innerNode, path, spawns);
 					template.addSpawns(spawns);
 					break;
 				}
@@ -349,7 +359,7 @@ public final class InstanceManager implements IGameXmlReader
 							// Now when everything is loaded register condition to template
 							try
 							{
-								final Class<?> clazz = Class.forName("org.l2junity.gameserver.model.instancezone.conditions.Condition" + type);
+								final Class<?> clazz = Class.forName(Condition.class.getPackage().getName() + ".Condition" + type);
 								final Constructor<?> constructor = clazz.getConstructor(InstanceTemplate.class, StatsSet.class, boolean.class, boolean.class);
 								conditions.add((Condition) constructor.newInstance(template, params, onlyLeader, showMessageAndHtml));
 							}
@@ -367,7 +377,6 @@ public final class InstanceManager implements IGameXmlReader
 		
 		// Save template
 		_instanceTemplates.put(id, template);
-		
 	}
 	
 	// --------------------------------------------------------------------
@@ -450,7 +459,7 @@ public final class InstanceManager implements IGameXmlReader
 		{
 			if (_currentInstanceId == Integer.MAX_VALUE)
 			{
-				if (Config.DEBUG_INSTANCES)
+				if (GeneralConfig.DEBUG_INSTANCES)
 				{
 					LOGGER.info("Instance id owerflow, starting from zero.");
 				}
@@ -667,13 +676,14 @@ public final class InstanceManager implements IGameXmlReader
 	 * Gets the single instance of {@code InstanceManager}.
 	 * @return single instance of {@code InstanceManager}
 	 */
+	@InstanceGetter
 	public static InstanceManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final InstanceManager _instance = new InstanceManager();
+		protected static final InstanceManager INSTANCE = new InstanceManager();
 	}
 }

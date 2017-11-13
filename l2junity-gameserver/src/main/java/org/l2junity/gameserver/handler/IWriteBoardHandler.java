@@ -29,6 +29,7 @@ public interface IWriteBoardHandler extends IParseBoardHandler
 	/**
 	 * Writes a community board command into the client.
 	 * @param player the player
+	 * @param url the command URL
 	 * @param arg1 the first argument
 	 * @param arg2 the second argument
 	 * @param arg3 the third argument
@@ -36,5 +37,5 @@ public interface IWriteBoardHandler extends IParseBoardHandler
 	 * @param arg5 the fifth argument
 	 * @return
 	 */
-	boolean writeCommunityBoardCommand(PlayerInstance player, String arg1, String arg2, String arg3, String arg4, String arg5);
+	boolean writeCommunityBoardCommand(PlayerInstance player, String url, String arg1, String arg2, String arg3, String arg4, String arg5);
 }

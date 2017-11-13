@@ -74,7 +74,7 @@ public abstract class VehicleAI extends CharacterAI
 	}
 	
 	@Override
-	protected void onEvtActionBlocked(Creature attacker)
+	protected void onEvtActionStopped(Creature attacker)
 	{
 	}
 	

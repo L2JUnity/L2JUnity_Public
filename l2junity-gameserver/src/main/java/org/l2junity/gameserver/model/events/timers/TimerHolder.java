@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.instancemanager.TimersManager;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.Npc;
@@ -60,7 +60,7 @@ public class TimerHolder<T> implements Runnable
 		_eventScript = eventScript;
 		_cancelScript = cancelScript;
 		_postExecutor = postExecutor;
-		_task = isRepeating ? ThreadPoolManager.getInstance().scheduleEventAtFixedRate(this, _time, _time) : ThreadPoolManager.getInstance().scheduleEvent(this, _time);
+		_task = isRepeating ? ThreadPool.scheduleAtFixedRate(this, _time, _time, TimeUnit.MILLISECONDS) : ThreadPool.schedule(this, _time, TimeUnit.MILLISECONDS);
 		TimersManager.getInstance().registerTimer(this);
 	}
 	
@@ -114,7 +114,7 @@ public class TimerHolder<T> implements Runnable
 			return false;
 		}
 		
-		_task.cancel(false);
+		_task.cancel(true);
 		_cancelScript.onTimerCancel(this);
 		return true;
 	}
@@ -173,6 +173,16 @@ public class TimerHolder<T> implements Runnable
 		@SuppressWarnings("unchecked")
 		final TimerHolder<T> holder = (TimerHolder<T>) obj;
 		return isEqual(holder._event, holder._npc, holder._player);
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		int result = _event.hashCode();
+		result = (31 * result) + ((_npc == null) ? 0 : _npc.hashCode());
+		result = (31 * result) + ((_params == null) ? 0 : _params.hashCode());
+		result = (31 * result) + ((_player == null) ? 0 : _player.hashCode());
+		return result;
 	}
 	
 	@Override

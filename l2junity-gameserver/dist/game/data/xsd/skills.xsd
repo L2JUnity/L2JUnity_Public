@@ -1,2 +1,2955 @@
 <?xml version="1.1" encoding="UTF-8"?>
-
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:element name="list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="skill" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:choice maxOccurs="unbounded" minOccurs="0">
+							<xs:element name="icon">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="operateType">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+														<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="mpInitialConsume">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:short">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="castRange">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+														<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+														<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="hitTime">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:int">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="coolTime">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:short">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="effectPoint">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:short">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="rideState" />
+							<xs:element name="magicCriticalRate">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+														<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+														<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="effectRange">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+														<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+														<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+														<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="magicLvl">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="reuseDelay">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:int">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="targetType">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="affectScope">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="conditions">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="condition" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType mixed="true">
+												<xs:choice maxOccurs="unbounded" minOccurs="0">
+													<xs:element name="weaponType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="item" maxOccurs="unbounded" minOccurs="0" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="type" />
+													<xs:element name="level">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="hasAbnormal" />
+													<xs:element name="distance">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="amount">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="percentType" />
+													<xs:element type="xs:string" name="alignment" />
+													<xs:element name="affectType">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="direction" />
+													<xs:element name="npcIds">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:int" name="item" maxOccurs="unbounded" minOccurs="0" />
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:short" name="item" />
+																		</xs:sequence>
+																		<xs:attribute type="xs:byte" name="level" use="optional" />
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="range">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="summonPoints" />
+													<xs:element type="xs:byte" name="time" />
+													<xs:element type="xs:short" name="enegry" />
+													<xs:element type="xs:string" name="race" />
+													<xs:element type="xs:int" name="energy" />
+													<xs:element type="xs:byte" name="weightPercent" />
+													<xs:element type="xs:byte" name="slotsPercent" />
+													<xs:element type="xs:string" name="includeMe" />
+													<xs:element type="xs:string" name="isAround" />
+													<xs:element type="xs:short" name="transformId" />
+													<xs:element type="xs:short" name="skillId" />
+													<xs:element type="xs:string" name="hasLearned" />
+													<xs:element type="xs:string" name="classId" />
+													<xs:element name="minLevel">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="maxLevel">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="isWithin" />
+													<xs:element name="residencesId">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:byte" name="item" maxOccurs="unbounded" minOccurs="0" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="isFemale" />
+													<xs:element type="xs:byte" name="skillLevel" />
+													<xs:element name="classIds">
+														<xs:complexType>
+															<xs:choice maxOccurs="unbounded" minOccurs="0">
+																<xs:element type="xs:string" name="PHOENIX_KNIGHT" />
+																<xs:element type="xs:string" name="HELL_KNIGHT" />
+																<xs:element type="xs:string" name="EVA_TEMPLAR" />
+																<xs:element type="xs:string" name="SHILLIEN_TEMPLAR" />
+																<xs:element type="xs:string" name="MALE_SOUL_HOUND" />
+																<xs:element type="xs:string" name="FEMALE_SOUL_HOUND" />
+																<xs:element type="xs:string" name="ARCANA_LORD" />
+																<xs:element type="xs:string" name="ELEMENTAL_MASTER" />
+																<xs:element type="xs:string" name="SPECTRAL_MASTER" />
+																<xs:element type="xs:string" name="ADVENTURER" />
+																<xs:element type="xs:string" name="SWORD_MUSE" />
+																<xs:element type="xs:string" name="WIND_RIDER" />
+																<xs:element type="xs:string" name="SPECTRAL_DANCER" />
+																<xs:element type="xs:string" name="GHOST_HUNTER" />
+																<xs:element type="xs:string" name="TRICKSTER" />
+																<xs:element type="xs:string" name="DUELIST" />
+																<xs:element type="xs:string" name="DREADNOUGHT" />
+																<xs:element type="xs:string" name="TITAN" />
+																<xs:element type="xs:string" name="GRAND_KHAVATARI" />
+																<xs:element type="xs:string" name="FORTUNE_SEEKER" />
+																<xs:element type="xs:string" name="MAESTRO" />
+																<xs:element type="xs:string" name="DOOMBRINGER" />
+																<xs:element type="xs:string" name="item" />
+															</xs:choice>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="teleportBookmarkSlots" />
+													<xs:element name="npcsIds">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:short" name="item" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="socialClass" />
+													<xs:element type="xs:int" name="itemId" />
+													<xs:element type="xs:byte" name="instanceId" />
+													<xs:element type="xs:int" name="npcId" />
+												</xs:choice>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+												<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+												<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+												<xs:attribute type="xs:byte" name="level" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="effects">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="effect" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType mixed="true">
+												<xs:choice maxOccurs="unbounded" minOccurs="0">
+													<xs:element name="power">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="stat" />
+													<xs:element name="grade">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="DUALBLUNT" />
+													<xs:element name="amount">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="mode">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="armorType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="item" maxOccurs="unbounded" minOccurs="0" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="magicType" />
+													<xs:element name="HOLD">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="SLEEP">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BLEED">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="DERANGEMENT">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="TWOHANDCROSSBOW">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="ZONE">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="damage">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:int">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="saveHp" />
+													<xs:element type="xs:string" name="attackerType" />
+													<xs:element type="xs:byte" name="minAttackerLevel" />
+													<xs:element type="xs:byte" name="maxAttackerLevel" />
+													<xs:element type="xs:string" name="allowSkillAttack" />
+													<xs:element name="skillId">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="skillLevel">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="allowWeapons" />
+													<xs:element name="minDamage">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="chance">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="chanceBoost">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="targetType" />
+													<xs:element name="skillSubLevel">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="ticks" />
+													<xs:element type="xs:string" name="overHit" />
+													<xs:element name="criticalChance">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="pDefMod">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="abnormalType">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:float" name="damageModifier" />
+													<xs:element name="times">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:short" name="speed" />
+													<xs:element type="xs:short" name="distance" />
+													<xs:element name="percentage">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="slot" />
+													<xs:element name="rate">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="max">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="allowedSkills" />
+													<xs:element name="SWORD">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BLUNT">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="FIST">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="DUALFIST">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="POLE">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="DUAL">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="DAGGER">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="DUALDAGGER">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="CHANGEBODY" />
+													<xs:element name="AIRBIND">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="KNOCKDOWN">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="SHOCK">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="KNOCKBACK">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="TURN_STONE">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="npcId">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="npcCount" />
+													<xs:element name="dispel">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:short" name="castSkillId" />
+													<xs:element type="xs:byte" name="skillLevelScaleTo" />
+													<xs:element type="xs:byte" name="FIRE" />
+													<xs:element type="xs:string" name="attribute" />
+													<xs:element type="xs:string" name="affectScope" />
+													<xs:element type="xs:string" name="type" />
+													<xs:element name="POISON">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="summonPoints" />
+													<xs:element type="xs:string" name="instanceId" />
+													<xs:element type="xs:byte" name="hp" />
+													<xs:element type="xs:byte" name="mp" />
+													<xs:element type="xs:byte" name="cp" />
+													<xs:element name="skillLvl">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:short" name="attackSkillId" />
+													<xs:element name="ACCURACY_COMBAT">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="PHYSICAL_ATTACK">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="PHYSICAL_DEFENCE">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="MAGICAL_DEFENCE">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="MAX_HP" />
+													<xs:element type="xs:byte" name="MAX_MP" />
+													<xs:element type="xs:byte" name="PHYSICAL_ATTACK_SPEED" />
+													<xs:element type="xs:byte" name="CRITICAL_RATE" />
+													<xs:element type="xs:byte" name="CRITICAL_DAMAGE" />
+													<xs:element type="xs:string" name="ignoreShieldDefence" />
+													<xs:element type="xs:byte" name="chargeConsume" />
+													<xs:element name="maxCharges">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="cubicId" />
+													<xs:element name="cubicLvl">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="lifeTime">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:short" name="consumeItemId" />
+													<xs:element name="consumeItemCount">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="item" />
+													<xs:element type="xs:float" name="expMultiplier" />
+													<xs:element name="halfLethal">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BUG_WEAKNESS">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="weaponType">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="item" maxOccurs="unbounded" minOccurs="0" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BEAST_WEAKNESS">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="ANIMAL_WEAKNESS">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="DRAGON_WEAKNESS">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="pAtkAmount">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:float">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="pAtkmode" />
+													<xs:element name="PLANT_WEAKNESS">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BOW">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="CROSSBOW">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="heal" />
+													<xs:element name="value">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:float">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute type="xs:byte" name="level" use="optional" />
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="accuracyAmount" />
+													<xs:element type="xs:string" name="accuracyMode" />
+													<xs:element type="xs:byte" name="hpPercent" />
+													<xs:element type="xs:string" name="isCritical" />
+													<xs:element type="xs:string" name="isSummonSpawn" />
+													<xs:element type="xs:byte" name="randomOffset" />
+													<xs:element name="itemId">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:float" name="debuffModifier" />
+													<xs:element name="HATE">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="AGGRESSION">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="itemCount">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:short" name="animationSpeed" />
+													<xs:element type="xs:byte" name="pAtkMod" />
+													<xs:element type="xs:string" name="side" />
+													<xs:element name="PARALYZE">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="PULL">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="despawnDelay">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:int">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="templates">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="item" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:short" name="templateId" use="optional" />
+																				<xs:attribute type="xs:byte" name="minChance" use="optional" />
+																				<xs:attribute type="xs:byte" name="maxChance" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="items">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="item" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="item" maxOccurs="unbounded" minOccurs="0">
+																				<xs:complexType>
+																					<xs:simpleContent>
+																						<xs:extension base="xs:string">
+																							<xs:attribute type="xs:int" name="id" use="optional" />
+																							<xs:attribute type="xs:int" name="count" use="optional" />
+																						</xs:extension>
+																					</xs:simpleContent>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																		<xs:attribute type="xs:float" name="chance" use="optional" />
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="item" maxOccurs="unbounded" minOccurs="0">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="item" maxOccurs="unbounded" minOccurs="0">
+																							<xs:complexType>
+																								<xs:simpleContent>
+																									<xs:extension base="xs:string">
+																										<xs:attribute type="xs:short" name="id" use="optional" />
+																										<xs:attribute type="xs:int" name="count" use="optional" />
+																									</xs:extension>
+																								</xs:simpleContent>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																					<xs:attribute type="xs:float" name="chance" use="optional" />
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																		<xs:attribute type="xs:byte" name="level" use="optional" />
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="isAdvanced" />
+													<xs:element name="armorTYpe">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="item" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="position" />
+													<xs:element name="GIANT_WEAKNESS">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="CONSTRUCT_WEAKNESS">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="magicTypes" />
+													<xs:element name="exp">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="minLevel" />
+													<xs:element type="xs:byte" name="underMinLevelExpPercent" />
+													<xs:element name="deathPenalty">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="RAPIER">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="ANCIENTSWORD">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="fullLethal">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="maxLevel">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="drop">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="spoil">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="adena">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="maxSouls">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="expNeeded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="charge">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:short" name="transformationId" />
+													<xs:element type="xs:short" name="angle" />
+													<xs:element type="xs:short" name="range" />
+													<xs:element type="xs:byte" name="shieldDefPercent" />
+													<xs:element type="xs:string" name="escapeType" />
+													<xs:element type="xs:string" name="weaponAttribute" />
+													<xs:element type="xs:string" name="armorAttribute" />
+													<xs:element type="xs:string" name="critical" />
+													<xs:element type="xs:short" name="criticalLimit" />
+													<xs:element name="slots">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="index" />
+													<xs:element type="xs:byte" name="MAGIC_ATTACK" />
+													<xs:element type="xs:byte" name="MAGIC_ATTACK_SPEED" />
+													<xs:element type="xs:short" name="radius" />
+													<xs:element type="xs:short" name="delay" />
+													<xs:element type="xs:string" name="optionalSlots" />
+													<xs:element type="xs:string" name="requiredSlots" />
+													<xs:element type="xs:short" name="partyBuffSkillId" />
+													<xs:element type="xs:byte" name="minSlot" />
+													<xs:element type="xs:string" name="canKill" />
+													<xs:element type="xs:string" name="inCombat" />
+													<xs:element type="xs:string" name="knockDown" />
+													<xs:element type="xs:byte" name="PHYSICAL_BLOCKADE" />
+													<xs:element type="xs:byte" name="DISARM" />
+													<xs:element type="xs:byte" name="DEPORT" />
+													<xs:element name="x">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:int">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="y">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:int">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="z">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:int" name="normal" />
+													<xs:element type="xs:int" name="ride" />
+													<xs:element type="xs:int" name="wyvern" />
+													<xs:element name="sp">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:int">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="VALAKAS" />
+													<xs:element type="xs:string" name="isItem" />
+													<xs:element type="xs:byte" name="GUST" />
+													<xs:element type="xs:short" name="id" />
+													<xs:element type="xs:byte" name="BOSS" />
+													<xs:element type="xs:byte" name="PSYCHIC" />
+													<xs:element name="ROOT_PHYSICALLY">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="blockedActions" />
+													<xs:element type="xs:short" name="skillId1" />
+													<xs:element type="xs:short" name="skillId3" />
+													<xs:element type="xs:short" name="skillId2" />
+													<xs:element type="xs:string" name="skills" />
+													<xs:element type="xs:string" name="singleInstance" />
+													<xs:element type="xs:byte" name="minValue" />
+													<xs:element type="xs:byte" name="magicLevel" />
+													<xs:element type="xs:boolean" name="countVitalityItemUsed" />
+													<xs:element name="maxValue">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="party">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:choice>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+												<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+												<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+												<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+												<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+												<xs:attribute type="xs:byte" name="level" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="targetConditions">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="condition" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType mixed="true">
+												<xs:sequence>
+													<xs:element name="amount" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="percentType" minOccurs="0" />
+													<xs:element name="classIds" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="item" maxOccurs="unbounded" minOccurs="0" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="affectType" minOccurs="0" />
+													<xs:element type="xs:string" name="type" minOccurs="0" />
+													<xs:element type="xs:byte" name="level" minOccurs="0" />
+													<xs:element type="xs:string" name="hasAbnormal" minOccurs="0" />
+													<xs:element name="npcIds" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:short" name="item" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="race" minOccurs="0" />
+													<xs:element type="xs:string" name="includeMe" minOccurs="0" />
+													<xs:element type="xs:string" name="isWithin" minOccurs="0" />
+													<xs:element type="xs:short" name="distance" minOccurs="0" />
+												</xs:sequence>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="selfEffects">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="effect" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType mixed="true">
+												<xs:choice maxOccurs="unbounded" minOccurs="0">
+													<xs:element type="xs:string" name="dispel" />
+													<xs:element name="skillSubLevel">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="skillLevelScaleTo" />
+													<xs:element type="xs:short" name="skillId" />
+													<xs:element name="skillLevel">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="amount">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="mode" />
+													<xs:element type="xs:string" name="position" />
+													<xs:element type="xs:short" name="angle" />
+													<xs:element type="xs:short" name="range" />
+													<xs:element name="power">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:short">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="ticks" />
+													<xs:element name="maxCharges">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="charge" />
+												</xs:choice>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+												<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+												<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+												<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+												<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pveEffects">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="effect" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:short" name="skillId" minOccurs="0" />
+													<xs:element type="xs:byte" name="skillLevel" minOccurs="0" />
+													<xs:element name="power" minOccurs="0">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="fullLethal" minOccurs="0" />
+													<xs:element type="xs:byte" name="criticalChance" minOccurs="0" />
+													<xs:element type="xs:string" name="abnormalType" minOccurs="0" />
+													<xs:element type="xs:float" name="abnormalPower" minOccurs="0" />
+													<xs:element type="xs:float" name="chance" minOccurs="0" />
+													<xs:element type="xs:float" name="chanceBoost" minOccurs="0" />
+													<xs:element type="xs:string" name="overHit" minOccurs="0" />
+													<xs:element type="xs:byte" name="ticks" minOccurs="0" />
+													<xs:element name="amount" minOccurs="0">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="model" minOccurs="0" />
+													<xs:element type="xs:string" name="mode" minOccurs="0" />
+												</xs:sequence>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+												<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+												<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+												<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+												<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pvpEffects">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="effect" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:short" name="skillId" minOccurs="0" />
+													<xs:element type="xs:byte" name="skillLevel" minOccurs="0" />
+													<xs:element name="power" minOccurs="0">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="fullLethal" minOccurs="0">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="criticalChance" minOccurs="0" />
+													<xs:element type="xs:string" name="abnormalType" minOccurs="0" />
+													<xs:element type="xs:float" name="abnormalPower" minOccurs="0" />
+													<xs:element type="xs:float" name="chance" minOccurs="0" />
+													<xs:element type="xs:float" name="chanceBoost" minOccurs="0" />
+													<xs:element type="xs:string" name="overHit" minOccurs="0" />
+													<xs:element type="xs:byte" name="amount" minOccurs="0" />
+													<xs:element type="xs:string" name="mode" minOccurs="0" />
+													<xs:element type="xs:string" name="slot" minOccurs="0" />
+													<xs:element type="xs:string" name="model" minOccurs="0" />
+													<xs:element type="xs:byte" name="ticks" minOccurs="0" />
+												</xs:sequence>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+												<xs:attribute type="xs:byte" name="level" use="optional" />
+												<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+												<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+												<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+												<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:byte" name="toggleGroupId" />
+							<xs:element type="xs:string" name="isNecessaryToggle" />
+							<xs:element name="isMagic">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:byte" name="attachToggleGroupId" />
+							<xs:element type="xs:short" name="reuseDelayGroup" />
+							<xs:element type="xs:short" name="doubleCastSkill" />
+							<xs:element name="mpConsume">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:short">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="alterSkill">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="item" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:short" name="id" use="optional" />
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+														<xs:attribute type="xs:byte" name="chance" use="optional" />
+														<xs:attribute type="xs:string" name="abnormalType" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="attachSkillList">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="item" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:short" name="requiredSkillId" />
+													<xs:element type="xs:short" name="skillId" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="attributeType">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="attributeValue">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:short" name="channelingSkillId" />
+							<xs:element type="xs:double" name="channelingTickInterval" />
+							<xs:element type="xs:double" name="channelingStart" />
+							<xs:element type="xs:string" name="isTriggeredSkill" />
+							<xs:element type="xs:byte" name="mpPerChanneling" />
+							<xs:element name="isDebuff">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="channelingEffects">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="effect" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="power" minOccurs="0">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="percentage" minOccurs="0">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:string">
+																				<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+																				<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+																				<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:short" name="skillId" minOccurs="0" />
+													<xs:element type="xs:byte" name="skillLevel" minOccurs="0" />
+													<xs:element type="xs:byte" name="skillLevelScaleTo" minOccurs="0" />
+												</xs:sequence>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="abnormalLvl">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="abnormalTime">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+														<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+														<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+														<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="abnormalType">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+														<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+														<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+														<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="abnormalVisualEffect">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="activateRate">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+														<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+														<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="affectLimit">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="affectRange">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+														<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+														<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+														<xs:attribute type="xs:short" name="fromSubLevel" use="optional" />
+														<xs:attribute type="xs:short" name="toSubLevel" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="basicProperty">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="trait">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="affectObject">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:int" name="pvpPointConsume" />
+							<xs:element type="xs:int" name="pledgeNvConsume" />
+							<xs:element type="xs:float" name="hitCancelTime" />
+							<xs:element type="xs:boolean" name="displayInList" />
+							<xs:element type="xs:string" name="canDoubleCast" />
+							<xs:element type="xs:string" name="staticReuse" />
+							<xs:element type="xs:string" name="abnormalResists" />
+							<xs:element name="hpConsume">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:short">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="canCastWhileDisabled" />
+							<xs:element name="removedOnAnyActionExceptMove">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="itemConsumeId">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:int">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="nextAction" />
+							<xs:element name="fanRange">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="itemConsumeCount">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:short">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="lvlBonusRate">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="chargeConsume">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="subordinationAbnormalType" />
+							<xs:element name="passiveConditions">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="condition" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType mixed="true">
+												<xs:sequence>
+													<xs:element name="weaponType" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="item" maxOccurs="unbounded" minOccurs="0" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:string" name="alignment" minOccurs="0" />
+													<xs:element type="xs:string" name="includeMe" minOccurs="0" />
+													<xs:element type="xs:byte" name="amount" minOccurs="0" />
+													<xs:element type="xs:string" name="percentType" minOccurs="0" />
+													<xs:element name="classIds" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="item" maxOccurs="unbounded" minOccurs="0" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:byte" name="minLevel" minOccurs="0" />
+													<xs:element type="xs:byte" name="maxLevel" minOccurs="0" />
+													<xs:element type="xs:string" name="affectType" minOccurs="0" />
+													<xs:element type="xs:string" name="isWithin" minOccurs="0" />
+													<xs:element name="armorType" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="item" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="specialLevel">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="blockedInOlympiad" />
+							<xs:element type="xs:string" name="removedOnDamage" />
+							<xs:element type="xs:byte" name="itemConsumeSteps" />
+							<xs:element name="effect">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="power">
+											<xs:complexType mixed="true">
+												<xs:sequence>
+													<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:byte">
+																	<xs:attribute type="xs:byte" name="level" use="optional" />
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute type="xs:string" name="name" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:byte" name="soulMaxConsumeCount" />
+							<xs:element name="endEffects">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="effect" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="power" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element type="xs:short" name="skillId" minOccurs="0" />
+													<xs:element name="skillLevel" minOccurs="0">
+														<xs:complexType mixed="true">
+															<xs:sequence>
+																<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:byte">
+																				<xs:attribute type="xs:byte" name="level" use="optional" />
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute type="xs:string" name="name" use="optional" />
+												<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+												<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="irreplacableBuff" />
+							<xs:element type="xs:string" name="excludedFromCheck" />
+							<xs:element type="xs:string" name="stayAfterDeath" />
+							<xs:element type="xs:string" name="isOutpost" />
+							<xs:element type="xs:string" name="affectHeight" />
+							<xs:element type="xs:string" name="inheritElementals" />
+							<xs:element type="xs:float" name="inheritPercent" />
+							<xs:element type="xs:string" name="canBeDispelled" />
+							<xs:element type="xs:string" name="abnormalInstant" />
+							<xs:element type="xs:string" name="isRecoveryHerb" />
+							<xs:element name="power">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:byte" name="halfKillRate" />
+							<xs:element type="xs:string" name="isSharedWithSummon" />
+							<xs:element type="xs:string" name="isSuicideAttack" />
+							<xs:element type="xs:byte" name="abnormallVL" />
+							<xs:element type="xs:string" name="staticDelay" />
+							<xs:element type="xs:byte" name="minPledgeClass" />
+							<xs:element name="startEffects">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="effect">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:string" name="name" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="magicLevel">
+								<xs:complexType mixed="true">
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:byte">
+														<xs:attribute type="xs:byte" name="level" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element type="xs:string" name="deleteAbnormalOnLeave" />
+							<xs:element type="xs:int" name="itemConsume" />
+							<xs:element type="xs:string" name="withoutAction" />
+							<xs:element type="xs:string" name="isMentoring" />
+							<xs:element type="xs:string" name="blockActionUseSkill" />
+						</xs:choice>
+						<xs:attribute type="xs:int" name="id" use="optional" />
+						<xs:attribute type="xs:byte" name="toLevel" use="optional" />
+						<xs:attribute type="xs:string" name="name" use="optional" />
+						<xs:attribute type="xs:byte" name="fromLevel" use="optional" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -19,6 +19,7 @@
 package org.l2junity.gameserver.network.client.send;
 
 import org.l2junity.gameserver.enums.InventorySlot;
+import org.l2junity.gameserver.model.VariationInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.itemcontainer.PcInventory;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
@@ -75,10 +76,12 @@ public class ExUserInfoEquipSlot extends AbstractMaskPacket<InventorySlot>
 		{
 			if (containsMask(slot))
 			{
+				final VariationInstance augment = inventory.getPaperdollAugmentation(slot.getSlot());
 				packet.writeH(22); // 10 + 4 * 3
 				packet.writeD(inventory.getPaperdollObjectId(slot.getSlot()));
 				packet.writeD(inventory.getPaperdollItemId(slot.getSlot()));
-				packet.writeQ(inventory.getPaperdollAugmentationId(slot.getSlot()));
+				packet.writeD(augment != null ? augment.getOption1Id() : 0);
+				packet.writeD(augment != null ? augment.getOption2Id() : 0);
 				packet.writeD(inventory.getPaperdollItemVisualId(slot.getSlot()));
 			}
 		}

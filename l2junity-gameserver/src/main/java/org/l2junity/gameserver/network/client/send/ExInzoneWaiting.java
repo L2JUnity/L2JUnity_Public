@@ -35,12 +35,14 @@ public class ExInzoneWaiting implements IClientOutgoingPacket
 {
 	private final int _currentTemplateId;
 	private final Map<Integer, Long> _instanceTimes;
+	private final boolean _open;
 	
-	public ExInzoneWaiting(PlayerInstance activeChar)
+	public ExInzoneWaiting(PlayerInstance activeChar, boolean open)
 	{
 		final Instance instance = InstanceManager.getInstance().getPlayerInstance(activeChar, false);
 		_currentTemplateId = ((instance != null) && (instance.getTemplateId() >= 0)) ? instance.getTemplateId() : -1;
 		_instanceTimes = InstanceManager.getInstance().getAllInstanceTimes(activeChar);
+		_open = open;
 	}
 	
 	@Override
@@ -48,6 +50,7 @@ public class ExInzoneWaiting implements IClientOutgoingPacket
 	{
 		OutgoingPackets.EX_INZONE_WAITING_INFO.writeId(packet);
 		
+		packet.writeC(_open ? 0x01 : 0x00);
 		packet.writeD(_currentTemplateId);
 		packet.writeD(_instanceTimes.size());
 		for (Entry<Integer, Long> entry : _instanceTimes.entrySet())

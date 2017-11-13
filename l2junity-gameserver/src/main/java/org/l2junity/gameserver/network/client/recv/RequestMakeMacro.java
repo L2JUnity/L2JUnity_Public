@@ -28,9 +28,13 @@ import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class RequestMakeMacro implements IClientIncomingPacket
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(RequestMakeMacro.class);
+	
 	private Macro _macro;
 	private int _commandsLenght = 0;
 	
@@ -39,11 +43,11 @@ public final class RequestMakeMacro implements IClientIncomingPacket
 	@Override
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
-		int _id = packet.readD();
-		String _name = packet.readS();
-		String _desc = packet.readS();
-		String _acronym = packet.readS();
-		int icon = packet.readC();
+		final int id = packet.readD();
+		final String name = packet.readS();
+		final String desc = packet.readS();
+		final String acronym = packet.readS();
+		final int icon = packet.readD();
 		int count = packet.readC();
 		if (count > MAX_MACRO_LENGTH)
 		{
@@ -53,15 +57,20 @@ public final class RequestMakeMacro implements IClientIncomingPacket
 		final List<MacroCmd> commands = new ArrayList<>(count);
 		for (int i = 0; i < count; i++)
 		{
-			int entry = packet.readC();
-			int type = packet.readC(); // 1 = skill, 3 = action, 4 = shortcut
-			int d1 = packet.readD(); // skill or page number for shortcuts
-			int d2 = packet.readC();
+			final int entry = packet.readC();
+			final int type = packet.readC(); // 1 = skill, 3 = action, 4 = shortcut
+			if ((type < 1) || (type > 6))
+			{
+				LOGGER.warn("Client: {} Sent unhandled macro type: {} within packet: {}", client, type, getClass().getSimpleName());
+				return false;
+			}
+			final int skillId = packet.readD(); // skill or page number for shortcuts
+			final int shortcutId = packet.readC();
 			String command = packet.readS();
 			_commandsLenght += command.length();
-			commands.add(new MacroCmd(entry, MacroType.values()[(type < 1) || (type > 6) ? 0 : type], d1, d2, command));
+			commands.add(new MacroCmd(entry, MacroType.values()[type], skillId, shortcutId, command));
 		}
-		_macro = new Macro(_id, icon, _name, _desc, _acronym, commands);
+		_macro = new Macro(id, icon, name, desc, acronym, commands);
 		return true;
 	}
 	

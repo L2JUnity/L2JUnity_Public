@@ -315,39 +315,39 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>ALL</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>15</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -371,7 +371,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>14676</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -395,7 +395,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>14677</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -426,6 +426,11 @@
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="6124" toLevel="1" name="Agathion Cute Trick - Neolithica">
 		<hitTime>3000</hitTime>
@@ -450,7 +455,7 @@
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
 		<icon>icon.skill1170</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<magicLvl>40</magicLvl>
@@ -463,7 +468,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="6126" toLevel="1" name="Paralysis">
@@ -473,7 +478,7 @@
 		<abnormalType>PARALYZE</abnormalType>
 		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
 		<icon>icon.skill1170</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<isTriggeredSkill>true</isTriggeredSkill>
 		<magicLvl>40</magicLvl>
@@ -486,7 +491,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="6127" toLevel="1" name="Anti-limit">
@@ -495,7 +500,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effects>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>LIMIT</slot>
 			</effect>
 		</effects>
@@ -527,7 +532,7 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>200</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>40</castRange>
 		<trait>SHOCK</trait>
 		<targetType>ENEMY_ONLY</targetType>
@@ -553,7 +558,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1100</effectRange>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<trait>SHOCK</trait>
 		<targetType>ENEMY_ONLY</targetType>
@@ -578,7 +583,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>1.5</hitCancelTime>
 		<effectRange>1100</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -600,7 +605,7 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1100</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -621,7 +626,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1400</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>900</castRange>
 		<trait>ETC</trait>
 		<targetType>ENEMY</targetType>
@@ -644,7 +649,7 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1100</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -667,7 +672,7 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1100</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<trait>SHOCK</trait>
 		<targetType>ENEMY_ONLY</targetType>
@@ -765,7 +770,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -781,7 +786,7 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -789,8 +794,6 @@
 		<!-- Lvl 1: Covered in hot and sticky tar. Movement is impaired. Due to the burning tar, for 5 minbutes, moving speed is decreased 30% and P. Def. and evasion are decreased 10%. -->
 		<!-- Lvl 2: Covered in hot and sticky tar. Movement is impaired. Due to the burning tar, for 5 minbutes, moving speed is decreased 60% and P. Def. and evasion are decreased 20%. -->
 		<!-- Lvl 3: Covered in hot and sticky tar. Movement is impaired. Due to the burning tar, for 5 minbutes, moving speed is decreased 90% and P. Def. and evasion are decreased 30%. -->
-		<table name="#pDef"> 0.9 0.8 0.7 </table>
-		<table name="#speed"> 0.7 0.4 0.1 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -806,7 +809,7 @@
 		<effectRange>600</effectRange>
 		<hitTime>1000</hitTime>
 		<icon>icon.skill0770</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>2</lvlBonusRate>
 		<magicLvl>-1</magicLvl>
@@ -820,7 +823,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">-30</value>
 					<value level="2">-60</value>
@@ -828,7 +831,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-20</value>
@@ -836,7 +839,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-20</value>
@@ -902,7 +905,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>1.5</hitCancelTime>
 		<hitTime>2000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -925,16 +928,15 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>70</amount>
-				<mode>DIFF</mode>
 			</effect>
 			<effect name="CounterPhysicalSkill">
 				<amount>70</amount>
 			</effect>
-			<effect name="ReflectSkill">
+			<effect name="p_reflect_skill">
 				<amount>70</amount>
-				<mode>DIFF</mode>
+				<type>PHYSICAL</type>
 			</effect>
 		</effects>
 	</skill>
@@ -948,7 +950,7 @@
 		<effectRange>1500</effectRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill1064</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicLvl>-1</magicLvl>
 		<mpConsume>59</mpConsume>
@@ -964,17 +966,17 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute">
+			<effect name="p_block_spell">
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>-99</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>-99</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -989,7 +991,7 @@
 		<canBeDispelled>false</canBeDispelled>
 		<effectPoint>-100</effectPoint>
 		<icon>icon.skill0122</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicLvl>-1</magicLvl>
 		<operateType>A2</operateType>
@@ -1003,15 +1005,15 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1023,7 +1025,6 @@
 		<!-- Lvl 2 Only if 2 red eyes are present inside the zone -->
 		<!-- Lvl 3 Only if 3 red eyes are present inside the zone -->
 		<!-- Lvl 4 Only if 4 red eyes are present inside the zone -->
-		<table name="#pAtkSpd"> 1.02 1.04 1.06 1.08 </table>
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>11</abnormalTime>
 		<abnormalType>PD_DOWN</abnormalType>
@@ -1035,7 +1036,7 @@
 			<value level="3">icon.skill6151_3</value>
 			<value level="4">icon.skill6151_4</value>
 		</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>-1</magicLvl>
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
@@ -1047,7 +1048,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -1077,7 +1078,7 @@
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<hitTime>2000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1087,7 +1088,6 @@
 		<!-- Lvl 2 Only if 2 green eyes are present inside the zone -->
 		<!-- Lvl 3 Only if 3 green eyes are present inside the zone -->
 		<!-- Lvl 4 Only if 4 green eyes are present inside the zone -->
-		<table name="#pAtk"> 1.02 1.04 1.06 1.08 </table>
 		<abnormalLvl>2</abnormalLvl>
 		<abnormalTime>11</abnormalTime>
 		<abnormalType>SIGNAL_A</abnormalType>
@@ -1099,7 +1099,7 @@
 			<value level="3">icon.skill6152_3</value>
 			<value level="4">icon.skill6152_4</value>
 		</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>-1</magicLvl>
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
@@ -1111,7 +1111,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -1141,7 +1141,7 @@
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<hitTime>2000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1151,7 +1151,6 @@
 		<!-- Lvl 2 Only if 2 blue eyes are present inside the zone -->
 		<!-- Lvl 3 Only if 3 blue eyes are present inside the zone -->
 		<!-- Lvl 4 Only if 4 blue eyes are present inside the zone -->
-		<table name="#rCrit"> 150 200 520 750 </table>
 		<abnormalLvl>4</abnormalLvl>
 		<abnormalTime>11</abnormalTime>
 		<abnormalType>MAX_HP_DOWN</abnormalType>
@@ -1164,7 +1163,7 @@
 			<value level="3">icon.skill6154_3</value>
 			<value level="4">icon.skill6154_4</value>
 		</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>-1</magicLvl>
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
@@ -1177,7 +1176,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">150</value>
 					<value level="2">200</value>
@@ -1208,7 +1207,7 @@
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<hitTime>3000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>BLEED</trait>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1233,7 +1232,7 @@
 		<effectRange>1100</effectRange>
 		<affectRange>500</affectRange>
 		<hitTime>1000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<trait>HOLD</trait>
 		<targetType>ENEMY_ONLY</targetType>
@@ -1270,7 +1269,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<affectRange>150</affectRange>
 		<hitTime>1000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>SHOCK</trait>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
@@ -1306,7 +1305,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>200</effectRange>
 		<hitTime>1000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>40</castRange>
 		<trait>SHOCK</trait>
 		<targetType>ENEMY</targetType>
@@ -1320,7 +1319,7 @@
 		<abnormalType>NPC_FURY</abnormalType>
 		<effectPoint>-100</effectPoint>
 		<icon>icon.skill6169</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>83</magicLvl>
 		<operateType>A2</operateType>
 		<rideState>NONE</rideState>
@@ -1350,23 +1349,23 @@
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<!-- NOTE: Using abnormalLvl 99 instead of 1 due is a irreplaceable buff -->
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicCriticalDamage">
+			<effect name="p_magic_critical_dmg">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1392,23 +1391,23 @@
 		<affectScope>SINGLE</affectScope>
 		<effects>
 			<!-- NOTE: Using abnormalLvl 99 instead of 1 due is a irreplaceable buff -->
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicCriticalDamage">
+			<effect name="p_magic_critical_dmg">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1434,7 +1433,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>2320</power>
 			</effect>
 		</effects>
@@ -1636,7 +1635,7 @@
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1665,7 +1664,7 @@
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1681,7 +1680,7 @@
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>HOLD</trait>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1786,6 +1785,11 @@
 			<condition name="CanUseVitalityConsumeItem" />
 			<condition name="OpNeedAgathion" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="6197" toLevel="1" name="Agathion Cute Trick - Oink Oink">
 		<hitTime>3000</hitTime>
@@ -1818,7 +1822,6 @@
 		</conditions>
 	</skill>
 	<skill id="6199" toLevel="7" name="Tail Strike">
-		<table name="#power"> 1832 2272 2751 3252 3752 4224 4640 </table>
 		<castRange>150</castRange>
 		<effectPoint>
 			<value level="1">-1044</value>
@@ -1858,7 +1861,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">1832</value>
 					<value level="2">2272</value>

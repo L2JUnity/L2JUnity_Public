@@ -18,7 +18,6 @@
  */
 package org.l2junity.gameserver.model.actor.templates;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -26,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.enums.AISkillScope;
 import org.l2junity.gameserver.enums.AIType;
@@ -36,7 +35,6 @@ import org.l2junity.gameserver.enums.Race;
 import org.l2junity.gameserver.enums.Sex;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.Creature;
-import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.drops.DropListScope;
 import org.l2junity.gameserver.model.drops.IDropItem;
 import org.l2junity.gameserver.model.holders.ItemHolder;
@@ -81,6 +79,7 @@ public final class L2NpcTemplate extends L2CharTemplate implements IIdentifiable
 	private boolean _hasSummoner;
 	private boolean _canBeSown;
 	private boolean _canBeCrt;
+	private boolean _isDeathPenalty;
 	private int _corpseTime;
 	private AIType _aiType;
 	private int _aggroRange;
@@ -94,6 +93,8 @@ public final class L2NpcTemplate extends L2CharTemplate implements IIdentifiable
 	private int _spiritShotChance;
 	private int _minSkillChance;
 	private int _maxSkillChance;
+	private double _hitTimeFactor;
+	private double _hitTimeFactorSkill;
 	private Map<Integer, Skill> _skills;
 	private Map<AISkillScope, List<Skill>> _aiSkillLists;
 	private Set<Integer> _clans;
@@ -105,8 +106,6 @@ public final class L2NpcTemplate extends L2CharTemplate implements IIdentifiable
 	private MpRewardType _mpRewardType;
 	private int _mpRewardTicks;
 	private MpRewardAffectType _mpRewardAffectType;
-	
-	private final List<ClassId> _teachInfo = new ArrayList<>();
 	
 	private List<Integer> _extendDrop;
 	
@@ -158,8 +157,9 @@ public final class L2NpcTemplate extends L2CharTemplate implements IIdentifiable
 		_hasSummoner = set.getBoolean("hasSummoner", false);
 		_canBeSown = set.getBoolean("canBeSown", false);
 		_canBeCrt = set.getBoolean("ex_crt_effect", true);
+		_isDeathPenalty = set.getBoolean("isDeathPenalty", false);
 		
-		_corpseTime = set.getInt("corpseTime", Config.DEFAULT_CORPSE_TIME);
+		_corpseTime = set.getInt("corpseTime", NpcConfig.DEFAULT_CORPSE_TIME);
 		
 		_aiType = set.getEnum("aiType", AIType.class, AIType.FIGHTER);
 		_aggroRange = set.getInt("aggroRange", 0);
@@ -175,6 +175,9 @@ public final class L2NpcTemplate extends L2CharTemplate implements IIdentifiable
 		
 		_minSkillChance = set.getInt("minSkillChance", 7);
 		_maxSkillChance = set.getInt("maxSkillChance", 15);
+		
+		_hitTimeFactor = set.getInt("hit_time", 100) / 100d;
+		_hitTimeFactorSkill = set.getInt("hit_time_skill", 100) / 100d;
 		
 		_collisionRadiusGrown = set.getDouble("collisionRadiusGrown", 0);
 		_collisionHeightGrown = set.getDouble("collisionHeightGrown", 0);
@@ -358,6 +361,11 @@ public final class L2NpcTemplate extends L2CharTemplate implements IIdentifiable
 		return _canBeCrt;
 	}
 	
+	public boolean isDeathPenalty()
+	{
+		return _isDeathPenalty;
+	}
+	
 	public int getCorpseTime()
 	{
 		return _corpseTime;
@@ -421,6 +429,16 @@ public final class L2NpcTemplate extends L2CharTemplate implements IIdentifiable
 	public int getMaxSkillChance()
 	{
 		return _maxSkillChance;
+	}
+	
+	public double getHitTimeFactor()
+	{
+		return _hitTimeFactor;
+	}
+	
+	public double getHitTimeFactorSkill()
+	{
+		return _hitTimeFactorSkill;
 	}
 	
 	@Override
@@ -653,27 +671,6 @@ public final class L2NpcTemplate extends L2CharTemplate implements IIdentifiable
 	public static boolean isAssignableTo(Object obj, Class<?> clazz)
 	{
 		return L2NpcTemplate.isAssignableTo(obj.getClass(), clazz);
-	}
-	
-	public boolean canTeach(ClassId classId)
-	{
-		// If the player is on a third class, fetch the class teacher
-		// information for its parent class.
-		if (classId.level() == 3)
-		{
-			return _teachInfo.contains(classId.getParent());
-		}
-		return _teachInfo.contains(classId);
-	}
-	
-	public List<ClassId> getTeachInfo()
-	{
-		return _teachInfo;
-	}
-	
-	public void addTeachInfo(List<ClassId> teachInfo)
-	{
-		_teachInfo.addAll(teachInfo);
 	}
 	
 	public List<Integer> getExtendDrop()

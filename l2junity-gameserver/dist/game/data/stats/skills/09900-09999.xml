@@ -287,16 +287,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>108458</x>
 				<y>221652</y>
 				<z>-3592</z>
@@ -324,16 +324,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>83676</x>
 				<y>55510</y>
 				<z>-1512</z>
@@ -352,16 +352,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>81013</x>
 				<y>56413</y>
 				<z>-1552</z>
@@ -389,16 +389,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>147491</x>
 				<y>-56633</y>
 				<z>-2776</z>
@@ -426,16 +426,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>147491</x>
 				<y>-56633</y>
 				<z>-2776</z>
@@ -568,25 +568,40 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="9955" toLevel="1" name="Strawberry Cake (HP)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Restores 50% of HP. Cooldown is 2 min. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>120000</reuseDelay>
+		<effects>
+			<effect name="i_hp_per_max">
+				<power>50</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9956" toLevel="1" name="Blueberry Cake (MP)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Restores 20% of MP. Cooldown is 2 min. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>120000</reuseDelay>
+		<effects>
+			<effect name="i_mp_per_max">
+				<power>20</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9957" toLevel="1" name="Cheesecake (CP)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Restores 50% of CP. Cooldown is 2 min. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>120000</reuseDelay>
+		<effects>
+			<effect name="i_cp_per_max">
+				<power>50</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9958" toLevel="1" name="Horn Melody (9th Anniversary)">
 		<!-- AUTO GENERATED SKILL -->
@@ -681,16 +696,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>115583</x>
 				<y>192261</y>
 				<z>-3488</z>
@@ -708,16 +723,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>91539</x>
 				<y>-12204</y>
 				<z>-2440</z>
@@ -736,16 +751,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>63990</x>
 				<y>26647</y>
 				<z>-3768</z>
@@ -764,16 +779,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>174470</x>
 				<y>40112</y>
 				<z>-4144</z>
@@ -792,16 +807,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>183522</x>
 				<y>-14946</y>
 				<z>-2768</z>
@@ -820,16 +835,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>69340</x>
 				<y>-50203</y>
 				<z>-3288</z>
@@ -848,16 +863,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>52107</x>
 				<y>-54328</y>
 				<z>-3136</z>
@@ -876,16 +891,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>165054</x>
 				<y>-47861</y>
 				<z>-3560</z>
@@ -904,16 +919,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>125740</x>
 				<y>-40864</y>
 				<z>-3736</z>
@@ -975,15 +990,43 @@
 		<hitTime>1500</hitTime>
 	</skill>
 	<skill id="9982" toLevel="1" name="Elixir: Divine Protection">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 30 min., Max HP/MP/CP + 30%, and M. Def. + 30%. Effect disappears when Art of Seduction is applied by the Rose Spirit. Cooldown is 5 min. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<icon>icon.etc_evil_soul_core_i00</icon>
+		<isMagic>4</isMagic>
+		<magicLvl>85</magicLvl>
 		<operateType>A2</operateType>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>1</effectPoint>
-		<isMagic>4</isMagic>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9983" toLevel="1" name="Scroll of Escape: Wall of Argos">
 		<!-- AUTO GENERATED SKILL -->
@@ -1005,21 +1048,18 @@
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>120000</reuseDelay>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="9986" toLevel="7" name="High-grade Elixir of Mind (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>120000</reuseDelay>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="9987" toLevel="7" name="High-grade Elixir of CP (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<reuseDelay>120000</reuseDelay>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="9988" toLevel="1" name="Elixir of Aggression">
 		<!-- AUTO GENERATED SKILL -->
@@ -1060,16 +1100,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>42682</x>
 				<y>-47986</y>
 				<z>-792</z>
@@ -1088,16 +1128,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>42682</x>
 				<y>-47986</y>
 				<z>-792</z>
@@ -1116,16 +1156,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>147540</x>
 				<y>24661</y>
 				<z>-1984</z>
@@ -1144,16 +1184,16 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>147540</x>
 				<y>24661</y>
 				<z>-1984</z>

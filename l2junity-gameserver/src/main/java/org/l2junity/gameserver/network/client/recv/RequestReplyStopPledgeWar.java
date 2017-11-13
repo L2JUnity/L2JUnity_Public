@@ -56,7 +56,7 @@ public final class RequestReplyStopPledgeWar implements IClientIncomingPacket
 		
 		if (_answer == 1)
 		{
-			ClanTable.getInstance().deleteclanswars(requestor.getClanId(), activeChar.getClanId());
+			ClanTable.getInstance().deleteClansWar(requestor.getClanId(), activeChar.getClanId());
 		}
 		else
 		{

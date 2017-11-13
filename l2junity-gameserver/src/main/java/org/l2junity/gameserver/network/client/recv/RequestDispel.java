@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -72,7 +72,7 @@ public class RequestDispel implements IClientIncomingPacket
 		{
 			return;
 		}
-		if (skill.isDance() && !Config.DANCE_CANCEL_BUFF)
+		if (skill.isDance() && !PlayerConfig.DANCE_CANCEL_BUFF)
 		{
 			return;
 		}

@@ -191,7 +191,7 @@
 		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15519" toLevel="1" name="Summon Undead">
 		<!-- AUTO GENERATED SKILL -->
@@ -237,7 +237,7 @@
 		<reuseDelay>4000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15523" toLevel="1" name="Accelerate">
 		<!-- AUTO GENERATED SKILL -->
@@ -313,7 +313,7 @@
 		<hitTime>3000</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15530" toLevel="1" name="Slumber">
 		<!-- AUTO GENERATED SKILL -->
@@ -326,7 +326,7 @@
 		<reuseDelay>8000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15531" toLevel="1" name="Hold">
 		<!-- AUTO GENERATED SKILL -->
@@ -339,7 +339,7 @@
 		<reuseDelay>8000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15532" toLevel="1" name="Pupil Focus">
 		<!-- AUTO GENERATED SKILL -->
@@ -363,7 +363,7 @@
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15534" toLevel="1" name="Mutilate Body">
 		<!-- AUTO GENERATED SKILL -->
@@ -399,40 +399,100 @@
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="15537" toLevel="2" name="Blood Sacrifice: Decrease Speed">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Restores 50% of enemy's HP and gives an abnormal status debuff. -->
+		<abnormalTime>10</abnormalTime>
 		<icon>icon.skill1160</icon>
 		<operateType>A2</operateType>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isDebuff>1</isDebuff>
+		<effects>
+			<effect name="i_hp_per_max">
+				<power>
+					<value level="1">50</value>
+					<value level="2">100</value>
+				</power>
+			</effect>
+			<effect name="p_speed">
+				<amount>-40</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15538" toLevel="2" name="Blood Sacrifice: Decrease Accuracy">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Restores 50% of enemy's HP and gives an abnormal status debuff. -->
+		<abnormalTime>10</abnormalTime>
 		<icon>icon.skill1160</icon>
 		<operateType>A2</operateType>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isDebuff>1</isDebuff>
+		<effects>
+			<effect name="i_hp_per_max">
+				<power>
+					<value level="1">50</value>
+					<value level="2">100</value>
+				</power>
+			</effect>
+			<effect name="p_hit">
+				<amount>-6</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15539" toLevel="2" name="Blood Sacrifice: Decrease P. Def.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Restores 50% of enemy's HP and gives an abnormal status debuff. -->
+		<abnormalTime>10</abnormalTime>
 		<icon>icon.skill1160</icon>
 		<operateType>A2</operateType>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isDebuff>1</isDebuff>
+		<effects>
+			<effect name="i_hp_per_max">
+				<power>
+					<value level="1">50</value>
+					<value level="2">100</value>
+				</power>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>-10</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15540" toLevel="2" name="Blood Sacrifice: Decrease M. Def.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Restores 50% of enemy's HP and gives an abnormal status debuff. -->
+		<abnormalTime>10</abnormalTime>
 		<icon>icon.skill1160</icon>
 		<operateType>A2</operateType>
 		<castRange>600</castRange>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<isDebuff>1</isDebuff>
+		<effects>
+			<effect name="i_hp_per_max">
+				<power>
+					<value level="1">50</value>
+					<value level="2">100</value>
+				</power>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>-15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="15541" toLevel="1" name="Flame Pillar">
 		<!-- AUTO GENERATED SKILL -->
@@ -466,7 +526,7 @@
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-687</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15544" toLevel="2" name="Rush Attack">
 		<!-- TODO: Auto level parse, Requires manual update -->
@@ -534,7 +594,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15550" toLevel="1" name="Heart Destroyer">
 		<!-- AUTO GENERATED SKILL -->
@@ -558,7 +618,7 @@
 		<hitTime>1000</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15552" toLevel="1" name="Hell's Prison">
 		<!-- AUTO GENERATED SKILL -->
@@ -570,7 +630,7 @@
 		<hitTime>1500</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15553" toLevel="1" name="Chain Hit">
 		<!-- AUTO GENERATED SKILL -->
@@ -582,7 +642,7 @@
 		<hitTime>7600</hitTime>
 		<coolTime>1000</coolTime>
 		<effectPoint>-709</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15554" toLevel="1" name="Broad Hit">
 		<!-- AUTO GENERATED SKILL -->
@@ -594,7 +654,7 @@
 		<hitTime>6800</hitTime>
 		<coolTime>1000</coolTime>
 		<effectPoint>-2093</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15555" toLevel="1" name="Cunning Strike">
 		<!-- AUTO GENERATED SKILL -->
@@ -617,7 +677,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15557" toLevel="1" name="Crossbow Attack">
 		<!-- AUTO GENERATED SKILL -->
@@ -629,7 +689,7 @@
 		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-867</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15558" toLevel="1" name="Soul Howl">
 		<!-- AUTO GENERATED SKILL -->
@@ -642,7 +702,7 @@
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-507</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15559" toLevel="1" name="Poison Attack">
 		<!-- AUTO GENERATED SKILL -->
@@ -654,7 +714,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>7000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15560" toLevel="1" name="Hurricane Attack">
 		<!-- AUTO GENERATED SKILL -->
@@ -667,7 +727,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-867</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15561" toLevel="1" name="Connected Drain">
 		<!-- AUTO GENERATED SKILL -->
@@ -680,7 +740,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-574</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15562" toLevel="1" name="Lethal Edge">
 		<!-- AUTO GENERATED SKILL -->
@@ -693,7 +753,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15563" toLevel="1" name="Falling Hit">
 		<!-- AUTO GENERATED SKILL -->
@@ -735,7 +795,7 @@
 		<hitTime>2000</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15567" toLevel="1" name="Aerial Yoke">
 		<!-- AUTO GENERATED SKILL -->
@@ -746,7 +806,7 @@
 		<hitTime>2000</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15568" toLevel="1" name="Forward March">
 		<!-- AUTO GENERATED SKILL -->
@@ -767,7 +827,7 @@
 		<hitTime>1500</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-709</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15570" toLevel="1" name="Master Siege Shield">
 		<!-- AUTO GENERATED SKILL -->
@@ -811,7 +871,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-867</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15574" toLevel="1" name="Master Siege Hammer">
 		<!-- AUTO GENERATED SKILL -->
@@ -1002,7 +1062,7 @@
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-867</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15591" toLevel="1" name="Wind Pull">
 		<!-- AUTO GENERATED SKILL -->
@@ -1012,7 +1072,7 @@
 		<hitTime>2000</hitTime>
 		<coolTime>3000</coolTime>
 		<effectPoint>-867</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15592" toLevel="1" name="Dark Wind Armor">
 		<!-- AUTO GENERATED SKILL -->
@@ -1041,7 +1101,7 @@
 		<operateType>A2</operateType>
 		<hitTime>1000</hitTime>
 		<effectPoint>-867</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15595" toLevel="1" name="Lindvior's Fall">
 		<!-- AUTO GENERATED SKILL -->
@@ -1050,7 +1110,7 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>-574</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="15596" toLevel="1" name="Presentation - Lindvior's Takeoff">
 		<!-- AUTO GENERATED SKILL -->
@@ -1083,6 +1143,6 @@
 		<operateType>A2</operateType>
 		<hitTime>1000</hitTime>
 		<effectPoint>-574</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 </list>

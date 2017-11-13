@@ -20,10 +20,11 @@ package org.l2junity.loginserver.network.gameserverpackets;
 
 import java.util.Arrays;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.loginserver.GameServerTable;
 import org.l2junity.loginserver.GameServerTable.GameServerInfo;
 import org.l2junity.loginserver.GameServerThread;
+import org.l2junity.loginserver.config.LoginServerConfig;
 import org.l2junity.loginserver.network.L2JGameServerPacketHandler.GameServerState;
 import org.l2junity.loginserver.network.loginserverpackets.AuthResponse;
 import org.l2junity.loginserver.network.loginserverpackets.LoginServerFail;
@@ -43,6 +44,7 @@ import org.slf4j.LoggerFactory;
  * d hexid size
  * b hexid
  * </pre>
+ * 
  * @author -Wooden-
  */
 public class GameServerAuth extends BaseRecievePacket
@@ -80,7 +82,7 @@ public class GameServerAuth extends BaseRecievePacket
 			_hosts[i] = readS();
 		}
 		
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			_log.info("Auth request received");
 		}
@@ -89,7 +91,7 @@ public class GameServerAuth extends BaseRecievePacket
 		{
 			AuthResponse ar = new AuthResponse(server.getGameServerInfo().getId());
 			server.sendPacket(ar);
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
 				_log.info("Authed: id: " + server.getGameServerInfo().getId());
 			}
@@ -126,7 +128,7 @@ public class GameServerAuth extends BaseRecievePacket
 			{
 				// there is already a server registered with the desired id and different hex id
 				// try to register this one with an alternative id
-				if (Config.ACCEPT_NEW_GAMESERVER && _acceptAlternativeId)
+				if (LoginServerConfig.ACCEPT_NEW_GAMESERVER && _acceptAlternativeId)
 				{
 					gsi = new GameServerInfo(id, hexId, _server);
 					if (gameServerTable.registerWithFirstAvailableId(gsi))
@@ -151,7 +153,7 @@ public class GameServerAuth extends BaseRecievePacket
 		else
 		{
 			// can we register on this id?
-			if (Config.ACCEPT_NEW_GAMESERVER)
+			if (LoginServerConfig.ACCEPT_NEW_GAMESERVER)
 			{
 				gsi = new GameServerInfo(id, hexId, _server);
 				if (gameServerTable.register(id, gsi))

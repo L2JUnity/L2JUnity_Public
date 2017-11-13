@@ -18,9 +18,9 @@
  */
 package org.l2junity.gameserver.network;
 
-import io.netty.channel.nio.NioEventLoopGroup;
+import org.l2junity.gameserver.config.GeneralConfig;
 
-import org.l2junity.Config;
+import io.netty.channel.nio.NioEventLoopGroup;
 
 /**
  * @author Nos
@@ -28,7 +28,7 @@ import org.l2junity.Config;
 public class EventLoopGroupManager
 {
 	private final NioEventLoopGroup _bossGroup = new NioEventLoopGroup(1);
-	private final NioEventLoopGroup _workerGroup = new NioEventLoopGroup(Config.IO_PACKET_THREAD_CORE_SIZE);
+	private final NioEventLoopGroup _workerGroup = new NioEventLoopGroup(GeneralConfig.IO_PACKET_THREAD_CORE_SIZE);
 	
 	public NioEventLoopGroup getBossGroup()
 	{

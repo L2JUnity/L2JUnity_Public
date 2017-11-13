@@ -25,6 +25,7 @@ import org.l2junity.gameserver.model.Location;
  */
 public final class SpawnHolder extends Location
 {
+	private static final long serialVersionUID = 7136684341706210901L;
 	private final int _npcId;
 	private final int _respawnDelay;
 	private final boolean _spawnAnimation;

@@ -26,7 +26,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.model.actor.Attackable;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
@@ -60,12 +60,12 @@ public final class DecayTaskManager
 		}
 		else
 		{
-			delay = Config.DEFAULT_CORPSE_TIME;
+			delay = NpcConfig.DEFAULT_CORPSE_TIME;
 		}
 		
 		if (character.isAttackable() && (((Attackable) character).isSpoiled() || ((Attackable) character).isSeeded()))
 		{
-			delay += Config.SPOILED_CORPSE_EXTEND_TIME;
+			delay += NpcConfig.SPOILED_CORPSE_EXTEND_TIME;
 		}
 		
 		add(character, delay, TimeUnit.SECONDS);

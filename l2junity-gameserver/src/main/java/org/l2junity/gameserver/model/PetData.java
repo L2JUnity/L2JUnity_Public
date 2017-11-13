@@ -18,13 +18,8 @@
  */
 package org.l2junity.gameserver.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import org.l2junity.gameserver.data.xml.impl.SkillData;
-import org.l2junity.gameserver.model.holders.SkillHolder;
 
 /**
  * Class hold information about basic pet stats which are same on each level.
@@ -33,15 +28,11 @@ import org.l2junity.gameserver.model.holders.SkillHolder;
 public class PetData
 {
 	private final Map<Integer, PetLevelData> _levelStats = new HashMap<>();
-	private final List<L2PetSkillLearn> _skills = new ArrayList<>();
 	
 	private final int _npcId;
 	private final int _itemId;
 	private int _load = 20000;
-	private int _hungryLimit = 1;
-	private int _minlvl = Byte.MAX_VALUE;
 	private boolean _syncLevel = false;
-	private final List<Integer> _food = new ArrayList<>();
 	
 	public PetData(int npcId, int itemId)
 	{
@@ -71,10 +62,6 @@ public class PetData
 	 */
 	public void addNewStat(int level, PetLevelData data)
 	{
-		if (_minlvl > level)
-		{
-			_minlvl = level;
-		}
 		_levelStats.put(level, data);
 	}
 	
@@ -96,43 +83,11 @@ public class PetData
 	}
 	
 	/**
-	 * @return the pet's hunger limit.
-	 */
-	public int getHungryLimit()
-	{
-		return _hungryLimit;
-	}
-	
-	/**
 	 * @return {@code true} if pet synchronizes it's level with his master's
 	 */
 	public boolean isSynchLevel()
 	{
 		return _syncLevel;
-	}
-	
-	/**
-	 * @return the pet's minimum level.
-	 */
-	public int getMinLevel()
-	{
-		return _minlvl;
-	}
-	
-	/**
-	 * @return the pet's food list.
-	 */
-	public List<Integer> getFood()
-	{
-		return _food;
-	}
-	
-	/**
-	 * @param foodId the pet's food Id to add.
-	 */
-	public void addFood(Integer foodId)
-	{
-		_food.add(foodId);
 	}
 	
 	/**
@@ -144,111 +99,10 @@ public class PetData
 	}
 	
 	/**
-	 * @param limit the hunger limit to set.
-	 */
-	public void setHungryLimit(int limit)
-	{
-		_hungryLimit = limit;
-	}
-	
-	/**
 	 * @param val synchronizes level with master or not.
 	 */
 	public void setSyncLevel(boolean val)
 	{
 		_syncLevel = val;
-	}
-	
-	// SKILS
-	
-	/**
-	 * @param skillId the skill Id to add.
-	 * @param skillLvl the skill level.
-	 * @param petLvl the pet's level when this skill is available.
-	 */
-	public void addNewSkill(int skillId, int skillLvl, int petLvl)
-	{
-		_skills.add(new L2PetSkillLearn(skillId, skillLvl, petLvl));
-	}
-	
-	/**
-	 * TODO: Simplify this.
-	 * @param skillId the skill Id.
-	 * @param petLvl the pet level.
-	 * @return the level of the skill for the given skill Id and pet level.
-	 */
-	public int getAvailableLevel(int skillId, int petLvl)
-	{
-		int lvl = 0;
-		for (L2PetSkillLearn temp : _skills)
-		{
-			if (temp.getSkillId() != skillId)
-			{
-				continue;
-			}
-			if (temp.getSkillLevel() == 0)
-			{
-				if (petLvl < 70)
-				{
-					lvl = (petLvl / 10);
-					if (lvl <= 0)
-					{
-						lvl = 1;
-					}
-				}
-				else
-				{
-					lvl = (7 + ((petLvl - 70) / 5));
-				}
-				
-				// formula usable for skill that have 10 or more skill levels
-				int maxLvl = SkillData.getInstance().getMaxLevel(temp.getSkillId());
-				if (lvl > maxLvl)
-				{
-					lvl = maxLvl;
-				}
-				break;
-			}
-			else if (temp.getMinLevel() <= petLvl)
-			{
-				if (temp.getSkillLevel() > lvl)
-				{
-					lvl = temp.getSkillLevel();
-				}
-			}
-		}
-		return lvl;
-	}
-	
-	/**
-	 * @return the list with the pet's skill data.
-	 */
-	public List<L2PetSkillLearn> getAvailableSkills()
-	{
-		return _skills;
-	}
-	
-	public static final class L2PetSkillLearn extends SkillHolder
-	{
-		private final int _minLevel;
-		
-		/**
-		 * @param id the skill Id.
-		 * @param lvl the skill level.
-		 * @param minLvl the minimum level when this skill is available.
-		 */
-		public L2PetSkillLearn(int id, int lvl, int minLvl)
-		{
-			super(id, lvl);
-			_minLevel = minLvl;
-		}
-		
-		/**
-		 * @return the minimum level for the pet to get the skill.
-		 */
-		public int getMinLevel()
-		{
-			return _minLevel;
-		}
 	}
 }

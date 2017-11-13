@@ -18,13 +18,15 @@
  */
 package org.l2junity.gameserver.model;
 
+import java.util.Objects;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.FeatureConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
+import org.l2junity.gameserver.enums.UserInfoType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.clan.OnClanWarStart;
@@ -58,23 +60,10 @@ public final class ClanWar
 		_startTime = System.currentTimeMillis();
 		_state = ClanWarState.BLOOD_DECLARATION;
 		
-		_cancelTask = ThreadPoolManager.getInstance().scheduleGeneral(() ->
+		_cancelTask = ThreadPool.schedule(() ->
 		{
 			clanWarTimeout();
-		}, (_startTime + TIME_TO_CANCEL_NON_MUTUAL_CLAN_WAR) - System.currentTimeMillis());
-		
-		attacker.addWar(attacked.getId(), this);
-		attacked.addWar(attacker.getId(), this);
-		
-		EventDispatcher.getInstance().notifyEventAsync(new OnClanWarStart(attacker, attacked));
-		
-		SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_DECLARED_A_CLAN_WAR_WITH_S1);
-		sm.addString(attacked.getName());
-		attacker.broadcastToOnlineMembers(sm);
-		
-		sm = SystemMessage.getSystemMessage(SystemMessageId.S1_HAS_DECLARED_A_CLAN_WAR_THE_WAR_WILL_AUTOMATICALLY_START_IF_YOU_KILL_S1_CLAN_MEMBERS_5_TIMES_WITHIN_A_WEEK);
-		sm.addString(attacker.getName());
-		attacked.broadcastToOnlineMembers(sm);
+		}, (_startTime + TIME_TO_CANCEL_NON_MUTUAL_CLAN_WAR) - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 	}
 	
 	public ClanWar(L2Clan attacker, L2Clan attacked, int attackerKillCount, int attackedKillCount, int winnerClan, long startTime, long endTime, ClanWarState state)
@@ -90,10 +79,10 @@ public final class ClanWar
 		
 		if ((_startTime + TIME_TO_CANCEL_NON_MUTUAL_CLAN_WAR) > System.currentTimeMillis())
 		{
-			_cancelTask = ThreadPoolManager.getInstance().scheduleGeneral(() ->
+			_cancelTask = ThreadPool.schedule(() ->
 			{
 				clanWarTimeout();
-			}, (_startTime + TIME_TO_CANCEL_NON_MUTUAL_CLAN_WAR) - System.currentTimeMillis());
+			}, (_startTime + TIME_TO_CANCEL_NON_MUTUAL_CLAN_WAR) - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 		}
 		
 		if (_endTime > 0)
@@ -102,15 +91,41 @@ public final class ClanWar
 			
 			if (endTimePeriod > System.currentTimeMillis())
 			{
-				ClanTable.getInstance().deleteclanswars(_attackerClanId, _attackedClanId);
+				ClanTable.getInstance().deleteClansWar(_attackerClanId, _attackedClanId);
 			}
 			else
 			{
-				ThreadPoolManager.getInstance().scheduleGeneral(() ->
+				ThreadPool.schedule(() ->
 				{
-					ClanTable.getInstance().deleteclanswars(_attackerClanId, _attackedClanId);
-				}, endTimePeriod);
+					ClanTable.getInstance().deleteClansWar(_attackerClanId, _attackedClanId);
+				}, endTimePeriod, TimeUnit.MILLISECONDS);
 			}
+		}
+	}
+	
+	public void declareWar()
+	{
+		final L2Clan attacker = ClanTable.getInstance().getClan(_attackerClanId);
+		final L2Clan attacked = ClanTable.getInstance().getClan(_attackedClanId);
+		
+		if ((attacker != null) && (attacked != null))
+		{
+			attacker.addWar(attacked.getId(), this);
+			attacked.addWar(attacker.getId(), this);
+			
+			EventDispatcher.getInstance().notifyEventAsync(new OnClanWarStart(attacker, attacked));
+			
+			SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_DECLARED_A_CLAN_WAR_WITH_S1);
+			sm.addString(attacked.getName());
+			attacker.broadcastToOnlineMembers(sm);
+			
+			sm = SystemMessage.getSystemMessage(SystemMessageId.S1_HAS_DECLARED_A_CLAN_WAR_THE_WAR_WILL_AUTOMATICALLY_START_IF_YOU_KILL_S1_CLAN_MEMBERS_5_TIMES_WITHIN_A_WEEK);
+			sm.addString(attacker.getName());
+			attacked.broadcastToOnlineMembers(sm);
+			
+			attacker.getMembers().stream().filter(Objects::nonNull).filter(ClanMember::isOnline).forEach(p -> p.getPlayerInstance().broadcastUserInfo(UserInfoType.CLAN));
+			attacked.getMembers().stream().filter(Objects::nonNull).filter(ClanMember::isOnline).forEach(p -> p.getPlayerInstance().broadcastUserInfo(UserInfoType.CLAN));
+			ClanTable.getInstance().storeClansWar(this);
 		}
 	}
 	
@@ -125,8 +140,8 @@ public final class ClanWar
 			// however, when the other side reputation score is 0 or below, your clan cannot acquire any reputation points from them.
 			if (victimClan.getReputationScore() > 0)
 			{
-				victimClan.takeReputationScore(Config.REPUTATION_SCORE_PER_KILL, false);
-				killerClan.addReputationScore(Config.REPUTATION_SCORE_PER_KILL, false);
+				victimClan.takeReputationScore(FeatureConfig.REPUTATION_SCORE_PER_KILL, false);
+				killerClan.addReputationScore(FeatureConfig.REPUTATION_SCORE_PER_KILL, false);
 			}
 			
 			// System Message notification to clan members
@@ -148,6 +163,8 @@ public final class ClanWar
 			{
 				_attackedKillCount.incrementAndGet();
 			}
+			
+			ClanTable.getInstance().storeClansWar(this);
 		}
 		else if ((_state == ClanWarState.BLOOD_DECLARATION) && (victimClan.getId() == _attackerClanId))
 		{
@@ -178,6 +195,8 @@ public final class ClanWar
 				sm.addInt(5 - killCount);
 				killerClan.broadcastToOnlineMembers(sm);
 			}
+			
+			ClanTable.getInstance().storeClansWar(this);
 		}
 	}
 	
@@ -202,10 +221,12 @@ public final class ClanWar
 			_winnerClanId = winnerClan.getId();
 			_endTime = System.currentTimeMillis();
 			
-			ThreadPoolManager.getInstance().scheduleGeneral(() ->
+			ClanTable.getInstance().storeClansWar(this);
+			
+			ThreadPool.schedule(() ->
 			{
-				ClanTable.getInstance().deleteclanswars(cancelor.getId(), winnerClan.getId());
-			}, (_endTime + TIME_TO_DELETION_AFTER_DEFEAT) - System.currentTimeMillis());
+				ClanTable.getInstance().deleteClansWar(cancelor.getId(), winnerClan.getId());
+			}, (_endTime + TIME_TO_DELETION_AFTER_DEFEAT) - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -227,10 +248,12 @@ public final class ClanWar
 			_state = ClanWarState.TIE;
 			_endTime = System.currentTimeMillis();
 			
-			ThreadPoolManager.getInstance().scheduleGeneral(() ->
+			ClanTable.getInstance().storeClansWar(this);
+			
+			ThreadPool.schedule(() ->
 			{
-				ClanTable.getInstance().deleteclanswars(attackerClan.getId(), attackedClan.getId());
-			}, (_endTime + TIME_TO_DELETION_AFTER_CANCELLATION) - System.currentTimeMillis());
+				ClanTable.getInstance().deleteClansWar(attackerClan.getId(), attackedClan.getId());
+			}, (_endTime + TIME_TO_DELETION_AFTER_CANCELLATION) - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -245,6 +268,8 @@ public final class ClanWar
 		sm = SystemMessage.getSystemMessage(SystemMessageId.A_CLAN_WAR_WITH_CLAN_S1_HAS_STARTED_THE_CLAN_THAT_CANCELS_THE_WAR_FIRST_WILL_LOSE_5_000_CLAN_REPUTATION_ANY_CLAN_THAT_CANCELS_THE_WAR_WILL_BE_UNABLE_TO_DECLARE_A_WAR_FOR_1_WEEK_IF_YOUR_CLAN_MEMBER_GETS_KILLED_BY_THE_OTHER_CLAN_XP_DECREASES_BY_1_4_OF_THE_AMOUNT_THAT_DECREASES_IN_THE_HUNTING_GROUND);
 		sm.addString(attacked.getName());
 		attacker.broadcastToOnlineMembers(sm);
+		
+		ClanTable.getInstance().storeClansWar(this);
 		
 		if (_cancelTask != null)
 		{

@@ -18,11 +18,13 @@
  */
 package org.l2junity.gameserver.model.stats;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.l2junity.commons.util.IXmlReader;
+import org.l2junity.commons.util.XmlReaderException;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.slf4j.Logger;
@@ -35,26 +37,24 @@ import org.w3c.dom.NamedNodeMap;
  */
 public enum BaseStats
 {
-	STR(Stats.STAT_STR),
-	INT(Stats.STAT_INT),
-	DEX(Stats.STAT_DEX),
-	WIT(Stats.STAT_WIT),
-	CON(Stats.STAT_CON),
-	MEN(Stats.STAT_MEN),
-	CHA(Stats.STAT_CHA),
-	LUC(Stats.STAT_LUC);
+	STR(DoubleStat.STAT_STR),
+	INT(DoubleStat.STAT_INT),
+	DEX(DoubleStat.STAT_DEX),
+	WIT(DoubleStat.STAT_WIT),
+	CON(DoubleStat.STAT_CON),
+	MEN(DoubleStat.STAT_MEN),
+	CHA(DoubleStat.STAT_CHA),
+	LUC(DoubleStat.STAT_LUC);
 	
-	public static final int MAX_STAT_VALUE = 201;
+	private final double[] _bonus = new double[PlayerConfig.MAX_BASE_STAT + 1];
+	private final DoubleStat _stat;
 	
-	private final double[] _bonus = new double[MAX_STAT_VALUE];
-	private final Stats _stat;
-	
-	BaseStats(Stats stat)
+	BaseStats(DoubleStat stat)
 	{
 		_stat = stat;
 	}
 	
-	public Stats getStat()
+	public DoubleStat getStat()
 	{
 		return _stat;
 	}
@@ -63,7 +63,7 @@ public enum BaseStats
 	{
 		if ((creature != null) && (_stat != null))
 		{
-			return (int) Math.min(_stat.finalize(creature, Optional.empty()), MAX_STAT_VALUE - 1);
+			return (int) creature.getStat().getValue(_stat);
 		}
 		return 0;
 	}
@@ -93,7 +93,7 @@ public enum BaseStats
 		return _bonus[index];
 	}
 	
-	public static BaseStats valueOf(Stats stat)
+	public static BaseStats valueOf(DoubleStat stat)
 	{
 		for (BaseStats baseStat : values())
 		{
@@ -111,14 +111,20 @@ public enum BaseStats
 		{
 			final Logger LOGGER = LoggerFactory.getLogger(BaseStats.class);
 			
-			@Override
-			public void load()
+			protected void load()
 			{
-				parseDatapackFile("data/stats/statBonus.xml");
+				try
+				{
+					parseDatapackFile("data/stats/statBonus.xml");
+				}
+				catch (XmlReaderException | IOException e)
+				{
+					LOGGER.info("Error loading stat bonus.", e);
+				}
 			}
 			
 			@Override
-			public void parseDocument(Document doc, File f)
+			public void parseDocument(Document doc, Path path)
 			{
 				forEach(doc, "list", listNode -> forEach(listNode, IXmlReader::isNode, statNode ->
 				{

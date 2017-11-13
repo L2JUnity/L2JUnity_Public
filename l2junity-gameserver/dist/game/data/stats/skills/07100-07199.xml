@@ -20,12 +20,12 @@
 		<abnormalTime>3</abnormalTime>
 		<trait>SHOCK</trait>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -51,14 +51,14 @@
 		<abnormalTime>3</abnormalTime>
 		<trait>AIRBIND</trait>
 		<abnormalVisualEffect>AIRBIND</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 				<SLEEP>100</SLEEP>
 				<DERANGEMENT>100</DERANGEMENT>
@@ -88,7 +88,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SummonPet" />
+			<effect name="i_summon_pet" />
 		</effects>
 	</skill>
 	<skill id="7103" toLevel="1" name="Helping Tree CP Recovery Range">
@@ -342,7 +342,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>19288</npcId>
 				<npcCount>1</npcCount>
 			</effect>
@@ -576,7 +576,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>19289</npcId>
 				<npcCount>1</npcCount>
 			</effect>
@@ -602,7 +602,7 @@
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>95</minLevel>
-				<maxLevel>99</maxLevel>
+				<maxLevel>106</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 			<condition name="OpCanNotUseAirship" />
@@ -697,7 +697,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>19290</npcId>
 				<npcCount>1</npcCount>
 			</effect>
@@ -723,13 +723,13 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
+			<effect name="p_block_debuff" />
 		</effects>
 	</skill>
 	<skill id="7114" toLevel="1" name="Spellbook: Clan Flag">
@@ -755,7 +755,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>15094</skillId> <!-- Clan Flag -->
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -786,6 +786,41 @@
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<hitTime>1500</hitTime>
+	</skill>
+	<skill id="7117" toLevel="1" name="Spellbook: Hell Hound">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>1500</hitTime>
+	</skill>
+	<skill id="7118" toLevel="1" name="Spellbook: Pegasus">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>1500</hitTime>
+	</skill>
+	<skill id="7119" toLevel="1" name="Spellbook: Wing Hound">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>1500</hitTime>
+	</skill>
+	<skill id="7120" toLevel="1" name="Spellbook: War Horse">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>1500</hitTime>
+	</skill>
+	<skill id="7121" toLevel="1" name="Spellbook: Griffin">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
 		<hitTime>1500</hitTime>
 	</skill>
 </list>

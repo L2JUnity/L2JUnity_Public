@@ -25,7 +25,7 @@ import org.l2junity.gameserver.network.client.send.SocialAction;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 
-public class PetStat extends SummonStat
+public class PetStat extends PlayableStat
 {
 	public PetStat(L2PetInstance activeChar)
 	{
@@ -40,21 +40,19 @@ public class PetStat extends SummonStat
 		}
 		
 		getActiveChar().updateAndBroadcastStatus(1);
-		// The PetInfo packet wipes the PartySpelled (list of active spells' icons). Re-add them
-		getActiveChar().updateEffectIcons(true);
-		
 		return true;
 	}
 	
-	public boolean addExpAndSp(long addToExp, long addToSp)
+	public boolean addExpAndSp(double addToExp, double addToSp)
 	{
-		if (getActiveChar().isUncontrollable() || !addExp(addToExp))
+		final long finalExp = Math.round(addToExp);
+		if (getActiveChar().isUncontrollable() || !addExp(finalExp))
 		{
 			return false;
 		}
 		
 		SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.YOUR_PET_GAINED_S1_XP);
-		sm.addLong(addToExp);
+		sm.addLong(finalExp);
 		getActiveChar().updateAndBroadcastStatus(1);
 		getActiveChar().sendPacket(sm);
 		return true;
@@ -97,7 +95,7 @@ public class PetStat extends SummonStat
 		{
 			if (getActiveChar() != null)
 			{
-				_log.warn("Pet objectId:" + getActiveChar().getObjectId() + ", NpcId:" + getActiveChar().getId() + ", level:" + level + " is missing data from pets_stats table!");
+				LOGGER.warn("Pet objectId:" + getActiveChar().getObjectId() + ", NpcId:" + getActiveChar().getId() + ", level:" + level + " is missing data from pets_stats table!");
 			}
 			throw e;
 		}

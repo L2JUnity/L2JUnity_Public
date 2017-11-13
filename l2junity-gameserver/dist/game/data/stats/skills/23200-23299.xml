@@ -19,7 +19,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>20993</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -773,7 +773,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>500</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -793,7 +793,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>500</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1265,17 +1265,17 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>HIT_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>HIT_UP</slot>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1302,17 +1302,17 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>MA_UP,9;MD_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>MA_UP;MD_UP</slot>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1339,23 +1339,23 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>1.5</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -1363,34 +1363,34 @@
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="ResistDispelByCategory">
+			<effect name="p_resist_dispel_by_category">
 				<amount>-40</amount>
 				<slot>BUFF</slot>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-25</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -1417,17 +1417,17 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>VAMPIRIC_ATTACK,9;ATTACK_TIME_DOWN,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>VAMPIRIC_ATTACK;ATTACK_TIME_DOWN</slot>
 			</effect>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1455,10 +1455,10 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>8</SHOCK>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -1489,7 +1489,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -1497,7 +1497,7 @@
 					<item>CROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PhysicalAttackRange">
+			<effect name="p_attack_range">
 				<amount>100</amount>
 				<mode>DIFF</mode>
 				<weaponType>
@@ -1529,14 +1529,14 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -1567,14 +1567,14 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -1604,7 +1604,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Counter Critical -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1615,7 +1615,7 @@
 				<skillId>6059</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1642,19 +1642,19 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -1681,11 +1681,11 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ResistDispelByCategory">
+			<effect name="p_resist_dispel_by_category">
 				<amount>-30</amount>
 				<slot>BUFF</slot>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-20</amount>
 				<slot>DEBUFF</slot>
 			</effect>
@@ -1709,7 +1709,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CallTargetParty" />
+			<effect name="i_call_target_party" />
 		</effects>
 	</skill>
 	<skill id="23250" toLevel="1" name="Agathion Cute Trick - Cow">
@@ -1781,7 +1781,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1808,7 +1808,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1835,7 +1835,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1862,7 +1862,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1889,7 +1889,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1916,7 +1916,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1943,7 +1943,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1970,7 +1970,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1997,7 +1997,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="WeightPenalty">
+			<effect name="p_weight_penalty">
 				<amount>9000</amount>
 			</effect>
 		</effects>
@@ -2023,7 +2023,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2050,7 +2050,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2077,7 +2077,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2104,7 +2104,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>9</amount>
 				<chance>80</chance>
 			</effect>
@@ -2131,7 +2131,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2158,7 +2158,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2185,35 +2185,35 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>8</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2240,7 +2240,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2267,7 +2267,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2294,7 +2294,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2321,17 +2321,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -2359,57 +2359,57 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-10</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -2437,55 +2437,55 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-10</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2512,51 +2512,51 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>5</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-10</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicCriticalDamage">
+			<effect name="p_magic_critical_dmg">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2583,52 +2583,52 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>20</amount>
 				<mode>PER</mode>
 				<heal>true</heal>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-10</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2657,17 +2657,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>PA_UP,9;PD_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>PA_UP;PD_UP</slot>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2696,17 +2696,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>MA_UP,9;MD_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>MA_UP;MD_UP</slot>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2735,17 +2735,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>MAX_HP_UP,9;MAX_MP_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>MAX_HP_UP;MAX_MP_UP</slot>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2774,17 +2774,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>CRITICAL_PROB_UP,9;CRITICAL_DMG_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>CRITICAL_PROB_UP;CRITICAL_DMG_UP</slot>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2813,17 +2813,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SHIELD_PROB_UP,9;SHIELD_DEFENCE_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>SHIELD_PROB_UP;SHIELD_DEFENCE_UP</slot>
 			</effect>
-			<effect name="ShieldDefenceRate">
+			<effect name="p_shield_defence_rate">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ShieldDefence">
+			<effect name="p_physical_shield_defence">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2852,17 +2852,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SPEED_UP,9;AVOID_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>SPEED_UP;AVOID_UP</slot>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2890,7 +2890,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -2904,7 +2904,7 @@
 					<item>DUALFIST</item>
 				</weaponType>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>20</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -2942,7 +2942,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>10</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2973,7 +2973,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="NoblesseBless" />
+			<effect name="p_preserve_abnormal" />
 		</effects>
 	</skill>
 	<skill id="23286" toLevel="1" name="Master's Blessing - Eye of Pa'agrio">
@@ -2997,17 +2997,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>HIT_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>HIT_UP</slot>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3034,17 +3034,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>MA_UP,9;MD_UP,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>MA_UP;MD_UP</slot>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3071,23 +3071,23 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>1.5</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -3095,34 +3095,34 @@
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="ResistDispelByCategory">
+			<effect name="p_resist_dispel_by_category">
 				<amount>-40</amount>
 				<slot>BUFF</slot>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-25</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -3149,17 +3149,17 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>VAMPIRIC_ATTACK,9;ATTACK_TIME_DOWN,9</dispel>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>VAMPIRIC_ATTACK;ATTACK_TIME_DOWN</slot>
 			</effect>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3187,14 +3187,14 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<weaponType>
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>8</SHOCK>
 			</effect>
 		</effects>
@@ -3221,7 +3221,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -3229,7 +3229,7 @@
 					<item>CROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PhysicalAttackRange">
+			<effect name="p_attack_range">
 				<amount>100</amount>
 				<mode>DIFF</mode>
 				<weaponType>
@@ -3261,14 +3261,14 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -3299,14 +3299,14 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -3336,7 +3336,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Counter Critical -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -3347,7 +3347,7 @@
 				<skillId>6059</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3374,19 +3374,19 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -3413,11 +3413,11 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="ResistDispelByCategory">
+			<effect name="p_resist_dispel_by_category">
 				<amount>-30</amount>
 				<slot>BUFF</slot>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-20</amount>
 				<slot>DEBUFF</slot>
 			</effect>
@@ -3461,12 +3461,12 @@
 		<hitCancelTime>0</hitCancelTime>
 		<lvlBonusRate>1</lvlBonusRate>
 		<icon>icon.skill0771</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>300</power>
+			<effect name="t_hp">
+				<power>-300</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -3488,12 +3488,12 @@
 		<hitCancelTime>0</hitCancelTime>
 		<lvlBonusRate>1</lvlBonusRate>
 		<icon>icon.skill0772</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>300</power>
+			<effect name="t_hp">
+				<power>-300</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>

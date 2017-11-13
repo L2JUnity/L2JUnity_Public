@@ -18,20 +18,24 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.datatables.ItemTable;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.items.type.CrystalType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 
 /**
  * This class holds the Enchant HP Bonus Data.
@@ -41,50 +45,50 @@ public class EnchantItemHPBonusData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EnchantItemHPBonusData.class);
 	
-	private final Map<CrystalType, List<Integer>> _armorHPBonuses = new EnumMap<>(CrystalType.class);
+	private static float FULL_ARMOR_MODIFIER = 1.5f;
 	
-	private static final float FULL_ARMOR_MODIFIER = 1.5f; // TODO: Move it to config!
+	private final Map<CrystalType, List<Integer>> _armorHPBonuses = new EnumMap<>(CrystalType.class);
 	
 	/**
 	 * Instantiates a new enchant hp bonus data.
 	 */
 	protected EnchantItemHPBonusData()
 	{
-		load();
 	}
 	
-	@Override
-	public void parseDocument(Document doc, File f)
-	{
-		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
-		{
-			if ("list".equalsIgnoreCase(n.getNodeName()))
-			{
-				for (Node d = n.getFirstChild(); d != null; d = d.getNextSibling())
-				{
-					if ("enchantHP".equalsIgnoreCase(d.getNodeName()))
-					{
-						final List<Integer> bonuses = new ArrayList<>(12);
-						for (Node e = d.getFirstChild(); e != null; e = e.getNextSibling())
-						{
-							if ("bonus".equalsIgnoreCase(e.getNodeName()))
-							{
-								bonuses.add(Integer.parseInt(e.getTextContent()));
-							}
-						}
-						_armorHPBonuses.put(parseEnum(d.getAttributes(), CrystalType.class, "grade"), bonuses);
-					}
-				}
-			}
-		}
-	}
-	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ItemTable.class))
+	protected void load() throws Exception
 	{
 		_armorHPBonuses.clear();
 		parseDatapackFile("data/stats/enchantHPBonus.xml");
 		LOGGER.info("Loaded {} Enchant HP Bonuses.", _armorHPBonuses.size());
+	}
+	
+	@Override
+	public void parseDocument(Document doc, Path path)
+	{
+		forEach(doc, "list", listNode ->
+		{
+			forEach(listNode, "onePieceFactor", onePieceFactorNode ->
+			{
+				FULL_ARMOR_MODIFIER = Integer.parseInt(onePieceFactorNode.getTextContent()) / 100f;
+			});
+			forEach(listNode, "enchantHP", enchantHPNode ->
+			{
+				final List<Integer> bonuses = new ArrayList<>(12);
+				
+				forEach(enchantHPNode, "bonus", bonusNode ->
+				{
+					bonuses.add(Integer.parseInt(bonusNode.getTextContent()));
+				});
+				_armorHPBonuses.put(parseEnum(enchantHPNode.getAttributes(), CrystalType.class, "grade"), bonuses);
+			});
+		});
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _armorHPBonuses.size();
 	}
 	
 	/**
@@ -94,8 +98,13 @@ public class EnchantItemHPBonusData implements IGameXmlReader
 	 */
 	public final int getHPBonus(ItemInstance item)
 	{
+		if ((item.getOlyEnchantLevel() <= 0) || (item.getItem().getType2() != L2Item.TYPE2_SHIELD_ARMOR))
+		{
+			return 0;
+		}
+		
 		final List<Integer> values = _armorHPBonuses.get(item.getItem().getCrystalTypePlus());
-		if ((values == null) || values.isEmpty() || (item.getOlyEnchantLevel() <= 0))
+		if ((values == null) || values.isEmpty())
 		{
 			return 0;
 		}
@@ -112,6 +121,7 @@ public class EnchantItemHPBonusData implements IGameXmlReader
 	 * Gets the single instance of EnchantHPBonusData.
 	 * @return single instance of EnchantHPBonusData
 	 */
+	@InstanceGetter
 	public static final EnchantItemHPBonusData getInstance()
 	{
 		return SingletonHolder._instance;

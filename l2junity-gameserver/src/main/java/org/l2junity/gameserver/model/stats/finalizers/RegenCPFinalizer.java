@@ -18,13 +18,13 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -32,7 +32,7 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class RegenCPFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		if (!creature.isPlayer())
@@ -54,6 +54,6 @@ public class RegenCPFinalizer implements IStatsFunction
 		{
 			baseValue *= 0.7; // Running
 		}
-		return Stats.defaultValue(player, stat, baseValue);
+		return DoubleStat.defaultValue(player, stat, baseValue);
 	}
 }

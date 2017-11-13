@@ -48,9 +48,9 @@ public class ExValidateLocationInShuttle implements IClientOutgoingPacket
 		
 		packet.writeD(_activeChar.getObjectId());
 		packet.writeD(_shipId);
-		packet.writeD(_loc.getX());
-		packet.writeD(_loc.getY());
-		packet.writeD(_loc.getZ());
+		packet.writeD((int) _loc.getX());
+		packet.writeD((int) _loc.getY());
+		packet.writeD((int) _loc.getZ());
 		packet.writeD(_heading);
 		return true;
 	}

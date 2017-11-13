@@ -19,7 +19,6 @@
 package org.l2junity.gameserver.model.zone.type;
 
 import org.l2junity.gameserver.model.actor.Creature;
-import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.zone.ZoneId;
 import org.l2junity.gameserver.model.zone.ZoneType;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -38,28 +37,34 @@ public class ArenaZone extends ZoneType
 	@Override
 	protected void onEnter(Creature character)
 	{
-		if (character instanceof PlayerInstance)
+		if (character.isPlayer())
 		{
 			if (!character.isInsideZone(ZoneId.PVP))
 			{
 				character.sendPacket(SystemMessageId.YOU_HAVE_ENTERED_A_COMBAT_ZONE);
 			}
 		}
-		
 		character.setInsideZone(ZoneId.PVP, true);
+		if (character.isPlayer())
+		{
+			character.asPlayer().broadcastRelationChanged();
+		}
 	}
 	
 	@Override
 	protected void onExit(Creature character)
 	{
-		if (character instanceof PlayerInstance)
+		if (character.isPlayer())
 		{
-			if (!character.isInsideZone(ZoneId.PVP))
+			if (character.isInsideZone(ZoneId.PVP))
 			{
 				character.sendPacket(SystemMessageId.YOU_HAVE_LEFT_A_COMBAT_ZONE);
 			}
 		}
-		
 		character.setInsideZone(ZoneId.PVP, false);
+		if (character.isPlayer())
+		{
+			character.asPlayer().broadcastRelationChanged();
+		}
 	}
 }

@@ -14,7 +14,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
 	</item>
 	<item id="45373" name="Agathion - Blessed Pisces Pack" type="EtcItem">
 		<!-- Wrapped Pack containing an Agathion - Blessed Pisces (30-day). -->
@@ -29,6 +29,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="45374" name="Laser Gun" name_additional="Event" type="Weapon">
 		<!-- Use this and its active skill Pew Pew to defeat Alien Researchers! Deleted after event. -->
@@ -52,6 +53,7 @@
 			<stat type="pAtkSpd">303</stat>
 			<stat type="rCrit">10</stat>
 			<stat type="pAtkRange">400</stat>
+			<stat type="randomDamage">10</stat>
 		</stats>
 	</item>
 	<item id="45375" name="Alien Nano Supplement" name_additional="Event" type="EtcItem">
@@ -62,6 +64,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE_ON_SKILL_SUCCESS" />
 	</item>
 	<item id="45376" name="Reward Capsule" name_additional="Event" type="EtcItem">
 		<!-- It looks like something nice might be inside! Cannot be used in Olympiad. -->
@@ -69,6 +72,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="45377" name="L2B2's Gift Box" name_additional="Event" type="EtcItem">
 		<!-- Something nice might be inside! Cannot be used in the Olympiad. -->
@@ -76,6 +80,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="45378" name="Vitality Replenishing Herb - Party" name_additional="Event" type="EtcItem">
 		<!-- Restores a certain amount of Vitality for all party members. -->
@@ -119,6 +124,7 @@
 			<stat type="pAtkSpd">303</stat>
 			<stat type="rCrit">10</stat>
 			<stat type="pAtkRange">400</stat>
+			<stat type="randomDamage">10</stat>
 		</stats>
 	</item>
 	<item id="45381" name="Charged Plasma Gun" name_additional="1-hour" type="Weapon">
@@ -143,6 +149,7 @@
 			<stat type="pAtkSpd">303</stat>
 			<stat type="rCrit">10</stat>
 			<stat type="pAtkRange">400</stat>
+			<stat type="randomDamage">10</stat>
 		</stats>
 	</item>
 	<item id="45382" name="Top Hat" name_additional="15-day" type="Armor">
@@ -158,7 +165,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="1296000" />
+		<set name="time" val="21600" />
 	</item>
 	<item id="45383" name="Maid Hairband" name_additional="15-day" type="Armor">
 		<!-- Cute hairband. Female only. Uses 2 hair accessory slots. -->
@@ -173,7 +180,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="1296000" />
+		<set name="time" val="21600" />
 	</item>
 	<item id="45384" name="Laborer Hat" name_additional="15-day" type="Armor">
 		<!-- Hat worn by Lei Feng. Uses 1 hair accessory slot. -->
@@ -188,7 +195,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="1296000" />
+		<set name="time" val="21600" />
 	</item>
 	<item id="45385" name="Ruthless Tribe Mask" name_additional="15-day" type="Armor">
 		<!-- Mask worn by a ruthless tribe. Uses 1 hair accessory slot. -->
@@ -203,7 +210,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="1296000" />
+		<set name="time" val="21600" />
 	</item>
 	<item id="45386" name="Drop Rate Setting Comparison Purpose" name_additional="Test" type="EtcItem">
 		<set name="icon" val="icon.etc_bead_gold_i00" />

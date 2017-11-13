@@ -26,7 +26,7 @@ public class ServerPluginInstallFile
 	private final String _source;
 	private String _destination;
 	
-	private ServerPluginInstallFile(String source)
+	protected ServerPluginInstallFile(String source)
 	{
 		_source = source;
 	}
@@ -50,6 +50,15 @@ public class ServerPluginInstallFile
 	public String getDestination()
 	{
 		return _destination;
+	}
+	
+	/**
+	 * Returns true if this is a directory. A directory is defined to be one whose name ends with a '/'.
+	 * @return true if this is a directory
+	 */
+	public boolean isDirectory()
+	{
+		return _source.endsWith("/");
 	}
 	
 	@Override

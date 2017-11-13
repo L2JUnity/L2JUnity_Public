@@ -22,7 +22,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
-import org.l2junity.gameserver.enums.CategoryType;
 import org.l2junity.gameserver.instancemanager.MentorManager;
 import org.l2junity.gameserver.model.Mentee;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -50,7 +49,7 @@ public class ExMentorList implements IClientOutgoingPacket
 			_type = 0x02;
 			_mentees = Arrays.asList(MentorManager.getInstance().getMentor(activeChar.getObjectId()));
 		}
-		else if (activeChar.isInCategory(CategoryType.AWAKEN_GROUP)) // Not a mentor, Not a mentee, so can be a mentor
+		else if (activeChar.isAwakenedClass()) // Not a mentor, Not a mentee, so can be a mentor
 		{
 			_mentees = Collections.emptyList();
 			_type = 0x01;

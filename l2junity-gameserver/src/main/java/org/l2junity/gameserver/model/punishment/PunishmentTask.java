@@ -24,9 +24,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.handler.IPunishmentHandler;
 import org.l2junity.gameserver.handler.PunishmentHandler;
 import org.l2junity.gameserver.instancemanager.PunishmentManager;
@@ -38,7 +39,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PunishmentTask implements Runnable
 {
-	protected static final Logger _log = LoggerFactory.getLogger(PunishmentTask.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(PunishmentTask.class);
 	
 	private static final String INSERT_QUERY = "INSERT INTO punishments (`key`, `affect`, `type`, `expiration`, `reason`, `punishedBy`) VALUES (?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE_QUERY = "UPDATE punishments SET expiration = ? WHERE id = ?";
@@ -149,7 +150,7 @@ public class PunishmentTask implements Runnable
 		onStart();
 		if (_expirationTime > 0) // Has expiration?
 		{
-			_task = ThreadPoolManager.getInstance().scheduleGeneral(this, (_expirationTime - System.currentTimeMillis()));
+			_task = ThreadPool.schedule(this, (_expirationTime - System.currentTimeMillis()), TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -205,7 +206,7 @@ public class PunishmentTask implements Runnable
 			}
 			catch (SQLException e)
 			{
-				_log.warn(getClass().getSimpleName() + ": Couldn't store punishment task for: " + _affect + " " + _key, e);
+				LOGGER.warn("Couldn't store punishment task for: " + _affect + " " + _key, e);
 			}
 		}
 		
@@ -232,7 +233,7 @@ public class PunishmentTask implements Runnable
 			}
 			catch (SQLException e)
 			{
-				_log.warn(getClass().getSimpleName() + ": Couldn't update punishment task for: " + _affect + " " + _key + " id: " + _id, e);
+				LOGGER.warn("Couldn't update punishment task for: " + _affect + " " + _key + " id: " + _id, e);
 			}
 		}
 		

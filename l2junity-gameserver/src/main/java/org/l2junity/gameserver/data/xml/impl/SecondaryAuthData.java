@@ -18,11 +18,16 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.util.XmlReaderException;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -43,19 +48,25 @@ public class SecondaryAuthData implements IGameXmlReader
 	
 	protected SecondaryAuthData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Load(group = LoadGroup.class)
+	private void load()
 	{
 		_forbiddenPasswords.clear();
-		parseFile(new File("config/SecondaryAuth.xml"));
+		try
+		{
+			parseDatapackFile("config/SecondaryAuth.xml");
+		}
+		catch (XmlReaderException | IOException e)
+		{
+			LOGGER.error("Error loading forbidden passwords.", e);
+		}
 		LOGGER.info("Loaded {} forbidden passwords.", _forbiddenPasswords.size());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		try
 		{
@@ -131,6 +142,7 @@ public class SecondaryAuthData implements IGameXmlReader
 		return _forbiddenPasswords.contains(password);
 	}
 	
+	@InstanceGetter
 	public static SecondaryAuthData getInstance()
 	{
 		return SingletonHolder._instance;

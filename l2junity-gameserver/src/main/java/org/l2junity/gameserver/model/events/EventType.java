@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.events;
 
-import org.l2junity.commons.util.CommonUtil;
+import org.l2junity.commons.util.ArrayUtil;
 import org.l2junity.gameserver.model.events.impl.IBaseEvent;
 import org.l2junity.gameserver.model.events.impl.OnDayNightChange;
 import org.l2junity.gameserver.model.events.impl.ceremonyofchaos.OnCeremonyOfChaosMatchResult;
@@ -33,6 +33,7 @@ import org.l2junity.gameserver.model.events.impl.character.OnCreatureKilled;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureSee;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureSkillFinishCast;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureSkillUse;
+import org.l2junity.gameserver.model.events.impl.character.OnCreatureSkillUsed;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureTeleport;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureTeleported;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureZoneEnter;
@@ -56,6 +57,7 @@ import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcSkillFinishe
 import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcSkillSee;
 import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcSpawn;
 import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcTeleport;
+import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcTeleportRequest;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayableExpChanged;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerAbilityPointsChanged;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerAugment;
@@ -73,6 +75,8 @@ import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerClanWH
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerClanWHItemDestroy;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerClanWHItemTransfer;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerCreate;
+import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerDeathExpPenalty;
+import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerDeathPenalty;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerDelete;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerDlgAnswer;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerEquipItem;
@@ -102,6 +106,7 @@ import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerPvPKil
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerQuestAbort;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerQuestComplete;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerReputationChanged;
+import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerRequestAcquireSkillInfo;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerRestore;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerSelect;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerSkillLearn;
@@ -110,18 +115,39 @@ import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerSubCha
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerSummonSpawn;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerSummonTalk;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerTransform;
+import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerVitalityConsume;
 import org.l2junity.gameserver.model.events.impl.character.player.OnTrapAction;
 import org.l2junity.gameserver.model.events.impl.clan.OnClanWarFinish;
 import org.l2junity.gameserver.model.events.impl.clan.OnClanWarStart;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceCreated;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceDestroy;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceEnter;
+import org.l2junity.gameserver.model.events.impl.instance.OnInstanceFinish;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceLeave;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceStatusChange;
 import org.l2junity.gameserver.model.events.impl.item.OnItemBypassEvent;
 import org.l2junity.gameserver.model.events.impl.item.OnItemCreate;
 import org.l2junity.gameserver.model.events.impl.item.OnItemTalk;
 import org.l2junity.gameserver.model.events.impl.olympiad.OnOlympiadMatchResult;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerAttack;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerInviteToAlly;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerInviteToClan;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerInviteToParty;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerJoinSiege;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerLearnSkill;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerLeaveParty;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerLogout;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerPickUp;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerRequestRevive;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerStandUp;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerTrade;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerUseAction;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerUseItem;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerUseSkill;
+import org.l2junity.gameserver.model.events.impl.restriction.GetPlayerCombatState;
+import org.l2junity.gameserver.model.events.impl.restriction.IsPlayerInvul;
+import org.l2junity.gameserver.model.events.impl.restriction.IsWorldObjectVisibleFor;
+import org.l2junity.gameserver.model.events.impl.server.OnDailyReset;
 import org.l2junity.gameserver.model.events.impl.server.OnPacketReceived;
 import org.l2junity.gameserver.model.events.impl.server.OnPacketSent;
 import org.l2junity.gameserver.model.events.impl.sieges.OnCastleSiegeFinish;
@@ -129,9 +155,13 @@ import org.l2junity.gameserver.model.events.impl.sieges.OnCastleSiegeOwnerChange
 import org.l2junity.gameserver.model.events.impl.sieges.OnCastleSiegeStart;
 import org.l2junity.gameserver.model.events.impl.sieges.OnFortSiegeFinish;
 import org.l2junity.gameserver.model.events.impl.sieges.OnFortSiegeStart;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.model.events.returns.ChatFilterReturn;
+import org.l2junity.gameserver.model.events.returns.CombatStateReturn;
 import org.l2junity.gameserver.model.events.returns.DamageReturn;
+import org.l2junity.gameserver.model.events.returns.IntegerReturn;
 import org.l2junity.gameserver.model.events.returns.LocationReturn;
+import org.l2junity.gameserver.model.events.returns.LongReturn;
 import org.l2junity.gameserver.model.events.returns.TerminateReturn;
 
 /**
@@ -155,16 +185,17 @@ public enum EventType
 	ON_CLAN_WAR_START(OnClanWarStart.class, void.class),
 	
 	// Creature events
-	ON_CREATURE_ATTACK(OnCreatureAttack.class, void.class, TerminateReturn.class),
+	ON_CREATURE_ATTACK(OnCreatureAttack.class, void.class, void.class),
 	ON_CREATURE_ATTACK_AVOID(OnCreatureAttackAvoid.class, void.class, void.class),
-	ON_CREATURE_ATTACKED(OnCreatureAttacked.class, void.class, TerminateReturn.class),
+	ON_CREATURE_ATTACKED(OnCreatureAttacked.class, void.class, void.class),
 	ON_CREATURE_DAMAGE_RECEIVED(OnCreatureDamageReceived.class, void.class, DamageReturn.class),
 	ON_CREATURE_DAMAGE_DEALT(OnCreatureDamageDealt.class, void.class),
 	ON_CREATURE_HP_CHANGE(OnCreatureHpChange.class, void.class),
-	ON_CREATURE_DEATH(OnCreatureDeath.class, void.class),
-	ON_CREATURE_KILLED(OnCreatureKilled.class, void.class, TerminateReturn.class),
+	ON_CREATURE_DEATH(OnCreatureDeath.class, void.class, TerminateReturn.class),
+	ON_CREATURE_KILLED(OnCreatureKilled.class, void.class),
 	ON_CREATURE_SEE(OnCreatureSee.class, void.class),
 	ON_CREATURE_SKILL_USE(OnCreatureSkillUse.class, void.class, TerminateReturn.class),
+	ON_CREATURE_SKILL_USED(OnCreatureSkillUsed.class, void.class),
 	ON_CREATURE_SKILL_FINISH_CAST(OnCreatureSkillFinishCast.class, void.class),
 	ON_CREATURE_TELEPORT(OnCreatureTeleport.class, void.class, LocationReturn.class),
 	ON_CREATURE_TELEPORTED(OnCreatureTeleported.class, void.class),
@@ -198,6 +229,7 @@ public enum EventType
 	ON_NPC_MANOR_BYPASS(OnNpcManorBypass.class, void.class),
 	ON_NPC_MENU_SELECT(OnNpcMenuSelect.class, void.class),
 	ON_NPC_DESPAWN(OnNpcDespawn.class, void.class),
+	ON_NPC_TELEPORT_REQUEST(OnNpcTeleportRequest.class, void.class, TerminateReturn.class),
 	
 	// Olympiad events
 	ON_OLYMPIAD_MATCH_RESULT(OnOlympiadMatchResult.class, void.class),
@@ -258,6 +290,7 @@ public enum EventType
 	ON_PLAYER_CHANGE_TO_AWAKENED_CLASS(OnPlayerChangeToAwakenedClass.class, void.class),
 	ON_PLAYER_PVP_CHANGED(OnPlayerPvPChanged.class, void.class),
 	ON_PLAYER_PVP_KILL(OnPlayerPvPKill.class, void.class),
+	ON_PLAYER_REQUEST_ACQUIRE_SKILL_INFO(OnPlayerRequestAcquireSkillInfo.class, void.class, TerminateReturn.class),
 	ON_PLAYER_RESTORE(OnPlayerRestore.class, void.class),
 	ON_PLAYER_SELECT(OnPlayerSelect.class, void.class, TerminateReturn.class),
 	ON_PLAYER_SOCIAL_ACTION(OnPlayerSocialAction.class, void.class),
@@ -268,6 +301,9 @@ public enum EventType
 	ON_PLAYER_SUB_CHANGE(OnPlayerSubChange.class, void.class),
 	ON_PLAYER_QUEST_ABORT(OnPlayerQuestAbort.class, void.class),
 	ON_PLAYER_QUEST_COMPLETE(OnPlayerQuestComplete.class, void.class),
+	ON_PLAYER_DEATH_EXP_PENALTY(OnPlayerDeathExpPenalty.class, void.class, LongReturn.class),
+	ON_PLAYER_DEATH_PENALTY(OnPlayerDeathPenalty.class, void.class, TerminateReturn.class),
+	ON_PLAYER_VITALITY_CONSUME(OnPlayerVitalityConsume.class, void.class, IntegerReturn.class),
 	
 	// Trap events
 	ON_TRAP_ACTION(OnTrapAction.class, void.class),
@@ -277,12 +313,42 @@ public enum EventType
 	ON_PACKET_RECEIVED(OnPacketReceived.class, void.class),
 	ON_PACKET_SENT(OnPacketSent.class, void.class),
 	
+	ON_DAILY_RESET(OnDailyReset.class, void.class),
+	
 	// Instance events
 	ON_INSTANCE_CREATED(OnInstanceCreated.class, void.class),
 	ON_INSTANCE_DESTROY(OnInstanceDestroy.class, void.class),
 	ON_INSTANCE_ENTER(OnInstanceEnter.class, void.class),
+	ON_INSTANCE_FINISH(OnInstanceFinish.class, void.class),
 	ON_INSTANCE_LEAVE(OnInstanceLeave.class, void.class),
-	ON_INSTANCE_STATUS_CHANGE(OnInstanceStatusChange.class, void.class);
+	ON_INSTANCE_STATUS_CHANGE(OnInstanceStatusChange.class, void.class),
+	
+	// Restrictions - CAN
+	CAN_PLAYER_ATTACK(CanPlayerAttack.class, BooleanReturn.class),
+	CAN_PLAYER_INVITE_TO_PARTY(CanPlayerInviteToParty.class, BooleanReturn.class),
+	CAN_PLAYER_LEARN_SKILL(CanPlayerLearnSkill.class, BooleanReturn.class),
+	CAN_PLAYER_LEAVE_PARTY(CanPlayerLeaveParty.class, BooleanReturn.class),
+	CAN_PLAYER_LOGOUT(CanPlayerLogout.class, BooleanReturn.class),
+	CAN_PLAYER_INVITE_TO_ALLY(CanPlayerInviteToAlly.class, BooleanReturn.class),
+	CAN_PLAYER_INVITE_TO_CLAN(CanPlayerInviteToClan.class, BooleanReturn.class),
+	CAN_PLAYER_TRADE(CanPlayerTrade.class, BooleanReturn.class),
+	CAN_PLAYER_JOIN_SIEGE(CanPlayerJoinSiege.class, BooleanReturn.class),
+	CAN_PLAYER_USE_ITEM(CanPlayerUseItem.class, BooleanReturn.class),
+	CAN_PLAYER_USE_SKILL(CanPlayerUseSkill.class, BooleanReturn.class),
+	CAN_PLAYER_USE_ACTION(CanPlayerUseAction.class, BooleanReturn.class),
+	CAN_PLAYER_STAND_UP(CanPlayerStandUp.class, BooleanReturn.class),
+	CAN_PLAYER_PICK_UP(CanPlayerPickUp.class, BooleanReturn.class),
+	CAN_PLAYER_REQUEST_REVIVE(CanPlayerRequestRevive.class, BooleanReturn.class),
+	
+	// Restrictions - IS
+	IS_WORLD_OBJECT_VISIBLE_FOR(IsWorldObjectVisibleFor.class, BooleanReturn.class),
+	IS_PLAYER_INVUL(IsPlayerInvul.class, BooleanReturn.class),
+	
+	// Restrictions - GET
+	GET_COMBAT_STATE(GetPlayerCombatState.class, CombatStateReturn.class),
+	
+	// ...
+	;
 	
 	private final Class<? extends IBaseEvent> _eventClass;
 	private final Class<?>[] _returnClass;
@@ -310,6 +376,6 @@ public enum EventType
 	
 	public boolean isReturnClass(Class<?> clazz)
 	{
-		return CommonUtil.contains(_returnClass, clazz);
+		return ArrayUtil.contains(_returnClass, clazz);
 	}
 }

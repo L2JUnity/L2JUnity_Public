@@ -23,20 +23,31 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.util.CommonUtil;
 import org.l2junity.gameserver.ai.CharacterAI;
 import org.l2junity.gameserver.ai.CtrlEvent;
 import org.l2junity.gameserver.ai.CtrlIntention;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
+import org.l2junity.gameserver.loader.PreLoadGroup;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Npc;
+import org.l2junity.gameserver.model.actor.instance.L2DefenderInstance;
+import org.l2junity.gameserver.model.actor.instance.L2FriendlyMobInstance;
+import org.l2junity.gameserver.model.actor.instance.L2GuardInstance;
 import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.entity.Castle;
+import org.l2junity.gameserver.model.entity.Fort;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcCreatureSee;
 import org.l2junity.gameserver.model.interfaces.ILocational;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.l2junity.gameserver.network.client.send.DeleteObject;
 import org.l2junity.gameserver.util.Util;
 import org.slf4j.Logger;
@@ -44,7 +55,8 @@ import org.slf4j.LoggerFactory;
 
 public final class World
 {
-	private static final Logger _log = LoggerFactory.getLogger(World.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(World.class);
+	
 	/** Gracia border Flying objects not allowed to the east of it. */
 	public static final int GRACIA_MAX_X = -166168;
 	public static final int GRACIA_MAX_Z = 6105;
@@ -83,32 +95,36 @@ public final class World
 	
 	public static final int REGION_MIN_DIMENSION = Math.min(TILE_SIZE / (TILE_SIZE >> SHIFT_BY_Z), TILE_SIZE / (TILE_SIZE >> SHIFT_BY));
 	
-	/** Map containing all the players in game. */
-	private final Map<Integer, PlayerInstance> _allPlayers = new ConcurrentHashMap<>();
-	/** Map containing all visible objects. */
 	private final Map<Integer, WorldObject> _allObjects = new ConcurrentHashMap<>();
-	/** Map used for debug. */
-	// private final Map<Integer, String> _allObjectsDebug = new ConcurrentHashMap<>();
+	private final Map<Integer, PlayerInstance> _allPlayers = new ConcurrentHashMap<>();
 	/** Map with the pets instances and their owner ID. */
 	private final Map<Integer, L2PetInstance> _petsInstance = new ConcurrentHashMap<>();
+	
+	private final AtomicInteger _partyNumber = new AtomicInteger();
+	private final AtomicInteger _memberInPartyNumber = new AtomicInteger();
 	
 	private final WorldRegion[][][] _worldRegions = new WorldRegion[REGIONS_X + 1][REGIONS_Y + 1][REGIONS_Z + 1];
 	
 	/** Constructor of L2World. */
 	protected World()
 	{
-		for (int x = 0; x <= REGIONS_X; x++)
+		for (short x = 0; x <= REGIONS_X; x++)
 		{
-			for (int y = 0; y <= REGIONS_Y; y++)
+			for (short y = 0; y <= REGIONS_Y; y++)
 			{
-				for (int z = 0; z <= REGIONS_Z; z++)
+				for (short z = 0; z <= REGIONS_Z; z++)
 				{
 					_worldRegions[x][y][z] = new WorldRegion(x, y, z);
 				}
 			}
 		}
 		
-		_log.info("(" + REGIONS_X + " by " + REGIONS_Y + " by " + REGIONS_Z + ") World Region Grid set up.");
+		LOGGER.info("(" + REGIONS_X + " by " + REGIONS_Y + " by " + REGIONS_Z + ") World Region Grid set up.");
+	}
+	
+	@Load(group = PreLoadGroup.class)
+	private void load()
+	{
 	}
 	
 	/**
@@ -120,20 +136,29 @@ public final class World
 	 * </ul>
 	 * @param object
 	 */
-	public void storeObject(WorldObject object)
+	public void addObject(WorldObject object)
 	{
-		if (_allObjects.containsKey(object.getObjectId()))
+		if (_allObjects.putIfAbsent(object.getObjectId(), object) != null)
 		{
-			// _log.warn(getClass().getSimpleName() + ": Current object: " + object + " already exist in OID map!");
-			// _log.warn(CommonUtil.getTraceString(Thread.currentThread().getStackTrace()));
-			// _log.warn(getClass().getSimpleName() + ": Previous object: " + _allObjects.get(object.getObjectId()) + " already exist in OID map!");
-			// _log.warn(_allObjectsDebug.get(object.getObjectId()));
-			// _log.warn("---------------------- End ---------------------");
-			return;
+			LOGGER.warn("Object {} already exists in the world. Stack Trace:{}", object, CommonUtil.getTraceString(Thread.currentThread().getStackTrace()));
 		}
 		
-		_allObjects.put(object.getObjectId(), object);
-		// _allObjectsDebug.put(object.getObjectId(), CommonUtil.getTraceString(Thread.currentThread().getStackTrace()));
+		if (object.isPlayer())
+		{
+			final PlayerInstance newPlayer = (PlayerInstance) object;
+			if (newPlayer.isTeleporting()) // TODO: drop when we stop removing player from the world while teleporting.
+			{
+				return;
+			}
+			
+			final PlayerInstance existingPlayer = _allPlayers.putIfAbsent(object.getObjectId(), newPlayer);
+			if (existingPlayer != null)
+			{
+				Disconnection.of(existingPlayer).defaultSequence(false);
+				Disconnection.of(newPlayer).defaultSequence(false);
+				LOGGER.warn("Duplicate character!? Disconnected both characters ({})", newPlayer.getName());
+			}
+		}
 	}
 	
 	/**
@@ -149,7 +174,15 @@ public final class World
 	public void removeObject(WorldObject object)
 	{
 		_allObjects.remove(object.getObjectId());
-		// _allObjectsDebug.remove(object.getObjectId());
+		if (object.isPlayer())
+		{
+			final PlayerInstance player = (PlayerInstance) object;
+			if (player.isTeleporting()) // TODO: drop when we stop removing player from the world while teleportingq.
+			{
+				return;
+			}
+			_allPlayers.remove(object.getObjectId());
+		}
 	}
 	
 	/**
@@ -233,15 +266,6 @@ public final class World
 	}
 	
 	/**
-	 * Remove the given pet instance.
-	 * @param pet the pet to remove
-	 */
-	public void removePet(L2PetInstance pet)
-	{
-		_petsInstance.remove(pet.getOwner().getObjectId());
-	}
-	
-	/**
 	 * Add a L2Object in the world. <B><U> Concept</U> :</B> L2Object (including PlayerInstance) are identified in <B>_visibleObjects</B> of his current WorldRegion and in <B>_knownObjects</B> of other surrounding L2Characters <BR>
 	 * PlayerInstance are identified in <B>_allPlayers</B> of L2World, in <B>_allPlayers</B> of his current WorldRegion and in <B>_knownPlayer</B> of other surrounding L2Characters <B><U> Actions</U> :</B>
 	 * <li>Add the L2Object object in _allPlayers* of L2World</li>
@@ -249,32 +273,16 @@ public final class World
 	 * <li>Add object in _knownObjects and _knownPlayer* of all surrounding WorldRegion L2Characters</li><BR>
 	 * <li>If object is a L2Character, add all surrounding L2Object in its _knownObjects and all surrounding PlayerInstance in its _knownPlayer</li><BR>
 	 * <I>* only if object is a PlayerInstance</I><BR>
-	 * <I>** only if object is a GM PlayerInstance</I>
-	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T ADD the object in _visibleObjects and _allPlayers* of WorldRegion (need synchronisation)</B></FONT><BR> <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T ADD the object to _allObjects and _allPlayers* of L2World (need
-	 * synchronisation)</B></FONT> <B><U> Example of use </U> :</B> <li>Drop an Item</li> <li>Spawn a L2Character</li> <li>Apply Death Penalty of a PlayerInstance</li>
+	 * <I>** only if object is a GM PlayerInstance</I> <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T ADD the object in _visibleObjects and _allPlayers* of WorldRegion (need synchronisation)</B></FONT><BR>
+	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T ADD the object to _allObjects and _allPlayers* of L2World (need synchronisation)</B></FONT> <B><U> Example of use </U> :</B>
+	 * <li>Drop an Item</li>
+	 * <li>Spawn a L2Character</li>
+	 * <li>Apply Death Penalty of a PlayerInstance</li>
 	 * @param object L2object to add in the world
 	 * @param newRegion WorldRegion in wich the object will be add (not used)
 	 */
 	public void addVisibleObject(WorldObject object, WorldRegion newRegion)
 	{
-		// TODO: this code should be obsoleted by protection in putObject func...
-		if (object.isPlayer())
-		{
-			PlayerInstance player = object.getActingPlayer();
-			if (!player.isTeleporting())
-			{
-				final PlayerInstance old = getPlayer(player.getObjectId());
-				if (old != null)
-				{
-					_log.warn("Duplicate character!? Closing both characters (" + player.getName() + ")");
-					player.logout();
-					old.logout();
-					return;
-				}
-				addPlayerToWorld(player);
-			}
-		}
-		
 		if (!newRegion.isActive())
 		{
 			return;
@@ -284,19 +292,34 @@ public final class World
 		{
 			if (object.isPlayer() && wo.isVisibleFor((PlayerInstance) object))
 			{
-				wo.sendInfo((PlayerInstance) object);
+				final PlayerInstance player = object.getActingPlayer();
+				wo.sendInfo(player);
 				if (wo.isCreature())
 				{
 					final CharacterAI ai = ((Creature) wo).getAI();
 					if (ai != null)
 					{
-						ai.describeStateToPlayer((PlayerInstance) object);
-						if (wo.isMonster())
+						ai.describeStateToPlayer(player);
+						if (wo.isMonster() || (wo instanceof L2FriendlyMobInstance))
 						{
 							if (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE)
 							{
 								ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 							}
+						}
+						else if (wo instanceof L2DefenderInstance)
+						{
+							final Castle castle = ((Npc) wo).getCastle();
+							final Fort fortress = ((Npc) wo).getFort();
+							final int activeSiegeId = (fortress != null ? fortress.getResidenceId() : (castle != null ? castle.getResidenceId() : 0));
+							if ((((player.getSiegeState() == 2) && !player.isRegisteredOnThisSiegeField(activeSiegeId)) || (player.getSiegeState() == 0)) && (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE))
+							{
+								ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
+							}
+						}
+						else if ((wo instanceof L2GuardInstance) && (player.getReputation() < 0) && (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE))
+						{
+							ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 						}
 					}
 				}
@@ -304,19 +327,34 @@ public final class World
 			
 			if (wo.isPlayer() && object.isVisibleFor((PlayerInstance) wo))
 			{
-				object.sendInfo((PlayerInstance) wo);
+				final PlayerInstance player = wo.getActingPlayer();
+				object.sendInfo(player);
 				if (object.isCreature())
 				{
 					final CharacterAI ai = ((Creature) object).getAI();
 					if (ai != null)
 					{
-						ai.describeStateToPlayer((PlayerInstance) wo);
-						if (object.isMonster())
+						ai.describeStateToPlayer(player);
+						if (object.isMonster() || (object instanceof L2FriendlyMobInstance))
 						{
 							if (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE)
 							{
 								ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 							}
+						}
+						else if (object instanceof L2DefenderInstance)
+						{
+							final Castle castle = ((Npc) object).getCastle();
+							final Fort fortress = ((Npc) object).getFort();
+							final int activeSiegeId = (fortress != null ? fortress.getResidenceId() : (castle != null ? castle.getResidenceId() : 0));
+							if ((((player.getSiegeState() == 2) && !player.isRegisteredOnThisSiegeField(activeSiegeId)) || (player.getSiegeState() == 0)) && (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE))
+							{
+								ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
+							}
+						}
+						else if ((object instanceof L2GuardInstance) && (player.getReputation() < 0) && (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE))
+						{
+							ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 						}
 					}
 				}
@@ -335,43 +373,21 @@ public final class World
 	}
 	
 	/**
-	 * Adds the player to the world.
-	 * @param player the player to add
-	 */
-	public void addPlayerToWorld(PlayerInstance player)
-	{
-		_allPlayers.put(player.getObjectId(), player);
-	}
-	
-	/**
-	 * Remove the player from the world.
-	 * @param player the player to remove
-	 */
-	public void removeFromAllPlayers(PlayerInstance player)
-	{
-		_allPlayers.remove(player.getObjectId());
-	}
-	
-	/**
 	 * Remove a L2Object from the world. <B><U> Concept</U> :</B> L2Object (including PlayerInstance) are identified in <B>_visibleObjects</B> of his current WorldRegion and in <B>_knownObjects</B> of other surrounding L2Characters <BR>
 	 * PlayerInstance are identified in <B>_allPlayers</B> of L2World, in <B>_allPlayers</B> of his current WorldRegion and in <B>_knownPlayer</B> of other surrounding L2Characters <B><U> Actions</U> :</B>
 	 * <li>Remove the L2Object object from _allPlayers* of L2World</li>
 	 * <li>Remove the L2Object object from _visibleObjects and _allPlayers* of WorldRegion</li>
 	 * <li>Remove the L2Object object from _gmList** of GmListTable</li>
 	 * <li>Remove object from _knownObjects and _knownPlayer* of all surrounding WorldRegion L2Characters</li><BR>
-	 * <li>If object is a L2Character, remove all L2Object from its _knownObjects and all PlayerInstance from its _knownPlayer</li>
-	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T REMOVE the object from _allObjects of L2World</B></FONT> <I>* only if object is a PlayerInstance</I><BR> <I>** only if object is a GM PlayerInstance</I> <B><U> Example of use </U> :</B> <li>Pickup an Item</li> <li>Decay a
-	 * L2Character</li>
+	 * <li>If object is a L2Character, remove all L2Object from its _knownObjects and all PlayerInstance from its _knownPlayer</li> <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T REMOVE the object from _allObjects of L2World</B></FONT> <I>* only if object is a PlayerInstance</I><BR>
+	 * <I>** only if object is a GM PlayerInstance</I> <B><U> Example of use </U> :</B>
+	 * <li>Pickup an Item</li>
+	 * <li>Decay a L2Character</li>
 	 * @param object L2object to remove from the world
 	 * @param oldRegion WorldRegion in which the object was before removing
 	 */
 	public void removeVisibleObject(WorldObject object, WorldRegion oldRegion)
 	{
-		if (object == null)
-		{
-			return;
-		}
-		
 		if (oldRegion != null)
 		{
 			oldRegion.removeVisibleObject(object);
@@ -428,15 +444,6 @@ public final class World
 				}
 				return true;
 			});
-			
-			if (object.isPlayer())
-			{
-				final PlayerInstance player = object.getActingPlayer();
-				if (!player.isTeleporting())
-				{
-					removeFromAllPlayers(player);
-				}
-			}
 		}
 	}
 	
@@ -516,19 +523,34 @@ public final class World
 					
 					if (object.isPlayer() && wo.isVisibleFor((PlayerInstance) object))
 					{
-						wo.sendInfo((PlayerInstance) object);
+						final PlayerInstance player = object.getActingPlayer();
+						wo.sendInfo(player);
 						if (wo.isCreature())
 						{
 							final CharacterAI ai = ((Creature) wo).getAI();
 							if (ai != null)
 							{
 								ai.describeStateToPlayer((PlayerInstance) object);
-								if (wo.isMonster())
+								if (wo.isMonster() || (wo instanceof L2FriendlyMobInstance))
 								{
 									if (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE)
 									{
 										ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 									}
+								}
+								else if (wo instanceof L2DefenderInstance)
+								{
+									final Castle castle = ((Npc) wo).getCastle();
+									final Fort fortress = ((Npc) wo).getFort();
+									final int activeSiegeId = (fortress != null ? fortress.getResidenceId() : (castle != null ? castle.getResidenceId() : 0));
+									if ((((player.getSiegeState() == 2) && !player.isRegisteredOnThisSiegeField(activeSiegeId)) || (player.getSiegeState() == 0)) && (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE))
+									{
+										ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
+									}
+								}
+								else if ((wo instanceof L2GuardInstance) && (player.getReputation() < 0) && (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE))
+								{
+									ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 								}
 							}
 						}
@@ -536,19 +558,34 @@ public final class World
 					
 					if (wo.isPlayer() && object.isVisibleFor((PlayerInstance) wo))
 					{
-						object.sendInfo((PlayerInstance) wo);
+						final PlayerInstance player = wo.getActingPlayer();
+						object.sendInfo(player);
 						if (object.isCreature())
 						{
 							final CharacterAI ai = ((Creature) object).getAI();
 							if (ai != null)
 							{
 								ai.describeStateToPlayer((PlayerInstance) wo);
-								if (object.isMonster())
+								if (object.isMonster() || (object instanceof L2FriendlyMobInstance))
 								{
 									if (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE)
 									{
 										ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 									}
+								}
+								else if (object instanceof L2DefenderInstance)
+								{
+									final Castle castle = ((Npc) object).getCastle();
+									final Fort fortress = ((Npc) object).getFort();
+									final int activeSiegeId = (fortress != null ? fortress.getResidenceId() : (castle != null ? castle.getResidenceId() : 0));
+									if ((((player.getSiegeState() == 2) && !player.isRegisteredOnThisSiegeField(activeSiegeId)) || (player.getSiegeState() == 0)) && (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE))
+									{
+										ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
+									}
+								}
+								else if ((object instanceof L2GuardInstance) && (player.getReputation() < 0) && (ai.getIntention() == CtrlIntention.AI_INTENTION_IDLE))
+								{
+									ai.setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 								}
 							}
 						}
@@ -612,7 +649,7 @@ public final class World
 		forEachVisibleObject(object, clazz, 1, c);
 	}
 	
-	public <T extends WorldObject> void forEachVisibleObjectInRange(WorldObject object, Class<T> clazz, int range, Consumer<T> c)
+	public <T extends WorldObject> void forEachVisibleObjectInRadius(WorldObject object, Class<T> clazz, int radius, Consumer<T> c)
 	{
 		if (object == null)
 		{
@@ -625,7 +662,7 @@ public final class World
 			return;
 		}
 		
-		final int depth = (range / REGION_MIN_DIMENSION) + 1;
+		final int depth = (radius / REGION_MIN_DIMENSION) + 1;
 		for (int x = Math.max(centerWorldRegion.getRegionX() - depth, 0); x <= Math.min(centerWorldRegion.getRegionX() + depth, REGIONS_X); x++)
 		{
 			for (int y = Math.max(centerWorldRegion.getRegionY() - depth, 0); y <= Math.min(centerWorldRegion.getRegionY() + depth, REGIONS_Y); y++)
@@ -638,7 +675,7 @@ public final class World
 					final int x2 = ((x + 1) - OFFSET_X) << SHIFT_BY;
 					final int y2 = ((y + 1) - OFFSET_Y) << SHIFT_BY;
 					final int z2 = ((z + 1) - OFFSET_Z) << SHIFT_BY_Z;
-					if (Util.cubeIntersectsSphere(x1, y1, z1, x2, y2, z2, object.getX(), object.getY(), object.getZ(), range))
+					if (Util.cubeIntersectsSphere(x1, y1, z1, x2, y2, z2, object.getX(), object.getY(), object.getZ(), radius))
 					{
 						for (WorldObject visibleObject : _worldRegions[x][y][z].getVisibleObjects().values())
 						{
@@ -652,7 +689,7 @@ public final class World
 								continue;
 							}
 							
-							if (visibleObject.calculateDistance(object, true, false) <= range)
+							if (visibleObject.isInRadius3d(object, radius))
 							{
 								c.accept(clazz.cast(visibleObject));
 							}
@@ -683,17 +720,17 @@ public final class World
 		return result;
 	}
 	
-	public <T extends WorldObject> List<T> getVisibleObjects(WorldObject object, Class<T> clazz, int range)
+	public <T extends WorldObject> List<T> getVisibleObjects(WorldObject object, Class<T> clazz, int radius)
 	{
 		final List<T> result = new LinkedList<>();
-		forEachVisibleObjectInRange(object, clazz, range, result::add);
+		forEachVisibleObjectInRadius(object, clazz, radius, result::add);
 		return result;
 	}
 	
-	public <T extends WorldObject> List<T> getVisibleObjects(WorldObject object, Class<T> clazz, int range, Predicate<T> predicate)
+	public <T extends WorldObject> List<T> getVisibleObjects(WorldObject object, Class<T> clazz, int radius, Predicate<T> predicate)
 	{
 		final List<T> result = new LinkedList<>();
-		forEachVisibleObjectInRange(object, clazz, range, o ->
+		forEachVisibleObjectInRadius(object, clazz, radius, o ->
 		{
 			if (predicate.test(o))
 			{
@@ -715,15 +752,15 @@ public final class World
 		return getRegion(point.getX(), point.getY(), point.getZ());
 	}
 	
-	public WorldRegion getRegion(int x, int y, int z)
+	public WorldRegion getRegion(double x, double y, double z)
 	{
 		try
 		{
-			return _worldRegions[(x >> SHIFT_BY) + OFFSET_X][(y >> SHIFT_BY) + OFFSET_Y][(z >> SHIFT_BY_Z) + OFFSET_Z];
+			return _worldRegions[((int) x >> SHIFT_BY) + OFFSET_X][((int) y >> SHIFT_BY) + OFFSET_Y][((int) z >> SHIFT_BY_Z) + OFFSET_Z];
 		}
 		catch (ArrayIndexOutOfBoundsException e)
 		{
-			_log.warn("Incorrect world region X: {} Y: {} Z: {} for coordinates x: {} y: {} z: {}", ((x >> SHIFT_BY) + OFFSET_X), ((y >> SHIFT_BY) + OFFSET_Y), ((z >> SHIFT_BY_Z) + OFFSET_Z), x, y, z);
+			LOGGER.warn("Incorrect world region X: {} Y: {} Z: {} for coordinates x: {} y: {} z: {}", (((int) x >> SHIFT_BY) + OFFSET_X), (((int) y >> SHIFT_BY) + OFFSET_Y), (((int) z >> SHIFT_BY_Z) + OFFSET_Z), x, y, z);
 			return null;
 		}
 	}
@@ -755,7 +792,7 @@ public final class World
 	 */
 	public void deleteVisibleNpcSpawns()
 	{
-		_log.info("Deleting all visible NPC's.");
+		LOGGER.info("Deleting all visible NPC's.");
 		for (int x = 0; x <= REGIONS_X; x++)
 		{
 			for (int y = 0; y <= REGIONS_Y; y++)
@@ -766,19 +803,47 @@ public final class World
 				}
 			}
 		}
-		_log.info("All visible NPC's deleted.");
+		LOGGER.info("All visible NPC's deleted.");
 	}
 	
-	/**
-	 * @return the current instance of L2World
-	 */
+	public void incrementParty()
+	{
+		_partyNumber.incrementAndGet();
+	}
+	
+	public void decrementParty()
+	{
+		_partyNumber.decrementAndGet();
+	}
+	
+	public void incrementPartyMember()
+	{
+		_memberInPartyNumber.incrementAndGet();
+	}
+	
+	public void decrementPartyMember()
+	{
+		_memberInPartyNumber.decrementAndGet();
+	}
+	
+	public int getPartyCount()
+	{
+		return _partyNumber.get();
+	}
+	
+	public int getPartyMemberCount()
+	{
+		return _memberInPartyNumber.get();
+	}
+	
+	@InstanceGetter
 	public static World getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
-	private static class SingletonHolder
+	private static final class SingletonHolder
 	{
-		protected static final World _instance = new World();
+		protected static final World INSTANCE = new World();
 	}
 }

@@ -30,7 +30,7 @@
 		<reuseDelay>3000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16403" toLevel="1" name="Dimensional Judgment">
 		<!-- AUTO GENERATED SKILL -->
@@ -73,7 +73,7 @@
 		<hitTime>2400</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16407" toLevel="1" name="Dimensional Resurrection Block">
 		<!-- AUTO GENERATED SKILL -->
@@ -86,7 +86,7 @@
 		<reuseDelay>3000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16408" toLevel="3" name="Trap Fear">
 		<!-- AUTO GENERATED SKILL -->
@@ -95,7 +95,7 @@
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16409" toLevel="3" name="Trap Hold">
 		<!-- AUTO GENERATED SKILL -->
@@ -104,7 +104,7 @@
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16410" toLevel="3" name="Trap Aerial Yoke">
 		<!-- AUTO GENERATED SKILL -->
@@ -113,7 +113,7 @@
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16411" toLevel="3" name="Trap Stun">
 		<!-- AUTO GENERATED SKILL -->
@@ -122,7 +122,7 @@
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16412" toLevel="3" name="Trap Petrify">
 		<!-- AUTO GENERATED SKILL -->
@@ -131,7 +131,7 @@
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16413" toLevel="3" name="Trap Poison">
 		<!-- AUTO GENERATED SKILL -->
@@ -140,7 +140,7 @@
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16414" toLevel="1" name="Peace Zone Cure">
 		<!-- AUTO GENERATED SKILL -->
@@ -155,7 +155,7 @@
 		<icon>icon.skill1298</icon>
 		<operateType>A2</operateType>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16416" toLevel="10" name="Bluff Resistance">
 		<!-- AUTO GENERATED SKILL -->
@@ -163,7 +163,7 @@
 		<icon>icon.skill0358</icon>
 		<operateType>P</operateType>
 	</skill>
-	<skill id="16417" toLevel="10" name="Wind Stun Resistance">
+	<skill id="16417" toLevel="10" name="Faint Attack Resistance">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Resistance to Wind Stun. -->
 		<icon>icon.skill4011</icon>
@@ -176,8 +176,15 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="16419" toLevel="2" name="Stocking Fairy's Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 2 hr., STR + 3, INT + 3, Speed + 7. Can obtain item after 2 hr. Must be alive with space in the inventory to receive item. -->
+		<abnormalLvl>
+			<value level="1">1</value>
+			<value level="2">2</value>
+		</abnormalLvl>
+		<abnormalTime>7200</abnormalTime>
+		<abnormalType>EVENT_BUF1</abnormalType> <!-- Guessed -->
+		<abnormalVisualEffect>XMAS_SOCKS</abnormalVisualEffect>
 		<icon>BranchSys.icon.br_xmas_present_i00</icon>
 		<operateType>A2</operateType>
 		<castRange>900</castRange>
@@ -187,10 +194,39 @@
 		</hitTime>
 		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_speed">
+				<amount>7</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+		<endEffects>
+			<effect name="i_restoration">
+				<itemId>40313</itemId>
+				<itemCount>1</itemCount>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="16420" toLevel="2" name="Tree Fairy's Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 2 hr., CON + 3, MEN + 3, P. Critical Rate + 30, M. Critical Rate + 30. Can obtain item after 2 hr. Must be alive with space in the inventory to receive item. -->
+		<abnormalLvl>
+			<value level="1">1</value>
+			<value level="2">2</value>
+		</abnormalLvl>
+		<abnormalTime>7200</abnormalTime>
+		<abnormalType>EVENT_BUF2</abnormalType> <!-- Guessed -->
+		<abnormalVisualEffect>XMAS_TREE</abnormalVisualEffect>
 		<icon>BranchSys.icon.br_xmas_miracle_i00</icon>
 		<operateType>A2</operateType>
 		<castRange>900</castRange>
@@ -200,10 +236,43 @@
 		</hitTime>
 		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>MEN</stat>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>30</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>30</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+		<endEffects>
+			<effect name="i_restoration">
+				<itemId>40313</itemId>
+				<itemCount>1</itemCount>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="16421" toLevel="2" name="Snowman Fairy's Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 2 hr., DEX + 3, WIT + 3, Max HP/MP + 2013. Can obtain item after 2 hr. Must be alive with space in the inventory to receive item. -->
+		<abnormalLvl>
+			<value level="1">1</value>
+			<value level="2">2</value>
+		</abnormalLvl>
+		<abnormalTime>7200</abnormalTime>
+		<abnormalType>EVENT_BUF3</abnormalType> <!-- Guessed -->
+		<abnormalVisualEffect>XMAS_SNOWMAN</abnormalVisualEffect>
 		<icon>BranchSys.icon.br_xmas_present_luck_i00</icon>
 		<operateType>A2</operateType>
 		<castRange>900</castRange>
@@ -213,6 +282,32 @@
 		</hitTime>
 		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>2013</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>2013</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+		<endEffects>
+			<effect name="i_restoration">
+				<itemId>40313</itemId>
+				<itemCount>1</itemCount>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="16422" toLevel="1" name="Winter Holiday Reward">
 		<!-- AUTO GENERATED SKILL -->
@@ -244,64 +339,244 @@
 		<hitTime>100</hitTime>
 	</skill>
 	<skill id="16426" toLevel="1" name="Greater Abelius Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16427" toLevel="1" name="Greater Sapyros Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16428" toLevel="1" name="Greater Ashagen Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16429" toLevel="1" name="Greater Cranigg Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16430" toLevel="1" name="Greater Soltkreig Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16431" toLevel="1" name="Greater Naviarope Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16432" toLevel="1" name="Greater Leister Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16433" toLevel="1" name="Greater Lakcis Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16434" toLevel="1" name="Greater Sayha Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16435" toLevel="1" name="Greater Sayha Cloak (20-day)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1, CON + 1, INT + 1, MEN + 1 -->
 		<icon>icon.vesper_cloack_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16436" toLevel="1" name="Rush">
 		<!-- AUTO GENERATED SKILL -->
@@ -323,52 +598,317 @@
 		<isMagic>4</isMagic>
 	</skill>
 	<skill id="16438" toLevel="1" name="Horn Melody Lv. 2 (Adventurer)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 60 min., party members get P. Atk. + 19%, P. Def. + 15%, M. Atk. + 83%, M. Def. + 30%. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
 		<icon>icon.skill11517</icon>
 		<operateType>A2</operateType>
 		<effectPoint>687</effectPoint>
 		<castRange>400</castRange>
+		<effectRange>900</effectRange>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>19</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>83</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_PA_PD_UP;PA_UP;PD_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_PA_PD_UP;PA_UP;PD_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16439" toLevel="1" name="Drum Melody Lv. 2 (Adventurer)">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- For 60 min., party members get Max MP + 20%, HP Recovery Bonus + 20%, M. Critical Rate + 20, Critical Damage in standard attack + 20%, P. Atk. + 10%, P. Def. + 20%, Atk. Spd. + 20%, M. Atk./Def. + 20%, Casting Spd. +60, anad Debuff Resistance + 10%, Received Critical Damage - 30%, and Speed - 10%. Party members equipped with melee/bows/crossbows have increased Critical Damage after receiving an amount of damage. -->
+		<!-- Updated to Helios -->
+		<!-- For 60 min., party members get Max MP + 20%, HP Recovery Bonus + 20%, M. Critical Rate + 20, Critical Damage in standard attack + 20%, P. Atk. + 10%, P. Def. + 20%, Atk. Spd. + 20%, M. Atk./Def. + 20%, Casting Spd. +20%, Debuff Resistance + 10%, Received Critical Damage - 30%, and Speed - 10%. Party members equipped with melee/bows/crossbows have increased Critical Damage after receiving an amount of damage. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_DEFENCE</abnormalType>
 		<icon>icon.skill11522</icon>
 		<operateType>A2</operateType>
 		<effectPoint>687</effectPoint>
 		<castRange>400</castRange>
+		<affectRange>1000</affectRange>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_trigger_skill_by_dmg">
+				<!-- Critical Damage Increase -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>107</maxAttackerLevel>
+				<chance>80</chance>
+				<targetType>SELF</targetType>
+				<minDamage>300</minDamage>
+				<skillId>11569</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_resist_abnormal_by_category">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>-10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>MULTI_BUFF;COUNTER_CRITICAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>MULTI_BUFF;COUNTER_CRITICAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16440" toLevel="1" name="Pipe Organ Melody Lv. 2 (Adventurer)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 60 min., party members get Max HP/MP/CP + 39%, and HP Recovery Bonus + 20%. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_CONDITION</abnormalType>
 		<icon>icon.skill11519</icon>
 		<operateType>A2</operateType>
 		<effectPoint>687</effectPoint>
 		<castRange>400</castRange>
+		<affectRange>1000</affectRange>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>39</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>39</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>39</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_HP_MP_UP;MAX_HP_UP;MAX_MP_UP;HP_REGEN_UP</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_HP_MP_UP;MAX_HP_UP;MAX_MP_UP;HP_REGEN_UP</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16441" toLevel="1" name="Guitar Melody Lv. 2 (Adventurer)">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- For 60 min., party members get P. Critical Rate + 34%, P. Critical Damage + 35%, M. Critical Rate + 20. M. Skill Consumption - 10%, and Iss enchanter's Enchant Skill MP Consumption - 20%. -->
+		<!-- Updated to Helios -->
+		<!-- For 60 min., party members get P. Critical Rate + 34%, P. Critical Damage + 35%, M. Critical Rate + 20, and P. Skill MP Consumption -20%, M. Skill Consumption - 10%, and Iss enchanter's Enchant Skill MP Consumption - 20%. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_CRITICAL</abnormalType>
 		<icon>icon.skill11520</icon>
 		<operateType>A2</operateType>
 		<effectPoint>687</effectPoint>
 		<castRange>400</castRange>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_critical_rate">
+				<amount>34</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_CRT_RATE_DMG_UP;CRITICAL_PROB_UP;CRITICAL_DMG_UP;CHEAP_MAGIC;MAGIC_CRITICAL_UP</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_CRT_RATE_DMG_UP;CRITICAL_PROB_UP;CRITICAL_DMG_UP;CHEAP_MAGIC;MAGIC_CRITICAL_UP</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16442" toLevel="1" name="Harp Melody Lv. 2 (Adventurer)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 60 min., party members get P. Accuracy + 6, P./M. Evasion + 6, Speed + 35. Received Critical Damage - 30%. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_HITAVOID</abnormalType>
 		<icon>icon.skill11521</icon>
 		<operateType>A2</operateType>
 		<effectPoint>687</effectPoint>
 		<castRange>400</castRange>
+		<affectRange>1000</affectRange>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_hit">
+				<amount>6</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_avoid">
+				<amount>6</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_avoid">
+				<amount>6</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>35</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_HIT_DEFENCE_CRT_RATE_UP;HIT_UP;T_CRT_DMG_DOWN;IMPROVE_SPEED_AVOID_UP;SPEED_UP;AVOID_UP</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_HIT_DEFENCE_CRT_RATE_UP;HIT_UP;T_CRT_DMG_DOWN;IMPROVE_SPEED_AVOID_UP;SPEED_UP;AVOID_UP</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16443" toLevel="1" name="Lute Melody Lv. 2 (Adventurer)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 60 min., party members get Atk. Spd. + 35%, Casting Spd. + 32%, and have a chance of applying 9% Vampiric Rage. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_MOVE</abnormalType>
 		<icon>icon.skill11518</icon>
 		<operateType>A2</operateType>
 		<effectPoint>687</effectPoint>
 		<castRange>400</castRange>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>32</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>9</amount>
+				<chance>80</chance>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_VAMPIRIC_HASTE;ATTACK_TIME_DOWN;VAMPIRIC_ATTACK;CASTING_TIME_DOWN</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_VAMPIRIC_HASTE;ATTACK_TIME_DOWN;VAMPIRIC_ATTACK;CASTING_TIME_DOWN</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16444" toLevel="1" name="Fatal Slasher">
 		<!-- AUTO GENERATED SKILL -->
@@ -409,7 +949,7 @@
 		<coolTime>800</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16448" toLevel="1" name="Mass Airbind">
 		<!-- AUTO GENERATED SKILL -->
@@ -421,7 +961,7 @@
 		<coolTime>800</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16449" toLevel="1" name="Mass Hold">
 		<!-- AUTO GENERATED SKILL -->
@@ -433,7 +973,7 @@
 		<coolTime>800</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16450" toLevel="1" name="Mass Fear">
 		<!-- AUTO GENERATED SKILL -->
@@ -445,7 +985,7 @@
 		<coolTime>800</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16451" toLevel="1" name="Wide Stun">
 		<!-- AUTO GENERATED SKILL -->
@@ -456,7 +996,7 @@
 		<hitTime>2000</hitTime>
 		<coolTime>800</coolTime>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16452" toLevel="6" name="Raid Boss (Lv. 99)">
 		<!-- AUTO GENERATED SKILL -->
@@ -477,7 +1017,7 @@
 		<hitTime>5000</hitTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16455" toLevel="1" name="Spinning Power Slasher">
 		<!-- AUTO GENERATED SKILL -->
@@ -487,7 +1027,7 @@
 		<hitTime>5000</hitTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16456" toLevel="1" name="Decrease Speed">
 		<!-- AUTO GENERATED SKILL -->
@@ -499,7 +1039,7 @@
 		<reuseDelay>8000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16457" toLevel="1" name="Mass Knock Down">
 		<!-- AUTO GENERATED SKILL -->
@@ -510,7 +1050,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16458" toLevel="1" name="Mass Power Knock Down">
 		<!-- AUTO GENERATED SKILL -->
@@ -521,7 +1061,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16459" toLevel="1" name="Decrease P. Def.">
 		<!-- AUTO GENERATED SKILL -->
@@ -530,7 +1070,7 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>687</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16460" toLevel="1" name="Maliss Bloody Mark">
 		<!-- AUTO GENERATED SKILL -->
@@ -542,7 +1082,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16461" toLevel="1" name="Isadora Chaos Mark">
 		<!-- AUTO GENERATED SKILL -->
@@ -554,7 +1094,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16462" toLevel="1" name="Chaos Mark Retriever">
 		<!-- AUTO GENERATED SKILL -->
@@ -637,7 +1177,7 @@
 		<hitTime>1500</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16470" toLevel="1" name="Scream Penetration">
 		<!-- AUTO GENERATED SKILL -->
@@ -659,7 +1199,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>2000</reuseDelay>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16472" toLevel="1" name="Holy Spike">
 		<!-- AUTO GENERATED SKILL -->
@@ -863,7 +1403,7 @@
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16490" toLevel="1" name="99Lv. Raid Boss">
 		<!-- AUTO GENERATED SKILL -->

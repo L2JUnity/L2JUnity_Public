@@ -30,9 +30,9 @@ public class SayuneEntry implements ILocational
 {
 	private boolean _isSelector = false;
 	private final int _id;
-	private int _x;
-	private int _y;
-	private int _z;
+	private double _x;
+	private double _y;
+	private double _z;
 	private final List<SayuneEntry> _innerEntries = new LinkedList<>();
 	
 	public SayuneEntry(int id)
@@ -40,7 +40,7 @@ public class SayuneEntry implements ILocational
 		_id = id;
 	}
 	
-	public SayuneEntry(boolean isSelector, int id, int x, int y, int z)
+	public SayuneEntry(boolean isSelector, int id, double x, double y, double z)
 	{
 		_isSelector = isSelector;
 		_id = id;
@@ -55,19 +55,19 @@ public class SayuneEntry implements ILocational
 	}
 	
 	@Override
-	public int getX()
+	public double getX()
 	{
 		return _x;
 	}
 	
 	@Override
-	public int getY()
+	public double getY()
 	{
 		return _y;
 	}
 	
 	@Override
-	public int getZ()
+	public double getZ()
 	{
 		return _z;
 	}
@@ -76,12 +76,6 @@ public class SayuneEntry implements ILocational
 	public int getHeading()
 	{
 		return 0;
-	}
-	
-	@Override
-	public ILocational getLocation()
-	{
-		return new Location(_x, _y, _z);
 	}
 	
 	public boolean isSelector()

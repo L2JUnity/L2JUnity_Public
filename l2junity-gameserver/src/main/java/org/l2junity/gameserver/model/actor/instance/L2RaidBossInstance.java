@@ -18,9 +18,11 @@
  */
 package org.l2junity.gameserver.model.actor.instance;
 
-import org.l2junity.Config;
+import java.util.concurrent.TimeUnit;
+
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.model.L2Spawn;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
@@ -74,7 +76,7 @@ public class L2RaidBossInstance extends L2MonsterInstance
 	@Override
 	protected void startMaintenanceTask()
 	{
-		_maintenanceTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(() -> checkAndReturnToSpawn(), 60000, getMaintenanceInterval() + Rnd.get(5000));
+		_maintenanceTask = ThreadPool.scheduleAtFixedRate(() -> checkAndReturnToSpawn(), 60000, getMaintenanceInterval() + Rnd.get(5000), TimeUnit.MILLISECONDS);
 	}
 	
 	protected void checkAndReturnToSpawn()
@@ -90,21 +92,17 @@ public class L2RaidBossInstance extends L2MonsterInstance
 			return;
 		}
 		
-		final int spawnX = spawn.getX();
-		final int spawnY = spawn.getY();
-		final int spawnZ = spawn.getZ();
-		
 		if (!isInCombat() && !isMovementDisabled())
 		{
-			if (!isInsideRadius(spawnX, spawnY, spawnZ, Math.max(Config.MAX_DRIFT_RANGE, 200), true, false))
+			if (!isInRadius3d(spawn, Math.max(NpcConfig.MAX_DRIFT_RANGE, 200)))
 			{
-				teleToLocation(spawnX, spawnY, spawnZ);
+				teleToLocation(spawn);
 			}
 		}
 	}
 	
 	@Override
-	public int getVitalityPoints(int level, long exp, boolean isBoss)
+	public int getVitalityPoints(int level, double exp, boolean isBoss)
 	{
 		return -super.getVitalityPoints(level, exp, isBoss);
 	}

@@ -17,7 +17,6 @@
 					<param name="fnAgitMap" value="rune"/>
 				</parameters>
 			</npc>
-			<npc id="30990" x="43664" y="-47664" z="-792" heading="50000" respawnTime="60sec" /> <!-- Lottery Ticket Seller -->
 			<npc id="31031" x="43259" y="-50167" z="-792" respawnTime="60sec" /> <!-- Broadcasting Tower -->
 			<npc id="31092" x="42918" y="-41412" z="-2184" heading="20000" respawnTime="60sec" /> <!-- Black Marketeer of Mammon -->
 			<npc id="31300" x="44692" y="-47312" z="-792" respawnTime="60sec" /> <!-- Drumond -->
@@ -100,11 +99,6 @@
 			<npc id="31742" x="32960" y="-48224" z="1776" heading="33000" respawnTime="60sec" /> <!-- Virgil -->
 			<npc id="31743" x="32988" y="-48268" z="1776" heading="33000" respawnTime="60sec" /> <!-- Kassandra -->
 			<npc id="31744" x="32984" y="-48180" z="1776" heading="33000" respawnTime="60sec" /> <!-- Ogmar -->
-			<npc id="31832" x="44151" y="-48462" z="-792" heading="41389" respawnTime="60sec" /> <!-- Adventure Guildsman -->
-			<npc id="31833" x="42912" y="-47648" z="-792" heading="500" respawnTime="60sec" /> <!-- Adventure Guildsman -->
-			<npc id="31834" x="40528" y="-52308" z="-832" respawnTime="60sec" /> <!-- Adventure Guildsman -->
-			<npc id="31835" x="45552" y="-49888" z="-792" heading="34000" respawnTime="60sec" /> <!-- Adventure Guildsman -->
-			<npc id="31836" x="37552" y="-47440" z="-1128" heading="16500" respawnTime="60sec" /> <!-- Adventure Guildsman -->
 			<npc id="32009" x="35996" y="-48756" z="896" heading="16500" respawnTime="60sec" /> <!-- Devorin -->
 			<npc id="32010" x="36432" y="-51296" z="712" respawnTime="60sec" /> <!-- Flauron -->
 			<npc id="32024" x="45728" y="-48400" z="-792" heading="16500" respawnTime="60sec" /> <!-- Mulia -->
@@ -113,11 +107,14 @@
 			<npc id="32230" x="43071" y="-51683" z="-776" heading="20480" respawnTime="60sec" /> <!-- Ceci -->
 			<npc id="32231" x="42983" y="-51691" z="-776" heading="16384" respawnTime="60sec" /> <!-- Luben -->
 			<npc id="32232" x="43090" y="-51647" z="-776" heading="24576" respawnTime="60sec" /> <!-- Minuet -->
-			<npc id="32322" x="44113" y="-47596" z="-792" heading="55308" respawnTime="60sec" /> <!-- Item Broker -->
 			<npc id="32326" x="44480" y="-49536" z="-792" heading="42012" respawnTime="60sec" /> <!-- Yang -->
 			<npc id="32327" x="44174" y="-48342" z="-792" heading="16383" respawnTime="60sec" /> <!-- Adventurers' Guide -->
 			<npc id="32478" x="43568" y="-48976" z="-792" heading="1000" respawnTime="60sec" /> <!-- Dimensional Merchant -->
-			<npc id="32484" x="42665" y="-47924" z="-792" heading="54596" respawnTime="60sec" /> <!-- Pathfinder Worker -->
+			<npc id="32484" x="42665" y="-47924" z="-792" heading="54596" respawnTime="60sec"> <!-- Pathfinder Worker -->
+				<parameters>
+					<param name="Level" value="70" />
+				</parameters>
+			</npc>
 			<npc id="32596" x="37069" y="-49877" z="-1128" heading="16384" respawnTime="60sec" /> <!-- Sophia -->
 			<npc id="32612" x="44267" y="-49213" z="-792" heading="33999" respawnTime="60sec" /> <!-- Olf Adams -->
 			<npc id="32883" x="45524" y="-48446" z="-792" heading="7280" respawnTime="60sec" /> <!-- Hedinger -->
@@ -127,6 +124,7 @@
 			<npc id="33587" x="44231" y="-48377" z="-792" heading="18000" respawnTime="60sec" /> <!-- Mentor Guide -->
 			<npc id="33685" x="36116" y="-48266" z="-1096" heading="1022" respawnTime="60sec" /> <!-- Mysterious Butler -->
 			<npc id="33715" x="43541" y="-47510" z="-792" heading="33783" respawnTime="60sec" /> <!-- Seed Talisman Manager -->
+			<npc id="33803" x="-16392" y="-40120" z="-10750" heading="16346" respawnTime="60sec" /> <!-- Razen -->
 			<npc id="33820" x="35683" y="-50833" z="-760" respawnTime="60sec" /> <!-- Kitchen -->
 			<npc id="33821" x="40273" y="-48497" z="-768" respawnTime="60sec" /> <!-- Kargos -->
 			<npc id="33825" x="43463" y="-48421" z="-792" heading="19404" respawnTime="60sec" /> <!-- La Vie En Rose -->
@@ -134,6 +132,7 @@
 			<npc id="33856" x="43495" y="-48372" z="-792" heading="11547" respawnTime="60sec" /> <!-- Beauty Shop Helper -->
 			<npc id="33856" x="43431" y="-48383" z="-792" heading="16383" respawnTime="60sec" /> <!-- Beauty Shop Helper -->
 			<npc id="33872" x="43556" y="-47608" z="-792" heading="36864" respawnTime="60sec" /> <!-- Jenna -->
+			<npc id="33946" x="44151" y="-48462" z="-792" heading="41389" respawnTime="60sec" /> <!-- Adventure Guildsman -->
 			<npc id="33957" x="44114" y="-48397" z="-792" heading="29577" respawnTime="60sec" /> <!-- Marmie -->
 			<npc id="33977" x="43210" y="-48449" z="-792" heading="16456" respawnTime="60sec" /> <!-- Veruti -->
 			<npc id="35512" x="38256" y="-48432" z="896" respawnTime="60sec" /> <!-- Manor Manager -->

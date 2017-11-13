@@ -21,7 +21,7 @@ package org.l2junity.gameserver.model.events;
 import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.events.impl.IBaseEvent;
 import org.l2junity.gameserver.model.events.listeners.AbstractEventListener;
 import org.l2junity.gameserver.model.events.returns.AbstractEventReturn;
@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class EventDispatcher
 {
-	private static final Logger _log = LoggerFactory.getLogger(EventDispatcher.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EventDispatcher.class);
 	
 	protected EventDispatcher()
 	{
@@ -86,7 +86,7 @@ public final class EventDispatcher
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't notify event " + event.getClass().getSimpleName(), e);
+			LOGGER.warn("Couldn't notify event " + event.getClass().getSimpleName(), e);
 		}
 		return null;
 	}
@@ -118,7 +118,7 @@ public final class EventDispatcher
 		
 		if (hasListeners)
 		{
-			ThreadPoolManager.getInstance().executeEvent(() -> notifyEventToMultipleContainers(event, containers, null));
+			ThreadPool.execute(() -> notifyEventToMultipleContainers(event, containers, null));
 		}
 	}
 	
@@ -132,7 +132,7 @@ public final class EventDispatcher
 	{
 		if (Containers.Global().hasListener(event.getType()) || container.hasListener(event.getType()))
 		{
-			ThreadPoolManager.getInstance().scheduleEvent(() -> notifyEvent(event, container, null), delay);
+			ThreadPool.schedule(() -> notifyEvent(event, container, null), delay, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -147,7 +147,7 @@ public final class EventDispatcher
 	{
 		if (Containers.Global().hasListener(event.getType()) || container.hasListener(event.getType()))
 		{
-			ThreadPoolManager.getInstance().scheduleEvent(() -> notifyEvent(event, container, null), delay, unit);
+			ThreadPool.schedule(() -> notifyEvent(event, container, null), delay, unit);
 		}
 	}
 	
@@ -190,7 +190,7 @@ public final class EventDispatcher
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't notify event " + event.getClass().getSimpleName(), e);
+			LOGGER.warn("Couldn't notify event " + event.getClass().getSimpleName(), e);
 		}
 		return null;
 	}
@@ -255,7 +255,7 @@ public final class EventDispatcher
 			}
 			catch (Exception e)
 			{
-				_log.warn(getClass().getSimpleName() + ": Exception during notification of event: " + event.getClass().getSimpleName() + " listener: " + listener.getClass().getSimpleName(), e);
+				LOGGER.warn("Exception during notification of event: " + event.getClass().getSimpleName() + " listener: " + listener.getClass().getSimpleName(), e);
 			}
 		}
 		

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv.mentoring;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
 import org.l2junity.gameserver.instancemanager.MentorManager;
 import org.l2junity.gameserver.model.Mentee;
@@ -73,7 +73,7 @@ public class RequestMentorCancel implements IClientIncomingPacket
 					}
 					
 					player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.THE_MENTORING_RELATIONSHIP_WITH_S1_HAS_BEEN_CANCELED_THE_MENTOR_CANNOT_OBTAIN_ANOTHER_MENTEE_FOR_TWO_DAYS).addString(_name));
-					MentorManager.getInstance().setPenalty(player.getObjectId(), Config.MENTOR_PENALTY_FOR_MENTEE_LEAVE);
+					MentorManager.getInstance().setPenalty(player.getObjectId(), PlayerConfig.MENTOR_PENALTY_FOR_MENTEE_LEAVE);
 					MentorManager.getInstance().deleteMentor(player.getObjectId(), mentee.getObjectId());
 					
 					// Notify to scripts
@@ -93,7 +93,7 @@ public class RequestMentorCancel implements IClientIncomingPacket
 						MentorManager.getInstance().cancelAllMentoringBuffs(mentor.getPlayerInstance());
 					}
 					
-					MentorManager.getInstance().setPenalty(mentor.getObjectId(), Config.MENTOR_PENALTY_FOR_MENTEE_LEAVE);
+					MentorManager.getInstance().setPenalty(mentor.getObjectId(), PlayerConfig.MENTOR_PENALTY_FOR_MENTEE_LEAVE);
 					MentorManager.getInstance().deleteMentor(mentor.getObjectId(), player.getObjectId());
 					
 					// Notify to scripts

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -29,14 +29,19 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.commons.util.IXmlReader;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.geodata.pathfinding.AbstractNodeLoc;
 import org.l2junity.gameserver.instancemanager.MapRegionManager;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.instance.DoorInstance;
 import org.l2junity.gameserver.model.actor.templates.DoorTemplate;
 import org.l2junity.gameserver.model.instancezone.Instance;
-import org.l2junity.gameserver.pathfinding.AbstractNodeLoc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -59,11 +64,11 @@ public final class DoorData implements IGameXmlReader
 	
 	protected DoorData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("door")
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = MapRegionManager.class))
+	private void load() throws Exception
 	{
 		_doors.clear();
 		_groups.clear();
@@ -72,7 +77,7 @@ public final class DoorData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, "list", listNode -> forEach(listNode, "door", doorNode -> spawnDoor(parseDoor(doorNode))));
 		LOGGER.info("Loaded {} Door Templates for {} regions.", _doors.size(), _regions.size());
@@ -113,6 +118,11 @@ public final class DoorData implements IGameXmlReader
 		
 		applyCollisions(params);
 		return params;
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _doors.size();
 	}
 	
 	/**
@@ -212,7 +222,7 @@ public final class DoorData implements IGameXmlReader
 		return checkIfDoorsBetween(start.getX(), start.getY(), start.getZ(), end.getX(), end.getY(), end.getZ(), instance);
 	}
 	
-	public boolean checkIfDoorsBetween(int x, int y, int z, int tx, int ty, int tz, Instance instance)
+	public boolean checkIfDoorsBetween(double x, double y, double z, double tx, double ty, double tz, Instance instance)
 	{
 		return checkIfDoorsBetween(x, y, z, tx, ty, tz, instance, false);
 	}
@@ -229,9 +239,9 @@ public final class DoorData implements IGameXmlReader
 	 * @param doubleFaceCheck
 	 * @return {@code boolean}
 	 */
-	public boolean checkIfDoorsBetween(int x, int y, int z, int tx, int ty, int tz, Instance instance, boolean doubleFaceCheck)
+	public boolean checkIfDoorsBetween(double x, double y, double z, double tx, double ty, double tz, Instance instance, boolean doubleFaceCheck)
 	{
-		final Collection<DoorInstance> allDoors = (instance != null) ? instance.getDoors() : _regions.get(MapRegionManager.getInstance().getMapRegionLocId(x, y));
+		final Collection<DoorInstance> allDoors = (instance != null) ? instance.getDoors() : _regions.get(MapRegionManager.getInstance().getMapRegionLocId((int) x, (int) y));
 		if (allDoors == null)
 		{
 			return false;
@@ -250,18 +260,18 @@ public final class DoorData implements IGameXmlReader
 			{
 				int j = (i + 1) < 4 ? i + 1 : 0;
 				// lower part of the multiplier fraction, if it is 0 we avoid an error and also know that the lines are parallel
-				int denominator = ((ty - y) * (doorInst.getX(i) - doorInst.getX(j))) - ((tx - x) * (doorInst.getY(i) - doorInst.getY(j)));
+				double denominator = ((ty - y) * (doorInst.getX(i) - doorInst.getX(j))) - ((tx - x) * (doorInst.getY(i) - doorInst.getY(j)));
 				if (denominator == 0)
 				{
 					continue;
 				}
 				
 				// multipliers to the equations of the lines. If they are lower than 0 or bigger than 1, we know that segments don't intersect
-				float multiplier1 = (float) (((doorInst.getX(j) - doorInst.getX(i)) * (y - doorInst.getY(i))) - ((doorInst.getY(j) - doorInst.getY(i)) * (x - doorInst.getX(i)))) / denominator;
-				float multiplier2 = (float) (((tx - x) * (y - doorInst.getY(i))) - ((ty - y) * (x - doorInst.getX(i)))) / denominator;
+				double multiplier1 = (((doorInst.getX(j) - doorInst.getX(i)) * (y - doorInst.getY(i))) - ((doorInst.getY(j) - doorInst.getY(i)) * (x - doorInst.getX(i)))) / denominator;
+				double multiplier2 = (((tx - x) * (y - doorInst.getY(i))) - ((ty - y) * (x - doorInst.getX(i)))) / denominator;
 				if ((multiplier1 >= 0) && (multiplier1 <= 1) && (multiplier2 >= 0) && (multiplier2 <= 1))
 				{
-					int intersectZ = Math.round(z + (multiplier1 * (tz - z)));
+					double intersectZ = Math.round(z + (multiplier1 * (tz - z)));
 					// now checking if the resulting point is between door's min and max z
 					if ((intersectZ > doorInst.getZMin()) && (intersectZ < doorInst.getZMax()))
 					{
@@ -277,13 +287,14 @@ public final class DoorData implements IGameXmlReader
 		return false;
 	}
 	
+	@InstanceGetter
 	public static DoorData getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final DoorData _instance = new DoorData();
+		protected static final DoorData INSTANCE = new DoorData();
 	}
 }

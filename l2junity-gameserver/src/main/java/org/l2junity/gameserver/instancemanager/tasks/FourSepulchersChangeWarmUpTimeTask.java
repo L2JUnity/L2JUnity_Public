@@ -20,9 +20,10 @@ package org.l2junity.gameserver.instancemanager.tasks;
 
 import java.util.Calendar;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.instancemanager.FourSepulchersManager;
 
 /**
@@ -51,10 +52,10 @@ public final class FourSepulchersChangeWarmUpTimeTask implements Runnable
 		}
 		else
 		{
-			interval = Config.FS_TIME_WARMUP * 60000L;
+			interval = GeneralConfig.FS_TIME_WARMUP * 60000L;
 		}
 		
-		manager.setChangeAttackTimeTask(ThreadPoolManager.getInstance().scheduleGeneral(new FourSepulchersChangeAttackTimeTask(), interval));
+		manager.setChangeAttackTimeTask(ThreadPool.schedule(new FourSepulchersChangeAttackTimeTask(), interval, TimeUnit.MILLISECONDS));
 		final ScheduledFuture<?> changeWarmUpTimeTask = manager.getChangeWarmUpTimeTask();
 		
 		if (changeWarmUpTimeTask != null)

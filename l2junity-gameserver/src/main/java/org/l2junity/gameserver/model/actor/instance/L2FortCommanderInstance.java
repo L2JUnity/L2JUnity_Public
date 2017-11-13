@@ -19,10 +19,11 @@
 package org.l2junity.gameserver.model.actor.instance;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.ai.CtrlIntention;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.enums.ChatType;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.instancemanager.FortSiegeManager;
@@ -33,9 +34,12 @@ import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.network.client.send.string.NpcStringId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class L2FortCommanderInstance extends L2DefenderInstance
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2FortCommanderInstance.class);
 	
 	private boolean _canTalk;
 	
@@ -99,18 +103,18 @@ public class L2FortCommanderInstance extends L2DefenderInstance
 	@Override
 	public void returnHome()
 	{
-		if (!isInsideRadius(getSpawn(), 200, false, false))
+		if (!isInRadius2d(getSpawn(), 200))
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.info(getObjectId() + ": moving home");
+				LOGGER.info(getObjectId() + ": moving home");
 			}
 			setisReturningToSpawnPoint(true);
 			clearAggroList();
 			
 			if (hasAI())
 			{
-				getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, getSpawn().getLocation());
+				getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, getSpawn());
 			}
 		}
 	}
@@ -147,7 +151,7 @@ public class L2FortCommanderInstance extends L2DefenderInstance
 					{
 						broadcastSay(ChatType.NPC_SHOUT, npcString, npcString.getParamCount() == 1 ? attacker.getName() : null);
 						setCanTalk(false);
-						ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleTalkTask(), 10000);
+						ThreadPool.schedule(new ScheduleTalkTask(), 10000, TimeUnit.MILLISECONDS);
 					}
 				}
 			}

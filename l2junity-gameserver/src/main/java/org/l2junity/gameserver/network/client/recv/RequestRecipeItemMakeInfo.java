@@ -18,9 +18,12 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
+import org.l2junity.gameserver.data.xml.impl.RecipeData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.holders.RecipeHolder;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.RecipeItemMakeInfo;
+import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
 
 public final class RequestRecipeItemMakeInfo implements IClientIncomingPacket
@@ -43,6 +46,13 @@ public final class RequestRecipeItemMakeInfo implements IClientIncomingPacket
 			return;
 		}
 		
-		client.sendPacket(new RecipeItemMakeInfo(_id, player));
+		final RecipeHolder recipe = RecipeData.getInstance().getRecipe(_id);
+		if (recipe == null)
+		{
+			player.sendPacket(SystemMessageId.THE_RECIPE_IS_INCORRECT);
+			return;
+		}
+		
+		client.sendPacket(new RecipeItemMakeInfo(_id, player, recipe.getMaxOffering()));
 	}
 }

@@ -22,108 +22,37 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.nio.ByteBuffer;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringJoiner;
 import java.util.StringTokenizer;
+import java.util.function.Consumer;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class CommonUtil
 {
-	private static final char[] ILLEGAL_CHARACTERS =
-	{
-		'/',
-		'\n',
-		'\r',
-		'\t',
-		'\0',
-		'\f',
-		'`',
-		'?',
-		'*',
-		'\\',
-		'<',
-		'>',
-		'|',
-		'\"',
-		':'
-	};
+	private static final Logger LOGGER = LoggerFactory.getLogger(CommonUtil.class);
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	private static final DateTimeFormatter FILENAME_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
 	
-	/**
-	 * Method to generate the hexadecimal representation of a byte array.<br>
-	 * 16 bytes per row, while ascii chars or "." is shown at the end of the line.
-	 * @param data the byte array to be represented in hexadecimal representation
-	 * @param len the number of bytes to represent in hexadecimal representation
-	 * @return byte array represented in hexadecimal format
-	 */
-	public static String printData(byte[] data, int len)
+	private CommonUtil()
 	{
-		return new String(HexUtils.bArr2HexEdChars(data, len));
-	}
-	
-	/**
-	 * This call is equivalent to Util.printData(data, data.length)
-	 * @see CommonUtil#printData(byte[],int)
-	 * @param data data to represent in hexadecimal
-	 * @return byte array represented in hexadecimal format
-	 */
-	public static String printData(byte[] data)
-	{
-		return printData(data, data.length);
-	}
-	
-	/**
-	 * Method to represent the remaining bytes of a ByteBuffer as hexadecimal
-	 * @param buf ByteBuffer to represent the remaining bytes of as hexadecimal
-	 * @return hexadecimal representation of remaining bytes of the ByteBuffer
-	 */
-	public static String printData(ByteBuffer buf)
-	{
-		byte[] data = new byte[buf.remaining()];
-		buf.get(data);
-		String hex = CommonUtil.printData(data, data.length);
-		buf.position(buf.position() - data.length);
-		return hex;
-	}
-	
-	/**
-	 * Method to generate a random sequence of bytes returned as byte array
-	 * @param size number of random bytes to generate
-	 * @return byte array with sequence of random bytes
-	 */
-	public static byte[] generateHex(int size)
-	{
-		byte[] array = new byte[size];
-		Rnd.nextBytes(array);
-		
-		// Don't allow 0s inside the array!
-		for (int i = 0; i < array.length; i++)
-		{
-			while (array[i] == 0)
-			{
-				array[i] = (byte) Rnd.get(Byte.MAX_VALUE);
-			}
-		}
-		return array;
-	}
-	
-	/**
-	 * Replaces most invalid characters for the given string with an underscore.
-	 * @param str the string that may contain invalid characters
-	 * @return the string with invalid character replaced by underscores
-	 */
-	public static String replaceIllegalCharacters(String str)
-	{
-		String valid = str;
-		for (char c : ILLEGAL_CHARACTERS)
-		{
-			valid = valid.replace(c, '_');
-		}
-		return valid;
+		// utility class
 	}
 	
 	/**
@@ -146,13 +75,30 @@ public final class CommonUtil
 	}
 	
 	/**
-	 * Split words with a space.
-	 * @param input the string to split
-	 * @return the split string
+	 * @param val
+	 * @param format
+	 * @return formatted double value by specified format.
 	 */
-	public static String splitWords(String input)
+	public static String formatDouble(double val, String format)
 	{
-		return input.replaceAll("(\\p{Ll})(\\p{Lu})", "$1 $2");
+		final DecimalFormat formatter = new DecimalFormat(format, new DecimalFormatSymbols(Locale.ENGLISH));
+		return formatter.format(val);
+	}
+	
+	/**
+	 * Format the given date on the given format
+	 * @param date : the date to format.
+	 * @param format : the format to correct by.
+	 * @return a string representation of the formatted date.
+	 */
+	public static String formatDate(Date date, String format)
+	{
+		if (date == null)
+		{
+			return null;
+		}
+		final DateFormat dateFormat = new SimpleDateFormat(format);
+		return dateFormat.format(date);
 	}
 	
 	/**
@@ -429,6 +375,18 @@ public final class CommonUtil
 	}
 	
 	/**
+	 * Constrains a number to be within a range.
+	 * @param input the number to constrain, all data types
+	 * @param min the lower end of the range, all data types
+	 * @param max the upper end of the range, all data types
+	 * @return input: if input is between min and max, min: if input is less than min, max: if input is greater than max
+	 */
+	public static float constrain(float input, float min, float max)
+	{
+		return (input < min) ? min : (input > max) ? max : input;
+	}
+	
+	/**
 	 * @param array - the array to look into
 	 * @param obj - the object to search for
 	 * @return {@code true} if the {@code array} contains the {@code obj}, {@code false} otherwise.
@@ -438,59 +396,6 @@ public final class CommonUtil
 		for (String element : array)
 		{
 			if (element.startsWith(obj))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * @param <T>
-	 * @param array - the array to look into
-	 * @param obj - the object to search for
-	 * @return {@code true} if the {@code array} contains the {@code obj}, {@code false} otherwise.
-	 */
-	public static <T> boolean contains(T[] array, T obj)
-	{
-		for (T element : array)
-		{
-			if (element == obj)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * @param array - the array to look into
-	 * @param obj - the integer to search for
-	 * @return {@code true} if the {@code array} contains the {@code obj}, {@code false} otherwise
-	 */
-	public static boolean contains(int[] array, int obj)
-	{
-		for (int element : array)
-		{
-			if (element == obj)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * @param array - the array to look into
-	 * @param obj - the object to search for
-	 * @param ignoreCase
-	 * @return {@code true} if the {@code array} contains the {@code obj}, {@code false} otherwise.
-	 */
-	public static boolean contains(String[] array, String obj, boolean ignoreCase)
-	{
-		for (String element : array)
-		{
-			if (element.equals(obj) || (ignoreCase && element.equalsIgnoreCase(obj)))
 			{
 				return true;
 			}
@@ -511,24 +416,16 @@ public final class CommonUtil
 		}
 	}
 	
-	/**
-	 * @param str - the string whose first letter to capitalize
-	 * @return a string with the first letter of the {@code str} capitalized
-	 */
-	public static String capitalizeFirst(String str)
+	public static int parseInt(String value, int defaultValue)
 	{
-		if ((str == null) || str.isEmpty())
+		try
 		{
-			return str;
+			return Integer.parseInt(value);
 		}
-		final char[] arr = str.toCharArray();
-		final char c = arr[0];
-		
-		if (Character.isLetter(c))
+		catch (Exception e)
 		{
-			arr[0] = Character.toUpperCase(c);
+			return defaultValue;
 		}
-		return new String(arr);
 	}
 	
 	/**
@@ -560,5 +457,60 @@ public final class CommonUtil
 			sj.add(o.toString());
 		}
 		return sj.toString();
+	}
+	
+	/**
+	 * Prints a pretty print section to split the console.
+	 * @param sectionName
+	 */
+	public static void printSection(String sectionName)
+	{
+		final StringBuilder sb = new StringBuilder(120);
+		
+		for (int i = 0; i < (120 - 3 - sectionName.length() - 2); i++)
+		{
+			sb.append('-');
+		}
+		
+		sb.append("=[ ").append(sectionName).append(" ]");
+		
+		LOGGER.info(sb.toString());
+	}
+	
+	@SafeVarargs
+	public static <T> List<T> argAndVarArgsToList(T value, T... values)
+	{
+		final List<T> valueList = new ArrayList<>(1 + (values != null ? values.length : 0));
+		forEachArgAndVarArgs(valueList::add, value, values);
+		return Collections.unmodifiableList(valueList);
+	}
+	
+	@SafeVarargs
+	public static <T> void forEachArgAndVarArgs(Consumer<T> consumer, T value, T... values)
+	{
+		consumer.accept(value);
+		if (values != null)
+		{
+			for (T v : values)
+			{
+				consumer.accept(v);
+			}
+		}
+	}
+	
+	/**
+	 * @return general purpose date time formatter
+	 */
+	public static DateTimeFormatter getDateTimeFormatter()
+	{
+		return DATE_TIME_FORMATTER;
+	}
+	
+	/**
+	 * @return the filename date time formatter, in windows : is not allowed!
+	 */
+	public static DateTimeFormatter getFilenameDateTimeFormatter()
+	{
+		return FILENAME_DATE_TIME_FORMATTER;
 	}
 }

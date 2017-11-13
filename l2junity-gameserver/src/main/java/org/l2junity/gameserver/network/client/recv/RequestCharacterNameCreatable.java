@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.ServerConfig;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExIsCharNameCreatable;
@@ -73,6 +73,6 @@ public class RequestCharacterNameCreatable implements IClientIncomingPacket
 	
 	private boolean isValidName(String text)
 	{
-		return Config.CHARNAME_TEMPLATE_PATTERN.matcher(text).matches();
+		return ServerConfig.CHARNAME_TEMPLATE_PATTERN.matcher(text).matches();
 	}
 }

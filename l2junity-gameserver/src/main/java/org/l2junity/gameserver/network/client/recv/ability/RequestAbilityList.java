@@ -50,9 +50,9 @@ public class RequestAbilityList implements IClientIncomingPacket
 			return;
 		}
 		
-		if ((activeChar.getLevel() < 99) || !activeChar.isNoble())
+		if (activeChar.getLevel() < 85)
 		{
-			activeChar.sendPacket(SystemMessageId.ABILITIES_CAN_BE_USED_BY_NOBLESSE_EXALTED_LV_99_OR_ABOVE);
+			activeChar.sendPacket(SystemMessageId.REACH_LEVEL_85_TO_USE_THE_ABILITY);
 			return;
 		}
 		

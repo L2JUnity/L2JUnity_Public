@@ -18,8 +18,10 @@
  */
 package org.l2junity.gameserver.datatables;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,14 +30,20 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.BasePathProvider;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -77,7 +85,12 @@ public final class BotReportTable
 	
 	protected BotReportTable()
 	{
-		if (Config.BOTREPORT_ENABLE)
+	}
+	
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = SkillData.class))
+	private void load()
+	{
+		if (GeneralConfig.BOTREPORT_ENABLE)
 		{
 			_ipRegistry = new HashMap<>();
 			_charRegistry = new ConcurrentHashMap<>();
@@ -86,14 +99,14 @@ public final class BotReportTable
 			
 			try
 			{
-				File punishments = new File("./config/botreport_punishments.xml");
-				if (!punishments.exists())
+				final Path punishments = BasePathProvider.resolvePath(Paths.get("config", "botreport_punishments.xml"));
+				if (Files.notExists(punishments))
 				{
-					throw new FileNotFoundException(punishments.getName());
+					throw new FileNotFoundException(punishments.toString());
 				}
 				
-				SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-				parser.parse(punishments, new PunishmentsLoader());
+				final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+				parser.parse(Files.newInputStream(punishments), new PunishmentsLoader());
 			}
 			catch (Exception e)
 			{
@@ -118,7 +131,7 @@ public final class BotReportTable
 			long lastResetTime = 0;
 			try
 			{
-				String[] hour = Config.BOTREPORT_RESETPOINT_HOUR;
+				String[] hour = GeneralConfig.BOTREPORT_RESETPOINT_HOUR;
 				Calendar c = Calendar.getInstance();
 				c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour[0]));
 				c.set(Calendar.MINUTE, Integer.parseInt(hour[1]));
@@ -228,7 +241,7 @@ public final class BotReportTable
 		
 		if (bot.isInsideZone(ZoneId.PEACE) || bot.isInsideZone(ZoneId.PVP))
 		{
-			reporter.sendPacket(SystemMessageId.YOU_CANNOT_REPORT_A_CHARACTER_WHO_IS_IN_A_PEACE_ZONE_OR_A_BATTLEGROUND);
+			reporter.sendPacket(SystemMessageId.YOU_CANNOT_REPORT_A_CHARACTER_IN_THIS_AREA);
 			return false;
 		}
 		
@@ -277,7 +290,7 @@ public final class BotReportTable
 					return false;
 				}
 				
-				if (!Config.BOTREPORT_ALLOW_REPORTS_FROM_SAME_CLAN_MEMBERS && rcd.reportedBySameClan(reporter.getClan()))
+				if (!GeneralConfig.BOTREPORT_ALLOW_REPORTS_FROM_SAME_CLAN_MEMBERS && rcd.reportedBySameClan(reporter.getClan()))
 				{
 					reporter.sendPacket(SystemMessageId.THIS_CHARACTER_CANNOT_MAKE_A_REPORT_THE_TARGET_HAS_ALREADY_BEEN_REPORTED_BY_EITHER_YOUR_CLAN_OR_ALLIANCE_OR_HAS_ALREADY_BEEN_REPORTED_FROM_YOUR_CURRENT_IP);
 					return false;
@@ -288,12 +301,12 @@ public final class BotReportTable
 			{
 				if (rcdRep.getPointsLeft() == 0)
 				{
-					reporter.sendPacket(SystemMessageId.YOU_HAVE_USED_ALL_AVAILABLE_POINTS_POINTS_ARE_RESET_EVERYDAY_AT_NOON);
+					reporter.sendPacket(SystemMessageId.YOU_SPENT_ALL_AVAILABLE_POINTS_THEY_WILL_BECOME_AVAILABLE_WHEN_THEY_ARE_RESET_AT_06_30_AM_EVERY_DAY);
 					return false;
 				}
 				
 				long reuse = (System.currentTimeMillis() - rcdRep.getLastReporTime());
-				if (reuse < Config.BOTREPORT_REPORT_DELAY)
+				if (reuse < GeneralConfig.BOTREPORT_REPORT_DELAY)
 				{
 					SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.YOU_CAN_MAKE_ANOTHER_REPORT_IN_S1_MINUTE_S_YOU_HAVE_S2_POINT_S_REMAINING_ON_THIS_ACCOUNT);
 					sm.addInt((int) (reuse / 60000));
@@ -346,7 +359,7 @@ public final class BotReportTable
 		// Report count punishment
 		punishBot(bot, _punishments.get(rcd.getReportCount()));
 		
-		// Range punishments
+		// Dependency punishments
 		for (int key : _punishments.keySet())
 		{
 			if ((key < 0) && (Math.abs(key) <= rcd.getReportCount()))
@@ -414,7 +427,7 @@ public final class BotReportTable
 	{
 		try
 		{
-			String[] hour = Config.BOTREPORT_RESETPOINT_HOUR;
+			String[] hour = GeneralConfig.BOTREPORT_RESETPOINT_HOUR;
 			Calendar c = Calendar.getInstance();
 			c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour[0]));
 			c.set(Calendar.MINUTE, Integer.parseInt(hour[1]));
@@ -424,18 +437,13 @@ public final class BotReportTable
 				c.set(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_YEAR) + 1);
 			}
 			
-			ThreadPoolManager.getInstance().scheduleGeneral(new ResetPointTask(), c.getTimeInMillis() - System.currentTimeMillis());
+			ThreadPool.schedule(new ResetPointTask(), c.getTimeInMillis() - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 		}
 		catch (Exception e)
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(new ResetPointTask(), 24 * 3600 * 1000);
+			ThreadPool.schedule(new ResetPointTask(), 24 * 3600 * 1000, TimeUnit.MILLISECONDS);
 			LOGGER.warn("Could not properly schedule bot report points reset task. Scheduled in 24 hours.", e);
 		}
-	}
-	
-	public static BotReportTable getInstance()
-	{
-		return SingletonHolder.INSTANCE;
 	}
 	
 	/**
@@ -466,7 +474,7 @@ public final class BotReportTable
 	{
 		if (map.containsKey(objectId))
 		{
-			return (System.currentTimeMillis() - map.get(objectId)) > Config.BOTREPORT_REPORT_DELAY;
+			return (System.currentTimeMillis() - map.get(objectId)) > GeneralConfig.BOTREPORT_REPORT_DELAY;
 		}
 		return true;
 	}
@@ -616,8 +624,14 @@ public final class BotReportTable
 		}
 	}
 	
+	@InstanceGetter
+	public static BotReportTable getInstance()
+	{
+		return SingletonHolder.INSTANCE;
+	}
+	
 	private static final class SingletonHolder
 	{
-		static final BotReportTable INSTANCE = new BotReportTable();
+		protected static final BotReportTable INSTANCE = new BotReportTable();
 	}
 }

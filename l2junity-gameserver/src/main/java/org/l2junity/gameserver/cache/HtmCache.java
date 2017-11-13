@@ -18,8 +18,11 @@
  */
 package org.l2junity.gameserver.cache;
 
-import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -27,8 +30,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.l2junity.Config;
-import org.l2junity.commons.util.file.filter.HTMLFilter;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
+import org.l2junity.gameserver.PathProvider;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.ServerConfig.OverrideMode;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,107 +44,99 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Layane
  */
-public class HtmCache
+public final class HtmCache
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HtmCache.class);
 	
-	private static final HTMLFilter HTML_FILTER = new HTMLFilter();
 	private static final Pattern EXTEND_PATTERN = Pattern.compile("<extend template=\"([a-zA-Z0-9-_./\\ ]*)\">(.*?)</extend>", Pattern.DOTALL);
 	private static final Pattern ABSTRACT_BLOCK_PATTERN = Pattern.compile("<abstract block=\"([a-zA-Z0-9-_. ]*)\" ?/>", Pattern.DOTALL);
 	private static final Pattern BLOCK_PATTERN = Pattern.compile("<block name=\"([a-zA-Z0-9-_. ]*)\">(.*?)</block>", Pattern.DOTALL);
 	
-	private final Map<String, String> _cache = Config.LAZY_CACHE ? new ConcurrentHashMap<>() : new HashMap<>();
+	private final Map<String, String> _cache = GeneralConfig.LAZY_CACHE ? new ConcurrentHashMap<>() : new HashMap<>();
 	
 	private int _loadedFiles;
 	private long _bytesBuffLen;
+	private final PathProvider _pathProvider = new PathProvider().setAcceptFilter(path -> Files.isDirectory(path) || isLoadable(path.toString())).setOverrideLogging(false);
 	
 	protected HtmCache()
 	{
-		reload();
 	}
 	
-	public void reload()
+	@Reload("html")
+	@Load(group = LoadGroup.class)
+	public void load()
 	{
-		reload(Config.DATAPACK_ROOT);
-	}
-	
-	public void reload(File f)
-	{
-		if (!Config.LAZY_CACHE)
+		if (!GeneralConfig.LAZY_CACHE)
 		{
-			LOGGER.info("Html cache start...");
-			parseDir(f);
-			LOGGER.info("{} megabytes on {} files loaded", String.format("%.3f", getMemoryUsage()), getLoadedFiles());
+			LOGGER.info("HTML caching started...");
+			
+			try
+			{
+				_pathProvider.resolveOverriddenDirectory(Paths.get("data"), true, OverrideMode.OVERLAYING).forEach(this::loadFile);
+			}
+			catch (final IOException e)
+			{
+				LOGGER.error("Exception during: ", e);
+			}
+			
+			LOGGER.info(toString());
 		}
 		else
 		{
 			_cache.clear();
 			_loadedFiles = 0;
 			_bytesBuffLen = 0;
-			LOGGER.info("Running lazy cache");
+			
+			LOGGER.info("Running lazy cache.");
 		}
 	}
 	
-	public void reloadPath(File f)
+	@Override
+	public String toString()
 	{
-		parseDir(f);
-		LOGGER.info("Reloaded specified path.");
+		final StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%.3f", (float) _bytesBuffLen / 1_048_576));
+		sb.append(" megabyte(s) on ");
+		sb.append(_loadedFiles);
+		sb.append(" file(s) loaded.");
+		return sb.toString();
 	}
 	
-	public double getMemoryUsage()
+	public boolean isLoadable(String pathName)
 	{
-		return ((float) _bytesBuffLen / 1048576);
+		return pathName.endsWith(".html") || pathName.endsWith(".htm");
 	}
 	
-	public int getLoadedFiles()
+	public Path getHtmFilePath(String path)
 	{
-		return _loadedFiles;
+		return _pathProvider.resolvePath(Paths.get(path));
 	}
 	
-	private void parseDir(File dir)
+	public String loadFile(Path file)
 	{
-		final File[] files = dir.listFiles();
-		for (File file : files)
+		final String lines;
+		try
 		{
-			if (!file.isDirectory())
-			{
-				loadFile(file);
-			}
-			else
-			{
-				parseDir(file);
-			}
+			lines = Util.readAllLines(file, StandardCharsets.UTF_8, null);
 		}
-	}
-	
-	public String loadFile(File file)
-	{
-		if (HTML_FILTER.accept(file))
+		catch (IOException e)
 		{
-			try
-			{
-				String content = processHtml(Util.readAllLines(file, StandardCharsets.UTF_8, null));
-				content = content.replaceAll("(?s)<!--.*?-->", ""); // Remove html comments
-				// content = content.replaceAll("\r", "").replaceAll("\n", ""); // Remove new lines
-				
-				String oldContent = _cache.put(file.toURI().getPath().substring(Config.DATAPACK_ROOT.toURI().getPath().length()), content);
-				if (oldContent == null)
-				{
-					_bytesBuffLen += content.length() * 2;
-					_loadedFiles++;
-				}
-				else
-				{
-					_bytesBuffLen = (_bytesBuffLen - oldContent.length()) + (content.length() * 2);
-				}
-				return content;
-			}
-			catch (Exception e)
-			{
-				LOGGER.warn("Problem with htm file:", e);
-			}
+			return null;
 		}
-		return null;
+		
+		final String content = processHtml(lines);
+		final String oldContent = _cache.put(_pathProvider.relativePath(file).toString(), content);
+		if (oldContent == null)
+		{
+			_bytesBuffLen += content.length() * 2;
+			_loadedFiles++;
+		}
+		else
+		{
+			_bytesBuffLen = (_bytesBuffLen - oldContent.length()) + (content.length() * 2);
+		}
+		
+		return content;
 	}
 	
 	public String getHtmForce(String prefix, String path)
@@ -156,7 +156,7 @@ public class HtmCache
 		String content;
 		if ((prefix != null) && !prefix.isEmpty())
 		{
-			newPath = prefix + path;
+			newPath = prefix + "/" + path;
 			content = getHtm(newPath);
 			if (content != null)
 			{
@@ -175,26 +175,12 @@ public class HtmCache
 	
 	private String getHtm(String path)
 	{
-		if ((path == null) || path.isEmpty())
-		{
-			return ""; // avoid possible NPE
-		}
-		
-		return _cache.getOrDefault(path, Config.LAZY_CACHE ? loadFile(new File(Config.DATAPACK_ROOT, path)) : null);
+		return (path == null) || path.isEmpty() ? null : _cache.getOrDefault(path, GeneralConfig.LAZY_CACHE ? loadFile(getHtmFilePath(path)) : null);
 	}
 	
 	public boolean contains(String path)
 	{
 		return _cache.containsKey(path);
-	}
-	
-	/**
-	 * @param path The path to the HTM
-	 * @return {@code true} if the path targets a HTM or HTML file, {@code false} otherwise.
-	 */
-	public boolean isLoadable(String path)
-	{
-		return HTML_FILTER.accept(new File(Config.DATAPACK_ROOT, path));
 	}
 	
 	private String parseTemplateName(String name)
@@ -239,7 +225,7 @@ public class HtmCache
 					final String name = blockMatcher.group(1);
 					if (!blockMap.containsKey(name))
 					{
-						LOGGER.warn(getClass().getSimpleName() + ": Abstract block definition [" + name + "] is not implemented!");
+						LOGGER.warn("Abstract block definition [" + name + "] is not implemented!");
 						continue;
 					}
 					
@@ -252,10 +238,12 @@ public class HtmCache
 			}
 			else
 			{
-				LOGGER.warn(getClass().getSimpleName() + ": Missing template: " + templateName + "-template.htm !");
+				LOGGER.warn("Missing template: " + templateName + "-template.htm !");
 			}
 		}
 		
+		result = result.replaceAll("(?s)<!--.*?-->", ""); // Remove html comments
+		// result = result.replaceAll("\r", "").replaceAll("\n", ""); // Remove new lines
 		return result;
 	}
 	
@@ -272,13 +260,14 @@ public class HtmCache
 		return blockMap;
 	}
 	
+	@InstanceGetter
 	public static HtmCache getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
-	private static class SingletonHolder
+	private static final class SingletonHolder
 	{
-		protected static final HtmCache _instance = new HtmCache();
+		protected static final HtmCache INSTANCE = new HtmCache();
 	}
 }

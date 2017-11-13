@@ -35,7 +35,7 @@ public class AirShipAI extends VehicleAI
 	}
 	
 	@Override
-	protected void moveTo(int x, int y, int z)
+	protected void moveTo(double x, double y, double z)
 	{
 		if (!_actor.isMovementDisabled())
 		{

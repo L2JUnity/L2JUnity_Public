@@ -30,9 +30,10 @@ import org.slf4j.LoggerFactory;
 public enum DropListScope
 {
 	DEATH(DeathDropItem.class, GroupedDeathDropItem.class),
-	CORPSE(CorpseDropItem.class, GroupedCorpseDropItem.class);
+	CORPSE(CorpseDropItem.class, GroupedCorpseDropItem.class),
+	LUCK(LuckDropItem.class, GroupedLuckDropItem.class);
 	
-	private static final Logger _log = LoggerFactory.getLogger(DropListScope.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(DropListScope.class);
 	
 	private final Class<? extends GeneralDropItem> _dropItemClass;
 	private final Class<? extends GroupedGeneralDropItem> _groupedDropItemClass;
@@ -52,7 +53,7 @@ public enum DropListScope
 		}
 		catch (NoSuchMethodException | SecurityException e)
 		{
-			_log.error("Constructor(int, long, long, double) not found for " + _dropItemClass.getSimpleName(), e);
+			LOGGER.error("Constructor(int, long, long, double) not found for " + _dropItemClass.getSimpleName(), e);
 			return null;
 		}
 		
@@ -62,7 +63,7 @@ public enum DropListScope
 		}
 		catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
 		{
-			_log.error("", e);
+			LOGGER.error("", e);
 			return null;
 		}
 	}
@@ -76,7 +77,7 @@ public enum DropListScope
 		}
 		catch (NoSuchMethodException | SecurityException e)
 		{
-			_log.error("Constructor(double) not found for " + _groupedDropItemClass.getSimpleName(), e);
+			LOGGER.error("Constructor(double) not found for " + _groupedDropItemClass.getSimpleName(), e);
 			return null;
 		}
 		
@@ -86,7 +87,7 @@ public enum DropListScope
 		}
 		catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
 		{
-			_log.error("", e);
+			LOGGER.error("", e);
 			return null;
 		}
 	}

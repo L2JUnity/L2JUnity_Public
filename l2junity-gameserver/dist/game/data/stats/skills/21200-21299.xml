@@ -400,16 +400,17 @@
 		</conditions>
 	</skill>
 	<skill id="21222" toLevel="1" name="Elemental Resistance">
+		<!-- Glory Days confirmed -->
 		<!-- "For 1 hour, increases Resistance to Fire/Water/Wind/Earth by 20. Reuse delay is 4 hours." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
 		<abnormalType>MD_UP_ATTR</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>BranchSys2.icon.br_polar_bear_cap_i00</icon>
 		<hitTime>3000</hitTime>
@@ -418,36 +419,71 @@
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>20</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>20</amount>
+				<attribute>WATER</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>20</amount>
+				<attribute>WIND</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>20</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21223" toLevel="1" name="Ultimate Defense">
+		<!-- Glory Days confirmed -->
 		<!-- "For 30 seconds, increases one's own P. Def. by 3636, M. Def. by 2727, and resistance to buff canceling attacks by 80%, and becomes unable to move. Reuse delay is 1 hour." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>30</abnormalTime>
 		<abnormalType>PD_UP_SPECIAL</abnormalType>
+		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>30</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>BranchSys2.icon.br_polar_bear_wp_i00</icon>
 		<hitTime>1000</hitTime>
 		<reuseDelay>3600000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>ULTIMATE_DEFENCE</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>3636</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>2727</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_resist_dispel_by_category">
+				<amount>-80</amount>
+				<slot>BUFF</slot>
+			</effect>
+			<effect name="p_block_move" />
+		</effects>
 	</skill>
 	<skill id="21224" toLevel="1" name="Soul of an Adventurer of Immortality's Ability">
+		<!-- Glory Days confirmed -->
 		<!-- "For 5 minutes, receives the soul's help to raise Max HP by 20%, Max MP by 20%, and Speed by 20%. Increases Resistance to de-buffs by 10%. Reuse delay is 1 hour." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>300</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>300</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
 		<icon>BranchSys2.icon.br_stagbeetle_cap_i00</icon>
@@ -457,17 +493,36 @@
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_resist_abnormal_by_category">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21225" toLevel="1" name="Soul of a Strong Warrior's Ability">
+		<!-- Glory Days confirmed -->
 		<!-- "For 5 minutes, increases Atk. Spd. by 20%, P. Atk. by 10%, and P. Def. by 20% with the soul's help. Bestows the ability to recover as HP 5% of the standard short-range physical damage inflicted on an enemy. Reuse delay is 1 hour." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>300</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>300</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
 		<icon>BranchSys2.icon.br_hornbeetle_cap_i00</icon>
@@ -477,17 +532,36 @@
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>5</amount>
+				<chance>30</chance>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21226" toLevel="1" name="Soul of a Wise Magician's Ability">
+		<!-- Glory Days confirmed -->
 		<!-- "For 5 minutes, receives the soul's help to raise Casting Spd. by 20%, M. Atk. by 20%, and M. Def. by 20%. Decreases MP consumption for skill use by 5%. Reuse delay is 1 hour." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>300</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>300</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
 		<icon>BranchSys2.icon.br_ladybug_cap_i00</icon>
@@ -497,17 +571,47 @@
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_magic_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21227" toLevel="1" name="Ability of Prominent Adventure's Soul">
+		<!-- Glory Days confirmed -->
 		<!-- "For 5 minutes, receives the soul's help to raise Max HP by 20%, Max MP by 20%, and Speed by 20%. Increases HP Recovery Bonus by 20% and MP Recovery Bonus by 20%. Reuse delay is 1 hour." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>300</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>300</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
 		<icon>BranchSys2.icon.br_mantis_cap_i00</icon>
@@ -517,17 +621,40 @@
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_mp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21228" toLevel="1" name="Soul of a Brave Warrior's Ability">
+		<!-- Glory Days confirmed -->
 		<!-- "For 5 minutes, increases Atk. Spd. by 20%, P. Atk. by 10%, and P. Def. by 20% with the soul's help. Increases Critical Damage by 20% and critical rate by 20%. Reuse delay is 1 hour." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>300</abnormalTime>
 		<abnormalType>MULTI_BUFF</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>300</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
 		<icon>BranchSys2.icon.br_locust_cap_i00</icon>
@@ -537,18 +664,41 @@
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21229" toLevel="1" name="Blood Awakening">
+		<!-- Glory Days confirmed -->
 		<!-- "Combines general attack damage absorption and Atk. Spd. increase for a more advanced blood awakening effect. For 1 hour, increases Atk. Spd. by 33% and bestows the ability to recover as HP 9% of the standard short-range physical damage inflicted on an enemy. Reuse delay is 4 hours." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
 		<abnormalType>IMPROVE_VAMPIRIC_HASTE</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>BranchSys2.icon.br_close_helmet_i00</icon>
 		<hitTime>1500</hitTime>
@@ -557,18 +707,35 @@
 		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>33</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>9</amount>
+				<chance>30</chance>
+			</effect>
+			<effect name="i_dispel_by_slot">
+				<dispel>VAMPIRIC_ATTACK,9;ATTACK_TIME_DOWN,9</dispel>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>VAMPIRIC_ATTACK;ATTACK_TIME_DOWN</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21230" toLevel="1" name="Improve Magic">
+		<!-- Glory Days confirmed -->
 		<!-- "Combines M. Atk. increase and M. Def. increase to have more advanced magic ability increase effect. For 1 hour, increases M. Atk. by 75% and M. Def. by 30%. Reuse delay is 4 hours." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
 		<abnormalType>IMPROVE_MA_MD_UP</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>BranchSys2.icon.br_navy_cap_i00</icon>
 		<hitTime>3000</hitTime>
@@ -577,18 +744,35 @@
 		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>75</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot">
+				<dispel>MA_UP,9;MD_UP,9</dispel>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>MA_UP;MD_UP</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21231" toLevel="1" name="Improve Critical Attack">
+		<!-- Glory Days confirmed -->
 		<!-- "Combines critical rate increase and Critical Damage increase to have more advanced critical increase effect. For 1 hour, increases critical rate by 30% and Critical Damage by 35%. Reuse delay is 4 hours." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
 		<abnormalType>IMPROVE_CRT_RATE_DMG_UP</abnormalType>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>BranchSys2.icon.br_gold_eyeglass_i00</icon>
 		<hitTime>3000</hitTime>
@@ -597,6 +781,22 @@
 		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_critical_rate">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot">
+				<dispel>CRITICAL_PROB_UP,9;CRITICAL_DMG_UP,9</dispel>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>CRITICAL_PROB_UP;CRITICAL_DMG_UP</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21232" toLevel="1" name="Shiny Platform">
 		<!-- High Five Skill -->
@@ -624,10 +824,10 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>20004</transformationId>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -676,7 +876,7 @@
 		<magicLvl>1</magicLvl>
 		<icon>BranchSys2.icon.7anni_shirt_i00</icon>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>7</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -700,7 +900,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
@@ -726,31 +926,32 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21238" toLevel="1" name="Jet Bike">
+		<!-- Glory Days confirmed -->
 		<!-- Mounts a jet bike. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>TRANSFORM</abnormalType>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>TRANSFORM</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
 		<icon>icon.skilltransform3</icon>
@@ -762,6 +963,17 @@
 				<transformId>20001</transformId>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
+			</effect>
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
+				<transformationId>20001</transformationId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21239" toLevel="1" name="Release Agathion's Seal - Cow">
 		<!-- High Five Skill -->
@@ -806,7 +1018,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>70</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -830,7 +1042,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>52195</x>
 				<y>218787</y>
 				<z>-3231</z>
@@ -855,7 +1067,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>102728</x>
 				<y>-126242</y>
 				<z>-2840</z>
@@ -880,7 +1092,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>181378</x>
 				<y>-80915</y>
 				<z>-2731</z>
@@ -907,21 +1119,21 @@
 	</skill>
 	<skill id="21246" toLevel="1" name="Rudolph's Energy">
 		<!-- "For 10 minute(s), energy is replenished when Exp. is acquired through hunting. Reuse time is 30 minutes." -->
-		<operateType>A2</operateType>
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>600</abnormalTime>
 		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
+		<operateType>A2</operateType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>2</abnormalLvl>
-		<abnormalTime>600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.etc_rbracelet_aga_agit_i00</icon>
 		<reuseDelay>1800000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -934,6 +1146,11 @@
 			</condition>
 			<condition name="OpNeedAgathion" />
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21247" toLevel="1" name="Santa's Gift">
 		<!-- "Receives a gift from Santa Claus. It can be used only once a day, and the reuse time is reset every morning at 6:30 AM." -->
@@ -951,7 +1168,7 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="92">
 						<item id="21711" count="1" />
@@ -1001,9 +1218,11 @@
 		</effects>
 	</skill>
 	<skill id="21250" toLevel="1" name="Academy Benefaction">
-		<!-- Can acquire additional 10% XP. The death XP penalty decreases by 50%. Can only be used by characters at Lv.s 1~84. -->
-		<icon>icon.accessory_academy_i00</icon>
+		<!-- Updated to GC -->
+		<!-- Can acquire additional 10%% XP. The death XP penalty decreases by 50%%. Can only be used by characters at Lv.s 1~84. -->
 		<abnormalTime>7200</abnormalTime>
+		<abnormalType>ACADEMY_BENEFACTION</abnormalType>
+		<icon>icon.accessory_academy_i00</icon>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1012,45 +1231,77 @@
 		<magicLvl>1</magicLvl>
 		<reuseDelay>5000</reuseDelay>
 		<passiveConditions>
-			<condition name="CheckLevel">
+			<condition name="CheckLevel" fromLevel="1" toLevel="1">
 				<minLevel>1</minLevel>
 				<maxLevel>84</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 		</passiveConditions>
 		<effects>
-			<effect name="ExpModify">
+			<effect name="p_exp_modify">
 				<amount>10</amount>
-				<mode>PER</mode>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-50</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
+				<type>MOB</type>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-50</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>PK</type>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-50</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>RAID</type>
+			</effect>
+			<effect name="p_stat_up" fromLevel="2" toLevel="2">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="2" toLevel="2">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="2" toLevel="2">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="2" toLevel="2">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="2" toLevel="2">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="2" toLevel="2">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="2" toLevel="2">
+				<amount>1</amount>
+				<stat>CHA</stat>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21251" toLevel="1" name="Shiny Party Hat - Greater Body">
+		<!-- Glory Days confirmed -->
 		<!-- Increases Max HP by 35% for 20 minutes. -->
+		<abnormalLvl>6</abnormalLvl>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>MAX_HP_UP</abnormalType>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>MAX_HP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>1</magicLvl>
-		<abnormalLvl>6</abnormalLvl>
-		<abnormalTime>1200</abnormalTime>
 		<icon>BranchSys.icon.br_party_hat_gold_i00</icon>
 		<hitTime>1000</hitTime>
 		<reuseDelay>1200000</reuseDelay>
@@ -1058,22 +1309,28 @@
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21252" toLevel="1" name="Hellblade">
 		<!-- High Five Skill -->
-		<!-- FIXME: value unconfirmed -->
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys2.icon.br_wp_Caladbulg_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>84</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Blood Seeker -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
 				<maxAttackerLevel>100</maxAttackerLevel>
 				<minDamage>1</minDamage>
-				<chance>3</chance>
+				<chance>2</chance>
 				<targetType>TARGET</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
@@ -1084,19 +1341,19 @@
 	</skill>
 	<skill id="21253" toLevel="1" name="Butcher Blades">
 		<!-- High Five Skill -->
-		<!-- FIXME: value unconfirmed -->
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys2.icon.br_wp_habus_knife_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>83</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Greedy Throat -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
 				<maxAttackerLevel>100</maxAttackerLevel>
 				<minDamage>1</minDamage>
-				<chance>3</chance>
+				<chance>2</chance>
 				<targetType>TARGET</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
@@ -1107,19 +1364,19 @@
 	</skill>
 	<skill id="21254" toLevel="1" name="Claw of Destruction">
 		<!-- High Five Skill -->
-		<!-- FIXME: value unconfirmed -->
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys2.icon.br_wp_tiatenon_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>82</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Draconic Evolver -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
 				<maxAttackerLevel>100</maxAttackerLevel>
 				<minDamage>1</minDamage>
-				<chance>3</chance>
+				<chance>2</chance>
 				<targetType>TARGET</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
@@ -1130,19 +1387,19 @@
 	</skill>
 	<skill id="21255" toLevel="1" name="Blades of Delusion">
 		<!-- High Five Skill -->
-		<!-- FIXME: value unconfirmed -->
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys2.icon.br_wp_astarot_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>82</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Demonic Desire -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
 				<maxAttackerLevel>100</maxAttackerLevel>
 				<minDamage>1</minDamage>
-				<chance>3</chance>
+				<chance>2</chance>
 				<targetType>TARGET</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
@@ -1153,19 +1410,19 @@
 	</skill>
 	<skill id="21256" toLevel="1" name="Blood Brother">
 		<!-- High Five Skill -->
-		<!-- FIXME: value unconfirmed -->
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys2.icon.br_wp_tirbing_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>82</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Fury of Darkness -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
 				<maxAttackerLevel>100</maxAttackerLevel>
 				<minDamage>1</minDamage>
-				<chance>3</chance>
+				<chance>2</chance>
 				<targetType>TARGET</targetType>
 				<isCritical>false</isCritical>
 				<allowWeapons>ALL</allowWeapons>
@@ -1176,20 +1433,20 @@
 	</skill>
 	<skill id="21257" toLevel="1" name="Mardil">
 		<!-- High Five Skill -->
-		<!-- FIXME: value unconfirmed -->
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys2.icon.br_wp_wind_of_mardil_i00</icon>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>71</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Jet Black Typhoon -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
 				<maxAttackerLevel>100</maxAttackerLevel>
-				<chance>3</chance>
-				<targetType>SELF</targetType>
 				<minDamage>1</minDamage>
+				<chance>2</chance>
+				<targetType>SELF</targetType>
 				<skillId>23324</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
@@ -1197,8 +1454,10 @@
 	</skill>
 	<skill id="21258" toLevel="1" name="Ride Rocking Horse">
 		<!-- High Five Skill -->
+		<!-- Glory Days confirmed -->
 		<!-- Mounts a rocking horse. -->
-		<abnormalTime>3600</abnormalTime> <!-- FIXME: value unconfirmed -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
 		<abnormalType>TRANSFORM</abnormalType>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<operateType>A2</operateType>
@@ -1208,7 +1467,6 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.skilltransform3</icon>
 		<isMagic>2</isMagic>
@@ -1220,7 +1478,13 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="i_dispel_by_slot">
+				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
+			</effect>
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
 				<transformationId>20007</transformationId>
 			</effect>
 		</effects>
@@ -1244,6 +1508,7 @@
 		</effects>
 	</skill>
 	<skill id="21260" toLevel="1" name="Notifier">
+		<!-- Glory Days confirmed -->
 		<!-- Description: You can use to learn the number of received gifts and the number of remaining gifts. The gift provision time is reset every morning at 6:30. -->
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1260,27 +1525,95 @@
 		</conditions>
 	</skill>
 	<skill id="21261" toLevel="1" name="Bad Bunny's Necklace">
+		<!-- Glory Days confirmed -->
 		<!-- Description: Its effects are MP+250, HP+500, CP+1035, increased P. Atk., increased M. Atk., wild magic effect, and increased Critical attack power. -->
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<icon>branchsys2.icon2.g_accessory_event_necklace</icon>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>500</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>250</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>1035</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>4</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21262" toLevel="1" name="Bad Bunny's Earring">
+		<!-- Glory Days confirmed -->
 		<!-- Description: Its effects are HP+250, Vampiric Rage effect, increased accuracy, decreased re-use time for magic skills, and decreased MP consumption for magic skills. When two identical earrings are equipped, only one effect is applied. -->
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<icon>branchsys2.icon2.g_accessory_event_earring</icon>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>250</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>2</amount>
+				<chance>30</chance>
+			</effect>
+			<effect name="p_hit">
+				<amount>1</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-3</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21263" toLevel="1" name="Bad Bunny's Ring">
+		<!-- Glory Days confirmed -->
 		<!-- Description: Its effects are increased Atk. Spd., and increased Casting Spd. When two identical rings are equipped, only one effect is applied. -->
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<icon>branchsys2.icon2.g_accessory_event_ring</icon>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21264" toLevel="1" name="Summon Friend">
+		<!-- Glory Days confirmed -->
 		<!-- Description: Summons your friend. The target to be summoned must be equipped with a Shining Couple Ring and be a party member. -->
 		<operateType>A1</operateType>
 		<effectPoint>1000</effectPoint>
@@ -1304,8 +1637,12 @@
 				<affectType>BOTH</affectType>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_call_pc" />
+		</effects>
 	</skill>
 	<skill id="21265" toLevel="1" name="Summon Friend">
+		<!-- Glory Days confirmed -->
 		<!-- Description: Summons your friend. The target to be summoned must be equipped with a Mysterious Friend Summon Bracelet and be a party member. -->
 		<operateType>A1</operateType>
 		<effectPoint>1000</effectPoint>
@@ -1329,6 +1666,9 @@
 				<affectType>BOTH</affectType>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_call_pc" />
+		</effects>
 	</skill>
 	<skill id="21266" toLevel="1" name="Release Agathion's Seal - Juju">
 		<!-- High Five Skill -->
@@ -1365,7 +1705,7 @@
 		</conditions>
 	</skill>
 	<skill id="21268" toLevel="1" name="Jack O'Lantern Crush">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Inflicts powerful damage on Norhand's neck. -->
 		<icon>BranchSys3.Icon.g_halloween_scythe</icon>
 		<operateType>A1</operateType>
@@ -1381,43 +1721,51 @@
 		<reuseDelay>3000</reuseDelay>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_real_damage">
+				<power>1</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21269" toLevel="1" name="Jack O'Lantern Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Neutralizes Norhand's flint for 7 seconds through the divine power of the Jack O'Lantern. Cooldown is 30 seconds. -->
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>7</abnormalTime>
+		<abnormalType>INVINCIBILITY</abnormalType>
+		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
 		<icon>BranchSys.icon.br_golden_jack0_mask_i00</icon>
 		<operateType>A2</operateType>
 		<hitTime>800</hitTime>
-		<abnormalType>INVINCIBILITY</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>7</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
-		<abnormalVisualEffect>INVINCIBILITY</abnormalVisualEffect>
 		<isMagic>2</isMagic>
 		<reuseDelay>30000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_block_debuff" />
+		</effects>
 	</skill>
 	<skill id="21270" toLevel="1" name="Ride Tame Princess Ant">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Ride a Tame Princess Ant. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>TRANSFORM</abnormalType>
 		<icon>icon.skilltransform3</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>TRANSFORM</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
@@ -1427,21 +1775,32 @@
 				<transformId>20008</transformId>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
+			</effect>
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
+				<transformationId>20008</transformationId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21271" toLevel="1" name="Ride Black Bear">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Ride a Black Bear. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>TRANSFORM</abnormalType>
 		<icon>icon.skilltransform3</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>TRANSFORM</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
@@ -1451,21 +1810,32 @@
 				<transformId>20009</transformId>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
+			</effect>
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
+				<transformationId>20009</transformationId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21272" toLevel="1" name="Ride Halloween Witch's Broomstick">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Ride a Halloween Witch's Broomstick. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>TRANSFORM</abnormalType>
 		<icon>icon.skilltransform3</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>TRANSFORM</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
@@ -1475,9 +1845,20 @@
 				<transformId>20010</transformId>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
+			</effect>
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
+				<transformationId>20010</transformationId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21273" toLevel="7" name="Release Agathion's Seal - Valakas">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Removes the Agathion's seal. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
@@ -1489,9 +1870,21 @@
 		<hitTime>3000</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="SummonAgathion">
+				<npcId>
+					<value level="1">606</value>
+					<value level="2">607</value>
+					<value level="3">608</value>
+					<value level="4">609</value>
+					<value level="5">610</value>
+					<value level="6">611</value>
+					<value level="7">612</value>
+				</npcId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21274" toLevel="6" name="Start of Evolution">
-		<!-- AUTO GENERATED SKILL -->
 		<!-- Agathion has a chance of evolving to Lv. 2 at the place to which you were teleported via the Evolution Deliverer. Cooldown is 24 hr. -->
 		<itemConsumeId>22394</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
@@ -1517,7 +1910,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="40">
@@ -1572,125 +1965,232 @@
 		</effects>
 	</skill>
 	<skill id="21275" toLevel="5" name="Cloak Inventory Slot Add">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases inventory size when equipped with a cloak. -->
 		<icon>icon.skill0332</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_enlarge_storage">
+				<amount>15</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21276" toLevel="5" name="Add Cloak Weight Gauge">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases Weight Gauge when equipped with a cloak. -->
 		<icon>icon.skill0150</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_weight_limit">
+				<amount>5000</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21277" toLevel="1" name="Miracle of the Tree - Vitality Recovery">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 60 minutes, recovers Vitality when acquiring XP. Cooldown is 4 hours. -->
+		<abnormalLvl>26</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BR_EVENT_BUF2</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>BranchSys.icon.br_xmas_miracle_i00</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>14400000</reuseDelay>
-		<abnormalType>BR_EVENT_BUF2</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<activateRate>0</activateRate>
-		<abnormalLvl>26</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<trait>ETC</trait>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>22620</itemConsumeId> <!-- Miracle of the Tree - Vitality Recovery -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21278" toLevel="1" name="Vitality Recovery Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 60 minutes, recovers Vitality when acquiring XP. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>BranchSys2.br_essence_rose_i00</icon>
 		<operateType>A2</operateType>
 		<hitTime>3000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
-		<abnormalType>VP_KEEP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<activateRate>0</activateRate>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<trait>ETC</trait>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>22621</itemConsumeId> <!-- Vitality Recovery Potion -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21279" toLevel="1" name="Drake Lord's Authority">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Has a chance of inflicting damage and decreasing the enemy's P. Def. when attacking. -->
 		<icon>BranchSys3.Icon.g_drake_maul_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>80</magicLvl>
+		<effects>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Drake Lord's Authority -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>2</chance>
+				<targetType>TARGET</targetType>
+				<isCritical>false</isCritical>
+				<skillId>23442</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21280" toLevel="1" name="Freya's Authority">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Has a chance of increasing Water attribute and Water Resistance when attacked. -->
 		<icon>BranchSys3.Icon.g_glacierin_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>80</magicLvl>
+		<effects>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Freya's Authority -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>4</chance>
+				<targetType>SELF</targetType>
+				<isCritical>false</isCritical>
+				<skillId>23443</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21281" toLevel="1" name="Spezion's Authority">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Has a chance of increasing Atk. Spd. when attacking. -->
 		<icon>BranchSys3.Icon.g_spacia_claw_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Spezion's Authority -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>3</chance>
+				<targetType>SELF</targetType>
+				<isCritical>false</isCritical>
+				<skillId>23444</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21282" toLevel="1" name="Maliss' Authority">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Has a chance of inflicting Stun when attacking. -->
 		<icon>BranchSys3.Icon.g_melisa_stormer_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>95</magicLvl>
+		<effects>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Maliss' Authority -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>3</chance>
+				<targetType>TARGET</targetType>
+				<isCritical>false</isCritical>
+				<skillId>23445</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21283" toLevel="1" name="Steregos' Authority">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Has a chance of inflicting Bleed and decreasing the enemy's Speed when attacking. -->
 		<icon>BranchSys3.Icon.g_dainsleif_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>95</magicLvl>
+		<effects>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Steregos' Authority -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>3</chance>
+				<targetType>TARGET</targetType>
+				<isCritical>false</isCritical>
+				<skillId>23446</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21284" toLevel="1" name="Ron's Authority">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Has a chance of increasing Magic Resistance when attacking. -->
 		<icon>BranchSys3.Icon.g_urukmash_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>95</magicLvl>
+		<effects>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Ron's Authority -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>3</chance>
+				<targetType>SELF</targetType>
+				<isCritical>false</isCritical>
+				<skillId>23447</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21285" toLevel="1" name="Scroll of Escape: Uthanka's Tomb">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Return to Pirate Captain Uthanka's Tomb. -->
 		<icon>BranchSys3.lcon.g_ring_of_uthanka</icon>
 		<operateType>A1</operateType>
@@ -1708,21 +2208,28 @@
 			</condition>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_teleport">
+				<x>-116195</x>
+				<y>251007</y>
+				<z>-1656</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21286" toLevel="1" name="Ride Unicorn">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Mount a Unicorn. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>TRANSFORM</abnormalType>
 		<icon>icon.skilltransform3</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>TRANSFORM</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
@@ -1732,9 +2239,19 @@
 				<transformId>20016</transformId>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
+			</effect>
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
+				<transformationId>20016</transformationId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21287" toLevel="1" name="Emergency Ballista Repair">
-		<!-- AUTO GENERATED SKILL -->
 		<!-- Can repair a Broken Ballista near Aden Castle during a siege. -->
 		<icon>icon.skill0818</icon>
 		<operateType>A1</operateType>
@@ -1757,7 +2274,6 @@
 		</conditions>
 	</skill>
 	<skill id="21288" toLevel="1" name="Emergency Ballista Repair">
-		<!-- AUTO GENERATED SKILL -->
 		<!-- Can repair a Broken Ballista near Rune Castle during a siege. -->
 		<icon>icon.skill0818</icon>
 		<operateType>A1</operateType>
@@ -1780,7 +2296,6 @@
 		</conditions>
 	</skill>
 	<skill id="21289" toLevel="1" name="Throw Corrosive Acid">
-		<!-- AUTO GENERATED SKILL -->
 		<!-- Use on the Outer Gate of Aden Castle to weaken it. -->
 		<icon>icon.skill1167</icon>
 		<operateType>A1</operateType>
@@ -1806,7 +2321,6 @@
 		</conditions>
 	</skill>
 	<skill id="21290" toLevel="1" name="Throw Corrosive Acid">
-		<!-- AUTO GENERATED SKILL -->
 		<!-- Use on the Outer Gate of Rune Castle to weaken it. -->
 		<icon>icon.skill1167</icon>
 		<operateType>A1</operateType>
@@ -1832,7 +2346,6 @@
 		</conditions>
 	</skill>
 	<skill id="21291" toLevel="1" name="Relic Engraving Activation">
-		<!-- AUTO GENERATED SKILL -->
 		<!-- Use on the Relic in Aden Castle to activate the Engraving. -->
 		<icon>icon.skill0191</icon>
 		<operateType>A1</operateType>
@@ -1858,7 +2371,6 @@
 		</conditions>
 	</skill>
 	<skill id="21292" toLevel="1" name="Relic Engraving Activation">
-		<!-- AUTO GENERATED SKILL -->
 		<!-- Use on the Relic in Rune Castle to activate the Engraving. -->
 		<icon>icon.skill0191</icon>
 		<operateType>A1</operateType>
@@ -1884,42 +2396,63 @@
 		</conditions>
 	</skill>
 	<skill id="21293" toLevel="1" name="Two-handed Weapon of Vampiric Rage">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Has a chance of absorbing a portion of damage inflicted on enemy as HP when equipped with a two-handed weapon. -->
 		<icon>icon.skill1268</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>67</magicLvl>
+		<effects>
+			<effect name="p_vampiric_attack">
+				<amount>3</amount>
+				<chance>30</chance>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21294" toLevel="1" name="Transformed: Uthanka">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Transforms into Pirate Captain Uthanka. -->
+		<abnormalLvl>6</abnormalLvl>
+		<abnormalTime>-1</abnormalTime>
+		<abnormalType>ABNORMAL_ITEM</abnormalType>
 		<icon>icon.skilltransform3</icon>
 		<operateType>A2</operateType>
-		<abnormalType>ABNORMAL_ITEM</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>1</magicLvl>
-		<abnormalLvl>6</abnormalLvl>
-		<abnormalTime>-1</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<blockActionUseSkill>true</blockActionUseSkill>
 		<isMagic>3</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
+			</effect>
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
+				<transformationId>20018</transformationId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21295" toLevel="1" name="Un-equip Uthanka's Ring">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys3.lcon.s_g_ring_of_uthanka</icon>
 		<operateType>A1</operateType>
 		<effectPoint>1</effectPoint>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>ABNORMAL_ITEM,-1</dispel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21296" toLevel="1" name="Exorcist's Punishment">
-		<!-- AUTO GENERATED SKILL -->
 		<!-- Can eliminate Festering Zombies. Cannot use on self. -->
 		<icon>icon.skill1405</icon>
 		<operateType>A1</operateType>
@@ -1974,7 +2507,7 @@
 		</conditions>
 	</skill>
 	<skill id="21298" toLevel="1" name="Release Agathion's Seal - Lancet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Releases Agathion's Seal. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
@@ -1986,9 +2519,14 @@
 		<hitTime>3000</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="SummonAgathion">
+				<npcId>613</npcId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21299" toLevel="1" name="Release Agathion's Seal - Liposa">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Releases Agathion's Seal. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
@@ -2000,5 +2538,10 @@
 		<hitTime>3000</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="SummonAgathion">
+				<npcId>614</npcId>
+			</effect>
+		</effects>
 	</skill>
 </list>

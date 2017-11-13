@@ -17,7 +17,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="28.5">
@@ -64,7 +64,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="39.5">
@@ -123,7 +123,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="5.424">
@@ -188,7 +188,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="7.788">
@@ -235,7 +235,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="58.24">
@@ -273,7 +273,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="84.864">
@@ -311,7 +311,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="58.048">
@@ -349,7 +349,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="69.312">
@@ -379,6 +379,18 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="2209" toLevel="1" name="Blessed Scroll: Enchant Armor (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -389,6 +401,18 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="2210" toLevel="1" name="Blessed Scroll: Enchant Armor (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -399,6 +423,18 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="2211" toLevel="1" name="Blessed Scroll: Enchant Armor (C-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -409,6 +445,18 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>C</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="2212" toLevel="1" name="Blessed Scroll: Enchant Armor (D-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -419,12 +467,21 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>D</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="2213" toLevel="22" name="Scroll of Escape: Talking Island Village">
 		<!-- Confirmed CT2.5 -->
-		<table name="#coordX"> -84200 46915 9723 -45208 115158 -80831 -12728 15633 17860 83378 105760 111388 82916 85289 117052 146818 147922 43840 87326 149800 107946 -118092 </table>
-		<table name="#coordY"> 244566 51441 15576 -112502 -178170 149808 122726 142962 170191 147999 113064 219331 53210 16225 76884 25807 -55316 -47779 -143370 -79999 -52280 46955 </table>
-		<table name="#coordZ"> -3728 -2976 -4568 -240 -880 -3040 -3112 -2696 -3496 -3400 -3176 -3544 -1488 -3672 -2688 -2008 -2728 -792 -1319 -5568 -2408 342 </table>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
@@ -466,7 +523,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>
 					<value level="1">-84200</value>
 					<value level="2">46915</value>
@@ -545,9 +602,6 @@
 	<skill id="2214" toLevel="10" name="Scroll of Escape: Talking Island Village">
 		<!-- Confirmed CT2.5 -->
 		<!-- Levels 7, 8 and 9 doesn't exist in client. -->
-		<table name="#coordX"> -84200 46915 9723 -45208 115158 -118092 0 0 0 83378 </table>
-		<table name="#coordY"> 244566 51441 15576 -112502 -178170 46955 0 0 0 147999 </table>
-		<table name="#coordZ"> -3728 -2976 -4568 -240 -880 342 0 0 0 -3400 </table>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
@@ -577,7 +631,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>
 					<value level="1">-84200</value>
 					<value level="2">46915</value>
@@ -634,7 +688,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="8">
@@ -761,7 +815,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="34">
@@ -828,7 +882,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="9">
@@ -996,7 +1050,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="20">
@@ -1085,7 +1139,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="18">
@@ -1160,7 +1214,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="55.2">
@@ -1228,7 +1282,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="57.2">
@@ -1296,7 +1350,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="65.2">
@@ -1400,7 +1454,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="1.768">
@@ -1522,7 +1576,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="2.488">
@@ -1608,7 +1662,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="42.048">
@@ -1676,7 +1730,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="30.672">
@@ -1744,7 +1798,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="41.952">
@@ -1812,7 +1866,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="49.968">
@@ -1938,7 +1992,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<VALAKAS>11</VALAKAS>
 			</effect>
 		</effects>
@@ -1962,7 +2016,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<VALAKAS>-20</VALAKAS>
 			</effect>
 		</effects>
@@ -1981,7 +2035,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>DRAGON_BREATH,1</dispel>
 			</effect>
 		</effects>
@@ -2007,11 +2061,27 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>2</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>SHOCK</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
+			<condition name="OpTerritory">
+				<affectType>SELF</affectType>
+				<territory>
+					<item x="-86067" y="-152626" minZ="-9239" maxZ="-8739" />
+					<item x="-86292" y="-152322" minZ="-9239" maxZ="-8739" />
+					<item x="-87125" y="-151593" minZ="-9239" maxZ="-8739" />
+					<item x="-88505" y="-151586" minZ="-9239" maxZ="-8739" />
+					<item x="-89313" y="-152278" minZ="-9239" maxZ="-8739" />
+					<item x="-89503" y="-152648" minZ="-9239" maxZ="-8739" />
+					<item x="-89500" y="-153806" minZ="-9239" maxZ="-8739" />
+					<item x="-89429" y="-154257" minZ="-9239" maxZ="-8739" />
+					<item x="-88538" y="-155006" minZ="-9239" maxZ="-8739" />
+					<item x="-87030" y="-155003" minZ="-9239" maxZ="-8739" />
+					<item x="-86063" y="-154215" minZ="-9239" maxZ="-8739" />
+				</territory>
+			</condition>
 			<condition name="EquipWeapon">
 				<weaponType>
 					<item>BOW</item>
@@ -2019,10 +2089,10 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>2320</power>
 			</effect>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="2235" toLevel="1" name="Anteroom Door Key">
@@ -2142,7 +2212,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<affectObject>FRIEND</affectObject>
@@ -2152,7 +2222,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="2240" toLevel="1" name="Hot Spring Nectar">
@@ -2257,11 +2327,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>60</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>17</power>
 			</effect>
 		</effects>
@@ -2280,11 +2350,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>4</power>
 			</effect>
 		</effects>
@@ -2307,7 +2377,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>25</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -2323,7 +2393,7 @@
 					<item>ETC</item>
 				</weaponType>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -2352,7 +2422,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2377,7 +2447,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>20</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -2402,7 +2472,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>20</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -2427,7 +2497,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>20</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -2452,7 +2522,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>20</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -2477,7 +2547,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>20</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -2502,7 +2572,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>20</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -2629,7 +2699,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="2261" toLevel="9" name="Small Green Nimble Fish (High-grade)">
@@ -2649,7 +2719,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="11.04">
@@ -2771,7 +2841,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="22.8">
@@ -2893,7 +2963,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="25.28">
@@ -3015,7 +3085,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="28.288">
@@ -3137,7 +3207,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="24.88">
@@ -3271,7 +3341,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="28">
@@ -3411,7 +3481,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="20.432">
@@ -3569,7 +3639,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="20.964">
@@ -3736,7 +3806,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="24.972">
@@ -3903,7 +3973,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="14.1723">
@@ -3997,7 +4067,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="85">
 						<item id="8034" count="3" />
@@ -4039,7 +4109,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="25">
 						<item id="8552" count="1" />
@@ -4079,7 +4149,6 @@
 		</effects>
 	</skill>
 	<skill id="2274" toLevel="8" name="Fisherman's Potion">
-		<table name="#active_skill_id_lvl"> 1315,4 1315,7 1315,10 1315,13 1315,16 1315,19 1315,22 1315,25 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>3600</abnormalTime>
 		<abnormalType>FISHING_MASTERY_DOWN</abnormalType>
@@ -4096,26 +4165,12 @@
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A2</operateType>
-		<power>
-			<value level="1">2</value>
-			<value level="2">5</value>
-			<value level="3">8</value>
-			<value level="4">11</value>
-			<value level="5">14</value>
-			<value level="6">17</value>
-			<value level="7">20</value>
-			<value level="8">23</value>
-			<value level="9">26</value>
-		</power>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<effects>
-			<effect name="ChangeFishingMastery" />
-		</effects>
 	</skill>
 	<skill id="2275" toLevel="1" name="Fisherman's Recovery Potion">
 		<!-- Confirmed CT2.5 -->
@@ -4129,7 +4184,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>FISHING_MASTERY_DOWN,1</dispel>
 			</effect>
 		</effects>
@@ -4150,9 +4205,10 @@
 		<hitCancelTime>2</hitCancelTime>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup this -->
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<player insideZoneId="2276" />
-		</cond>
+		</cond> -->
 	</skill>
 	<skill id="2277" toLevel="6" name="Event Gift Box">
 		<!-- Confirmed CT2.5 -->
@@ -4171,7 +4227,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<value level="1">
 						<item chance="50">
@@ -4303,7 +4359,6 @@
 	</skill>
 	<skill id="2278" toLevel="3" name="Herb of Life">
 		<!-- Confirmed CT2.5 -->
-		<table name="#amount"> 15 25 100 </table>
 		<effectPoint>100</effectPoint>
 		<hitTime>100</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -4316,7 +4371,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>
 					<value level="1">15</value>
 					<value level="2">25</value>
@@ -4327,7 +4382,6 @@
 	</skill>
 	<skill id="2279" toLevel="3" name="Herb of Mana">
 		<!-- Confirmed CT2.5 -->
-		<table name="#amount"> 11 18 100 </table>
 		<effectPoint>100</effectPoint>
 		<hitTime>100</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -4340,7 +4394,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>
 					<value level="1">11</value>
 					<value level="2">18</value>
@@ -4368,7 +4422,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -4393,7 +4447,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
@@ -4418,7 +4472,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -4443,7 +4497,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -4468,7 +4522,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -4493,7 +4547,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -4501,7 +4555,6 @@
 	</skill>
 	<skill id="2286" toLevel="6" name="Scroll: Recovery">
 		<!-- Confirmed CT2.5 -->
-		<table name="#levelRange"> 1;19 20;39 40;51 52;60 61;75 76;85 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<itemConsumeCount>1</itemConsumeCount>
@@ -4545,7 +4598,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Recovery" />
+			<effect name="i_change_skill_level" />
 		</effects>
 	</skill>
 	<skill id="2287" toLevel="7" name="Elixir of Life (No-grade)">
@@ -4583,7 +4636,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Hp" fromLevel="1" toLevel="6">
+			<effect name="i_hp" fromLevel="1" toLevel="6">
 				<amount>
 					<value level="1">250</value>
 					<value level="2">650</value>
@@ -4594,7 +4647,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealPercent" fromLevel="7" toLevel="7" >
+			<effect name="i_hp_per_max" fromLevel="7" toLevel="7">
 				<power>
 					<value level="7">25</value>
 				</power>
@@ -4644,7 +4697,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Mp" fromLevel="1" toLevel="6" >
+			<effect name="i_mp" fromLevel="1" toLevel="6">
 				<amount>
 					<value level="1">60</value>
 					<value level="2">140</value>
@@ -4655,7 +4708,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ManaHealPercent" fromLevel="7" toLevel="7" >
+			<effect name="i_mp_per_max" fromLevel="7" toLevel="7">
 				<power>
 					<value level="7">10</value>
 				</power>
@@ -4705,7 +4758,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Cp" fromLevel="1" toLevel="6">
+			<effect name="i_cp" fromLevel="1" toLevel="6">
 				<amount>
 					<value level="1">150</value>
 					<value level="2">350</value>
@@ -4716,7 +4769,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CpHealPercent" fromLevel="7" toLevel="7" >
+			<effect name="i_cp_per_max" fromLevel="7" toLevel="7">
 				<power>
 					<value level="7">25</value>
 				</power>
@@ -4740,7 +4793,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="15">
 						<item id="8661" count="1" />
@@ -4793,7 +4846,9 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeFace" />
+			<effect name="i_change_face">
+				<value>0</value>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="2292" toLevel="1" name="Facelifting Potion">
@@ -4810,7 +4865,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeFace">
+			<effect name="i_change_face">
 				<value>1</value>
 			</effect>
 		</effects>
@@ -4829,7 +4884,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeFace">
+			<effect name="i_change_face">
 				<value>2</value>
 			</effect>
 		</effects>
@@ -4848,7 +4903,9 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeHairColor" />
+			<effect name="i_change_hair_color">
+				<value>0</value>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="2295" toLevel="1" name="Dye Potion">
@@ -4865,7 +4922,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeHairColor">
+			<effect name="i_change_hair_color">
 				<value>1</value>
 			</effect>
 		</effects>
@@ -4884,7 +4941,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeHairColor">
+			<effect name="i_change_hair_color">
 				<value>2</value>
 			</effect>
 		</effects>
@@ -4903,7 +4960,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeHairColor">
+			<effect name="i_change_hair_color">
 				<value>3</value>
 			</effect>
 		</effects>
@@ -4922,7 +4979,9 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeHairStyle" />
+			<effect name="i_change_hair_style">
+				<value>0</value>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="2299" toLevel="1" name="Hair Style Change Potion">
@@ -4939,7 +4998,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeHairStyle">
+			<effect name="i_change_hair_style">
 				<value>1</value>
 			</effect>
 		</effects>

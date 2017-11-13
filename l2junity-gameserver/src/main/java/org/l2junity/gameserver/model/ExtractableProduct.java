@@ -27,6 +27,7 @@ public class ExtractableProduct
 	private final int _min;
 	private final int _max;
 	private final int _chance;
+	private final int _enchant;
 	
 	/**
 	 * Create Extractable product
@@ -34,13 +35,15 @@ public class ExtractableProduct
 	 * @param min item count max
 	 * @param max item count min
 	 * @param chance chance for creating
+	 * @param enchant the initial enchant value
 	 */
-	public ExtractableProduct(int id, int min, int max, double chance)
+	public ExtractableProduct(int id, int min, int max, double chance, int enchant)
 	{
 		_id = id;
 		_min = min;
 		_max = max;
 		_chance = (int) (chance * 1000);
+		_enchant = enchant;
 	}
 	
 	public int getId()
@@ -61,5 +64,10 @@ public class ExtractableProduct
 	public int getChance()
 	{
 		return _chance;
+	}
+	
+	public int getEnchant()
+	{
+		return _enchant;
 	}
 }

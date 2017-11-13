@@ -18,7 +18,9 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
+import org.l2junity.gameserver.data.xml.impl.VariationData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
@@ -58,7 +60,7 @@ public final class RequestConfirmCancelItem implements IClientIncomingPacket
 		
 		if (item.getOwnerId() != activeChar.getObjectId())
 		{
-			Util.handleIllegalPlayerAction(client.getActiveChar(), "Warning!! Character " + client.getActiveChar().getName() + " of account " + client.getActiveChar().getAccountName() + " tryied to destroy augment on item that doesn't own.", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(client.getActiveChar(), "Warning!! Character " + client.getActiveChar().getName() + " of account " + client.getActiveChar().getAccountName() + " tryied to destroy augment on item that doesn't own.", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
@@ -68,64 +70,17 @@ public final class RequestConfirmCancelItem implements IClientIncomingPacket
 			return;
 		}
 		
-		if (item.isPvp() && !Config.ALT_ALLOW_AUGMENT_PVP_ITEMS)
+		if (item.isPvp() && !PlayerConfig.ALT_ALLOW_AUGMENT_PVP_ITEMS)
 		{
 			activeChar.sendPacket(SystemMessageId.THIS_IS_NOT_A_SUITABLE_ITEM);
 			return;
 		}
 		
-		int price = 0;
-		switch (item.getItem().getCrystalType())
+		final long price = VariationData.getInstance().getCancelFee(item.getId(), item.getAugmentation().getMineralId());
+		if (price < 0)
 		{
-			case C:
-				if (item.getCrystalCount() < 1720)
-				{
-					price = 95000;
-				}
-				else if (item.getCrystalCount() < 2452)
-				{
-					price = 150000;
-				}
-				else
-				{
-					price = 210000;
-				}
-				break;
-			case B:
-				if (item.getCrystalCount() < 1746)
-				{
-					price = 240000;
-				}
-				else
-				{
-					price = 270000;
-				}
-				break;
-			case A:
-				if (item.getCrystalCount() < 2160)
-				{
-					price = 330000;
-				}
-				else if (item.getCrystalCount() < 2824)
-				{
-					price = 390000;
-				}
-				else
-				{
-					price = 420000;
-				}
-				break;
-			case S:
-				price = 480000;
-				break;
-			case S80:
-			case S84:
-				price = 920000;
-				break;
-			// TODO: S84 TOP price 3.2M
-			// any other item type is not augmentable
-			default:
-				return;
+			activeChar.sendPacket(SystemMessageId.THIS_IS_NOT_A_SUITABLE_ITEM);
+			return;
 		}
 		
 		activeChar.sendPacket(new ExPutItemResultForVariationCancel(item, price));

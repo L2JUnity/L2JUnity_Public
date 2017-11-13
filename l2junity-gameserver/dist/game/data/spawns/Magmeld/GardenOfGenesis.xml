@@ -231,7 +231,7 @@
 		<npc id="33146" x="209886" y="118916" z="-1047" /> <!-- Garden Fairy -->
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Bpartym1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_Bparty" minZ="-1392" maxZ="-792">
 					<node x="216137" y="109485" />
@@ -244,7 +244,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A_factorm1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A_factor" minZ="-1396" maxZ="-796">
 					<node x="207338" y="117206" />
@@ -264,7 +264,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D_factorm1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D_factor" minZ="-961" maxZ="-361">
 					<node x="216206" y="116308" />
@@ -286,7 +286,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D02m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D02" minZ="-960" maxZ="-560">
 					<node x="213733" y="113233" />
@@ -307,7 +307,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D04m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D04" minZ="-960" maxZ="-560">
 					<node x="214257" y="116665" />
@@ -328,7 +328,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D03m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D03" minZ="-960" maxZ="-560">
 					<node x="212330" y="115303" />
@@ -349,7 +349,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D01m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D01" minZ="-960" maxZ="-560">
 					<node x="212851" y="113244" />
@@ -370,7 +370,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Cpartym1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_Cparty" minZ="-1804" maxZ="-1204">
 					<node x="216143" y="117713" />
@@ -383,7 +383,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B_factorm1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B_factor" minZ="-1376" maxZ="-776">
 					<node x="215671" y="108966" />
@@ -403,7 +403,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Bm1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B" minZ="-1376" maxZ="-776">
 					<node x="215671" y="108966" />
@@ -412,14 +412,30 @@
 					<node x="215689" y="113245" />
 				</territory>
 			</territories>
-			<npc id="22952" x="217640" y="109468" z="-1332" heading="-18432" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="219428" y="111076" z="-1328" heading="-2048" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="216124" y="111320" z="-1332" heading="28672" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="217912" y="112844" z="-1328" heading="12288" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
+			<npc id="22952" x="217640" y="109468" z="-1332" heading="-18432" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GB_line1" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="219428" y="111076" z="-1328" heading="-2048" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GB_line2" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="216124" y="111320" z="-1332" heading="28672" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GB_line4" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="217912" y="112844" z="-1328" heading="12288" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GB_line3" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Cm1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C" minZ="-1784" maxZ="-1184">
 					<node x="215623" y="117259" />
@@ -428,18 +444,50 @@
 					<node x="215641" y="121538" />
 				</territory>
 			</territories>
-			<npc id="22964" x="217176" y="118668" z="-1784" heading="12288" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="218512" y="118744" z="-1784" heading="21504" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="218380" y="120140" z="-1784" heading="-26624" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="217056" y="119964" z="-1784" heading="-3072" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="217696" y="118048" z="-1760" heading="-19456" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="216476" y="119488" z="-1760" heading="30720" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="217872" y="120720" z="-1760" heading="13312" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="219156" y="119272" z="-1760" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
+			<npc id="22964" x="217176" y="118668" z="-1784" heading="12288" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_inline1" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="218512" y="118744" z="-1784" heading="21504" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_inline2" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="218380" y="120140" z="-1784" heading="-26624" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_inline3" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="217056" y="119964" z="-1784" heading="-3072" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_inline4" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="217696" y="118048" z="-1760" heading="-19456" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_outline1" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="216476" y="119488" z="-1760" heading="30720" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_outline2" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="217872" y="120720" z="-1760" heading="13312" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_outline3" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="219156" y="119272" z="-1760" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_outline4" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Dm1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D" minZ="-961" maxZ="-361">
 					<node x="216206" y="116308" />
@@ -452,14 +500,30 @@
 					<node x="216199" y="114207" />
 				</territory>
 			</territories>
-			<npc id="22952" x="211732" y="115404" z="-920" heading="31744" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="213544" y="113300" z="-920" heading="-16384" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="215640" y="115100" z="-920" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="213832" y="117236" z="-920" heading="14336" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
+			<npc id="22952" x="211732" y="115404" z="-920" heading="31744" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GD_line1" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="213544" y="113300" z="-920" heading="-16384" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GD_line2" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="215640" y="115100" z="-920" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GD_line3" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="213832" y="117236" z="-920" heading="14336" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GD_line4" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Am1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A" minZ="-1396" maxZ="-796">
 					<node x="207338" y="117206" />
@@ -468,14 +532,30 @@
 					<node x="207355" y="121485" />
 				</territory>
 			</territories>
-			<npc id="22952" x="207880" y="119240" z="-1328" heading="-4096" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="209720" y="117656" z="-1328" heading="12288" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="209468" y="121072" z="-1324" heading="-16384" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="211288" y="119508" z="-1324" heading="28672" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
+			<npc id="22952" x="207880" y="119240" z="-1328" heading="-4096" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GA_line1" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="209720" y="117656" z="-1328" heading="12288" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GA_line2" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="209468" y="121072" z="-1324" heading="-16384" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GA_line4" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="211288" y="119508" z="-1324" heading="28672" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GA_line3" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_C03m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C03" minZ="-1781" maxZ="-1281">
 					<node x="216078" y="119390" />
@@ -489,7 +569,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_C04m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C04" minZ="-1797" maxZ="-1297">
 					<node x="218108" y="119383" />
@@ -503,7 +583,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_C01m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C01" minZ="-1781" maxZ="-1281">
 					<node x="216070" y="117517" />
@@ -518,7 +598,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_C02m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C02" minZ="-1793" maxZ="-1293">
 					<node x="217864" y="117504" />
@@ -533,7 +613,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Dpartym1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_Dparty" minZ="-961" maxZ="-361">
 					<node x="215525" y="116071" />
@@ -550,7 +630,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B04m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B04" minZ="-1396" maxZ="-896">
 					<node x="217807" y="111222" />
@@ -567,7 +647,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B02m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B02" minZ="-1396" maxZ="-896">
 					<node x="217800" y="109349" />
@@ -584,7 +664,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B03m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B03" minZ="-1396" maxZ="-896">
 					<node x="216014" y="111235" />
@@ -601,7 +681,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B01m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B01" minZ="-1396" maxZ="-896">
 					<node x="216006" y="109362" />
@@ -618,7 +698,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Apartym1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_Aparty" minZ="-1396" maxZ="-796">
 					<node x="207953" y="117685" />
@@ -631,7 +711,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A03m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A03" minZ="-1424" maxZ="-924">
 					<node x="207839" y="119444" />
@@ -648,7 +728,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A04m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A04" minZ="-1424" maxZ="-924">
 					<node x="209632" y="119431" />
@@ -665,7 +745,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A01m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A01" minZ="-1424" maxZ="-924">
 					<node x="207835" y="117571" />
@@ -682,7 +762,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A02m1">
-		<group name="dayTime">
+		<group name="dayTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A02" minZ="-1424" maxZ="-924">
 					<node x="209625" y="117558" />
@@ -699,7 +779,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_BpartyNm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_Bparty" minZ="-1392" maxZ="-792">
 					<node x="216137" y="109485" />
@@ -712,7 +792,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A_factor_Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A_factor" minZ="-1396" maxZ="-796">
 					<node x="207338" y="117206" />
@@ -732,7 +812,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D_factor_Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D_factor" minZ="-961" maxZ="-361">
 					<node x="216206" y="116308" />
@@ -754,7 +834,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D02Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D02" minZ="-960" maxZ="-560">
 					<node x="213733" y="113233" />
@@ -775,7 +855,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D04Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D04" minZ="-960" maxZ="-560">
 					<node x="214257" y="116665" />
@@ -796,7 +876,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D03Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D03" minZ="-960" maxZ="-560">
 					<node x="212330" y="115303" />
@@ -817,7 +897,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_D01Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D01" minZ="-960" maxZ="-560">
 					<node x="212851" y="113244" />
@@ -838,7 +918,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_CpartyNm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_Cparty" minZ="-1804" maxZ="-1204">
 					<node x="216143" y="117713" />
@@ -851,7 +931,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B_factor_Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B_factor" minZ="-1376" maxZ="-776">
 					<node x="215671" y="108966" />
@@ -871,7 +951,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_BNm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B" minZ="-1376" maxZ="-776">
 					<node x="215671" y="108966" />
@@ -880,14 +960,30 @@
 					<node x="215689" y="113245" />
 				</territory>
 			</territories>
-			<npc id="22952" x="217640" y="109468" z="-1332" heading="-18432" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="219428" y="111076" z="-1328" heading="-2048" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="216124" y="111320" z="-1332" heading="28672" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="217912" y="112844" z="-1328" heading="12288" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
+			<npc id="22952" x="217640" y="109468" z="-1332" heading="-18432" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GB_line1" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="219428" y="111076" z="-1328" heading="-2048" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GB_line2" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="216124" y="111320" z="-1332" heading="28672" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GB_line4" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="217912" y="112844" z="-1328" heading="12288" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GB_line3" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_CNm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C" minZ="-1784" maxZ="-1184">
 					<node x="215623" y="117259" />
@@ -896,18 +992,50 @@
 					<node x="215641" y="121538" />
 				</territory>
 			</territories>
-			<npc id="22964" x="217176" y="118668" z="-1784" heading="12288" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="218512" y="118744" z="-1784" heading="21504" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="218380" y="120140" z="-1784" heading="-26624" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="217056" y="119964" z="-1784" heading="-3072" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="217696" y="118048" z="-1760" heading="-19456" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="216476" y="119488" z="-1760" heading="30720" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="217872" y="120720" z="-1760" heading="13312" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
-			<npc id="22964" x="219156" y="119272" z="-1760" respawnTime="5min" respawnRandom="30sec" /> <!-- Apherus Lookout -->
+			<npc id="22964" x="217176" y="118668" z="-1784" heading="12288" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_inline1" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="218512" y="118744" z="-1784" heading="21504" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_inline2" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="218380" y="120140" z="-1784" heading="-26624" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_inline3" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="217056" y="119964" z="-1784" heading="-3072" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_inline4" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="217696" y="118048" z="-1760" heading="-19456" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_outline1" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="216476" y="119488" z="-1760" heading="30720" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_outline2" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="217872" y="120720" z="-1760" heading="13312" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_outline3" />
+				</parameters>
+			</npc>
+			<npc id="22964" x="219156" y="119272" z="-1760" respawnTime="5min" respawnRandom="30sec" count="1"> <!-- Apherus Lookout -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GC_outline4" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_DNm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_D" minZ="-961" maxZ="-361">
 					<node x="216206" y="116308" />
@@ -920,14 +1048,30 @@
 					<node x="216199" y="114207" />
 				</territory>
 			</territories>
-			<npc id="22952" x="211732" y="115404" z="-920" heading="31744" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="213544" y="113300" z="-920" heading="-16384" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="215640" y="115100" z="-920" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="213816" y="117252" z="-920" heading="14336" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
+			<npc id="22952" x="211732" y="115404" z="-920" heading="31744" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GD_line1" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="213544" y="113300" z="-920" heading="-16384" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GD_line2" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="215640" y="115100" z="-920" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GD_line3" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="213816" y="117252" z="-920" heading="14336" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GD_line4" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A" minZ="-1396" maxZ="-796">
 					<node x="207338" y="117206" />
@@ -936,14 +1080,30 @@
 					<node x="207355" y="121485" />
 				</territory>
 			</territories>
-			<npc id="22952" x="207880" y="119240" z="-1328" heading="-4096" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="209720" y="117656" z="-1328" heading="12288" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="209468" y="121072" z="-1324" heading="-16384" respawnTime="80sec" respawnRandom="15sec" /> <!-- Garden Watchman -->
-			<npc id="22952" x="211288" y="119508" z="-1324" heading="28672" respawnTime="95sec" respawnRandom="20sec" /> <!-- Garden Watchman -->
+			<npc id="22952" x="207880" y="119240" z="-1328" heading="-4096" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GA_line1" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="209720" y="117656" z="-1328" heading="12288" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GA_line2" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="209468" y="121072" z="-1324" heading="-16384" respawnTime="80sec" respawnRandom="15sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GA_line4" />
+				</parameters>
+			</npc>
+			<npc id="22952" x="211288" y="119508" z="-1324" heading="28672" respawnTime="95sec" respawnRandom="20sec" count="1"> <!-- Garden Watchman -->
+				<parameters>
+					<param name="SuperPointName" value="genesis_GA_line3" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_C03Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C03" minZ="-1781" maxZ="-1281">
 					<node x="216078" y="119390" />
@@ -957,7 +1117,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_C04Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C04" minZ="-1797" maxZ="-1297">
 					<node x="218108" y="119383" />
@@ -971,7 +1131,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_C01Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C01" minZ="-1781" maxZ="-1281">
 					<node x="216070" y="117517" />
@@ -986,7 +1146,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_C02Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_C02" minZ="-1793" maxZ="-1293">
 					<node x="217864" y="117504" />
@@ -1001,7 +1161,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_DpartyNm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_Dparty" minZ="-961" maxZ="-361">
 					<node x="215525" y="116071" />
@@ -1018,7 +1178,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B04Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B04" minZ="-1396" maxZ="-896">
 					<node x="217807" y="111222" />
@@ -1035,7 +1195,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B02Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B02" minZ="-1396" maxZ="-896">
 					<node x="217800" y="109349" />
@@ -1052,7 +1212,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B03Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B03" minZ="-1396" maxZ="-896">
 					<node x="216014" y="111235" />
@@ -1069,7 +1229,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_B01Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_B01" minZ="-1396" maxZ="-896">
 					<node x="216006" y="109362" />
@@ -1086,7 +1246,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_ApartyNm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_Aparty" minZ="-1396" maxZ="-796">
 					<node x="207953" y="117685" />
@@ -1099,7 +1259,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A03Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A03" minZ="-1424" maxZ="-924">
 					<node x="207839" y="119444" />
@@ -1116,7 +1276,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A04Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A04" minZ="-1424" maxZ="-924">
 					<node x="209632" y="119431" />
@@ -1133,7 +1293,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A01Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A01" minZ="-1424" maxZ="-924">
 					<node x="207835" y="117571" />
@@ -1150,7 +1310,7 @@
 		</group>
 	</spawn>
 	<spawn ai="DayNightSpawns" name="magmeld05_2621_A02Nm1">
-		<group name="nightTime">
+		<group name="nightTime" spawnByDefault="false">
 			<territories>
 				<territory name="magmeld05_2621_A02" minZ="-1424" maxZ="-924">
 					<node x="209625" y="117558" />

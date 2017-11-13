@@ -1,36 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="8800" toLevel="1" name="Top-grade Royal Guard Ring - Innadril">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Holy Resistance by 15. -->
 		<icon>icon.accessory_ring_of_domi_protection_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>15</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8801" toLevel="1" name="Top-grade Royal Guard Ring - Goddard">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Dark Resistance by 15. -->
 		<icon>icon.accessory_ring_of_domi_protection_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>15</amount>
+				<attribute>DARK</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8802" toLevel="1" name="Top-grade Royal Guard Ring - Rune">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Wind Resistance by 15. -->
 		<icon>icon.accessory_ring_of_domi_protection_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>15</amount>
+				<attribute>WIND</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8803" toLevel="1" name="Top-grade Royal Guard Ring - Schuttgart">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Dark Resistance by 15. -->
 		<icon>icon.accessory_ring_of_domi_protection_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>15</amount>
+				<attribute>DARK</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8804" toLevel="1" name="Enhanced Tauti's Bracelet">
 		<!-- Glory Days confirmed -->
@@ -40,14 +64,14 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>5</slots>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>1</amount>
 				<stat>INT</stat>
 			</effect>
@@ -61,16 +85,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>3</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-3</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -83,16 +100,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>8</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-8</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -105,16 +115,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>5</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-5</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -127,16 +130,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -149,16 +145,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -171,16 +160,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>3</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-3</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -193,16 +175,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>8</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-8</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -215,16 +190,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>5</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-5</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -237,16 +205,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -259,16 +220,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -281,16 +235,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>3</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-3</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -303,16 +250,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>8</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-8</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -325,16 +265,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>5</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-5</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -347,16 +280,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -369,16 +295,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>PK</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -392,15 +311,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -415,15 +334,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -438,15 +357,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -461,15 +380,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -484,15 +403,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -507,15 +426,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -530,15 +449,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -553,15 +472,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -576,15 +495,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -599,15 +518,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -622,15 +541,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -645,15 +564,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -668,15 +587,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -691,15 +610,15 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -714,16 +633,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>3</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-3</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -737,16 +649,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>8</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-8</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -760,16 +665,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>5</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-5</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -783,16 +681,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -806,16 +697,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -829,16 +713,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>3</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-3</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -852,16 +729,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>8</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-8</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -875,16 +745,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>5</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-5</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -898,16 +761,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -921,16 +777,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -944,16 +793,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>3</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>3</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-3</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -967,16 +809,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>8</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>8</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-8</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -990,16 +825,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>5</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-5</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1013,16 +841,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1036,16 +857,9 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalAttackDefenceBonus">
-				<amount>2</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvePhysicalSkillDefenceBonus">
-				<amount>2</amount>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1059,16 +873,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1082,16 +899,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1105,16 +925,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1128,16 +951,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1151,16 +977,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1174,16 +1003,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1197,16 +1029,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1220,16 +1055,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1243,16 +1081,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1266,16 +1107,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1289,16 +1133,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1312,16 +1159,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1335,16 +1185,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1358,16 +1211,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalSkillDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>15</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1380,7 +1236,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>80</magicLvl>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>5</slots>
 			</effect>
 		</effects>
@@ -1402,7 +1258,7 @@
 		<magicLvl>85</magicLvl>
 		<isMagic>3</isMagic>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">100</value>
 					<value level="2">100</value>
@@ -1413,7 +1269,7 @@
 					<value level="7">800</value>
 				</amount>
 			</effect>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">2</value>
@@ -1425,7 +1281,7 @@
 				</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1437,7 +1293,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1449,7 +1305,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1461,7 +1317,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1473,7 +1329,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1485,7 +1341,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1497,7 +1353,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">10</value>
@@ -1509,7 +1365,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">10</value>
@@ -1521,7 +1377,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">100</value>
 					<value level="2">100</value>
@@ -1533,7 +1389,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">100</value>
 					<value level="2">100</value>
@@ -1545,7 +1401,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicAccuracy">
+			<effect name="p_magic_hit">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1557,7 +1413,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalEvasion">
+			<effect name="p_magic_avoid">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1569,7 +1425,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1581,7 +1437,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">30</value>
@@ -1593,7 +1449,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1605,7 +1461,7 @@
 				</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1617,7 +1473,7 @@
 				</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1629,7 +1485,7 @@
 				</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1641,7 +1497,7 @@
 				</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1653,7 +1509,7 @@
 				</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1665,7 +1521,7 @@
 				</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1677,7 +1533,7 @@
 				</amount>
 				<stat>CHA</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1689,7 +1545,7 @@
 				</amount>
 				<stat>LUC</stat>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">10</value>
@@ -1701,7 +1557,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1714,7 +1570,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1727,7 +1583,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1740,7 +1596,7 @@
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1753,7 +1609,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1766,7 +1622,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1779,7 +1635,7 @@
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
-			<effect name="DamageShieldResist">
+			<effect name="p_damage_shield_resist">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1789,7 +1645,6 @@
 					<value level="6">30</value>
 					<value level="7">40</value>
 				</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1801,56 +1656,54 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>10</PARALYZE>
 				<AIRBIND>10</AIRBIND>
 				<DEPORT>10</DEPORT>
 			</effect>
-			<effect name="DamageShieldResist">
+			<effect name="p_damage_shield_resist">
 				<amount>5</amount>
 			</effect>
-			<effect name="VampiricDefence">
+			<effect name="p_vampiric_defence">
 				<amount>5</amount>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
-				<amount>5</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_pvp_physical_attack_defence_bonus">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
 				<amount>54</amount>
 				<mode>DIFF</mode>
 				<weaponType>
-					<weaponType>
-						<item>BLUNT</item>
-					</weaponType>
+					<item>BLUNT</item>
 				</weaponType>
 			</effect>
 		</effects>
@@ -1863,165 +1716,467 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>465</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="8872" toLevel="1" name="Refined Romantic Chapeau containing the GM's Sincerity">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases P. Atk. By 5%. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8873" toLevel="1" name="Refined Romantic Chapeau containing the GM's Sincerity">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases M. Atk. By 10%. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8874" toLevel="1" name="Refined Romantic Chapeau containing the GM's Sincerity">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- WIT + 3. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8875" toLevel="1" name="Refined Romantic Chapeau containing the GM's Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases P. Atk. By 5%, and Critical Rate + 50. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>50</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8876" toLevel="1" name="Refined Romantic Chapeau containing the GM's Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- M. Atk. + 10%, and INT + 3. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8877" toLevel="1" name="Refined Romantic Chapeau containing the GM's Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- WIT + 3, MEN + 3. -->
 		<icon>icon.accessory_archer_hat2_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="8878" toLevel="1" name="Tauti's Special Ability: One-handed Axe">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Increases Max HP, P. Atk., Atk. Spd., Critical Rate, and damage inflicted during PvP. -->
-		<icon>icon.weapon_tauti_one_hand_axe_i01</icon>
+	<skill id="8878" toLevel="2" name="Tauti's Special Ability: One-handed Axe">
+		<!-- Updated to GC -->
+		<!-- Glory Days confirmed -->
+		<!-- Increases PvP Damage by 15%, Maximum HP by 25%, Attack by 10%, Attack Speed by 15%, and P. Critical Rate by 150. -->
+		<icon>
+			<value level="1">icon.weapon_tauti_one_hand_axe_i01</value>
+			<value level="2">icon.tauti_weapon_one_hand_axe_high</value>
+		</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
+		<effects>
+			<effect name="p_pvp_physical_attack_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>150</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_attack_attribute_add" fromLevel="2" toLevel="2">
+				<amount>150</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_skill_power" fromLevel="2" toLevel="2">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8879" toLevel="1" name="Tauti's Special Ability: Axe">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Increases Max HP, P. Atk., Atk. Spd., Critical Rate, and damage inflicted during PvP. -->
-		<icon>icon.weapon_tauti_one_hand_magic_axe_i01</icon>
+		<!-- Updated to GC -->
+		<!-- Glory Days confirmed -->
+		<!-- Increases PvP Damage by 15%, Maximum HP by 25%, Attack by 10%, Attack Speed by 15%, and P. Critical Rate by 150. -->
+		<icon>
+			<value level="1">icon.weapon_tauti_one_hand_magic_axe_i01</value>
+			<value level="2">icon.tauti_weapon_two_hand_axe_high</value>
+		</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
+		<effects>
+			<effect name="p_pvp_physical_attack_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>150</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_attack_attribute_add" fromLevel="2" toLevel="2">
+				<amount>150</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_skill_power" fromLevel="2" toLevel="2">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8880" toLevel="1" name="Tauti's Special Ability: Two-handed Axe">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Increases Max HP, P. Atk., Atk. Spd., Critical Rate, and damage inflicted during PvP. -->
-		<icon>icon.weapon_tauti_dual_axe_i01</icon>
+		<!-- Updated to GC -->
+		<!-- Glory Days confirmed -->
+		<!-- Increases PvP Damage by 15%, Maximum HP by 25%, Attack by 10%, Attack Speed by 15%, and P. Critical Rate by 150. -->
+		<icon>
+			<value level="1">icon.weapon_tauti_dual_axe_i01</value>
+			<value level="2">icon.tauti_weapon_dual_axe_high</value>
+		</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
+		<effects>
+			<effect name="p_pvp_physical_attack_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>150</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_attack_attribute_add" fromLevel="2" toLevel="2">
+				<amount>150</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_skill_power" fromLevel="2" toLevel="2">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8881" toLevel="1" name="Top-grade Resistance Earring - Stun">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Stun Bonus by 20%, and Stun Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<SHOCK>20</SHOCK>
+			</effect>
+			<effect name="p_defence_trait">
+				<SHOCK>20</SHOCK>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8882" toLevel="1" name="Top-grade Resistance Earring - Hold">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Hold Bonus by 20%, and Hold Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<HOLD>20</HOLD>
+			</effect>
+			<effect name="p_defence_trait">
+				<HOLD>20</HOLD>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8883" toLevel="1" name="Top-grade Resistance Earring - Bleed">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Bleed Bonus by 20%, and Bleed Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<BLEED>20</BLEED>
+			</effect>
+			<effect name="p_defence_trait">
+				<BLEED>20</BLEED>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8884" toLevel="1" name="Top-grade Resistance Earring - Paralyze">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Paralyze Bonus by 20%, and Paralysis Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<PARALYZE>20</PARALYZE>
+			</effect>
+			<effect name="p_defence_trait">
+				<PARALYZE>20</PARALYZE>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8885" toLevel="1" name="Top-grade Resistance Earring - Mental Attack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Mental Bonus by 20%, and Mental Attack Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<DERANGEMENT>20</DERANGEMENT>
+			</effect>
+			<effect name="p_defence_trait">
+				<DERANGEMENT>20</DERANGEMENT>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8886" toLevel="1" name="Top-grade Resistance Earring - Sleep">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Sleep Bonus by 20%, and Sleep Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<SLEEP>20</SLEEP>
+			</effect>
+			<effect name="p_defence_trait">
+				<SLEEP>20</SLEEP>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8887" toLevel="1" name="Top-grade Resistance Earring - Poison">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Poison Bonus by 20%, and Poison Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<POISON>20</POISON>
+			</effect>
+			<effect name="p_defence_trait">
+				<POISON>20</POISON>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8888" toLevel="1" name="Top-grade Resistance Earring - Knock Back/Knock Down">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Knock Back/Knock Down Bonus by 20%, and Knock Back/Knock Down Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<KNOCKBACK>20</KNOCKBACK>
+				<KNOCKDOWN>20</KNOCKDOWN>
+			</effect>
+			<effect name="p_defence_trait">
+				<KNOCKBACK>20</KNOCKBACK>
+				<KNOCKDOWN>20</KNOCKDOWN>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8889" toLevel="1" name="Top-grade Resistance Earring - Aerial Yoke">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases Max CP by 5%, Aerial Yoke Bonus by 20%, and Aerial Yoke Resistance by 20. -->
 		<icon>icon.accessary_inferno_earing_i00</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
+		<effects>
+			<effect name="p_max_cp">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_trait">
+				<AIRBIND>20</AIRBIND>
+			</effect>
+			<effect name="p_defence_trait">
+				<AIRBIND>20</AIRBIND>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8890" toLevel="1" name="Dignity">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- For 2 minutes, Speed + 100 and becomes resistant to all Debuffs. Requires 1 Dragon Blood. Cooldown is 10 minutes. -->
+		<abnormalTime>120</abnormalTime>
 		<icon>icon.skill5662</icon>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>36415</itemConsumeId> <!-- Dragon Blood -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<staticReuse>true</staticReuse>
+		<magicLevel>1</magicLevel>
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>100</effectPoint>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE</rideState>
+		<hitCancelTime>0</hitCancelTime>
 		<reuseDelay>600000</reuseDelay>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_speed">
+				<amount>100</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_block_debuff" />
+		</effects>
 	</skill>
 	<skill id="8891" toLevel="1" name="Worship">
 		<!-- AUTO GENERATED SKILL -->
@@ -2032,7 +2187,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-330</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="8892" toLevel="1" name="Bleed">
 		<!-- AUTO GENERATED SKILL -->
@@ -2043,80 +2198,257 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="8893" toLevel="1" name="Antharas' Breath">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Decreases nearby target's P. Atk./Casting Spd./Speed by 90% for 5 sec., after which they are rendered immobile for another 10 sec. Requires 1 Dragon Blood. Cooldown is 5 min. -->
+		<abnormalTime>5</abnormalTime>
+		<activateRate>200</activateRate>
 		<icon>icon.item_gragonskill_i02</icon>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>36415</itemConsumeId> <!-- Dragon Blood -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<staticReuse>true</staticReuse>
+		<affectLimit>6-12</affectLimit> <!-- Guessed -->
+		<affectRange>600</affectRange> <!-- Guessed -->
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-418</effectPoint>
-		<isDebuff>true</isDebuff>
+		<effectRange>900</effectRange>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<rideState>NONE</rideState>
+		<isDebuff>1</isDebuff>
+		<trait>PARALYZE</trait>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+		<endEffects>
+			<effect name="i_call_skill">
+				<skillId>8894</skillId> <!-- Paralyzing Breath -->
+				<skillLevel>1</skillLevel>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="8894" toLevel="1" name="Paralyzing Breath">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Petrified to immobility. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>10</abnormalTime>
+		<abnormalType>PARALYZE</abnormalType>
+		<abnormalVisualEffect>PARALYZE</abnormalVisualEffect>
 		<icon>icon.skill1170</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<isTriggeredSkill>true</isTriggeredSkill>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<trait>PARALYZE</trait>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_block_act" />
+		</effects>
 	</skill>
 	<skill id="8895" toLevel="1" name="Antharas Lash">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Dissolves nearby enemies' CP. Requires 1 Dragon Blood. Cooldown is 5 min. -->
 		<icon>icon.item_gragonskill_i04</icon>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>36415</itemConsumeId> <!-- Dragon Blood -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<staticReuse>true</staticReuse>
+		<affectLimit>6-12</affectLimit> <!-- Guessed -->
+		<affectRange>600</affectRange> <!-- Guessed -->
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-405</effectPoint>
-		<isDebuff>true</isDebuff>
+		<effectRange>900</effectRange>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<isDebuff>1</isDebuff>
+		<rideState>NONE</rideState>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effects>
+			<effect name="i_cp">
+				<amount>-100</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8896" toLevel="1" name="Valakas' Breath">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Decreases nearby target's P. Atk./Casting Spd./Speed by 90% for 5 sec., after which they are rendered immobile for another 10 sec. Requires 1 Dragon Blood. Cooldown is 5 min. -->
+		<abnormalTime>5</abnormalTime>
+		<activateRate>200</activateRate>
 		<icon>icon.skill4683</icon>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>36415</itemConsumeId> <!-- Dragon Blood -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<staticReuse>true</staticReuse>
+		<affectLimit>6-12</affectLimit> <!-- Guessed -->
+		<affectRange>600</affectRange> <!-- Guessed -->
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-418</effectPoint>
-		<isDebuff>true</isDebuff>
+		<effectRange>900</effectRange>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<rideState>NONE</rideState>
+		<isDebuff>1</isDebuff>
+		<trait>PARALYZE</trait>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+		<endEffects>
+			<effect name="i_call_skill">
+				<skillId>8894</skillId> <!-- Paralyzing Breath -->
+				<skillLevel>1</skillLevel>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="8897" toLevel="1" name="Valakas' Meteor">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Dissolves nearby enemies' CP. Requires 1 Dragon Blood. Cooldown is 5 min. -->
 		<icon>icon.skill1467</icon>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>36415</itemConsumeId> <!-- Dragon Blood -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<staticReuse>true</staticReuse>
+		<affectLimit>6-12</affectLimit> <!-- Guessed -->
+		<affectRange>600</affectRange> <!-- Guessed -->
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-405</effectPoint>
-		<isDebuff>true</isDebuff>
+		<effectRange>900</effectRange>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<isDebuff>1</isDebuff>
+		<rideState>NONE</rideState>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effects>
+			<effect name="i_cp">
+				<amount>-100</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8898" toLevel="1" name="Lindvior's Breath">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Decreases nearby target's P. Atk./Casting Spd./Speed by 90% for 5 sec., after which they are rendered immobile for another 10 sec. Requires 1 Dragon Blood. Cooldown is 5 min. -->
+		<abnormalTime>5</abnormalTime>
+		<activateRate>200</activateRate>
 		<icon>icon.item_gragonskill_i03</icon>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>36415</itemConsumeId> <!-- Dragon Blood -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<staticReuse>true</staticReuse>
+		<affectLimit>6-12</affectLimit> <!-- Guessed -->
+		<affectRange>600</affectRange> <!-- Guessed -->
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-418</effectPoint>
-		<isDebuff>true</isDebuff>
+		<effectRange>900</effectRange>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<rideState>NONE</rideState>
+		<isDebuff>1</isDebuff>
+		<trait>PARALYZE</trait>
+		<basicProperty>NONE</basicProperty>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>-90</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+		<endEffects>
+			<effect name="i_call_skill">
+				<skillId>8894</skillId> <!-- Paralyzing Breath -->
+				<skillLevel>1</skillLevel>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="8899" toLevel="1" name="Lindvior's Wingbeat">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Dissolves nearby enemies' CP. Requires 1 Dragon Blood. Cooldown is 5 min. -->
 		<icon>icon.item_gragonskill_i05</icon>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>36415</itemConsumeId> <!-- Dragon Blood -->
+		<magicCriticalRate>5</magicCriticalRate>
+		<staticReuse>true</staticReuse>
+		<affectLimit>6-12</affectLimit> <!-- Guessed -->
+		<affectRange>600</affectRange> <!-- Guessed -->
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-405</effectPoint>
-		<isDebuff>true</isDebuff>
+		<effectRange>900</effectRange>
+		<targetType>SELF</targetType>
+		<affectScope>POINT_BLANK</affectScope>
+		<affectObject>NOT_FRIEND</affectObject>
+		<isDebuff>1</isDebuff>
+		<rideState>NONE</rideState>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effects>
+			<effect name="i_cp">
+				<amount>-100</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 </list>

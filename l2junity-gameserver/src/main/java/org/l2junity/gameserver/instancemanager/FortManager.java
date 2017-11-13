@@ -25,19 +25,61 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.InstanceListManager;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.data.xml.impl.DoorData;
+import org.l2junity.gameserver.data.xml.impl.NpcData;
+import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
+import org.l2junity.gameserver.data.xml.impl.StaticObjectData;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.entity.Fort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class FortManager implements InstanceListManager
+public final class FortManager
 {
-	protected static final Logger _log = LoggerFactory.getLogger(FortManager.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(FortManager.class);
 	
 	private final Map<Integer, Fort> _forts = new ConcurrentSkipListMap<>();
+	
+	protected FortManager()
+	{
+	}
+	
+	@Load(group = LoadGroup.class, dependencies =
+	{
+		@Dependency(clazz = StaticObjectData.class),
+		@Dependency(clazz = DoorData.class),
+		@Dependency(clazz = NpcData.class),
+		@Dependency(clazz = SkillTreesData.class)
+	})
+	protected void load()
+	{
+		try (Connection con = DatabaseFactory.getInstance().getConnection();
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery("SELECT id FROM fort ORDER BY id"))
+		{
+			while (rs.next())
+			{
+				final int fortId = rs.getInt("id");
+				_forts.computeIfAbsent(fortId, Fort::new);
+			}
+			
+			LOGGER.info("Loaded {} fortress.", getForts().size());
+			for (Fort fort : getForts())
+			{
+				fort.getSiege().loadSiegeGuard();
+			}
+		}
+		catch (Exception e)
+		{
+			LOGGER.warn("Failed to load fortress: ", e);
+		}
+	}
 	
 	public final Fort findNearestFort(WorldObject obj)
 	{
@@ -98,7 +140,7 @@ public final class FortManager implements InstanceListManager
 		return null;
 	}
 	
-	public final Fort getFort(int x, int y, int z)
+	public final Fort getFort(double x, double y, double z)
 	{
 		for (Fort f : getForts())
 		{
@@ -120,52 +162,14 @@ public final class FortManager implements InstanceListManager
 		return _forts.values();
 	}
 	
-	@Override
-	public void loadInstances()
-	{
-		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT id FROM fort ORDER BY id"))
-		{
-			while (rs.next())
-			{
-				final int fortId = rs.getInt("id");
-				_forts.put(fortId, new Fort(fortId));
-			}
-			
-			_log.info(getClass().getSimpleName() + ": Loaded: " + getForts().size() + " fortress");
-			for (Fort fort : getForts())
-			{
-				fort.getSiege().loadSiegeGuard();
-			}
-		}
-		catch (Exception e)
-		{
-			_log.warn("Exception: loadFortData(): " + e.getMessage(), e);
-		}
-	}
-	
-	@Override
-	public void updateReferences()
-	{
-	}
-	
-	@Override
-	public void activateInstances()
-	{
-		for (final Fort fort : getForts())
-		{
-			fort.activateInstance();
-		}
-	}
-	
+	@InstanceGetter
 	public static FortManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final FortManager _instance = new FortManager();
+		protected static final FortManager INSTANCE = new FortManager();
 	}
 }

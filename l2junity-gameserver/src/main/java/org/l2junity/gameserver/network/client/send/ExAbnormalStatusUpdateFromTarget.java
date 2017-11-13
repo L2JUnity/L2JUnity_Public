@@ -20,6 +20,8 @@ package org.l2junity.gameserver.network.client.send;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.skills.BuffInfo;
@@ -62,22 +64,16 @@ public class ExAbnormalStatusUpdateFromTarget implements IClientOutgoingPacket
 	
 	public ExAbnormalStatusUpdateFromTarget(Creature character)
 	{
+		//@formatter:off
 		_character = character;
-		_effects = new ArrayList<>();
-		
-		for (BuffInfo info : character.getEffectList().getEffects())
-		{
-			if ((info != null) && info.isInUse())
-			{
-				final Skill skill = info.getSkill();
-				
-				// TODO: Check on retail if all effects should be displayed
-				if (skill != null)
-				{
-					_effects.add(new Effect(info));
-				}
-			}
-		}
+		_effects = character.getEffectList().getEffects()
+					.stream()
+					.filter(Objects::nonNull)
+					.filter(BuffInfo::isInUse)
+					.filter(b -> !b.getSkill().isToggle())
+					.map(Effect::new)
+					.collect(Collectors.toList());
+		//@formatter:on
 	}
 	
 	@Override

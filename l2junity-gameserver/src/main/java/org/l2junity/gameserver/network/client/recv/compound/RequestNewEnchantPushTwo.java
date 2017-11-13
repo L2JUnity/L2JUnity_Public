@@ -18,8 +18,10 @@
  */
 package org.l2junity.gameserver.network.client.recv.compound;
 
+import org.l2junity.gameserver.data.xml.impl.CombinationItemsData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.CompoundRequest;
+import org.l2junity.gameserver.model.items.combination.CombinationItem;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
@@ -88,15 +90,10 @@ public class RequestNewEnchantPushTwo implements IClientIncomingPacket
 			return;
 		}
 		
-		// Combining only same items!
-		if (itemOne.getItem().getId() != itemTwo.getItem().getId())
-		{
-			client.sendPacket(ExEnchantTwoFail.STATIC_PACKET);
-			return;
-		}
+		final CombinationItem combinationItem = CombinationItemsData.getInstance().getItemsBySlots(itemOne.getId(), itemTwo.getId());
 		
 		// Not implemented or not able to merge!
-		if ((itemOne.getItem().getCompoundItem() == 0) || (itemOne.getItem().getCompoundChance() == 0))
+		if (combinationItem == null)
 		{
 			client.sendPacket(ExEnchantTwoFail.STATIC_PACKET);
 			return;

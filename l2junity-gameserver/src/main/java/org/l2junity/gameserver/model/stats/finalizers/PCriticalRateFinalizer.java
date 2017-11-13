@@ -18,14 +18,14 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -33,7 +33,7 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class PCriticalRateFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
@@ -44,7 +44,7 @@ public class PCriticalRateFinalizer implements IStatsFunction
 			baseValue += calcEnchantBodyPart(creature, L2Item.SLOT_LEGS);
 		}
 		final double dexBonus = creature.getDEX() > 0 ? BaseStats.DEX.calcBonus(creature) : 1.;
-		return validateValue(creature, Stats.defaultValue(creature, stat, baseValue * dexBonus * 10), 0, Config.MAX_PCRIT_RATE);
+		return validateValue(creature, DoubleStat.defaultValue(creature, stat, baseValue * dexBonus * 10), 0, PlayerConfig.MAX_PCRIT_RATE);
 	}
 	
 	@Override

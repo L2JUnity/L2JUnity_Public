@@ -3,31 +3,128 @@
 	<spawn name="AnghelWaterfall">
 		<group>
 			<npc id="19544" x="172458" y="90314" z="-1984" respawnTime="60sec" /> <!-- Invisible Anghel Waterfall NPC -->
-			<npc id="32910" x="175148" y="90632" z="-2202" respawnTime="60sec" /> <!-- Teleport Portal -->
-			<npc id="32915" x="172524" y="91358" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172184" y="88592" z="-2008" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172352" y="88766" z="-2000" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172100" y="88244" z="-2032" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172352" y="88882" z="-2000" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172436" y="88186" z="-2040" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172394" y="88186" z="-2040" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172188" y="91768" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172620" y="91276" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172620" y="91358" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172092" y="91932" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="172394" y="88418" z="-2016" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="170294" y="92264" z="-1856" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171064" y="89772" z="-1656" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171996" y="91686" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171948" y="91932" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171064" y="91641" z="-2080" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171834" y="91641" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171460" y="93138" z="-1984" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171908" y="92339" z="-1992" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171908" y="92668" z="-2000" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171780" y="92527" z="-2000" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="32915" x="171064" y="94133" z="-2176" respawnTime="60sec" /> <!-- Wisp -->
-			<npc id="33489" x="172688" y="89822" z="-1920" respawnTime="60sec" /> <!-- Large Verdant Wilds -->
 		</group>
+	</spawn>
+	<spawn name="2520_angel_falls_wisp1m1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_angel_falls_wisp1" minZ="-3324" maxZ="-2924">
+				<node x="164704" y="91356" />
+				<node x="166244" y="91244" />
+				<node x="165996" y="92584" />
+				<node x="164108" y="92996" />
+			</territory>
+		</territories>
+		<npc id="32915" respawnTime="30sec" respawnRandom="60sec" count="11" /> <!-- Wisp -->
+	</spawn>
+	<spawn name="2520_angel_falls_wisp2m1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_angel_falls_wisp2" minZ="-3272" maxZ="-2572">
+				<node x="164852" y="94776" />
+				<node x="164560" y="93156" />
+				<node x="166308" y="94720" />
+				<node x="166108" y="94740" />
+			</territory>
+		</territories>
+		<npc id="32915" respawnTime="30sec" respawnRandom="60sec" count="11" /> <!-- Wisp -->
+	</spawn>
+	<spawn name="2520_angel_falls_wisp3m1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_angel_falls_wisp3" minZ="-2552" maxZ="-552">
+				<node x="166444" y="95352" />
+				<node x="170360" y="84788" />
+				<node x="173784" y="85004" />
+				<node x="174144" y="97260" />
+			</territory>
+		</territories>
+		<npc id="32915" respawnTime="30sec" respawnRandom="60sec" count="11" /> <!-- Wisp -->
+	</spawn>
+	<spawn name="2520_angel_falls_wisp4m1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_angel_falls_wisp4" minZ="-2296" maxZ="-1796">
+				<node x="166652" y="85436" />
+				<node x="167460" y="84856" />
+				<node x="167356" y="86468" />
+				<node x="166172" y="86600" />
+			</territory>
+		</territories>
+		<npc id="32915" respawnTime="30sec" respawnRandom="60sec" count="8" /> <!-- Wisp -->
+	</spawn>
+	<spawn name="2520_wisp_zone1m1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_wisp_zone1" minZ="-2144" maxZ="-1744">
+				<node x="171932" y="87936" />
+				<node x="172568" y="87780" />
+				<node x="172772" y="88868" />
+				<node x="171996" y="88948" />
+			</territory>
+		</territories>
+		<npc id="32915" respawnTime="30sec" respawnRandom="60sec" count="8" /> <!-- Wisp -->
+	</spawn>
+	<spawn name="2520_wisp_zone2m1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_wisp_zone2" minZ="-2052" maxZ="-1652">
+				<node x="172076" y="90620" />
+				<node x="172776" y="90908" />
+				<node x="172324" y="92276" />
+				<node x="171804" y="92052" />
+			</territory>
+		</territories>
+		<npc id="32915" respawnTime="30sec" respawnRandom="60sec" count="8" /> <!-- Wisp -->
+	</spawn>
+	<spawn name="2520_wisp_zone3m1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_wisp_zone3" minZ="-2052" maxZ="-1852">
+				<node x="171888" y="92292" />
+				<node x="172084" y="92488" />
+				<node x="171576" y="93244" />
+				<node x="171428" y="93132" />
+			</territory>
+		</territories>
+		<npc id="32915" respawnTime="30sec" respawnRandom="60sec" count="4" /> <!-- Wisp -->
+	</spawn>
+	<spawn name="2520_wisp_zone4m1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_wisp_zone4" minZ="-2460" maxZ="-1960">
+				<node x="166948" y="94556" />
+				<node x="168140" y="94996" />
+				<node x="167780" y="95092" />
+				<node x="167092" y="95020" />
+			</territory>
+		</territories>
+		<npc id="32915" respawnTime="30sec" respawnRandom="60sec" count="11" /> <!-- Wisp -->
+	</spawn>
+	<spawn name="2520_magmeld_teleporterm1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_magmeld_teleporter" minZ="-2364" maxZ="-2164">
+				<node x="175092" y="90484" />
+				<node x="175292" y="90484" />
+				<node x="175292" y="90684" />
+				<node x="175092" y="90684" />
+			</territory>
+		</territories>
+		<npc id="32910" x="175148" y="90632" z="-2202" respawnTime="1min" count="1" /> <!-- Teleport Portal -->
+	</spawn>
+	<spawn name="2520_angel_falls_treem1" ai="DEFAULT_MAKER">
+		<territories>
+			<territory name="2520_angel_falls_tree" minZ="-2010" maxZ="-1810">
+				<node x="172725" y="90269" />
+				<node x="172717" y="90382" />
+				<node x="172653" y="90379" />
+				<node x="172540" y="90636" />
+				<node x="172527" y="90770" />
+				<node x="172487" y="90851" />
+				<node x="172041" y="90839" />
+				<node x="172018" y="90541" />
+				<node x="172082" y="90335" />
+				<node x="172092" y="90095" />
+				<node x="172190" y="89921" />
+				<node x="172355" y="89253" />
+				<node x="172663" y="89213" />
+				<node x="172759" y="89780" />
+				<node x="172772" y="89958" />
+				<node x="172648" y="90224" />
+			</territory>
+		</territories>
+		<npc id="33489" x="172688" y="89822" z="-1920" respawnTime="1min" count="1" /> <!-- Large Verdant Wilds -->
 	</spawn>
 </list>

@@ -18,12 +18,13 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import static org.l2junity.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
-
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.TradeList;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.zone.ZoneId;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
@@ -51,7 +52,7 @@ public class SetPrivateStoreListSell implements IClientIncomingPacket
 	{
 		_packageSale = (packet.readD() == 1);
 		int count = packet.readD();
-		if ((count < 1) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((count < 1) || (count > PlayerConfig.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -59,16 +60,16 @@ public class SetPrivateStoreListSell implements IClientIncomingPacket
 		_items = new Item[count];
 		for (int i = 0; i < count; i++)
 		{
-			int itemId = packet.readD();
+			int objectId = packet.readD();
 			long cnt = packet.readQ();
 			long price = packet.readQ();
 			
-			if ((itemId < 1) || (cnt < 1) || (price < 0))
+			if ((objectId < 1) || (cnt < 1) || (price < 0))
 			{
 				_items = null;
 				return false;
 			}
-			_items[i] = new Item(itemId, cnt, price);
+			_items[i] = new Item(objectId, cnt, price);
 		}
 		return true;
 	}
@@ -129,14 +130,14 @@ public class SetPrivateStoreListSell implements IClientIncomingPacket
 		{
 			if (!i.addToTradeList(tradeList))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to set price more than " + MAX_ADENA + " adena in Private Store - Sell.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to set price more than " + ItemContainer.getMaximumAllowedCount(Inventory.ADENA_ID) + " adena in Private Store - Sell.", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			
 			totalCost += i.getPrice();
-			if (totalCost > MAX_ADENA)
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, totalCost))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to set total price more than " + MAX_ADENA + " adena in Private Store - Sell.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to set total price to " + totalCost + " adena in Private Store - Sell.", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 		}
@@ -165,25 +166,25 @@ public class SetPrivateStoreListSell implements IClientIncomingPacket
 	
 	private static class Item
 	{
-		private final int _itemId;
+		private final int _objectId;
 		private final long _count;
 		private final long _price;
 		
-		public Item(int id, long num, long pri)
+		public Item(int objectId, long count, long price)
 		{
-			_itemId = id;
-			_count = num;
-			_price = pri;
+			_objectId = objectId;
+			_count = count;
+			_price = price;
 		}
 		
 		public boolean addToTradeList(TradeList list)
 		{
-			if ((MAX_ADENA / _count) < _price)
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, _price * _count))
 			{
 				return false;
 			}
 			
-			list.addItem(_itemId, _count, _price);
+			list.addItem(_objectId, _count, _price);
 			return true;
 		}
 		
@@ -192,5 +193,4 @@ public class SetPrivateStoreListSell implements IClientIncomingPacket
 			return _count * _price;
 		}
 	}
-	
 }

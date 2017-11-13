@@ -1669,7 +1669,6 @@
 		<cond msgId="2453">
 			<and>
 				<player races="KAMAEL" />
-				<player cloakStatus="true" />
 			</and>
 		</cond>
 		<stats>
@@ -1688,9 +1687,6 @@
 		<set name="price" val="28671000" />
 		<set name="is_freightable" val="false" />
 		<set name="commissionItemType" val="CLOAK" />
-		<cond msgId="2453">
-			<player cloakStatus="true" />
-		</cond>
 		<stats>
 			<stat type="pDef">20</stat>
 			<stat type="darkRes">30</stat>
@@ -1711,7 +1707,6 @@
 			<and>
 				<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
 				<player categoryType="ROGUE_CLOACK" />
-				<player cloakStatus="true" />
 			</and>
 		</cond>
 		<stats>
@@ -1734,7 +1729,6 @@
 			<and>
 				<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
 				<player categoryType="MAGE_CLOACK" />
-				<player cloakStatus="true" />
 			</and>
 		</cond>
 		<stats>

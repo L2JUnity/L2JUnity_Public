@@ -20,7 +20,6 @@ package org.l2junity.gameserver.network.client.recv;
 
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
-import org.l2junity.gameserver.enums.CategoryType;
 import org.l2junity.gameserver.enums.Race;
 import org.l2junity.gameserver.model.ClanPrivilege;
 import org.l2junity.gameserver.model.SkillLearn;
@@ -28,6 +27,9 @@ import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.L2NpcInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.base.AcquireSkillType;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerRequestAcquireSkillInfo;
+import org.l2junity.gameserver.model.events.returns.TerminateReturn;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.AcquireSkillInfo;
@@ -58,12 +60,18 @@ public final class RequestAcquireSkillInfo implements IClientIncomingPacket
 	{
 		if ((_id <= 0) || (_level <= 0))
 		{
-			_log.warn(RequestAcquireSkillInfo.class.getSimpleName() + ": Invalid Id: " + _id + " or level: " + _level + "!");
+			LOGGER.warn("Invalid Id: " + _id + " or level: " + _level + "!");
 			return;
 		}
 		
 		final PlayerInstance activeChar = client.getActiveChar();
 		if (activeChar == null)
+		{
+			return;
+		}
+		
+		final TerminateReturn term = EventDispatcher.getInstance().notifyEvent(new OnPlayerRequestAcquireSkillInfo(activeChar, _id, _level, _skillType), activeChar, TerminateReturn.class);
+		if ((term != null) && term.terminate())
 		{
 			return;
 		}
@@ -82,7 +90,7 @@ public final class RequestAcquireSkillInfo implements IClientIncomingPacket
 		final Skill skill = SkillData.getInstance().getSkill(_id, _level);
 		if (skill == null)
 		{
-			_log.warn("Skill Id: " + _id + " level: " + _level + " is undefined. " + RequestAcquireSkillInfo.class.getName() + " failed.");
+			LOGGER.warn("Skill Id: " + _id + " level: " + _level + " is undefined. " + RequestAcquireSkillInfo.class.getName() + " failed.");
 			return;
 		}
 		
@@ -92,11 +100,11 @@ public final class RequestAcquireSkillInfo implements IClientIncomingPacket
 		{
 			if (prevSkillLevel == _level)
 			{
-				_log.warn(RequestAcquireSkillInfo.class.getSimpleName() + ": Player " + activeChar.getName() + " is trequesting info for a skill that already knows, Id: " + _id + " level: " + _level + "!");
+				LOGGER.warn("Player " + activeChar.getName() + " is trequesting info for a skill that already knows, Id: " + _id + " level: " + _level + "!");
 			}
 			else if (prevSkillLevel != (_level - 1))
 			{
-				_log.warn(RequestAcquireSkillInfo.class.getSimpleName() + ": Player " + activeChar.getName() + " is requesting info for skill Id: " + _id + " level " + _level + " without knowing it's previous level!");
+				LOGGER.warn("Player " + activeChar.getName() + " is requesting info for skill Id: " + _id + " level " + _level + " without knowing it's previous level!");
 			}
 		}
 		
@@ -120,8 +128,7 @@ public final class RequestAcquireSkillInfo implements IClientIncomingPacket
 			}
 			case CLASS:
 			{
-				final int customSp = s.getCalculatedLevelUpSp(activeChar.getClassId(), activeChar.getLearningClass());
-				client.sendPacket(new ExAcquireSkillInfo(activeChar, s, customSp));
+				client.sendPacket(new ExAcquireSkillInfo(activeChar, s));
 				break;
 			}
 			case PLEDGE:
@@ -153,7 +160,7 @@ public final class RequestAcquireSkillInfo implements IClientIncomingPacket
 			}
 			case REVELATION:
 			{
-				if ((activeChar.getLevel() < 85) || !activeChar.isInCategory(CategoryType.AWAKEN_GROUP))
+				if ((activeChar.getLevel() < 85) || !activeChar.isAwakenedClass())
 				{
 					return;
 				}

@@ -66,7 +66,7 @@ public class EnchantResult implements IClientOutgoingPacket
 		packet.writeD(_enchantLevel);
 		for (int option : _enchantOptions)
 		{
-			packet.writeH(option);
+			packet.writeD(option);
 		}
 		return true;
 	}

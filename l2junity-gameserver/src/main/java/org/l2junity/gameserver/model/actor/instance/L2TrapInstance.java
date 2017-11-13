@@ -21,8 +21,9 @@ package org.l2junity.gameserver.model.actor.instance;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.enums.TrapAction;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
@@ -40,8 +41,8 @@ import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.olympiad.OlympiadGameManager;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.zone.ZoneId;
-import org.l2junity.gameserver.network.client.send.AbstractNpcInfo.TrapInfo;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
+import org.l2junity.gameserver.network.client.send.NpcInfo;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.gameserver.taskmanager.DecayTaskManager;
@@ -53,7 +54,6 @@ import org.l2junity.gameserver.taskmanager.DecayTaskManager;
 public final class L2TrapInstance extends Npc
 {
 	private static final int TICK = 1000; // 1s
-	private boolean _hasLifeTime;
 	private boolean _isInArena = false;
 	private boolean _isTriggered;
 	private final int _lifeTime;
@@ -64,7 +64,7 @@ public final class L2TrapInstance extends Npc
 	// Tasks
 	private ScheduledFuture<?> _trapTask = null;
 	
-	public L2TrapInstance(L2NpcTemplate template, int instanceId, int lifeTime)
+	public L2TrapInstance(L2NpcTemplate template, int instanceId)
 	{
 		super(template);
 		setInstanceType(InstanceType.L2TrapInstance);
@@ -74,18 +74,17 @@ public final class L2TrapInstance extends Npc
 		_owner = null;
 		_isTriggered = false;
 		_skill = getParameters().getObject("trap_skill", SkillHolder.class);
-		_hasLifeTime = lifeTime >= 0;
-		_lifeTime = lifeTime != 0 ? lifeTime : 30000;
+		_lifeTime = 30000;
 		_remainingTime = _lifeTime;
 		if (_skill != null)
 		{
-			_trapTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new TrapTask(this), TICK, TICK);
+			_trapTask = ThreadPool.scheduleAtFixedRate(new TrapTask(this), TICK, TICK, TimeUnit.MILLISECONDS);
 		}
 	}
 	
-	public L2TrapInstance(L2NpcTemplate template, PlayerInstance owner, int lifeTime)
+	public L2TrapInstance(L2NpcTemplate template, PlayerInstance owner)
 	{
-		this(template, owner.getInstanceId(), lifeTime);
+		this(template, owner.getInstanceId());
 		_owner = owner;
 	}
 	
@@ -104,7 +103,7 @@ public final class L2TrapInstance extends Npc
 	@Override
 	public void broadcastPacket(IClientOutgoingPacket mov, int radiusInKnownlist)
 	{
-		World.getInstance().forEachVisibleObjectInRange(this, PlayerInstance.class, radiusInKnownlist, player ->
+		World.getInstance().forEachVisibleObjectInRadius(this, PlayerInstance.class, radiusInKnownlist, player ->
 		{
 			if (_isTriggered || canBeSeen(player))
 			{
@@ -161,16 +160,6 @@ public final class L2TrapInstance extends Npc
 		return false;
 	}
 	
-	public boolean checkTarget(Creature target)
-	{
-		if (!target.isInsideRadius(this, 300, false, false))
-		{
-			return false;
-		}
-		
-		return _skill.getSkill().getTarget(this, target, false, true, false) != null;
-	}
-	
 	@Override
 	public boolean deleteMe()
 	{
@@ -190,6 +179,7 @@ public final class L2TrapInstance extends Npc
 		return null;
 	}
 	
+	@Override
 	public int getReputation()
 	{
 		return _owner != null ? _owner.getReputation() : 0;
@@ -239,6 +229,12 @@ public final class L2TrapInstance extends Npc
 		return true;
 	}
 	
+	@Override
+	public L2TrapInstance asTrap()
+	{
+		return this;
+	}
+	
 	/**
 	 * Checks is triggered
 	 * @return True if trap is triggered.
@@ -254,6 +250,13 @@ public final class L2TrapInstance extends Npc
 		super.onSpawn();
 		_isInArena = isInsideZone(ZoneId.PVP) && !isInsideZone(ZoneId.SIEGE);
 		_playersWhoDetectedMe.clear();
+	}
+	
+	@Override
+	public void doAttack(double damage, Creature target, Skill skill, boolean isDOT, boolean directlyToHp, boolean critical, boolean reflect)
+	{
+		super.doAttack(damage, target, skill, isDOT, directlyToHp, critical, reflect);
+		sendDamageMessage(target, skill, (int) damage, critical, false);
 	}
 	
 	@Override
@@ -289,7 +292,7 @@ public final class L2TrapInstance extends Npc
 	{
 		if (_isTriggered || canBeSeen(activeChar))
 		{
-			activeChar.sendPacket(new TrapInfo(this, activeChar));
+			activeChar.sendPacket(new NpcInfo(this));
 		}
 	}
 	
@@ -338,12 +341,12 @@ public final class L2TrapInstance extends Npc
 		}
 		
 		_isTriggered = true;
-		broadcastPacket(new TrapInfo(this, null));
+		broadcastPacket(new NpcInfo(this));
 		setTarget(target);
 		
 		EventDispatcher.getInstance().notifyEventAsync(new OnTrapAction(this, target, TrapAction.TRAP_TRIGGERED), this);
 		
-		ThreadPoolManager.getInstance().scheduleGeneral(new TrapTriggerTask(this), 500);
+		ThreadPool.schedule(new TrapTriggerTask(this), 500, TimeUnit.MILLISECONDS);
 	}
 	
 	public void unSummon()
@@ -358,25 +361,9 @@ public final class L2TrapInstance extends Npc
 		
 		if (isSpawned() && !isDead())
 		{
-			ZoneManager.getInstance().getRegion(this).removeFromZones(this);
+			ZoneManager.getInstance().getRegion(this).removeFromZones(this, false);
 			deleteMe();
 		}
-	}
-	
-	@Override
-	public void updateAbnormalVisualEffects()
-	{
-		
-	}
-	
-	public boolean hasLifeTime()
-	{
-		return _hasLifeTime;
-	}
-	
-	public void setHasLifeTime(boolean val)
-	{
-		_hasLifeTime = val;
 	}
 	
 	public int getRemainingTime()

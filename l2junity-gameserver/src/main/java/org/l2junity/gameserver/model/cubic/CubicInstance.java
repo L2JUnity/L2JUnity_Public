@@ -20,10 +20,11 @@ package org.l2junity.gameserver.model.cubic;
 
 import java.util.Comparator;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.Party;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -54,8 +55,8 @@ public class CubicInstance
 	
 	private void activate()
 	{
-		_skillUseTask = ThreadPoolManager.getInstance().scheduleAiAtFixedRate(this::tryToUseSkill, 0, _template.getDelay() * 1000);
-		_expireTask = ThreadPoolManager.getInstance().scheduleAi(this::deactivate, _template.getDuration() * 1000);
+		_skillUseTask = ThreadPool.scheduleAtFixedRate(this::tryToUseSkill, 0, _template.getDelay() * 1000, TimeUnit.MILLISECONDS);
+		_expireTask = ThreadPool.schedule(this::deactivate, _template.getDuration() * 1000, TimeUnit.MILLISECONDS);
 	}
 	
 	public void deactivate()
@@ -120,7 +121,7 @@ public class CubicInstance
 							final Party party = _owner.getParty();
 							if (party != null)
 							{
-								return party.getMembers().stream().filter(member -> cubicSkill.validateConditions(this, _owner, member) && member.isInsideRadius(_owner, Config.ALT_PARTY_RANGE, true, true)).sorted(Comparator.comparingInt(Creature::getCurrentHpPercent).reversed()).findFirst().orElse(null);
+								return party.getMembers().stream().filter(member -> cubicSkill.validateConditions(this, _owner, member) && member.isInRadius3d(_owner, PlayerConfig.ALT_PARTY_RANGE)).sorted(Comparator.comparingInt(Creature::getCurrentHpPercent).reversed()).findFirst().orElse(null);
 							}
 							if (cubicSkill.validateConditions(this, _owner, _owner))
 							{
@@ -138,7 +139,7 @@ public class CubicInstance
 						}
 						case TARGET:
 						{
-							WorldObject possibleTarget = skill.getTarget(_owner, false, false, false);
+							final WorldObject possibleTarget = skill.getTarget(_owner, false, false, false);
 							if ((possibleTarget != null) && possibleTarget.isCreature())
 							{
 								if (cubicSkill.validateConditions(this, _owner, (Creature) possibleTarget))
@@ -161,7 +162,7 @@ public class CubicInstance
 						final Party party = _owner.getParty();
 						if (party != null)
 						{
-							return party.getMembers().stream().filter(member -> cubicSkill.validateConditions(this, _owner, member) && member.isInsideRadius(_owner, Config.ALT_PARTY_RANGE, true, true)).sorted(Comparator.comparingInt(Creature::getCurrentHpPercent).reversed()).findFirst().orElse(null);
+							return party.getMembers().stream().filter(member -> cubicSkill.validateConditions(this, _owner, member) && member.isInRadius3d(_owner, PlayerConfig.ALT_PARTY_RANGE)).sorted(Comparator.comparingInt(Creature::getCurrentHpPercent).reversed()).findFirst().orElse(null);
 						}
 						if (cubicSkill.validateConditions(this, _owner, _owner))
 						{
@@ -179,13 +180,12 @@ public class CubicInstance
 					}
 					case TARGET:
 					{
-						final WorldObject targetObject = _owner.getTarget();
-						if ((targetObject != null) && targetObject.isCreature())
+						final WorldObject possibleTarget = cubicSkill.getSkill().getTarget(_owner, false, false, false);
+						if ((possibleTarget != null) && possibleTarget.isCreature())
 						{
-							final Creature target = (Creature) targetObject;
-							if (cubicSkill.validateConditions(this, _owner, target))
+							if (cubicSkill.validateConditions(this, _owner, (Creature) possibleTarget))
 							{
-								return target;
+								return (Creature) possibleTarget;
 							}
 						}
 						break;
@@ -198,7 +198,7 @@ public class CubicInstance
 				final Party party = _owner.getParty();
 				if (party != null)
 				{
-					return party.getMembers().stream().filter(member -> member.isInsideRadius(_owner, Config.ALT_PARTY_RANGE, true, true)).sorted(Comparator.comparingInt(Creature::getCurrentHpPercent).reversed()).findFirst().orElse(null);
+					return party.getMembers().stream().filter(member -> member.isInRadius3d(_owner, PlayerConfig.ALT_PARTY_RANGE)).sorted(Comparator.comparingInt(Creature::getCurrentHpPercent).reversed()).findFirst().orElse(null);
 				}
 				if (cubicSkill.validateConditions(this, _owner, _owner))
 				{

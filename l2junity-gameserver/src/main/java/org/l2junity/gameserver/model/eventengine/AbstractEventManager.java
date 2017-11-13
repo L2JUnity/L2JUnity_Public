@@ -18,7 +18,6 @@
  */
 package org.l2junity.gameserver.model.eventengine;
 
-import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Queue;
@@ -197,7 +196,7 @@ public abstract class AbstractEventManager<T extends AbstractEvent<?>> extends A
 	/* ********************** */
 	
 	@RegisterEvent(EventType.ON_PLAYER_LOGOUT)
-	@RegisterType(ListenerRegisterType.GLOBAL_PLAYERS)
+	@RegisterType(ListenerRegisterType.GLOBAL)
 	private void onPlayerLogout(OnPlayerLogout event)
 	{
 		final PlayerInstance player = event.getActiveChar();
@@ -234,11 +233,5 @@ public abstract class AbstractEventManager<T extends AbstractEvent<?>> extends A
 	public String getScriptName()
 	{
 		return getClass().getSimpleName();
-	}
-	
-	@Override
-	public Path getScriptPath()
-	{
-		return null;
 	}
 }

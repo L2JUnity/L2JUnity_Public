@@ -18,7 +18,9 @@
  */
 package org.l2junity.gameserver.model.shuttle;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import java.util.concurrent.TimeUnit;
+
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
 import org.l2junity.gameserver.model.actor.instance.DoorInstance;
 import org.l2junity.gameserver.model.actor.instance.L2ShuttleInstance;
@@ -30,7 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public class L2ShuttleEngine implements Runnable
 {
-	private static final Logger _log = LoggerFactory.getLogger(L2ShuttleEngine.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2ShuttleEngine.class);
 	
 	private static final int DELAY = 15 * 1000;
 	
@@ -64,7 +66,7 @@ public class L2ShuttleEngine implements Runnable
 					_shuttle.openDoor(0);
 					_shuttle.closeDoor(1);
 					_shuttle.broadcastShuttleInfo();
-					ThreadPoolManager.getInstance().scheduleGeneral(this, DELAY);
+					ThreadPool.schedule(this, DELAY, TimeUnit.MILLISECONDS);
 					break;
 				case 1:
 					_door1.closeMe();
@@ -72,7 +74,7 @@ public class L2ShuttleEngine implements Runnable
 					_shuttle.closeDoor(0);
 					_shuttle.closeDoor(1);
 					_shuttle.broadcastShuttleInfo();
-					ThreadPoolManager.getInstance().scheduleGeneral(this, 1000);
+					ThreadPool.schedule(this, 1000, TimeUnit.MILLISECONDS);
 					break;
 				case 2:
 					_shuttle.executePath(_shuttle.getShuttleData().getRoutes().get(0));
@@ -83,7 +85,7 @@ public class L2ShuttleEngine implements Runnable
 					_shuttle.openDoor(1);
 					_shuttle.closeDoor(0);
 					_shuttle.broadcastShuttleInfo();
-					ThreadPoolManager.getInstance().scheduleGeneral(this, DELAY);
+					ThreadPool.schedule(this, DELAY, TimeUnit.MILLISECONDS);
 					break;
 				case 4:
 					_door1.closeMe();
@@ -91,7 +93,7 @@ public class L2ShuttleEngine implements Runnable
 					_shuttle.closeDoor(0);
 					_shuttle.closeDoor(1);
 					_shuttle.broadcastShuttleInfo();
-					ThreadPoolManager.getInstance().scheduleGeneral(this, 1000);
+					ThreadPool.schedule(this, 1000, TimeUnit.MILLISECONDS);
 					break;
 				case 5:
 					_shuttle.executePath(_shuttle.getShuttleData().getRoutes().get(1));
@@ -106,7 +108,7 @@ public class L2ShuttleEngine implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.info(e.getMessage(), e);
+			LOGGER.info(e.getMessage(), e);
 		}
 	}
 }

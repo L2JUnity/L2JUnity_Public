@@ -18,37 +18,41 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.enums.TeleportType;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.teleporter.TeleportHolder;
-import org.l2junity.gameserver.model.teleporter.TeleportLocation;
-import org.l2junity.gameserver.model.teleporter.TeleportType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
 
 /**
  * @author UnAfraid
  */
 public class TeleportersData implements IGameXmlReader
 {
+	// Logger instance
 	private static final Logger LOGGER = LoggerFactory.getLogger(TeleportersData.class);
-	
-	private final Map<Integer, TeleportHolder> _teleporters = new HashMap<>();
+	// Teleporter data
+	private final Map<Integer, Map<String, TeleportHolder>> _teleporters = new HashMap<>();
 	
 	protected TeleportersData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("teleport")
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_teleporters.clear();
 		parseDatapackDirectory("data/teleporters", true);
@@ -56,74 +60,82 @@ public class TeleportersData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
-		for (Node listNode = doc.getFirstChild(); listNode != null; listNode = listNode.getNextSibling())
+		forEach(doc, "list", (list) ->
 		{
-			if ("list".equals(listNode.getNodeName()))
+			forEach(list, "npc", (npc) ->
 			{
-				for (Node npcNode = listNode.getFirstChild(); npcNode != null; npcNode = npcNode.getNextSibling())
+				final Map<String, TeleportHolder> teleList = new HashMap<>();
+				// Parse npc node child
+				final int npcId = parseInteger(npc.getAttributes(), "id");
+				forEach(npc, (node) ->
 				{
-					if ("npc".equals(npcNode.getNodeName()))
+					switch (node.getNodeName())
 					{
-						final int id = parseInteger(npcNode.getAttributes(), "id");
-						final TeleportHolder holder = new TeleportHolder(id);
-						for (Node tpNode = npcNode.getFirstChild(); tpNode != null; tpNode = tpNode.getNextSibling())
+						case "teleport":
 						{
-							if ("teleport".equals(tpNode.getNodeName()))
+							final NamedNodeMap nodeAttrs = node.getAttributes();
+							// Parse attributes
+							final TeleportType type = parseEnum(nodeAttrs, TeleportType.class, "type");
+							final String name = parseString(nodeAttrs, "name", type.name());
+							// Parse locations
+							final TeleportHolder holder = new TeleportHolder(name, type);
+							forEach(node, "location", (location) -> holder.registerLocation(new StatsSet(parseAttributes(location))));
+							// Register holder
+							if (teleList.putIfAbsent(name, holder) != null)
 							{
-								final TeleportType type = parseEnum(tpNode.getAttributes(), TeleportType.class, "type", TeleportType.NORMAL);
-								for (Node locNode = tpNode.getFirstChild(); locNode != null; locNode = locNode.getNextSibling())
-								{
-									if ("location".equals(locNode.getNodeName()))
-									{
-										final NamedNodeMap attrs = locNode.getAttributes();
-										final int nextId = holder.getLocations(type).size() + 1;
-										final StatsSet set = new StatsSet();
-										for (int i = 0; i < attrs.getLength(); i++)
-										{
-											final Node locationNode = attrs.item(i);
-											set.set(locationNode.getNodeName(), locationNode.getNodeValue());
-										}
-										holder.addLocation(type, new TeleportLocation(nextId, set));
-									}
-								}
+								LOGGER.warn("Duplicate teleport list ({}) has been found for NPC: {}", name, npcId);
 							}
-							else if ("npcs".equals(tpNode.getNodeName()))
-							{
-								for (Node locNode = tpNode.getFirstChild(); locNode != null; locNode = locNode.getNextSibling())
-								{
-									if ("npc".equals(locNode.getNodeName()))
-									{
-										final int npcId = parseInteger(locNode.getAttributes(), "id");
-										if (_teleporters.putIfAbsent(npcId, holder) != null)
-										{
-											LOGGER.warn("Duplicate location entires for npc: {}", npcId);
-										}
-									}
-								}
-							}
+							break;
 						}
-						
-						if (_teleporters.putIfAbsent(id, holder) != null)
+						case "npcs":
 						{
-							LOGGER.warn("Duplicate location entires for npc: {}", id);
+							forEach(node, "npc", (npcNode) ->
+							{
+								final int id = parseInteger(npcNode.getAttributes(), "id");
+								registerTeleportList(id, teleList);
+							});
+							break;
 						}
 					}
-				}
-			}
-		}
+				});
+				registerTeleportList(npcId, teleList);
+			});
+		});
 	}
 	
-	public TeleportHolder getHolder(int npcId)
+	public int getTeleporterCount()
 	{
-		return _teleporters.get(npcId);
+		return _teleporters.size();
+	}
+	
+	/**
+	 * Register teleport data to global teleport list holder. Also show warning when any duplicate occurs.
+	 * @param npcId template id of teleporter
+	 * @param teleList teleport data to register
+	 */
+	private void registerTeleportList(int npcId, Map<String, TeleportHolder> teleList)
+	{
+		_teleporters.put(npcId, teleList);
+	}
+	
+	/**
+	 * Gets teleport data for specified NPC and list name
+	 * @param npcId template id of teleporter
+	 * @param listName name of teleport list
+	 * @return {@link TeleportHolder} if found otherwise {@code null}
+	 */
+	public TeleportHolder getHolder(int npcId, String listName)
+	{
+		return _teleporters.getOrDefault(npcId, Collections.emptyMap()).get(listName);
 	}
 	
 	/**
 	 * Gets the single instance of TeleportersData.
 	 * @return single instance of TeleportersData
 	 */
+	@InstanceGetter
 	public static TeleportersData getInstance()
 	{
 		return SingletonHolder._instance;

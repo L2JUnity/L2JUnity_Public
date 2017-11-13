@@ -18,19 +18,25 @@
  */
 package org.l2junity.gameserver.model.variables;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.util.Util;
+import org.l2junity.gameserver.model.holders.ItemHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,26 +45,51 @@ import org.slf4j.LoggerFactory;
  */
 public class PlayerVariables extends AbstractVariables
 {
-	private static final Logger _log = LoggerFactory.getLogger(PlayerVariables.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PlayerVariables.class);
 	
 	// SQL Queries.
 	private static final String SELECT_QUERY = "SELECT * FROM character_variables WHERE charId = ?";
 	private static final String DELETE_QUERY = "DELETE FROM character_variables WHERE charId = ?";
-	private static final String INSERT_QUERY = "INSERT INTO character_variables (charId, var, val) VALUES (?, ?, ?)";
+	private static final String INSERT_QUERY = "INSERT INTO character_variables (charId, var, value) VALUES (?, ?, ?)";
 	
 	// Public variable names
 	public static final String HAIR_ACCESSORY_VARIABLE_NAME = "HAIR_ACCESSORY_ENABLED";
-	public static final String WORLD_CHAT_VARIABLE_NAME = "WORLD_CHAT_POINTS";
+	public static final String WORLD_CHAT_VARIABLE_NAME = "WORLD_CHAT_USED";
 	public static final String VITALITY_ITEMS_USED_VARIABLE_NAME = "VITALITY_ITEMS_USED";
-	private static final String ONE_DAY_REWARDS = "ONE_DAY_REWARDS";
+	public static final String ONE_DAY_REWARDS = "ONE_DAY_REWARDS";
 	public static final String CEREMONY_OF_CHAOS_PROHIBITED_PENALTIES = "CEREMONY_OF_CHAOS_PENALTIES";
+	public static final String ABILITY_POINTS_MAIN_CLASS_LEVEL_HANDLED = "ABILITY_POINTS_MAIN_CLASS_LEVEL_HANDLED";
+	public static final String ABILITY_POINTS_DUAL_CLASS_LEVEL_HANDLED = "ABILITY_POINTS_DUAL_CLASS_LEVEL_HANDLED";
 	public static final String ABILITY_POINTS_MAIN_CLASS = "ABILITY_POINTS";
 	public static final String ABILITY_POINTS_DUAL_CLASS = "ABILITY_POINTS_DUAL_CLASS";
 	public static final String ABILITY_POINTS_USED_MAIN_CLASS = "ABILITY_POINTS_USED";
 	public static final String ABILITY_POINTS_USED_DUAL_CLASS = "ABILITY_POINTS_DUAL_CLASS_USED";
+	public static final String REVELATION_SKILL_1_MAIN_CLASS = "RevelationSkill1";
+	public static final String REVELATION_SKILL_2_MAIN_CLASS = "RevelationSkill2";
 	public static final String REVELATION_SKILL_1_DUAL_CLASS = "DualclassRevelationSkill1";
 	public static final String REVELATION_SKILL_2_DUAL_CLASS = "DualclassRevelationSkill2";
 	public static final String EXTEND_DROP = "EXTEND_DROP";
+	public static final String USED_PC_LOTTERY_TICKET = "USED_PC_LOTTERY_TICKET";
+	public static final String CLAN_REWARD_CLAIMED = "CLAIMED_CLAN_REWARDS";
+	public static final String INSTANCE_ORIGIN_LOCATION = "INSTANCE_ORIGIN";
+	public static final String INSTANCE_RESTORE = "INSTANCE_RESTORE";
+	public static final String FORTUNE_TELLING_VARIABLE = "FortuneTelling";
+	public static final String FORTUNE_TELLING_BLACK_CAT_VARIABLE = "FortuneTellingBlackCat";
+	public static final String TI_YESEGIRA_MOVIE = "TI_YESEGIRA_MOVIE";
+	public static final String TI_PRESENTATION_MOVIE = "TI_presentation_movie";
+	public static final String ANCIENT_ARCAN_CITY_SCENE = "ANCIENT_ARCAN_CITY_SCENE";
+	public static final String DELUSION_RETURN = "DELUSION_RETURN";
+	public static final String VISUAL_HAIR_ID = "visualHairId";
+	public static final String VISUAL_FACE_ID = "visualFaceId";
+	public static final String VISUAL_HAIR_COLOR_ID = "visualHairColorId";
+	public static final String FANTASY_RETURN = "FANTASY_RETURN";
+	public static final String MONSTER_RETURN = "MONSTER_RETURN";
+	public static final String TAUTI_SUPPORT_BOX = "TAUTI_SUPPORT_BOX";
+	public static final String GIVE_CLAN_REP = "GIVE_CLAN_REP";
+	public static final String GIVE_105_LEVEL = "GIVE_105_LEVEL";
+	public static final String SUPERION_SUPPORT_BOX = "SUPERION_SUPPORT_BOX";
+	public static final String GIVE_DANDI_SCROLL = "GIVE_DANDI_SCROLL";
+	public static final String GIVE_DANDI_SCROLL_PCCAFE = "GIVE_DANDI_SCROLL_PCCAFE";
 	
 	private final int _objectId;
 	
@@ -80,13 +111,23 @@ public class PlayerVariables extends AbstractVariables
 			{
 				while (rset.next())
 				{
-					set(rset.getString("var"), rset.getString("val"));
+					Object deSerializedObject;
+					try (final ValidObjectInputStream objectIn = new ValidObjectInputStream(new ByteArrayInputStream(rset.getBytes("value"))))
+					{
+						deSerializedObject = objectIn.readObject();
+					}
+					catch (IOException | ClassNotFoundException e)
+					{
+						LOGGER.warn("Couldn't restore variable {} for: {}", rset.getString("var"), getPlayer(), e);
+						deSerializedObject = null;
+					}
+					set(rset.getString("var"), deSerializedObject);
 				}
 			}
 		}
 		catch (SQLException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't restore variables for: " + getPlayer(), e);
+			LOGGER.warn("Couldn't restore variables for: {}", getPlayer(), e);
 			return false;
 		}
 		finally
@@ -120,16 +161,30 @@ public class PlayerVariables extends AbstractVariables
 				st.setInt(1, _objectId);
 				for (Entry<String, Object> entry : getSet().entrySet())
 				{
-					st.setString(2, entry.getKey());
-					st.setString(3, String.valueOf(entry.getValue()));
-					st.addBatch();
+					try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+						ObjectOutputStream oos = new ObjectOutputStream(baos);)
+					{
+						
+						oos.writeObject(entry.getValue());
+						byte[] asBytes = baos.toByteArray();
+						try (ByteArrayInputStream bais = new ByteArrayInputStream(asBytes))
+						{
+							st.setString(2, entry.getKey());
+							st.setBinaryStream(3, bais, asBytes.length);
+							st.addBatch();
+						}
+					}
+					catch (IOException e)
+					{
+						LOGGER.warn("Couldn't store variable {} for player {}", entry.getKey(), getPlayer());
+					}
 				}
 				st.executeBatch();
 			}
 		}
 		catch (SQLException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't update variables for: " + getPlayer(), e);
+			LOGGER.warn("Couldn't update variables for player: {}", getPlayer(), e);
 			return false;
 		}
 		finally
@@ -156,7 +211,7 @@ public class PlayerVariables extends AbstractVariables
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't delete variables for: " + getPlayer(), e);
+			LOGGER.warn("Couldn't delete variables for: {}", getPlayer(), e);
 			return false;
 		}
 		return true;
@@ -169,117 +224,62 @@ public class PlayerVariables extends AbstractVariables
 	
 	public void addOneDayReward(int rewardId)
 	{
-		String result = getString(ONE_DAY_REWARDS, "");
-		if (result.isEmpty())
+		List<Integer> rewards = getList(ONE_DAY_REWARDS, Integer.class);
+		if (rewards == null)
 		{
-			result = Integer.toString(rewardId);
+			rewards = new ArrayList<>();
+			set(ONE_DAY_REWARDS, rewards);
 		}
-		else
-		{
-			result += "," + rewardId;
-		}
-		set(ONE_DAY_REWARDS, result);
+		rewards.add(rewardId);
 	}
 	
 	public void removeOneDayReward(int rewardId)
 	{
-		String result = "";
-		String data = getString(ONE_DAY_REWARDS, "");
-		for (String s : data.split(","))
+		final List<Integer> rewards = getList(ONE_DAY_REWARDS, Integer.class);
+		if ((rewards != null) && rewards.contains(rewardId))
 		{
-			if (s.equals(Integer.toString(rewardId)))
-			{
-				continue;
-			}
-			else if (result.isEmpty())
-			{
-				result = s;
-			}
-			else
-			{
-				result += "," + s;
-			}
+			rewards.remove(rewards.indexOf(rewardId));
 		}
-		set(ONE_DAY_REWARDS, result);
 	}
 	
 	public boolean hasOneDayReward(int rewardId)
 	{
-		String data = getString(ONE_DAY_REWARDS, "");
-		for (String s : data.split(","))
-		{
-			if (s.equals(Integer.toString(rewardId)))
-			{
-				return true;
-			}
-		}
-		return false;
+		final List<Integer> rewards = getList(ONE_DAY_REWARDS, Integer.class);
+		return ((rewards != null) && rewards.contains(rewardId));
 	}
 	
 	public List<Integer> getOneDayRewards()
 	{
-		List<Integer> rewards = null;
-		String data = getString(ONE_DAY_REWARDS, "");
-		if (!data.isEmpty())
-		{
-			for (String s : getString(ONE_DAY_REWARDS, "").split(","))
-			{
-				if (Util.isDigit(s))
-				{
-					int rewardId = Integer.parseInt(s);
-					if (rewards == null)
-					{
-						rewards = new ArrayList<>();
-					}
-					rewards.add(rewardId);
-				}
-			}
-		}
+		final List<Integer> rewards = getList(ONE_DAY_REWARDS, Integer.class);
 		return rewards != null ? rewards : Collections.emptyList();
 	}
 	
-	public void updateExtendDrop(int id, long count)
+	public void updateExtendDrop(int dropId, int itemId, long itemCount)
 	{
-		String result = "";
-		String data = getString(EXTEND_DROP, "");
-		if (data.isEmpty())
+		Map<Integer, List<ItemHolder>> drops = getMapOfList(EXTEND_DROP, Integer.class, ItemHolder.class);
+		if (drops == null)
 		{
-			result = Integer.toString(id) + "," + Long.toString(count);
+			drops = new HashMap<>();
+			set(EXTEND_DROP, drops);
 		}
-		else
+		
+		final List<ItemHolder> itemz = drops.get(dropId);
+		if (itemz != null)
 		{
-			if (data.contains(";"))
-			{
-				for (String s : data.split(";"))
-				{
-					String[] drop = s.split(",");
-					if (drop[0].equals(Integer.toString(id)))
-					{
-						s += ";" + drop[0] + "," + Long.toString(count);
-						continue;
-					}
-					
-					result += ";" + s;
-				}
-				result = result.substring(1);
-			}
-			else
-			{
-				result = Integer.toString(id) + "," + Long.toString(count);
-			}
+			itemz.removeIf(item -> item.getId() == itemId);
 		}
-		set(EXTEND_DROP, result);
+		drops.computeIfAbsent(dropId, k -> new ArrayList<>()).add(new ItemHolder(itemId, itemCount));
 	}
 	
-	public long getExtendDropCount(int id)
+	public long getExtendDropCount(int dropId, int itemId)
 	{
-		String data = getString(EXTEND_DROP, "");
-		for (String s : data.split(";"))
+		final Map<Integer, List<ItemHolder>> drops = getMapOfList(EXTEND_DROP, Integer.class, ItemHolder.class);
+		if (drops != null)
 		{
-			String[] drop = s.split(",");
-			if (drop[0].equals(Integer.toString(id)))
+			final List<ItemHolder> itemz = drops.get(dropId);
+			if (itemz != null)
 			{
-				return Long.parseLong(drop[1]);
+				return itemz.stream().filter(drop -> drop.getId() == itemId).mapToLong(ItemHolder::getCount).findFirst().orElse(0);
 			}
 		}
 		return 0;

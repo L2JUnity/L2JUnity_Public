@@ -27,10 +27,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.FeatureConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.data.xml.impl.CastleData;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
@@ -53,6 +55,7 @@ import org.l2junity.gameserver.model.actor.instance.L2ArtefactInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.holders.CastleSpawnHolder;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.residences.AbstractResidence;
 import org.l2junity.gameserver.model.skills.CommonSkill;
 import org.l2junity.gameserver.model.skills.Skill;
@@ -70,7 +73,7 @@ import org.slf4j.LoggerFactory;
 
 public final class Castle extends AbstractResidence
 {
-	protected static final Logger _log = LoggerFactory.getLogger(Castle.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(Castle.class);
 	
 	private final List<DoorInstance> _doors = new ArrayList<>();
 	private final List<Npc> _sideNpcs = new ArrayList<>();
@@ -80,9 +83,7 @@ public final class Castle extends AbstractResidence
 	private boolean _isTimeRegistrationOver = true; // true if Castle Lords set the time, or 24h is elapsed after the siege
 	private Calendar _siegeTimeRegistrationEndDate; // last siege end date + 1 day
 	private CastleSide _castleSide = null;
-	private double _taxRate;
 	private long _treasury = 0;
-	private boolean _showNpcCrest = false;
 	private SiegeZone _zone = null;
 	private ResidenceTeleportZone _teleZone;
 	private L2Clan _formerOwner = null;
@@ -168,11 +169,11 @@ public final class Castle extends AbstractResidence
 			long currentTime = System.currentTimeMillis();
 			if (_endDate > currentTime)
 			{
-				ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(cwh), _endDate - currentTime);
+				ThreadPool.schedule(new FunctionTask(cwh), _endDate - currentTime, TimeUnit.MILLISECONDS);
 			}
 			else
 			{
-				ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(cwh), 0);
+				ThreadPool.schedule(new FunctionTask(cwh), 0, TimeUnit.MILLISECONDS);
 			}
 		}
 		
@@ -206,7 +207,7 @@ public final class Castle extends AbstractResidence
 						{
 							ClanTable.getInstance().getClan(getOwnerId()).getWarehouse().destroyItemByItemId("CS_function_fee", Inventory.ADENA_ID, fee, null, null);
 						}
-						ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(true), getRate());
+						ThreadPool.schedule(new FunctionTask(true), getRate(), TimeUnit.MILLISECONDS);
 					}
 					else
 					{
@@ -215,7 +216,7 @@ public final class Castle extends AbstractResidence
 				}
 				catch (Exception e)
 				{
-					_log.error("", e);
+					LOGGER.error("", e);
 				}
 			}
 		}
@@ -235,7 +236,7 @@ public final class Castle extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				_log.error("Exception: Castle.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage(), e);
+				LOGGER.error("Exception: Castle.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage(), e);
 			}
 		}
 	}
@@ -252,6 +253,7 @@ public final class Castle extends AbstractResidence
 			loadFunctions();
 			loadDoorUpgrade();
 		}
+		loadDoor();
 	}
 	
 	/**
@@ -303,7 +305,7 @@ public final class Castle extends AbstractResidence
 				final Castle rune = CastleManager.getInstance().getCastle("rune");
 				if (rune != null)
 				{
-					final long runeTax = (long) (amount * rune.getTaxRate());
+					final long runeTax = (long) (amount * rune.getTaxRate(TaxType.BUY));
 					if (rune.getOwnerId() > 0)
 					{
 						rune.addToTreasury(runeTax);
@@ -321,7 +323,7 @@ public final class Castle extends AbstractResidence
 				final Castle aden = CastleManager.getInstance().getCastle("aden");
 				if (aden != null)
 				{
-					final long adenTax = (long) (amount * aden.getTaxRate()); // Find out what Aden gets from the current castle instance's income
+					final long adenTax = (long) (amount * aden.getTaxRate(TaxType.BUY)); // Find out what Aden gets from the current castle instance's income
 					if (aden.getOwnerId() > 0)
 					{
 						aden.addToTreasury(adenTax); // Only bother to really add the tax to the treasury if not npc owned
@@ -357,9 +359,9 @@ public final class Castle extends AbstractResidence
 		}
 		else
 		{
-			if ((_treasury + amount) > Inventory.MAX_ADENA)
+			if ((_treasury + amount) > ItemContainer.getMaximumAllowedCount(Inventory.ADENA_ID))
 			{
-				_treasury = Inventory.MAX_ADENA;
+				_treasury = ItemContainer.getMaximumAllowedCount(Inventory.ADENA_ID);
 			}
 			else
 			{
@@ -376,7 +378,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		return true;
 	}
@@ -396,7 +398,7 @@ public final class Castle extends AbstractResidence
 	 * @param z
 	 * @return
 	 */
-	public boolean checkIfInZone(int x, int y, int z)
+	public boolean checkIfInZone(double x, double y, double z)
 	{
 		return getZone().isInsideZone(x, y, z);
 	}
@@ -530,7 +532,7 @@ public final class Castle extends AbstractResidence
 				if (_formerOwner == null)
 				{
 					_formerOwner = oldOwner;
-					if (Config.REMOVE_CASTLE_CIRCLETS)
+					if (PlayerConfig.REMOVE_CASTLE_CIRCLETS)
 					{
 						CastleManager.getInstance().removeCirclet(_formerOwner, getResidenceId());
 					}
@@ -548,7 +550,7 @@ public final class Castle extends AbstractResidence
 				}
 				catch (Exception e)
 				{
-					_log.warn("Exception in setOwner: " + e.getMessage(), e);
+					LOGGER.warn("Exception in setOwner: " + e.getMessage(), e);
 				}
 				oldOwner.setCastleId(0); // Unset has castle flag for old owner
 				for (PlayerInstance member : oldOwner.getOnlineMembers(0))
@@ -561,7 +563,6 @@ public final class Castle extends AbstractResidence
 		}
 		
 		updateOwnerInDB(clan); // Update in database
-		setShowNpcCrest(false);
 		
 		// if clan have fortress, remove it
 		if ((clan != null) && (clan.getFortId() > 0))
@@ -589,7 +590,7 @@ public final class Castle extends AbstractResidence
 		if (clan != null)
 		{
 			_formerOwner = clan;
-			if (Config.REMOVE_CASTLE_CIRCLETS)
+			if (PlayerConfig.REMOVE_CASTLE_CIRCLETS)
 			{
 				CastleManager.getInstance().removeCirclet(_formerOwner, getResidenceId());
 			}
@@ -672,13 +673,10 @@ public final class Castle extends AbstractResidence
 					
 					_treasury = rs.getLong("treasury");
 					
-					_showNpcCrest = rs.getBoolean("showNpcCrest");
-					
 					_ticketBuyCount = rs.getInt("ticketBuyCount");
 				}
 			}
 			
-			setTaxRate(getTaxPercent(TaxType.BUY) / 100);
 			ps2.setInt(1, getResidenceId());
 			try (ResultSet rs = ps2.executeQuery())
 			{
@@ -690,7 +688,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: loadCastleData(): " + e.getMessage(), e);
+			LOGGER.warn("Exception: loadCastleData(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -711,7 +709,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.error("Exception: Castle.loadFunctions(): " + e.getMessage(), e);
+			LOGGER.error("Exception: Castle.loadFunctions(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -731,7 +729,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.error("Exception: Castle.removeFunctions(int functionType): " + e.getMessage(), e);
+			LOGGER.error("Exception: Castle.removeFunctions(int functionType): " + e.getMessage(), e);
 		}
 	}
 	
@@ -777,11 +775,6 @@ public final class Castle extends AbstractResidence
 		return true;
 	}
 	
-	public void activateInstance()
-	{
-		loadDoor();
-	}
-	
 	// This method loads castle door data from database
 	private void loadDoor()
 	{
@@ -811,7 +804,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: loadCastleDoorUpgrade(): " + e.getMessage(), e);
+			LOGGER.warn("Exception: loadCastleDoorUpgrade(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -831,7 +824,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: removeDoorUpgrade(): " + e.getMessage(), e);
+			LOGGER.warn("Exception: removeDoorUpgrade(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -858,7 +851,7 @@ public final class Castle extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				_log.warn("Exception: setDoorUpgrade(int doorId, int ratio, int castleId): " + e.getMessage(), e);
+				LOGGER.warn("Exception: setDoorUpgrade(int doorId, int ratio, int castleId): " + e.getMessage(), e);
 			}
 		}
 	}
@@ -901,7 +894,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: updateOwnerInDB(L2Clan clan): " + e.getMessage(), e);
+			LOGGER.warn("Exception: updateOwnerInDB(L2Clan clan): " + e.getMessage(), e);
 		}
 	}
 	
@@ -971,50 +964,31 @@ public final class Castle extends AbstractResidence
 		{
 			case LIGHT:
 			{
-				taxPercent = type == TaxType.BUY ? Config.CASTLE_BUY_TAX_LIGHT : Config.CASTLE_SELL_TAX_LIGHT;
+				taxPercent = type == TaxType.BUY ? FeatureConfig.CASTLE_BUY_TAX_LIGHT : FeatureConfig.CASTLE_SELL_TAX_LIGHT;
 				break;
 			}
 			case DARK:
 			{
-				taxPercent = type == TaxType.BUY ? Config.CASTLE_BUY_TAX_DARK : Config.CASTLE_SELL_TAX_DARK;
+				taxPercent = type == TaxType.BUY ? FeatureConfig.CASTLE_BUY_TAX_DARK : FeatureConfig.CASTLE_SELL_TAX_DARK;
 				break;
 			}
 			default:
 			{
-				taxPercent = type == TaxType.BUY ? Config.CASTLE_BUY_TAX_NEUTRAL : Config.CASTLE_SELL_TAX_NEUTRAL;
+				taxPercent = type == TaxType.BUY ? FeatureConfig.CASTLE_BUY_TAX_NEUTRAL : FeatureConfig.CASTLE_SELL_TAX_NEUTRAL;
 				break;
 			}
 		}
 		return taxPercent;
 	}
 	
-	public void setTaxRate(double taxRate)
+	public final double getTaxRate(TaxType taxType)
 	{
-		_taxRate = taxRate;
-	}
-	
-	public final double getTaxRate()
-	{
-		return _taxRate;
+		return getTaxPercent(taxType) / 100.0;
 	}
 	
 	public final long getTreasury()
 	{
 		return _treasury;
-	}
-	
-	public final boolean getShowNpcCrest()
-	{
-		return _showNpcCrest;
-	}
-	
-	public final void setShowNpcCrest(boolean showNpcCrest)
-	{
-		if (_showNpcCrest != showNpcCrest)
-		{
-			_showNpcCrest = showNpcCrest;
-			updateShowNpcCrest();
-		}
 	}
 	
 	public void updateClansReputation()
@@ -1024,16 +998,16 @@ public final class Castle extends AbstractResidence
 			if (_formerOwner != ClanTable.getInstance().getClan(getOwnerId()))
 			{
 				int maxreward = Math.max(0, _formerOwner.getReputationScore());
-				_formerOwner.takeReputationScore(Config.LOOSE_CASTLE_POINTS, true);
+				_formerOwner.takeReputationScore(FeatureConfig.LOOSE_CASTLE_POINTS, true);
 				L2Clan owner = ClanTable.getInstance().getClan(getOwnerId());
 				if (owner != null)
 				{
-					owner.addReputationScore(Math.min(Config.TAKE_CASTLE_POINTS, maxreward), true);
+					owner.addReputationScore(Math.min(FeatureConfig.TAKE_CASTLE_POINTS, maxreward), true);
 				}
 			}
 			else
 			{
-				_formerOwner.addReputationScore(Config.CASTLE_DEFENDED_POINTS, true);
+				_formerOwner.addReputationScore(FeatureConfig.CASTLE_DEFENDED_POINTS, true);
 			}
 		}
 		else
@@ -1041,23 +1015,8 @@ public final class Castle extends AbstractResidence
 			L2Clan owner = ClanTable.getInstance().getClan(getOwnerId());
 			if (owner != null)
 			{
-				owner.addReputationScore(Config.TAKE_CASTLE_POINTS, true);
+				owner.addReputationScore(FeatureConfig.TAKE_CASTLE_POINTS, true);
 			}
-		}
-	}
-	
-	public void updateShowNpcCrest()
-	{
-		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement ps = con.prepareStatement("UPDATE castle SET showNpcCrest = ? WHERE id = ?"))
-		{
-			ps.setString(1, String.valueOf(getShowNpcCrest()));
-			ps.setInt(2, getResidenceId());
-			ps.execute();
-		}
-		catch (Exception e)
-		{
-			_log.info("Error saving showNpcCrest for castle " + getName() + ": " + e.getMessage());
 		}
 	}
 	
@@ -1101,7 +1060,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 	
@@ -1125,7 +1084,7 @@ public final class Castle extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				_log.warn("Exception: setTrapUpgradeLevel(int towerIndex, int level, int castleId): " + e.getMessage(), e);
+				LOGGER.warn("Exception: setTrapUpgradeLevel(int towerIndex, int level, int castleId): " + e.getMessage(), e);
 			}
 		}
 		final TowerSpawn spawn = SiegeManager.getInstance().getFlameTowers(getResidenceId()).get(towerIndex);
@@ -1150,7 +1109,7 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception: removeDoorUpgrade(): " + e.getMessage(), e);
+			LOGGER.warn("Exception: removeDoorUpgrade(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -1199,12 +1158,10 @@ public final class Castle extends AbstractResidence
 				}
 				catch (Exception e)
 				{
-					_log.warn(Castle.class.getSimpleName() + ": " + e.getMessage());
+					LOGGER.warn("", e);
 					return;
 				}
-				spawn.setX(holder.getX());
-				spawn.setY(holder.getY());
-				spawn.setZ(holder.getZ());
+				spawn.setXYZ(holder);
 				spawn.setHeading(holder.getHeading());
 				final Npc npc = spawn.doSpawn(false);
 				npc.broadcastInfo();
@@ -1234,10 +1191,9 @@ public final class Castle extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		_castleSide = side;
-		setTaxRate(getTaxPercent(TaxType.BUY) / 100);
 		Broadcast.toAllOnlinePlayers(new ExCastleState(this));
 		spawnSideNpcs();
 	}
@@ -1245,5 +1201,11 @@ public final class Castle extends AbstractResidence
 	public CastleSide getSide()
 	{
 		return _castleSide;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Castle (Id: " + getResidenceId() + ", Name: " + getName() + ", Owner: " + getOwnerId() + ")";
 	}
 }

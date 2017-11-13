@@ -18,9 +18,9 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,8 +31,11 @@ import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.BasePathProvider;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.CombatFlag;
 import org.l2junity.gameserver.model.FortSiegeSpawn;
 import org.l2junity.gameserver.model.L2Clan;
@@ -49,7 +52,7 @@ import org.slf4j.LoggerFactory;
 
 public final class FortSiegeManager
 {
-	private static final Logger _log = LoggerFactory.getLogger(FortSiegeManager.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FortSiegeManager.class);
 	
 	private int _attackerMaxClans = 500; // Max number of clans
 	
@@ -66,65 +69,20 @@ public final class FortSiegeManager
 	
 	protected FortSiegeManager()
 	{
-		load();
 	}
 	
-	public final void addSiegeSkills(PlayerInstance character)
-	{
-		character.addSkill(CommonSkill.SEAL_OF_RULER.getSkill(), false);
-		character.addSkill(CommonSkill.BUILD_HEADQUARTERS.getSkill(), false);
-	}
-	
-	/**
-	 * @param clan The L2Clan of the player
-	 * @param fortid
-	 * @return true if the clan is registered or owner of a fort
-	 */
-	public final boolean checkIsRegistered(L2Clan clan, int fortid)
-	{
-		if (clan == null)
-		{
-			return false;
-		}
-		
-		boolean register = false;
-		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT clan_id FROM fortsiege_clans where clan_id=? and fort_id=?"))
-		{
-			ps.setInt(1, clan.getId());
-			ps.setInt(2, fortid);
-			try (ResultSet rs = ps.executeQuery())
-			{
-				if (rs.next())
-				{
-					register = true;
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			_log.warn("Exception: checkIsRegistered(): " + e.getMessage(), e);
-		}
-		return register;
-	}
-	
-	public final void removeSiegeSkills(PlayerInstance character)
-	{
-		character.removeSkill(CommonSkill.SEAL_OF_RULER.getSkill());
-		character.removeSkill(CommonSkill.BUILD_HEADQUARTERS.getSkill());
-	}
-	
+	@Load(group = LoadGroup.class)
 	private void load()
 	{
 		final Properties siegeSettings = new Properties();
-		final File file = new File(Config.FORTSIEGE_CONFIGURATION_FILE);
-		try (InputStream is = new FileInputStream(file))
+		// TODO normal config, please...
+		try (InputStream is = Files.newInputStream(BasePathProvider.resolvePath(Paths.get("config", "FortSiege.properties"))))
 		{
 			siegeSettings.load(is);
 		}
 		catch (Exception e)
 		{
-			_log.warn("Error while loading Fort Siege Manager settings!", e);
+			LOGGER.warn("Error while loading Fort Siege Manager settings!", e);
 		}
 		
 		// Siege setting
@@ -165,7 +123,7 @@ public final class FortSiegeManager
 				}
 				catch (Exception e)
 				{
-					_log.warn("Error while loading commander(s) for " + fort.getName() + " fort.");
+					LOGGER.warn("Error while loading commander(s) for " + fort.getName() + " fort.");
 				}
 			}
 			
@@ -191,11 +149,56 @@ public final class FortSiegeManager
 				}
 				catch (Exception e)
 				{
-					_log.warn("Error while loading flag(s) for " + fort.getName() + " fort.");
+					LOGGER.warn("Error while loading flag(s) for " + fort.getName() + " fort.");
 				}
 			}
 			_flagList.put(fort.getResidenceId(), _flagSpawns);
 		}
+	}
+	
+	public final void addSiegeSkills(PlayerInstance character)
+	{
+		character.addSkill(CommonSkill.SEAL_OF_RULER.getSkill(), false);
+		character.addSkill(CommonSkill.BUILD_HEADQUARTERS.getSkill(), false);
+	}
+	
+	/**
+	 * @param clan The L2Clan of the player
+	 * @param fortid
+	 * @return true if the clan is registered or owner of a fort
+	 */
+	public final boolean checkIsRegistered(L2Clan clan, int fortid)
+	{
+		if (clan == null)
+		{
+			return false;
+		}
+		
+		boolean register = false;
+		try (Connection con = DatabaseFactory.getInstance().getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT clan_id FROM fortsiege_clans where clan_id=? and fort_id=?"))
+		{
+			ps.setInt(1, clan.getId());
+			ps.setInt(2, fortid);
+			try (ResultSet rs = ps.executeQuery())
+			{
+				if (rs.next())
+				{
+					register = true;
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			LOGGER.warn("Exception: checkIsRegistered(): " + e.getMessage(), e);
+		}
+		return register;
+	}
+	
+	public final void removeSiegeSkills(PlayerInstance character)
+	{
+		character.removeSkill(CommonSkill.SEAL_OF_RULER.getSkill());
+		character.removeSkill(CommonSkill.BUILD_HEADQUARTERS.getSkill());
 	}
 	
 	public final List<FortSiegeSpawn> getCommanderSpawnList(int _fortId)
@@ -233,7 +236,7 @@ public final class FortSiegeManager
 		return getSiege(activeObject.getX(), activeObject.getY(), activeObject.getZ());
 	}
 	
-	public final FortSiege getSiege(int x, int y, int z)
+	public final FortSiege getSiege(double x, double y, double z)
 	{
 		for (Fort fort : FortManager.getInstance().getForts())
 		{
@@ -349,13 +352,14 @@ public final class FortSiegeManager
 		}
 	}
 	
+	@InstanceGetter
 	public static FortSiegeManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final FortSiegeManager _instance = new FortSiegeManager();
+		protected static final FortSiegeManager INSTANCE = new FortSiegeManager();
 	}
 }

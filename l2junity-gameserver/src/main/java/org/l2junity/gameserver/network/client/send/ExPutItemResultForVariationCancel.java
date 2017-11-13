@@ -28,15 +28,15 @@ public class ExPutItemResultForVariationCancel implements IClientOutgoingPacket
 	private final int _itemId;
 	private final int _itemAug1;
 	private final int _itemAug2;
-	private final int _price;
+	private final long _price;
 	
-	public ExPutItemResultForVariationCancel(ItemInstance item, int price)
+	public ExPutItemResultForVariationCancel(ItemInstance item, long price)
 	{
 		_itemObjId = item.getObjectId();
 		_itemId = item.getDisplayId();
 		_price = price;
-		_itemAug1 = ((short) item.getAugmentation().getId());
-		_itemAug2 = item.getAugmentation().getId() >> 16;
+		_itemAug1 = item.getAugmentation().getOption1Id();
+		_itemAug2 = item.getAugmentation().getOption2Id();
 	}
 	
 	@Override

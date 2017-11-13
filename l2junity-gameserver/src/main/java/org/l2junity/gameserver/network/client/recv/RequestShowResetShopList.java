@@ -22,6 +22,7 @@ import org.l2junity.gameserver.data.xml.impl.BeautyShopData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.beautyshop.BeautyData;
 import org.l2junity.gameserver.model.beautyshop.BeautyItem;
+import org.l2junity.gameserver.model.variables.PlayerVariables;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExResponseBeautyRegistReset;
 import org.l2junity.network.PacketReader;
@@ -107,9 +108,9 @@ public class RequestShowResetShopList implements IClientIncomingPacket
 			}
 		}
 		
-		player.getVariables().remove("visualHairId");
-		player.getVariables().remove("visualHairColorId");
-		player.getVariables().remove("visualFaceId");
+		player.getVariables().remove(PlayerVariables.VISUAL_HAIR_ID);
+		player.getVariables().remove(PlayerVariables.VISUAL_HAIR_COLOR_ID);
+		player.getVariables().remove(PlayerVariables.VISUAL_FACE_ID);
 		
 		player.sendPacket(new ExResponseBeautyRegistReset(player, ExResponseBeautyRegistReset.RESTORE, ExResponseBeautyRegistReset.SUCCESS));
 	}

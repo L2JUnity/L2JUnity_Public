@@ -21,9 +21,11 @@ package org.l2junity.gameserver.model.zone.type;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
@@ -44,6 +46,7 @@ public final class EffectZone extends ZoneType
 	private int _chance;
 	private int _initialDelay;
 	private int _reuse;
+	private long _tickReuse;
 	protected boolean _bypassConditions;
 	private boolean _isShowDangerIcon;
 	protected volatile Map<Integer, Integer> _skills;
@@ -54,6 +57,7 @@ public final class EffectZone extends ZoneType
 		_chance = 100;
 		_initialDelay = 0;
 		_reuse = 30000;
+		_tickReuse = -1;
 		setTargetType(InstanceType.L2Playable); // default only playabale
 		_bypassConditions = false;
 		_isShowDangerIcon = true;
@@ -85,6 +89,9 @@ public final class EffectZone extends ZoneType
 			case "reuse":
 				_reuse = Integer.parseInt(value);
 				break;
+			case "unitTick":
+				_tickReuse = Integer.parseInt(value) * PlayerConfig.EFFECT_TICK_RATIO;
+				break;
 			case "bypassSkillConditions":
 				_bypassConditions = Boolean.parseBoolean(value);
 				break;
@@ -102,7 +109,7 @@ public final class EffectZone extends ZoneType
 					final String[] skillSplit = skill.split("-");
 					if (skillSplit.length != 2)
 					{
-						_log.warn(getClass().getSimpleName() + ": invalid config property -> skillsIdLvl \"" + skill + "\"");
+						LOGGER.warn("invalid config property -> skillsIdLvl \"" + skill + "\"");
 					}
 					else
 					{
@@ -114,7 +121,7 @@ public final class EffectZone extends ZoneType
 						{
 							if (!skill.isEmpty())
 							{
-								_log.warn(getClass().getSimpleName() + ": invalid config property -> skillsIdLvl \"" + skillSplit[0] + "\"" + skillSplit[1]);
+								LOGGER.warn("invalid config property -> skillsIdLvl \"" + skillSplit[0] + "\"" + skillSplit[1]);
 							}
 						}
 					}
@@ -138,7 +145,7 @@ public final class EffectZone extends ZoneType
 				{
 					if (getSettings().getTask() == null)
 					{
-						getSettings().setTask(ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new ApplySkill(), _initialDelay, _reuse));
+						getSettings().setTask(ThreadPool.scheduleAtFixedRate(new ApplySkill(), _initialDelay, _tickReuse > 0 ? _tickReuse : _reuse, TimeUnit.MILLISECONDS));
 					}
 				}
 			}

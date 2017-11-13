@@ -17,7 +17,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20.55555">
 						<item id="22006" count="3" />
@@ -82,7 +82,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="27.27272">
 						<item id="22007" count="3" />
@@ -150,7 +150,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="27">
 						<item id="22008" count="2" />
@@ -221,7 +221,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20.22222">
 						<item id="22010" count="3" />
@@ -286,7 +286,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="26.51515">
 						<item id="22011" count="3" />
@@ -354,7 +354,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="26.25">
 						<item id="22012" count="2" />
@@ -417,6 +417,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>D</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26007" toLevel="1" name="Scroll: Enchant Weapon (C-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -427,6 +441,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>C</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26008" toLevel="1" name="Scroll: Enchant Weapon (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -437,6 +465,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26009" toLevel="1" name="Scroll: Enchant Weapon (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -447,6 +489,20 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26010" toLevel="1" name="Scroll: Enchant Armor (D-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -457,6 +513,21 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>D</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26011" toLevel="1" name="Scroll: Enchant Armor (C-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -467,6 +538,21 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>C</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26012" toLevel="1" name="Scroll: Enchant Armor (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -477,6 +563,21 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26013" toLevel="1" name="Scroll: Enchant Armor (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -487,6 +588,21 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26014" toLevel="1" name="Ancient Scroll: Enchant Weapon (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -497,6 +613,30 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26015" toLevel="1" name="Ancient Scroll: Enchant Weapon (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -507,6 +647,30 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26016" toLevel="1" name="Ancient Scroll: Enchant Armor (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -517,6 +681,26 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26017" toLevel="1" name="Ancient Scroll: Enchant Armor (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -527,6 +711,26 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26018" toLevel="1" name="Divine Scroll: Enchant Weapon (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -537,6 +741,30 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>9</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>1</bonusRate>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26019" toLevel="1" name="Divine Scroll: Enchant Weapon (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -547,6 +775,30 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>9</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>1</bonusRate>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26020" toLevel="1" name="Divine Scroll: Enchant Armor (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -557,6 +809,26 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>6</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>1</bonusRate>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26021" toLevel="1" name="Divine Scroll: Enchant Armor (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -567,6 +839,26 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>6</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>1</bonusRate>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="26022" toLevel="1" name="Greater Haste Potion">
 		<abnormalLvl>2</abnormalLvl>
@@ -586,7 +878,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -610,7 +902,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -627,7 +919,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>435</power>
 			</effect>
 		</effects>
@@ -650,7 +942,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>50</power>
 				<ticks>3</ticks>
 			</effect>
@@ -674,7 +966,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>24</power>
 				<ticks>3</ticks>
 			</effect>
@@ -699,7 +991,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
-			<condition name="CheckLevel" >
+			<condition name="CheckLevel">
 				<minLevel>
 					<value level="2">20</value>
 					<value level="3">40</value>
@@ -718,7 +1010,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>
 					<value level="2">350</value>
 					<value level="3">600</value>
@@ -768,7 +1060,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>
 					<value level="2">650</value>
 					<value level="3">1100</value>
@@ -791,7 +1083,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -810,7 +1102,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>60</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -836,7 +1128,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -862,7 +1154,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>33</amount>
 				<mode>PER</mode>
 			</effect>
@@ -888,7 +1180,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -914,7 +1206,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -940,7 +1232,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -966,7 +1258,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -992,7 +1284,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>75</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1018,7 +1310,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1044,7 +1336,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>9</amount>
 				<chance>80</chance>
 			</effect>
@@ -1070,7 +1362,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1096,35 +1388,35 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>8</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1150,7 +1442,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1176,7 +1468,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1202,17 +1494,17 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -1239,7 +1531,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1247,7 +1539,6 @@
 	</skill>
 	<skill id="26046" toLevel="7" name="XP Rune III (Lv. 1-99) 10%">
 		<!-- Confirmed CT2.5 -->
-		<table name="#bonusExp"> 10 20 30 40 50 100 200 </table>
 		<icon>
 			<value level="1">br_cashtex.skill.br_cash_rune_of_exp_buff_1</value>
 			<value level="2">br_cashtex.skill.br_cash_rune_of_exp_buff_2</value>
@@ -1261,7 +1552,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="ExpModify">
+			<effect name="p_exp_modify">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1271,13 +1562,11 @@
 					<value level="6">100</value>
 					<value level="7">200</value>
 				</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="26047" toLevel="7" name="SP Rune 10%">
 		<!-- Confirmed CT2.5 -->
-		<table name="#bonusSp"> 10 20 30 40 50 100 200 </table>
 		<icon>
 			<value level="1">br_cashtex.skill.br_cash_rune_of_sp_buff_1</value>
 			<value level="2">br_cashtex.skill.br_cash_rune_of_sp_buff_2</value>
@@ -1291,7 +1580,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="SpModify">
+			<effect name="p_sp_modify">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1301,7 +1590,6 @@
 					<value level="6">100</value>
 					<value level="7">200</value>
 				</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1321,14 +1609,14 @@
 			<condition name="OpNotOlympiad" />
 		</passiveConditions>
 		<effects>
-			<effect name="CrystalGradeModify">
-				<grade>
+			<effect name="p_crystal_grade_modify">
+				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
 					<value level="3">3</value>
 					<value level="4">4</value>
 					<value level="5">5</value>
-				</grade>
+				</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -1509,7 +1797,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="22039" count="1" />
@@ -1543,7 +1831,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="100">
 						<item id="22049" count="1" />
@@ -1561,7 +1849,6 @@
 	</skill>
 	<skill id="26067" toLevel="5" name="Bone Quiver">
 		<!-- Confirmed CT2.5 -->
-		<table name="#itemId"> 22067 22068 22069 22070 22071 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
@@ -1577,7 +1864,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>
 					<value level="1">22067</value>
 					<value level="2">22068</value>
@@ -1591,8 +1878,6 @@
 	</skill>
 	<skill id="26068" toLevel="10" name="Blessed Spiritshot Pack (D-grade)">
 		<!-- Confirmed CT2.5 -->
-		<table name="#itemCount"> 5000 5000 5000 5000 5000 10000 10000 10000 10000 10000 </table>
-		<table name="#itemId"> 22072 22073 22074 22075 22076 22072 22073 22074 22075 22076 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
@@ -1608,7 +1893,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>
 					<value level="1">22072</value>
 					<value level="2">22073</value>
@@ -1638,8 +1923,6 @@
 	</skill>
 	<skill id="26069" toLevel="10" name="Spiritshot Pack (D-grade)">
 		<!-- Confirmed CT2.5 -->
-		<table name="#itemCount"> 5000 5000 5000 5000 5000 10000 10000 10000 10000 10000 </table>
-		<table name="#itemId"> 22077 22078 22079 22080 22081 22077 22078 22079 22080 22081 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
@@ -1655,7 +1938,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>
 					<value level="1">22077</value>
 					<value level="2">22078</value>
@@ -1685,8 +1968,6 @@
 	</skill>
 	<skill id="26070" toLevel="10" name="Soulshot Pack (D-grade)">
 		<!-- Confirmed CT2.5 -->
-		<table name="#itemCount"> 5000 5000 5000 5000 5000 10000 10000 10000 10000 10000 </table>
-		<table name="#itemId"> 22082 22083 22084 22085 22086 22082 22083 22084 22085 22086 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
@@ -1702,7 +1983,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>
 					<value level="1">22082</value>
 					<value level="2">22083</value>
@@ -1732,7 +2013,6 @@
 	</skill>
 	<skill id="26071" toLevel="17" name="Wrapped Daisy Hairpin">
 		<!-- Confirmed CT2.5 -->
-		<table name="#itemId"> 22156 22157 22158 22159 22160 22161 22162 22163 22164 22165 22166 22167 22168 22169 22170 22171 22172 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
@@ -1748,7 +2028,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>
 					<value level="1">22156</value>
 					<value level="2">22157</value>
@@ -1774,7 +2054,6 @@
 	</skill>
 	<skill id="26072" toLevel="3" name="Wrapped Pet Coupon - Buffalo">
 		<!-- Confirmed CT2.5 -->
-		<table name="#itemId"> 7583 7584 7585 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
@@ -1790,7 +2069,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>
 					<value level="1">7583</value>
 					<value level="2">7584</value>
@@ -1802,7 +2081,6 @@
 	</skill>
 	<skill id="26073" toLevel="5" name="Bone Bolt Container">
 		<!-- Confirmed CT2.5 -->
-		<table name="#itemId"> 22144 22145 22146 22147 22148 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
@@ -1818,7 +2096,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>
 					<value level="1">22144</value>
 					<value level="2">22145</value>

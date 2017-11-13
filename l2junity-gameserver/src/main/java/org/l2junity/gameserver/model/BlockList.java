@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.send.BlockListPacket;
@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
  */
 public class BlockList
 {
-	private static Logger _log = LoggerFactory.getLogger(BlockList.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(BlockList.class);
 	private static Map<Integer, List<Integer>> _offlineList = new ConcurrentHashMap<>();
 	
 	private final PlayerInstance _owner;
@@ -97,7 +97,7 @@ public class BlockList
 		}
 		catch (Exception e)
 		{
-			_log.warn("Error found in " + ObjId + " FriendList while loading BlockList: " + e.getMessage(), e);
+			LOGGER.warn("Error found in " + ObjId + " FriendList while loading BlockList: " + e.getMessage(), e);
 		}
 		return list;
 	}
@@ -128,7 +128,7 @@ public class BlockList
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not add block player: " + e.getMessage(), e);
+			LOGGER.warn("Could not add block player: " + e.getMessage(), e);
 		}
 	}
 	
@@ -180,9 +180,7 @@ public class BlockList
 		
 		if (listOwner.getFriendList().contains(targetId))
 		{
-			SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_ON_YOUR_FRIENDS_LIST);
-			sm.addString(charName);
-			listOwner.sendPacket(sm);
+			listOwner.sendPacket(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_ON_YOUR_FRIENDS_LIST);
 			return;
 		}
 		

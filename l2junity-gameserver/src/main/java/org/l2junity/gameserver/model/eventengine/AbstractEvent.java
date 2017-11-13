@@ -18,7 +18,6 @@
  */
 package org.l2junity.gameserver.model.eventengine;
 
-import java.nio.file.Path;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -69,12 +68,6 @@ public abstract class AbstractEvent<T extends AbstractEventMember<?>> extends Ab
 	public final String getScriptName()
 	{
 		return getClass().getSimpleName();
-	}
-	
-	@Override
-	public final Path getScriptPath()
-	{
-		return null;
 	}
 	
 	/**

@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  */
 public interface IItemHandler
 {
-	Logger _log = LoggerFactory.getLogger(IItemHandler.class);
+	Logger LOGGER = LoggerFactory.getLogger(IItemHandler.class);
 	
 	/**
 	 * Launch task associated to the item.

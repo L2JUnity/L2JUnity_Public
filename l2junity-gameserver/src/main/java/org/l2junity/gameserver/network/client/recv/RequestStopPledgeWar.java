@@ -58,14 +58,13 @@ public final class RequestStopPledgeWar implements IClientIncomingPacket
 		
 		if (clan == null)
 		{
-			player.sendMessage("No such clan.");
-			player.sendPacket(ActionFailed.STATIC_PACKET);
+			player.sendPacket(SystemMessageId.THAT_CLAN_DOES_NOT_EXIST);
 			return;
 		}
 		
 		if (!playerClan.isAtWarWith(clan.getId()))
 		{
-			player.sendMessage("You aren't at war with this clan.");
+			player.sendPacket(SystemMessageId.THERE_IS_NO_CLAN_WAR_IN_PROGRESS);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
@@ -109,7 +108,7 @@ public final class RequestStopPledgeWar implements IClientIncomingPacket
 			}
 		}
 		
-		ClanTable.getInstance().deleteclanswars(playerClan.getId(), clan.getId());
+		ClanTable.getInstance().deleteClansWar(playerClan.getId(), clan.getId());
 		
 		for (PlayerInstance member : playerClan.getOnlineMembers(0))
 		{

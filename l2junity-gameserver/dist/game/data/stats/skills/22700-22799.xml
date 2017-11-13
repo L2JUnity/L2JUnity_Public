@@ -52,7 +52,7 @@
 		<abnormalTime>30</abnormalTime>
 		<attributeType>DARK</attributeType>
 		<attributeValue>20</attributeValue>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -134,29 +134,33 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22707" toLevel="2" name="Vitality Maintaining Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Maintains Vitality for 30 min. -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<icon>icon.etc_lesser_potion_scarlet_i00</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_KEEP</abnormalType>
 		<specialLevel>-1</specialLevel>
 		<magicCriticalRate>5</magicCriticalRate>
 		<basicProperty>NONE</basicProperty>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="22708" toLevel="1" name="XP Buff 50% (1-hour)">
 		<!-- AUTO GENERATED SKILL -->
@@ -219,7 +223,6 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -246,33 +249,40 @@
 		</conditions>
 	</skill>
 	<skill id="22712" toLevel="1" name="Vitality Recovering Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 30 min., Vitality is replenished with XP gain through hunting. Effect remains even after death. -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>icon.etc_hot_spring_mineral_i00</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>23341</itemConsumeId> <!-- Vitality Recovering Potion -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22713" toLevel="1" name="Letter Collector's Gift">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 2 hr., Atk./Casting Spd. + 15%, and Speed + 20. -->
 		<icon>icon.shield_bread_i01</icon>
 		<operateType>A2</operateType>
@@ -292,6 +302,20 @@
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22714" toLevel="1" name="Transformation Scroll Pack">
 		<!-- AUTO GENERATED SKILL -->
@@ -307,7 +331,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="11">
 						<item id="21182" count="1" />
@@ -357,7 +381,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.05">
 						<item id="23343" count="1" />
@@ -443,7 +467,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.05">
 						<item id="23087" count="1" />
@@ -511,7 +535,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.1">
 						<item id="20577" count="1" />
@@ -576,7 +600,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16">
 						<item id="22622" count="1" />
@@ -707,7 +731,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="11">
 						<item id="23400" count="1" />
@@ -759,7 +783,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="7">
 						<item id="18273" count="1" />
@@ -829,7 +853,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30">
 						<item id="34015" count="1" />
@@ -878,7 +902,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="15">
 						<item id="34024" count="1" />
@@ -927,7 +951,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="10">
 						<item id="23410" count="1" />
@@ -967,7 +991,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20">
 						<item id="23416" count="1" />
@@ -1007,7 +1031,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="10">
 						<item id="23422" count="1" />
@@ -1047,7 +1071,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="15">
 						<item id="23428" count="1" />
@@ -1350,7 +1374,6 @@
 		<magicLvl>1</magicLvl>
 		<affectRange>1000</affectRange>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
@@ -1383,7 +1406,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.0118">
 						<item id="23579" count="1" />
@@ -1491,7 +1514,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>300</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1573,7 +1596,7 @@
 		</conditions>
 	</skill>
 	<skill id="22747" toLevel="1" name="Fantasy Isle Medal of Glory">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Individual Fame + 200. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -1586,6 +1609,11 @@
 		<reuseDelay>3000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_pvppoint">
+				<fame>200</fame>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22748" toLevel="1" name="Scroll: PK (Low-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1607,7 +1635,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PkCount">
+			<effect name="i_pk_count">
 				<amount>-1</amount>
 			</effect>
 		</effects>
@@ -1632,7 +1660,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PkCount">
+			<effect name="i_pk_count">
 				<amount>-3</amount>
 			</effect>
 		</effects>
@@ -1657,7 +1685,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PkCount">
+			<effect name="i_pk_count">
 				<amount>-5</amount>
 			</effect>
 		</effects>
@@ -1682,7 +1710,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PkCount">
+			<effect name="i_pk_count">
 				<amount>-10</amount>
 			</effect>
 		</effects>
@@ -1708,7 +1736,7 @@
 			<condition name="OpNotCursed" />
 		</conditions>
 		<effects>
-			<effect name="KarmaCount">
+			<effect name="i_karma_count">
 				<amount>1000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1735,7 +1763,7 @@
 			<condition name="OpNotCursed" />
 		</conditions>
 		<effects>
-			<effect name="KarmaCount">
+			<effect name="i_karma_count">
 				<amount>5000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1762,7 +1790,7 @@
 			<condition name="OpNotCursed" />
 		</conditions>
 		<effects>
-			<effect name="KarmaCount">
+			<effect name="i_karma_count">
 				<amount>30000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1789,7 +1817,8 @@
 			<condition name="OpNotCursed" />
 		</conditions>
 		<effects>
-			<effect name="KarmaCount">
+			<effect name="i_karma_count">
+				<amount>0</amount>
 				<mode>RESET</mode>
 			</effect>
 		</effects>
@@ -2001,50 +2030,57 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22765" toLevel="1" name="PC Vitality">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 60 min., Vitality is replenished with XP gain through hunting. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>icon.etc_pccafe_point_i00</icon>
 		<operateType>A2</operateType>
 		<hitTime>100</hitTime>
 		<reuseDelay>3600000</reuseDelay>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>4</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>23490</itemConsumeId> <!-- PC Vitality (1-hour) -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22766" toLevel="1" name="Vitality Maintaining Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Maintains Vitality for 10 min. -->
+		<abnormalLvl>2</abnormalLvl>
+		<abnormalTime>600</abnormalTime>
+		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<icon>icon.etc_lesser_potion_blue_i00</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>1800000</reuseDelay>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_KEEP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>2</abnormalLvl>
-		<abnormalTime>600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<isMagic>4</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -2052,31 +2088,40 @@
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="22767" toLevel="2" name="Vitality Maintaining Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Maintains Vitality for 30 min. -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<icon>icon.etc_lesser_potion_scarlet_i00</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_KEEP</abnormalType>
 		<specialLevel>-1</specialLevel>
 		<magicCriticalRate>5</magicCriticalRate>
 		<basicProperty>NONE</basicProperty>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="22768" toLevel="1" name="Metal Suit Top Appearance Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -2402,7 +2447,7 @@
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="33.3333">
 						<item id="19452" count="1" />

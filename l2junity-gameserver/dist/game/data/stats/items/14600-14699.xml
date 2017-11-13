@@ -43,10 +43,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="is_sellable" val="false" />
 		<cond msgId="2453">
-			<and>
-				<player races="KAMAEL" />
-				<player cloakStatus="true" />
-			</and>
+			<player races="KAMAEL" />
 		</cond>
 		<stats>
 			<stat type="pDef">20</stat>
@@ -69,10 +66,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="is_sellable" val="false" />
 		<cond msgId="2453">
-			<and>
-				<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
-				<player cloakStatus="true" />
-			</and>
+			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
 		</cond>
 		<stats>
 			<stat type="pDef">20</stat>
@@ -199,7 +193,6 @@
 			<and>
 				<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
 				<player categoryType="ROGUE_CLOACK" />
-				<player cloakStatus="true" />
 			</and>
 		</cond>
 		<stats>
@@ -222,9 +215,6 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_sellable" val="false" />
-		<cond msgId="2453">
-			<player cloakStatus="true" />
-		</cond>
 		<stats>
 			<stat type="pDef">20</stat>
 		</stats>
@@ -249,7 +239,6 @@
 			<and>
 				<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
 				<player categoryType="MAGE_CLOACK" />
-				<player cloakStatus="true" />
 			</and>
 		</cond>
 		<stats>

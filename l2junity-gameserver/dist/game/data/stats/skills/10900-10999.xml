@@ -12,7 +12,7 @@
 			<value fromLevel="1" toLevel="4">1800</value>
 			<value fromLevel="3" toLevel="4" fromSubLevel="1001" toSubLevel="1030">{1800 + subIndex * 90}</value>
 		</abnormalTime>
-		<!-- TODO: abnormalType -->
+		<abnormalType>YUL_EYE</abnormalType>
 		<icon>icon.skill11872</icon>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
@@ -34,7 +34,7 @@
 		<effectPoint>687</effectPoint>
 		<reuseDelay>30000</reuseDelay>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -44,10 +44,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -57,10 +58,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_magic_defence_critical_dmg">
 				<amount>
 					<value level="1">-5</value>
 					<value level="2">-7</value>
@@ -68,18 +70,14 @@
 					<value level="4">-15</value>
 				</amount>
 				<mode>PER</mode>
-				<weaponType>
-					<item>BOW</item>
-					<item> CROSSBOW</item>
-				</weaponType>
 			</effect>
-			<effect name="DefenceCriticalDamage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_defence_critical_damage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{-1 - ((subIndex - 1} * 0.5)}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
+			<effect name="p_speed" fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">{2 * subIndex}</value>
 				</amount>
@@ -98,7 +96,7 @@
 		</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -138,7 +136,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttackHpLink">
+			<effect name="i_physical_attack_hp_link">
 				<power>
 					<value level="1">29176</value>
 					<value level="2">30726</value>
@@ -150,7 +148,6 @@
 	</skill>
 	<skill id="10950" toLevel="4" name="Vengeful Sniper">
 		<!-- For 30 minutes when a bow or crossbow is equipped, P. Atk. + 5%, PvP damage + 5%, received magic skill damage during PvP - 5%. -->
-		<table name="#power"> 1.05 1.06 1.07 1.10 </table>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -161,7 +158,7 @@
 			<value fromLevel="1" toLevel="4">1800</value>
 			<value fromLevel="3" toLevel="4" fromSubLevel="1001" toSubLevel="1030">{1800 + subIndex * 90}</value>
 		</abnormalTime>
-		<!-- TODO: abnormalType -->
+		<abnormalType>YUL_EYE</abnormalType>
 		<icon>icon.skill11873</icon>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
@@ -183,7 +180,7 @@
 		<effectPoint>687</effectPoint>
 		<reuseDelay>30000</reuseDelay>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -193,10 +190,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -206,10 +204,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -219,10 +218,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -232,10 +232,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -245,16 +246,17 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="DefenceCriticalDamage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_defence_critical_damage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{-1 - ((subIndex - 1} * 0.5)}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
+			<effect name="p_speed" fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">{2 * subIndex}</value>
 				</amount>
@@ -273,7 +275,7 @@
 		</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">7</value>
@@ -283,9 +285,10 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">7</value>
@@ -295,9 +298,10 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">7</value>
@@ -307,9 +311,10 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">7</value>
@@ -319,12 +324,14 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="10952" toLevel="1" name="Survival Instinct">
-		<!-- For 60 sec., increases P. Atk. by 40%, P. Def/M. Def. by 20%, and increases Max HP/CP by 20%. Consumes 5 Soulstones. -->
+		<!-- Updated to Helios -->
+		<!-- For 60 seconds, own P. Atk +20%, P. Skill Power +15%, Atk. Spd. +15%, P. Def. +20%, M. Def. +20%. 5 Soul Stones consumed. -->
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value fromLevel="1" toLevel="1">60</value>
@@ -344,27 +351,33 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>600000</reuseDelay>
 		<effects>
-			<effect name="PAtk">
-				<amount>40</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_physical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_skill_power">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_physical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxHp">
-				<amount>20</amount>
+			<effect name="p_speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{2 * subIndex}</value>
+				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{2 * subIndex}</value>
 				</amount>
@@ -373,7 +386,8 @@
 		</effects>
 	</skill>
 	<skill id="10953" toLevel="1" name="Hunting Instinct">
-		<!-- For 60 sec., increases Atk. Spd. by 20%, Skill Power by 20%, P. Skill Critical Rate by 40%, and Skill Critical Damage by 20%. Consumes 5 Soulstones. -->
+		<!-- Updated to Helios -->
+		<!-- For 60 seconds, own P. Atk +10%, P. Skill Power +15%, P. Skill Critical Rate +15%, P. Skill Critical Damage +15%. 5 Soul Stones consumed. -->
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value fromLevel="1" toLevel="1">60</value>
@@ -393,15 +407,23 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>600000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
-				<amount>20</amount>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalSkillPower">
-				<amount>20</amount>
+			<effect name="p_skill_power">
+				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_skill_critical_rate">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{2 * subIndex}</value>
 				</amount>
@@ -410,7 +432,8 @@
 		</effects>
 	</skill>
 	<skill id="10954" toLevel="1" name="Counter Instinct">
-		<!-- For 60 sec., increases Skill Power by 40%, P. Skill Critical Rate by 20%, and Skill Critical Damage by 40%. Consumes 5 Soulstones. -->
+		<!-- Updated to Helios -->
+		<!-- For 60 seconds, own P. Atk +10%, P. Skill Power +15%, P. Skill Critical Damage +25%. 5 Soul Stones consumed. -->
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value fromLevel="1" toLevel="1">60</value>
@@ -430,11 +453,19 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>600000</reuseDelay>
 		<effects>
-			<effect name="PhysicalSkillPower">
-				<amount>40</amount>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_skill_power">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{2 * subIndex}</value>
 				</amount>
@@ -443,7 +474,8 @@
 		</effects>
 	</skill>
 	<skill id="10955" toLevel="1" name="Bloody Instinct">
-		<!-- For 60 sec., increases PvP Damage by 20%, and Skill Power by 20%. Consumes 5 Soulstones. -->
+		<!-- Updated to Helios -->
+		<!-- For 60 seconds, own PvP damage +15%, P. Atk. +10%, P. Skill Damage +15%. 5 Soul Stones consumed. -->
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value fromLevel="1" toLevel="1">60</value>
@@ -463,23 +495,27 @@
 		<effectPoint>2</effectPoint>
 		<reuseDelay>600000</reuseDelay>
 		<effects>
-			<effect name="PhysicalSkillPower">
-				<amount>20</amount>
+			<effect name="p_pvp_magical_skill_dmg_bonus">
+				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
-				<amount>20</amount>
+			<effect name="p_pvp_physical_skill_dmg_bonus">
+				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
-				<amount>20</amount>
+			<effect name="p_pvp_magical_skill_dmg_bonus">
+				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
-				<amount>20</amount>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_skill_power">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{2 * subIndex}</value>
 				</amount>
@@ -493,7 +529,7 @@
 		<magicLvl>100</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="EnlargeAbnormalSlot">
+			<effect name="p_enlarge_abnormal_slot">
 				<slots>1</slots>
 			</effect>
 		</effects>
@@ -526,7 +562,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -564,7 +600,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>21365.2</power>
 			</effect>
 		</effects>

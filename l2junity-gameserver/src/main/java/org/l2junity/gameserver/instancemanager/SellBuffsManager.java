@@ -18,17 +18,20 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.cache.HtmCache;
+import org.l2junity.gameserver.config.SellBuffConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.handler.CommunityBoardHandler;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.holders.SellBuffHolder;
 import org.l2junity.gameserver.model.items.L2Item;
@@ -56,13 +59,12 @@ public final class SellBuffsManager implements IGameXmlReader
 	
 	protected SellBuffsManager()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
-		if (Config.SELLBUFF_ENABLED)
+		if (SellBuffConfig.SELLBUFF_ENABLED)
 		{
 			ALLOWED_BUFFS.clear();
 			parseDatapackFile("data/sellBuffData.xml");
@@ -71,7 +73,7 @@ public final class SellBuffsManager implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		final NodeList node = doc.getDocumentElement().getElementsByTagName("skill");
 		for (int i = 0; i < node.getLength(); ++i)
@@ -199,14 +201,14 @@ public final class SellBuffsManager implements IGameXmlReader
 				continue;
 			}
 			
-			final L2Item item = ItemTable.getInstance().getTemplate(Config.SELLBUFF_PAYMENT_ID);
+			final L2Item item = ItemTable.getInstance().getTemplate(SellBuffConfig.SELLBUFF_PAYMENT_ID);
 			
 			sb.append("<tr>");
 			sb.append("<td fixwidth=\"20\"></td>");
 			sb.append("<td align=center><img src=\"" + skill.getIcon() + "\" width=\"32\" height=\"32\"></td>");
 			sb.append("<td align=left>" + skill.getName() + (skill.getLevel() > 100 ? "<font color=\"LEVEL\"> + " + (skill.getLevel() % 100) + "</font></td>" : "</td>"));
 			sb.append("<td align=center>" + ((skill.getLevel() > 100) ? SkillData.getInstance().getMaxLevel(skill.getId()) : skill.getLevel()) + "</td>");
-			sb.append("<td align=center> <font color=\"1E90FF\">" + (skill.getMpConsume() * Config.SELLBUFF_MP_MULTIPLER) + "</font></td>");
+			sb.append("<td align=center> <font color=\"1E90FF\">" + (skill.getMpConsume() * SellBuffConfig.SELLBUFF_MP_MULTIPLER) + "</font></td>");
 			sb.append("<td align=center> " + Util.formatAdena(holder.getPrice()) + " <font color=\"LEVEL\"> " + (item != null ? item.getName() : "") + "</font> </td>");
 			sb.append("<td align=center fixwidth=\"50\"><button value=\"Buy Buff\" action=\"bypass -h sellbuffbuyskill " + seller.getObjectId() + " " + skill.getId() + " " + index + "\" width=\"85\" height=\"26\" back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>");
 			sb.append("</tr>");
@@ -444,6 +446,7 @@ public final class SellBuffsManager implements IGameXmlReader
 	 * Gets the single instance of {@code SellBuffsManager}.
 	 * @return single instance of {@code SellBuffsManager}
 	 */
+	@InstanceGetter
 	public static final SellBuffsManager getInstance()
 	{
 		return SingletonHolder._instance;

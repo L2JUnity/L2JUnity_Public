@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.gameserver.GameTimeController;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -53,9 +53,9 @@ public class CharSelected implements IClientOutgoingPacket
 		packet.writeD(_activeChar.getRace().ordinal());
 		packet.writeD(_activeChar.getClassId().getId());
 		packet.writeD(0x01); // active ??
-		packet.writeD(_activeChar.getX());
-		packet.writeD(_activeChar.getY());
-		packet.writeD(_activeChar.getZ());
+		packet.writeD((int) _activeChar.getX());
+		packet.writeD((int) _activeChar.getY());
+		packet.writeD((int) _activeChar.getZ());
 		packet.writeF(_activeChar.getCurrentHp());
 		packet.writeF(_activeChar.getCurrentMp());
 		packet.writeQ(_activeChar.getSp());
@@ -63,7 +63,7 @@ public class CharSelected implements IClientOutgoingPacket
 		packet.writeD(_activeChar.getLevel());
 		packet.writeD(_activeChar.getReputation());
 		packet.writeD(_activeChar.getPkKills());
-		packet.writeD(GameTimeController.getInstance().getGameTime() % (24 * 60)); // "reset" on 24th hour
+		packet.writeD(GameTimeManager.getInstance().getGameTimeInMinutesOfDay());
 		packet.writeD(0x00);
 		packet.writeD(_activeChar.getClassId().getId());
 		

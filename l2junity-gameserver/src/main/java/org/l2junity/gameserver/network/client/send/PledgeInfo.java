@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.HexIDConfig;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -37,7 +37,7 @@ public class PledgeInfo implements IClientOutgoingPacket
 	{
 		OutgoingPackets.PLEDGE_INFO.writeId(packet);
 		
-		packet.writeD(Config.SERVER_ID);
+		packet.writeD(HexIDConfig.SERVER_ID);
 		packet.writeD(_clan.getId());
 		packet.writeS(_clan.getName());
 		packet.writeS(_clan.getAllyName());

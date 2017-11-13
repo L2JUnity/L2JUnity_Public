@@ -23,8 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.Race;
 
 /**
@@ -35,7 +35,6 @@ public class MapRegion
 	private final String _name;
 	private final String _town;
 	private final int _locId;
-	private final int _castle;
 	private final int _bbs;
 	private List<int[]> _maps = null;
 	
@@ -46,12 +45,11 @@ public class MapRegion
 	
 	private final Map<Race, String> _bannedRace = new HashMap<>();
 	
-	public MapRegion(String name, String town, int locId, int castle, int bbs)
+	public MapRegion(String name, String town, int locId, int bbs)
 	{
 		_name = name;
 		_town = town;
 		_locId = locId;
-		_castle = castle;
 		_bbs = bbs;
 	}
 	
@@ -68,11 +66,6 @@ public class MapRegion
 	public final int getLocId()
 	{
 		return _locId;
-	}
-	
-	public final int getCastle()
-	{
-		return _castle;
 	}
 	
 	public final int getBbs()
@@ -164,7 +157,7 @@ public class MapRegion
 	
 	public final Location getSpawnLoc()
 	{
-		if (Config.RANDOM_RESPAWN_IN_TOWN_ENABLED)
+		if (PlayerConfig.RANDOM_RESPAWN_IN_TOWN_ENABLED)
 		{
 			return _spawnLocs.get(Rnd.get(_spawnLocs.size()));
 		}
@@ -175,7 +168,7 @@ public class MapRegion
 	{
 		if (_otherSpawnLocs != null)
 		{
-			if (Config.RANDOM_RESPAWN_IN_TOWN_ENABLED)
+			if (PlayerConfig.RANDOM_RESPAWN_IN_TOWN_ENABLED)
 			{
 				return _otherSpawnLocs.get(Rnd.get(_otherSpawnLocs.size()));
 			}
@@ -188,7 +181,7 @@ public class MapRegion
 	{
 		if (_chaoticSpawnLocs != null)
 		{
-			if (Config.RANDOM_RESPAWN_IN_TOWN_ENABLED)
+			if (PlayerConfig.RANDOM_RESPAWN_IN_TOWN_ENABLED)
 			{
 				return _chaoticSpawnLocs.get(Rnd.get(_chaoticSpawnLocs.size()));
 			}
@@ -201,7 +194,7 @@ public class MapRegion
 	{
 		if (_banishSpawnLocs != null)
 		{
-			if (Config.RANDOM_RESPAWN_IN_TOWN_ENABLED)
+			if (PlayerConfig.RANDOM_RESPAWN_IN_TOWN_ENABLED)
 			{
 				return _banishSpawnLocs.get(Rnd.get(_banishSpawnLocs.size()));
 			}

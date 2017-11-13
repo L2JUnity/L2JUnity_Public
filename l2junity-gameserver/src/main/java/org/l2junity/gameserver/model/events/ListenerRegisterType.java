@@ -26,6 +26,7 @@ public enum ListenerRegisterType
 	NPC,
 	ZONE,
 	ITEM,
+	SKILL,
 	CASTLE,
 	FORTRESS,
 	OLYMPIAD,

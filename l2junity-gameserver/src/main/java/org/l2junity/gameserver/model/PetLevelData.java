@@ -18,7 +18,10 @@
  */
 package org.l2junity.gameserver.model;
 
-import org.l2junity.gameserver.model.stats.Stats;
+import java.util.Collections;
+import java.util.List;
+
+import org.l2junity.gameserver.model.stats.DoubleStat;
 
 /**
  * Stats definition for each pet level.
@@ -47,11 +50,13 @@ public class PetLevelData
 	private final double _fastSwimSpeedOnRide;
 	private final double _slowFlySpeedOnRide;
 	private final double _fastFlySpeedOnRide;
+	private final int _hungryLimit;
+	private final List<Integer> _food;
 	
 	public PetLevelData(StatsSet set)
 	{
-		_ownerExpTaken = set.getInt("get_exp_type");
-		_petMaxExp = set.getLong("exp");
+		_ownerExpTaken = set.getInt("get_exp_type", 0);
+		_petMaxExp = set.getLong("exp", 0);
 		_petMaxHP = set.getFloat("org_hp");
 		_petMaxMP = set.getFloat("org_mp");
 		_petPAtk = set.getFloat("org_pattack");
@@ -59,10 +64,10 @@ public class PetLevelData
 		_petMAtk = set.getFloat("org_mattack");
 		_petMDef = set.getFloat("org_mdefend");
 		_petMaxFeed = set.getInt("max_meal");
-		_petFeedBattle = set.getInt("consume_meal_in_battle");
-		_petFeedNormal = set.getInt("consume_meal_in_normal");
-		_petRegenHP = set.getFloat("org_hp_regen");
-		_petRegenMP = set.getFloat("org_mp_regen");
+		_petFeedBattle = set.getInt("consume_meal_in_battle", 0);
+		_petFeedNormal = set.getInt("consume_meal_in_normal", 0);
+		_petRegenHP = set.getFloat("org_hp_regen", 1.0f);
+		_petRegenMP = set.getFloat("org_mp_regen", 1.0f);
 		_petSoulShot = set.getShort("soulshot_count");
 		_petSpiritShot = set.getShort("spiritshot_count");
 		_walkSpeedOnRide = set.getDouble("walkSpeedOnRide", 0);
@@ -71,6 +76,8 @@ public class PetLevelData
 		_fastSwimSpeedOnRide = set.getDouble("fastSwimSpeedOnRide", 0);
 		_slowFlySpeedOnRide = set.getDouble("slowFlySpeedOnRide", 0);
 		_fastFlySpeedOnRide = set.getDouble("fastFlySpeedOnRide", 0);
+		_hungryLimit = set.getInt("hungry_limit", 0);
+		_food = set.contains("food") ? set.getIntegerList("food", ";") : Collections.emptyList();
 	}
 	
 	/**
@@ -197,7 +204,7 @@ public class PetLevelData
 	 * @param stat movement type
 	 * @return the base riding speed of given movement type.
 	 */
-	public double getSpeedOnRide(Stats stat)
+	public double getSpeedOnRide(DoubleStat stat)
 	{
 		switch (stat)
 		{
@@ -216,5 +223,15 @@ public class PetLevelData
 		}
 		
 		return 0;
+	}
+	
+	public List<Integer> getFood()
+	{
+		return _food;
+	}
+	
+	public int getHungryLimit()
+	{
+		return _hungryLimit;
 	}
 }

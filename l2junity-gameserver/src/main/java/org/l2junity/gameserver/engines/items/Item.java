@@ -27,6 +27,5 @@ public class Item
 	public String type;
 	public String name;
 	public StatsSet set;
-	public int currentLevel;
 	public L2Item item;
 }

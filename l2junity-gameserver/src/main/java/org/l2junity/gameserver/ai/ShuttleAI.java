@@ -32,7 +32,7 @@ public class ShuttleAI extends VehicleAI
 	}
 	
 	@Override
-	public void moveTo(int x, int y, int z)
+	public void moveTo(double x, double y, double z)
 	{
 		if (!_actor.isMovementDisabled())
 		{

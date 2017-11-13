@@ -18,12 +18,12 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.items.L2Item;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -31,11 +31,11 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class MAccuracyFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
-		double baseValue = calcWeaponPlusBaseValue(creature, stat);
+		double baseValue = calcEquippedItemsBaseValue(creature, stat);
 		
 		if (creature.isPlayer())
 		{
@@ -43,7 +43,7 @@ public class MAccuracyFinalizer implements IStatsFunction
 			baseValue += calcEnchantBodyPart(creature, L2Item.SLOT_GLOVES);
 		}
 		
-		return Stats.defaultValue(creature, stat, baseValue + (Math.sqrt(creature.getWIT()) * 3) + (creature.getLevel() * 2));
+		return DoubleStat.defaultValue(creature, stat, baseValue + (Math.sqrt(creature.getWIT()) * 3) + (creature.getLevel() * 2));
 	}
 	
 	@Override

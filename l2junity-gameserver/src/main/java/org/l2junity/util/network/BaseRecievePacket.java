@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class BaseRecievePacket
 {
-	private static final Logger _log = LoggerFactory.getLogger(BaseRecievePacket.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(BaseRecievePacket.class);
 	
 	private final byte[] _decrypt;
 	private int _off;
@@ -84,7 +84,7 @@ public abstract class BaseRecievePacket
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": " + e.getMessage());
+			LOGGER.warn("", e);
 		}
 		
 		return result;

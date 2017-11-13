@@ -18,19 +18,22 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.ChatFilterConfig;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.L2JModsConfig;
 import org.l2junity.gameserver.enums.ChatType;
 import org.l2junity.gameserver.handler.ChatHandler;
 import org.l2junity.gameserver.handler.IChatHandler;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.ceremonyofchaos.CeremonyOfChaosEvent;
-import org.l2junity.gameserver.model.effects.EffectFlag;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerChat;
 import org.l2junity.gameserver.model.events.returns.ChatFilterReturn;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.olympiad.OlympiadManager;
+import org.l2junity.gameserver.model.stats.BooleanStat;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -45,7 +48,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class Say2 implements IClientIncomingPacket
 {
-	private static Logger _logChat = LoggerFactory.getLogger("chat");
+	private static final Logger LOG_CHAT = LoggerFactory.getLogger("chat");
 	
 	private static final String[] WALKER_COMMAND_LIST =
 	{
@@ -102,9 +105,9 @@ public final class Say2 implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.info("Say2: Msg Type = '" + _type + "' Text = '" + _text + "'.");
+			LOGGER.info("Say2: Msg Type = '" + _type + "' Text = '" + _text + "'.");
 		}
 		
 		final PlayerInstance activeChar = client.getActiveChar();
@@ -116,17 +119,17 @@ public final class Say2 implements IClientIncomingPacket
 		ChatType chatType = ChatType.findByClientId(_type);
 		if (chatType == null)
 		{
-			_log.warn("Say2: Invalid type: " + _type + " Player : " + activeChar.getName() + " text: " + String.valueOf(_text));
+			LOGGER.warn("Say2: Invalid type: " + _type + " Player : " + activeChar.getName() + " text: " + String.valueOf(_text));
 			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-			activeChar.logout();
+			Disconnection.of(activeChar).defaultSequence(false);
 			return;
 		}
 		
 		if (_text.isEmpty())
 		{
-			_log.warn(activeChar.getName() + ": sending empty text. Possible packet hack!");
+			LOGGER.warn(activeChar.getName() + ": sending empty text. Possible packet hack!");
 			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-			activeChar.logout();
+			Disconnection.of(activeChar).defaultSequence(false);
 			return;
 		}
 		
@@ -139,9 +142,9 @@ public final class Say2 implements IClientIncomingPacket
 			return;
 		}
 		
-		if (Config.L2WALKER_PROTECTION && (chatType == ChatType.WHISPER) && checkBot(_text))
+		if (L2JModsConfig.L2WALKER_PROTECTION && (chatType == ChatType.WHISPER) && checkBot(_text))
 		{
-			Util.handleIllegalPlayerAction(activeChar, "Client Emulator Detect: Player " + activeChar.getName() + " using l2walker.", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "Client Emulator Detect: Player " + activeChar.getName() + " using l2walker.", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
@@ -153,15 +156,15 @@ public final class Say2 implements IClientIncomingPacket
 		
 		if (activeChar.isChatBanned() && (_text.charAt(0) != '.'))
 		{
-			if (activeChar.isAffected(EffectFlag.CHAT_BLOCK))
+			if (activeChar.getStat().has(BooleanStat.BLOCK_CHAT))
 			{
 				activeChar.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_SO_CHATTING_IS_NOT_ALLOWED);
 			}
 			else
 			{
-				if (Config.BAN_CHAT_CHANNELS.contains(chatType))
+				if (GeneralConfig.BAN_CHAT_CHANNELS.contains(chatType))
 				{
-					activeChar.sendPacket(SystemMessageId.CHATTING_IS_CURRENTLY_PROHIBITED_IF_YOU_TRY_TO_CHAT_BEFORE_THE_PROHIBITION_IS_REMOVED_THE_PROHIBITION_TIME_WILL_INCREASE_EVEN_FURTHER);
+					activeChar.sendPacket(SystemMessageId.CHATTING_IS_CURRENTLY_PROHIBITED_IF_YOU_TRY_TO_CHAT_BEFORE_THE_PROHIBITION_IS_REMOVED_THE_PROHIBITION_TIME_WILL_INCREASE_EVEN_FURTHER_CHATTING_BAN_TIME_REMAINING_S1_SECONDS);
 				}
 			}
 			return;
@@ -179,7 +182,7 @@ public final class Say2 implements IClientIncomingPacket
 			return;
 		}
 		
-		if (activeChar.isJailed() && Config.JAIL_DISABLE_CHAT)
+		if (activeChar.isJailed() && GeneralConfig.JAIL_DISABLE_CHAT)
 		{
 			if ((chatType == ChatType.WHISPER) || (chatType == ChatType.SHOUT) || (chatType == ChatType.TRADE) || (chatType == ChatType.HERO_VOICE))
 			{
@@ -193,15 +196,15 @@ public final class Say2 implements IClientIncomingPacket
 			chatType = ChatType.PETITION_GM;
 		}
 		
-		if (Config.LOG_CHAT)
+		if (GeneralConfig.LOG_CHAT)
 		{
 			if (chatType == ChatType.WHISPER)
 			{
-				_logChat.info("{} [{} to {}] {}", chatType.name(), activeChar, _target, _text);
+				LOG_CHAT.info("{} [{} to {}] {}", chatType.name(), activeChar, _target, _text);
 			}
 			else
 			{
-				_logChat.info("{} [{}] {}", chatType.name(), activeChar, _text);
+				LOG_CHAT.info("{} [{}] {}", chatType.name(), activeChar, _text);
 			}
 			
 		}
@@ -217,12 +220,16 @@ public final class Say2 implements IClientIncomingPacket
 		final ChatFilterReturn filter = EventDispatcher.getInstance().notifyEvent(new OnPlayerChat(activeChar, World.getInstance().getPlayer(_target), _text, chatType), activeChar, ChatFilterReturn.class);
 		if (filter != null)
 		{
+			if (filter.terminate())
+			{
+				return;
+			}
 			_text = filter.getFilteredText();
 			chatType = filter.getChatType();
 		}
 		
 		// Say Filter implementation
-		if (Config.USE_SAY_FILTER)
+		if (GeneralConfig.USE_SAY_FILTER)
 		{
 			checkText();
 		}
@@ -234,7 +241,7 @@ public final class Say2 implements IClientIncomingPacket
 		}
 		else
 		{
-			_log.info("No handler registered for ChatType: " + _type + " Player: " + client);
+			LOGGER.info("No handler registered for ChatType: " + _type + " Player: " + client);
 		}
 	}
 	
@@ -253,9 +260,9 @@ public final class Say2 implements IClientIncomingPacket
 	private void checkText()
 	{
 		String filteredText = _text;
-		for (String pattern : Config.FILTER_LIST)
+		for (String pattern : ChatFilterConfig.FILTER_LIST)
 		{
-			filteredText = filteredText.replaceAll("(?i)" + pattern, Config.CHAT_FILTER_CHARS);
+			filteredText = filteredText.replaceAll("(?i)" + pattern, GeneralConfig.CHAT_FILTER_CHARS);
 		}
 		_text = filteredText;
 	}
@@ -281,7 +288,7 @@ public final class Say2 implements IClientIncomingPacket
 			
 			if (item == null)
 			{
-				_log.info(client + " trying publish item which doesnt own! ID:" + id);
+				LOGGER.info(client + " trying publish item which doesnt own! ID:" + id);
 				return false;
 			}
 			item.publish();
@@ -289,7 +296,7 @@ public final class Say2 implements IClientIncomingPacket
 			pos1 = _text.indexOf(8, pos) + 1;
 			if (pos1 == 0) // missing ending tag
 			{
-				_log.info(client + " sent invalid publish item msg! ID:" + id);
+				LOGGER.info(client + " sent invalid publish item msg! ID:" + id);
 				return false;
 			}
 		}

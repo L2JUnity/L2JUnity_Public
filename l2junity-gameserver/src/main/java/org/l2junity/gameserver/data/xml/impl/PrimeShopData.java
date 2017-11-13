@@ -18,14 +18,18 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.datatables.ItemTable;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.L2Item;
@@ -49,11 +53,10 @@ public class PrimeShopData implements IGameXmlReader
 	
 	protected PrimeShopData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ItemTable.class))
+	private void load() throws Exception
 	{
 		_primeItems.clear();
 		parseDatapackFile("data/PrimeShop.xml");
@@ -69,7 +72,7 @@ public class PrimeShopData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -121,6 +124,11 @@ public class PrimeShopData implements IGameXmlReader
 		}
 	}
 	
+	public int getItemCount()
+	{
+		return _primeItems.size();
+	}
+	
 	public void showProductInfo(PlayerInstance player, int brId)
 	{
 		final PrimeShopGroup item = _primeItems.get(brId);
@@ -143,6 +151,7 @@ public class PrimeShopData implements IGameXmlReader
 		return _primeItems;
 	}
 	
+	@InstanceGetter
 	public static PrimeShopData getInstance()
 	{
 		return SingletonHolder._instance;

@@ -23,12 +23,8 @@ import org.l2junity.gameserver.model.PcCondOverride;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.model.skills.AbnormalType;
-import org.l2junity.gameserver.model.skills.BuffInfo;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
-import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
 
 public final class AttackRequest implements IClientIncomingPacket
@@ -64,20 +60,6 @@ public final class AttackRequest implements IClientIncomingPacket
 			return;
 		}
 		
-		final BuffInfo info = activeChar.getEffectList().getBuffInfoByAbnormalType(AbnormalType.BOT_PENALTY);
-		if (info != null)
-		{
-			for (AbstractEffect effect : info.getEffects())
-			{
-				if (!effect.checkCondition(-1))
-				{
-					activeChar.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_SO_YOUR_ACTIONS_HAVE_BEEN_RESTRICTED);
-					activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-					return;
-				}
-			}
-		}
-		
 		// avoid using expensive operations if not needed
 		final WorldObject target;
 		if (activeChar.getTargetId() == _objectId)
@@ -94,7 +76,8 @@ public final class AttackRequest implements IClientIncomingPacket
 			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
-		else if ((!target.isTargetable() || activeChar.isTargetingDisabled()) && !activeChar.canOverrideCond(PcCondOverride.TARGET_ALL))
+		
+		if ((!target.isTargetable() || activeChar.isTargetingDisabled()) && !activeChar.canOverrideCond(PcCondOverride.TARGET_ALL))
 		{
 			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;

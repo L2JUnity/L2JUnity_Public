@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class MessageDeletionTask implements Runnable
 {
-	private static final Logger _log = LoggerFactory.getLogger(MessageDeletionTask.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MessageDeletionTask.class);
 	
 	final int _msgId;
 	
@@ -79,7 +79,7 @@ public final class MessageDeletionTask implements Runnable
 			}
 			catch (Exception e)
 			{
-				_log.warn(getClass().getSimpleName() + ": Error returning items:" + e.getMessage(), e);
+				LOGGER.warn("Error returning items:" + e.getMessage(), e);
 			}
 		}
 		MailManager.getInstance().deleteMessageInDb(msg.getId());

@@ -32,21 +32,21 @@ public class ExUserInfoFishing implements IClientOutgoingPacket
 	private final PlayerInstance _activeChar;
 	private final boolean _isFishing;
 	private final ILocational _baitLocation;
-
+	
 	public ExUserInfoFishing(PlayerInstance activeChar, boolean isFishing, ILocational baitLocation)
 	{
 		_activeChar = activeChar;
 		_isFishing = isFishing;
 		_baitLocation = baitLocation;
 	}
-
+	
 	public ExUserInfoFishing(PlayerInstance activeChar, boolean isFishing)
 	{
 		_activeChar = activeChar;
 		_isFishing = isFishing;
 		_baitLocation = null;
 	}
-
+	
 	@Override
 	public boolean write(PacketWriter packet)
 	{
@@ -62,9 +62,9 @@ public class ExUserInfoFishing implements IClientOutgoingPacket
 		}
 		else
 		{
-			packet.writeD(_baitLocation.getX());
-			packet.writeD(_baitLocation.getY());
-			packet.writeD(_baitLocation.getZ());
+			packet.writeD((int) _baitLocation.getX());
+			packet.writeD((int) _baitLocation.getY());
+			packet.writeD((int) _baitLocation.getZ());
 		}
 		return true;
 	}

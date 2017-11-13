@@ -52,7 +52,7 @@ public class CharSelectInfoPackage
 	private int _reputation = 0;
 	private int _pkKills = 0;
 	private int _pvpKills = 0;
-	private int _augmentationId = 0;
+	private VariationInstance _augmentation;
 	private int _x = 0;
 	private int _y = 0;
 	private int _z = 0;
@@ -186,7 +186,7 @@ public class CharSelectInfoPackage
 	
 	public int getFace()
 	{
-		return _vars.getInt("visualFaceId", _face);
+		return _vars.getInt(PlayerVariables.VISUAL_FACE_ID, _face);
 	}
 	
 	public void setFace(int face)
@@ -196,7 +196,7 @@ public class CharSelectInfoPackage
 	
 	public int getHairColor()
 	{
-		return _vars.getInt("visualHairColorId", _hairColor);
+		return _vars.getInt(PlayerVariables.VISUAL_HAIR_COLOR_ID, _hairColor);
 	}
 	
 	public void setHairColor(int hairColor)
@@ -206,7 +206,7 @@ public class CharSelectInfoPackage
 	
 	public int getHairStyle()
 	{
-		return _vars.getInt("visualHairId", _hairStyle);
+		return _vars.getInt(PlayerVariables.VISUAL_HAIR_ID, _hairStyle);
 	}
 	
 	public void setHairStyle(int hairStyle)
@@ -314,14 +314,14 @@ public class CharSelectInfoPackage
 		return _reputation;
 	}
 	
-	public void setAugmentationId(int augmentationId)
+	public void setAugmentation(VariationInstance augmentation)
 	{
-		_augmentationId = augmentationId;
+		_augmentation = augmentation;
 	}
 	
-	public int getAugmentationId()
+	public VariationInstance getAugmentation()
 	{
-		return _augmentationId;
+		return _augmentation;
 	}
 	
 	public void setPkKills(int PkKills)

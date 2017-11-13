@@ -18,14 +18,12 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.model.PcCondOverride;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.model.skills.AbnormalType;
-import org.l2junity.gameserver.model.skills.BuffInfo;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -53,9 +51,9 @@ public final class Action implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.info(getClass().getSimpleName() + ": " + (_actionId == 0 ? "Simple-click" : "Shift-click") + " Target object ID: " + _objectId + " orignX: " + _originX + " orignY: " + _originY + " orignZ: " + _originZ);
+			LOGGER.info((_actionId == 0 ? "Simple-click" : "Shift-click") + " Target object ID: " + _objectId + " orignX: " + _originX + " orignY: " + _originY + " orignZ: " + _originZ);
 		}
 		
 		// Get the current L2PcInstance of the player
@@ -70,20 +68,6 @@ public final class Action implements IClientIncomingPacket
 			activeChar.sendPacket(SystemMessageId.OBSERVERS_CANNOT_PARTICIPATE);
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
-		}
-		
-		final BuffInfo info = activeChar.getEffectList().getBuffInfoByAbnormalType(AbnormalType.BOT_PENALTY);
-		if (info != null)
-		{
-			for (AbstractEffect effect : info.getEffects())
-			{
-				if (!effect.checkCondition(-4))
-				{
-					activeChar.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_SO_YOUR_ACTIONS_HAVE_BEEN_RESTRICTED);
-					activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-					return;
-				}
-			}
 		}
 		
 		final WorldObject obj;
@@ -145,7 +129,7 @@ public final class Action implements IClientIncomingPacket
 			}
 			case 1:
 			{
-				if (!activeChar.isGM() && !(obj.isNpc() && Config.ALT_GAME_VIEWNPC))
+				if (!activeChar.isGM() && !(obj.isNpc() && NpcConfig.ALT_GAME_VIEWNPC))
 				{
 					obj.onAction(activeChar, false);
 				}
@@ -158,7 +142,7 @@ public final class Action implements IClientIncomingPacket
 			default:
 			{
 				// Invalid action detected (probably client cheating), log this
-				_log.warn(getClass().getSimpleName() + ": Character: " + activeChar.getName() + " requested invalid action: " + _actionId);
+				LOGGER.warn("Character: " + activeChar.getName() + " requested invalid action: " + _actionId);
 				client.sendPacket(ActionFailed.STATIC_PACKET);
 				break;
 			}

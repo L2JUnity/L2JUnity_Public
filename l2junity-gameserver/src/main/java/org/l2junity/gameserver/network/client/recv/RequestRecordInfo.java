@@ -23,7 +23,6 @@ import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
-import org.l2junity.gameserver.network.client.send.SpawnItem;
 import org.l2junity.gameserver.network.client.send.UserInfo;
 import org.l2junity.network.PacketReader;
 
@@ -48,27 +47,20 @@ public class RequestRecordInfo implements IClientIncomingPacket
 		
 		World.getInstance().forEachVisibleObject(activeChar, WorldObject.class, object ->
 		{
-			if (object.getPoly().isMorphed() && object.getPoly().getPolyType().equals("item"))
+			if (object.isVisibleFor(activeChar))
 			{
-				client.sendPacket(new SpawnItem(object));
-			}
-			else
-			{
-				if (object.isVisibleFor(activeChar))
+				object.sendInfo(activeChar);
+				
+				if (object.isCreature())
 				{
-					object.sendInfo(activeChar);
-					
-					if (object.isCreature())
+					// Update the state of the L2Character object client
+					// side by sending Server->Client packet
+					// MoveToPawn/CharMoveToLocation and AutoAttackStart to
+					// the L2PcInstance
+					final Creature obj = (Creature) object;
+					if (obj.getAI() != null)
 					{
-						// Update the state of the L2Character object client
-						// side by sending Server->Client packet
-						// MoveToPawn/CharMoveToLocation and AutoAttackStart to
-						// the L2PcInstance
-						final Creature obj = (Creature) object;
-						if (obj.getAI() != null)
-						{
-							obj.getAI().describeStateToPlayer(activeChar);
-						}
+						obj.getAI().describeStateToPlayer(activeChar);
 					}
 				}
 			}

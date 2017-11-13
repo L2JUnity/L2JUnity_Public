@@ -24,17 +24,17 @@ import org.l2junity.network.PacketWriter;
 
 public final class MoveToLocation implements IClientOutgoingPacket
 {
-	private final int _charObjId, _x, _y, _z, _xDst, _yDst, _zDst;
+	private final int _objectId, _x, _y, _z, _destinationX, _destinationY, _destinationZ;
 	
 	public MoveToLocation(Creature cha)
 	{
-		_charObjId = cha.getObjectId();
-		_x = cha.getX();
-		_y = cha.getY();
-		_z = cha.getZ();
-		_xDst = cha.getXdestination();
-		_yDst = cha.getYdestination();
-		_zDst = cha.getZdestination();
+		_objectId = cha.getObjectId();
+		_x = (int) cha.getX();
+		_y = (int) cha.getY();
+		_z = (int) cha.getZ();
+		_destinationX = (int) cha.getXdestination();
+		_destinationY = (int) cha.getYdestination();
+		_destinationZ = (int) cha.getZdestination();
 	}
 	
 	@Override
@@ -42,11 +42,11 @@ public final class MoveToLocation implements IClientOutgoingPacket
 	{
 		OutgoingPackets.MOVE_TO_LOCATION.writeId(packet);
 		
-		packet.writeD(_charObjId);
+		packet.writeD(_objectId);
 		
-		packet.writeD(_xDst);
-		packet.writeD(_yDst);
-		packet.writeD(_zDst);
+		packet.writeD(_destinationX);
+		packet.writeD(_destinationY);
+		packet.writeD(_destinationZ);
 		
 		packet.writeD(_x);
 		packet.writeD(_y);

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.enums.MailType;
 import org.l2junity.gameserver.instancemanager.MailManager;
 import org.l2junity.gameserver.model.World;
@@ -49,7 +49,7 @@ public final class RequestRejectPostAttachment implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		if (!Config.ALLOW_MAIL || !Config.ALLOW_ATTACHMENTS)
+		if (!GeneralConfig.ALLOW_MAIL || !GeneralConfig.ALLOW_ATTACHMENTS)
 		{
 			return;
 		}
@@ -79,7 +79,7 @@ public final class RequestRejectPostAttachment implements IClientIncomingPacket
 		
 		if (msg.getReceiverId() != activeChar.getObjectId())
 		{
-			Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " tried to reject not own attachment!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " tried to reject not own attachment!", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		

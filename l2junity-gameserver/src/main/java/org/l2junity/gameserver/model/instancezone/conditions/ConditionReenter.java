@@ -18,6 +18,8 @@
  */
 package org.l2junity.gameserver.model.instancezone.conditions;
 
+import java.util.Arrays;
+
 import org.l2junity.gameserver.instancemanager.InstanceManager;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.Npc;
@@ -41,7 +43,12 @@ public final class ConditionReenter extends Condition
 	@Override
 	protected boolean test(PlayerInstance player, Npc npc)
 	{
-		final int instanceId = getParameters().getInt("instanceId", getInstanceTemplate().getId());
-		return System.currentTimeMillis() > InstanceManager.getInstance().getInstanceTime(player, instanceId);
+		final String templateIds = getParameters().getString("instanceId", String.valueOf(getInstanceTemplate().getId()));
+		//@formatter:off
+		return Arrays.stream(templateIds.split(";"))
+			.mapToInt(Integer::parseInt)
+			.mapToLong(templateId -> InstanceManager.getInstance().getInstanceTime(player, templateId))
+			.allMatch(reenterTime -> System.currentTimeMillis() > reenterTime);
+		//@formatter:on
 	}
 }

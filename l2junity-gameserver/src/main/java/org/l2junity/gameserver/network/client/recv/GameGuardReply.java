@@ -80,7 +80,7 @@ public class GameGuardReply implements IClientIncomingPacket
 		}
 		catch (NoSuchAlgorithmException e)
 		{
-			_log.warn("", e);
+			LOGGER.warn("", e);
 		}
 	}
 }

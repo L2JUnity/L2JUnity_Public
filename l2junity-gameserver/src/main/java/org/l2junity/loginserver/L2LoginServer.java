@@ -26,15 +26,21 @@ import java.io.LineNumberReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.security.GeneralSecurityException;
-import java.sql.SQLException;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.Server;
-import org.l2junity.UPnPService;
+import org.l2junity.commons.lang.management.ShutdownManager;
+import org.l2junity.commons.lang.management.TerminationStatus;
+import org.l2junity.commons.util.AppInit;
+import org.l2junity.commons.util.AppInit.ApplicationMode;
+import org.l2junity.commons.util.CommonUtil;
+import org.l2junity.commons.util.jar.VersionInfo;
+import org.l2junity.loginserver.config.EmailConfig;
+import org.l2junity.loginserver.config.LoginConfigMarker;
+import org.l2junity.loginserver.config.LoginServerConfig;
+import org.l2junity.loginserver.config.MMOCoreConfig;
 import org.l2junity.loginserver.mail.MailSystem;
 import org.l2junity.loginserver.network.L2LoginClient;
 import org.l2junity.loginserver.network.L2LoginPacketHandler;
+import org.mmocore.network.MMOClient;
 import org.mmocore.network.SelectorConfig;
 import org.mmocore.network.SelectorThread;
 import org.slf4j.Logger;
@@ -45,7 +51,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class L2LoginServer
 {
-	private final Logger _log = LoggerFactory.getLogger(L2LoginServer.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2LoginServer.class);
 	
 	public static final int PROTOCOL_REV = 0x0106;
 	private static L2LoginServer _instance;
@@ -66,21 +72,10 @@ public final class L2LoginServer
 	private L2LoginServer()
 	{
 		_instance = this;
-		Server.serverMode = Server.MODE_LOGINSERVER;
 		
-		// Load Config
-		Config.load();
+		AppInit.defaultInit(ApplicationMode.LOGIN, LoginConfigMarker.class.getPackage().getName(), LoginThreadPools.class, LoginDatabaseConfig.class);
 		
-		// Prepare Database
-		try
-		{
-			DatabaseFactory.getInstance();
-		}
-		catch (SQLException e)
-		{
-			_log.error("FATAL: Failed initializing database. Reason: " + e.getMessage(), e);
-			System.exit(1);
-		}
+		CommonUtil.printSection("Manager");
 		
 		try
 		{
@@ -88,37 +83,38 @@ public final class L2LoginServer
 		}
 		catch (GeneralSecurityException e)
 		{
-			_log.error("FATAL: Failed initializing LoginController. Reason: " + e.getMessage(), e);
-			System.exit(1);
+			LOGGER.error("FATAL: Failed initializing LoginController. Reason: " + e.getMessage(), e);
+			ShutdownManager.exit(TerminationStatus.ENVIRONMENT_MISSING_COMPONENT_OR_SERVICE);
+			return;
 		}
 		
 		GameServerTable.getInstance();
 		
 		loadBanFile();
 		
-		if (Config.EMAIL_SYS_ENABLED)
+		if (EmailConfig.EMAIL_SYS_ENABLED)
 		{
 			MailSystem.getInstance();
 		}
 		
 		InetAddress bindAddress = null;
-		if (!Config.LOGIN_BIND_ADDRESS.equals("*"))
+		if (!LoginServerConfig.LOGIN_BIND_ADDRESS.equals("*"))
 		{
 			try
 			{
-				bindAddress = InetAddress.getByName(Config.LOGIN_BIND_ADDRESS);
+				bindAddress = InetAddress.getByName(LoginServerConfig.LOGIN_BIND_ADDRESS);
 			}
 			catch (UnknownHostException e)
 			{
-				_log.warn("WARNING: The LoginServer bind address is invalid, using all avaliable IPs. Reason: " + e.getMessage(), e);
+				LOGGER.warn("WARNING: The LoginServer bind address is invalid, using all avaliable IPs. Reason: " + e.getMessage(), e);
 			}
 		}
 		
 		final SelectorConfig sc = new SelectorConfig();
-		sc.MAX_READ_PER_PASS = Config.MMO_MAX_READ_PER_PASS;
-		sc.MAX_SEND_PER_PASS = Config.MMO_MAX_SEND_PER_PASS;
-		sc.SLEEP_TIME = Config.MMO_SELECTOR_SLEEP_TIME;
-		sc.HELPER_BUFFER_COUNT = Config.MMO_HELPER_BUFFER_COUNT;
+		sc.MAX_READ_PER_PASS = MMOCoreConfig.MMO_MAX_READ_PER_PASS;
+		sc.MAX_SEND_PER_PASS = MMOCoreConfig.MMO_MAX_SEND_PER_PASS;
+		sc.SLEEP_TIME = MMOCoreConfig.MMO_SELECTOR_SLEEP_TIME;
+		sc.HELPER_BUFFER_COUNT = MMOCoreConfig.MMO_HELPER_BUFFER_COUNT;
 		
 		final L2LoginPacketHandler lph = new L2LoginPacketHandler();
 		final SelectorHelper sh = new SelectorHelper();
@@ -128,35 +124,38 @@ public final class L2LoginServer
 		}
 		catch (IOException e)
 		{
-			_log.error("FATAL: Failed to open Selector. Reason: " + e.getMessage(), e);
-			System.exit(1);
+			LOGGER.error("FATAL: Failed to open Selector. Reason: " + e.getMessage(), e);
+			ShutdownManager.exit(TerminationStatus.ENVIRONMENT_MISSING_COMPONENT_OR_SERVICE);
+			return;
 		}
 		
 		try
 		{
 			_gameServerListener = new GameServerListener();
 			_gameServerListener.start();
-			_log.info("Listening for GameServers on " + Config.GAME_SERVER_LOGIN_HOST + ":" + Config.GAME_SERVER_LOGIN_PORT);
+			LOGGER.info("Listening for GameServers on " + LoginServerConfig.GAME_SERVER_LOGIN_HOST + ":" + LoginServerConfig.GAME_SERVER_LOGIN_PORT);
 		}
 		catch (IOException e)
 		{
-			_log.error("FATAL: Failed to start the Game Server Listener. Reason: " + e.getMessage(), e);
-			System.exit(1);
-		}
-
-		try
-		{
-			_selectorThread.openServerSocket(bindAddress, Config.PORT_LOGIN);
-			_selectorThread.start();
-			_log.info(getClass().getSimpleName() + ": is now listening on: " + Config.LOGIN_BIND_ADDRESS + ":" + Config.PORT_LOGIN);
-		}
-		catch (IOException e)
-		{
-			_log.error("FATAL: Failed to open server socket. Reason: " + e.getMessage(), e);
-			System.exit(1);
+			LOGGER.error("FATAL: Failed to start the Game Server Listener. Reason: " + e.getMessage(), e);
+			ShutdownManager.exit(TerminationStatus.ENVIRONMENT_MISSING_COMPONENT_OR_SERVICE);
+			return;
 		}
 		
-		UPnPService.getInstance();
+		try
+		{
+			_selectorThread.openServerSocket(bindAddress, LoginServerConfig.PORT_LOGIN);
+			_selectorThread.start();
+			LOGGER.info(getClass().getSimpleName() + ": is now listening on: " + LoginServerConfig.LOGIN_BIND_ADDRESS + ":" + LoginServerConfig.PORT_LOGIN);
+		}
+		catch (IOException e)
+		{
+			LOGGER.error("FATAL: Failed to open server socket. Reason: " + e.getMessage(), e);
+			ShutdownManager.exit(TerminationStatus.ENVIRONMENT_MISSING_COMPONENT_OR_SERVICE);
+			return;
+		}
+		
+		AppInit.defaultPostInit(VersionInfo.of(AppInit.class, L2LoginServer.class, MMOClient.class), LoginUPnPConfig.class);
 	}
 	
 	public GameServerListener getGameServerListener()
@@ -192,7 +191,7 @@ public final class L2LoginServer
 							}
 							catch (NumberFormatException nfe)
 							{
-								_log.warn("Skipped: Incorrect ban duration (" + parts[1] + ") on (" + bannedFile.getName() + "). Line: " + lnr.getLineNumber());
+								LOGGER.warn("Skipped: Incorrect ban duration (" + parts[1] + ") on (" + bannedFile.getName() + "). Line: " + lnr.getLineNumber());
 								return;
 							}
 						}
@@ -203,25 +202,25 @@ public final class L2LoginServer
 						}
 						catch (UnknownHostException e)
 						{
-							_log.warn("Skipped: Invalid address (" + address + ") on (" + bannedFile.getName() + "). Line: " + lnr.getLineNumber());
+							LOGGER.warn("Skipped: Invalid address (" + address + ") on (" + bannedFile.getName() + "). Line: " + lnr.getLineNumber());
 						}
 					});
 				//@formatter:on
 			}
 			catch (IOException e)
 			{
-				_log.warn("Error while reading the bans file (" + bannedFile.getName() + "). Details: " + e.getMessage(), e);
+				LOGGER.warn("Error while reading the bans file (" + bannedFile.getName() + "). Details: " + e.getMessage(), e);
 			}
-			_log.info("Loaded " + LoginController.getInstance().getBannedIps().size() + " IP Bans.");
+			LOGGER.info("Loaded " + LoginController.getInstance().getBannedIps().size() + " IP Bans.");
 		}
 		else
 		{
-			_log.warn("IP Bans file (" + bannedFile.getName() + ") is missing or is a directory, skipped.");
+			LOGGER.warn("IP Bans file (" + bannedFile.getName() + ") is missing or is a directory, skipped.");
 		}
 		
-		if (Config.LOGIN_SERVER_SCHEDULE_RESTART)
+		if (LoginServerConfig.LOGIN_SERVER_SCHEDULE_RESTART)
 		{
-			_log.info("Scheduled LS restart after " + Config.LOGIN_SERVER_SCHEDULE_RESTART_TIME + " hours");
+			LOGGER.info("Scheduled LS restart after " + LoginServerConfig.LOGIN_SERVER_SCHEDULE_RESTART_TIME + " hours");
 			_restartLoginServer = new LoginServerRestart();
 			_restartLoginServer.setDaemon(true);
 			_restartLoginServer.start();
@@ -242,7 +241,7 @@ public final class L2LoginServer
 			{
 				try
 				{
-					Thread.sleep(Config.LOGIN_SERVER_SCHEDULE_RESTART_TIME * 3600000);
+					Thread.sleep(LoginServerConfig.LOGIN_SERVER_SCHEDULE_RESTART_TIME * 3600000);
 				}
 				catch (InterruptedException e)
 				{

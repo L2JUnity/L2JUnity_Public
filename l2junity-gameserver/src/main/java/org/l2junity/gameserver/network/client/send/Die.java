@@ -29,6 +29,9 @@ import org.l2junity.gameserver.model.SiegeClan;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.entity.Castle;
 import org.l2junity.gameserver.model.entity.Fort;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerRequestRevive;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
@@ -54,6 +57,19 @@ public class Die implements IClientOutgoingPacket
 		_objectId = activeChar.getObjectId();
 		if (activeChar.isPlayer())
 		{
+			final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerRequestRevive(activeChar.getActingPlayer()), activeChar, BooleanReturn.class);
+			if ((term != null) && !term.getValue())
+			{
+				_toVillage = false;
+				_toClanHall = false;
+				_toCastle = false;
+				_toOutpost = false;
+				_isSweepable = false;
+				_useFeather = activeChar.getAccessLevel().allowFixedRes();
+				_toFortress = false;
+				return;
+			}
+			
 			final L2Clan clan = activeChar.getActingPlayer().getClan();
 			boolean isInCastleDefense = false;
 			boolean isInFortDefense = false;

@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="13900" toLevel="2" name="Sigel">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Max HP + $s1 -->
+		<!-- Updated to Helios -->
+		<!-- Max HP +15%, PvP/PvE Damage Received -5% -->
 		<icon>icon.ensoul_big_ep</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_by_attack">
+				<amount>-5</amount>
+				<type>PK</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_by_attack">
+				<amount>-5</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13901" toLevel="1" name="Shadow Blue">
 		<!-- AUTO GENERATED SKILL -->
@@ -14,16 +30,28 @@
 		<hitTime>1000</hitTime>
 	</skill>
 	<skill id="13902" toLevel="1" name="Fury (Practice)">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Atk. Spd. +1 -->
+		<!-- Update to Helios -->
+		<!-- Atk. Spd. +1% -->
 		<icon>icon.ensoul_big_old</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13903" toLevel="1" name="Acumen (Practice)">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Casting Spd. +1 -->
+		<!-- Update to Helios -->
+		<!-- Casting Spd. +1% -->
 		<icon>icon.ensoul_big_old</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_magic_speed">
+				<amount>1</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13904" toLevel="1" name="Roa's Assistance">
 		<!-- AUTO GENERATED SKILL -->
@@ -37,130 +65,703 @@
 		<isMagic>4</isMagic>
 	</skill>
 	<skill id="13905" toLevel="1" name="Red Libra Talisman - Resurrection">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Resurrects all dead party members and restores 100 of the XP lost. -->
+		<!-- Updated to Helios -->
+		<!-- Resurrects all dead party members and restores 100% of the XP lost. -->
+		<affectLimit>0-0</affectLimit>
+		<affectRange>1000</affectRange>
+		<effectPoint>2</effectPoint>
+		<magicLvl>85</magicLvl>
 		<icon>BranchSys2.icon.g_giant_gem</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>300</coolTime>
 		<reuseDelay>600000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<isMagic>4</isMagic>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>DEAD_PARTY</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<conditions>
+			<condition name="OpResurrection" />
+		</conditions>
+		<effects>
+			<effect name="i_resurrection">
+				<power>100</power>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="13906" toLevel="1" name="Red Libra Talisman - Restoration">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13906" toLevel="1" name="Red Libra Talisman - Recovery">
+		<!-- Updated to Helios -->
 		<!-- Restores all party members' HP/MP/CP and has a chance of dispelling their debuffs. -->
+		<affectRange>1000</affectRange>
+		<magicLvl>85</magicLvl>
 		<icon>BranchSys2.icon.g_giant_gem</icon>
 		<operateType>A1</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>300</coolTime>
 		<reuseDelay>600000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<isMagic>1</isMagic>
+		<effectPoint>1811</effectPoint>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="i_mp_per_max">
+				<power>100</power>
+			</effect>
+			<effect name="i_hp_per_max">
+				<power>100</power>
+			</effect>
+			<effect name="i_cp_per_max">
+				<power>100</power>
+			</effect>
+			<effect name="i_dispel_by_category">
+				<slot>DEBUFF</slot>
+				<rate>40</rate>
+				<max>10</max>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13907" toLevel="1" name="Red Libra Talisman - Cancel">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Cancels all party members' debuffs and makes them immune to debuffs for 7 seconds. -->
+		<abnormalTime>7</abnormalTime>
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalType>ABNORMAL_INVINCIBILITY</abnormalType>
+		<affectRange>1000</affectRange>
+		<magicLvl>85</magicLvl>
 		<icon>BranchSys2.icon.g_giant_gem</icon>
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>300</coolTime>
-		<reuseDelay>100000</reuseDelay>
+		<reuseDelay>600000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<isMagic>1</isMagic>
+		<castRange>600</castRange>
+		<effectPoint>1734</effectPoint>
+		<effectRange>1100</effectRange>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="i_dispel_by_category">
+				<slot>DEBUFF</slot>
+				<rate>100</rate>
+				<max>10</max>
+			</effect>
+			<effect name="p_block_debuff" />
+		</effects>
 	</skill>
-	<skill id="13908" toLevel="1" name="Red Libra Talisman - Speed">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="13908" toLevel="1" name="Red Libra Talisman - Teleport">
+		<!-- Updated to Helios -->
 		<!-- Party's Speed + 70 for 10 seconds. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>10</abnormalTime>
 		<icon>BranchSys2.icon.g_giant_gem</icon>
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
 		<coolTime>300</coolTime>
-		<reuseDelay>100000</reuseDelay>
+		<reuseDelay>600000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_speed">
+				<amount>70</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13909" toLevel="1" name="Red Libra Talisman - Resistance">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Received Damage - 10. -->
+		<!-- Updated to Helios -->
+		<!-- Received Damage - 10%. -->
 		<icon>BranchSys2.icon.g_giant_gem</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_damage_by_attack">
+				<amount>-10</amount>
+				<type>PK</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_by_attack">
+				<amount>-10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13910" toLevel="1" name="Elysium Shaper">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_dagger_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13911" toLevel="1" name="Elysium Cutter">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_sword_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13912" toLevel="1" name="Elysium Slasher">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_two_handed_sword_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13913" toLevel="1" name="Elysium Avenger">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_axe_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13914" toLevel="1" name="Elysium Fighter">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_fist_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13915" toLevel="1" name="Elysium Stormer">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_pole_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13916" toLevel="1" name="Elysium Thrower">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_bow_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13917" toLevel="1" name="Elysium Shooter">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_infinity_shooter_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13918" toLevel="1" name="Elysium Buster">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- M. Atk. + 6, Casting Spd. + 15, M. Critical Rate + 25, M. Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- M. Atk. + 6%, Casting Spd. + 15%, M. Critical Rate + 25, M. Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_infinity_sword_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>25</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13919" toLevel="1" name="Elysium Caster">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- M. Atk. + 6, Casting Spd. + 15, M. Critical Rate + 25, M. Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- M. Atk. + 6%, Casting Spd. + 15%, M. Critical Rate + 25, M. Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_mace_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>25</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13920" toLevel="1" name="Elysium Retributer">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, M. Atk. + 6, Atk. Spd. + 15, Casting Spd. + 15, P. Critical Rate + 82, M. Critical Rate + 25, P. Critical Damage + 7, M. Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, M. Atk. + 6%, Atk. Spd. + 15%, Casting Spd. + 15%, P. Critical Rate + 82, M. Critical Rate + 25, P. Critical Damage + 7%, M. Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_the_staff_of_hero_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>25</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13921" toLevel="1" name="Elysium Dualsword">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_r_dualsword_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13922" toLevel="1" name="Elysium Dual Dagger">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_r_dualdagger_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13923" toLevel="1" name="Elysium Dual Blunt Weapon">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- P. Atk. + 6, Atk. Spd. + 15, P. Critical Rate + 82, P. Critical Damage + 7, P. Skill Critical Damage + 10, Max HP/MP/CP + 15. -->
+		<!-- Updated to Helios -->
+		<!-- P. Atk. + 6%, Atk. Spd. + 15%, P. Critical Rate + 82, P. Critical Damage + 7%, P. Skill Critical Damage + 10%, Max HP/MP/CP + 15%. -->
 		<icon>icon.weapon_r_dualblunt_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>6</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="13924" toLevel="1" name="La Vie En Rose's Radiant Brooch">
 		<!-- Updated to IO -->
@@ -168,9 +769,1887 @@
 		<icon>icon.etc_bm_brooch_lavianrose_i03</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="EnlargeSlot">
+			<effect name="p_enlarge_storage">
 				<amount>12</amount>
 				<type>INVENTORY_NORMAL</type>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13925" toLevel="1" name="Emperor Shunaiman's Authority">
+		<!-- Updated to Helios -->
+		<!-- P. Atk. +7%, Max HP/MP/CP +10%, PvP Damage +25%. -->
+		<icon>icon.skill10318</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_attack_dmg_bonus">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13926" toLevel="1" name="Emperor Shunaiman's Authority">
+		<!-- Updated to Helios -->
+		<!-- M. Atk. +7%, Max HP/MP/CP +10%, PvP Damage +25%. -->
+		<icon>icon.skill10318</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_attack_dmg_bonus">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13927" toLevel="1" name="Special Ability">
+		<!-- Updated to Helios -->
+		<!-- Atk. Spd. +16%, P. Skill Critical Damage +11%, Max HP +26% -->
+		<icon>icon.ensoul_big_old</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>16</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>11</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>26</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13928" toLevel="1" name="Special Ability">
+		<!-- Updated to Helios -->
+		<!-- Casting Spd. +16%, M. Critical Damage +8%, Max HP +26% -->
+		<icon>icon.ensoul_big_old</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_magic_speed">
+				<amount>16</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>26</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13929" toLevel="2" name="Paulina's Battle Enhancement Blessing">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Atk. Spd. +5%, P. Critical Rate +30. -->
+		<!-- Level: 2 Atk. Spd. +15%, P. Critical Rate +60. -->
+		<icon>icon.skill6319</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>
+					<value level="1">30</value>
+					<value level="2">60</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13930" toLevel="2" name="Paulina's Magic Enhancement Blessing">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Casting Spd. +5%, M. Critical Rate +30. -->
+		<!-- Level: 2 Casting Spd. +15%, M. Critical Rate +60. -->
+		<icon>icon.skill6319</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_magic_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>
+					<value level="1">30</value>
+					<value level="2">60</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13931" toLevel="3" name="Set Effect - Paulina's Heavy Armor, 5-piece">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 P. Atk. +5%, +P. Def. 5%. -->
+		<!-- Level: 2 P. Atk. +10%, P. Def. +10%. -->
+		<!-- Level: 3 STR +2, CON +2, P. Atk. +5%, Skill Power +5%, P. Def. +5%, M. Def. +5%. -->
+		<icon>icon.m_class_heavy</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+					<value level="3">5</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+					<value level="3">5</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence" fromLevel="3" toLevel="3">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_power" fromLevel="3" toLevel="3">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_stat_up" fromLevel="3" toLevel="3">
+				<amount>2</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="3" toLevel="3">
+				<amount>2</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13932" toLevel="3" name="Set Effect - Paulina's Light Armor, 5-piece">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Atk. Spd. +5%, Casting Spd. +5%, Movement Speed +5%. -->
+		<!-- Level: 2 Atk. Spd. +15%, Casting Spd. +15%, Movement Speed +15%. -->
+		<!-- Level: 3 STR +2, CON +2, P. Atk. +5%, Atk. Spd. +5%, Attribute Resistance +20, Movement Speed +14. -->
+		<icon>icon.m_class_light</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">5</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">0</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">14</value>
+				</amount>
+				<mode>
+					<value fromLevel="1" toLevel="2">PER</value>
+					<value level="3">DIFF</value>
+				</mode>
+			</effect>
+			<effect name="p_physical_attack" fromLevel="3" toLevel="3">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="3" toLevel="3">
+				<amount>20</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="3" toLevel="3">
+				<amount>20</amount>
+				<attribute>WATER</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="3" toLevel="3">
+				<amount>20</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="3" toLevel="3">
+				<amount>20</amount>
+				<attribute>WIND</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="3" toLevel="3">
+				<amount>20</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="3" toLevel="3">
+				<amount>20</amount>
+				<attribute>DARK</attribute>
+			</effect>
+			<effect name="p_stat_up" fromLevel="3" toLevel="3">
+				<amount>2</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="3" toLevel="3">
+				<amount>2</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13933" toLevel="3" name="Set Effect - Paulina's Robe, 5-piece">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 M. Atk. +5%, Casting Spd. +5%. -->
+		<!-- Level: 2 M. Atk. +15%, Casting Spd. +15%. -->
+		<!-- Level: 3 INT +2, CON +2, M. Atk. +10%, Casting Spd. +10%, Max MP +10%, and MP Consumption -5%. -->
+		<icon>icon.m_class_robe</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">15</value>
+					<value level="3">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp"  fromLevel="3" toLevel="3">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost" fromLevel="3" toLevel="3">
+				<amount>-5</amount>
+				<magicType>0</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost" fromLevel="3" toLevel="3">
+				<amount>-5</amount>
+				<magicType>1</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_stat_up" fromLevel="3" toLevel="3">
+				<amount>2</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="3" toLevel="3">
+				<amount>2</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13934" toLevel="3" name="Paulina's Necklace - Skill Cooldown">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Skill Cooldown -3%. -->
+		<!-- Level: 2 Skill Cooldown -5%. -->
+		<!-- Level: 3 Skill Cooldown -10%. -->
+		<icon>icon.skill5239</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_reuse_delay">
+				<amount>
+					<value level="1">-3</value>
+					<value level="2">-5</value>
+					<value level="3">-10</value>
+				</amount>
+				<magicType>0</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>
+					<value level="1">-3</value>
+					<value level="2">-5</value>
+					<value level="3">-10</value>
+				</amount>
+				<magicType>1</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>
+					<value level="1">-3</value>
+					<value level="2">-5</value>
+					<value level="3">-10</value>
+				</amount>
+				<magicType>3</magicType>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13935" toLevel="3" name="Paulina's Earrings - Vampiric Rage">
+		<!-- Updated to Helios -->
+		<!-- Recover HP by a portion of damage dealt to the enemy, with a certain rate. -->
+		<icon>icon.skill1268</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_vampiric_attack">
+				<amount>
+					<value level="1">4</value>
+					<value level="2">6</value>
+					<value level="3">9</value>
+				</amount>
+				<chance>
+					<value level="1">30</value>
+					<value level="2">30</value>
+					<value level="3">30</value>
+				</chance>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13936" toLevel="3" name="Paulina's Earrings - MP Consumption">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 MP Consumption -2%. -->
+		<!-- Level: 2 MP Consumption -3%. -->
+		<!-- Level: 3 MP Consumption -5%. -->
+		<icon>icon.skill1397</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_magic_mp_cost">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-3</value>
+					<value level="3">-5</value>
+				</amount>
+				<magicType>0</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-3</value>
+					<value level="3">-5</value>
+				</amount>
+				<magicType>1</magicType>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13937" toLevel="3" name="Paulina's Ring - Critical Damage">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 P./M. Critical. Damage +5%. -->
+		<!-- Level: 2 P./M. Critical. Damage +7%. -->
+		<!-- Level: 3 P./M. Critical. Damage +15%. -->
+		<icon>icon.skill0531</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_critical_damage">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">7</value>
+					<value level="3">15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_dmg">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">7</value>
+					<value level="3">15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13938" toLevel="3" name="Paulina's Ring - Critical Rate">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 P./M. Critical Rate +10. -->
+		<!-- Level: 2 P./M. Critical Rate +20. -->
+		<!-- Level: 3 P./M. Critical Rate +40. -->
+		<icon>icon.skill0137</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_critical_rate">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">40</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">40</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13939" toLevel="1" name="Paulina's CON Enhancement Blessing">
+		<!-- Updated to Helios -->
+		<!-- Atk. Spd. +5%, Max HP +25%. -->
+		<icon>icon.skill6319</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13940" toLevel="1" name="Paulina's Battle Enhancement Blessing">
+		<!-- Updated to Helios -->
+		<!-- Atk. Spd. +5%, P. Critical Rate +82. -->
+		<icon>icon.skill6319</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>82</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13941" toLevel="1" name="Paulina's Magic Enhancement Blessing">
+		<!-- Updated to Helios -->
+		<!-- Casting Spd. +15%, M. Atk. +5%. -->
+		<icon>icon.skill6319</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_magic_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13942" toLevel="1" name="Paulina's Battle Enhancement Blessing">
+		<!-- Updated to Helios -->
+		<!-- Atk. Spd. +5%, P. Critical Damage +7%. -->
+		<icon>icon.skill6319</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>7</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13943" toLevel="1" name="Paulina's Battle Enhancement Blessing">
+		<!-- Updated to Helios -->
+		<!-- Atk. Spd. +5%, P. Skill Critical Damage +10%. -->
+		<icon>icon.skill6319</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_skill_critical_damage">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13944" toLevel="1" name="Paulina's Magic Enhancement Blessing">
+		<!-- Updated to Helios -->
+		<!-- Casting Spd. +15%, Atk. Spd. +5%, M. Atk. +5%, P. Atk. +5%. -->
+		<icon>icon.skill6319</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13945" toLevel="1" name="Old Elemental Shirt">
+		<!-- Updated to Helios -->
+		<!-- STR +1, DEX +1, CON +1, INT +1, WIT +1, MEN +1, Max HP/MP +510, Movement Speed +7, 6 Defensive Attributes +6. -->
+		<icon>icon.etc_shirts_a_i04</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>510</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>510</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>7</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>6</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>6</amount>
+				<attribute>WATER</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>6</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>6</amount>
+				<attribute>WIND</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>6</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>6</amount>
+				<attribute>DARK</attribute>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13946" toLevel="1" name="Commando Belt">
+		<!-- Updated to Helios -->
+		<!-- Damage +2%, Damage Received -2%, Weight +12800, Inventory Slots +18. -->
+		<icon>icon.armor_belt_i03</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_pvp_physical_attack_dmg_bonus">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus">
+				<amount>2</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>PK</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_by_attack">
+				<amount>-2</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_weight_limit">
+				<amount>12800</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_enlarge_storage">
+				<amount>18</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13947" toLevel="10" name="PvP Othell">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Skill Power +1% -->
+		<!-- Level: 2 Skill Power +2% -->
+		<!-- Level: 3 Skill Power +3% -->
+		<!-- Level: 4 Skill Power +4% -->
+		<!-- Level: 5 Skill Power +5%, PvP Damage +2% -->
+		<!-- Level: 6 Skill Power +7%, PvP Damage +3% -->
+		<!-- Level: 7 Skill Power +8%, PvP Damage +5% -->
+		<!-- Level: 8 Skill Power +8%, PvP Damage +8% -->
+		<!-- Level: 9 Skill Power +9%, PvP Damage +9% -->
+		<!-- Level: 10 Skill Power +10%, PvP Damage +10% -->
+		<icon>icon.bm_ensoul_stone_pvp</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_skill_power">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_spell_power">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13948" toLevel="10" name="PvP. Iss">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Attack Attribute Bonus +10 -->
+		<!-- Level: 2 Attack Attribute Bonus +20 -->
+		<!-- Level: 3 Attack Attribute Bonus +30 -->
+		<!-- Level: 4 Attack Attribute Bonus +40 -->
+		<!-- Level: 5 Attack Attribute Bonus +50, PvP Damage +2% -->
+		<!-- Level: 6 Attack Attribute Bonus +70, PvP Damage +3% -->
+		<!-- Level: 7 Attack Attribute Bonus +80, PvP Damage +5% -->
+		<!-- Level: 8 Attack Attribute Bonus +80, PvP Damage +8% -->
+		<!-- Level: 9 Attack Attribute Bonus +90, PvP Damage +9% -->
+		<!-- Level: 10 Attack Attribute Bonus +100, PvP Damage +10% -->
+		<icon>icon.bm_ensoul_stone_pvp</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_attribute_add">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+					<value level="6">60</value>
+					<value level="7">70</value>
+					<value level="8">80</value>
+					<value level="9">90</value>
+					<value level="10">100</value>
+				</amount>
+			</effect>
+			<effect name="p_pvp_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13949" toLevel="10" name="PvP. Aeore">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Skill Cooldown -1% -->
+		<!-- Level: 2 Skill Cooldown -2% -->
+		<!-- Level: 3 Skill Cooldown -3% -->
+		<!-- Level: 4 Skill Cooldown -4% -->
+		<!-- Level: 5 Skill Cooldown -5%, PvP Damage +2% -->
+		<!-- Level: 6 Skill Cooldown -7%, PvP Damage +3% -->
+		<!-- Level: 7 Skill Cooldown -8%, PvP Damage +5% -->
+		<!-- Level: 8 Skill Cooldown -8%, PvP Damage +8% -->
+		<!-- Level: 9 Skill Cooldown -9%, PvP Damage +9% -->
+		<!-- Level: 10 Skill Cooldown -10%, PvP Damage +10% -->
+		<icon>icon.bm_ensoul_stone_pvp</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_reuse_delay">
+				<amount>
+					<value level="1">-1</value>
+					<value level="2">-2</value>
+					<value level="3">-3</value>
+					<value level="4">-4</value>
+					<value level="5">-5</value>
+					<value level="6">-6</value>
+					<value level="7">-7</value>
+					<value level="8">-8</value>
+					<value level="9">-9</value>
+					<value level="10">-10</value>
+				</amount>
+				<magicType>0</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>
+					<value level="1">-1</value>
+					<value level="2">-2</value>
+					<value level="3">-3</value>
+					<value level="4">-4</value>
+					<value level="5">-5</value>
+					<value level="6">-6</value>
+					<value level="7">-7</value>
+					<value level="8">-8</value>
+					<value level="9">-9</value>
+					<value level="10">-10</value>
+				</amount>
+				<magicType>1</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13950" toLevel="10" name="PvE. Othell">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Skill Power +1% -->
+		<!-- Level: 2 Skill Power +2% -->
+		<!-- Level: 3 Skill Power +3% -->
+		<!-- Level: 4 Skill Power +4% -->
+		<!-- Level: 5 Skill Power +5%, PvE Damage +2% -->
+		<!-- Level: 6 Skill Power +7%, PvE Damage +3% -->
+		<!-- Level: 7 Skill Power +8%, PvE Damage +5% -->
+		<!-- Level: 8 Skill Power +8%, PvE Damage +8% -->
+		<!-- Level: 9 Skill Power +9%, PvE Damage +9% -->
+		<!-- Level: 10 Skill Power +10%, PvE Damage +10% -->
+		<icon>icon.bm_ensoul_stone_pve</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_skill_power">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_spell_power">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13951" toLevel="10" name="PvE. Iss">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Attack Attribute Bonus +10 -->
+		<!-- Level: 2 Attack Attribute Bonus +20 -->
+		<!-- Level: 3 Attack Attribute Bonus +30 -->
+		<!-- Level: 4 Attack Attribute Bonus +40 -->
+		<!-- Level: 5 Attack Attribute Bonus +50, PvE Damage +2% -->
+		<!-- Level: 6 Attack Attribute Bonus +70, PvE Damage +3% -->
+		<!-- Level: 7 Attack Attribute Bonus +80, PvE Damage +5% -->
+		<!-- Level: 8 Attack Attribute Bonus +80, PvE Damage +8% -->
+		<!-- Level: 9 Attack Attribute Bonus +90, PvE Damage +9% -->
+		<!-- Level: 10 Attack Attribute Bonus +100, PvE Damage +10% -->
+		<icon>icon.bm_ensoul_stone_pve</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_attribute_add">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+					<value level="6">60</value>
+					<value level="7">70</value>
+					<value level="8">80</value>
+					<value level="9">90</value>
+					<value level="10">100</value>
+				</amount>
+			</effect>
+			<effect name="p_pve_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13952" toLevel="10" name="PvE. Aeore">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Skill Cooldown -1% -->
+		<!-- Level: 2 Skill Cooldown -2% -->
+		<!-- Level: 3 Skill Cooldown -3% -->
+		<!-- Level: 4 Skill Cooldown -4% -->
+		<!-- Level: 5 Skill Cooldown -5%, PvE Damage +2% -->
+		<!-- Level: 6 Skill Cooldown -7%, PvE Damage +3% -->
+		<!-- Level: 7 Skill Cooldown -8%, PvE Damage +5% -->
+		<!-- Level: 8 Skill Cooldown -8%, PvE Damage +8% -->
+		<!-- Level: 9 Skill Cooldown -9%, PvE Damage +9% -->
+		<!-- Level: 10 Skill Cooldown -10%, PvE Damage +10% -->
+		<icon>icon.bm_ensoul_stone_pve</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_reuse_delay">
+				<amount>
+					<value level="1">-1</value>
+					<value level="2">-2</value>
+					<value level="3">-3</value>
+					<value level="4">-4</value>
+					<value level="5">-5</value>
+					<value level="6">-6</value>
+					<value level="7">-7</value>
+					<value level="8">-8</value>
+					<value level="9">-9</value>
+					<value level="10">-10</value>
+				</amount>
+				<magicType>0</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>
+					<value level="1">-1</value>
+					<value level="2">-2</value>
+					<value level="3">-3</value>
+					<value level="4">-4</value>
+					<value level="5">-5</value>
+					<value level="6">-6</value>
+					<value level="7">-7</value>
+					<value level="8">-8</value>
+					<value level="9">-9</value>
+					<value level="10">-10</value>
+				</amount>
+				<magicType>1</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13953" toLevel="10" name="Activate.Stun">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Stun activated for 3 seconds when single attack skill is used. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 2 Stun activated for 3 seconds when single attack skill is used. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 3 Stun activated for 3 seconds when single attack skill is used. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 4 Stun activated for 3 seconds when single attack skill is used, PvP/PvE damage +1%. Activated Skill Cooldown 60 seconds. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 5 Stun activated for 4 seconds when single attack skill is used, PvP/PvE damage +2%. Activated Skill Cooldown 50 seconds. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 6 Stun activated for 4 seconds when single attack skill is used, PvP/PvE damage +3%. Activated Skill Cooldown 30 seconds. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 7 Stun activated for 5 seconds when single attack skill is used, PvP/PvE damage +5%. Activated Skill Cooldown 30 seconds. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 8 Stun activated for 5 seconds when single attack skill is used, PvP/PvE damage +8%. Activated Skill Cooldown 20 seconds. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 9 Stun activated for 5 seconds when single attack skill is used, PvP/PvE damage +9%. Activated Skill Cooldown 20 seconds. Activated Stun ignores debuff immunity. -->
+		<!-- Level: 10 Stun activated for 5 seconds when single attack skill is used, PvP/PvE damage +10%. Activated Skill Cooldown 20 seconds. Activated Stun ignores debuff immunity. -->
+		<icon>icon.bm_ensoul_stone_hidden</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_trigger_skill_by_magic_type">
+				<magicTypes>0;1</magicTypes>
+				<skillId>13956</skillId>
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</skillLevel>
+				<chance>100</chance>
+				<targetType>ENEMY</targetType>
+			</effect>
+			<effect name="p_pvp_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13954" toLevel="10" name="Activate.Silence">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Silence activated for 3 seconds when single attack skill is used. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 2 Silence activated for 3 seconds when single attack skill is used. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 3 Silence activated for 3 seconds when single attack skill is used. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 4 Silence activated for 3 seconds when single attack skill is used, PvP/PvE damage +1%. Activated Skill Cooldown 60 seconds. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 5 Silence activated for 4 seconds when single attack skill is used, PvP/PvE damage +2%. Activated Skill Cooldown 50 seconds. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 6 Silence activated for 4 seconds when single attack skill is used, PvP/PvE damage +3%. Activated Skill Cooldown 30 seconds. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 7 Silence activated for 5 seconds when single attack skill is used, PvP/PvE damage +5%. Activated Skill Cooldown 30 seconds. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 8 Silence activated for 5 seconds when single attack skill is used, PvP/PvE damage +8%. Activated Skill Cooldown 20 seconds. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 9 Silence activated for 5 seconds when single attack skill is used, PvP/PvE damage +9%. Activated Skill Cooldown 20 seconds. Activated Silence ignores debuff immunity. -->
+		<!-- Level: 10 Silence activated for 5 seconds when single attack skill is used, PvP/PvE damage +10%. Activated Skill Cooldown 20 seconds. Activated Silence ignores debuff immunity. -->
+		<icon>icon.bm_ensoul_stone_hidden</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_trigger_skill_by_magic_type">
+				<magicTypes>0;1</magicTypes>
+				<skillId>13957</skillId>
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</skillLevel>
+				<chance>100</chance>
+				<targetType>ENEMY</targetType>
+			</effect>
+			<effect name="p_pvp_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13955" toLevel="10" name="Activate.Hold">
+		<!-- Updated to Helios -->
+		<!-- Level: 1 Hold activated for 3 seconds when single attack skill is used. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 2 Hold activated for 3 seconds when single attack skill is used. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 3 Hold activated for 3 seconds when single attack skill is used. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 4 Hold activated for 5 seconds when single attack skill is used, PvP/PvE damage +1%. Activated Skill Cooldown 60 seconds. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 5 Hold activated for 7 seconds when single attack skill is used, PvP/PvE damage +2%. Activated Skill Cooldown 50 seconds. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 6 Hold activated for 7 seconds when single attack skill is used, PvP/PvE damage +3%. Activated Skill Cooldown 30 seconds. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 7 Hold activated for 10 seconds when single attack skill is used, PvP/PvE damage +5%. Activated Skill Cooldown 30 seconds. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 8 Hold activated for 10 seconds when single attack skill is used, PvP/PvE damage +8%. Activated Skill Cooldown 20 seconds. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 9 Hold activated for 10 seconds when single attack skill is used, PvP/PvE damage +9%. Activated Skill Cooldown 20 seconds. Activated Hold ignores debuff immunity. -->
+		<!-- Level: 10 Hold activated for 10 seconds when single attack skill is used, PvP/PvE damage +10%. Activated Skill Cooldown 20 seconds. Activated Hold ignores debuff immunity. -->
+		<icon>icon.bm_ensoul_stone_hidden</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_trigger_skill_by_magic_type">
+				<magicTypes>0;1</magicTypes>
+				<skillId>13958</skillId>
+				<skillLevel>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">3</value>
+					<value level="4">4</value>
+					<value level="5">5</value>
+					<value level="6">6</value>
+					<value level="7">7</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</skillLevel>
+				<chance>100</chance>
+				<targetType>ENEMY</targetType>
+			</effect>
+			<effect name="p_pvp_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pvp_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_magical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_attack_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_pve_physical_skill_dmg_bonus" fromLevel="5" toLevel="10">
+				<amount>
+					<value level="5">2</value>
+					<value level="6">3</value>
+					<value level="7">5</value>
+					<value level="8">8</value>
+					<value level="9">9</value>
+					<value level="10">10</value>
+				</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13956" toLevel="10" name="Activate.Stun">
+		<!-- Updated to Helios -->
+		<!-- Stun makes movement temporarily impossible. Ignores debuff immunity. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>
+			<value level="1">3</value>
+			<value level="2">3</value>
+			<value level="3">3</value>
+			<value level="4">3</value>
+			<value level="5">5</value>
+			<value level="6">5</value>
+			<value level="7">4</value>
+			<value level="8">4</value>
+			<value level="9">4</value>
+			<value level="10">4</value>
+		</abnormalTime>
+		<abnormalType>STUN</abnormalType>
+		<abnormalVisualEffect>STUN</abnormalVisualEffect>
+		<activateRate>-1</activateRate>
+		<basicProperty>PHYSICAL</basicProperty>
+		<trait>SHOCK</trait>
+		<icon>icon.bm_ensoul_stone_hidden</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<castRange>1000</castRange>
+		<reuseDelay>
+			<value level="1">60000</value>
+			<value level="2">60000</value>
+			<value level="3">60000</value>
+			<value level="4">60000</value>
+			<value level="5">50000</value>
+			<value level="6">30000</value>
+			<value level="7">30000</value>
+			<value level="8">20000</value>
+			<value level="9">20000</value>
+			<value level="10">20000</value>
+		</reuseDelay>
+		<effectPoint>-100</effectPoint>
+		<isDebuff>1</isDebuff>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<staticReuse>true</staticReuse>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13957" toLevel="10" name="Activate.Silence">
+		<!-- Updated to Helios -->
+		<!-- Silence has temporarily restrained skills. Ignores debuff immunity. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>
+			<value level="1">3</value>
+			<value level="2">3</value>
+			<value level="3">3</value>
+			<value level="4">3</value>
+			<value level="5">5</value>
+			<value level="6">5</value>
+			<value level="7">4</value>
+			<value level="8">4</value>
+			<value level="9">4</value>
+			<value level="10">4</value>
+		</abnormalTime>
+		<abnormalType>SILENCE</abnormalType>
+		<abnormalVisualEffect>SILENCE</abnormalVisualEffect>
+		<activateRate>-1</activateRate>
+		<basicProperty>MAGIC</basicProperty>
+		<trait>DERANGEMENT</trait>
+		<icon>icon.bm_ensoul_stone_hidden</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<castRange>1000</castRange>
+		<reuseDelay>
+			<value level="1">60000</value>
+			<value level="2">60000</value>
+			<value level="3">60000</value>
+			<value level="4">60000</value>
+			<value level="5">50000</value>
+			<value level="6">30000</value>
+			<value level="7">30000</value>
+			<value level="8">20000</value>
+			<value level="9">20000</value>
+			<value level="10">20000</value>
+		</reuseDelay>
+		<effectPoint>-100</effectPoint>
+		<isDebuff>1</isDebuff>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<staticReuse>true</staticReuse>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_block_spell" />
+			<effect name="p_block_skill_physical" />
+		</effects>
+	</skill>
+	<skill id="13958" toLevel="10" name="Activate.Hold">
+		<!-- Updated to Helios -->
+		<!-- Hold has made movement temporarily impossible. Ignores debuff immunity. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>
+			<value level="1">3</value>
+			<value level="2">3</value>
+			<value level="3">3</value>
+			<value level="4">5</value>
+			<value level="5">7</value>
+			<value level="6">7</value>
+			<value level="7">10</value>
+			<value level="8">10</value>
+			<value level="9">10</value>
+			<value level="10">10</value>
+		</abnormalTime>
+		<abnormalType>ROOT_MAGICALLY</abnormalType>
+		<abnormalVisualEffect>ROOT</abnormalVisualEffect>
+		<activateRate>-1</activateRate>
+		<trait>HOLD</trait>
+		<basicProperty>MAGIC</basicProperty>
+		<icon>icon.bm_ensoul_stone_hidden</icon>
+		<operateType>A2</operateType>
+		<targetType>ENEMY_ONLY</targetType>
+		<affectScope>SINGLE</affectScope>
+		<castRange>1000</castRange>
+		<reuseDelay>
+			<value level="1">60000</value>
+			<value level="2">60000</value>
+			<value level="3">60000</value>
+			<value level="4">60000</value>
+			<value level="5">50000</value>
+			<value level="6">30000</value>
+			<value level="7">30000</value>
+			<value level="8">20000</value>
+			<value level="9">20000</value>
+			<value level="10">20000</value>
+		</reuseDelay>
+		<effectPoint>-100</effectPoint>
+		<isDebuff>1</isDebuff>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<staticReuse>true</staticReuse>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_block_move" />
+			<effect name="p_defence_trait">
+				<HOLD>100</HOLD>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13959" toLevel="1" name="Mammon's Talisman - Skill Power">
+		<!-- Updated to Helios -->
+		<!-- Skill Power +4%. -->
+		<icon>icon.bm_magic_square_talisman</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_skill_power">
+				<amount>4</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_spell_power">
+				<amount>4</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13960" toLevel="1" name="Mammon's Talisman Box - Attack Attribute">
+		<!-- Updated to Helios -->
+		<!-- Attack Attribute Bonus +40. -->
+		<icon>icon.bm_magic_square_talisman</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_attack_attribute_add">
+				<amount>40</amount>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13961" toLevel="1" name="Mammon's Talisman - Skill Cooldown">
+		<!-- Updated to Helios -->
+		<!-- Skill Cooldown -4%. -->
+		<icon>icon.bm_magic_square_talisman</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_reuse_delay">
+				<amount>-4</amount>
+				<magicType>0</magicType>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-4</amount>
+				<magicType>1</magicType>
+				<mode>PER</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13962" toLevel="1" name="Duo's Bracelet">
+		<!-- Updated to Helios -->
+		<!-- CON +2, MEN +2 -->
+		<icon>icon.dimension_bracelet_i05</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="13963" toLevel="1" name="Protector's Guardian Earrings">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Maximum MP +49, Maximum CP +10%%, Defense/Magical Resistance +3%%, Stun/Mental attack and defense success rate +30%%, Vampiric Rage +4%% -->
+		<icon>icon.accessory_earring_of_hero_i01</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="13964" toLevel="1" name="Bracelet of the Conqueror - CON">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Up to 5 Talismans can be equipped. Increases by up to 531 HP. CON +3 -->
+		<icon>icon.ertheia_bracelet_i01</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="13965" toLevel="1" name="Bracelet of the Conqueror - MEN">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Up to 5 Talismans can be equipped. Increases by up to 531 HP. MEN +3 -->
+		<icon>icon.ertheia_bracelet_i01</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="13966" toLevel="1" name="Bracelet of the Conqueror - DEX">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Up to 5 Talismans can be equipped. Increases by up to 531 HP. DEX +3 -->
+		<icon>icon.ertheia_bracelet_i01</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="13967" toLevel="1" name="Bracelet of the Conqueror - WIT">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Up to 5 Talismans can be equipped. Increases by up to 531 HP. WIT +3 -->
+		<icon>icon.ertheia_bracelet_i01</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="13968" toLevel="1" name="Bracelet of the Conqueror - STR">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Up to 5 Talismans can be equipped. Increases by up to 531 HP. STR +3 -->
+		<icon>icon.ertheia_bracelet_i01</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="13969" toLevel="1" name="Bracelet of the Conqueror - INT">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Up to 5 Talismans can be equipped. Increases by up to 531 HP. INT +3 -->
+		<icon>icon.ertheia_bracelet_i01</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="13970" toLevel="10" name="Sayha's Talisman">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Level: 1 Receives a boosting effect for P. Defense by 112, M. Defense by 74, and XP/SP by 1%. -->
+		<!-- Level: 2 Receives a boosting effect for P. Defense by 225, M. Defense by 147, and XP/SP by 2%. -->
+		<!-- Level: 3 Receives a boosting effect for P. Defense by 450, M. Defense by 294, and XP/SP by 3%. -->
+		<!-- Level: 4 Receives a boosting effect for P. Defense by 676, M. Defense by 441, and XP/SP by 5%. -->
+		<!-- Level: 5 Receives a boosting effect for P. Defense by 901, M. Defense by 589, and XP/SP by 7%. -->
+		<!-- Level: 6 Receives a boosting effect for P. Defense by 1126, M. Defense by 736, and XP/SP by 10%. -->
+		<!-- Level: 7 Receives a boosting effect for P. Defense by 1351, M. Defense by 833, and XP/SP by 15%. -->
+		<!-- Level: 8 Receives a boosting effect for P. Defense by 1576, M. Defense by 1030, and XP/SP by 20%. -->
+		<!-- Level: 9 Receives a boosting effect for Defense by 1801, M. Defense by 1178, XP/SP by 25% and Recovery Potion and Miracle Potion by 1000. -->
+		<!-- Level: 10 Receives a boosting effect for Defense by 2027, M. Defense by 1325, XP/SP by 30% and Recovery Potion and Miracle Potion by 2000. -->
+		<icon>icon.bm_sayhas_talisman</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<isMagic>3</isMagic>
+	</skill>
+	<skill id="13971" toLevel="4" name="Sayha's Trust">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Level: 1 Receives the effect that increases skill power by 2% and decreases cooldown by 2%. -->
+		<!-- Level: 2 Receives the effect that increases skill power by 3% and decreases cooldown by 3%. -->
+		<!-- Level: 3 Receives the effect that increases skill power by 5% and decreases cooldown by 5%. -->
+		<!-- Level: 4 Receives the effect that increases skill power by 9% and decreases cooldown by 5%. -->
+		<icon>icon.bm_sayhas_talisman</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<isMagic>3</isMagic>
+	</skill>
+	<skill id="13972" toLevel="4" name="Sayha's Benefaction">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Decreases damage received by 10% for 45 seconds. -->
+		<icon>
+			<value level="1">icon.sayhas_talisman_g_Lv1</value>
+			<value level="2">icon.sayhas_talisman_g_Lv2</value>
+			<value level="3">icon.sayhas_talisman_g_Lv3</value>
+			<value level="4">icon.sayhas_talisman_g_Lv4</value>
+		</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<castRange>900</castRange>
+		<hitTime>300</hitTime>
+		<coolTime>300</coolTime>
+		<reuseDelay>
+			<value level="1">600000</value>
+			<value level="2">420000</value>
+			<value level="3">300000</value>
+			<value level="4">180000</value>
+		</reuseDelay>
+		<effectPoint>1</effectPoint>
+	</skill>
+	<skill id="13973" toLevel="4" name="Sayha's Encouragement">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Increases PVE damage by 8% for 45 seconds. -->
+		<icon>
+			<value level="1">icon.sayhas_talisman_pve_Lv1</value>
+			<value level="2">icon.sayhas_talisman_pve_Lv2</value>
+			<value level="3">icon.sayhas_talisman_pve_Lv3</value>
+			<value level="4">icon.sayhas_talisman_pve_Lv4</value>
+		</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<castRange>900</castRange>
+		<hitTime>300</hitTime>
+		<coolTime>300</coolTime>
+		<reuseDelay>
+			<value level="1">600000</value>
+			<value level="2">420000</value>
+			<value level="3">300000</value>
+			<value level="4">180000</value>
+		</reuseDelay>
+		<effectPoint>1</effectPoint>
+	</skill>
+	<skill id="13974" toLevel="4" name="Sayha's Anger">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Increases PvP damage by 8% for 45 seconds. -->
+		<icon>
+			<value level="1">icon.sayhas_talisman_pvp_Lv1</value>
+			<value level="2">icon.sayhas_talisman_pvp_Lv2</value>
+			<value level="3">icon.sayhas_talisman_pvp_Lv3</value>
+			<value level="4">icon.sayhas_talisman_pvp_Lv4</value>
+		</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<castRange>900</castRange>
+		<hitTime>300</hitTime>
+		<coolTime>300</coolTime>
+		<reuseDelay>
+			<value level="1">600000</value>
+			<value level="2">420000</value>
+			<value level="3">300000</value>
+			<value level="4">180000</value>
+		</reuseDelay>
+		<effectPoint>1</effectPoint>
+	</skill>
+	<skill id="13975" toLevel="1" name="Nevit's Cloak of Light">
+		<!-- Updated to GC -->
+		<!-- Damage received -10%%, All basic stats +3 -->
+		<icon>BranchSys2.Icon.7anni_cloack_i02</icon>
+		<operateType>P</operateType>
+		<targetType>SELF</targetType>
+		<effects>
+			<effect name="p_damage_by_attack">
+				<amount>-10</amount>
+				<type>PK</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_by_attack">
+				<amount>-10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>MEN</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>LUC</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>CHA</stat>
 			</effect>
 		</effects>
 	</skill>

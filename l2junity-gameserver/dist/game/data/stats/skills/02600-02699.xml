@@ -86,7 +86,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.8130">
 						<item id="13259" count="1" />
@@ -157,7 +157,6 @@
 		<!-- Lvl 1: Blue Crystal of Fantasy -->
 		<!-- Lvl 2: Green Crystal of Fantasy -->
 		<!-- Lvl 3: Red Crystal of Fantasy -->
-		<table name="#amount"> 50000 100000 200000 </table>
 		<hitTime>200</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
@@ -175,7 +174,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="GiveSp">
+			<effect name="i_sp">
 				<sp>
 					<value level="1">50000</value>
 					<value level="2">100000</value>
@@ -186,9 +185,6 @@
 	</skill>
 	<skill id="2609" toLevel="20" name="Scroll of Escape: Talking Island Village">
 		<!-- Confirmed CT2.5 -->
-		<table name="#coordX"> -84200 46915 9723 -45208 115158 -80831 -12728 15633 17860 83378 105760 111388 82916 85289 117052 146818 147922 43840 87326 -118092 </table>
-		<table name="#coordY"> 244566 51441 15576 -112502 -178170 149808 122726 142962 170191 147999 113064 219331 53210 16225 76884 25807 -55316 -47779 -143370 46955 </table>
-		<table name="#coordZ"> -3728 -2976 -4568 -240 -880 -3040 -3112 -2696 -3496 -3400 -3176 -3544 -1488 -3672 -2688 -2008 -2728 -792 -1319 342 </table>
 		<hitTime>20000</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeId>
@@ -228,7 +224,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>
 					<value level="1">-84200</value>
 					<value level="2">46915</value>
@@ -315,7 +311,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="AddTeleportBookmarkSlot">
+			<effect name="i_bookmark_add_slot">
 				<amount>3</amount>
 			</effect>
 		</effects>
@@ -391,7 +387,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>13854</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -522,7 +518,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>32544</npcId>
 				<npcCount>1</npcCount>
 			</effect>
@@ -675,7 +671,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>111</transformationId>
 			</effect>
 		</effects>
@@ -703,7 +699,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>112</transformationId>
 			</effect>
 		</effects>
@@ -772,7 +768,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>20</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -794,7 +790,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>20</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -809,6 +805,17 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>EVENT</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="2638" toLevel="1" name="5th Anniversary Event Box">
 		<!-- Confirmed CT2.5 -->
@@ -829,7 +836,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16.6">
 						<item id="9546" count="1" />
@@ -872,7 +879,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16.6">
 						<item id="9546" count="2" />
@@ -915,7 +922,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="9.0">
 						<item id="10260" count="1" />
@@ -973,7 +980,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="9.0">
 						<item id="10260" count="2" />
@@ -1031,7 +1038,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="9.0">
 						<item id="10260" count="3" />
@@ -1089,7 +1096,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="7.14">
 						<item id="7122" count="1" />
@@ -1156,7 +1163,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="7.14">
 						<item id="7122" count="2" />
@@ -1225,7 +1232,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>20000</value>
+				<amount>20000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -1250,7 +1257,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>20000</value>
+				<amount>20000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -1272,7 +1279,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RefuelAirship">
+			<effect name="i_refuel_airship">
 				<value>25</value>
 			</effect>
 		</effects>
@@ -1295,16 +1302,13 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RefuelAirship">
+			<effect name="i_refuel_airship">
 				<value>100</value>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="2649" toLevel="9" name="Scroll of Escape: Gludin Village">
 		<!-- Confirmed CT2.5 -->
-		<table name="#coordX"> -80831 15633 83378 111388 82916 146818 147922 43840 87326 </table>
-		<table name="#coordY"> 149808 142962 147999 219331 53210 25807 -55316 -47779 -143370 </table>
-		<table name="#coordZ"> -3040 -2696 -3400 -3544 -1488 -2008 -2728 -792 -1319 </table>
 		<hitTime>200</hitTime>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
@@ -1334,7 +1338,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>
 					<value level="1">-80831</value>
 					<value level="2">15633</value>
@@ -1396,7 +1400,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>912</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1439,7 +1443,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>913</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1470,7 +1474,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>914</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1501,7 +1505,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>915</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1545,7 +1549,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>917</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1576,7 +1580,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>918</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1607,7 +1611,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>919</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1647,7 +1651,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>922</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1688,7 +1692,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>923</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1728,7 +1732,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>924</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1771,7 +1775,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1532</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1814,7 +1818,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1533</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1845,7 +1849,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1535</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1876,7 +1880,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1536</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1907,7 +1911,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1537</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1938,7 +1942,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>1538</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -1978,7 +1982,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>928</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -2009,7 +2013,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>929</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -2040,7 +2044,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>930</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -2071,7 +2075,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SetSkill">
+			<effect name="i_set_skill">
 				<skillId>931</skillId>
 				<skillLvl>1</skillLvl>
 			</effect>
@@ -2101,7 +2105,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>121</transformationId>
 			</effect>
 		</effects>
@@ -2130,7 +2134,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>122</transformationId>
 			</effect>
 		</effects>
@@ -2157,19 +2161,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>10</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>10</transformationId>
 			</effect>
 		</effects>
@@ -2196,19 +2201,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>11</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>11</transformationId>
 			</effect>
 		</effects>
@@ -2235,19 +2241,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>12</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>12</transformationId>
 			</effect>
 		</effects>
@@ -2274,19 +2281,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>13</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>13</transformationId>
 			</effect>
 		</effects>
@@ -2313,19 +2321,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>14</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>14</transformationId>
 			</effect>
 		</effects>
@@ -2352,19 +2361,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>15</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>15</transformationId>
 			</effect>
 		</effects>
@@ -2391,19 +2401,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>16</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>16</transformationId>
 			</effect>
 		</effects>
@@ -2430,19 +2441,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>17</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>17</transformationId>
 			</effect>
 		</effects>
@@ -2469,19 +2481,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>18</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>18</transformationId>
 			</effect>
 		</effects>
@@ -2508,19 +2521,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>19</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>19</transformationId>
 			</effect>
 		</effects>
@@ -2547,19 +2561,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>20</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>20</transformationId>
 			</effect>
 		</effects>
@@ -2586,19 +2601,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="81" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>21</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>21</transformationId>
 			</effect>
 		</effects>
@@ -2625,19 +2641,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>10</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>10</transformationId>
 			</effect>
 		</effects>
@@ -2664,19 +2681,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>11</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>11</transformationId>
 			</effect>
 		</effects>
@@ -2703,19 +2721,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>12</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>12</transformationId>
 			</effect>
 		</effects>
@@ -2742,19 +2761,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>13</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>13</transformationId>
 			</effect>
 		</effects>
@@ -2781,19 +2801,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>14</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>14</transformationId>
 			</effect>
 		</effects>
@@ -2820,19 +2841,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>15</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>15</transformationId>
 			</effect>
 		</effects>
@@ -2859,19 +2881,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>16</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>16</transformationId>
 			</effect>
 		</effects>
@@ -2898,19 +2921,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>17</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>17</transformationId>
 			</effect>
 		</effects>
@@ -2937,19 +2961,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>18</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>18</transformationId>
 			</effect>
 		</effects>
@@ -2976,19 +3001,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>19</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>19</transformationId>
 			</effect>
 		</effects>
@@ -3015,19 +3041,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>20</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>20</transformationId>
 			</effect>
 		</effects>
@@ -3054,19 +3081,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="82" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>21</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>21</transformationId>
 			</effect>
 		</effects>
@@ -3093,19 +3121,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="83" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>10</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>10</transformationId>
 			</effect>
 		</effects>
@@ -3132,19 +3161,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="83" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>11</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>11</transformationId>
 			</effect>
 		</effects>
@@ -3171,19 +3201,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="83" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>12</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>12</transformationId>
 			</effect>
 		</effects>
@@ -3210,19 +3241,20 @@
 		<irreplacableBuff>true</irreplacableBuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="2955">
+		<!-- TODO: Update or cleanup -->
+		<!-- TODO: Update or cleanup <cond msgId="2955">
 			<and>
 				<player siegeZone="147" />
 				<player siegeSide="83" />
 			</and>
-		</cond>
+		</cond> -->
 		<conditions>
 			<condition name="CanTransform">
 				<transformId>13</transformId>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>13</transformationId>
 			</effect>
 		</effects>

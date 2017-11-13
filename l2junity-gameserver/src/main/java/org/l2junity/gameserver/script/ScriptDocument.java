@@ -30,12 +30,9 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-/**
- *
- */
 public class ScriptDocument
 {
-	private static final Logger _log = LoggerFactory.getLogger(ScriptDocument.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ScriptDocument.class);
 	
 	private Document _document;
 	private final String _name;
@@ -59,18 +56,18 @@ public class ScriptDocument
 			{
 				x = sxe.getException();
 			}
-			_log.warn(getClass().getSimpleName() + ": " + x.getMessage());
+			LOGGER.warn(x.getMessage());
 		}
 		catch (ParserConfigurationException pce)
 		{
 			// Parser with specified options can't be built
-			_log.warn("", pce);
+			LOGGER.warn("", pce);
 			
 		}
 		catch (IOException ioe)
 		{
 			// I/O error
-			_log.warn("", ioe);
+			LOGGER.warn("", ioe);
 		}
 	}
 	

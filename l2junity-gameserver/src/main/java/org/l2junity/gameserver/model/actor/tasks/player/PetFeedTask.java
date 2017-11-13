@@ -22,6 +22,9 @@ import java.util.List;
 
 import org.l2junity.gameserver.handler.IItemHandler;
 import org.l2junity.gameserver.handler.ItemHandler;
+import org.l2junity.gameserver.model.PetData;
+import org.l2junity.gameserver.model.PetLevelData;
+import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
@@ -35,7 +38,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PetFeedTask implements Runnable
 {
-	private static final Logger _log = LoggerFactory.getLogger(PetFeedTask.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PetFeedTask.class);
 	
 	private final PlayerInstance _player;
 	
@@ -49,6 +52,13 @@ public class PetFeedTask implements Runnable
 	{
 		if (_player != null)
 		{
+			final L2PetInstance pet = _player.getPet();
+			if (pet == null)
+			{
+				LOGGER.warn("Player {} has no pet!", _player);
+				return;
+			}
+			
 			try
 			{
 				if (!_player.isMounted() || (_player.getMountNpcId() == 0) || (_player.getPetData(_player.getMountNpcId()) == null))
@@ -71,11 +81,26 @@ public class PetFeedTask implements Runnable
 					_player.sendPacket(SystemMessageId.YOU_ARE_OUT_OF_FEED_MOUNT_STATUS_CANCELED);
 				}
 				
-				List<Integer> foodIds = _player.getPetData(_player.getMountNpcId()).getFood();
+				final PetData petData = _player.getPetData(_player.getMountNpcId());
+				if (petData == null)
+				{
+					LOGGER.warn("Missing pet data for pet {}", _player.getPet());
+					return;
+				}
+				
+				final PetLevelData petLevelData = petData.getPetLevelData(pet.getLevel());
+				if (petLevelData == null)
+				{
+					LOGGER.warn("Missing pet level data for pet {} level {}", pet, pet.getLevel());
+					return;
+				}
+				
+				final List<Integer> foodIds = petLevelData.getFood();
 				if (foodIds.isEmpty())
 				{
 					return;
 				}
+				
 				ItemInstance food = null;
 				for (int id : foodIds)
 				{
@@ -89,11 +114,11 @@ public class PetFeedTask implements Runnable
 				
 				if ((food != null) && _player.isHungry())
 				{
-					IItemHandler handler = ItemHandler.getInstance().getHandler(food.getEtcItem());
+					final IItemHandler handler = ItemHandler.getInstance().getHandler(food.getEtcItem());
 					if (handler != null)
 					{
 						handler.useItem(_player, food, false);
-						SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.YOUR_PET_WAS_HUNGRY_SO_IT_ATE_S1);
+						final SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.YOUR_PET_WAS_HUNGRY_SO_IT_ATE_S1);
 						sm.addItemName(food.getId());
 						_player.sendPacket(sm);
 					}
@@ -101,7 +126,7 @@ public class PetFeedTask implements Runnable
 			}
 			catch (Exception e)
 			{
-				_log.error("Mounted Pet [NpcId: " + _player.getMountNpcId() + "] a feed task error has occurred", e);
+				LOGGER.error("Mounted Pet [NpcId: {}] a feed task error has occurred", _player.getMountNpcId(), e);
 			}
 		}
 	}

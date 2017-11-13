@@ -21,7 +21,9 @@ package org.l2junity.gameserver.network.client.send;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.l2junity.gameserver.enums.PartyMatchingRoomLevelType;
 import org.l2junity.gameserver.instancemanager.MatchingRoomManager;
+import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.matching.MatchingRoom;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
@@ -37,9 +39,9 @@ public class ListPartyWaiting implements IClientOutgoingPacket
 	
 	private static final int NUM_PER_PAGE = 64;
 	
-	public ListPartyWaiting(int level, int location, int page)
+	public ListPartyWaiting(PartyMatchingRoomLevelType type, int location, int page, int requestorLevel)
 	{
-		final List<MatchingRoom> rooms = MatchingRoomManager.getInstance().getPartyMathchingRooms(location, level);
+		final List<MatchingRoom> rooms = MatchingRoomManager.getInstance().getPartyMathchingRooms(location, type, requestorLevel);
 		
 		_size = rooms.size();
 		final int startIndex = (page - 1) * NUM_PER_PAGE;
@@ -77,6 +79,8 @@ public class ListPartyWaiting implements IClientOutgoingPacket
 				packet.writeS(member.getName());
 			}
 		}
+		packet.writeD(World.getInstance().getPartyCount());
+		packet.writeD(World.getInstance().getPartyMemberCount());
 		return true;
 	}
 }

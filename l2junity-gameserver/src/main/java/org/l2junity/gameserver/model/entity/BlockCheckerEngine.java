@@ -23,10 +23,11 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.datatables.SpawnTable;
@@ -34,7 +35,6 @@ import org.l2junity.gameserver.enums.Team;
 import org.l2junity.gameserver.instancemanager.HandysBlockCheckerManager;
 import org.l2junity.gameserver.model.ArenaParticipantsHolder;
 import org.l2junity.gameserver.model.L2Spawn;
-import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.actor.instance.L2BlockInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -60,7 +60,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class BlockCheckerEngine
 {
-	protected static final Logger _log = LoggerFactory.getLogger(BlockCheckerEngine.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(BlockCheckerEngine.class);
 	// The object which holds all basic members info
 	protected ArenaParticipantsHolder _holder;
 	// Maps to hold player of each team and his points
@@ -308,17 +308,17 @@ public final class BlockCheckerEngine
 				
 				_abnormalEnd = true;
 				
-				ThreadPoolManager.getInstance().executeGeneral(new EndEvent());
+				ThreadPool.execute(new EndEvent());
 				
-				if (Config.DEBUG)
+				if (GeneralConfig.DEBUG)
 				{
-					_log.info("Handys Block Checker Event at arena " + _arena + " ended due lack of players!");
+					LOGGER.info("Handys Block Checker Event at arena " + _arena + " ended due lack of players!");
 				}
 			}
 		}
 		catch (Exception e)
 		{
-			_log.error("Couldnt end Block Checker event at " + _arena, e);
+			LOGGER.error("Couldnt end Block Checker event at " + _arena, e);
 		}
 	}
 	
@@ -426,12 +426,12 @@ public final class BlockCheckerEngine
 			// Wrong arena passed, stop event
 			if (_arena == -1)
 			{
-				_log.error("Couldnt set up the arena Id for the Block Checker event, cancelling event...");
+				LOGGER.error("Couldnt set up the arena Id for the Block Checker event, cancelling event...");
 				return;
 			}
 			_isStarted = true;
 			// Spawn the blocks
-			ThreadPoolManager.getInstance().executeGeneral(new SpawnRound(16, 1));
+			ThreadPool.execute(new SpawnRound(16, 1));
 			// Start up player parameters
 			setUpPlayers();
 			// Set the started time
@@ -465,15 +465,15 @@ public final class BlockCheckerEngine
 			{
 				case 1:
 					// Schedule second spawn round
-					_task = ThreadPoolManager.getInstance().scheduleGeneral(new SpawnRound(20, 2), 60000);
+					_task = ThreadPool.schedule(new SpawnRound(20, 2), 60000, TimeUnit.MILLISECONDS);
 					break;
 				case 2:
 					// Schedule third spawn round
-					_task = ThreadPoolManager.getInstance().scheduleGeneral(new SpawnRound(14, 3), 60000);
+					_task = ThreadPool.schedule(new SpawnRound(14, 3), 60000, TimeUnit.MILLISECONDS);
 					break;
 				case 3:
 					// Schedule Event End Count Down
-					_task = ThreadPoolManager.getInstance().scheduleGeneral(new EndEvent(), 180000);
+					_task = ThreadPool.schedule(new EndEvent(), 180000, TimeUnit.MILLISECONDS);
 					break;
 			}
 			// random % 2, if == 0 will spawn a red block
@@ -488,9 +488,7 @@ public final class BlockCheckerEngine
 				for (int i = 0; i < _numOfBoxes; i++)
 				{
 					L2Spawn spawn = new L2Spawn(template);
-					spawn.setX(_arenaCoordinates[_arena][4] + Rnd.get(-400, 400));
-					spawn.setY(_arenaCoordinates[_arena][5] + Rnd.get(-400, 400));
-					spawn.setZ(_zCoord);
+					spawn.setXYZ(_arenaCoordinates[_arena][4] + Rnd.get(-400, 400), _arenaCoordinates[_arena][5] + Rnd.get(-400, 400), _zCoord);
 					spawn.setAmount(1);
 					spawn.setHeading(1);
 					spawn.setRespawnDelay(1);
@@ -514,7 +512,7 @@ public final class BlockCheckerEngine
 			}
 			catch (Exception e)
 			{
-				_log.warn(getClass().getSimpleName() + ": " + e.getMessage());
+				LOGGER.warn("" + e.getMessage());
 			}
 			
 			// Spawn the block carrying girl
@@ -523,21 +521,18 @@ public final class BlockCheckerEngine
 				try
 				{
 					final L2Spawn girlSpawn = new L2Spawn(18676);
-					girlSpawn.setX(_arenaCoordinates[_arena][4] + Rnd.get(-400, 400));
-					girlSpawn.setY(_arenaCoordinates[_arena][5] + Rnd.get(-400, 400));
-					girlSpawn.setZ(_zCoord);
+					girlSpawn.setXYZ(_arenaCoordinates[_arena][4] + Rnd.get(-400, 400), _arenaCoordinates[_arena][5] + Rnd.get(-400, 400), _zCoord);
 					girlSpawn.setAmount(1);
 					girlSpawn.setHeading(1);
 					girlSpawn.setRespawnDelay(1);
 					SpawnTable.getInstance().addNewSpawn(girlSpawn, false);
 					girlSpawn.init();
 					// Schedule his deletion after 9 secs of spawn
-					ThreadPoolManager.getInstance().scheduleGeneral(new CarryingGirlUnspawn(girlSpawn), 9000);
+					ThreadPool.schedule(new CarryingGirlUnspawn(girlSpawn), 9000, TimeUnit.MILLISECONDS);
 				}
 				catch (Exception e)
 				{
-					_log.warn("Couldnt Spawn Block Checker NPCs! Wrong instance type at npc table?");
-					_log.warn(getClass().getSimpleName() + ": " + e.getMessage());
+					LOGGER.warn("Couldnt Spawn Block Checker NPCs! Wrong instance type at npc table?", e);
 				}
 			}
 			
@@ -564,7 +559,7 @@ public final class BlockCheckerEngine
 		{
 			if (_spawn == null)
 			{
-				_log.warn("HBCE: Block Carrying Girl is null");
+				LOGGER.warn("HBCE: Block Carrying Girl is null");
 				return;
 			}
 			SpawnTable.getInstance().deleteSpawn(_spawn, false);
@@ -575,7 +570,7 @@ public final class BlockCheckerEngine
 	
 	/*
 	 * private class CountDown implements Runnable {
-	 * @Override public void run() { _holder.broadCastPacketToTeam(SystemMessage.getSystemMessage(SystemMessageId.BLOCK_CHECKER_WILL_END_IN_5_SECONDS)); ThreadPoolManager.getInstance().scheduleGeneral(new EndEvent(), 5000); } }
+	 * @Override public void run() { _holder.broadCastPacketToTeam(SystemMessage.getSystemMessage(SystemMessageId.BLOCK_CHECKER_WILL_END_IN_5_SECONDS)); ThreadPool.scheduleGeneral(new EndEvent(), 5000); } }
 	 */
 	
 	/**
@@ -615,7 +610,6 @@ public final class BlockCheckerEngine
 				}
 				
 				item.decayMe();
-				World.getInstance().removeObject(item);
 			}
 			_drops.clear();
 		}

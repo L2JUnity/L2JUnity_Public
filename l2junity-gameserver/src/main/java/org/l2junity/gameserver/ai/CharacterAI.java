@@ -30,12 +30,12 @@ import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_REST;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.GameTimeController;
-import org.l2junity.gameserver.GeoData;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.enums.ItemLocation;
-import org.l2junity.gameserver.instancemanager.WalkingManager;
+import org.l2junity.gameserver.geodata.GeoData;
+import org.l2junity.gameserver.instancemanager.SuperpointManager;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Attackable;
@@ -211,8 +211,8 @@ public class CharacterAI extends AbstractAI
 	@Override
 	protected void onIntentionRest()
 	{
-		// Set the AI Intention to AI_INTENTION_IDLE
-		setIntention(AI_INTENTION_IDLE);
+		// Set the AI Intention to AI_INTENTION_ACTIVE
+		setIntention(AI_INTENTION_ACTIVE);
 	}
 	
 	/**
@@ -309,9 +309,9 @@ public class CharacterAI extends AbstractAI
 			return;
 		}
 		
-		if (_actor.getAttackEndTime() > GameTimeController.getInstance().getGameTicks())
+		if (_actor.isAttackingNow())
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(new CastTask(_actor, skill, target, item, forceUse, dontMove), _actor.getAttackEndTime() - System.currentTimeMillis());
+			ThreadPool.schedule(new CastTask(_actor, skill, target, item, forceUse, dontMove), _actor.getAttackEndTime() - TimeUnit.MILLISECONDS.toNanos(System.currentTimeMillis()), TimeUnit.MILLISECONDS);
 		}
 		else
 		{
@@ -348,7 +348,7 @@ public class CharacterAI extends AbstractAI
 	 * </ul>
 	 */
 	@Override
-	protected void onIntentionMoveTo(Location loc)
+	protected void onIntentionMoveTo(ILocational loc)
 	{
 		if (getIntention() == AI_INTENTION_REST)
 		{
@@ -545,7 +545,6 @@ public class CharacterAI extends AbstractAI
 	}
 	
 	/**
-	 * Launch actions corresponding to the Event Stunned then onAttacked Event.<br>
 	 * <B><U> Actions</U> :</B>
 	 * <ul>
 	 * <li>Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)</li>
@@ -556,7 +555,7 @@ public class CharacterAI extends AbstractAI
 	 * </ul>
 	 */
 	@Override
-	protected void onEvtActionBlocked(Creature attacker)
+	protected void onEvtActionStopped(Creature attacker)
 	{
 		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
 		_actor.broadcastPacket(new AutoAttackStop(_actor.getObjectId()));
@@ -684,7 +683,7 @@ public class CharacterAI extends AbstractAI
 		if (_actor.isNpc())
 		{
 			Npc npc = (Npc) _actor;
-			WalkingManager.getInstance().onArrived(npc); // Walking Manager support
+			SuperpointManager.getInstance().onArrived(npc); // Walking Manager support
 			
 			// Notify to scripts
 			EventDispatcher.getInstance().notifyEventAsync(new OnNpcMoveFinished(npc), npc);
@@ -748,11 +747,14 @@ public class CharacterAI extends AbstractAI
 	protected void onEvtForgetObject(WorldObject object)
 	{
 		final WorldObject target = getTarget();
+		
+		// Stop any casting pointing to this object.
+		getActor().abortCast(sc -> sc.getTarget() == object);
+		
 		// If the object was targeted and the Intention was AI_INTENTION_INTERACT or AI_INTENTION_PICK_UP, set the Intention to AI_INTENTION_ACTIVE
 		if (target == object)
 		{
 			setTarget(null);
-			getActor().abortCast(sc -> sc.getTarget() == object);
 			
 			if (isFollowing())
 			{
@@ -762,8 +764,8 @@ public class CharacterAI extends AbstractAI
 				// Stop an AI Follow Task
 				stopFollow();
 			}
-			
-			if ((getIntention() == AI_INTENTION_INTERACT) || (getIntention() == AI_INTENTION_PICK_UP))
+			// Stop any intention that has target we want to forget.
+			if (getIntention() != AI_INTENTION_MOVE_TO)
 			{
 				setIntention(AI_INTENTION_ACTIVE);
 			}
@@ -774,7 +776,6 @@ public class CharacterAI extends AbstractAI
 		{
 			// Cancel AI target
 			setTarget(null);
-			getActor().abortCast(sc -> sc.getTarget() == object);
 			
 			// Stop an AI Follow Task
 			stopFollow();
@@ -783,7 +784,7 @@ public class CharacterAI extends AbstractAI
 			clientStopMoving(null);
 			
 			// Set the Intention of this AbstractAI to AI_INTENTION_IDLE
-			changeIntention(AI_INTENTION_IDLE);
+			changeIntention(AI_INTENTION_ACTIVE);
 		}
 	}
 	
@@ -852,7 +853,7 @@ public class CharacterAI extends AbstractAI
 		clientStopMoving(null);
 		
 		// Init AI
-		_intention = AI_INTENTION_IDLE;
+		_intention = AI_INTENTION_ACTIVE;
 		setTarget(null);
 	}
 	
@@ -878,7 +879,7 @@ public class CharacterAI extends AbstractAI
 			return false; // skill radius -1
 		}
 		
-		if (!_actor.isInsideRadius(worldPosition, offset + _actor.getTemplate().getCollisionRadius(), false, false))
+		if (!_actor.isInRadius2d(worldPosition, offset + _actor.getTemplate().getCollisionRadius()))
 		{
 			if (_actor.isMovementDisabled() || (_actor.getMoveSpeed() <= 0))
 			{
@@ -892,8 +893,8 @@ public class CharacterAI extends AbstractAI
 			
 			stopFollow();
 			
-			int x = _actor.getX();
-			int y = _actor.getY();
+			double x = _actor.getX();
+			double y = _actor.getY();
 			
 			double dx = worldPosition.getX() - x;
 			double dy = worldPosition.getY() - y;
@@ -955,17 +956,17 @@ public class CharacterAI extends AbstractAI
 			offset += ((Creature) target).getTemplate().getCollisionRadius();
 		}
 		
-		if (!_actor.isInsideRadius(target, offset, false, false))
+		if (!_actor.isInRadius2d(target, offset))
 		{
 			// Caller should be L2Playable and thinkAttack/thinkCast/thinkInteract/thinkPickUp
 			if (isFollowing())
 			{
-				
 				// allow larger hit range when the target is moving (check is run only once per second)
-				if (!_actor.isInsideRadius(target, offset + 100, false, false))
+				if (!_actor.isInRadius2d(target, offset + 100))
 				{
 					return true;
 				}
+				
 				stopFollow();
 				return false;
 			}
@@ -973,10 +974,10 @@ public class CharacterAI extends AbstractAI
 			if (_actor.isMovementDisabled() || (_actor.getMoveSpeed() <= 0))
 			{
 				// If player is trying attack target but he cannot move to attack target
-				// change his intention to idle
+				// change his intention to active
 				if (_actor.getAI().getIntention() == CtrlIntention.AI_INTENTION_ATTACK)
 				{
-					_actor.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
+					_actor.getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 				}
 				
 				return true;
@@ -1109,26 +1110,9 @@ public class CharacterAI extends AbstractAI
 	protected class SelfAnalysis
 	{
 		public boolean isMage = false;
-		public boolean isBalanced;
-		public boolean isArcher = false;
 		public boolean isHealer = false;
-		public boolean isFighter = false;
-		public boolean cannotMoveOnLand = false;
-		public Set<Skill> generalSkills = ConcurrentHashMap.newKeySet();
-		public Set<Skill> buffSkills = ConcurrentHashMap.newKeySet();
-		public int lastBuffTick = 0;
-		public Set<Skill> debuffSkills = ConcurrentHashMap.newKeySet();
-		public int lastDebuffTick = 0;
-		public Set<Skill> cancelSkills = ConcurrentHashMap.newKeySet();
 		public Set<Skill> healSkills = ConcurrentHashMap.newKeySet();
-		public Set<Skill> generalDisablers = ConcurrentHashMap.newKeySet();
-		public Set<Skill> sleepSkills = ConcurrentHashMap.newKeySet();
-		public Set<Skill> rootSkills = ConcurrentHashMap.newKeySet();
-		public Set<Skill> muteSkills = ConcurrentHashMap.newKeySet();
-		public Set<Skill> resurrectSkills = ConcurrentHashMap.newKeySet();
 		public boolean hasHealOrResurrect = false;
-		public boolean hasLongRangeSkills = false;
-		public boolean hasLongRangeDamageSkills = false;
 		public int maxCastRange = 0;
 		
 		public SelfAnalysis()
@@ -1139,149 +1123,33 @@ public class CharacterAI extends AbstractAI
 		{
 			switch (((L2NpcTemplate) _actor.getTemplate()).getAIType())
 			{
-				case FIGHTER:
-					isFighter = true;
-					break;
 				case MAGE:
 					isMage = true;
-					break;
-				case CORPSE:
-				case BALANCED:
-					isBalanced = true;
-					break;
-				case ARCHER:
-					isArcher = true;
 					break;
 				case HEALER:
 					isHealer = true;
 					break;
-				default:
-					isFighter = true;
-					break;
 			}
-			// water movement analysis
-			if (_actor.isNpc())
-			{
-				switch (_actor.getId())
-				{
-					case 20314: // great white shark
-					case 20849: // Light Worm
-						cannotMoveOnLand = true;
-						break;
-					default:
-						cannotMoveOnLand = false;
-						break;
-				}
-			}
+			
 			// skill analysis
 			for (Skill sk : _actor.getAllSkills())
 			{
-				if (sk.isPassive())
+				if (sk.isPassive() || sk.isContinuous())
 				{
 					continue;
 				}
+				
 				int castRange = sk.getCastRange();
-				boolean hasLongRangeDamageSkill = false;
-				
-				if (sk.isContinuous())
-				{
-					if (!sk.isDebuff())
-					{
-						buffSkills.add(sk);
-					}
-					else
-					{
-						debuffSkills.add(sk);
-					}
-					continue;
-				}
-				
-				if (sk.hasEffectType(L2EffectType.DISPEL, L2EffectType.DISPEL_BY_SLOT))
-				{
-					cancelSkills.add(sk);
-				}
-				else if (sk.hasEffectType(L2EffectType.HEAL))
+				if (sk.hasEffectType(L2EffectType.HEAL))
 				{
 					healSkills.add(sk);
 					hasHealOrResurrect = true;
 				}
-				else if (sk.hasEffectType(L2EffectType.SLEEP))
-				{
-					sleepSkills.add(sk);
-				}
-				else if (sk.hasEffectType(L2EffectType.BLOCK_ACTIONS))
-				{
-					// hardcoding petrification until improvements are made to
-					// EffectTemplate... petrification is totally different for
-					// AI than paralyze
-					switch (sk.getId())
-					{
-						case 367:
-						case 4111:
-						case 4383:
-						case 4616:
-						case 4578:
-							sleepSkills.add(sk);
-							break;
-						default:
-							generalDisablers.add(sk);
-							break;
-					}
-				}
-				else if (sk.hasEffectType(L2EffectType.ROOT))
-				{
-					rootSkills.add(sk);
-				}
-				else if (sk.hasEffectType(L2EffectType.BLOCK_CONTROL))
-				{
-					debuffSkills.add(sk);
-				}
-				else if (sk.hasEffectType(L2EffectType.MUTE))
-				{
-					muteSkills.add(sk);
-				}
-				else if (sk.hasEffectType(L2EffectType.RESURRECTION))
-				{
-					resurrectSkills.add(sk);
-					hasHealOrResurrect = true;
-				}
-				else
-				{
-					generalSkills.add(sk);
-					hasLongRangeDamageSkill = true;
-				}
 				
-				if (castRange > 70)
-				{
-					hasLongRangeSkills = true;
-					if (hasLongRangeDamageSkill)
-					{
-						hasLongRangeDamageSkills = true;
-					}
-				}
 				if (castRange > maxCastRange)
 				{
 					maxCastRange = castRange;
 				}
-				
-			}
-			// Because of missing skills, some mages/balanced cannot play like mages
-			if (!hasLongRangeDamageSkills && isMage)
-			{
-				isBalanced = true;
-				isMage = false;
-				isFighter = false;
-			}
-			if (!hasLongRangeSkills && (isMage || isBalanced))
-			{
-				isBalanced = false;
-				isMage = false;
-				isFighter = true;
-			}
-			if (generalSkills.isEmpty() && isMage)
-			{
-				isBalanced = true;
-				isMage = false;
 			}
 		}
 	}

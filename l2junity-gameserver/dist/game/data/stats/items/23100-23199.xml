@@ -382,6 +382,7 @@
 		<set name="time" val="129600" />
 		<stats>
 			<stat type="pDef">132</stat>
+			<stat type="maxMp">649</stat>
 		</stats>
 	</item>
 	<item id="23113" name="Vorpal Gaiters of Fortune" name_additional="90-day" type="Armor">
@@ -448,6 +449,7 @@
 		<set name="time" val="129600" />
 		<stats>
 			<stat type="pDef">82</stat>
+			<stat type="maxMp">427</stat>
 		</stats>
 	</item>
 	<item id="23116" name="Vorpal Gauntlets of Fortune" name_additional="90-day" type="Armor">
@@ -636,6 +638,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="time" val="129600" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23107" min="1" max="1" chance="100" /> <!-- Vorpal Helmet of Fortune - 90-day -->
 			<item id="23110" min="1" max="1" chance="100" /> <!-- Vorpal Breastplate of Fortune - 90-day -->
@@ -659,6 +662,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="time" val="129600" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23108" min="1" max="1" chance="100" /> <!-- Vorpal Leather Helmet of Fortune - 90-day -->
 			<item id="23111" min="1" max="1" chance="100" /> <!-- Vorpal Leather Breastplate of Fortune - 90-day -->
@@ -681,6 +685,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="time" val="129600" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23109" min="1" max="1" chance="100" /> <!-- Vorpal Circlet of Fortune - 90-day -->
 			<item id="23112" min="1" max="1" chance="100" /> <!-- Vorpal Tunic of Fortune - 90-day -->
@@ -703,6 +708,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23124" min="1" max="1" chance="100" /> <!-- Vorpal Heavy Armor of Fortune Set Pack (S80-grade) - 90-day -->
 			<item id="23125" min="1" max="1" chance="100" /> <!-- Vorpal Light Armor of Fortune Set Pack (S80-grade) - 90-day -->
@@ -722,6 +728,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23093" min="1" max="1" chance="100" /> <!-- Vesper Cutter of Fortune - 90-day -->
 			<item id="23094" min="1" max="1" chance="100" /> <!-- Vesper Slasher of Fortune - 90-day -->
@@ -754,6 +761,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23130" min="2" max="2" chance="100" /> <!-- Vorpal Ring of Fortune - 90-day -->
 			<item id="23131" min="2" max="2" chance="100" /> <!-- Vorpal Earring of Fortune - 90-day -->
@@ -779,6 +787,7 @@
 		<set name="time" val="129600" />
 		<stats>
 			<stat type="mDef">65</stat>
+			<stat type="maxMp">26</stat>
 		</stats>
 	</item>
 	<item id="23131" name="Vorpal Earring of Fortune" name_additional="90-day" type="Armor">
@@ -800,6 +809,7 @@
 		<set name="time" val="129600" />
 		<stats>
 			<stat type="mDef">98</stat>
+			<stat type="maxMp">38</stat>
 		</stats>
 	</item>
 	<item id="23132" name="Vorpal Necklace of Fortune" name_additional="90-day" type="Armor">
@@ -821,6 +831,7 @@
 		<set name="time" val="129600" />
 		<stats>
 			<stat type="mDef">131</stat>
+			<stat type="maxMp">51</stat>
 		</stats>
 	</item>
 	<item id="23133" name="Gender Change Ticket" type="EtcItem">
@@ -1163,6 +1174,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22627" level="1" /> <!-- Exorcist's Gift -->
 		</skills>
@@ -1176,6 +1188,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22628" level="1" /> <!-- Einhasad's Gift -->
 		</skills>
@@ -1189,6 +1202,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22629" level="1" /> <!-- Shilen's Gift -->
 		</skills>
@@ -1644,6 +1658,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22633" level="1" /> <!-- Herina's Gift Box -->
 		</skills>
@@ -1698,6 +1713,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23175" min="1" max="1" chance="100" /> <!-- Brilliant Beach Sun Cap - 30-day (Event) -->
 		</capsuled_items>
@@ -1716,6 +1732,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23176" min="1" max="1" chance="100" /> <!-- Stylish Straw Hat - 30-day (Event) -->
 		</capsuled_items>
@@ -2073,6 +2090,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23189" min="1" max="1" chance="100" /> <!-- Ninja Top Appearance Stone -->
 			<item id="23190" min="1" max="1" chance="100" /> <!-- Ninja Pants Appearance Stone -->

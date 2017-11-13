@@ -55,6 +55,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17201" min="10" max="10" chance="100" /> <!-- Mark of Cheers -->
 		</capsuled_items>
@@ -622,6 +623,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17203" min="1" max="1" chance="100" /> <!-- Agathion - Ball Trapping Gnosian -->
 		</capsuled_items>
@@ -641,6 +643,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17204" min="1" max="1" chance="100" /> <!-- Agathion - Ball Trapping Orodriel -->
 		</capsuled_items>
@@ -660,6 +663,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17205" min="1" max="1" chance="100" /> <!-- Agathion - Penalty Kick -->
 		</capsuled_items>
@@ -674,6 +678,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9176" level="1" /> <!-- Provided gift of cheers -->
 		</skills>
@@ -693,6 +698,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17208" min="1" max="1" chance="100" /> <!-- XP Buff 50% (2-hour) -->
 			<item id="17212" min="1" max="1" chance="100" /> <!-- Nevit's Voice -->
@@ -713,6 +719,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17211" min="1" max="1" chance="100" /> <!-- XP Buff 50% (4-hour) -->
 			<item id="17212" min="1" max="1" chance="100" /> <!-- Nevit's Voice -->
@@ -991,6 +998,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9178" level="1" /> <!-- Theodric's Box -->
 		</skills>
@@ -999,7 +1007,7 @@
 		<!-- Description: When enchanted, P. Atk. increases by 4 for A-grade one-handed swords, one-handed blunts, daggers, spears, and other weapons. P. Atk. increases by 5 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons. P. Atk. increases by 8 for bows. M. Atk. increases by 3 for all weapons. Starting at +4, P. Atk. / M. Atk. bonus double. Enchanting is safe up to +3. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_wp_a_i04" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -1016,7 +1024,7 @@
 		<!-- Description: When enchanted, P. Def. increases by 1 for A-grade armor and accessories. Starting at +4, P. Def. increases by 3 and a HP bonus is granted. Enchanting is safe up to +3, but one-piece body armor can be safely enchanted up to +4. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_am_a_i04" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -1033,7 +1041,7 @@
 		<!-- Description: When enchanted, P. Atk. increases by 3 for B-grade one-handed swords, one-handed blunts, daggers, spears, and other weapons. P. Atk. increases by 4 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons. P. Atk. increases by 6 for bows. M. Atk. increases by 3 for all weapons. Starting at +4, P. Atk. / M. Atk. bonus double. Enchanting is safe up to +3. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_wp_b_i03" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -1050,7 +1058,7 @@
 		<!-- Description: When enchanted, P. Def. increases by 1 for B-grade armor and accessories. Starting at +4, P. Def. increases by 3 and a HP bonus is granted. Enchanting is safe up to +3, but one-piece body armor can be safely enchanted up to +4. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_am_b_i03" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -1067,7 +1075,7 @@
 		<!-- Description: When enchanted, P. Atk. increases by 3 for C-grade one-handed swords, one-handed blunts, daggers, spears, and other weapons. P. Atk. increases by 4 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons. P. Atk. increases by 6 for bows. M. Atk. increases by 3 for all weapons. Starting at +4, P. Atk. / M. Atk. bonus double. Enchanting is safe up to +3. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_wp_c_i02" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -1084,7 +1092,7 @@
 		<!-- Description: When enchanted, P. Def. increases by 1 for C-grade armor and accessories. Starting at +4, P. Def. increases by 3 and a HP bonus is granted. Enchanting is safe up to +3, but one-piece body armor can be safely enchanted up to +4. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_am_c_i02" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -1101,7 +1109,7 @@
 		<!-- Description: When enchanted, P. Atk. increases by 2 for all D-grade weapons with the exception of bow, which will increase by 4. M. Atk. increases by 2 for all weapons. Starting at +4, P. Atk. / M. Atk. bonus double. Enchanting is safe up to +3. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_wp_d_i01" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -1118,7 +1126,7 @@
 		<!-- Description: When enchanted, P. Def. increases by 1 for D-grade armor and accessories. Starting at +4, P. Def. increases by 3 and a HP bonus is granted. Enchanting is safe up to +3, but one-piece body armor can be safely enchanted up to +4. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_am_d_i01" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -1135,7 +1143,7 @@
 		<!-- Description: When enchanted, P. Atk. increases by 5 for S-grade one-handed swords, one-handed blunts, daggers, spears, and other weapons. P. Atk. increases by 6 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons. P. Atk. increases by 10 for bows. M. Atk. increases by 4 for all weapons. Starting at +4, P. Atk. / M. Atk. bonus double. Enchanting is safe up to +3. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_wp_s_i05" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -1152,7 +1160,7 @@
 		<!-- Description: When enchanted, P. Def. increases by 1 for S-grade armor and accessories. Starting at +4, P. Def. increases by 3 and a HP bonus is granted. Enchanting is safe up to +3, but one-piece body armor can be safely enchanted up to +4. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.etc_blessed_scrl_of_ench_am_s_i05" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -1302,6 +1310,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17269" min="1" max="1" chance="100" /> <!-- Agathion - Antharas -->
 		</capsuled_items>
@@ -1321,6 +1330,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17270" min="1" max="1" chance="100" /> <!-- Agathion - Nevit's Messenger Kanna -->
 		</capsuled_items>
@@ -1340,6 +1350,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17271" min="1" max="1" chance="100" /> <!-- Agathion - Guardian of Dawn Kallesin -->
 		</capsuled_items>
@@ -1404,6 +1415,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17275" min="1" max="1" chance="100" /> <!-- Strider Pet Coupon -->
 		</capsuled_items>
@@ -1423,6 +1435,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17139" min="1" max="1" chance="100" /> <!-- Transformation Scroll: Anakim -->
 		</capsuled_items>
@@ -1442,6 +1455,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="10296" min="1" max="1" chance="100" /> <!-- Transformation Sealbook: Anakim -->
 		</capsuled_items>
@@ -1477,6 +1491,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17283" min="5" max="5" chance="100" /> <!-- XP Buff 50% (4-hour) -->
 			<item id="17285" min="5" max="5" chance="100" /> <!-- Freya's Refreshing Breeze -->
@@ -1581,6 +1596,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="17284" min="5" max="5" chance="100" /> <!-- XP Buff 50% (4-hour) - Event -->
 			<item id="17286" min="5" max="5" chance="100" /> <!-- Freya's Refreshing Breeze - Event -->

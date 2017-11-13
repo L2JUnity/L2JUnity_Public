@@ -18,8 +18,7 @@
  */
 package org.l2junity.gameserver.scripting;
 
-import java.nio.file.Path;
-
+import org.l2junity.gameserver.scripting.annotations.GameScript;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,18 +29,14 @@ import org.slf4j.LoggerFactory;
 public abstract class ManagedScript
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ManagedScript.class);
-	
-	private final Path _scriptFile;
+
 	private long _lastLoadTime;
 	private boolean _isActive;
 	
 	public ManagedScript()
 	{
-		_scriptFile = getScriptPath();
 		setLastLoadTime(System.currentTimeMillis());
 	}
-	
-	public abstract Path getScriptPath();
 	
 	/**
 	 * Attempts to reload this script and to refresh the necessary bindings with it ScriptControler.<BR>
@@ -52,7 +47,7 @@ public abstract class ManagedScript
 	{
 		try
 		{
-			ScriptEngineManager.getInstance().executeScript(getScriptFile());
+			ScriptsManager.getInstance().runScript(getClass().getName(), GameScript.class);
 			return true;
 		}
 		catch (Exception e)
@@ -75,14 +70,6 @@ public abstract class ManagedScript
 	}
 	
 	/**
-	 * @return Returns the scriptFile.
-	 */
-	public Path getScriptFile()
-	{
-		return _scriptFile;
-	}
-	
-	/**
 	 * @param lastLoadTime The lastLoadTime to set.
 	 */
 	protected void setLastLoadTime(long lastLoadTime)
@@ -97,6 +84,6 @@ public abstract class ManagedScript
 	{
 		return _lastLoadTime;
 	}
-	
+
 	public abstract String getScriptName();
 }

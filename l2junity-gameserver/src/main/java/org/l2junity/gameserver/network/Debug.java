@@ -20,6 +20,7 @@ package org.l2junity.gameserver.network;
 
 import java.util.Map.Entry;
 
+import org.l2junity.commons.util.CommonUtil;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.AttributeType;
 import org.l2junity.gameserver.model.StatsSet;
@@ -27,17 +28,16 @@ import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.skills.Skill;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
 import org.l2junity.gameserver.network.client.send.TutorialShowHtml;
-import org.l2junity.gameserver.util.Util;
 
 /**
  * @author UnAfraid
  */
 public class Debug
 {
-	public static void sendStatsDebug(Creature creature, Stats stat, StatsSet set)
+	public static void sendStatsDebug(Creature creature, DoubleStat stat, StatsSet set)
 	{
 		if (!creature.isPlayer())
 		{
@@ -54,12 +54,12 @@ public class Debug
 		final NpcHtmlMessage msg = new NpcHtmlMessage();
 		msg.setFile(creature.getActingPlayer().getHtmlPrefix(), "data/html/admin/statsdebug.htm");
 		msg.replace("%stat%", String.valueOf(stat));
-		msg.replace("%mulValue%", Util.formatDouble(creature.getStat().getMul(stat), "#.##"));
+		msg.replace("%mulValue%", CommonUtil.formatDouble(creature.getStat().getMul(stat), "#.##"));
 		msg.replace("%addValue%", creature.getStat().getAdd(stat));
-		msg.replace("%templateValue%", Util.formatDouble(creature.getTemplate().getBaseValue(stat, 0), "#.##"));
+		msg.replace("%templateValue%", CommonUtil.formatDouble(creature.getTemplate().getBaseValue(stat, 0), "#.##"));
 		if (weapon != null)
 		{
-			msg.replace("%weaponBaseValue%", Util.formatDouble(weapon.getItem().getStats(stat, 0), "#.##"));
+			msg.replace("%weaponBaseValue%", CommonUtil.formatDouble(weapon.getItem().getStats(stat, 0), "#.##"));
 		}
 		msg.replace("%details%", sb.toString());
 		creature.sendPacket(new TutorialShowHtml(msg.getHtml()));
@@ -133,7 +133,7 @@ public class Debug
 	{
 		if (value instanceof Double)
 		{
-			return Util.formatDouble((double) value, "#.##");
+			return CommonUtil.formatDouble((double) value, "#.##");
 		}
 		return String.valueOf(value);
 	}

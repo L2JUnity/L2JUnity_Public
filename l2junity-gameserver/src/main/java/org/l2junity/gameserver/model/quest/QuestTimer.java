@@ -19,8 +19,9 @@
 package org.l2junity.gameserver.model.quest;
 
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.slf4j.Logger;
@@ -28,7 +29,7 @@ import org.slf4j.LoggerFactory;
 
 public class QuestTimer
 {
-	protected static final Logger _log = LoggerFactory.getLogger(QuestTimer.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(QuestTimer.class);
 	
 	public class ScheduleTimerTask implements Runnable
 	{
@@ -50,7 +51,7 @@ public class QuestTimer
 			}
 			catch (Exception e)
 			{
-				_log.error("", e);
+				LOGGER.error("", e);
 			}
 		}
 	}
@@ -72,11 +73,11 @@ public class QuestTimer
 		_isRepeating = repeating;
 		if (repeating)
 		{
-			_schedular = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new ScheduleTimerTask(), time, time); // Prepare auto end task
+			_schedular = ThreadPool.scheduleAtFixedRate(new ScheduleTimerTask(), time, time, TimeUnit.MILLISECONDS); // Prepare auto end task
 		}
 		else
 		{
-			_schedular = ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleTimerTask(), time); // Prepare auto end task
+			_schedular = ThreadPool.schedule(new ScheduleTimerTask(), time, TimeUnit.MILLISECONDS); // Prepare auto end task
 		}
 	}
 	

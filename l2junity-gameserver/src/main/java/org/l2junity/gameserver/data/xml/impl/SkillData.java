@@ -1,6 +1,24 @@
+/*
+ * Copyright (C) 2004-2016 L2J Unity
+ *
+ * This file is part of L2J Unity.
+ *
+ * L2J Unity is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * L2J Unity is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,16 +31,23 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.handler.EffectHandler;
 import org.l2junity.gameserver.handler.SkillConditionHandler;
+import org.l2junity.gameserver.handler.TargetHandler;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.model.skills.CommonSkill;
 import org.l2junity.gameserver.model.skills.EffectScope;
 import org.l2junity.gameserver.model.skills.ISkillCondition;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.skills.SkillConditionScope;
+import org.l2junity.gameserver.scripting.ScriptsManager;
+import org.l2junity.gameserver.scripting.annotations.SkillScript;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -94,7 +119,6 @@ public class SkillData implements IGameXmlReader
 	
 	protected SkillData()
 	{
-		load();
 	}
 	
 	/**
@@ -152,7 +176,7 @@ public class SkillData implements IGameXmlReader
 			return _skills.get(getSkillHashCode(skillId, maxLvl, 0));
 		}
 		
-		LOGGER.warn("No skill info found for skill id {} and skill level {}", skillId, level);
+		LOGGER.warn("No skill info found for skill id {}, skill level {}, and sub level {}", skillId, level, subLevel);
 		return null;
 	}
 	
@@ -162,56 +186,33 @@ public class SkillData implements IGameXmlReader
 		return maxLevel != null ? maxLevel : 0;
 	}
 	
-	/**
-	 * @param addNoble
-	 * @param hasCastle
-	 * @return an array with siege skills. If addNoble == true, will add also Advanced headquarters.
-	 */
-	public List<Skill> getSiegeSkills(boolean addNoble, boolean hasCastle)
-	{
-		final List<Skill> temp = new LinkedList<>();
-		
-		temp.add(_skills.get(SkillData.getSkillHashCode(CommonSkill.IMPRIT_OF_LIGHT.getId(), 1)));
-		temp.add(_skills.get(SkillData.getSkillHashCode(CommonSkill.IMPRIT_OF_DARKNESS.getId(), 1)));
-		
-		temp.add(_skills.get(SkillData.getSkillHashCode(247, 1))); // Build Headquarters
-		
-		if (addNoble)
-		{
-			temp.add(_skills.get(SkillData.getSkillHashCode(326, 1))); // Build Advanced Headquarters
-		}
-		if (hasCastle)
-		{
-			temp.add(_skills.get(SkillData.getSkillHashCode(844, 1))); // Outpost Construction
-			temp.add(_skills.get(SkillData.getSkillHashCode(845, 1))); // Outpost Demolition
-		}
-		return temp;
-	}
-	
 	@Override
 	public boolean isValidating()
 	{
 		return false;
 	}
 	
-	@Override
-	public synchronized void load()
+	@Reload("skill")
+	@Load(group = LoadGroup.class, dependencies =
+	{
+		@Dependency(clazz = EnchantSkillGroupsData.class)
+	})
+	private void load() throws Exception
 	{
 		_skills.clear();
 		_skillsMaxLevel.clear();
+		ScriptsManager.getInstance().runScripts(SkillScript.class);
+		LOGGER.info("Loaded {} effect handlers.", EffectHandler.getInstance().size());
+		LOGGER.info("Loaded {} skill condition handlers.", SkillConditionHandler.getInstance().size());
+		LOGGER.info("Loaded {} target type handlers.", TargetHandler.getInstance().getTargetTypeHandlersSize());
+		LOGGER.info("Loaded {} affect scope handlers.", TargetHandler.getInstance().getAffectScopeHandlersSize());
+		LOGGER.info("Loaded {} affect object handlers.", TargetHandler.getInstance().getAffectObjectHandlersSize());
 		parseDatapackDirectory("data/stats/skills/", true);
 		LOGGER.info("Loaded {} Skills.", _skills.size());
 	}
 	
-	public void reload()
-	{
-		load();
-		// Reload Skill Tree as well.
-		SkillTreesData.getInstance().load();
-	}
-	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node node = doc.getFirstChild(); node != null; node = node.getNextSibling())
 		{
@@ -410,7 +411,7 @@ public class SkillData implements IGameXmlReader
 								
 								_skills.put(getSkillHashCode(skill), skill);
 								_skillsMaxLevel.merge(skill.getId(), skill.getLevel(), Integer::max);
-								if ((skill.getSubLevel() % 1000) == 1)
+								if (((skill.getSubLevel() % 1000) == 1) && !skill.isPassive())
 								{
 									EnchantSkillGroupsData.getInstance().addRouteForSkill(skill.getId(), skill.getLevel(), skill.getSubLevel());
 								}
@@ -552,7 +553,7 @@ public class SkillData implements IGameXmlReader
 		return values;
 	}
 	
-	Object parseValue(Node node, boolean blockValue, boolean parseAttributes, Map<String, Double> variables)
+	static Object parseValue(Node node, boolean blockValue, boolean parseAttributes, Map<String, Double> variables)
 	{
 		StatsSet statsSet = null;
 		List<Object> list = null;
@@ -645,7 +646,7 @@ public class SkillData implements IGameXmlReader
 		return statsSet;
 	}
 	
-	private void parseAttributes(NamedNodeMap attributes, String prefix, StatsSet statsSet, Map<String, Double> variables)
+	static private void parseAttributes(NamedNodeMap attributes, String prefix, StatsSet statsSet, Map<String, Double> variables)
 	{
 		for (int i = 0; i < attributes.getLength(); i++)
 		{
@@ -654,12 +655,12 @@ public class SkillData implements IGameXmlReader
 		}
 	}
 	
-	private void parseAttributes(NamedNodeMap attributes, String prefix, StatsSet statsSet)
+	private static void parseAttributes(NamedNodeMap attributes, String prefix, StatsSet statsSet)
 	{
 		parseAttributes(attributes, prefix, statsSet, Collections.emptyMap());
 	}
 	
-	private Object parseNodeValue(String value, Map<String, Double> variables)
+	private static Object parseNodeValue(String value, Map<String, Double> variables)
 	{
 		if (value.startsWith("{") && value.endsWith("}"))
 		{
@@ -668,6 +669,12 @@ public class SkillData implements IGameXmlReader
 		return value;
 	}
 	
+	public int getSkillCount()
+	{
+		return _skills.size();
+	}
+	
+	@InstanceGetter
 	public static SkillData getInstance()
 	{
 		return SingletonHolder._instance;

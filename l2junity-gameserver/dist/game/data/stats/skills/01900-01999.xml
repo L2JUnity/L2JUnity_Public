@@ -8,19 +8,19 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>10</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -34,7 +34,7 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-1</amount>
 				<slot>DEBUFF</slot>
 			</effect>
@@ -48,11 +48,11 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -80,10 +80,10 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>POISON,9;ROOT_MAGICALLY,9;ROOT_PHYSICALLY,9;BLEEDING,9;STUN,9</dispel>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>100</POISON>
 				<BLEED>100</BLEED>
 				<SHOCK>100</SHOCK>
@@ -99,18 +99,17 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed_out_of_fight">
 				<amount>13</amount>
 				<mode>DIFF</mode>
-				<inCombat>false</inCombat>
 			</effect>
 		</effects>
 	</skill>
@@ -122,7 +121,7 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -131,7 +130,6 @@
 	<skill id="1907" toLevel="2" name="Prevision">
 		<!-- Glory Days confirmed -->
 		<!-- For 15 sec., P. Evasion/ M. Evasion + 90, and Speed + 50. -->
-		<table name="#bonus"> 0 90 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>RACE_ELF1</abnormalType>
@@ -148,29 +146,29 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>90</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">90</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">90</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalEvasion">
+			<effect name="p_magic_avoid">
 				<amount>90</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -184,11 +182,11 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -202,11 +200,11 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicCriticalDamage">
+			<effect name="p_magic_critical_dmg">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -220,11 +218,11 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="StatUp">
+			<effect name="p_stat_up_at_night">
 				<amount>1</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up_at_night">
 				<amount>1</amount>
 				<stat>INT</stat>
 			</effect>
@@ -238,7 +236,7 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -266,14 +264,14 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DebuffBlock" />
-			<effect name="DispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="i_dispel_by_category">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>10</max>
 			</effect>
-			<effect name="Untargetable" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_disappear_target" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-80</amount>
 				<slot>BUFF</slot>
 			</effect>
@@ -287,7 +285,7 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>1</amount>
 				<chance>80</chance>
 			</effect>
@@ -296,7 +294,6 @@
 	<skill id="1914" toLevel="2" name="Savage">
 		<!-- Glory Days confirmed -->
 		<!-- For 60 sec., P. Atk. + 10%, M. Atk. + 20%, Atk. Spd., + 10%, and Casting Spd. + 10%. P. Def. / M. Def. - 10%. -->
-		<table name="#def"> 0.9 1 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>RACE_ORC1</abnormalType>
@@ -313,33 +310,33 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">0</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">0</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -353,7 +350,7 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -367,15 +364,15 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -389,7 +386,7 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Undying Will -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -429,19 +426,19 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="DispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="i_dispel_by_category">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>10</max>
 			</effect>
-			<effect name="ResistDispelByCategory">
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
@@ -455,12 +452,12 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-1</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-1</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -489,11 +486,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>92</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>50</amount>
 			</effect>
 		</effects>
@@ -506,7 +503,7 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -515,7 +512,6 @@
 	<skill id="1922" toLevel="2" name="Earth Tremor">
 		<!-- Glory Days confirmed -->
 		<!-- Knocks Down nearby enemies for 3 sec., and decreases their P. Def./ M. Def. by 50%. -->
-		<table name="#abnormalTime"> 3 5 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>
 			<value level="1">3</value>
@@ -530,7 +526,7 @@
 		<reuseDelay>300000</reuseDelay>
 		<effectPoint>-2</effectPoint>
 		<basicProperty>NONE</basicProperty>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<rideState>NONE</rideState>
 		<hitCancelTime>0.2</hitCancelTime>
 		<lvlBonusRate>20</lvlBonusRate>
@@ -543,26 +539,26 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="KnockBack">
+			<effect name="i_knockback">
 				<distance>50</distance>
 				<speed>400</speed>
 				<knockDown>true</knockDown>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DERANGEMENT>100</DERANGEMENT>
 				<SLEEP>100</SLEEP>
 				<HOLD>100</HOLD>
 				<SHOCK>100</SHOCK>
 				<CHANGEBODY>100</CHANGEBODY>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -576,15 +572,15 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDamageBonus">
+			<effect name="p_pvp_magical_skill_dmg_bonus">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -598,7 +594,7 @@
 		<magicLvl>99</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>20</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -607,8 +603,6 @@
 	<skill id="1925" toLevel="2" name="Soul Protection">
 		<!-- Glory Days confirmed -->
 		<!-- For 60 seconds, blocks debuff attacks 2 times. -->
-		<table name="#res"> 0 15 </table>
-		<table name="#debuffBlock"> 2 3 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>RACE_KAMAEL1</abnormalType>
@@ -627,48 +621,48 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AbnormalShield">
+			<effect name="p_abnormal_shield">
 				<times>
 					<value level="1">2</value>
 					<value level="2">3</value>
 				</times>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">15</value>
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">15</value>
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">15</value>
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">15</value>
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">15</value>
 				</amount>
 				<attribute>HOLY</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">15</value>
@@ -703,11 +697,13 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="TargetCancel" />
-			<effect name="Transformation">
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
 				<transformationId>506</transformationId>
 			</effect>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
 			</effect>
 		</effects>
@@ -723,13 +719,13 @@
 		<isMagic>3</isMagic>
 		<toggleGroupId>0</toggleGroupId>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Sigel Force -->
 				<skillId>1928</skillId>
 				<skillLevel>1</skillLevel>
 				<ticks>7</ticks>
 			</effect>
-			<effect name="Synergy">
+			<effect name="t_synergy">
 				<!-- Party Solidarity -->
 				<optionalSlots>SYNERGY_FEOH;SYNERGY_LENKER;SYNERGY_OTHEL;SYNERGY_SEER;SYNERGY_TIR;SYNERGY_WYNN;SYNERGY_YR</optionalSlots>
 				<requiredSlots>SYNERGY_SIGEL;SYNERGY_EOLH</requiredSlots>
@@ -763,7 +759,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -780,7 +776,7 @@
 		<isMagic>3</isMagic>
 		<toggleGroupId>0</toggleGroupId>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Tyrr Force -->
 				<skillId>1930</skillId>
 				<skillLevel>1</skillLevel>
@@ -811,7 +807,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -828,7 +824,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>3</isMagic>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Othell Force -->
 				<skillId>1932</skillId>
 				<skillLevel>1</skillLevel>
@@ -859,7 +855,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -876,7 +872,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>3</isMagic>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Yul Force -->
 				<skillId>1934</skillId>
 				<skillLevel>1</skillLevel>
@@ -907,7 +903,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -924,7 +920,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>3</isMagic>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Feoh Force -->
 				<skillId>1936</skillId>
 				<skillLevel>1</skillLevel>
@@ -955,7 +951,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -972,7 +968,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>3</isMagic>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Wynn Force -->
 				<skillId>1938</skillId>
 				<skillLevel>1</skillLevel>
@@ -1003,12 +999,12 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-3</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-3</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
@@ -1026,7 +1022,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>3</isMagic>
 		<effects>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Aeore Force -->
 				<skillId>1940</skillId>
 				<skillLevel>1</skillLevel>
@@ -1057,7 +1053,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1080,7 +1076,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>13158</power>
 			</effect>
 		</effects>
@@ -1106,7 +1102,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9000</power>
 			</effect>
 		</effects>
@@ -1137,7 +1133,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>5841</power>
 			</effect>
 		</effects>
@@ -1162,7 +1158,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackRange">
+			<effect name="i_m_attack_range">
 				<power>182</power>
 				<shieldDefPercent>40</shieldDefPercent>
 			</effect>
@@ -1192,7 +1188,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttackRange">
+			<effect name="i_m_attack_range">
 				<power>212</power>
 				<shieldDefPercent>40</shieldDefPercent>
 			</effect>
@@ -1289,33 +1285,39 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="TargetCancel" />
-			<effect name="Transformation">
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
 				<transformationId>507</transformationId>
 			</effect>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
+				<exp>0</exp>
 				<deathPenalty>-90</deathPenalty>
 				<mode>PER</mode>
+				<type>MOB</type>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
+				<exp>0</exp>
 				<deathPenalty>-90</deathPenalty>
 				<mode>PER</mode>
 				<type>PK</type>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
+				<exp>0</exp>
 				<deathPenalty>-90</deathPenalty>
-				<mode>RAID</mode>
+				<mode>PER</mode>
 				<type>PK</type>
 			</effect>
 		</effects>
@@ -1323,10 +1325,6 @@
 	<skill id="1955" toLevel="3" name="Party Solidarity">
 		<!-- Glory Days confirmed -->
 		<!-- Increases party members' P. Atk. by 1%, M. Atk. by 1%, P. Critical Rate by 1%, Atk. Spd. by 1%, and Casting Spd. by 1%. Decreases physical and magic skill Cooldown by 1%. Always includes Sigel and Aeore Force. When 4 or more forces are applied, the Party Solidarity effect is activated. When the number of forces applied increases, the Party Solidarity effect is raised. -->
-		<table name="#pAtk"> 1.01 1.05 1.13 </table>
-		<table name="#mAtk"> 1.01 1.05 1.16 </table>
-		<table name="#bonus"> 0.01 0.02 0.04 </table>
-		<table name="#reuse"> 0.99 0.98 0.95 </table>
 		<abnormallVL>1</abnormallVL>
 		<abnormalTime>11</abnormalTime>
 		<abnormalType>SYNERGY_PARTY_BUF</abnormalType>
@@ -1339,7 +1337,6 @@
 		</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<operateType>A5</operateType>
-		<!-- Target ONE on retail, will be PARTY here. -->
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>2</effectPoint>
 		<basicProperty>NONE</basicProperty>
@@ -1354,7 +1351,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">5</value>
@@ -1362,7 +1359,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">5</value>
@@ -1370,23 +1367,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
-				<amount>
-					<value level="1">-99</value>
-					<value level="2">-98</value>
-					<value level="3">-96</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="MagicalAttackSpeed">
-				<amount>
-					<value level="1">-99</value>
-					<value level="2">-98</value>
-					<value level="3">-96</value>
-				</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1394,7 +1375,23 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_attack_speed">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">4</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>
+					<value level="1">1</value>
+					<value level="2">2</value>
+					<value level="3">4</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">-1</value>
 					<value level="2">-2</value>
@@ -1403,7 +1400,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">-1</value>
 					<value level="2">-2</value>
@@ -1417,15 +1414,13 @@
 	<skill id="1956" toLevel="4" name="Sub - P. Atk./M. Atk. Increase">
 		<!-- Glory Days confirmed -->
 		<!-- P. Atk. + 1%, M. Atk. + 1%. -->
-		<table name="#pAtk"> 1.01 1.02 1.03 1.04 </table>
-		<table name="#mAtk"> 1.01 1.03 1.04 1.06 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0816</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1434,7 +1429,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">3</value>
@@ -1448,14 +1443,13 @@
 	<skill id="1957" toLevel="4" name="Sub - P. Def./M. Def. Increase">
 		<!-- Glory Days confirmed -->
 		<!-- P. Def. + 1%, M. Def. + 1%. -->
-		<table name="#def"> 1.01 1.02 1.03 1.04 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0439</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1464,7 +1458,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1478,14 +1472,13 @@
 	<skill id="1958" toLevel="4" name="Sub - Atk. Spd./Casting Spd. Increase">
 		<!-- Glory Days confirmed -->
 		<!-- Atk. Spd. + 1%, Casting Spd. + 1%. -->
-		<table name="#atkSpd"> 1.01 1.02 1.03 1.04 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0817</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1494,7 +1487,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">2</value>
@@ -1508,14 +1501,13 @@
 	<skill id="1959" toLevel="4" name="Sub - Critical Rate Increase">
 		<!-- Glory Days confirmed -->
 		<!-- P. Critical Rate/ M. Critical Rate + 10. -->
-		<table name="#critRate"> 10 20 30 40 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0814</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1524,7 +1516,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1538,14 +1530,13 @@
 	<skill id="1960" toLevel="4" name="Sub - P. Accuracy/ M. Accuracy Increase">
 		<!-- Glory Days confirmed -->
 		<!-- P. Accuracy + 2, M. Accuracy + 2. -->
-		<table name="#acc"> 2 4 6 8 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill1240</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -1554,7 +1545,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicAccuracy">
+			<effect name="p_magic_hit">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -1568,14 +1559,13 @@
 	<skill id="1961" toLevel="4" name="Sub - P. Evasion/ M. Evasion Increase">
 		<!-- Glory Days confirmed -->
 		<!-- P. Evasion + 2, M. Evasion + 2. -->
-		<table name="#evas"> 2 4 6 8 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0198</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -1584,7 +1574,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalEvasion">
+			<effect name="p_magic_avoid">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -1598,15 +1588,13 @@
 	<skill id="1962" toLevel="4" name="Dual - P. Atk./M. Atk. Increase">
 		<!-- Glory Days confirmed -->
 		<!-- P. Atk. + 3%, M. Atk. + 4%. -->
-		<table name="#pAtk"> 1.03 1.06 1.09 1.12 </table>
-		<table name="#mAtk"> 1.04 1.09 1.13 1.18 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0816</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -1615,7 +1603,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">9</value>
@@ -1629,14 +1617,13 @@
 	<skill id="1963" toLevel="4" name="Dual - P. Def./M. Def. Increase">
 		<!-- Glory Days confirmed -->
 		<!-- P. Def. + 3%, M. Def. + 3%. -->
-		<table name="#def"> 1.03 1.06 1.09 1.12 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0439</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -1645,7 +1632,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -1659,14 +1646,13 @@
 	<skill id="1964" toLevel="4" name="Dual - Atk. Spd./Casting Spd. Increase">
 		<!-- Glory Days confirmed -->
 		<!-- Atk. Spd. + 3%, Casting Spd. + 3%. -->
-		<table name="#atkSpd"> 1.03 1.06 1.09 1.12 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0817</icon>
 		<magicLvl>1</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -1675,7 +1661,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -1689,7 +1675,6 @@
 	<skill id="1965" toLevel="4" name="Dual - Max HP Increase">
 		<!-- Glory Days confirmed -->
 		<!-- Max HP + 6%. -->
-		<table name="#maxHp"> 6 12 18 24 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0211</icon>
 		<magicLvl>
@@ -1701,7 +1686,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">12</value>
@@ -1715,7 +1700,6 @@
 	<skill id="1966" toLevel="4" name="Dual - Max MP Increase">
 		<!-- Glory Days confirmed -->
 		<!-- Max MP + 6%. -->
-		<table name="#maxMp"> 1.06 1.12 1.18 1.24 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill0213</icon>
 		<magicLvl>
@@ -1727,7 +1711,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">12</value>
@@ -1741,7 +1725,6 @@
 	<skill id="1967" toLevel="4" name="Dual - Max CP Increase">
 		<!-- Glory Days confirmed -->
 		<!-- Max CP + 6%. -->
-		<table name="#maxCp"> 1.06 1.12 1.18 1.24 </table>
 		<operateType>P</operateType>
 		<icon>icon.skill1397</icon>
 		<magicLvl>
@@ -1753,7 +1736,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">12</value>
@@ -1773,7 +1756,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>5</amount>
 				<chance>80</chance>
 			</effect>
@@ -1787,7 +1770,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="TriggerSkillByMagicType">
+			<effect name="p_trigger_skill_by_magic_type">
 				<!-- Dual - MP Drain -->
 				<magicTypes>0;1;2;3;4;22</magicTypes>
 				<skillId>1995</skillId>
@@ -1795,7 +1778,7 @@
 				<chance>10</chance>
 				<targetType>SELF</targetType>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Dual - MP Drain -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1807,7 +1790,7 @@
 				<skillId>1995</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Dual - MP Drain -->
 				<isCritical>false</isCritical>
 				<skillId>1995</skillId>
@@ -1822,47 +1805,49 @@
 		</effects>
 	</skill>
 	<skill id="1970" toLevel="1" name="Dual - Specialized for P. Atk.">
+		<!-- Updated to Helios -->
 		<!-- Glory Days confirmed -->
-		<!-- P. Atk. + 9%, P. Def./ M. Def. - 9%. -->
+		<!-- P. Atk. + 9%, P. Def./ M. Def. - 6%. -->
 		<operateType>P</operateType>
 		<icon>icon.dual_atkup</icon>
 		<magicLvl>99</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>9</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
-				<amount>-9</amount>
+			<effect name="p_magical_defence">
+				<amount>-6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
-				<amount>-9</amount>
+			<effect name="p_physical_defence">
+				<amount>-6</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="1971" toLevel="1" name="Dual - Specialized for M. Atk.">
+		<!-- Updated to Helios -->
 		<!-- Glory Days confirmed -->
-		<!-- M. Atk. + 13%, P. Def./ M. Def. - 9%. -->
+		<!-- M. Atk. + 13%, P. Def./ M. Def. - 6%. -->
 		<operateType>P</operateType>
 		<icon>icon.dual_defup</icon>
 		<magicLvl>99</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>13</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
-				<amount>-9</amount>
+			<effect name="p_magical_defence">
+				<amount>-6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
-				<amount>-9</amount>
+			<effect name="p_physical_defence">
+				<amount>-6</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
@@ -1876,7 +1861,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>20</SHOCK>
 				<KNOCKDOWN>20</KNOCKDOWN>
 				<PULL>20</PULL>
@@ -1884,7 +1869,7 @@
 				<DISARM>20</DISARM>
 				<KNOCKBACK>20</KNOCKBACK>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>20</SHOCK>
 				<KNOCKDOWN>20</KNOCKDOWN>
 				<PULL>20</PULL>
@@ -1903,7 +1888,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<HOLD>20</HOLD>
 				<DERANGEMENT>20</DERANGEMENT>
 				<AIRBIND>20</AIRBIND>
@@ -1913,7 +1898,7 @@
 				<PARALYZE>20</PARALYZE>
 				<TURN_STONE>20</TURN_STONE>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>20</HOLD>
 				<DERANGEMENT>20</DERANGEMENT>
 				<AIRBIND>20</AIRBIND>
@@ -1934,7 +1919,7 @@
 		<icon>icon.dual_t_atkup</icon>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Dual - Berserker's Rage -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1968,7 +1953,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>27</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1983,7 +1968,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="TriggerSkillByMagicType">
+			<effect name="p_trigger_skill_by_magic_type">
 				<!-- Dual - Master's Rage -->
 				<magicTypes>0;1;2;3;4;22</magicTypes>
 				<skillId>1977</skillId>
@@ -2002,7 +1987,6 @@
 		<operateType>A2</operateType>
 		<magicLvl>99</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
-		<operateType>A2</operateType>
 		<icon>icon.dual_t_skup</icon>
 		<isMagic>4</isMagic>
 		<basicProperty>NONE</basicProperty>
@@ -2014,23 +1998,27 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<!-- TODO mul stat="magicalSkillPower" val="1.27" / -->
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
+				<amount>27</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_spell_power">
 				<amount>27</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="1978" toLevel="1" name="Dual - Light of Protection">
+		<!-- Updated to Helios -->
 		<!-- Glory Days confirmed -->
-		<!-- Has a chance of P. Def./ M. Def. + 27% when attacked. -->
+		<!-- Has a chance of P. Def./ M. Def. + 40% when attacked. -->
 		<operateType>P</operateType>
 		<magicLvl>99</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<icon>icon.dual_t_dmgdef</icon>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Dual - Light of Protection -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2044,8 +2032,9 @@
 		</effects>
 	</skill>
 	<skill id="1979" toLevel="1" name="Dual - Light of Protection">
+		<!-- Updated to Helios -->
 		<!-- Glory Days confirmed -->
-		<!-- P. Def./ M. Def. + 27% for 15 sec. -->
+		<!-- P. Def./ M. Def. + 40% for 15 sec. -->
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
 		<abnormalType>DUAL_DEFENCE_UP</abnormalType>
@@ -2063,17 +2052,18 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalDefence">
-				<amount>27</amount>
+			<effect name="p_magical_defence">
+				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
-				<amount>27</amount>
+			<effect name="p_physical_defence">
+				<amount>40</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="1980" toLevel="1" name="Dual - Light of Blessing">
+		<!-- Updated to Helios -->
 		<!-- Glory Days confirmed -->
 		<!-- Has a chance of restoring HP when attacked. -->
 		<operateType>P</operateType>
@@ -2082,7 +2072,7 @@
 		<icon>icon.dual_t_dmgheal</icon>
 		<excludedFromCheck>true</excludedFromCheck>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Dual - Light of Blessing -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -2096,6 +2086,7 @@
 		</effects>
 	</skill>
 	<skill id="1981" toLevel="1" name="Dual - Light of Blessing">
+		<!-- Updated to Helios -->
 		<!-- Restores HP. -->
 		<magicLvl>99</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -2110,8 +2101,8 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
-				<power>5000</power>
+			<effect name="i_heal">
+				<power>10000</power>
 			</effect>
 		</effects>
 	</skill>
@@ -2135,7 +2126,7 @@
 		<effectRange>1100</effectRange>
 		<magicLvl>99</magicLvl>
 		<trait>DERANGEMENT</trait>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<staticReuse>true</staticReuse>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -2143,7 +2134,7 @@
 			<condition name="OpTargetPc" />
 		</conditions>
 		<effects>
-			<effect name="PhysicalMute" />
+			<effect name="p_block_skill_physical" />
 		</effects>
 	</skill>
 	<skill id="1983" toLevel="1" name="Dual - Silence of the Giants">
@@ -2166,7 +2157,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>5</abnormalTime>
 		<trait>DERANGEMENT</trait>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<staticReuse>true</staticReuse>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -2174,7 +2165,7 @@
 			<condition name="OpTargetPc" />
 		</conditions>
 		<effects>
-			<effect name="Mute" />
+			<effect name="p_block_spell" />
 		</effects>
 	</skill>
 	<skill id="1984" toLevel="1" name="Dual - Yoke of the Giants">
@@ -2198,7 +2189,7 @@
 		<trait>HOLD</trait>
 		<affectRange>200</affectRange>
 		<affectLimit>9-10</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic>
 		<staticReuse>true</staticReuse>
 		<targetType>ENEMY_ONLY</targetType>
@@ -2208,7 +2199,7 @@
 			<condition name="OpTargetPc" />
 		</conditions>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-90</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2235,7 +2226,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageShieldResist">
+			<effect name="p_damage_shield_resist">
 				<amount>100</amount>
 			</effect>
 		</effects>
@@ -2243,7 +2234,6 @@
 	<skill id="1986" toLevel="4" name="Dual Maximum HP">
 		<!-- Glory Days confirmed -->
 		<!-- Max HP + 463. Can be used when the main/ dual class is Level 85 or above. -->
-		<table name="#maxHp"> 463 972 1458 1926 </table>
 		<icon>icon.skill0917</icon>
 		<operateType>T</operateType>
 		<rideState>NONE</rideState>
@@ -2256,7 +2246,7 @@
 		</magicLvl>
 		<targetType>NONE</targetType>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">463</value>
 					<value level="2">972</value>
@@ -2275,7 +2265,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2283,7 +2273,7 @@
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2301,14 +2291,14 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2325,7 +2315,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2333,7 +2323,7 @@
 					<item>HEAVY</item>
 				</armorType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2351,7 +2341,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2359,7 +2349,7 @@
 					<item>HEAVY</item>
 				</armorType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2377,7 +2367,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2385,7 +2375,7 @@
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2403,14 +2393,14 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>HEAVY</item>
 				</armorType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2435,14 +2425,14 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>HEAVY</item>
 				</armorType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -2464,7 +2454,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>81</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2483,12 +2473,12 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>BLOCK_ESCAPE</abnormalType>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<conditions>
 			<condition name="OpTargetPc" />
 		</conditions>
 		<effects>
-			<effect name="BlockEscape" />
+			<effect name="p_block_escape" />
 		</effects>
 	</skill>
 	<skill id="1997" toLevel="2" name="Gravity Exile">
@@ -2505,7 +2495,7 @@
 		<reuseDelay>600000</reuseDelay>
 		<effectPoint>-100</effectPoint>
 		<abnormalTime>30</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>-2</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<stayAfterDeath>true</stayAfterDeath>
@@ -2518,7 +2508,7 @@
 			<condition name="OpTargetPc" />
 		</conditions>
 		<effects>
-			<effect name="BlockResurrection" />
+			<effect name="p_block_resurrection" />
 		</effects>
 	</skill>
 </list>

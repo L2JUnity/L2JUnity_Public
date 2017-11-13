@@ -29,12 +29,10 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.model.Mentee;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.skills.BuffInfo;
-import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.variables.PlayerVariables;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +42,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MentorManager
 {
-	private static final Logger _log = LoggerFactory.getLogger(MentorManager.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MentorManager.class);
 	
 	private final Map<Integer, Map<Integer, Mentee>> _menteeData = new ConcurrentHashMap<>();
 	private final Map<Integer, Mentee> _mentors = new ConcurrentHashMap<>();
@@ -67,7 +65,7 @@ public class MentorManager
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 	
@@ -87,7 +85,7 @@ public class MentorManager
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 	
@@ -106,7 +104,7 @@ public class MentorManager
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		finally
 		{
@@ -136,13 +134,7 @@ public class MentorManager
 			return;
 		}
 		
-		//@formatter:off
-		player.getEffectList().getEffects()
-			.stream()
-			.map(BuffInfo::getSkill)
-			.filter(Skill::isMentoring)
-			.forEach(player::stopSkillEffects);
-		//@formatter:on
+		player.getEffectList().stopEffects(info -> info.getSkill().isMentoring(), true, true);
 	}
 	
 	public void setPenalty(int mentorId, long penalty)

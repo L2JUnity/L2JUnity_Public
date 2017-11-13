@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.actor.tasks.player;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.AdminData;
 import org.l2junity.gameserver.enums.IllegalActionPunishmentType;
 import org.l2junity.gameserver.instancemanager.PunishmentManager;
@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.punishment.PunishmentAffect;
 import org.l2junity.gameserver.model.punishment.PunishmentTask;
 import org.l2junity.gameserver.model.punishment.PunishmentType;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +35,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class IllegalPlayerActionTask implements Runnable
 {
-	private static final Logger _log = LoggerFactory.getLogger("audit");
+	private static final Logger LOG_AUDIT = LoggerFactory.getLogger("audit");
 	
 	private final String _message;
 	private final IllegalActionPunishmentType _punishment;
@@ -75,7 +76,7 @@ public final class IllegalPlayerActionTask implements Runnable
 	@Override
 	public void run()
 	{
-		_log.info("AUDIT, {}, {}, {}", _message, _actor, _punishment);
+		LOG_AUDIT.info("AUDIT, {}, {}, {}", _message, _actor, _punishment);
 		
 		AdminData.getInstance().broadcastMessageToGMs(_message);
 		if (!_actor.isGM())
@@ -88,17 +89,17 @@ public final class IllegalPlayerActionTask implements Runnable
 				}
 				case KICK:
 				{
-					_actor.logout(false);
+					Disconnection.of(_actor).defaultSequence(false);
 					break;
 				}
 				case KICKBAN:
 				{
-					PunishmentManager.getInstance().startPunishment(new PunishmentTask(_actor.getObjectId(), PunishmentAffect.CHARACTER, PunishmentType.BAN, System.currentTimeMillis() + (Config.DEFAULT_PUNISH_PARAM * 1000), _message, getClass().getSimpleName()));
+					PunishmentManager.getInstance().startPunishment(new PunishmentTask(_actor.getObjectId(), PunishmentAffect.CHARACTER, PunishmentType.BAN, System.currentTimeMillis() + (GeneralConfig.DEFAULT_PUNISH_PARAM * 1000), _message, getClass().getSimpleName()));
 					break;
 				}
 				case JAIL:
 				{
-					PunishmentManager.getInstance().startPunishment(new PunishmentTask(_actor.getObjectId(), PunishmentAffect.CHARACTER, PunishmentType.JAIL, System.currentTimeMillis() + (Config.DEFAULT_PUNISH_PARAM * 1000), _message, getClass().getSimpleName()));
+					PunishmentManager.getInstance().startPunishment(new PunishmentTask(_actor.getObjectId(), PunishmentAffect.CHARACTER, PunishmentType.JAIL, System.currentTimeMillis() + (GeneralConfig.DEFAULT_PUNISH_PARAM * 1000), _message, getClass().getSimpleName()));
 					break;
 				}
 			}

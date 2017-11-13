@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.instancemanager.MailManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.entity.Message;
@@ -48,7 +48,7 @@ public final class RequestReceivedPost implements IClientIncomingPacket
 	public void run(L2GameClient client)
 	{
 		final PlayerInstance activeChar = client.getActiveChar();
-		if ((activeChar == null) || !Config.ALLOW_MAIL)
+		if ((activeChar == null) || !GeneralConfig.ALLOW_MAIL)
 		{
 			return;
 		}
@@ -67,7 +67,7 @@ public final class RequestReceivedPost implements IClientIncomingPacket
 		
 		if (msg.getReceiverId() != activeChar.getObjectId())
 		{
-			Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " tried to receive not own post!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " tried to receive not own post!", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		

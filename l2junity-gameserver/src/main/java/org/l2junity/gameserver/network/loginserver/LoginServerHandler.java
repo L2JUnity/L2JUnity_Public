@@ -18,10 +18,10 @@
  */
 package org.l2junity.gameserver.network.loginserver;
 
-import io.netty.channel.ChannelHandlerContext;
-
 import org.l2junity.network.ChannelInboundHandler;
 import org.l2junity.network.IIncomingPacket;
+
+import io.netty.channel.ChannelHandlerContext;
 
 /**
  * @author NosBit
@@ -29,7 +29,7 @@ import org.l2junity.network.IIncomingPacket;
 public class LoginServerHandler extends ChannelInboundHandler<LoginServerHandler>
 {
 	@Override
-	protected void messageReceived(ChannelHandlerContext ctx, IIncomingPacket<LoginServerHandler> msg) throws Exception
+	protected void channelRead0(ChannelHandlerContext ctx, IIncomingPacket<LoginServerHandler> msg) throws Exception
 	{
 		msg.run(this);
 	}

@@ -37,9 +37,9 @@ public class Earthquake implements IClientOutgoingPacket
 	 */
 	public Earthquake(ILocational location, int intensity, int duration)
 	{
-		_x = location.getX();
-		_y = location.getY();
-		_z = location.getZ();
+		_x = (int) location.getX();
+		_y = (int) location.getY();
+		_z = (int) location.getZ();
 		_intensity = intensity;
 		_duration = duration;
 	}
@@ -51,11 +51,11 @@ public class Earthquake implements IClientOutgoingPacket
 	 * @param intensity
 	 * @param duration
 	 */
-	public Earthquake(int x, int y, int z, int intensity, int duration)
+	public Earthquake(double x, double y, double z, int intensity, int duration)
 	{
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 		_intensity = intensity;
 		_duration = duration;
 	}

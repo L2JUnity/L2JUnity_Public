@@ -20,8 +20,9 @@ package org.l2junity.gameserver.network.client.recv;
 
 import java.util.StringTokenizer;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.ai.CtrlIntention;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.handler.AdminCommandHandler;
 import org.l2junity.gameserver.handler.BypassHandler;
 import org.l2junity.gameserver.handler.CommunityBoardHandler;
 import org.l2junity.gameserver.handler.IBypassHandler;
@@ -30,6 +31,7 @@ import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.debugger.DebugType;
 import org.l2junity.gameserver.model.entity.Hero;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcManorBypass;
@@ -37,6 +39,7 @@ import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcMenuSelect;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerBypass;
 import org.l2junity.gameserver.model.events.returns.TerminateReturn;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
@@ -60,7 +63,8 @@ public final class RequestBypassToServer implements IClientIncomingPacket
 		"_diary",
 		"_olympiad?command",
 		"menu_select",
-		"manor_menu_select"
+		"manor_menu_select",
+		"_pcc_multisell"
 	};
 	
 	// S
@@ -84,9 +88,14 @@ public final class RequestBypassToServer implements IClientIncomingPacket
 		
 		if (_command.isEmpty())
 		{
-			_log.warn("Player " + activeChar.getName() + " sent empty bypass!");
-			activeChar.logout();
+			LOGGER.warn("Player " + activeChar.getName() + " sent empty bypass!");
+			Disconnection.of(client, activeChar).defaultSequence(false);
 			return;
+		}
+		
+		if (activeChar.isDebug())
+		{
+			activeChar.sendDebugMessage("Bypass: " + _command, DebugType.BYPASSES);
 		}
 		
 		boolean requiresBypassValidation = true;
@@ -105,7 +114,7 @@ public final class RequestBypassToServer implements IClientIncomingPacket
 			bypassOriginId = activeChar.validateHtmlAction(_command);
 			if (bypassOriginId == -1)
 			{
-				_log.warn("Player " + activeChar.getName() + " sent non cached bypass: '" + _command + "'");
+				LOGGER.warn("Player " + activeChar.getName() + " sent non cached bypass: '" + _command + "'");
 				return;
 			}
 			
@@ -131,7 +140,7 @@ public final class RequestBypassToServer implements IClientIncomingPacket
 		{
 			if (_command.startsWith("admin_"))
 			{
-				activeChar.useAdminCommand(_command);
+				AdminCommandHandler.getInstance().useAdminCommand(activeChar, _command, true);
 			}
 			else if (CommunityBoardHandler.getInstance().isCommunityBoardCommand(_command))
 			{
@@ -158,14 +167,14 @@ public final class RequestBypassToServer implements IClientIncomingPacket
 				{
 					WorldObject object = World.getInstance().findObject(Integer.parseInt(id));
 					
-					if ((object != null) && object.isNpc() && (endOfId > 0) && activeChar.isInsideRadius(object, Npc.INTERACTION_DISTANCE, false, false))
+					if ((object != null) && object.isNpc() && (endOfId > 0) && activeChar.isInRadius2d(object, Npc.INTERACTION_DISTANCE))
 					{
 						((Npc) object).onBypassFeedback(activeChar, _command.substring(endOfId + 1));
 					}
 				}
 				else
 				{
-					activeChar.sendDebugMessage("ObjectId of npc bypass is not digit: " + id);
+					activeChar.sendDebugMessage("ObjectId of npc bypass is not digit: " + id, DebugType.BYPASSES);
 				}
 				
 				activeChar.sendPacket(ActionFailed.STATIC_PACKET);
@@ -194,7 +203,7 @@ public final class RequestBypassToServer implements IClientIncomingPacket
 				}
 				catch (NumberFormatException nfe)
 				{
-					_log.warn("NFE for command [" + _command + "]", nfe);
+					LOGGER.warn("NFE for command [" + _command + "]", nfe);
 				}
 			}
 			else if (_command.startsWith("_match"))
@@ -244,7 +253,7 @@ public final class RequestBypassToServer implements IClientIncomingPacket
 			else if (_command.startsWith("manor_menu_select"))
 			{
 				final Npc lastNpc = activeChar.getLastFolkNPC();
-				if (Config.ALLOW_MANOR && (lastNpc != null) && lastNpc.canInteract(activeChar))
+				if (GeneralConfig.ALLOW_MANOR && (lastNpc != null) && lastNpc.canInteract(activeChar))
 				{
 					final String[] split = _command.substring(_command.indexOf("?") + 1).split("&");
 					final int ask = Integer.parseInt(split[0].split("=")[1]);
@@ -277,13 +286,13 @@ public final class RequestBypassToServer implements IClientIncomingPacket
 				}
 				else
 				{
-					_log.warn(client + " sent not handled RequestBypassToServer: [" + _command + "]");
+					LOGGER.warn(client + " sent not handled RequestBypassToServer: [" + _command + "]");
 				}
 			}
 		}
 		catch (Exception e)
 		{
-			_log.warn("Exception processing bypass from player " + activeChar.getName() + ": " + _command, e);
+			LOGGER.warn("Exception processing bypass from player " + activeChar.getName() + ": " + _command, e);
 			
 			if (activeChar.isGM())
 			{

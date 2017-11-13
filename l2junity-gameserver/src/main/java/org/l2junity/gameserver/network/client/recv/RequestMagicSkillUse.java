@@ -18,10 +18,10 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.gameserver.data.xml.impl.SkillData;
-import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.skills.CommonSkill;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerUseSkill;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
@@ -53,6 +53,11 @@ public final class RequestMagicSkillUse implements IClientIncomingPacket
 			return;
 		}
 		
+		if (activeChar.isSpawnProtected())
+		{
+			activeChar.onActionRequest();
+		}
+		
 		// Get the level of the used skill
 		Skill skill = activeChar.getKnownSkill(_magicId);
 		if (skill == null)
@@ -61,17 +66,16 @@ public final class RequestMagicSkillUse implements IClientIncomingPacket
 			skill = activeChar.getCustomSkill(_magicId);
 			if (skill == null)
 			{
-				if ((_magicId == CommonSkill.HAIR_ACCESSORY_SET.getId()) || SkillTreesData.getInstance().isSubClassChangeSkill(_magicId, 1))
-				{
-					skill = SkillData.getInstance().getSkill(_magicId, 1);
-				}
-				else
-				{
-					activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-					_log.warn("Skill Id " + _magicId + " not found in player!");
-					return;
-				}
+				activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+				LOGGER.debug("Player {} tried to use a skill [{}] which hasn't been learned or it belongs to a macro of a currently inactive class.", activeChar, _magicId);
+				return;
 			}
+		}
+		
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerUseSkill(activeChar, skill, _ctrlPressed, _shiftPressed), activeChar, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
+			return;
 		}
 		
 		// Skill is blocked from player use.
@@ -89,6 +93,6 @@ public final class RequestMagicSkillUse implements IClientIncomingPacket
 			return;
 		}
 		
-		activeChar.useMagic(skill, null, _ctrlPressed, _shiftPressed);
+		activeChar.useMagic(skill, activeChar.getTarget(), null, _ctrlPressed, _shiftPressed);
 	}
 }

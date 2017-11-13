@@ -20,7 +20,7 @@ package org.l2junity.gameserver.model.actor.instance;
 
 import java.util.concurrent.ScheduledFuture;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.model.actor.Attackable;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -37,6 +37,7 @@ import org.l2junity.gameserver.util.MinionList;
  */
 public class L2MonsterInstance extends Attackable
 {
+	private boolean _isAgressive = false;
 	protected boolean _enableMinions = true;
 	
 	private L2MonsterInstance _master = null;
@@ -61,6 +62,7 @@ public class L2MonsterInstance extends Attackable
 		super(template);
 		setInstanceType(InstanceType.L2MonsterInstance);
 		setAutoAttackable(true);
+		_isAgressive = getTemplate().isAggressive();
 	}
 	
 	/**
@@ -70,7 +72,7 @@ public class L2MonsterInstance extends Attackable
 	public boolean isAutoAttackable(Creature attacker)
 	{
 		// Check if the L2MonsterInstance target is aggressive
-		if (Config.GUARD_ATTACK_AGGRO_MOB && isAggressive() && (attacker instanceof L2GuardInstance))
+		if (NpcConfig.GUARD_ATTACK_AGGRO_MOB && isAggressive() && (attacker instanceof L2GuardInstance))
 		{
 			return true;
 		}
@@ -95,7 +97,12 @@ public class L2MonsterInstance extends Attackable
 	@Override
 	public boolean isAggressive()
 	{
-		return getTemplate().isAggressive();
+		return _isAgressive;
+	}
+	
+	public void setIsAgressive(boolean isAgressive)
+	{
+		_isAgressive = isAgressive;
 	}
 	
 	@Override
@@ -222,6 +229,12 @@ public class L2MonsterInstance extends Attackable
 	public boolean isMonster()
 	{
 		return true;
+	}
+	
+	@Override
+	public L2MonsterInstance asMonster()
+	{
+		return this;
 	}
 	
 	/**

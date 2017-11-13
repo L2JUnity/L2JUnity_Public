@@ -18,15 +18,14 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.instancemanager.AntiFeedManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.ConnectionState;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.l2junity.gameserver.network.client.L2GameClient;
+import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.CharSelectionInfo;
 import org.l2junity.gameserver.network.client.send.RestartResponse;
-import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
-import org.l2junity.gameserver.taskmanager.AttackStanceTaskManager;
+import org.l2junity.gameserver.util.OfflineTradeUtil;
 import org.l2junity.network.PacketReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +36,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class RequestRestart implements IClientIncomingPacket
 {
-	protected static final Logger _logAccounting = LoggerFactory.getLogger("accounting");
+	protected static final Logger LOG_ACCOUNTING = LoggerFactory.getLogger("accounting");
 	
 	@Override
 	public boolean read(L2GameClient client, PacketReader packet)
@@ -54,47 +53,19 @@ public final class RequestRestart implements IClientIncomingPacket
 			return;
 		}
 		
-		if (player.hasItemRequest())
+		if (!player.canLogout())
 		{
 			client.sendPacket(RestartResponse.FALSE);
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
-		if (player.isLocked())
+		LOG_ACCOUNTING.info("Logged out, {}", client);
+		
+		if (!OfflineTradeUtil.enteredOfflineMode(player))
 		{
-			_log.warn("Player " + player.getName() + " tried to restart during class change.");
-			client.sendPacket(RestartResponse.FALSE);
-			return;
+			Disconnection.of(client, player).storeMe().deleteMe();
 		}
-		
-		if (AttackStanceTaskManager.getInstance().hasAttackStanceTask(player) && !(player.isGM() && Config.GM_RESTART_FIGHTING))
-		{
-			if (Config.DEBUG)
-			{
-				_log.debug("Player " + player.getName() + " tried to logout while fighting.");
-			}
-			
-			player.sendPacket(SystemMessageId.YOU_CANNOT_RESTART_WHILE_IN_COMBAT);
-			client.sendPacket(RestartResponse.FALSE);
-			return;
-		}
-		
-		if (player.isBlockedFromExit())
-		{
-			client.sendPacket(RestartResponse.FALSE);
-			return;
-		}
-		
-		_logAccounting.info("Logged out, {}", client);
-		
-		player.deleteMe();
-		
-		client.setActiveChar(null);
-		
-		// detach the client from the char so that the connection isnt closed in the deleteMe
-		player.setClient(null);
-		
-		AntiFeedManager.getInstance().onDisconnect(client);
 		
 		// return the client to the authed status
 		client.setConnectionState(ConnectionState.AUTHENTICATED);

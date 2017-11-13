@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 import org.l2junity.gameserver.enums.AttributeType;
+import org.l2junity.gameserver.model.VariationInstance;
 import org.l2junity.gameserver.model.ensoul.EnsoulOption;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.items.type.CrystalType;
@@ -46,8 +47,7 @@ public class WarehouseItem
 	private final int _locationSlot;
 	private final int _enchant;
 	private final CrystalType _grade;
-	private boolean _isAugmented;
-	private int _augmentationId;
+	private final VariationInstance _augmentation;
 	private final int _customType1;
 	private final int _customType2;
 	private final int _mana;
@@ -83,15 +83,7 @@ public class WarehouseItem
 		_customType1 = item.getCustomType1();
 		_customType2 = item.getCustomType2();
 		_grade = item.getItem().getCrystalType();
-		if (item.isAugmented())
-		{
-			_isAugmented = true;
-			_augmentationId = item.getAugmentation().getId();
-		}
-		else
-		{
-			_isAugmented = false;
-		}
+		_augmentation = item.getAugmentation();
 		_mana = item.getMana();
 		_time = item.isTimeLimitedItem() ? (int) (item.getRemainingTime() / 1000) : -1;
 		
@@ -235,19 +227,11 @@ public class WarehouseItem
 	}
 	
 	/**
-	 * @return {@code true} if the item is augmented, {@code false} otherwise.
-	 */
-	public boolean isAugmented()
-	{
-		return _isAugmented;
-	}
-	
-	/**
 	 * @return the augmentation If.
 	 */
-	public int getAugmentationId()
+	public VariationInstance getAugmentation()
 	{
-		return _augmentationId;
+		return _augmentation;
 	}
 	
 	/**

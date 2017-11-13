@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -50,9 +50,9 @@ public final class RequestPledgeInfo implements IClientIncomingPacket
 		final L2Clan clan = ClanTable.getInstance().getClan(_clanId);
 		if (clan == null)
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.warn(getClass().getSimpleName() + ": Clan data for clanId " + _clanId + " is missing for player " + activeChar);
+				LOGGER.warn("Clan data for clanId " + _clanId + " is missing for player " + activeChar);
 			}
 			return; // we have no clan data ?!? should not happen
 		}

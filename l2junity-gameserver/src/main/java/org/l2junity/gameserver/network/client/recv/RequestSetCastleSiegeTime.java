@@ -21,7 +21,7 @@ package org.l2junity.gameserver.network.client.recv;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.FeatureConfig;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.entity.Castle;
@@ -56,17 +56,17 @@ public class RequestSetCastleSiegeTime implements IClientIncomingPacket
 		final Castle castle = CastleManager.getInstance().getCastleById(_castleId);
 		if ((activeChar == null) || (castle == null))
 		{
-			_log.warn(getClass().getSimpleName() + ": activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId);
+			LOGGER.warn("activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId);
 			return;
 		}
 		if ((castle.getOwnerId() > 0) && (castle.getOwnerId() != activeChar.getClanId()))
 		{
-			_log.warn(getClass().getSimpleName() + ": activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId + " is trying to change siege date of not his own castle!");
+			LOGGER.warn("activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId + " is trying to change siege date of not his own castle!");
 			return;
 		}
 		else if (!activeChar.isClanLeader())
 		{
-			_log.warn(getClass().getSimpleName() + ": activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId + " is trying to change siege date but is not clan leader!");
+			LOGGER.warn("activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId + " is trying to change siege date but is not clan leader!");
 			return;
 		}
 		else if (!castle.getIsTimeRegistrationOver())
@@ -83,12 +83,12 @@ public class RequestSetCastleSiegeTime implements IClientIncomingPacket
 			}
 			else
 			{
-				_log.warn(getClass().getSimpleName() + ": activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId + " is trying to an invalid time (" + new Date(_time) + " !");
+				LOGGER.warn("activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId + " is trying to an invalid time (" + new Date(_time) + " !");
 			}
 		}
 		else
 		{
-			_log.warn(getClass().getSimpleName() + ": activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId + " is trying to change siege date but currently not possible!");
+			LOGGER.warn("activeChar: " + activeChar + " castle: " + castle + " castleId: " + _castleId + " is trying to change siege date but currently not possible!");
 		}
 	}
 	
@@ -102,7 +102,7 @@ public class RequestSetCastleSiegeTime implements IClientIncomingPacket
 		Calendar cal2 = Calendar.getInstance();
 		cal2.setTimeInMillis(choosenDate);
 		
-		for (int hour : Config.SIEGE_HOUR_LIST)
+		for (int hour : FeatureConfig.SIEGE_HOUR_LIST)
 		{
 			cal1.set(Calendar.HOUR_OF_DAY, hour);
 			if (isEqual(cal1, cal2, Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, Calendar.HOUR, Calendar.MINUTE, Calendar.SECOND))

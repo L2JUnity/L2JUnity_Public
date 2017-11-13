@@ -19,14 +19,14 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>400</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>40</castRange>
 		<trait>DERANGEMENT</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- NPC Trigger Target Cancel -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -62,13 +62,13 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<affectRange>300</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>DERANGEMENT</trait>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- NPC Trigger Target Cancel -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -95,7 +95,9 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TargetCancel" />
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="5903" toLevel="1" name="Burst of Misplace">
@@ -112,7 +114,7 @@
 		<fanRange>0;0;600;90</fanRange>
 		<hitTime>2000</hitTime>
 		<icon>icon.skill0485</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>83</magicLvl>
@@ -126,11 +128,10 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Disarm" />
+			<effect name="p_disarm" />
 		</effects>
 	</skill>
 	<skill id="5904" toLevel="3" name="Mist of Souleater">
-		<table name="#power"> 112 117 120 </table>
 		<affectLimit>10-10</affectLimit>
 		<affectRange>300</affectRange>
 		<castRange>900</castRange>
@@ -161,12 +162,12 @@
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HpDrain">
+			<effect name="i_hp_drain">
 				<power>
 					<value level="1">112</value>
 					<value level="2">117</value>
@@ -194,7 +195,7 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<affectRange>300</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>DERANGEMENT</trait>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
@@ -233,13 +234,13 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1100</effectRange>
 		<affectRange>300</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<targetType>NPC_BODY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 			</effect>
 		</effects>
@@ -265,13 +266,13 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1100</effectRange>
 		<affectRange>300</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<targetType>PC_BODY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 			</effect>
 		</effects>
@@ -289,7 +290,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<!-- FIXME: value unconfirmed -->
 				<power>3000</power>
 			</effect>
@@ -308,7 +309,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<!-- FIXME: value unconfirmed -->
 				<power>5000</power>
 			</effect>
@@ -334,7 +335,7 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>DERANGEMENT</trait>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -344,7 +345,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillByAttack">
+			<effect name="p_trigger_skill_by_attack">
 				<!-- Putrefaction Cleanse -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -375,7 +376,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1100</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<trait>DERANGEMENT</trait>
 		<targetType>ENEMY</targetType>
@@ -460,7 +461,6 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5918" toLevel="10" name="Physical Root Vulnerability">
-		<table name="#trait_root_physically"> -10 -20 -30 -40 -50 -60 -70 -80 -90 -99 </table>
 		<magicLvl>
 			<value level="1">10</value>
 			<value level="2">20</value>
@@ -476,7 +476,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<ROOT_PHYSICALLY>
 					<value level="1">-10</value>
 					<value level="2">-20</value>
@@ -503,7 +503,7 @@
 		<effectRange>600</effectRange>
 		<hitTime>12610</hitTime>
 		<icon>icon.skill5919</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<magicLvl>-2</magicLvl>
 		<mpConsume>60</mpConsume>
@@ -517,7 +517,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockResurrection" />
+			<effect name="p_block_resurrection" />
 		</effects>
 	</skill>
 	<skill id="5920" toLevel="1" name="Tentacle of Agony">
@@ -540,7 +540,7 @@
 		<affectScope>BALAKAS_SCOPE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>150</power>
 			</effect>
 		</effects>
@@ -562,7 +562,7 @@
 		<fanRange>0;0;600;90</fanRange>
 		<hitTime>26950</hitTime>
 		<icon>icon.skill1337</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>85</magicLvl>
@@ -575,31 +575,31 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HpDrain">
+			<effect name="i_hp_drain">
 				<power>121</power>
 				<percentage>80</percentage>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>-3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -629,27 +629,27 @@
 		<operateType>A2</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>121</power>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-3</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -674,19 +674,19 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -722,7 +722,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>2319</power>
 			</effect>
 		</effects>
@@ -814,7 +814,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>90</BOW>
 				<CROSSBOW>90</CROSSBOW>
 			</effect>
@@ -830,14 +830,14 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<targetType>NONE</targetType>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
@@ -865,7 +865,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9279</power>
 			</effect>
 		</effects>
@@ -892,7 +892,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9279</power>
 			</effect>
 		</effects>
@@ -937,7 +937,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9279</power>
 			</effect>
 		</effects>
@@ -963,7 +963,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9279</power>
 			</effect>
 		</effects>
@@ -980,7 +980,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<icon>icon.skill1540</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1072,7 +1072,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1089,7 +1089,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1106,7 +1106,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1123,7 +1123,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1139,7 +1139,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1222,9 +1222,8 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -1366,6 +1365,7 @@
 	<skill id="5960" toLevel="1" name="Stronghold Reactivate">
 		<abnormalLvl>2</abnormalLvl>
 		<abnormalTime>5</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>10</activateRate>
@@ -1378,7 +1378,7 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>POISON</trait>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1401,7 +1401,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>1100</effectRange>
 		<affectRange>300</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>600</castRange>
 		<trait>SHOCK</trait>
 		<targetType>ENEMY</targetType>
@@ -1490,7 +1490,7 @@
 		<staticReuse>true</staticReuse>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -1546,7 +1546,7 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>400</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<hpConsume>
 			<value level="1">513</value>
 			<value level="2">526</value>
@@ -1555,7 +1555,11 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
+				<power>
+					<value level="1">10331</value>
+					<value level="2">12130</value>
+				</power>
 				<ignoreShieldDefence>true</ignoreShieldDefence>
 				<overHit>true</overHit>
 			</effect>
@@ -1659,7 +1663,6 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="5975" toLevel="3" name="Dark Attack">
-		<table name="#power"> 1515 2365 6059 </table>
 		<castRange>40</castRange>
 		<effectPoint>
 			<value level="1">-484</value>
@@ -1685,7 +1688,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">1515</value>
 					<value level="2">2365</value>
@@ -1695,7 +1698,6 @@
 		</effects>
 	</skill>
 	<skill id="5976" toLevel="3" name="Dark Storm">
-		<table name="#power"> 757 1182 4039 </table>
 		<affectLimit>10-10</affectLimit>
 		<affectRange>100</affectRange>
 		<effectPoint>
@@ -1722,7 +1724,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">757</value>
 					<value level="2">1182</value>
@@ -1779,7 +1781,6 @@
 	</skill>
 	<skill id="5980" toLevel="3" name="Seal Isolation">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 2273 3547 6059 </table>
 		<affectLimit>10-10</affectLimit>
 		<affectRange>300</affectRange>
 		<effectPoint>
@@ -1806,7 +1807,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">2273</value>
 					<value level="2">3547</value>
@@ -1831,7 +1832,7 @@
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1864,20 +1865,24 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>8</transformationId>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-90</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
+				<type>MOB</type>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-90</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>PK</type>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-90</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>RAID</type>
 			</effect>
@@ -1912,20 +1917,24 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>9</transformationId>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-90</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
+				<type>MOB</type>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-90</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>PK</type>
 			</effect>
-			<effect name="ReduceDropPenalty">
+			<effect name="p_reduce_drop_penalty">
 				<exp>-90</exp>
+				<deathPenalty>0</deathPenalty>
 				<mode>PER</mode>
 				<type>RAID</type>
 			</effect>
@@ -1945,7 +1954,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>2000</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>1500</castRange>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -2021,10 +2030,10 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>8</SHOCK>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -2041,7 +2050,7 @@
 					<item>CROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="PhysicalAttackRange">
+			<effect name="p_attack_range">
 				<amount>100</amount>
 				<mode>DIFF</mode>
 				<weaponType>
@@ -2049,7 +2058,7 @@
 					<item>CROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>20</amount>
 				<mode>PER</mode>
 				<weaponType>
@@ -2086,35 +2095,35 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>10</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>HEAVY</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>2.0</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -2212,7 +2221,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1400</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<castRange>900</castRange>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -2239,16 +2248,16 @@
 		<operateType>A2</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>DERANGEMENT</trait>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>171</power>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- NPC Trigger Target Cancel -->
 				<minDamage>1</minDamage>
 				<skillId>5902</skillId>
@@ -2259,8 +2268,8 @@
 				<targetType>SELF</targetType>
 				<chance>90</chance>
 			</effect>
-			<effect name="Mute" />
-			<effect name="PhysicalMute" />
+			<effect name="p_block_spell" />
+			<effect name="p_block_skill_physical" />
 		</effects>
 	</skill>
 	<skill id="5994" toLevel="1" name="Mysterious Effect">
@@ -2273,7 +2282,7 @@
 		<effectPoint>-1</effectPoint>
 		<effectRange>1400</effectRange>
 		<icon>icon.skill2513</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<magicLvl>1</magicLvl>
 		<operateType>A2</operateType>

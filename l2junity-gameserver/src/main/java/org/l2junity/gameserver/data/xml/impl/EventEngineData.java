@@ -18,9 +18,9 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -28,8 +28,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.commons.util.IXmlReader;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.eventengine.AbstractEventManager;
@@ -59,19 +63,21 @@ public final class EventEngineData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EventEngineData.class);
 	
+	private int _loadedEventCount = 0;
+	
 	protected EventEngineData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ClanHallData.class))
+	private void load() throws Exception
 	{
+		_loadedEventCount = 0;
 		parseDatapackDirectory("data/events", true);
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node listNode = doc.getFirstChild(); listNode != null; listNode = listNode.getNextSibling())
 		{
@@ -148,6 +154,7 @@ public final class EventEngineData implements IGameXmlReader
 		
 		// Notify the event manager that we've done initializing its stuff
 		eventManager.onInitialized();
+		_loadedEventCount++;
 		
 		LOGGER.info("{}: Initialized", eventManager.getClass().getSimpleName());
 	}
@@ -568,10 +575,16 @@ public final class EventEngineData implements IGameXmlReader
 		return new LinkedHashMap<>();
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _loadedEventCount;
+	}
+	
 	/**
 	 * Gets the single instance of EventEngineData.
 	 * @return single instance of EventEngineData
 	 */
+	@InstanceGetter
 	public static EventEngineData getInstance()
 	{
 		return SingletonHolder._instance;

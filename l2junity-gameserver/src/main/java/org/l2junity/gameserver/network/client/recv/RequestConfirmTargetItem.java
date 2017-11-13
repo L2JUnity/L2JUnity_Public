@@ -18,6 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
+import org.l2junity.gameserver.data.xml.impl.VariationData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
@@ -52,6 +53,12 @@ public final class RequestConfirmTargetItem extends AbstractRefinePacket
 		final ItemInstance item = activeChar.getInventory().getItemByObjectId(_itemObjId);
 		if (item == null)
 		{
+			return;
+		}
+		
+		if (!VariationData.getInstance().hasFeeData(item.getId()))
+		{
+			client.sendPacket(SystemMessageId.THIS_IS_NOT_A_SUITABLE_ITEM);
 			return;
 		}
 		

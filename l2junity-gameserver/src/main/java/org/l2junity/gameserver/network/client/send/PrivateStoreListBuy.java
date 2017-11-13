@@ -53,11 +53,11 @@ public class PrivateStoreListBuy extends AbstractItemPacket
 		packet.writeD(0x00); // unk
 		packet.writeD(_items.size());
 		
+		int i = 0;
 		for (TradeItem item : _items)
 		{
 			writeItem(packet, item);
-			// packet.writeD(item.getObjectId());
-			packet.writeD(0x00); // unk
+			packet.writeD(++i); // Number
 			packet.writeQ(item.getPrice());
 			packet.writeQ(item.getItem().getReferencePrice() * 2);
 			packet.writeQ(item.getStoreCount());

@@ -44,45 +44,39 @@ public final class RequestLinkHtml implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		PlayerInstance actor = client.getActiveChar();
-		if (actor == null)
+		PlayerInstance player = client.getActiveChar();
+		if (player == null)
 		{
 			return;
 		}
 		
 		if (_link.isEmpty())
 		{
-			_log.warn("Player " + actor.getName() + " sent empty html link!");
+			LOGGER.warn("Player " + player.getName() + " sent empty html link!");
 			return;
 		}
 		
 		if (_link.contains(".."))
 		{
-			_log.warn("Player " + actor.getName() + " sent invalid html link: link " + _link);
+			LOGGER.warn("Player " + player.getName() + " sent invalid html link: link " + _link);
 			return;
 		}
 		
-		int htmlObjectId = actor.validateHtmlAction("link " + _link);
+		int htmlObjectId = player.validateHtmlAction("link " + _link);
 		if (htmlObjectId == -1)
 		{
-			_log.warn("Player " + actor.getName() + " sent non cached  html link: link " + _link);
+			LOGGER.warn("Player " + player.getName() + " sent non cached  html link: link " + _link);
 			return;
 		}
 		
-		if ((htmlObjectId > 0) && !Util.isInsideRangeOfObjectId(actor, htmlObjectId, Npc.INTERACTION_DISTANCE))
+		if ((htmlObjectId > 0) && !Util.isInsideRangeOfObjectId(player, htmlObjectId, Npc.INTERACTION_DISTANCE))
 		{
 			// No logging here, this could be a common case
 			return;
 		}
 		
-		String filename = "data/html/" + _link;
-		final NpcHtmlMessage msg = new NpcHtmlMessage(htmlObjectId);
-		msg.setFile(actor.getHtmlPrefix(), filename);
-		actor.sendPacket(msg);
-		
-		if (actor.isGM() && actor.isDebug())
-		{
-			actor.sendMessage("HTML: " + filename);
-		}
+		final NpcHtmlMessage html = new NpcHtmlMessage(htmlObjectId);
+		html.setFile(player.getHtmlPrefix(), "data/html/" + _link);
+		player.sendPacket(html);
 	}
 }

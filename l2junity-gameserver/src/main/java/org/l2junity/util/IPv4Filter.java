@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
  */
 public class IPv4Filter implements IAcceptFilter, Runnable
 {
-	protected final Logger _log = LoggerFactory.getLogger(getClass());
+	protected final Logger _logger = LoggerFactory.getLogger(getClass());
 	
 	private final HashMap<Integer, Flood> _ipFloodMap;
 	private static final long SLEEP_TIME = 5000;
@@ -75,7 +75,7 @@ public class IPv4Filter implements IAcceptFilter, Runnable
 		final InetAddress addr = sc.socket().getInetAddress();
 		if (!(addr instanceof Inet4Address))
 		{
-			_log.info("Someone tried to connect from something other than IPv4: {}", addr.getHostAddress());
+			_logger.info("Someone tried to connect from something other than IPv4: {}", addr.getHostAddress());
 			return false;
 		}
 		

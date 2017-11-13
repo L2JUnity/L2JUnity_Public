@@ -18,16 +18,28 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
+import java.util.Objects;
+
+import org.l2junity.gameserver.model.quest.QuestState;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
 public final class TutorialShowQuestionMark implements IClientOutgoingPacket
 {
-	private final int _markId;
+	private final int _questId;
+	private final int _cond;
 	
-	public TutorialShowQuestionMark(int blink)
+	public TutorialShowQuestionMark(int questId, int cond)
 	{
-		_markId = blink;
+		_questId = questId;
+		_cond = cond;
+	}
+	
+	public TutorialShowQuestionMark(QuestState state)
+	{
+		Objects.requireNonNull(state);
+		_questId = state.getQuest().getId();
+		_cond = state.getCond();
 	}
 	
 	@Override
@@ -35,8 +47,8 @@ public final class TutorialShowQuestionMark implements IClientOutgoingPacket
 	{
 		OutgoingPackets.TUTORIAL_SHOW_QUESTION_MARK.writeId(packet);
 		
-		packet.writeC(0x01); // Number of mark, most likely ?
-		packet.writeD(_markId);
+		packet.writeC(_cond); // Quest Condition (0-255)
+		packet.writeD(_questId); // Quest Id
 		return true;
 	}
 }

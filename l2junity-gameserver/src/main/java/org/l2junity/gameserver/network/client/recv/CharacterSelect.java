@@ -18,10 +18,11 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.GameServer;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
 import org.l2junity.gameserver.data.xml.impl.SecondaryAuthData;
-import org.l2junity.gameserver.instancemanager.AntiFeedManager;
+import org.l2junity.gameserver.instancemanager.MultiboxManager;
 import org.l2junity.gameserver.instancemanager.PunishmentManager;
 import org.l2junity.gameserver.model.CharSelectInfoPackage;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -32,9 +33,9 @@ import org.l2junity.gameserver.model.events.returns.TerminateReturn;
 import org.l2junity.gameserver.model.punishment.PunishmentAffect;
 import org.l2junity.gameserver.model.punishment.PunishmentType;
 import org.l2junity.gameserver.network.client.ConnectionState;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.CharSelected;
-import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
 import org.l2junity.gameserver.network.client.send.ServerClose;
 import org.l2junity.network.PacketReader;
 import org.slf4j.Logger;
@@ -46,7 +47,7 @@ import org.slf4j.LoggerFactory;
  */
 public class CharacterSelect implements IClientIncomingPacket
 {
-	protected static final Logger _logAccounting = LoggerFactory.getLogger("accounting");
+	protected static final Logger LOG_ACCOUNTING = LoggerFactory.getLogger("accounting");
 	
 	// cd
 	private int _charSlot;
@@ -115,23 +116,20 @@ public class CharacterSelect implements IClientIncomingPacket
 						return;
 					}
 					
-					if ((Config.L2JMOD_DUALBOX_CHECK_MAX_PLAYERS_PER_IP > 0) && !AntiFeedManager.getInstance().tryAddClient(AntiFeedManager.GAME_ID, client, Config.L2JMOD_DUALBOX_CHECK_MAX_PLAYERS_PER_IP))
+					if (!MultiboxManager.getInstance().registerClient(GameServer.getInstance(), client))
 					{
-						final NpcHtmlMessage msg = new NpcHtmlMessage();
-						msg.setFile(info.getHtmlPrefix(), "data/html/mods/IPRestriction.htm");
-						msg.replace("%max%", String.valueOf(AntiFeedManager.getInstance().getLimit(client, Config.L2JMOD_DUALBOX_CHECK_MAX_PLAYERS_PER_IP)));
-						client.sendPacket(msg);
+						MultiboxManager.getInstance().sendDefaultRestrictionMessage(GameServer.getInstance(), client);
 						return;
 					}
 					
 					// The L2PcInstance must be created here, so that it can be attached to the L2GameClient
-					if (Config.DEBUG)
+					if (GeneralConfig.DEBUG)
 					{
-						_log.debug("selected slot:" + _charSlot);
+						LOGGER.debug("selected slot:" + _charSlot);
 					}
 					
 					// load up character from disk
-					final PlayerInstance cha = client.loadCharFromDisk(_charSlot);
+					final PlayerInstance cha = client.load(_charSlot);
 					if (cha == null)
 					{
 						return; // handled in L2GameClient
@@ -146,7 +144,7 @@ public class CharacterSelect implements IClientIncomingPacket
 					final TerminateReturn terminate = EventDispatcher.getInstance().notifyEvent(new OnPlayerSelect(cha, cha.getObjectId(), cha.getName(), client), Containers.Players(), TerminateReturn.class);
 					if ((terminate != null) && terminate.terminate())
 					{
-						cha.deleteMe();
+						Disconnection.of(cha).defaultSequence(false);
 						return;
 					}
 					
@@ -159,7 +157,7 @@ public class CharacterSelect implements IClientIncomingPacket
 				client.getActiveCharLock().unlock();
 			}
 			
-			_logAccounting.info("Logged in, {}", client);
+			LOG_ACCOUNTING.info("Logged in, {}", client);
 		}
 	}
 }

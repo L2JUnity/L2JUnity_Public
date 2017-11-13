@@ -19,6 +19,7 @@
 package org.l2junity.gameserver.network.client.recv.crystalization;
 
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.actor.request.CrystallizationRequest;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
 import org.l2junity.network.PacketReader;
@@ -43,15 +44,6 @@ public class RequestCrystallizeItemCancel implements IClientIncomingPacket
 			return;
 		}
 		
-		if (!client.getFloodProtectors().getTransaction().tryPerformAction("crystallize"))
-		{
-			activeChar.sendMessage("You are crystallizing too fast.");
-			return;
-		}
-		
-		if (activeChar.isInCrystallize())
-		{
-			activeChar.setInCrystallize(false);
-		}
+		activeChar.removeRequest(CrystallizationRequest.class);
 	}
 }

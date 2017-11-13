@@ -33,9 +33,9 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.commons.util.CommonUtil;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.clan.entry.PledgeApplicantInfo;
 import org.l2junity.gameserver.model.clan.entry.PledgeRecruitInfo;
 import org.l2junity.gameserver.model.clan.entry.PledgeWaitingInfo;
@@ -229,8 +229,8 @@ public class ClanEntryManager
 			{
 				LOGGER.warn(e.getMessage(), e);
 			}
-			
-			return _waitingList.put(playerId, info) != null;
+			_waitingList.put(playerId, info);
+			return true;
 		}
 		return false;
 	}
@@ -275,7 +275,8 @@ public class ClanEntryManager
 			{
 				LOGGER.warn(e.getMessage(), e);
 			}
-			return _clanList.put(clanId, info) != null;
+			_clanList.put(clanId, info);
+			return true;
 		}
 		return false;
 	}
@@ -391,18 +392,18 @@ public class ClanEntryManager
 	
 	private static void lockPlayer(int playerId)
 	{
-		_playerLocked.put(playerId, ThreadPoolManager.getInstance().scheduleGeneral(() ->
+		_playerLocked.put(playerId, ThreadPool.schedule(() ->
 		{
 			_playerLocked.remove(playerId);
-		} , LOCK_TIME));
+		}, LOCK_TIME, TimeUnit.MILLISECONDS));
 	}
 	
 	private static void lockClan(int clanId)
 	{
-		_clanLocked.put(clanId, ThreadPoolManager.getInstance().scheduleGeneral(() ->
+		_clanLocked.put(clanId, ThreadPool.schedule(() ->
 		{
 			_clanLocked.remove(clanId);
-		} , LOCK_TIME));
+		}, LOCK_TIME, TimeUnit.MILLISECONDS));
 	}
 	
 	public static ClanEntryManager getInstance()

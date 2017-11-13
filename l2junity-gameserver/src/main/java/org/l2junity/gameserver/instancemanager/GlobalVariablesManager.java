@@ -25,7 +25,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map.Entry;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.variables.AbstractVariables;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +46,25 @@ public final class GlobalVariablesManager extends AbstractVariables
 	private static final String DELETE_QUERY = "DELETE FROM global_variables";
 	private static final String INSERT_QUERY = "INSERT INTO global_variables (var, value) VALUES (?, ?)";
 	
+	// Variables
+	public static final String RECORD_ONLINE_PLAYERS_VAR = "RecordOnlinePlayers";
+	public static final String VENOM_STATUS_VAR = "VenomStatus";
+	public static final String CORE_ATTACKED_VAR = "Core_Attacked";
+	public static final String GTM_GAME_TIME_VAR = "gtm.gameTime";
+	public static final String SOD_STATE_VAR = "SoDState";
+	public static final String SOD_TIAT_KILLED_VAR = "SoDTiatKilled";
+	public static final String SOD_LSC_DATE_VAR = "SoDLSCDate";
+	public static final String SEED_NEXT_STATUS_CHANGE_VAR = "SeedNextStatusChange";
+	public static final String SEED_BUFFS_LIST_VAR = "SeedBuffsList";
+	public static final String SAILREN_RESPAWN_VAR = "SailrenRespawn";
+	public static final String QUEEN_SHYEED_RESPAWN_VAR = "QueenShyeedRespawn";
+	
 	protected GlobalVariablesManager()
+	{
+	}
+	
+	@Load(group = LoadGroup.class)
+	private void load()
 	{
 		restoreMe();
 	}
@@ -132,13 +153,14 @@ public final class GlobalVariablesManager extends AbstractVariables
 	 * Gets the single instance of {@code GlobalVariablesManager}.
 	 * @return single instance of {@code GlobalVariablesManager}
 	 */
+	@InstanceGetter
 	public static GlobalVariablesManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final GlobalVariablesManager _instance = new GlobalVariablesManager();
+		protected static final GlobalVariablesManager INSTANCE = new GlobalVariablesManager();
 	}
 }

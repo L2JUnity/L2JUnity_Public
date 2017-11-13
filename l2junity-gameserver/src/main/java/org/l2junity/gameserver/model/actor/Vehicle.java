@@ -21,11 +21,12 @@ package org.l2junity.gameserver.model.actor;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.GameTimeController;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.ai.CtrlIntention;
 import org.l2junity.gameserver.enums.InstanceType;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.instancemanager.MapRegionManager;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
 import org.l2junity.gameserver.model.Location;
@@ -42,13 +43,18 @@ import org.l2junity.gameserver.model.zone.ZoneRegion;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
 import org.l2junity.gameserver.network.client.send.InventoryUpdate;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
+import org.l2junity.gameserver.taskmanager.MovementController;
 import org.l2junity.gameserver.util.Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author DS
  */
 public abstract class Vehicle extends Creature
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Vehicle.class);
+
 	protected int _dockId = 0;
 	protected final Set<PlayerInstance> _passengers = ConcurrentHashMap.newKeySet();
 	protected Location _oustLoc = null;
@@ -88,7 +94,7 @@ public abstract class Vehicle extends Creature
 	{
 		if (_engine != null)
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(_engine, delay);
+			ThreadPool.schedule(_engine, delay, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -161,10 +167,11 @@ public abstract class Vehicle extends Creature
 							setHeading(Util.calculateHeadingFrom(getX(), getY(), point.getX(), point.getY()));
 						}
 						
-						m._moveStartTime = GameTimeController.getInstance().getGameTicks();
+						m._moveStartTime = GameTimeManager.getInstance().getGameTicks();
 						_move = m;
 						
-						GameTimeController.getInstance().registerMovingObject(this);
+						// Register object to the movement controller.
+						MovementController.getInstance().registerMovingObject(this);
 						return true;
 					}
 				}
@@ -299,7 +306,7 @@ public abstract class Vehicle extends Creature
 	 */
 	public void payForRide(int itemId, int count, int oustX, int oustY, int oustZ)
 	{
-		World.getInstance().forEachVisibleObjectInRange(this, PlayerInstance.class, 1000, player ->
+		World.getInstance().forEachVisibleObjectInRadius(this, PlayerInstance.class, 1000, player ->
 		{
 			if (player.isInBoat() && (player.getBoat() == this))
 			{
@@ -398,7 +405,7 @@ public abstract class Vehicle extends Creature
 		}
 		catch (Exception e)
 		{
-			_log.error("Failed stopMove().", e);
+			LOGGER.error("Failed stopMove().", e);
 		}
 		
 		try
@@ -407,7 +414,7 @@ public abstract class Vehicle extends Creature
 		}
 		catch (Exception e)
 		{
-			_log.error("Failed oustPlayers().", e);
+			LOGGER.error("Failed oustPlayers().", e);
 		}
 		
 		final ZoneRegion oldZoneRegion = ZoneManager.getInstance().getRegion(this);
@@ -418,20 +425,12 @@ public abstract class Vehicle extends Creature
 		}
 		catch (Exception e)
 		{
-			_log.error("Failed decayMe().", e);
+			LOGGER.error("Failed decayMe().", e);
 		}
 		
-		oldZoneRegion.removeFromZones(this);
-		
-		// Remove L2Object object from _allObjects of World
-		World.getInstance().removeObject(this);
+		oldZoneRegion.removeFromZones(this, false);
 		
 		return super.deleteMe();
-	}
-	
-	@Override
-	public void updateAbnormalVisualEffects()
-	{
 	}
 	
 	@Override
@@ -479,5 +478,11 @@ public abstract class Vehicle extends Creature
 	public boolean isVehicle()
 	{
 		return true;
+	}
+	
+	@Override
+	public Vehicle asVehicle()
+	{
+		return this;
 	}
 }

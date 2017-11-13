@@ -21,7 +21,6 @@ package org.l2junity.gameserver.handler;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.skills.Skill;
-import org.l2junity.gameserver.model.skills.targets.TargetType;
 
 /**
  * @author Nik
@@ -30,5 +29,8 @@ public interface ITargetTypeHandler
 {
 	WorldObject getTarget(Creature activeChar, WorldObject selectedTarget, Skill skill, boolean forceUse, boolean dontMove, boolean sendMessage);
 	
-	Enum<TargetType> getTargetType();
+	default boolean isGround()
+	{
+		return false;
+	}
 }

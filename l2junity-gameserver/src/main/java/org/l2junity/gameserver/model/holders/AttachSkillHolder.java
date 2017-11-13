@@ -25,6 +25,7 @@ import org.l2junity.gameserver.model.StatsSet;
  */
 public class AttachSkillHolder extends SkillHolder
 {
+	private static final long serialVersionUID = 4784322427362606920L;
 	private final int _requiredSkillId;
 	private final int _requiredSkillLevel;
 	

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
@@ -66,7 +66,7 @@ public final class RequestWithdrawalPledge implements IClientIncomingPacket
 		
 		L2Clan clan = activeChar.getClan();
 		
-		clan.removeClanMember(activeChar.getObjectId(), System.currentTimeMillis() + (Config.ALT_CLAN_JOIN_DAYS * 86400000L)); // 24*60*60*1000 = 86400000
+		clan.removeClanMember(activeChar.getObjectId(), System.currentTimeMillis() + (PlayerConfig.ALT_CLAN_JOIN_DAYS * 86400000L)); // 24*60*60*1000 = 86400000
 		
 		SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.S1_HAS_WITHDRAWN_FROM_THE_CLAN);
 		sm.addString(activeChar.getName());

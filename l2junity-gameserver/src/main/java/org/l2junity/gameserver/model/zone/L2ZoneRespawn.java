@@ -21,8 +21,8 @@ package org.l2junity.gameserver.model.zone;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.Location;
 
 /**
@@ -61,7 +61,7 @@ public abstract class L2ZoneRespawn extends ZoneType
 					addBanishSpawn(x, y, z);
 					break;
 				default:
-					_log.warn(getClass().getSimpleName() + ": Unknown location type: " + type);
+					LOGGER.warn("Unknown location type: " + type);
 			}
 		}
 	}
@@ -113,7 +113,7 @@ public abstract class L2ZoneRespawn extends ZoneType
 	
 	public final Location getSpawnLoc()
 	{
-		if (Config.RANDOM_RESPAWN_IN_TOWN_ENABLED)
+		if (PlayerConfig.RANDOM_RESPAWN_IN_TOWN_ENABLED)
 		{
 			return _spawnLocs.get(Rnd.get(_spawnLocs.size()));
 		}
@@ -124,7 +124,7 @@ public abstract class L2ZoneRespawn extends ZoneType
 	{
 		if (_otherSpawnLocs != null)
 		{
-			if (Config.RANDOM_RESPAWN_IN_TOWN_ENABLED)
+			if (PlayerConfig.RANDOM_RESPAWN_IN_TOWN_ENABLED)
 			{
 				return _otherSpawnLocs.get(Rnd.get(_otherSpawnLocs.size()));
 			}
@@ -137,7 +137,7 @@ public abstract class L2ZoneRespawn extends ZoneType
 	{
 		if (_chaoticSpawnLocs != null)
 		{
-			if (Config.RANDOM_RESPAWN_IN_TOWN_ENABLED)
+			if (PlayerConfig.RANDOM_RESPAWN_IN_TOWN_ENABLED)
 			{
 				return _chaoticSpawnLocs.get(Rnd.get(_chaoticSpawnLocs.size()));
 			}
@@ -150,7 +150,7 @@ public abstract class L2ZoneRespawn extends ZoneType
 	{
 		if (_banishSpawnLocs != null)
 		{
-			if (Config.RANDOM_RESPAWN_IN_TOWN_ENABLED)
+			if (PlayerConfig.RANDOM_RESPAWN_IN_TOWN_ENABLED)
 			{
 				return _banishSpawnLocs.get(Rnd.get(_banishSpawnLocs.size()));
 			}

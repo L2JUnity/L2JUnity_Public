@@ -21,9 +21,11 @@ package org.l2junity.gameserver.model.actor.instance;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
+import org.l2junity.commons.util.CommonUtil;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.ai.CharacterAI;
 import org.l2junity.gameserver.ai.DoorAI;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
@@ -37,7 +39,6 @@ import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.stat.DoorStat;
-import org.l2junity.gameserver.model.actor.status.DoorStatus;
 import org.l2junity.gameserver.model.actor.templates.DoorTemplate;
 import org.l2junity.gameserver.model.entity.Castle;
 import org.l2junity.gameserver.model.entity.Fort;
@@ -50,9 +51,13 @@ import org.l2junity.gameserver.network.client.send.OnEventTrigger;
 import org.l2junity.gameserver.network.client.send.StaticObject;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class DoorInstance extends Creature
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(DoorInstance.class);
+
 	private boolean _open = false;
 	private boolean _isAttackableDoor = false;
 	private int _meshindex = 1;
@@ -81,7 +86,7 @@ public final class DoorInstance extends Creature
 	}
 	
 	@Override
-	public void moveToLocation(int x, int y, int z, int offset)
+	public void moveToLocation(double x, double y, double z, int offset)
 	{
 	}
 	
@@ -91,7 +96,7 @@ public final class DoorInstance extends Creature
 	}
 	
 	@Override
-	public void doAttack(Creature target)
+	public void doAutoAttack(Creature target)
 	{
 	}
 	
@@ -107,25 +112,13 @@ public final class DoorInstance extends Creature
 		{
 			delay += Rnd.get(getTemplate().getRandomTime());
 		}
-		ThreadPoolManager.getInstance().scheduleGeneral(new TimerOpen(), delay * 1000);
+		ThreadPool.schedule(new TimerOpen(), delay * 1000, TimeUnit.MILLISECONDS);
 	}
 	
 	@Override
 	public DoorTemplate getTemplate()
 	{
 		return (DoorTemplate) super.getTemplate();
-	}
-	
-	@Override
-	public final DoorStatus getStatus()
-	{
-		return (DoorStatus) super.getStatus();
-	}
-	
-	@Override
-	public void initCharStatus()
-	{
-		setStatus(new DoorStatus(this));
 	}
 	
 	@Override
@@ -219,7 +212,7 @@ public final class DoorInstance extends Creature
 			}
 			else
 			{
-				_log.warn(getClass().getSimpleName() + ": cannot find child id: " + getChildId());
+				LOGGER.warn("cannot find child id: {}", getChildId());
 			}
 		}
 	}
@@ -229,7 +222,7 @@ public final class DoorInstance extends Creature
 		return _isAttackableDoor;
 	}
 	
-	public boolean getIsShowHp()
+	public boolean isShowHp()
 	{
 		return getTemplate().isShowHp();
 	}
@@ -241,16 +234,7 @@ public final class DoorInstance extends Creature
 	
 	public int getDamage()
 	{
-		int dmg = 6 - (int) Math.ceil((getCurrentHp() / getMaxHp()) * 6);
-		if (dmg > 6)
-		{
-			return 6;
-		}
-		if (dmg < 0)
-		{
-			return 0;
-		}
-		return dmg;
+		return isShowHp() ? CommonUtil.constrain(6 - (int) Math.ceil((getCurrentHp() / getMaxHp()) * 6), 0, 6) : 0;
 	}
 	
 	public final Castle getCastle()
@@ -265,11 +249,11 @@ public final class DoorInstance extends Creature
 	
 	public boolean isEnemy()
 	{
-		if ((getCastle() != null) && (getCastle().getResidenceId() > 0) && getCastle().getZone().isActive() && getIsShowHp())
+		if ((getCastle() != null) && (getCastle().getResidenceId() > 0) && getCastle().getZone().isActive() && isShowHp())
 		{
 			return true;
 		}
-		else if ((getFort() != null) && (getFort().getResidenceId() > 0) && getFort().getZone().isActive() && getIsShowHp())
+		else if ((getFort() != null) && (getFort().getResidenceId() > 0) && getFort().getZone().isActive() && isShowHp())
 		{
 			return true;
 		}
@@ -288,7 +272,7 @@ public final class DoorInstance extends Creature
 		{
 			return true;
 		}
-		else if (!getIsShowHp())
+		else if (!isShowHp())
 		{
 			return false;
 		}
@@ -316,11 +300,6 @@ public final class DoorInstance extends Creature
 			}
 		}
 		return (isCastle || isFort);
-	}
-	
-	@Override
-	public void updateAbnormalVisualEffects()
-	{
 	}
 	
 	/**
@@ -365,7 +344,7 @@ public final class DoorInstance extends Creature
 		OnEventTrigger oe = null;
 		if (getEmitter() > 0)
 		{
-			oe = new OnEventTrigger(getEmitter(), isOpen());
+			oe = new OnEventTrigger(getEmitter(), getTemplate().isReversed() ? !isOpen() : isOpen());
 		}
 		
 		for (PlayerInstance player : knownPlayers)
@@ -581,7 +560,7 @@ public final class DoorInstance extends Creature
 		{
 			if (getEmitter() > 0)
 			{
-				activeChar.sendPacket(new OnEventTrigger(getEmitter(), isOpen()));
+				activeChar.sendPacket(new OnEventTrigger(getEmitter(), getTemplate().isReversed() ? !isOpen() : isOpen()));
 			}
 			activeChar.sendPacket(new StaticObject(this, activeChar.isGM()));
 		}
@@ -623,7 +602,7 @@ public final class DoorInstance extends Creature
 			_autoCloseTask = null;
 			oldTask.cancel(false);
 		}
-		_autoCloseTask = ThreadPoolManager.getInstance().scheduleGeneral(new AutoClose(), getTemplate().getCloseTime() * 1000);
+		_autoCloseTask = ThreadPool.schedule(new AutoClose(), getTemplate().getCloseTime() * 1000, TimeUnit.MILLISECONDS);
 	}
 	
 	class AutoClose implements Runnable
@@ -658,7 +637,7 @@ public final class DoorInstance extends Creature
 			{
 				delay += Rnd.get(getTemplate().getRandomTime());
 			}
-			ThreadPoolManager.getInstance().scheduleGeneral(this, delay * 1000);
+			ThreadPool.schedule(this, delay * 1000, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -666,5 +645,11 @@ public final class DoorInstance extends Creature
 	public boolean isDoor()
 	{
 		return true;
+	}
+	
+	@Override
+	public DoorInstance asDoor()
+	{
+		return this;
 	}
 }

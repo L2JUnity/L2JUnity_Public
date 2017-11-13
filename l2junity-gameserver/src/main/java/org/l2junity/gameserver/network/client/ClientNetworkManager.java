@@ -18,7 +18,10 @@
  */
 package org.l2junity.gameserver.network.client;
 
-import org.l2junity.Config;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.gameserver.config.ServerConfig;
+import org.l2junity.gameserver.loader.ClientAccessLoadGroup;
 import org.l2junity.gameserver.network.EventLoopGroupManager;
 import org.l2junity.network.NetworkManager;
 
@@ -29,9 +32,16 @@ public class ClientNetworkManager extends NetworkManager
 {
 	protected ClientNetworkManager()
 	{
-		super(EventLoopGroupManager.getInstance().getBossGroup(), EventLoopGroupManager.getInstance().getWorkerGroup(), new ClientInitializer(), Config.GAMESERVER_HOSTNAME, Config.PORT_GAME);
+		super(EventLoopGroupManager.getInstance().getBossGroup(), EventLoopGroupManager.getInstance().getWorkerGroup(), new ClientInitializer(), ServerConfig.GAMESERVER_HOSTNAME, ServerConfig.PORT_GAME);
 	}
 	
+	@Load(group = ClientAccessLoadGroup.class)
+	private void load() throws InterruptedException
+	{
+		start();
+	}
+	
+	@InstanceGetter
 	public static ClientNetworkManager getInstance()
 	{
 		return SingletonHolder._instance;

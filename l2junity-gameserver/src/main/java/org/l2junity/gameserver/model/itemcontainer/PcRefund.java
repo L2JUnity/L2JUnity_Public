@@ -71,7 +71,7 @@ public class PcRefund extends ItemContainer
 		}
 		catch (Exception e)
 		{
-			_log.error("addItem()", e);
+			LOGGER.error("addItem()", e);
 		}
 	}
 	
@@ -93,7 +93,7 @@ public class PcRefund extends ItemContainer
 		}
 		catch (Exception e)
 		{
-			_log.error("deleteMe()", e);
+			LOGGER.error("deleteMe()", e);
 		}
 		_items.clear();
 	}

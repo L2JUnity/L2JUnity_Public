@@ -18,7 +18,7 @@
  */
 package org.l2junity.loginserver;
 
-import org.l2junity.Config;
+import org.l2junity.loginserver.config.LoginServerConfig;
 
 /**
  * <p>
@@ -35,6 +35,7 @@ public class SessionKey
 	public int playOkID2;
 	public int loginOkID1;
 	public int loginOkID2;
+	public boolean loginPairCheckDisabled;
 	
 	public SessionKey(int loginOK1, int loginOK2, int playOK1, int playOK2)
 	{
@@ -42,6 +43,7 @@ public class SessionKey
 		playOkID2 = playOK2;
 		loginOkID1 = loginOK1;
 		loginOkID2 = loginOK2;
+		loginPairCheckDisabled = !LoginServerConfig.SHOW_LICENCE;
 	}
 	
 	@Override
@@ -73,10 +75,10 @@ public class SessionKey
 		}
 		final SessionKey key = (SessionKey) o;
 		// when server doesn't show license it doesn't send the LoginOk packet, client doesn't have this part of the key then.
-		if (Config.SHOW_LICENCE)
+		if (loginPairCheckDisabled)
 		{
-			return ((playOkID1 == key.playOkID1) && (loginOkID1 == key.loginOkID1) && (playOkID2 == key.playOkID2) && (loginOkID2 == key.loginOkID2));
+			return ((playOkID1 == key.playOkID1) && (playOkID2 == key.playOkID2));
 		}
-		return ((playOkID1 == key.playOkID1) && (playOkID2 == key.playOkID2));
+		return ((playOkID1 == key.playOkID1) && (loginOkID1 == key.loginOkID1) && (playOkID2 == key.playOkID2) && (loginOkID2 == key.loginOkID2));
 	}
 }

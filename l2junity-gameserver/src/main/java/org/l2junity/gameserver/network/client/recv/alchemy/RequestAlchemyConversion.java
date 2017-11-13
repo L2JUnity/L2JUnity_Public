@@ -97,7 +97,7 @@ public class RequestAlchemyConversion implements IClientIncomingPacket
 		final AlchemyCraftData data = AlchemyData.getInstance().getCraftData(_skillId, _skillLevel);
 		if (data == null)
 		{
-			_log.warn("Missing AlchemyData for skillId: {}, skillLevel: {}", _skillId, _skillLevel);
+			LOGGER.warn("Missing AlchemyData for skillId: {}, skillLevel: {}", _skillId, _skillLevel);
 			return;
 		}
 		

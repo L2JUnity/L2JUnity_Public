@@ -27,6 +27,7 @@
 	<xs:complexType name="skillType">
 		<xs:attribute name="id" type="xs:positiveInteger" use="required" />
 		<xs:attribute name="level" type="xs:positiveInteger" use="required" />
+		<xs:attribute name="subLevel" type="xs:positiveInteger" />
 		<xs:attribute name="type">
 			<xs:simpleType>
 				<xs:restriction base="xs:token">
@@ -48,6 +49,7 @@
 		<xs:attribute name="min" type="xs:positiveInteger" />
 		<xs:attribute name="max" type="xs:positiveInteger" />
 		<xs:attribute name="chance" type="xs:double" />
+		<xs:attribute name="enchant" type="xs:positiveInteger" />
 	</xs:complexType>
 
 	<xs:complexType name="createItemType">
@@ -132,6 +134,7 @@
 					<xs:enumeration value="commissionItemType" />
 					<xs:enumeration value="compoundItem" />
 					<xs:enumeration value="compoundChance" />
+					<xs:enumeration value="html" />
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
@@ -160,12 +163,13 @@
 		<xs:attribute name="class_id_restriction" type="xs:normalizedString" />
 		<xs:attribute name="cloakStatus" type="xs:boolean" />
 		<xs:attribute name="isHero" type="xs:boolean" />
+		<xs:attribute name="isNoble" type="xs:boolean" />
 		<xs:attribute name="insideZoneId" type="xs:normalizedString" />
 		<xs:attribute name="level">
 			<xs:simpleType>
 				<xs:restriction base="xs:positiveInteger">
 					<xs:minInclusive value="1" />
-					<xs:maxInclusive value="85" />
+					<xs:maxInclusive value="107" />
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>

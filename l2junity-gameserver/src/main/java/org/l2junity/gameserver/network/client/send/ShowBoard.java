@@ -25,11 +25,21 @@ import org.l2junity.network.PacketWriter;
 
 public class ShowBoard implements IClientOutgoingPacket
 {
+	public static final ShowBoard CLOSE_BOARD = new ShowBoard("", "", false);
+	
 	private final String _content;
+	private final boolean _showBoard;
 	
 	public ShowBoard(String htmlCode, String id)
 	{
 		_content = id + "\u0008" + htmlCode;
+		_showBoard = true;
+	}
+	
+	public ShowBoard(String htmlCode, String id, boolean showBoard)
+	{
+		_content = id + "\u0008" + htmlCode;
+		_showBoard = showBoard;
 	}
 	
 	public ShowBoard(List<String> arg)
@@ -40,6 +50,7 @@ public class ShowBoard implements IClientOutgoingPacket
 			builder.append(str).append("\u0008");
 		}
 		_content = builder.toString();
+		_showBoard = true;
 	}
 	
 	@Override
@@ -47,7 +58,7 @@ public class ShowBoard implements IClientOutgoingPacket
 	{
 		OutgoingPackets.SHOW_BOARD.writeId(packet);
 		
-		packet.writeC(0x01); // c4 1 to show community 00 to hide
+		packet.writeC(_showBoard ? 0x01 : 0x00); // c4 1 to show community 00 to hide
 		packet.writeS("bypass _bbshome"); // top
 		packet.writeS("bypass _bbsgetfav"); // favorite
 		packet.writeS("bypass _bbsloc"); // region

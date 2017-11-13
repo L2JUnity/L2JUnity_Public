@@ -18,13 +18,16 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.commons.util.IXmlReader;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.ensoul.EnsoulFee;
 import org.l2junity.gameserver.model.ensoul.EnsoulOption;
 import org.l2junity.gameserver.model.ensoul.EnsoulStone;
@@ -48,11 +51,10 @@ public class EnsoulData implements IGameXmlReader
 	
 	protected EnsoulData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		parseDatapackDirectory("data/stats/ensoul", true);
 		LOGGER.info("Loaded: {} fees", _ensoulFees.size());
@@ -61,7 +63,7 @@ public class EnsoulData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, "list", listNode -> forEach(listNode, IXmlReader::isNode, ensoulNode ->
 		{
@@ -167,6 +169,11 @@ public class EnsoulData implements IGameXmlReader
 		_ensoulStones.put(stone.getId(), stone);
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _ensoulFees.size() + _ensoulOptions.size() + _ensoulStones.size();
+	}
+	
 	public ItemHolder getEnsoulFee(CrystalType type, int index)
 	{
 		final EnsoulFee fee = _ensoulFees.get(type);
@@ -193,6 +200,7 @@ public class EnsoulData implements IGameXmlReader
 	 * Gets the single instance of EnsoulData.
 	 * @return single instance of EnsoulData
 	 */
+	@InstanceGetter
 	public static final EnsoulData getInstance()
 	{
 		return SingletonHolder._instance;

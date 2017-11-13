@@ -21,13 +21,10 @@ package org.l2junity.gameserver.util;
 import org.l2junity.gameserver.enums.ChatType;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.Creature;
-import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.network.client.send.CharInfo;
 import org.l2junity.gameserver.network.client.send.CreatureSay;
 import org.l2junity.gameserver.network.client.send.ExShowScreenMessage;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
-import org.l2junity.gameserver.network.client.send.RelationChanged;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +34,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class Broadcast
 {
-	private static Logger _log = LoggerFactory.getLogger(Broadcast.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Broadcast.class);
 	
 	/**
 	 * Send a packet to all L2PcInstance in the _KnownPlayers of the L2Character that have the Character targeted.<BR>
@@ -76,34 +73,10 @@ public final class Broadcast
 			try
 			{
 				player.sendPacket(mov);
-				if ((mov instanceof CharInfo) && (character.isPlayer()))
-				{
-					int relation = ((PlayerInstance) character).getRelation(player);
-					Integer oldrelation = character.getKnownRelations().get(player.getObjectId());
-					if ((oldrelation != null) && (oldrelation != relation))
-					{
-						final RelationChanged rc = new RelationChanged();
-						rc.addRelation((PlayerInstance) character, relation, character.isAutoAttackable(player));
-						if (character.hasSummon())
-						{
-							final Summon pet = character.getPet();
-							if (pet != null)
-							{
-								rc.addRelation(pet, relation, character.isAutoAttackable(player));
-							}
-							if (character.hasServitors())
-							{
-								character.getServitors().values().forEach(s -> rc.addRelation(s, relation, character.isAutoAttackable(player)));
-							}
-						}
-						player.sendPacket(rc);
-						character.getKnownRelations().put(player.getObjectId(), relation);
-					}
-				}
 			}
 			catch (NullPointerException e)
 			{
-				_log.warn(e.getMessage(), e);
+				LOGGER.warn(e.getMessage(), e);
 			}
 		});
 	}
@@ -125,7 +98,7 @@ public final class Broadcast
 			radius = 1500;
 		}
 		
-		World.getInstance().forEachVisibleObjectInRange(character, PlayerInstance.class, radius, mov::sendTo);
+		World.getInstance().forEachVisibleObjectInRadius(character, PlayerInstance.class, radius, mov::sendTo);
 	}
 	
 	/**
@@ -159,7 +132,7 @@ public final class Broadcast
 			character.sendPacket(mov);
 		}
 		
-		World.getInstance().forEachVisibleObjectInRange(character, PlayerInstance.class, radius, mov::sendTo);
+		World.getInstance().forEachVisibleObjectInRadius(character, PlayerInstance.class, radius, mov::sendTo);
 	}
 	
 	/**

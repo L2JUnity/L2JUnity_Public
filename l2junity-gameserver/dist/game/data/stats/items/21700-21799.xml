@@ -51,6 +51,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_mailable" val="false" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="21704" min="1" max="1" chance="100" /> <!-- Honey Rice Cakes -->
 			<item id="21582" min="1" max="1" chance="100" /> <!-- Blessed Scroll: Enchant Power Shirt -->
@@ -68,6 +69,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_mailable" val="false" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="21704" min="6" max="6" chance="100" /> <!-- Honey Rice Cakes -->
 			<item id="21582" min="6" max="6" chance="100" /> <!-- Blessed Scroll: Enchant Power Shirt -->
@@ -111,6 +113,7 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="21704" min="3" max="3" chance="100" /> <!-- Honey Rice Cakes -->
 		</capsuled_items>
@@ -143,10 +146,9 @@
 		<set name="etcitem_type" val="BLESS_ENCHT_AM" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_dropable" val="false" />
 		<set name="is_stackable" val="true" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
@@ -318,9 +320,6 @@
 		<set name="weight" val="220" />
 		<set name="is_freightable" val="false" />
 		<set name="commissionItemType" val="CLOAK" />
-		<cond msgId="2453">
-			<player cloakStatus="true" />
-		</cond>
 		<skills>
 			<skill id="21242" level="1" /> <!-- Zaken's Call -->
 		</skills>
@@ -346,9 +345,6 @@
 		<set name="weight" val="220" />
 		<set name="is_freightable" val="false" />
 		<set name="commissionItemType" val="CLOAK" />
-		<cond msgId="2453">
-			<player cloakStatus="true" />
-		</cond>
 		<skills>
 			<skill id="21243" level="1" /> <!-- Freya's Call -->
 		</skills>
@@ -374,9 +370,6 @@
 		<set name="weight" val="220" />
 		<set name="is_freightable" val="false" />
 		<set name="commissionItemType" val="CLOAK" />
-		<cond msgId="2453">
-			<player cloakStatus="true" />
-		</cond>
 		<skills>
 			<skill id="21244" level="1" /> <!-- Frintezza's Call -->
 		</skills>
@@ -407,9 +400,6 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_dropable" val="false" />
-		<cond msgId="2453">
-			<player cloakStatus="true" />
-		</cond>
 		<skills>
 			<skill id="21242" level="1" /> <!-- Zaken's Call -->
 		</skills>
@@ -440,9 +430,6 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_dropable" val="false" />
-		<cond msgId="2453">
-			<player cloakStatus="true" />
-		</cond>
 		<skills>
 			<skill id="21243" level="1" /> <!-- Freya's Call -->
 		</skills>
@@ -473,9 +460,6 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_dropable" val="false" />
-		<cond msgId="2453">
-			<player cloakStatus="true" />
-		</cond>
 		<skills>
 			<skill id="21244" level="1" /> <!-- Frintezza's Call -->
 		</skills>
@@ -1043,6 +1027,7 @@
 		<set name="crystal_type" val="D" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1510" />
+		<set name="price" val="214800" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="is_freightable" val="false" />
@@ -1072,6 +1057,7 @@
 		<set name="crystal_type" val="D" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="2020" />
+		<set name="price" val="214800" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="is_freightable" val="false" />
@@ -1105,6 +1091,7 @@
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1820" />
 		<set name="soulshots" val="6" />
+		<set name="price" val="214800" />
 		<set name="spiritshots" val="3" />
 		<set name="is_freightable" val="false" />
 		<set name="reuse_delay" val="400" />
@@ -1138,7 +1125,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="is_freightable" val="false" />
 		<cond addName="1" msgId="113">
-			<target levelRange="21;85" />
+			<player levelRange="21;85" />
 		</cond>
 		<skills>
 			<skill id="22271" level="1" /> <!-- Maestro's Key -->
@@ -1269,7 +1256,6 @@
 			<stat type="pAtk">1</stat>
 			<stat type="mAtk">1</stat>
 			<stat type="rCrit">8</stat>
-			<stat type="accCombat">-3</stat>
 			<!-- Truncated value. -->
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">1</stat>
@@ -1454,6 +1440,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="560" />
 	</item>
 	<item id="21770" name="Unrefined Jewel" type="EtcItem">
 		<!-- Description: Jewel before refining. Absolutely necessary for the craftsman to make a jewel. It should still fetch a certain price at the shop. -->
@@ -1463,6 +1450,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="860" />
 	</item>
 	<item id="21771" name="Jewel of Dusk" type="EtcItem">
 		<!-- Description: Jewel carged with ancient skills. It shines brightly. It should still fetch a certain price at the shop. -->
@@ -1472,6 +1460,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="1800" />
 	</item>
 	<item id="21772" name="Jewel of Dawn" type="EtcItem">
 		<!-- Description: The jewel of dawn that was created by the craftsman using ancient skills. It shines brightly. It should still fetch a considerable price at the shop. -->
@@ -1481,6 +1470,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="5000000" />
 	</item>
 	<item id="21773" name="Jewel of Splendor" type="EtcItem">
 		<!-- Description: The jewel of dawn that was created by the craftsman using ancient skills. It shines brightly. It should still fetch a considerable price at the shop. -->
@@ -1490,6 +1480,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="20000000" />
 	</item>
 	<item id="21774" name="Giant's Jewel" type="EtcItem">
 		<!-- Description: The giant's jewel that was created by the craftsman using ancient skills. It shines brightly. It should still fetch a considerable price at the shop. -->
@@ -1499,6 +1490,7 @@
 		<set name="commissionItemType" val="OTHER_ITEM" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="50000000" />
 	</item>
 	<item id="21775" name="Imperial Crusader Breastplate of Fortune" name_additional="90-day" type="Armor">
 		<!-- Description: Cannot be exchanged or dropped. Can be stored in a private warehouse. Can be assigned an attribute. -->
@@ -1656,6 +1648,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="time" val="129600" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="21775" min="1" max="1" chance="100" /> <!-- Imperial Crusader Breastplate of Fortune - 90-day -->
 			<item id="21776" min="1" max="1" chance="100" /> <!-- Imperial Crusader Gaiters of Fortune - 90-day -->
@@ -1772,6 +1765,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="time" val="129600" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="21782" min="1" max="1" chance="100" /> <!-- Draconic Leather Armor of Fortune - 90-day -->
 			<item id="21783" min="1" max="1" chance="100" /> <!-- Draconic Leather Gloves of Fortune - 90-day -->
@@ -1912,6 +1906,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="time" val="129600" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="21787" min="1" max="1" chance="100" /> <!-- Major Arcana Robe of Fortune - 90-day -->
 			<item id="21788" min="1" max="1" chance="100" /> <!-- Major Arcana Gloves of Fortune - 90-day -->
@@ -2076,6 +2071,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="time" val="129600" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="21793" min="1" max="1" chance="100" /> <!-- Dynasty Breastplate of Fortune - 90-day -->
 			<item id="21794" min="1" max="1" chance="100" /> <!-- Dynasty Gaiters of Fortune - 90-day -->

@@ -18,19 +18,38 @@
  */
 package org.l2junity.gameserver.model.variables;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InvalidClassException;
+import java.io.ObjectInputStream;
+import java.io.ObjectStreamClass;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.StatsSet;
+import org.l2junity.gameserver.model.holders.ItemHolder;
+import org.l2junity.gameserver.model.holders.SkillHolder;
+import org.l2junity.gameserver.model.holders.TrainingHolder;
 import org.l2junity.gameserver.model.interfaces.IDeletable;
 import org.l2junity.gameserver.model.interfaces.IRestorable;
 import org.l2junity.gameserver.model.interfaces.IStorable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author UnAfraid
  */
 public abstract class AbstractVariables extends StatsSet implements IRestorable, IStorable, IDeletable
 {
+	static final Logger LOGGER = LoggerFactory.getLogger(AbstractVariables.class);
 	private final AtomicBoolean _hasChanges = new AtomicBoolean(false);
 	
 	public AbstractVariables()
@@ -79,6 +98,13 @@ public abstract class AbstractVariables extends StatsSet implements IRestorable,
 	
 	@Override
 	public final StatsSet set(String name, String value)
+	{
+		_hasChanges.compareAndSet(false, true);
+		return super.set(name, value);
+	}
+	
+	@Override
+	public final StatsSet set(String name, Object value)
 	{
 		_hasChanges.compareAndSet(false, true);
 		return super.set(name, value);
@@ -138,5 +164,57 @@ public abstract class AbstractVariables extends StatsSet implements IRestorable,
 	{
 		_hasChanges.compareAndSet(false, true);
 		getSet().remove(name);
+	}
+	
+	protected static class ValidObjectInputStream extends ObjectInputStream
+	{
+		private static final List<Class<?>> VALID_CLASSES = new ArrayList<>();
+		static
+		{
+			// Default classes
+			VALID_CLASSES.add(String.class);
+			VALID_CLASSES.add(Boolean.class);
+			
+			// Unity's default classes
+			VALID_CLASSES.add(TrainingHolder.class);
+			VALID_CLASSES.add(ItemHolder.class);
+			VALID_CLASSES.add(SkillHolder.class);
+			VALID_CLASSES.add(Location.class);
+			
+			// Custom classes
+			//@formatter:off
+			Arrays.stream(GeneralConfig.ACCOUNT_VARIABLES_CLASS_WHITELIST)
+				.map(className ->
+				{
+					try
+					{
+						return Class.forName(className);
+					}
+					catch (Exception e)
+					{
+						LOGGER.warn("Missing class: {}", className);
+						return null;
+					}
+				})
+				.filter(Objects::nonNull)
+				.forEach(VALID_CLASSES::add);
+			//@formatter:on
+		}
+		
+		public ValidObjectInputStream(InputStream inputStream) throws IOException
+		{
+			super(inputStream);
+		}
+		
+		@Override
+		protected Class<?> resolveClass(ObjectStreamClass osc) throws IOException, ClassNotFoundException
+		{
+			final Class<?> clazz = super.resolveClass(osc);
+			if (!clazz.isPrimitive() && !clazz.isArray() && !Number.class.isAssignableFrom(clazz) && !Collection.class.isAssignableFrom(clazz) && !Map.class.isAssignableFrom(clazz) && !Enum.class.isAssignableFrom(clazz) && !VALID_CLASSES.contains(clazz))
+			{
+				throw new InvalidClassException("Unauthorized deserialization attempt", osc.getName());
+			}
+			return clazz;
+		}
 	}
 }

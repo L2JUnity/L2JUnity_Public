@@ -78,18 +78,16 @@ public final class RequestExMagicSkillUseGround implements IClientIncomingPacket
 		// Check the validity of the skill
 		if (skill != null)
 		{
-			activeChar.setCurrentSkillWorldPosition(new Location(_x, _y, _z));
-			
 			// normally magicskilluse packet turns char client side but for these skills, it doesn't (even with correct target)
 			activeChar.setHeading(Util.calculateHeadingFrom(activeChar.getX(), activeChar.getY(), _x, _y));
 			Broadcast.toKnownPlayers(activeChar, new ValidateLocation(activeChar));
 			
-			activeChar.useMagic(skill, null, _ctrlPressed, _shiftPressed);
+			activeChar.useMagic(skill, new Location(_x, _y, _z), null, _ctrlPressed, _shiftPressed);
 		}
 		else
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
-			_log.warn("No skill found with id " + _skillId + " and level " + level + " !!");
+			LOGGER.warn("No skill found with id " + _skillId + " and level " + level + " !!");
 		}
 	}
 }

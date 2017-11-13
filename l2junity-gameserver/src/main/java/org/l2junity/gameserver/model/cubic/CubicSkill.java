@@ -31,6 +31,7 @@ import org.l2junity.gameserver.model.holders.SkillHolder;
  */
 public class CubicSkill extends SkillHolder implements ICubicConditionHolder
 {
+	private static final long serialVersionUID = 6172112107327204476L;
 	private final int _triggerRate;
 	private final int _successRate;
 	private final boolean _canUseOnStaticObjects;
@@ -76,7 +77,7 @@ public class CubicSkill extends SkillHolder implements ICubicConditionHolder
 	@Override
 	public boolean validateConditions(CubicInstance cubic, Creature owner, Creature target)
 	{
-		return (!_targetDebuff || (_targetDebuff && target.getEffectList().hasDebuffs())) && (_conditions.isEmpty() || _conditions.stream().allMatch(condition -> condition.test(cubic, owner, target)));
+		return (!_targetDebuff || (_targetDebuff && (target.getEffectList().getDebuffCount() > 0))) && (_conditions.isEmpty() || _conditions.stream().allMatch(condition -> condition.test(cubic, owner, target)));
 	}
 	
 	@Override

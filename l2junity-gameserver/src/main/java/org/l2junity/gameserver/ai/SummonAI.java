@@ -20,13 +20,7 @@ package org.l2junity.gameserver.ai;
 
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_ATTACK;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_FOLLOW;
-import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_IDLE;
 
-import java.util.concurrent.Future;
-
-import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GeoData;
-import org.l2junity.gameserver.ThreadPoolManager;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Summon;
@@ -34,17 +28,12 @@ import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.skills.SkillCaster;
 
-public class SummonAI extends PlayableAI implements Runnable
+public class SummonAI extends PlayableAI
 {
-	private static final int AVOID_RADIUS = 70;
-	
 	private volatile boolean _thinking; // to prevent recursive thinking
 	private volatile boolean _startFollow = ((Summon) _actor).getFollowStatus();
 	private Creature _lastAttack = null;
-	
-	private volatile boolean _startAvoid;
 	private volatile boolean _isDefending;
-	private Future<?> _avoidTask = null;
 	
 	public SummonAI(Summon summon)
 	{
@@ -73,22 +62,6 @@ public class SummonAI extends PlayableAI implements Runnable
 		}
 	}
 	
-	@Override
-	synchronized void changeIntention(CtrlIntention intention, Object... args)
-	{
-		switch (intention)
-		{
-			case AI_INTENTION_ACTIVE:
-			case AI_INTENTION_FOLLOW:
-				startAvoidTask();
-				break;
-			default:
-				stopAvoidTask();
-		}
-		
-		super.changeIntention(intention, args);
-	}
-	
 	private void thinkAttack()
 	{
 		final WorldObject target = getTarget();
@@ -104,7 +77,7 @@ public class SummonAI extends PlayableAI implements Runnable
 			return;
 		}
 		clientStopMoving(null);
-		_actor.doAttack(attackTarget);
+		_actor.doAutoAttack(attackTarget);
 	}
 	
 	private void thinkCast()
@@ -127,7 +100,7 @@ public class SummonAI extends PlayableAI implements Runnable
 			return;
 		}
 		summon.setFollowStatus(false);
-		setIntention(AI_INTENTION_IDLE);
+		setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 		_startFollow = val;
 		_actor.doCast(_skill, _item, _forceUse, _dontMove);
 	}
@@ -143,7 +116,7 @@ public class SummonAI extends PlayableAI implements Runnable
 		{
 			return;
 		}
-		setIntention(AI_INTENTION_IDLE);
+		setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 		getActor().doPickupItem(target);
 	}
 	
@@ -158,7 +131,7 @@ public class SummonAI extends PlayableAI implements Runnable
 		{
 			return;
 		}
-		setIntention(AI_INTENTION_IDLE);
+		setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 	}
 	
 	@Override
@@ -212,13 +185,11 @@ public class SummonAI extends PlayableAI implements Runnable
 	{
 		super.onEvtAttacked(attacker);
 		
+		startFollowEvadeTarget(attacker); // TODO: This should only work for autoattack, not skills, not even melee skills!
+		
 		if (isDefending())
 		{
 			defendAttack(attacker);
-		}
-		else
-		{
-			avoidAttack(attacker);
 		}
 	}
 	
@@ -231,26 +202,6 @@ public class SummonAI extends PlayableAI implements Runnable
 		{
 			defendAttack(attacker);
 		}
-		else
-		{
-			avoidAttack(attacker);
-		}
-	}
-	
-	private void avoidAttack(Creature attacker)
-	{
-		// Don't move while casting. It breaks casting animation, but still casts the skill... looks so bugged.
-		if (_actor.isCastingNow())
-		{
-			return;
-		}
-		
-		Creature owner = getActor().getOwner();
-		// trying to avoid if summon near owner
-		if ((owner != null) && (owner != attacker) && owner.isInsideRadius(_actor, 2 * AVOID_RADIUS, true, false))
-		{
-			_startAvoid = true;
-		}
 	}
 	
 	public void defendAttack(Creature attacker)
@@ -262,32 +213,9 @@ public class SummonAI extends PlayableAI implements Runnable
 		}
 		
 		final Summon summon = getActor();
-		if ((summon.getOwner() != null) && (summon.getOwner() != attacker) && !summon.isMoving() && summon.canAttack(attacker, false) && summon.getOwner().isInsideRadius(_actor, 2 * AVOID_RADIUS, true, false))
+		if ((summon.getOwner() != null) && (summon.getOwner() != attacker) && !summon.isMoving() && summon.canAttack(attacker, false) && summon.getOwner().isInRadius3d(_actor, 300))
 		{
-			summon.doAttack(attacker);
-		}
-	}
-	
-	@Override
-	public void run()
-	{
-		if (_startAvoid)
-		{
-			_startAvoid = false;
-			
-			if (!_clientMoving && !_actor.isDead() && !_actor.isMovementDisabled() && (_actor.getMoveSpeed() > 0))
-			{
-				final int ownerX = ((Summon) _actor).getOwner().getX();
-				final int ownerY = ((Summon) _actor).getOwner().getY();
-				final double angle = Math.toRadians(Rnd.get(-90, 90)) + Math.atan2(ownerY - _actor.getY(), ownerX - _actor.getX());
-				
-				final int targetX = ownerX + (int) (AVOID_RADIUS * Math.cos(angle));
-				final int targetY = ownerY + (int) (AVOID_RADIUS * Math.sin(angle));
-				if (GeoData.getInstance().canMove(_actor, targetX, targetY, _actor.getZ()))
-				{
-					moveTo(targetX, targetY, _actor.getZ());
-				}
-			}
+			summon.doAutoAttack(attacker);
 		}
 	}
 	
@@ -298,7 +226,6 @@ public class SummonAI extends PlayableAI implements Runnable
 		{
 			case AI_INTENTION_ACTIVE:
 			case AI_INTENTION_FOLLOW:
-			case AI_INTENTION_IDLE:
 			case AI_INTENTION_MOVE_TO:
 			case AI_INTENTION_PICK_UP:
 				((Summon) _actor).setFollowStatus(_startFollow);
@@ -324,27 +251,9 @@ public class SummonAI extends PlayableAI implements Runnable
 		super.onIntentionCast(skill, target, item, forceUse, dontMove);
 	}
 	
-	private void startAvoidTask()
-	{
-		if (_avoidTask == null)
-		{
-			_avoidTask = ThreadPoolManager.getInstance().scheduleAiAtFixedRate(this, 100, 100);
-		}
-	}
-	
-	private void stopAvoidTask()
-	{
-		if (_avoidTask != null)
-		{
-			_avoidTask.cancel(false);
-			_avoidTask = null;
-		}
-	}
-	
 	@Override
 	public void stopAITask()
 	{
-		stopAvoidTask();
 		super.stopAITask();
 	}
 	

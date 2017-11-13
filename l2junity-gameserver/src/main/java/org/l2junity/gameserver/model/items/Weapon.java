@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.character.OnCreatureSkillUsed;
 import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcSkillSee;
 import org.l2junity.gameserver.model.items.type.WeaponType;
 import org.l2junity.gameserver.model.skills.Skill;
@@ -47,7 +48,6 @@ public final class Weapon extends L2Item
 	private int _baseAttackRange;
 	private int _baseAttackRadius;
 	private int _baseAttackAngle;
-	private int _changeWeaponId;
 	
 	private int _reducedSoulshot;
 	private int _reducedSoulshotChance;
@@ -100,7 +100,6 @@ public final class Weapon extends L2Item
 		_reducedMpConsumeChance = (reduced_mpconsume.length == 2) ? Integer.parseInt(reduced_mpconsume[0]) : 0;
 		_reducedMpConsume = (reduced_mpconsume.length == 2) ? Integer.parseInt(reduced_mpconsume[1]) : 0;
 		
-		_changeWeaponId = set.getInt("change_weaponId", 0);
 		_isForceEquip = set.getBoolean("isForceEquip", false);
 		_isAttackWeapon = set.getBoolean("isAttackWeapon", true);
 		_useWeaponSkillsOnly = set.getBoolean("useWeaponSkillsOnly", false);
@@ -205,14 +204,6 @@ public final class Weapon extends L2Item
 	}
 	
 	/**
-	 * @return the Id in which weapon this weapon can be changed.
-	 */
-	public int getChangeWeaponId()
-	{
-		return _changeWeaponId;
-	}
-	
-	/**
 	 * @return {@code true} if the weapon is force equip, {@code false} otherwise.
 	 */
 	public boolean isForceEquip()
@@ -292,9 +283,10 @@ public final class Weapon extends L2Item
 				// notify quests of a skill use
 				if (caster instanceof PlayerInstance)
 				{
-					World.getInstance().forEachVisibleObjectInRange(caster, Npc.class, 1000, npc ->
+					World.getInstance().forEachVisibleObjectInRadius(caster, Npc.class, 1000, npc ->
 					{
 						EventDispatcher.getInstance().notifyEventAsync(new OnNpcSkillSee(npc, caster.getActingPlayer(), skill, false, target), npc);
+						EventDispatcher.getInstance().notifyEventAsync(new OnCreatureSkillUsed(caster, target, skill, skill.isWithoutAction()), caster, skill);
 					});
 				}
 				if (caster.isPlayer())

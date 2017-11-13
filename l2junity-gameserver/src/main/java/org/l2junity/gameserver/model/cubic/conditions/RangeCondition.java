@@ -36,6 +36,6 @@ public class RangeCondition implements ICubicCondition
 	@Override
 	public boolean test(CubicInstance cubic, Creature owner, Creature target)
 	{
-		return owner.distFromMe(target) <= _range;
+		return owner.isInRadius3d(target, _range);
 	}
 }

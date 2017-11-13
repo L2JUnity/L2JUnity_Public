@@ -20,22 +20,37 @@ package org.l2junity.gameserver.datatables;
 
 import static org.l2junity.gameserver.model.itemcontainer.Inventory.ADENA_ID;
 
+import java.io.IOException;
+import java.nio.file.FileVisitOption;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
-import org.l2junity.gameserver.data.xml.impl.EnchantItemHPBonusData;
-import org.l2junity.gameserver.engines.DocumentEngine;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.BasePathProvider;
+import org.l2junity.commons.util.IXmlReader;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
+import org.l2junity.gameserver.config.ServerConfig;
+import org.l2junity.gameserver.engines.items.DocumentItem;
 import org.l2junity.gameserver.enums.ItemLocation;
 import org.l2junity.gameserver.idfactory.IdFactory;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Attackable;
@@ -46,7 +61,6 @@ import org.l2junity.gameserver.model.events.impl.item.OnItemCreate;
 import org.l2junity.gameserver.model.items.Armor;
 import org.l2junity.gameserver.model.items.EtcItem;
 import org.l2junity.gameserver.model.items.L2Item;
-import org.l2junity.gameserver.model.items.Weapon;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.util.GMAudit;
 import org.slf4j.Logger;
@@ -63,9 +77,6 @@ public class ItemTable
 	public static final Map<String, Integer> _slots = new HashMap<>();
 	
 	private L2Item[] _allTemplates;
-	private final Map<Integer, EtcItem> _etcItems;
-	private final Map<Integer, Armor> _armors;
-	private final Map<Integer, Weapon> _weapons;
 	
 	static
 	{
@@ -109,81 +120,93 @@ public class ItemTable
 		_slots.put("waist", L2Item.SLOT_BELT);
 	}
 	
-	/**
-	 * @return a reference to this ItemTable object
-	 */
-	public static ItemTable getInstance()
-	{
-		return SingletonHolder._instance;
-	}
-	
 	protected ItemTable()
 	{
-		_etcItems = new ConcurrentHashMap<>();
-		_armors = new ConcurrentHashMap<>();
-		_weapons = new ConcurrentHashMap<>();
-		load();
 	}
 	
-	private void load()
+	@Reload("item")
+	@Load(group = LoadGroup.class)
+	public void load()
 	{
+		final List<L2Item> allItems = loadItems();
 		int highest = 0;
-		_armors.clear();
-		_etcItems.clear();
-		_weapons.clear();
-		for (L2Item item : DocumentEngine.getInstance().loadItems())
+		int etcItems = 0;
+		int armors = 0;
+		int weapons = 0;
+		for (L2Item item : allItems)
 		{
 			if (highest < item.getId())
 			{
 				highest = item.getId();
 			}
+			
 			if (item instanceof EtcItem)
 			{
-				_etcItems.put(item.getId(), (EtcItem) item);
+				etcItems++;
 			}
 			else if (item instanceof Armor)
 			{
-				_armors.put(item.getId(), (Armor) item);
+				armors++;
 			}
 			else
 			{
-				_weapons.put(item.getId(), (Weapon) item);
+				weapons++;
 			}
 		}
-		buildFastLookupTable(highest);
-		LOGGER.info("Loaded: {} Etc Items", _etcItems.size());
-		LOGGER.info("Loaded: {} Armor Items", _armors.size());
-		LOGGER.info("Loaded: {} Weapon Items", _weapons.size());
-		LOGGER.info("Loaded: {} Items in total.", (_etcItems.size() + _armors.size() + _weapons.size()));
+		
+		// Build lookup table.
+		_allTemplates = new L2Item[highest + 1];
+		allItems.forEach(i -> _allTemplates[i.getId()] = i);
+		
+		LOGGER.info("Highest Item Id used: {}.", highest);
+		LOGGER.info("Loaded {} EtcItem(s).", etcItems);
+		LOGGER.info("Loaded {} Armor(s).", armors);
+		LOGGER.info("Loaded {} Weapon(s).", weapons);
+		LOGGER.info("Loaded {} Item(s) in total.", (etcItems + armors + weapons));
 	}
 	
-	/**
-	 * Builds a variable in which all items are putting in in function of their ID.
-	 * @param size
-	 */
-	private void buildFastLookupTable(int size)
+	private static List<L2Item> loadItems()
 	{
-		// Create a FastLookUp Table called _allTemplates of size : value of the highest item ID
-		LOGGER.info("Highest item id used:" + size);
-		_allTemplates = new L2Item[size + 1];
+		final List<L2Item> list = new ArrayList<>();
 		
-		// Insert armor item in Fast Look Up Table
-		for (Armor item : _armors.values())
+		list.addAll(loadItems(BasePathProvider.resolveDatapackPath(ServerConfig.DATAPACK_ROOT, "data/stats/items")));
+		
+		if (GeneralConfig.CUSTOM_ITEMS_LOAD)
 		{
-			_allTemplates[item.getId()] = item;
+			list.addAll(loadItems(BasePathProvider.resolveDatapackPath(ServerConfig.DATAPACK_ROOT, "data/stats/items/custom")));
 		}
 		
-		// Insert weapon item in Fast Look Up Table
-		for (Weapon item : _weapons.values())
+		return list;
+	}
+	
+	private static List<L2Item> loadItems(final Path path)
+	{
+		final List<L2Item> list = new ArrayList<>();
+		try
 		{
-			_allTemplates[item.getId()] = item;
+			Files.walkFileTree(path, EnumSet.noneOf(FileVisitOption.class), 1/* Non-recursive load, because of custom sub-directory. */, new SimpleFileVisitor<Path>()
+			{
+				@Override
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException
+				{
+					if (!IXmlReader.XML_FILTER.accept(file))
+					{
+						return FileVisitResult.CONTINUE;
+					}
+					
+					final DocumentItem document = new DocumentItem(file.toFile());
+					document.parse();
+					list.addAll(document.getItemList());
+					return super.visitFile(file, attrs);
+				}
+			});
+		}
+		catch (final IOException e)
+		{
+			LOGGER.warn("Failed to load diractory: " + path, e);
 		}
 		
-		// Insert etcItem item in Fast Look Up Table
-		for (EtcItem item : _etcItems.values())
-		{
-			_allTemplates[item.getId()] = item;
-		}
+		return list;
 	}
 	
 	/**
@@ -202,8 +225,10 @@ public class ItemTable
 	}
 	
 	/**
-	 * Create the L2ItemInstance corresponding to the Item Identifier and quantitiy add logs the activity. <B><U> Actions</U> :</B> <li>Create and Init the L2ItemInstance corresponding to the Item Identifier and quantity</li> <li>Add the L2ItemInstance object to _allObjects of L2world</li> <li>Logs
-	 * Item creation according to log settings</li>
+	 * Create the L2ItemInstance corresponding to the Item Identifier and quantitiy add logs the activity. <B><U> Actions</U> :</B>
+	 * <li>Create and Init the L2ItemInstance corresponding to the Item Identifier and quantity</li>
+	 * <li>Add the L2ItemInstance object to _allObjects of L2world</li>
+	 * <li>Logs Item creation according to log settings</li>
 	 * @param process : String Identifier of process triggering this action
 	 * @param itemId : int Item Identifier of the item to be created
 	 * @param count : int Quantity of items to be created for stackable items
@@ -223,28 +248,30 @@ public class ItemTable
 			{
 				Attackable raid = (Attackable) reference;
 				// if in CommandChannel and was killing a World/RaidBoss
-				if ((raid.getFirstCommandChannelAttacked() != null) && !Config.AUTO_LOOT_RAIDS)
+				if ((raid.getFirstCommandChannelAttacked() != null) && !PlayerConfig.AUTO_LOOT_RAIDS)
 				{
 					item.setOwnerId(raid.getFirstCommandChannelAttacked().getLeaderObjectId());
-					itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new ResetOwner(item), Config.LOOT_RAIDS_PRIVILEGE_INTERVAL);
+					itemLootShedule = ThreadPool.schedule(new ResetOwner(item), PlayerConfig.LOOT_RAIDS_PRIVILEGE_INTERVAL, TimeUnit.MILLISECONDS);
 					item.setItemLootShedule(itemLootShedule);
+					item.setInstance(actor.getInstanceWorld());
 				}
 			}
-			else if (!Config.AUTO_LOOT || ((reference instanceof L2EventMonsterInstance) && ((L2EventMonsterInstance) reference).eventDropOnGround()))
+			else if (!PlayerConfig.AUTO_LOOT || ((reference instanceof L2EventMonsterInstance) && ((L2EventMonsterInstance) reference).eventDropOnGround()))
 			{
 				item.setOwnerId(actor.getObjectId());
-				itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new ResetOwner(item), 15000);
+				itemLootShedule = ThreadPool.schedule(new ResetOwner(item), 15000, TimeUnit.MILLISECONDS);
 				item.setItemLootShedule(itemLootShedule);
+				item.setInstance(actor.getInstanceWorld());
 			}
 		}
 		
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			LOGGER.debug("Item created: {}", item);
 		}
 		
 		// Add the L2ItemInstance object to _allObjects of L2world
-		World.getInstance().storeObject(item);
+		World.getInstance().addObject(item);
 		
 		// Set Item parameters
 		if (item.isStackable() && (count > 1))
@@ -252,9 +279,9 @@ public class ItemTable
 			item.setCount(count);
 		}
 		
-		if (Config.LOG_ITEMS && !process.equals("Reset"))
+		if (GeneralConfig.LOG_ITEMS && !process.equals("Reset"))
 		{
-			if (!Config.LOG_ITEMS_SMALL_LOG || (Config.LOG_ITEMS_SMALL_LOG && (item.isEquipable() || (item.getId() == ADENA_ID))))
+			if (!GeneralConfig.LOG_ITEMS_SMALL_LOG || (GeneralConfig.LOG_ITEMS_SMALL_LOG && (item.isEquipable() || (item.getId() == ADENA_ID))))
 			{
 				if (item.getEnchantLevel() > 0)
 				{
@@ -281,7 +308,7 @@ public class ItemTable
 					referenceName = (String) reference;
 				}
 				String targetName = (actor.getTarget() != null ? actor.getTarget().getName() : "no-target");
-				if (Config.GMAUDIT)
+				if (GeneralConfig.GMAUDIT)
 				{
 					GMAudit.auditGMAction(actor.getName() + " [" + actor.getObjectId() + "]", process + "(id: " + itemId + " count: " + count + " name: " + item.getItemName() + " objId: " + item.getObjectId() + ")", targetName, "L2Object referencing this action is: " + referenceName);
 				}
@@ -324,9 +351,9 @@ public class ItemTable
 			World.getInstance().removeObject(item);
 			IdFactory.getInstance().releaseId(item.getObjectId());
 			
-			if (Config.LOG_ITEMS)
+			if (GeneralConfig.LOG_ITEMS)
 			{
-				if (!Config.LOG_ITEMS_SMALL_LOG || (Config.LOG_ITEMS_SMALL_LOG && (item.isEquipable() || (item.getId() == ADENA_ID))))
+				if (!GeneralConfig.LOG_ITEMS_SMALL_LOG || (GeneralConfig.LOG_ITEMS_SMALL_LOG && (item.isEquipable() || (item.getId() == ADENA_ID))))
 				{
 					if (item.getEnchantLevel() > 0)
 					{
@@ -353,7 +380,7 @@ public class ItemTable
 						referenceName = (String) reference;
 					}
 					String targetName = (actor.getTarget() != null ? actor.getTarget().getName() : "no-target");
-					if (Config.GMAUDIT)
+					if (GeneralConfig.GMAUDIT)
 					{
 						GMAudit.auditGMAction(actor.getName() + " [" + actor.getObjectId() + "]", process + "(id: " + item.getId() + " count: " + item.getCount() + " itemObjId: " + item.getObjectId() + ")", targetName, "L2Object referencing this action is: " + referenceName);
 					}
@@ -378,12 +405,6 @@ public class ItemTable
 		}
 	}
 	
-	public void reload()
-	{
-		load();
-		EnchantItemHPBonusData.getInstance().load();
-	}
-	
 	protected static class ResetOwner implements Runnable
 	{
 		ItemInstance _item;
@@ -401,36 +422,6 @@ public class ItemTable
 		}
 	}
 	
-	public Set<Integer> getAllArmorsId()
-	{
-		return _armors.keySet();
-	}
-	
-	public Collection<Armor> getAllArmors()
-	{
-		return _armors.values();
-	}
-	
-	public Set<Integer> getAllWeaponsId()
-	{
-		return _weapons.keySet();
-	}
-	
-	public Collection<Weapon> getAllWeapons()
-	{
-		return _weapons.values();
-	}
-	
-	public Set<Integer> getAllEtcItemsId()
-	{
-		return _etcItems.keySet();
-	}
-	
-	public Collection<EtcItem> getAllEtcItems()
-	{
-		return _etcItems.values();
-	}
-	
 	public L2Item[] getAllItems()
 	{
 		return _allTemplates;
@@ -439,6 +430,15 @@ public class ItemTable
 	public int getArraySize()
 	{
 		return _allTemplates.length;
+	}
+	
+	/**
+	 * @return a reference to this ItemTable object
+	 */
+	@InstanceGetter
+	public static ItemTable getInstance()
+	{
+		return SingletonHolder._instance;
 	}
 	
 	private static class SingletonHolder

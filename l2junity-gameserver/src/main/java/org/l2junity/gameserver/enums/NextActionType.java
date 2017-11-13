@@ -25,5 +25,7 @@ public enum NextActionType
 {
 	NONE,
 	ATTACK,
-	CAST
+	CAST,
+	SIT,
+	FAKE_DEATH
 }

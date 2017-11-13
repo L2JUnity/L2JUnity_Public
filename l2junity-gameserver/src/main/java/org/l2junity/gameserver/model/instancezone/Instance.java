@@ -36,10 +36,10 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.commons.util.CommonUtil;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.ArrayUtil;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
 import org.l2junity.gameserver.enums.InstanceReenterType;
 import org.l2junity.gameserver.enums.InstanceTeleportType;
@@ -59,6 +59,7 @@ import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceCreated;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceDestroy;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceEnter;
+import org.l2junity.gameserver.model.events.impl.instance.OnInstanceFinish;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceLeave;
 import org.l2junity.gameserver.model.events.impl.instance.OnInstanceStatusChange;
 import org.l2junity.gameserver.model.interfaces.IIdentifiable;
@@ -66,6 +67,7 @@ import org.l2junity.gameserver.model.interfaces.ILocational;
 import org.l2junity.gameserver.model.interfaces.INamable;
 import org.l2junity.gameserver.model.spawns.SpawnGroup;
 import org.l2junity.gameserver.model.spawns.SpawnTemplate;
+import org.l2junity.gameserver.model.variables.PlayerVariables;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -132,7 +134,7 @@ public final class Instance implements IIdentifiable, INamable
 		}
 		
 		// Debug logger
-		if (Config.DEBUG_INSTANCES)
+		if (GeneralConfig.DEBUG_INSTANCES)
 		{
 			LOGGER.info("Instance {} ({}) has been created with instance id {}.", _template.getName(), _template.getId(), getId());
 		}
@@ -292,7 +294,7 @@ public final class Instance implements IIdentifiable, INamable
 			}
 			else if ((emptyTime >= 0) && (_emptyDestroyTask == null) && (getRemainingTime() < emptyTime))
 			{
-				_emptyDestroyTask = ThreadPoolManager.getInstance().scheduleGeneral(this::destroy, emptyTime);
+				_emptyDestroyTask = ThreadPool.schedule(this::destroy, emptyTime, TimeUnit.MILLISECONDS);
 			}
 		}
 	}
@@ -353,7 +355,7 @@ public final class Instance implements IIdentifiable, INamable
 	 */
 	public Set<PlayerInstance> getPlayersInsideRadius(ILocational object, int radius)
 	{
-		return _players.stream().filter(p -> p.isInsideRadius(object, radius, true, true)).collect(Collectors.toSet());
+		return _players.stream().filter(p -> p.isInRadius3d(object, radius)).collect(Collectors.toSet());
 	}
 	
 	/**
@@ -564,7 +566,7 @@ public final class Instance implements IIdentifiable, INamable
 	 */
 	public List<Npc> getNpcs(int... id)
 	{
-		return _npcs.stream().filter(n -> CommonUtil.contains(id, n.getId())).collect(Collectors.toList());
+		return _npcs.stream().filter(n -> ArrayUtil.contains(id, n.getId())).collect(Collectors.toList());
 	}
 	
 	/**
@@ -577,7 +579,7 @@ public final class Instance implements IIdentifiable, INamable
 	@SafeVarargs
 	public final <T extends Creature> List<T> getNpcs(Class<T> clazz, int... ids)
 	{
-		return _npcs.stream().filter(n -> (ids.length == 0) || CommonUtil.contains(ids, n.getId())).filter(clazz::isInstance).map(clazz::cast).collect(Collectors.toList());
+		return _npcs.stream().filter(n -> (ids.length == 0) || ArrayUtil.contains(ids, n.getId())).filter(clazz::isInstance).map(clazz::cast).collect(Collectors.toList());
 	}
 	
 	/**
@@ -590,7 +592,7 @@ public final class Instance implements IIdentifiable, INamable
 	@SafeVarargs
 	public final <T extends Creature> List<T> getAliveNpcs(Class<T> clazz, int... ids)
 	{
-		return _npcs.stream().filter(n -> ((ids.length == 0) || CommonUtil.contains(ids, n.getId())) && !n.isDead()).filter(clazz::isInstance).map(clazz::cast).collect(Collectors.toList());
+		return _npcs.stream().filter(n -> ((ids.length == 0) || ArrayUtil.contains(ids, n.getId())) && !n.isDead()).filter(clazz::isInstance).map(clazz::cast).collect(Collectors.toList());
 	}
 	
 	/**
@@ -600,7 +602,7 @@ public final class Instance implements IIdentifiable, INamable
 	 */
 	public List<Npc> getAliveNpcs(int... id)
 	{
-		return _npcs.stream().filter(n -> !n.isDead() && CommonUtil.contains(id, n.getId())).collect(Collectors.toList());
+		return _npcs.stream().filter(n -> !n.isDead() && ArrayUtil.contains(id, n.getId())).collect(Collectors.toList());
 	}
 	
 	/**
@@ -647,6 +649,7 @@ public final class Instance implements IIdentifiable, INamable
 	public void removeNpcs()
 	{
 		_spawns.forEach(SpawnTemplate::despawnAll);
+		_npcs.forEach(Npc::deleteMe);
 		_npcs.clear();
 	}
 	
@@ -688,11 +691,11 @@ public final class Instance implements IIdentifiable, INamable
 			sendWorldDestroyMessage(minutes);
 			if (minutes <= 5) // Message 1 minute before destroy
 			{
-				_cleanUpTask = ThreadPoolManager.getInstance().scheduleGeneral(this::cleanUp, millis - 60000);
+				_cleanUpTask = ThreadPool.schedule(this::cleanUp, millis - 60000, TimeUnit.MILLISECONDS);
 			}
 			else // Message 5 minutes before destroy
 			{
-				_cleanUpTask = ThreadPoolManager.getInstance().scheduleGeneral(this::cleanUp, millis - (5 * 60000));
+				_cleanUpTask = ThreadPool.schedule(this::cleanUp, millis - (5 * 60000), TimeUnit.MILLISECONDS);
 			}
 		}
 	}
@@ -864,12 +867,12 @@ public final class Instance implements IIdentifiable, INamable
 	
 	/**
 	 * Set instance world to finish state.<br>
-	 * Calls method {@link Instance#finishInstance(int)} with {@link Config#INSTANCE_FINISH_TIME} as argument.<br>
+	 * Calls method {@link Instance#finishInstance(int)} with {@link GeneralConfig#INSTANCE_FINISH_TIME} as argument.<br>
 	 * See {@link Instance#finishInstance(int)} for more details.
 	 */
 	public void finishInstance()
 	{
-		finishInstance(Config.INSTANCE_FINISH_TIME);
+		finishInstance(GeneralConfig.INSTANCE_FINISH_TIME);
 	}
 	
 	/**
@@ -887,6 +890,14 @@ public final class Instance implements IIdentifiable, INamable
 		}
 		// Change instance duration
 		setDuration(delay);
+		_allowed.forEach(objId ->
+		{
+			final PlayerInstance player = World.getInstance().getPlayer(objId);
+			if ((player != null) && player.isOnline())
+			{
+				EventDispatcher.getInstance().notifyEventAsync(new OnInstanceFinish(player, this), player);
+			}
+		});
 	}
 	
 	// ---------------------------------------------
@@ -904,7 +915,7 @@ public final class Instance implements IIdentifiable, INamable
 		player.sendPacket(sm);
 		
 		// Start eject task
-		_ejectDeadTasks.put(player.getObjectId(), ThreadPoolManager.getInstance().scheduleGeneral(() ->
+		_ejectDeadTasks.put(player.getObjectId(), ThreadPool.schedule(() ->
 		{
 			if (player.isDead())
 			{
@@ -943,7 +954,7 @@ public final class Instance implements IIdentifiable, INamable
 				// Set origin return location if enabled
 				if (_template.getExitLocationType().equals(InstanceTeleportType.ORIGIN))
 				{
-					player.getVariables().set("INSTANCE_ORIGIN", player.getX() + ";" + player.getY() + ";" + player.getZ());
+					player.getVariables().set(PlayerVariables.INSTANCE_ORIGIN_LOCATION, player.getLocation());
 				}
 				
 				// Remove player buffs
@@ -993,9 +1004,9 @@ public final class Instance implements IIdentifiable, INamable
 	public void onPlayerLogout(PlayerInstance player)
 	{
 		removePlayer(player);
-		if (Config.RESTORE_PLAYER_INSTANCE)
+		if (GeneralConfig.RESTORE_PLAYER_INSTANCE)
 		{
-			player.getVariables().set("INSTANCE_RESTORE", getId());
+			player.getVariables().set(PlayerVariables.INSTANCE_RESTORE, getId());
 		}
 		else
 		{
@@ -1016,6 +1027,15 @@ public final class Instance implements IIdentifiable, INamable
 	// ----------------------------------------------
 	// Template methods
 	// ----------------------------------------------
+	
+	/**
+	 * @return the template this instance is using.
+	 */
+	public InstanceTemplate getTemplate()
+	{
+		return _template;
+	}
+	
 	/**
 	 * Get parameters from instance template.<br>
 	 * @return template parameters
@@ -1132,12 +1152,12 @@ public final class Instance implements IIdentifiable, INamable
 		if (getRemainingTime() <= TimeUnit.MINUTES.toMillis(1))
 		{
 			sendWorldDestroyMessage(1);
-			_cleanUpTask = ThreadPoolManager.getInstance().scheduleGeneral(this::destroy, 1, TimeUnit.MINUTES);
+			_cleanUpTask = ThreadPool.schedule(this::destroy, 1, TimeUnit.MINUTES);
 		}
 		else
 		{
 			sendWorldDestroyMessage(5);
-			_cleanUpTask = ThreadPoolManager.getInstance().scheduleGeneral(this::cleanUp, 5, TimeUnit.MINUTES);
+			_cleanUpTask = ThreadPool.schedule(this::cleanUp, 5, TimeUnit.MINUTES);
 		}
 	}
 	

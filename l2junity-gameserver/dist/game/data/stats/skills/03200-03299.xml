@@ -36,7 +36,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -79,7 +79,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -122,17 +122,17 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -162,7 +162,6 @@
 	</skill>
 	<skill id="3204" toLevel="3" name="Item Skill: Reflect Damage">
 		<!-- Confirmed CT2.5 -->
-		<table name="#reflectDam"> 10 15 20 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>300</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -197,13 +196,12 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">15</value>
 					<value level="3">20</value>
 				</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -240,7 +238,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
@@ -271,7 +269,6 @@
 	</skill>
 	<skill id="3207" toLevel="10" name="Item Skill: Heal">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -288,7 +285,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Heal -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -314,7 +311,6 @@
 	</skill>
 	<skill id="3208" toLevel="10" name="Item Skill: Blessed Body">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -331,7 +327,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Blessed Body -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -357,7 +353,6 @@
 	</skill>
 	<skill id="3209" toLevel="10" name="Item Skill: Prayer">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -374,7 +369,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Prayer -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -400,7 +395,6 @@
 	</skill>
 	<skill id="3210" toLevel="10" name="Item Skill: Recharge">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -417,7 +411,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Recharge -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -443,7 +437,6 @@
 	</skill>
 	<skill id="3211" toLevel="10" name="Item Skill: Blessed Soul">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -460,7 +453,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Blessed Soul -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -486,7 +479,6 @@
 	</skill>
 	<skill id="3212" toLevel="15" name="Item Skill: Mana Gain">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -508,7 +500,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Mana Gain -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -539,7 +531,6 @@
 	</skill>
 	<skill id="3213" toLevel="10" name="Item Skill: Ritual">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -556,7 +547,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Ritual -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -582,7 +573,6 @@
 	</skill>
 	<skill id="3214" toLevel="10" name="Item Skill: Cheer">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -599,7 +589,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Cheer -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -625,7 +615,6 @@
 	</skill>
 	<skill id="3215" toLevel="15" name="Item Skill: Might">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -647,7 +636,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Might -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -678,7 +667,6 @@
 	</skill>
 	<skill id="3216" toLevel="15" name="Item Skill: Empower">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -700,7 +688,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Empower -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -730,7 +718,6 @@
 		</effects>
 	</skill>
 	<skill id="3217" toLevel="10" name="Item Skill: Duel Might">
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -747,7 +734,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Duel Might -->
 				<attackerType>L2Playable</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -773,7 +760,6 @@
 	</skill>
 	<skill id="3218" toLevel="15" name="Item Skill: Shield">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -795,7 +781,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Shield -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -826,7 +812,6 @@
 	</skill>
 	<skill id="3219" toLevel="15" name="Item Skill: Magic Barrier">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -848,7 +833,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Magic Barrier -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -879,7 +864,6 @@
 	</skill>
 	<skill id="3220" toLevel="10" name="Item Skill: Duel Weakness">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -896,7 +880,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Duel Weakness -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -922,7 +906,6 @@
 	</skill>
 	<skill id="3221" toLevel="15" name="Item Skill: Agility">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -944,7 +927,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Agility -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -975,7 +958,6 @@
 	</skill>
 	<skill id="3222" toLevel="15" name="Item Skill: Guidance">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -997,7 +979,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Guidance -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1028,7 +1010,6 @@
 	</skill>
 	<skill id="3223" toLevel="10" name="Item Skill: Focus">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1045,7 +1026,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Focus -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1071,7 +1052,6 @@
 	</skill>
 	<skill id="3224" toLevel="10" name="Item Skill: Wild Magic">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1088,7 +1068,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Wild Magic -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1114,7 +1094,6 @@
 	</skill>
 	<skill id="3225" toLevel="15" name="Item Skill: Charm">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1136,7 +1115,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Charm -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1167,7 +1146,6 @@
 	</skill>
 	<skill id="3226" toLevel="15" name="Item Skill: Slow">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1189,7 +1167,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Slow -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1220,7 +1198,6 @@
 	</skill>
 	<skill id="3227" toLevel="15" name="Item Skill: Winter">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1242,7 +1219,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Winter -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1273,7 +1250,6 @@
 	</skill>
 	<skill id="3228" toLevel="10" name="Item Skill: Stun">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1290,7 +1266,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Stun -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1316,7 +1292,6 @@
 	</skill>
 	<skill id="3229" toLevel="10" name="Item Skill: Hold">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1333,7 +1308,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Hold -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1359,7 +1334,6 @@
 	</skill>
 	<skill id="3230" toLevel="10" name="Item Skill: Sleep">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1376,7 +1350,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Sleep -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1402,7 +1376,6 @@
 	</skill>
 	<skill id="3231" toLevel="10" name="Item Skill: Paralyze">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1419,7 +1392,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Paralyze -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1445,7 +1418,6 @@
 	</skill>
 	<skill id="3232" toLevel="10" name="Item Skill: Medusa">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1462,7 +1434,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Medusa -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1488,7 +1460,6 @@
 	</skill>
 	<skill id="3233" toLevel="10" name="Item Skill: Fear">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1505,7 +1476,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Fear -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1531,7 +1502,6 @@
 	</skill>
 	<skill id="3234" toLevel="15" name="Item Skill: Poison">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1553,7 +1523,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Poison -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1584,7 +1554,6 @@
 	</skill>
 	<skill id="3235" toLevel="15" name="Item Skill: Bleed">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1606,7 +1575,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Bleed -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1637,7 +1606,6 @@
 	</skill>
 	<skill id="3236" toLevel="10" name="Item Skill: Silence">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1654,7 +1622,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Silence -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1680,7 +1648,6 @@
 	</skill>
 	<skill id="3237" toLevel="10" name="Item Skill: Doom">
 		<!-- Confirmed CT2.5 -->
-		<table name="#triggeredLevel"> 1 2 3 4 5 6 7 8 9 10 </table>
 		<icon>icon.skill3080</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1697,7 +1664,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- Doom -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -1739,7 +1706,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>1</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1768,7 +1735,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="ManaCharge">
+			<effect name="p_mana_charge">
 				<amount>1</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1776,7 +1743,6 @@
 	</skill>
 	<skill id="3240" toLevel="15" name="Item Skill: Might">
 		<!-- Confirmed CT2.5 -->
-		<table name="#pAtk"> 10.26 11.22 11.94 12.94 13.55 14.44 14.85 15.92 16.68 17.84 17.84 17.84 17.84 17.84 17.84 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1798,7 +1764,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">10.26</value>
 					<value level="2">11.22</value>
@@ -1843,7 +1809,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>55</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1867,11 +1833,11 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1879,7 +1845,6 @@
 	</skill>
 	<skill id="3244" toLevel="15" name="Item Skill: Shield">
 		<!-- Confirmed CT2.5 -->
-		<table name="#pDef"> 12.78 13.73 14.14 15.13 16.46 17.43 17.69 18.63 19.77 20.3 20.3 20.3 20.3 20.3 20.3 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1901,7 +1866,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">12.78</value>
 					<value level="2">13.73</value>
@@ -1925,7 +1890,6 @@
 	</skill>
 	<skill id="3245" toLevel="15" name="Item Skill: Magic Barrier">
 		<!-- Confirmed CT2.5 -->
-		<table name="#mDef"> 10.8 11.62 11.96 12.66 13.01 13.08 14 14.99 15.88 16.32 16.32 16.32 16.32 16.32 16.32 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1947,7 +1911,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">10.8</value>
 					<value level="2">11.62</value>
@@ -1971,7 +1935,6 @@
 	</skill>
 	<skill id="3246" toLevel="10" name="Item Skill: Heal Empower">
 		<!-- Confirmed CT2.5 -->
-		<table name="#healEffect"> 10 11 12 13 14 16 17 18 19 20 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">46</value>
@@ -1988,7 +1951,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">11</value>
@@ -2028,7 +1991,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2057,7 +2020,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2081,7 +2044,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2105,7 +2068,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2129,7 +2092,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="WeightLimit">
+			<effect name="p_weight_limit">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2153,7 +2116,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Breath">
+			<effect name="p_breath">
 				<amount>500</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2177,7 +2140,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="SafeFallHeight">
+			<effect name="p_safe_fall_height">
 				<amount>-100</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2206,7 +2169,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AreaDamage">
+			<effect name="p_area_damage">
 				<amount>-40</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2214,7 +2177,6 @@
 	</skill>
 	<skill id="3255" toLevel="8" name="Item Skill: Skill Clarity">
 		<!-- Confirmed CT2.5 -->
-		<table name="#PhysicalMpConsumeRate"> 0.96 0.93 0.9 0.9 0.9 0.9 0.9 0.9 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">55</value>
@@ -2229,7 +2191,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-4</value>
 					<value level="2">-7</value>
@@ -2247,7 +2209,6 @@
 	</skill>
 	<skill id="3256" toLevel="8" name="Item Skill: Spell Clarity">
 		<!-- Confirmed CT2.5 -->
-		<table name="#MagicalMpConsumeRate"> 0.9 0.85 0.8 0.8 0.8 0.8 0.8 0.8 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">55</value>
@@ -2262,7 +2223,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-15</value>
@@ -2280,7 +2241,6 @@
 	</skill>
 	<skill id="3257" toLevel="3" name="Item Skill: Music Clarity">
 		<!-- Confirmed CT2.5 -->
-		<table name="#DanceMpConsumeRate"> 0.96 0.93 0.9 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">55</value>
@@ -2290,7 +2250,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-4</value>
 					<value level="2">-7</value>
@@ -2303,8 +2263,6 @@
 	</skill>
 	<skill id="3258" toLevel="3" name="Item Skill: Clarity">
 		<!-- Confirmed CT2.5 -->
-		<table name="#MagicalMpConsumeRate"> 0.96 0.93 0.9 </table>
-		<table name="#PhysicalMpConsumeRate"> 0.9 0.85 0.8 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">55</value>
@@ -2314,7 +2272,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-4</value>
 					<value level="2">-7</value>
@@ -2323,7 +2281,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-15</value>
@@ -2332,7 +2290,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -2341,7 +2299,6 @@
 	</skill>
 	<skill id="3259" toLevel="3" name="Item Skill: Reflect Damage">
 		<!-- Confirmed CT2.5 -->
-		<table name="#reflectDam"> 10 15 20 </table>
 		<icon>icon.skill3238</icon>
 		<magicLvl>
 			<value level="1">55</value>
@@ -2351,13 +2308,12 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">15</value>
 					<value level="3">20</value>
 				</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2396,7 +2352,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RealDamage">
+			<effect name="i_real_damage">
 				<power>100</power>
 			</effect>
 		</effects>
@@ -2455,7 +2411,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RealDamage">
+			<effect name="i_real_damage">
 				<power>200</power>
 			</effect>
 		</effects>
@@ -2481,7 +2437,7 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="Resurrection">
+			<effect name="i_resurrection">
 				<power>100</power>
 			</effect>
 		</effects>
@@ -2505,7 +2461,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
@@ -2556,7 +2512,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="UnsummonAgathion" />
+			<effect name="i_unsummon_agathion" />
 		</effects>
 	</skill>
 	<skill id="3268" toLevel="1" name="Release Agathion's Seal - Castle">
@@ -2634,7 +2590,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>63</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2661,7 +2617,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>72</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2684,10 +2640,10 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>200</power>
 			</effect>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>200</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2714,7 +2670,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ShieldDefence">
+			<effect name="p_physical_shield_defence">
 				<amount>220</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2741,7 +2697,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ShieldDefenceRate">
+			<effect name="p_shield_defence_rate">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2768,7 +2724,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>100</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2795,7 +2751,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2822,7 +2778,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2850,13 +2806,13 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions">
+			<effect name="p_condition_block_act_skill">
 			</effect>
-			<effect name="ManaHealOverTime">
+			<effect name="t_mp">
 				<power>27</power>
 				<ticks>5</ticks>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-90</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2887,7 +2843,7 @@
 			<effect name="SilentMove">
 				<chance>100</chance>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-40</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2914,17 +2870,17 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-4</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -2952,17 +2908,17 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-100</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-100</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-100</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -2990,7 +2946,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>100</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3017,11 +2973,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>2700</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>3600</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3048,35 +3004,35 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>8.7</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>10.1</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-11</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-13.6</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-1</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>3</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3099,7 +3055,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>BLEEDING,9</dispel>
 			</effect>
 		</effects>
@@ -3121,7 +3077,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>ROOT_PHYSICALLY,9</dispel>
 			</effect>
 		</effects>
@@ -3143,7 +3099,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>ROOT_MAGICALLY,9</dispel>
 			</effect>
 		</effects>
@@ -3165,7 +3121,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>ROOT_PHYSICALLY,3;ROOT_MAGICALLY,3</dispel>
 			</effect>
 		</effects>
@@ -3187,7 +3143,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SILENCE_PHYSICAL,9</dispel>
 			</effect>
 		</effects>
@@ -3209,7 +3165,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SILENCE,9</dispel>
 			</effect>
 		</effects>
@@ -3231,7 +3187,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SILENCE_ALL,9</dispel>
 			</effect>
 		</effects>
@@ -3243,7 +3199,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>20.8</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3256,7 +3212,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>24.3</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3269,7 +3225,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>32.8</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3282,7 +3238,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>26.4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3295,7 +3251,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3308,7 +3264,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3321,7 +3277,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>30</amount>
 				<mode>DIFF</mode>
 			</effect>

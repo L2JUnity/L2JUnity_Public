@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.HennaData;
 import org.l2junity.gameserver.model.PcCondOverride;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -68,7 +68,7 @@ public final class RequestHennaEquip implements IClientIncomingPacket
 		final Henna henna = HennaData.getInstance().getHenna(_symbolId);
 		if (henna == null)
 		{
-			_log.warn("Invalid Henna Id: " + _symbolId + " from player " + activeChar);
+			LOGGER.warn("Invalid Henna Id: " + _symbolId + " from player " + activeChar);
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
@@ -88,7 +88,7 @@ public final class RequestHennaEquip implements IClientIncomingPacket
 			activeChar.sendPacket(SystemMessageId.THE_SYMBOL_CANNOT_BE_DRAWN);
 			if (!activeChar.canOverrideCond(PcCondOverride.ITEM_CONDITIONS) && !henna.isAllowedClass(activeChar.getClassId()))
 			{
-				Util.handleIllegalPlayerAction(activeChar, "Exploit attempt: Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tryed to add a forbidden henna.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(activeChar, "Exploit attempt: Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tryed to add a forbidden henna.", GeneralConfig.DEFAULT_PUNISH);
 			}
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 		}

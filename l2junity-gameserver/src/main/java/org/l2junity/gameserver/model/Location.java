@@ -18,6 +18,8 @@
  */
 package org.l2junity.gameserver.model;
 
+import java.io.Serializable;
+
 import org.l2junity.gameserver.model.interfaces.ILocational;
 import org.l2junity.gameserver.model.interfaces.IPositionable;
 
@@ -26,19 +28,21 @@ import org.l2junity.gameserver.model.interfaces.IPositionable;
  * Contains coordinates data, heading and instance Id.
  * @author Zoey76
  */
-public class Location implements IPositionable
+public class Location implements IPositionable, Serializable
 {
-	private int _x;
-	private int _y;
-	private int _z;
+	private static final long serialVersionUID = 9053071440080626121L;
+	
+	private double _x;
+	private double _y;
+	private double _z;
 	private int _heading;
 	
-	public Location(int x, int y, int z)
+	public Location(double x, double y, double z)
 	{
 		this(x, y, z, 0);
 	}
 	
-	public Location(int x, int y, int z, int heading)
+	public Location(double x, double y, double z, int heading)
 	{
 		_x = x;
 		_y = y;
@@ -46,9 +50,9 @@ public class Location implements IPositionable
 		_heading = heading;
 	}
 	
-	public Location(WorldObject obj)
+	public Location(ILocational loc)
 	{
-		this(obj.getX(), obj.getY(), obj.getZ(), obj.getHeading());
+		this(loc.getX(), loc.getY(), loc.getZ(), loc.getHeading());
 	}
 	
 	public Location(StatsSet set)
@@ -64,19 +68,9 @@ public class Location implements IPositionable
 	 * @return the x coordinate
 	 */
 	@Override
-	public int getX()
+	public double getX()
 	{
 		return _x;
-	}
-	
-	/**
-	 * Set the x coordinate.
-	 * @param x the x coordinate
-	 */
-	@Override
-	public void setX(int x)
-	{
-		_x = x;
 	}
 	
 	/**
@@ -84,19 +78,9 @@ public class Location implements IPositionable
 	 * @return the y coordinate
 	 */
 	@Override
-	public int getY()
+	public double getY()
 	{
 		return _y;
-	}
-	
-	/**
-	 * Set the y coordinate.
-	 * @param y the x coordinate
-	 */
-	@Override
-	public void setY(int y)
-	{
-		_y = y;
 	}
 	
 	/**
@@ -104,19 +88,9 @@ public class Location implements IPositionable
 	 * @return the z coordinate
 	 */
 	@Override
-	public int getZ()
+	public double getZ()
 	{
 		return _z;
-	}
-	
-	/**
-	 * Set the z coordinate.
-	 * @param z the z coordinate
-	 */
-	@Override
-	public void setZ(int z)
-	{
-		_z = z;
 	}
 	
 	/**
@@ -126,11 +100,11 @@ public class Location implements IPositionable
 	 * @param z the z coordinate
 	 */
 	@Override
-	public void setXYZ(int x, int y, int z)
+	public void setXYZ(double x, double y, double z)
 	{
-		setX(x);
-		setY(y);
-		setZ(z);
+		_x = x;
+		_y = y;
+		_z = z;
 	}
 	
 	/**
@@ -164,12 +138,6 @@ public class Location implements IPositionable
 	}
 	
 	@Override
-	public IPositionable getLocation()
-	{
-		return this;
-	}
-	
-	@Override
 	public void setLocation(Location loc)
 	{
 		_x = loc.getX();
@@ -181,10 +149,10 @@ public class Location implements IPositionable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if ((obj != null) && (obj instanceof Location))
+		if ((obj != null) && (obj instanceof ILocational))
 		{
-			final Location loc = (Location) obj;
-			return (getX() == loc.getX()) && (getY() == loc.getY()) && (getZ() == loc.getZ()) && (getHeading() == loc.getHeading());
+			final ILocational loc = (ILocational) obj;
+			return (((int) getX()) == ((int) loc.getX())) && (((int) getY()) == ((int) loc.getY())) && (((int) getZ()) == ((int) loc.getZ())) && (getHeading() == loc.getHeading());
 		}
 		return false;
 	}

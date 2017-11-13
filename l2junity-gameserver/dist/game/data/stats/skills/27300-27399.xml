@@ -435,7 +435,7 @@
 		</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-687</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="27357" toLevel="12" name="Mass Binding Flood">
 		<!-- AUTO GENERATED SKILL -->
@@ -459,7 +459,7 @@
 			<value level="12">30000</value>
 		</reuseDelay>
 		<effectPoint>-707</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="27358" toLevel="12" name="Slippery Scale">
 		<!-- AUTO GENERATED SKILL -->
@@ -596,9 +596,63 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="27369" toLevel="1" name="La Vie En Rose's Jewelry Box">
-		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.etc_bm_jewelbox_main_i00</icon>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="8.33333">
+						<item id="38932" count="1" /> <!-- La Vie En Rose's Ruby Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="38933" count="1" /> <!-- La Vie En Rose's Sapphire Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="38934" count="1" /> <!-- La Vie En Rose's Topaz Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="38935" count="1" /> <!-- La Vie En Rose's Opal Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="38936" count="1" /> <!-- La Vie En Rose's Obsidian Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="38937" count="1" /> <!-- La Vie En Rose's Diamond Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="38938" count="1" /> <!-- La Vie En Rose's Emerald Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="38939" count="1" /> <!-- La Vie En Rose's Aquamarine Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="38940" count="1" /> <!-- La Vie En Rose's Pearl Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="26491" count="1" /> <!-- La Vie En Rose's Vital Stone Chest -->
+					</item>
+					<item chance="8.33333">
+						<item id="26492" count="1" /> <!-- La Vie En Rose's Garnet Chest -->
+					</item>
+					<item chance="8.33334">
+						<item id="26493" count="1" /> <!-- La Vie En Rose's Tanzanite Chest -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="27370" toLevel="1" name="3rd Anniversary Gift">
 		<!-- AUTO GENERATED SKILL -->

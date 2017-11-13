@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExShowReceivedPostList;
@@ -39,7 +39,7 @@ public final class RequestReceivedPostList implements IClientIncomingPacket
 	public void run(L2GameClient client)
 	{
 		final PlayerInstance activeChar = client.getActiveChar();
-		if ((activeChar == null) || !Config.ALLOW_MAIL)
+		if ((activeChar == null) || !GeneralConfig.ALLOW_MAIL)
 		{
 			return;
 		}

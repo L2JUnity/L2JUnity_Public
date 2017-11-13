@@ -56,14 +56,12 @@
 				<group chance="70">
 					<item id="57" min="905" max="2114" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="2.167">
-					<item id="14166" min="1" max="1" chance="54.314720812183" /> <!-- Life Stone - Lv. 84 -->
-					<item id="14167" min="1" max="1" chance="13.844023996308" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="15540" min="1" max="1" chance="13.844023996308" /> <!-- Unlit Torchlight -->
-					<item id="15690" min="1" max="1" chance="13.844023996308" /> <!-- Secret Key -->
-					<item id="8056" min="1" max="1" chance="1.3844023996308" /> <!-- Room of Splendor Key -->
-					<item id="9557" min="1" max="1" chance="1.3844023996308" /> <!-- Holy Crystal -->
-					<item id="14168" min="1" max="1" chance="1.3844023996308" /> <!-- High-grade Life Stone - Lv. 84 -->
+				<group chance="0.96">
+					<item id="15540" min="1" max="1" chance="31.25" /> <!-- Unlit Torchlight -->
+					<item id="15690" min="1" max="1" chance="31.25" /> <!-- Secret Key -->
+					<item id="45929" min="1" max="3" chance="31.25" /> <!-- Spirit Stone -->
+					<item id="8056" min="1" max="1" chance="3.125" /> <!-- Room of Splendor Key -->
+					<item id="9557" min="1" max="1" chance="3.125" /> <!-- Holy Crystal -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -86,11 +84,11 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="9551" min="1" max="1" chance="1.055" /> <!-- Holy Stone -->
+				<item id="9551" min="1" max="1" chance="1.092" /> <!-- Holy Stone -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -110,7 +108,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="2.9243827160494" sp="3" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2540.15331" hpRegen="8.5" mp="1410.0" mpRegen="3" />
+			<vitals hp="473705.0" hpRegen="8.5" mp="19524.0" mpRegen="3" />
 			<attack physical="731.52506" magical="499.53679" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="305.35947" magical="223.44881" />
 			<speed>
@@ -140,11 +138,11 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="54" max="127" chance="100" /> <!-- Adena -->
+					<item id="57" min="8323" max="19400" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.3009">
-					<item id="36523" min="1" max="1" chance="99.700897308076" /> <!-- Adamantite -->
-					<item id="36870" min="1" max="1" chance="0.29910269192423" /> <!-- Recipe: Orichalcum - Upgrade -->
+				<group chance="41.587">
+					<item id="36532" min="3" max="9" chance="77.884915959314" /> <!-- Thin Braid -->
+					<item id="36533" min="2" max="6" chance="22.115084040686" /> <!-- Synthetic Braid -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -167,11 +165,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
+				<item id="36532" min="1" max="3" chance="38.24" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="13.71" /> <!-- Synthetic Braid -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23.5" />
@@ -247,9 +246,9 @@
 			<corpse>
 				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23.5" />
@@ -323,9 +322,9 @@
 			<corpse>
 				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23.5" />
@@ -345,7 +344,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="2.924939012948" sp="3" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2586.66898" hpRegen="8.5" mp="1442.4" mpRegen="3" />
+			<vitals hp="387576.0" hpRegen="8.5" mp="19524.0" mpRegen="3" />
 			<attack physical="752.73928" magical="514.02335" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="310.02959" magical="226.8662" />
 			<speed>
@@ -374,11 +373,11 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="56" max="130" chance="100" /> <!-- Adena -->
+					<item id="57" min="8323" max="19400" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.3009">
-					<item id="36523" min="1" max="1" chance="99.700897308076" /> <!-- Adamantite -->
-					<item id="36870" min="1" max="1" chance="0.29910269192423" /> <!-- Recipe: Orichalcum - Upgrade -->
+				<group chance="47.97">
+					<item id="36522" min="3" max="9" chance="78.444861371691" /> <!-- Silver -->
+					<item id="36523" min="2" max="6" chance="21.555138628309" /> <!-- Adamantite -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -401,11 +400,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
+				<item id="36522" min="1" max="3" chance="43.02" /> <!-- Silver -->
+				<item id="36523" min="1" max="1" chance="15.62" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23" />
@@ -480,9 +480,9 @@
 			<corpse>
 				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23" />
@@ -555,9 +555,9 @@
 			<corpse>
 				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23" />
@@ -574,7 +574,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="2.8649691358025" sp="3" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2540.15331" hpRegen="8.5" mp="1410.0" mpRegen="3" />
+			<vitals hp="430641.0" hpRegen="8.5" mp="19524.0" mpRegen="3" />
 			<attack physical="731.52506" magical="499.53679" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="305.35947" magical="223.44881" />
 			<speed>
@@ -604,11 +604,11 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="53" max="124" chance="100" /> <!-- Adena -->
+					<item id="57" min="8323" max="19400" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0759">
-					<item id="36543" min="1" max="1" chance="98.814229249012" /> <!-- Adamantite Wire -->
-					<item id="36910" min="1" max="1" chance="1.1857707509881" /> <!-- Recipe: Orichalcum Wire - Upgrade -->
+				<group chance="30.757">
+					<item id="36537" min="3" max="9" chance="77.738401014403" /> <!-- Leather Braid -->
+					<item id="36538" min="2" max="6" chance="22.261598985597" /> <!-- Durable Leather Braid -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -631,11 +631,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36543" min="1" max="1" chance="0.3" /> <!-- Adamantite Wire -->
+				<item id="36537" min="1" max="3" chance="27.75" /> <!-- Leather Braid -->
+				<item id="36538" min="1" max="1" chance="10.5" /> <!-- Durable Leather Braid -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -723,7 +724,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="5.8930380934509" sp="7" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2586.66898" hpRegen="8.5" mp="1442.4" mpRegen="3" />
+			<vitals hp="473705.0" hpRegen="8.5" mp="19524.0" mpRegen="3" />
 			<attack physical="752.73928" magical="514.02335" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="310.02959" magical="226.8662" />
 			<speed>
@@ -757,20 +758,22 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="112" max="261" chance="100" /> <!-- Adena -->
+					<item id="57" min="8323" max="19400" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.75">
-					<item id="36523" min="1" max="1" chance="100" /> <!-- Adamantite -->
+				<group chance="29.97">
+					<item id="36547" min="1" max="1" chance="100" /> <!-- Weapon Fragment -->
+				</group>
+				<group chance="5.588">
+					<item id="36548" min="1" max="1" chance="100" /> <!-- Weapon Fragment (Mid-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36521" min="1" max="1" chance="47.63" /> <!-- Iron Ore -->
-				<item id="36522" min="1" max="1" chance="1.057" /> <!-- Silver -->
-				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
+				<item id="36547" min="1" max="1" chance="22.77" /> <!-- Weapon Fragment -->
+				<item id="36548" min="1" max="1" chance="4.325" /> <!-- Weapon Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="16" />
@@ -788,7 +791,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="5.0136959876543" sp="6" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2540.15331" hpRegen="8.5" mp="1410.0" mpRegen="3" />
+			<vitals hp="430641.0" hpRegen="8.5" mp="19524.0" mpRegen="3" />
 			<attack physical="731.52506" magical="499.53679" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="305.35947" magical="223.44881" />
 			<speed>
@@ -823,20 +826,22 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="91" max="212" chance="100" /> <!-- Adena -->
+					<item id="57" min="8323" max="19400" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.3">
-					<item id="36523" min="1" max="1" chance="100" /> <!-- Adamantite -->
+				<group chance="24.64">
+					<item id="36552" min="1" max="1" chance="100" /> <!-- Armor Fragment -->
+				</group>
+				<group chance="4.983">
+					<item id="36553" min="1" max="1" chance="100" /> <!-- Armor Fragment (Mid-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36521" min="1" max="1" chance="38.15" /> <!-- Iron Ore -->
-				<item id="36522" min="1" max="1" chance="0.75" /> <!-- Silver -->
-				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
+				<item id="36552" min="1" max="1" chance="19.33" /> <!-- Armor Fragment -->
+				<item id="36553" min="1" max="1" chance="3.821" /> <!-- Armor Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -853,7 +858,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="8.4544942765997" sp="10" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2586.66898" hpRegen="8.5" mp="1442.4" mpRegen="3" />
+			<vitals hp="387576.0" hpRegen="8.5" mp="19524.0" mpRegen="3" />
 			<attack physical="752.73928" magical="514.02335" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="310.02959" magical="226.8662" />
 			<speed>
@@ -886,20 +891,20 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="159" max="371" chance="100" /> <!-- Adena -->
+					<item id="57" min="8323" max="19400" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.75">
-					<item id="36523" min="1" max="1" chance="100" /> <!-- Adamantite -->
+				<group chance="32.19">
+					<item id="36558" min="1" max="1" chance="52.997825411619" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36557" min="3" max="9" chance="47.002174588381" /> <!-- Accessory Gem -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36521" min="1" max="1" chance="66.51" /> <!-- Iron Ore -->
-				<item id="36522" min="1" max="1" chance="1.475" /> <!-- Silver -->
-				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
+				<item id="36557" min="1" max="1" chance="67.84" /> <!-- Accessory Gem -->
+				<item id="36558" min="1" max="1" chance="12.6" /> <!-- Accessory Gem (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="35" />
@@ -915,7 +920,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="4.9994212962963" sp="6" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2540.15331" hpRegen="8.5" mp="1410.0" mpRegen="3" />
+			<vitals hp="430641.0" hpRegen="8.5" mp="19524.0" mpRegen="3" />
 			<attack physical="731.52506" magical="499.53679" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="305.35947" magical="223.44881" />
 			<speed>
@@ -948,20 +953,20 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="91" max="212" chance="100" /> <!-- Adena -->
+					<item id="57" min="8323" max="19400" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.3">
-					<item id="36523" min="1" max="1" chance="100" /> <!-- Adamantite -->
+				<group chance="25.393">
+					<item id="36562" min="1" max="1" chance="83.645099043043" /> <!-- Greater Cokes -->
+					<item id="36563" min="1" max="1" chance="16.354900956957" /> <!-- Synthetic Cokes -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36521" min="1" max="1" chance="36.76" /> <!-- Iron Ore -->
-				<item id="36522" min="1" max="1" chance="0.75" /> <!-- Silver -->
-				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
+				<item id="36562" min="1" max="1" chance="16.87" /> <!-- Greater Cokes -->
+				<item id="36563" min="1" max="1" chance="3.135" /> <!-- Synthetic Cokes -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="6" />
@@ -979,7 +984,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="98.320415224913" sp="170" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="44209" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="44209.8601737864" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="9510.8117527241" magical="6896.92979444865" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1008,7 +1013,7 @@
 			<skill id="6750" level="1" /> <!-- Power Strike -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1018,26 +1023,24 @@
 				<group chance="70">
 					<item id="57" min="1247" max="2906" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.413">
-					<item id="14166" min="1" max="1" chance="53.07855626327" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="21.231422505308" /> <!-- Wind Stone -->
-					<item id="14167" min="1" max="1" chance="21.231422505308" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9556" min="1" max="1" chance="2.1231422505308" /> <!-- Dark Crystal -->
-					<item id="14168" min="1" max="1" chance="2.1231422505308" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.21231422505308" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.66">
+					<item id="9549" min="1" max="1" chance="45.454545454545" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="45.454545454545" /> <!-- Spirit Stone -->
+					<item id="9556" min="1" max="1" chance="4.5454545454545" /> <!-- Dark Crystal -->
+					<item id="45930" min="1" max="1" chance="4.5454545454545" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="7.357" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.437" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="7.368" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.429" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
-				<item id="36881" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36884" min="1" max="1" chance="0.0055" /> <!-- Recipe: Synthetic Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Downgrade -->
+				<item id="36884" min="1" max="1" chance="0.0075" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -1055,7 +1058,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="93.385882352941" sp="161" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="44209" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="44209.8601737864" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="9510.8117527241" magical="6896.92979444865" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="80" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1084,7 +1087,7 @@
 			<skill id="6755" level="1" /> <!-- Death Strike -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1094,25 +1097,23 @@
 				<group chance="70">
 					<item id="57" min="1185" max="2761" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.681">
-					<item id="14166" min="1" max="1" chance="60.737656157049" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="17.846519928614" /> <!-- Wind Stone -->
-					<item id="14167" min="1" max="1" chance="17.846519928614" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="1.7846519928614" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14168" min="1" max="1" chance="1.7846519928614" /> <!-- High-grade Life Stone - Lv. 84 -->
+				<group chance="0.63">
+					<item id="9549" min="1" max="1" chance="47.619047619048" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="47.619047619048" /> <!-- Spirit Stone -->
+					<item id="959" min="1" max="1" chance="4.7619047619048" /> <!-- Scroll: Enchant Weapon (S-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="7.03" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.357" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="6.949" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.295" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
-				<item id="36881" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36884" min="1" max="1" chance="0.0055" /> <!-- Recipe: Synthetic Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Downgrade -->
+				<item id="36884" min="1" max="1" chance="0.0075" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="25" />
@@ -1130,7 +1131,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="34.807889273356" sp="60" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="44209" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="44209.8601737864" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="9510.8117527241" magical="6896.92979444865" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1161,7 +1162,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1171,25 +1172,23 @@
 				<group chance="70">
 					<item id="57" min="417" max="973" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.4585">
-					<item id="14166" min="1" max="1" chance="65.430752453653" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="16.357688113413" /> <!-- Wind Stone -->
-					<item id="14167" min="1" max="1" chance="16.357688113413" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="14168" min="1" max="1" chance="1.1995637949836" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.65430752453653" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.18">
+					<item id="9549" min="1" max="1" chance="41.666666666667" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="41.666666666667" /> <!-- Spirit Stone -->
+					<item id="45930" min="1" max="1" chance="16.666666666667" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="2.417" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="2.416" /> <!-- Thin Braid -->
 				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36884" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="14" />
@@ -1207,7 +1206,7 @@
 		<sex>FEMALE</sex>
 		<acquire expRate="58.840415224913" sp="102" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="14736" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="14736.6200579288" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="8179.92395510089" magical="5585.82767115845" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1237,7 +1236,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1247,26 +1246,24 @@
 				<group chance="70">
 					<item id="57" min="735" max="1712" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.413">
-					<item id="14166" min="1" max="1" chance="53.07855626327" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="21.231422505308" /> <!-- Wind Stone -->
-					<item id="14167" min="1" max="1" chance="21.231422505308" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="2.1231422505308" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14168" min="1" max="1" chance="2.1231422505308" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.21231422505308" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.66">
+					<item id="9549" min="1" max="1" chance="45.454545454545" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="45.454545454545" /> <!-- Spirit Stone -->
+					<item id="959" min="1" max="1" chance="4.5454545454545" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					<item id="45930" min="1" max="1" chance="4.5454545454545" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="4.36" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="4.271" /> <!-- Thin Braid -->
 				<item id="36533" min="1" max="1" chance="0.75" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -1285,7 +1282,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="58.840415224913" sp="102" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="14736" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="14736.6200579288" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="8179.92395510089" magical="5585.82767115845" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1316,7 +1313,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1326,27 +1323,25 @@
 				<group chance="70">
 					<item id="57" min="735" max="1712" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.7435">
-					<item id="14166" min="1" max="1" chance="40.34969737727" /> <!-- Life Stone - Lv. 84 -->
-					<item id="14167" min="1" max="1" chance="40.34969737727" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="10.087424344317" /> <!-- Wind Stone -->
-					<item id="9556" min="1" max="1" chance="4.034969737727" /> <!-- Dark Crystal -->
-					<item id="14168" min="1" max="1" chance="4.034969737727" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="0.73974445191661" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14169" min="1" max="1" chance="0.4034969737727" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.2175">
+					<item id="9549" min="1" max="1" chance="34.48275862069" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="34.48275862069" /> <!-- Spirit Stone -->
+					<item id="9556" min="1" max="1" chance="13.793103448276" /> <!-- Dark Crystal -->
+					<item id="45930" min="1" max="1" chance="13.793103448276" /> <!-- Mid-grade Spirit Stone -->
+					<item id="959" min="1" max="1" chance="3.448275862069" /> <!-- Scroll: Enchant Weapon (S-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="4.295" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="4.328" /> <!-- Thin Braid -->
 				<item id="36533" min="1" max="1" chance="0.75" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -1364,7 +1359,7 @@
 		<equipment rhand="15302" /> <!-- Transparent Bow (NPC) -->
 		<acquire expRate="33.854809688581" sp="58" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="44209" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="44209.8601737864" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="9510.8117527241" magical="6896.92979444865" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1394,7 +1389,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1404,25 +1399,23 @@
 				<group chance="70">
 					<item id="57" min="405" max="944" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.461">
-					<item id="14166" min="1" max="1" chance="65.075921908894" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="16.268980477223" /> <!-- Wind Stone -->
-					<item id="14167" min="1" max="1" chance="16.268980477223" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="1.1930585683297" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14168" min="1" max="1" chance="1.1930585683297" /> <!-- High-grade Life Stone - Lv. 84 -->
+				<group chance="0.1575">
+					<item id="9549" min="1" max="1" chance="47.619047619048" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="47.619047619048" /> <!-- Spirit Stone -->
+					<item id="959" min="1" max="1" chance="4.7619047619048" /> <!-- Scroll: Enchant Weapon (S-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="2.457" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="2.371" /> <!-- Thin Braid -->
 				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36884" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -1440,7 +1433,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="102.87141868512" sp="178" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="14736" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="14736.6200579288" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="8179.92395510089" magical="5585.82767115845" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1471,7 +1464,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1501,9 +1494,9 @@
 				<item id="36884" min="1" max="1" chance="0.0055" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -1521,7 +1514,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="103.17107266436" sp="178" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="14736" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="14736.6200579288" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="8179.92395510089" magical="5585.82767115845" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1552,7 +1545,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1580,9 +1573,9 @@
 				<item id="36884" min="1" max="1" chance="0.0055" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="29" />
@@ -1600,7 +1593,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="134.1475432526" sp="232" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="14736" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="14736.6200579288" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="8179.92395510089" magical="5585.82767115845" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1631,7 +1624,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1641,26 +1634,24 @@
 				<group chance="70">
 					<item id="57" min="1850" max="4311" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="2.0645">
-					<item id="14166" min="1" max="1" chance="67.764591910874" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9548" min="1" max="1" chance="14.531363526278" /> <!-- Earth Stone -->
-					<item id="14167" min="1" max="1" chance="14.531363526278" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9554" min="1" max="1" chance="1.4531363526278" /> <!-- Earth Crystal -->
-					<item id="14168" min="1" max="1" chance="1.4531363526278" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.26640833131509" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.66">
+					<item id="9548" min="1" max="1" chance="45.454545454545" /> <!-- Earth Stone -->
+					<item id="45929" min="1" max="3" chance="45.454545454545" /> <!-- Spirit Stone -->
+					<item id="9554" min="1" max="1" chance="4.5454545454545" /> <!-- Earth Crystal -->
+					<item id="45930" min="1" max="1" chance="4.5454545454545" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="11.43" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="2.123" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="11.31" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="2.158" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
-				<item id="36881" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Downgrade -->
+				<item id="36881" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Downgrade -->
+				<item id="36884" min="1" max="1" chance="0.0075" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Downgrade -->
-				<item id="36884" min="1" max="1" chance="0.0055" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="29" />
@@ -1708,7 +1699,7 @@
 			<skill id="6762" level="1" /> <!-- Rage -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -1718,26 +1709,24 @@
 				<group chance="70">
 					<item id="57" min="929" max="2166" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.413">
-					<item id="14166" min="1" max="1" chance="53.07855626327" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9548" min="1" max="1" chance="21.231422505308" /> <!-- Earth Stone -->
-					<item id="14167" min="1" max="1" chance="21.231422505308" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9554" min="1" max="1" chance="2.1231422505308" /> <!-- Earth Crystal -->
-					<item id="14168" min="1" max="1" chance="2.1231422505308" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.21231422505308" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.66">
+					<item id="9548" min="1" max="1" chance="45.454545454545" /> <!-- Earth Stone -->
+					<item id="45929" min="1" max="3" chance="45.454545454545" /> <!-- Spirit Stone -->
+					<item id="9554" min="1" max="1" chance="4.5454545454545" /> <!-- Earth Crystal -->
+					<item id="45930" min="1" max="1" chance="4.5454545454545" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="5.546" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.125" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.48" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.033" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -1756,7 +1745,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="105.25467128028" sp="182" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="44209" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="44209.8601737864" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="9510.8117527241" magical="6896.92979444865" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1789,7 +1778,7 @@
 			<skill id="6820" level="1" /> <!-- P. Def. Enhance -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAKE_IN</clan>
 			</clan_list>
@@ -1799,25 +1788,23 @@
 				<group chance="70">
 					<item id="57" min="1648" max="3841" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="2.182">
-					<item id="14166" min="1" max="1" chance="69.752520623281" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9548" min="1" max="1" chance="13.748854262145" /> <!-- Earth Stone -->
-					<item id="14167" min="1" max="1" chance="13.748854262145" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9554" min="1" max="1" chance="1.3748854262145" /> <!-- Earth Crystal -->
-					<item id="14168" min="1" max="1" chance="1.3748854262145" /> <!-- High-grade Life Stone - Lv. 84 -->
+				<group chance="0.63">
+					<item id="9548" min="1" max="1" chance="47.619047619048" /> <!-- Earth Stone -->
+					<item id="45929" min="1" max="3" chance="47.619047619048" /> <!-- Spirit Stone -->
+					<item id="9554" min="1" max="1" chance="4.7619047619048" /> <!-- Earth Crystal -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="9.68" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.923" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="9.692" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.937" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
-				<item id="36881" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36884" min="1" max="1" chance="0.0055" /> <!-- Recipe: Synthetic Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Downgrade -->
+				<item id="36884" min="1" max="1" chance="0.0075" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="29" />
@@ -1834,7 +1821,7 @@
 		<equipment rhand="13979" lhand="13980" /> <!-- Monster Only (Dragontroop Commando) / Monster Only (Dragontroop Defender) -->
 		<acquire expRate="65.345467128028" sp="113" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="14736" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="14736.6200579288" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="8179.92395510089" magical="5585.82767115845" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -1865,7 +1852,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAKE_IN</clan>
 			</clan_list>
@@ -1875,26 +1862,24 @@
 				<group chance="70">
 					<item id="57" min="920" max="2144" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.413">
-					<item id="14166" min="1" max="1" chance="53.07855626327" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9548" min="1" max="1" chance="21.231422505308" /> <!-- Earth Stone -->
-					<item id="14167" min="1" max="1" chance="21.231422505308" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="2.1231422505308" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14168" min="1" max="1" chance="2.1231422505308" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.21231422505308" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.66">
+					<item id="9548" min="1" max="1" chance="45.454545454545" /> <!-- Earth Stone -->
+					<item id="45929" min="1" max="3" chance="45.454545454545" /> <!-- Spirit Stone -->
+					<item id="959" min="1" max="1" chance="4.5454545454545" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					<item id="45930" min="1" max="1" chance="4.5454545454545" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="5.366" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.007" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.387" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="0.985" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="22" />
@@ -1942,7 +1927,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAKE_IN</clan>
 			</clan_list>
@@ -1952,27 +1937,25 @@
 				<group chance="70">
 					<item id="57" min="484" max="1127" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.4695">
-					<item id="14166" min="1" max="1" chance="63.897763578275" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9548" min="1" max="1" chance="15.974440894569" /> <!-- Earth Stone -->
-					<item id="14167" min="1" max="1" chance="15.974440894569" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="1.171458998935" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="9554" min="1" max="1" chance="1.171458998935" /> <!-- Earth Crystal -->
-					<item id="14168" min="1" max="1" chance="1.171458998935" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.63897763578275" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.195">
+					<item id="9548" min="1" max="1" chance="38.461538461538" /> <!-- Earth Stone -->
+					<item id="45929" min="1" max="3" chance="38.461538461538" /> <!-- Spirit Stone -->
+					<item id="45930" min="1" max="1" chance="15.384615384615" /> <!-- Mid-grade Spirit Stone -->
+					<item id="959" min="1" max="1" chance="3.8461538461538" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					<item id="9554" min="1" max="1" chance="3.8461538461538" /> <!-- Earth Crystal -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="2.883" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="2.836" /> <!-- Thin Braid -->
 				<item id="36533" min="1" max="1" chance="0.75" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -2020,7 +2003,7 @@
 			<skill id="6766" level="1" /> <!-- Earth Tremor -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAKE_IN</clan>
 			</clan_list>
@@ -2030,25 +2013,23 @@
 				<group chance="70">
 					<item id="57" min="971" max="2263" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.383">
-					<item id="14166" min="1" max="1" chance="54.229934924078" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9548" min="1" max="1" chance="21.691973969631" /> <!-- Earth Stone -->
-					<item id="14167" min="1" max="1" chance="21.691973969631" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="14168" min="1" max="1" chance="2.1691973969631" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.21691973969631" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.63">
+					<item id="9548" min="1" max="1" chance="47.619047619048" /> <!-- Earth Stone -->
+					<item id="45929" min="1" max="3" chance="47.619047619048" /> <!-- Spirit Stone -->
+					<item id="45930" min="1" max="1" chance="4.7619047619048" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="5.69" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.148" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.751" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.163" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="28" />
@@ -2065,7 +2046,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="182.23294117647" sp="315" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="44209" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="44209.8601737864" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="9510.8117527241" magical="6896.92979444865" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -2095,7 +2076,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -2105,26 +2086,24 @@
 				<group chance="70">
 					<item id="57" min="2276" max="5306" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="2.574">
-					<item id="14166" min="1" max="1" chance="62.703962703963" /> <!-- Life Stone - Lv. 84 -->
-					<item id="2134" min="1" max="1" chance="11.655011655012" /> <!-- Gemstone (S-grade) -->
-					<item id="9548" min="1" max="1" chance="11.655011655012" /> <!-- Earth Stone -->
-					<item id="14167" min="1" max="1" chance="11.655011655012" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9554" min="1" max="1" chance="1.1655011655012" /> <!-- Earth Crystal -->
-					<item id="14168" min="1" max="1" chance="1.1655011655012" /> <!-- High-grade Life Stone - Lv. 84 -->
+				<group chance="2.276">
+					<item id="2134" min="1" max="1" chance="92.091388400703" /> <!-- Gemstone (S-grade) -->
+					<item id="9548" min="1" max="1" chance="3.2952548330404" /> <!-- Earth Stone -->
+					<item id="45929" min="1" max="3" chance="3.2952548330404" /> <!-- Spirit Stone -->
+					<item id="9554" min="1" max="1" chance="1.3181019332162" /> <!-- Earth Crystal -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="13.47" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="2.566" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="13.24" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="2.636" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.03" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="40" />
@@ -2143,7 +2122,7 @@
 		<equipment rhand="13981" /> <!-- Monster Only (Dragontoop Tactician) -->
 		<acquire expRate="96.410657439446" sp="167" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="44209" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
+			<vitals hp="44209.8601737864" hpRegen="148.436009657904" mp="1846.8" mpRegen="3" />
 			<attack physical="9510.8117527241" magical="6896.92979444865" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -2173,7 +2152,7 @@
 			<skill id="6770" level="1" /> <!-- Heal -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -2183,26 +2162,24 @@
 				<group chance="70">
 					<item id="57" min="1223" max="2851" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.413">
-					<item id="14166" min="1" max="1" chance="53.07855626327" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9548" min="1" max="1" chance="21.231422505308" /> <!-- Earth Stone -->
-					<item id="14167" min="1" max="1" chance="21.231422505308" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="2.1231422505308" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14168" min="1" max="1" chance="2.1231422505308" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="14169" min="1" max="1" chance="0.21231422505308" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.66">
+					<item id="9548" min="1" max="1" chance="45.454545454545" /> <!-- Earth Stone -->
+					<item id="45929" min="1" max="3" chance="45.454545454545" /> <!-- Spirit Stone -->
+					<item id="959" min="1" max="1" chance="4.5454545454545" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					<item id="45930" min="1" max="1" chance="4.5454545454545" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="7.212" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.361" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="7.247" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.331" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
-				<item id="36881" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36884" min="1" max="1" chance="0.0055" /> <!-- Recipe: Synthetic Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Downgrade -->
+				<item id="36884" min="1" max="1" chance="0.0075" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="25" />
@@ -2221,7 +2198,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="265.27709342561" sp="459" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="265047" hpRegen="148.317800694399" mp="1846" mpRegen="3" />
+			<vitals hp="265047.918430099" hpRegen="148.317800694399" mp="1846.8" mpRegen="3" />
 			<attack physical="8005.79204959623" magical="5466.91823463554" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -2254,7 +2231,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -2264,24 +2241,22 @@
 				<group chance="70">
 					<item id="57" min="4278" max="9971" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="7.041">
-					<item id="14166" min="1" max="1" chance="67.390995597216" /> <!-- Life Stone - Lv. 84 -->
-					<item id="14167" min="1" max="1" chance="17.696349950291" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="10.651896037495" /> <!-- Wind Stone -->
-					<item id="14168" min="1" max="1" chance="4.2607584149979" /> <!-- High-grade Life Stone - Lv. 84 -->
+				<group chance="1.5">
+					<item id="9549" min="1" max="1" chance="50" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="50" /> <!-- Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="25.04" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="4.879" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="24.31" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="4.849" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.3" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.03" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="24" />
@@ -2299,7 +2274,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="178.60152249135" sp="309" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="265047" hpRegen="148.317800694399" mp="1846" mpRegen="3" />
+			<vitals hp="265047.918430099" hpRegen="148.317800694399" mp="1846.8" mpRegen="3" />
 			<attack physical="8005.79204959623" magical="5466.91823463554" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -2331,7 +2306,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.25</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -2341,26 +2316,24 @@
 				<group chance="70">
 					<item id="57" min="2907" max="6775" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="3.272">
-					<item id="14166" min="1" max="1" chance="63.783618581907" /> <!-- Life Stone - Lv. 84 -->
-					<item id="14167" min="1" max="1" chance="22.921760391198" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="9.1687041564792" /> <!-- Wind Stone -->
-					<item id="14168" min="1" max="1" chance="2.2921760391198" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="0.91687041564792" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14169" min="1" max="1" chance="0.91687041564792" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.705">
+					<item id="9549" min="1" max="1" chance="42.553191489362" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="42.553191489362" /> <!-- Spirit Stone -->
+					<item id="45930" min="1" max="1" chance="10.63829787234" /> <!-- Mid-grade Spirit Stone -->
+					<item id="959" min="1" max="1" chance="4.2553191489362" /> <!-- Scroll: Enchant Weapon (S-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="16.56" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="3.316" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="17.93" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="3.35" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.03" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="30" />
@@ -2379,7 +2352,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="178.60152249135" sp="309" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="265047" hpRegen="148.317800694399" mp="1846" mpRegen="3" />
+			<vitals hp="265047.918430099" hpRegen="148.317800694399" mp="1846.8" mpRegen="3" />
 			<attack physical="8005.79204959623" magical="5466.91823463554" random="10" critical="4" accuracy="5" attackSpeed="253" type="DUAL" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -2412,7 +2385,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.25</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>DRAGON_IN</clan>
 			</clan_list>
@@ -2422,27 +2395,25 @@
 				<group chance="70">
 					<item id="57" min="2907" max="6775" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="2.508">
-					<item id="14166" min="1" max="1" chance="73.245614035088" /> <!-- Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="11.961722488038" /> <!-- Wind Stone -->
-					<item id="14167" min="1" max="1" chance="11.961722488038" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="959" min="1" max="1" chance="1.1961722488038" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14168" min="1" max="1" chance="1.1961722488038" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="13893" min="1" max="1" chance="0.21929824561404" /> <!-- Sealed Holy Spirit's Cloak -->
-					<item id="14169" min="1" max="1" chance="0.21929824561404" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="0.7125">
+					<item id="9549" min="1" max="1" chance="42.105263157895" /> <!-- Wind Stone -->
+					<item id="45929" min="1" max="3" chance="42.105263157895" /> <!-- Spirit Stone -->
+					<item id="45930" min="1" max="1" chance="10.526315789474" /> <!-- Mid-grade Spirit Stone -->
+					<item id="959" min="1" max="1" chance="4.2105263157895" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					<item id="13893" min="1" max="1" chance="1.0526315789474" /> <!-- Sealed Holy Spirit's Cloak -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="16.84" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="3.333" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="16.82" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="3.298" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.03" /> <!-- Recipe: Synthetic Braid - Upgrade -->
 				<item id="36883" min="1" max="1" chance="0.003" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -2455,7 +2426,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="586.8124567474" sp="1017" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="265047" hpRegen="148.317800694399" mp="1846.8" mpRegen="3" />
+			<vitals hp="265047.918430099" hpRegen="148.317800694399" mp="1846.8" mpRegen="3" />
 			<attack physical="8005.79204959623" magical="5466.91823463554" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="578.861024" magical="635.378064" />
 			<attribute>
@@ -2485,34 +2456,32 @@
 			<skill id="6743" level="1" /> <!-- Dark Wind -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="300" isAggressive="true" />
+		<ai aggroRange="450" clanHelpRange="300" isAggressive="true" />
 		<drop_lists>
 			<death>
 				<group chance="70">
 					<item id="57" min="9890" max="23050" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="79.206">
-					<item id="14052" min="1" max="1" chance="89.021033760069" /> <!-- Vesper Noble Enhancement Stone -->
-					<item id="14166" min="1" max="1" chance="6.9805317778956" /> <!-- Life Stone - Lv. 84 -->
-					<item id="14167" min="1" max="1" chance="1.6602277605232" /> <!-- Mid-grade Life Stone - Lv. 84 -->
-					<item id="9549" min="1" max="1" chance="1.50493649471" /> <!-- Wind Stone -->
-					<item id="959" min="1" max="1" chance="0.37875918491023" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="14168" min="1" max="1" chance="0.37875918491023" /> <!-- High-grade Life Stone - Lv. 84 -->
-					<item id="13893" min="1" max="1" chance="0.037875918491023" /> <!-- Sealed Holy Spirit's Cloak -->
-					<item id="14169" min="1" max="1" chance="0.037875918491023" /> <!-- Top-grade Life Stone - Lv. 84 -->
+				<group chance="72.745">
+					<item id="14052" min="1" max="1" chance="96.089078287168" /> <!-- Vesper Noble Enhancement Stone -->
+					<item id="45929" min="1" max="3" chance="1.5300020619974" /> <!-- Spirit Stone -->
+					<item id="9549" min="1" max="1" chance="1.5148807478177" /> <!-- Wind Stone -->
+					<item id="959" min="1" max="1" chance="0.41239947762733" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					<item id="45930" min="1" max="1" chance="0.41239947762733" /> <!-- Mid-grade Spirit Stone -->
+					<item id="13893" min="1" max="1" chance="0.041239947762733" /> <!-- Sealed Holy Spirit's Cloak -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="57.79" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="11.55" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="57.96" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="11.77" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.3" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36884" min="1" max="1" chance="0.03" /> <!-- Recipe: Synthetic Braid - Upgrade -->
-				<item id="36883" min="1" max="1" chance="0.0055" /> <!-- Recipe: Synthetic Braid - Downgrade -->
+				<item id="36883" min="1" max="1" chance="0.0075" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -2535,7 +2504,7 @@
 		<acquire expRate="110.33703512397" sp="205" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13568" hpRegen="8.5" mp="1952" mpRegen="3" />
+			<vitals hp="13568.0020168508" hpRegen="8.5" mp="1952.4" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -2567,16 +2536,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="393" max="916" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36826" min="1" max="1" chance="100" /> <!-- Apocalypse Cutter Fragment -->
 				</group>
-				<group chance="3.3745">
-					<item id="36517" min="1" max="1" chance="77.522595940139" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="22.225514891095" /> <!-- Durable Leather -->
-					<item id="17527" min="1" max="1" chance="0.16298710920136" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36764" min="1" max="1" chance="0.08890205956438" /> <!-- Recipe: Apocalypse Cutter (60%) -->
+				<group chance="3.975">
+					<item id="36517" min="1" max="1" chance="80.301886792453" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.867924528302" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75471698113208" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36764" min="1" max="1" chance="0.075471698113208" /> <!-- Recipe: Apocalypse Cutter (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -2599,12 +2568,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="9.494" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="10.95" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -2630,7 +2599,7 @@
 		<acquire expRate="224.36592592593" sp="436" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -2664,17 +2633,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="581" max="1355" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36826" min="1" max="1" chance="100" /> <!-- Apocalypse Cutter Fragment -->
 				</group>
-				<group chance="9.687">
-					<item id="17374" min="1" max="1" chance="51.553628574378" /> <!-- Glimmer -->
-					<item id="36517" min="1" max="1" chance="40.642097656653" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="7.7423350882626" /> <!-- Durable Leather -->
-					<item id="17526" min="1" max="1" chance="0.03096934035305" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36764" min="1" max="1" chance="0.03096934035305" /> <!-- Recipe: Apocalypse Cutter (60%) -->
+				<group chance="3.975">
+					<item id="36517" min="1" max="1" chance="80.301886792453" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.867924528302" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75471698113208" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36764" min="1" max="1" chance="0.075471698113208" /> <!-- Recipe: Apocalypse Cutter (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -2697,12 +2665,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="14.77" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="10.95" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="9" />
@@ -2728,7 +2696,7 @@
 		<acquire expRate="168.98257795733" sp="321" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -2760,16 +2728,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="502" max="1171" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36826" min="1" max="1" chance="100" /> <!-- Apocalypse Cutter Fragment -->
 				</group>
-				<group chance="4.2169">
-					<item id="36517" min="1" max="1" chance="82.121937916479" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="17.785577082691" /> <!-- Durable Leather -->
-					<item id="36764" min="1" max="1" chance="0.071142308330764" /> <!-- Recipe: Apocalypse Cutter (60%) -->
-					<item id="17526" min="1" max="1" chance="0.021342692499229" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="3.975">
+					<item id="36517" min="1" max="1" chance="80.301886792453" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.867924528302" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75471698113208" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36764" min="1" max="1" chance="0.075471698113208" /> <!-- Recipe: Apocalypse Cutter (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -2792,12 +2760,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="12.13" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="10.95" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -2823,7 +2791,7 @@
 		<acquire expRate="121.80027774271" sp="231" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -2855,16 +2823,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="425" max="991" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36826" min="1" max="1" chance="100" /> <!-- Apocalypse Cutter Fragment -->
 				</group>
-				<group chance="3.6769">
-					<item id="36517" min="1" max="1" chance="79.496314830428" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="20.397617558269" /> <!-- Durable Leather -->
-					<item id="36764" min="1" max="1" chance="0.081590470233077" /> <!-- Recipe: Apocalypse Cutter (60%) -->
-					<item id="17526" min="1" max="1" chance="0.024477141069923" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="3.975">
+					<item id="36517" min="1" max="1" chance="80.301886792453" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.867924528302" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75471698113208" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36764" min="1" max="1" chance="0.075471698113208" /> <!-- Recipe: Apocalypse Cutter (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -2887,12 +2855,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="9.97" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="10.95" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -2918,7 +2886,7 @@
 		<acquire expRate="178.25455862819" sp="354" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14136" hpRegen="8.5" mp="2059" mpRegen="3" />
+			<vitals hp="14136.3203072221" hpRegen="8.5" mp="2059.8" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -2953,16 +2921,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="531" max="1240" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36826" min="1" max="1" chance="100" /> <!-- Apocalypse Cutter Fragment -->
 				</group>
-				<group chance="4.371">
-					<item id="36517" min="1" max="1" chance="82.086479066575" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="17.158544955388" /> <!-- Durable Leather -->
-					<item id="17527" min="1" max="1" chance="0.68634179821551" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36764" min="1" max="1" chance="0.068634179821551" /> <!-- Recipe: Apocalypse Cutter (60%) -->
+				<group chance="3.975">
+					<item id="36517" min="1" max="1" chance="80.301886792453" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.867924528302" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75471698113208" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36764" min="1" max="1" chance="0.075471698113208" /> <!-- Recipe: Apocalypse Cutter (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -2985,12 +2953,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="12.35" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="10.95" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3016,7 +2984,7 @@
 		<acquire expRate="354.76425020234" sp="736" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14467" hpRegen="8.5" mp="2132" mpRegen="3" />
+			<vitals hp="14467.5287374727" hpRegen="8.5" mp="2132.4" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3052,18 +3020,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="748" max="1742" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36826" min="1" max="1" chance="100" /> <!-- Apocalypse Cutter Fragment -->
 				</group>
-				<group chance="14.808">
-					<item id="17374" min="1" max="1" chance="67.429767693139" /> <!-- Glimmer -->
-					<item id="36517" min="1" max="1" chance="27.262290653701" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="5.064829821718" /> <!-- Durable Leather -->
-					<item id="30425" min="1" max="1" chance="0.20259319286872" /> <!-- Recipe: Blessed Spiritshot (R-grade) -->
-					<item id="17526" min="1" max="1" chance="0.020259319286872" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36764" min="1" max="1" chance="0.020259319286872" /> <!-- Recipe: Apocalypse Cutter (60%) -->
+				<group chance="3.975">
+					<item id="36517" min="1" max="1" chance="80.301886792453" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.867924528302" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75471698113208" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36764" min="1" max="1" chance="0.075471698113208" /> <!-- Recipe: Apocalypse Cutter (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3086,12 +3052,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="18.73" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="10.95" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="9" />
@@ -3117,7 +3083,7 @@
 		<acquire expRate="290.94447069943" sp="591" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14213" hpRegen="8.5" mp="2096" mpRegen="3" />
+			<vitals hp="14213.315791308" hpRegen="8.5" mp="2096.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3153,16 +3119,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="678" max="1583" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36826" min="1" max="1" chance="100" /> <!-- Apocalypse Cutter Fragment -->
 				</group>
-				<group chance="5.419">
-					<item id="36517" min="1" max="1" chance="85.55083963831" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="13.840191917328" /> <!-- Durable Leather -->
-					<item id="17527" min="1" max="1" chance="0.55360767669312" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36764" min="1" max="1" chance="0.055360767669312" /> <!-- Recipe: Apocalypse Cutter (60%) -->
+				<group chance="3.975">
+					<item id="36517" min="1" max="1" chance="80.301886792453" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.867924528302" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75471698113208" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36764" min="1" max="1" chance="0.075471698113208" /> <!-- Recipe: Apocalypse Cutter (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3185,12 +3151,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="16.58" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="10.95" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3216,7 +3182,7 @@
 		<acquire expRate="224.98440453686" sp="457" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14213" hpRegen="8.5" mp="2096" mpRegen="3" />
+			<vitals hp="14213.315791308" hpRegen="8.5" mp="2096.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3251,17 +3217,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="614" max="1433" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36826" min="1" max="1" chance="100" /> <!-- Apocalypse Cutter Fragment -->
 				</group>
-				<group chance="4.0839">
-					<item id="36517" min="1" max="1" chance="80.805112759862" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="18.364798354514" /> <!-- Durable Leather -->
-					<item id="17527" min="1" max="1" chance="0.73459193418056" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36764" min="1" max="1" chance="0.073459193418056" /> <!-- Recipe: Apocalypse Cutter (60%) -->
-					<item id="17526" min="1" max="1" chance="0.022037758025417" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="3.975">
+					<item id="36517" min="1" max="1" chance="80.301886792453" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.867924528302" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75471698113208" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36764" min="1" max="1" chance="0.075471698113208" /> <!-- Recipe: Apocalypse Cutter (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3284,12 +3249,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36517" min="1" max="1" chance="31.33" /> <!-- Leather -->
-				<item id="36518" min="1" max="1" chance="6.378" /> <!-- Durable Leather -->
+				<item id="40205" min="1" max="1" chance="10.95" /> <!-- Requiem Fragment -->
+				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3315,7 +3280,7 @@
 		<acquire expRate="110.33703512397" sp="205" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13568" hpRegen="8.5" mp="1952" mpRegen="3" />
+			<vitals hp="13568.0020168508" hpRegen="8.5" mp="1952.4" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3347,14 +3312,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="393" max="916" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.75">
 					<item id="36843" min="1" max="1" chance="100" /> <!-- Twilight Leather Armor Ingredient -->
 				</group>
-				<group chance="0.0085">
-					<item id="17526" min="1" max="1" chance="35.294117647059" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36781" min="1" max="1" chance="64.705882352941" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+				<group chance="0.0105">
+					<item id="36781" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+					<item id="17526" min="1" max="1" chance="28.571428571429" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3379,9 +3344,9 @@
 			<corpse>
 				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3407,7 +3372,7 @@
 		<acquire expRate="224.36592592593" sp="436" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3441,15 +3406,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="581" max="1355" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.75">
 					<item id="36843" min="1" max="1" chance="100" /> <!-- Twilight Leather Armor Ingredient -->
 				</group>
-				<group chance="5.04">
-					<item id="17374" min="1" max="1" chance="99.345238095238" /> <!-- Glimmer -->
-					<item id="36781" min="1" max="1" chance="0.5952380952381" /> <!-- Recipe: Twilight Leather Armor (60%) -->
-					<item id="17526" min="1" max="1" chance="0.05952380952381" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="0.0105">
+					<item id="36781" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+					<item id="17526" min="1" max="1" chance="28.571428571429" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3474,9 +3438,9 @@
 			<corpse>
 				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3502,7 +3466,7 @@
 		<acquire expRate="168.98257795733" sp="321" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3534,14 +3498,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="502" max="1171" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.75">
 					<item id="36843" min="1" max="1" chance="100" /> <!-- Twilight Leather Armor Ingredient -->
 				</group>
-				<group chance="0.105">
-					<item id="9547" min="1" max="1" chance="71.428571428571" /> <!-- Water Stone -->
-					<item id="36781" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+				<group chance="0.0105">
+					<item id="36781" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+					<item id="17526" min="1" max="1" chance="28.571428571429" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3566,9 +3530,9 @@
 			<corpse>
 				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3594,7 +3558,7 @@
 		<acquire expRate="121.80027774271" sp="231" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3626,14 +3590,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="425" max="991" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.75">
 					<item id="36843" min="1" max="1" chance="100" /> <!-- Twilight Leather Armor Ingredient -->
 				</group>
-				<group chance="0.0355">
-					<item id="17527" min="1" max="1" chance="84.507042253521" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36781" min="1" max="1" chance="15.492957746479" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+				<group chance="0.0105">
+					<item id="36781" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+					<item id="17526" min="1" max="1" chance="28.571428571429" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3658,9 +3622,9 @@
 			<corpse>
 				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3686,7 +3650,7 @@
 		<acquire expRate="178.25455862819" sp="354" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14136" hpRegen="8.5" mp="2059" mpRegen="3" />
+			<vitals hp="14136.3203072221" hpRegen="8.5" mp="2059.8" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3720,14 +3684,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="531" max="1240" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.75">
 					<item id="36843" min="1" max="1" chance="100" /> <!-- Twilight Leather Armor Ingredient -->
 				</group>
-				<group chance="0.033">
-					<item id="36781" min="1" max="1" chance="90.909090909091" /> <!-- Recipe: Twilight Leather Armor (60%) -->
-					<item id="17526" min="1" max="1" chance="9.0909090909091" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="0.0105">
+					<item id="36781" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+					<item id="17526" min="1" max="1" chance="28.571428571429" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3752,9 +3716,9 @@
 			<corpse>
 				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3780,7 +3744,7 @@
 		<acquire expRate="354.76425020234" sp="736" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14467" hpRegen="8.5" mp="2132" mpRegen="3" />
+			<vitals hp="14467.5287374727" hpRegen="8.5" mp="2132.4" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3816,16 +3780,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="748" max="1742" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.23">
+				<group chance="0.75">
 					<item id="36843" min="1" max="1" chance="100" /> <!-- Twilight Leather Armor Ingredient -->
 				</group>
-				<group chance="10.045">
-					<item id="17374" min="1" max="1" chance="98.924838227974" /> <!-- Glimmer -->
-					<item id="9548" min="1" max="1" chance="0.74664011946242" /> <!-- Earth Stone -->
-					<item id="36781" min="1" max="1" chance="0.29865604778497" /> <!-- Recipe: Twilight Leather Armor (60%) -->
-					<item id="17526" min="1" max="1" chance="0.029865604778497" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="0.0105">
+					<item id="36781" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+					<item id="17526" min="1" max="1" chance="28.571428571429" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3850,9 +3812,9 @@
 			<corpse>
 				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3878,7 +3840,7 @@
 		<acquire expRate="290.94447069943" sp="591" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14213" hpRegen="8.5" mp="2096" mpRegen="3" />
+			<vitals hp="14213.315791308" hpRegen="8.5" mp="2096.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -3914,14 +3876,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="678" max="1583" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.118">
+				<group chance="0.75">
 					<item id="36843" min="1" max="1" chance="100" /> <!-- Twilight Leather Armor Ingredient -->
 				</group>
-				<group chance="0.06">
-					<item id="17527" min="1" max="1" chance="50" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36781" min="1" max="1" chance="50" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+				<group chance="0.0105">
+					<item id="36781" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+					<item id="17526" min="1" max="1" chance="28.571428571429" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3946,9 +3908,9 @@
 			<corpse>
 				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3974,7 +3936,7 @@
 		<acquire expRate="224.98440453686" sp="457" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14213" hpRegen="8.5" mp="2096" mpRegen="3" />
+			<vitals hp="14213.315791308" hpRegen="8.5" mp="2096.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4008,14 +3970,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="614" max="1433" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.002">
+				<group chance="0.75">
 					<item id="36843" min="1" max="1" chance="100" /> <!-- Twilight Leather Armor Ingredient -->
 				</group>
-				<group chance="0.06">
-					<item id="17527" min="1" max="1" chance="50" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36781" min="1" max="1" chance="50" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+				<group chance="0.0105">
+					<item id="36781" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Twilight Leather Armor (60%) -->
+					<item id="17526" min="1" max="1" chance="28.571428571429" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4040,9 +4002,9 @@
 			<corpse>
 				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4067,7 +4029,7 @@
 		<acquire expRate="110.33703512397" sp="205" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13568" hpRegen="8.5" mp="1952" mpRegen="3" />
+			<vitals hp="13568.0020168508" hpRegen="8.5" mp="1952.4" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4098,16 +4060,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="393" max="916" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36825" min="1" max="1" chance="100" /> <!-- Apocalypse Shaper Fragment -->
 				</group>
-				<group chance="3.4385">
-					<item id="36517" min="1" max="1" chance="77.940962629053" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="21.811836556638" /> <!-- Durable Leather -->
-					<item id="17527" min="1" max="1" chance="0.15995346808201" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36763" min="1" max="1" chance="0.087247346226552" /> <!-- Recipe: Apocalypse Shaper (60%) -->
+				<group chance="3.976">
+					<item id="36517" min="1" max="1" chance="80.306841046278" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.863179074447" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75452716297787" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36763" min="1" max="1" chance="0.075452716297787" /> <!-- Recipe: Apocalypse Shaper (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4130,12 +4092,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="9.497" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="11.49" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4160,7 +4122,7 @@
 		<acquire expRate="224.36592592593" sp="436" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4193,17 +4155,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="581" max="1355" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36825" min="1" max="1" chance="100" /> <!-- Apocalypse Shaper Fragment -->
 				</group>
-				<group chance="9.779">
-					<item id="17374" min="1" max="1" chance="50.720932610696" /> <!-- Glimmer -->
-					<item id="36517" min="1" max="1" chance="41.272113713059" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="7.6694958584722" /> <!-- Durable Leather -->
-					<item id="17527" min="1" max="1" chance="0.30677983433889" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36763" min="1" max="1" chance="0.030677983433889" /> <!-- Recipe: Apocalypse Shaper (60%) -->
+				<group chance="3.976">
+					<item id="36517" min="1" max="1" chance="80.306841046278" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.863179074447" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75452716297787" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36763" min="1" max="1" chance="0.075452716297787" /> <!-- Recipe: Apocalypse Shaper (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4226,12 +4187,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="13.98" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="11.49" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4256,7 +4217,7 @@
 		<acquire expRate="168.98257795733" sp="321" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4287,16 +4248,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="502" max="1171" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36825" min="1" max="1" chance="100" /> <!-- Apocalypse Shaper Fragment -->
 				</group>
-				<group chance="4.1279">
-					<item id="36517" min="1" max="1" chance="81.736476174326" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="18.169044792752" /> <!-- Durable Leather -->
-					<item id="36763" min="1" max="1" chance="0.072676179171007" /> <!-- Recipe: Apocalypse Shaper (60%) -->
-					<item id="17526" min="1" max="1" chance="0.021802853751302" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="3.976">
+					<item id="36517" min="1" max="1" chance="80.306841046278" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.863179074447" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75452716297787" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36763" min="1" max="1" chance="0.075452716297787" /> <!-- Recipe: Apocalypse Shaper (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4319,12 +4280,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="11.8" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="11.49" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4349,7 +4310,7 @@
 		<acquire expRate="121.80027774271" sp="231" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4380,16 +4341,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="425" max="991" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36825" min="1" max="1" chance="100" /> <!-- Apocalypse Shaper Fragment -->
 				</group>
-				<group chance="3.6489">
-					<item id="36517" min="1" max="1" chance="79.338978870344" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="20.554139603716" /> <!-- Durable Leather -->
-					<item id="36763" min="1" max="1" chance="0.082216558414865" /> <!-- Recipe: Apocalypse Shaper (60%) -->
-					<item id="17526" min="1" max="1" chance="0.024664967524459" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="3.976">
+					<item id="36517" min="1" max="1" chance="80.306841046278" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.863179074447" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75452716297787" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36763" min="1" max="1" chance="0.075452716297787" /> <!-- Recipe: Apocalypse Shaper (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4412,12 +4373,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="10.2" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="11.49" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4442,7 +4403,7 @@
 		<acquire expRate="178.25455862819" sp="354" />
 		<mpReward value="111" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14136" hpRegen="8.5" mp="2059" mpRegen="3" />
+			<vitals hp="14136.3203072221" hpRegen="8.5" mp="2059.8" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4476,15 +4437,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="531" max="1240" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36825" min="1" max="1" chance="100" /> <!-- Apocalypse Shaper Fragment -->
 				</group>
-				<group chance="5.536">
-					<item id="36517" min="1" max="1" chance="86.398121387283" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="13.547687861272" /> <!-- Durable Leather -->
-					<item id="36763" min="1" max="1" chance="0.054190751445087" /> <!-- Recipe: Apocalypse Shaper (60%) -->
+				<group chance="3.976">
+					<item id="36517" min="1" max="1" chance="80.306841046278" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.863179074447" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75452716297787" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36763" min="1" max="1" chance="0.075452716297787" /> <!-- Recipe: Apocalypse Shaper (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4507,12 +4469,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36517" min="1" max="1" chance="28.67" /> <!-- Leather -->
-				<item id="36518" min="1" max="1" chance="5.449" /> <!-- Durable Leather -->
+				<item id="40205" min="1" max="1" chance="11.49" /> <!-- Requiem Fragment -->
+				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4537,7 +4499,7 @@
 		<acquire expRate="354.76425020234" sp="736" />
 		<mpReward value="111" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14467" hpRegen="8.5" mp="2132" mpRegen="3" />
+			<vitals hp="14467.5287374727" hpRegen="8.5" mp="2132.4" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4572,18 +4534,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="748" max="1742" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36825" min="1" max="1" chance="100" /> <!-- Apocalypse Shaper Fragment -->
 				</group>
-				<group chance="14.786">
-					<item id="17374" min="1" max="1" chance="67.266333017719" /> <!-- Glimmer -->
-					<item id="36517" min="1" max="1" chance="27.417827674828" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="5.0723657513864" /> <!-- Durable Leather -->
-					<item id="9549" min="1" max="1" chance="0.20289463005546" /> <!-- Wind Stone -->
-					<item id="17526" min="1" max="1" chance="0.020289463005546" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36763" min="1" max="1" chance="0.020289463005546" /> <!-- Recipe: Apocalypse Shaper (60%) -->
+				<group chance="3.976">
+					<item id="36517" min="1" max="1" chance="80.306841046278" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.863179074447" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75452716297787" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36763" min="1" max="1" chance="0.075452716297787" /> <!-- Recipe: Apocalypse Shaper (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4606,12 +4566,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="17.9" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="11.49" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4636,7 +4596,7 @@
 		<acquire expRate="290.94447069943" sp="591" />
 		<mpReward value="111" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14213" hpRegen="8.5" mp="2096" mpRegen="3" />
+			<vitals hp="14213.315791308" hpRegen="8.5" mp="2096.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4671,17 +4631,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="678" max="1583" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36825" min="1" max="1" chance="100" /> <!-- Apocalypse Shaper Fragment -->
 				</group>
-				<group chance="4.482">
-					<item id="36517" min="1" max="1" chance="82.463186077644" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="16.73360107095" /> <!-- Durable Leather -->
-					<item id="17527" min="1" max="1" chance="0.66934404283802" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="17526" min="1" max="1" chance="0.066934404283802" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36763" min="1" max="1" chance="0.066934404283802" /> <!-- Recipe: Apocalypse Shaper (60%) -->
+				<group chance="3.976">
+					<item id="36517" min="1" max="1" chance="80.306841046278" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.863179074447" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75452716297787" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36763" min="1" max="1" chance="0.075452716297787" /> <!-- Recipe: Apocalypse Shaper (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4704,12 +4663,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="16.34" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="11.49" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4734,7 +4693,7 @@
 		<acquire expRate="224.98440453686" sp="457" />
 		<mpReward value="111" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14213" hpRegen="8.5" mp="2096" mpRegen="3" />
+			<vitals hp="14213.315791308" hpRegen="8.5" mp="2096.0" mpRegen="3" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4768,16 +4727,16 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="614" max="1433" chance="100" /> <!-- Adena -->
+					<item id="57" min="471" max="1099" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36825" min="1" max="1" chance="100" /> <!-- Apocalypse Shaper Fragment -->
 				</group>
-				<group chance="4.957">
-					<item id="36517" min="1" max="1" chance="84.204155739358" /> <!-- Leather -->
-					<item id="36518" min="1" max="1" chance="15.130119023603" /> <!-- Durable Leather -->
-					<item id="17527" min="1" max="1" chance="0.60520476094412" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36763" min="1" max="1" chance="0.060520476094412" /> <!-- Recipe: Apocalypse Shaper (60%) -->
+				<group chance="3.976">
+					<item id="36517" min="1" max="1" chance="80.306841046278" /> <!-- Leather -->
+					<item id="36518" min="1" max="1" chance="18.863179074447" /> <!-- Durable Leather -->
+					<item id="17527" min="1" max="1" chance="0.75452716297787" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36763" min="1" max="1" chance="0.075452716297787" /> <!-- Recipe: Apocalypse Shaper (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4800,12 +4759,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="14.33" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="11.49" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4833,7 +4792,7 @@
 		<acquire expRate="110.33703512397" sp="205" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13568" hpRegen="8.5" mp="2928" mpRegen="3" />
+			<vitals hp="13568.0020168508" hpRegen="8.5" mp="2928.6" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -4865,14 +4824,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="404" max="941" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36835" min="1" max="1" chance="100" /> <!-- Apocalypse Retributer Fragment -->
 				</group>
-				<group chance="0.006">
-					<item id="36773" min="1" max="1" chance="50" /> <!-- Recipe: Apocalypse Retributer (60%) -->
-					<item id="36860" min="1" max="1" chance="50" /> <!-- Recipe: Durable Leather - Upgrade -->
+				<group chance="0.0105">
+					<item id="36860" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Durable Leather - Upgrade -->
+					<item id="36773" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Apocalypse Retributer (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4895,13 +4854,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="4.771" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="0.75" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.781" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.104" /> <!-- Synthetic Braid -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -4929,7 +4888,7 @@
 		<acquire expRate="224.36592592593" sp="436" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="3035" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="3035.7" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -4963,15 +4922,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="590" max="1377" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36835" min="1" max="1" chance="100" /> <!-- Apocalypse Retributer Fragment -->
 				</group>
-				<group chance="5.058">
-					<item id="17374" min="1" max="1" chance="99.347568208778" /> <!-- Glimmer -->
-					<item id="17527" min="1" max="1" chance="0.59311981020166" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36773" min="1" max="1" chance="0.059311981020166" /> <!-- Recipe: Apocalypse Retributer (60%) -->
+				<group chance="0.0105">
+					<item id="36860" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Durable Leather - Upgrade -->
+					<item id="36773" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Apocalypse Retributer (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -4994,13 +4952,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="6.908" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.284" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.781" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.104" /> <!-- Synthetic Braid -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5028,7 +4986,7 @@
 		<acquire expRate="168.98257795733" sp="321" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="2982" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="2982.0" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5060,14 +5018,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="513" max="1195" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36835" min="1" max="1" chance="100" /> <!-- Apocalypse Retributer Fragment -->
 				</group>
-				<group chance="0.078">
-					<item id="9548" min="1" max="1" chance="96.153846153846" /> <!-- Earth Stone -->
-					<item id="36773" min="1" max="1" chance="3.8461538461538" /> <!-- Recipe: Apocalypse Retributer (60%) -->
+				<group chance="0.0105">
+					<item id="36860" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Durable Leather - Upgrade -->
+					<item id="36773" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Apocalypse Retributer (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5090,13 +5048,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="6.021" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.221" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.781" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.104" /> <!-- Synthetic Braid -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5124,7 +5082,7 @@
 		<acquire expRate="121.80027774271" sp="231" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="2982" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="2982.0" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5156,15 +5114,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="434" max="1012" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36835" min="1" max="1" chance="100" /> <!-- Apocalypse Retributer Fragment -->
 				</group>
-				<group chance="0.063">
-					<item id="9546" min="1" max="1" chance="47.619047619048" /> <!-- Fire Stone -->
-					<item id="17527" min="1" max="1" chance="47.619047619048" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="36773" min="1" max="1" chance="4.7619047619048" /> <!-- Recipe: Apocalypse Retributer (60%) -->
+				<group chance="0.0105">
+					<item id="36860" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Durable Leather - Upgrade -->
+					<item id="36773" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Apocalypse Retributer (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5187,13 +5144,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="5.055" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="0.75" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.781" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.104" /> <!-- Synthetic Braid -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5221,7 +5178,7 @@
 		<acquire expRate="178.25455862819" sp="354" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14136" hpRegen="8.5" mp="3089" mpRegen="3" />
+			<vitals hp="14136.3203072221" hpRegen="8.5" mp="3089.7" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5255,6 +5212,16 @@
 		</ai>
 		<drop_lists>
 			<death>
+				<group chance="70">
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="36835" min="1" max="1" chance="100" /> <!-- Apocalypse Retributer Fragment -->
+				</group>
+				<group chance="0.0105">
+					<item id="36860" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Durable Leather - Upgrade -->
+					<item id="36773" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Apocalypse Retributer (60%) -->
+				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
 					<item id="8601" min="1" max="1" chance="40" /> <!-- Major Herb of Life -->
@@ -5275,6 +5242,14 @@
 					<item id="13028" min="1" max="1" chance="100" /> <!-- Vitality Replenishing Herb -->
 				</group>
 			</death>
+			<corpse>
+				<item id="36532" min="1" max="1" chance="5.781" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.104" /> <!-- Synthetic Braid -->
+				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5302,7 +5277,7 @@
 		<acquire expRate="354.76425020234" sp="736" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14467" hpRegen="8.5" mp="3198" mpRegen="3" />
+			<vitals hp="14467.5287374727" hpRegen="8.5" mp="3198.6" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5338,16 +5313,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="748" max="1743" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36835" min="1" max="1" chance="100" /> <!-- Apocalypse Retributer Fragment -->
 				</group>
-				<group chance="10.116">
-					<item id="17374" min="1" max="1" chance="99.199288256228" /> <!-- Glimmer -->
-					<item id="9550" min="1" max="1" chance="0.74139976275208" /> <!-- Dark Stone -->
-					<item id="17526" min="1" max="1" chance="0.029655990510083" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36773" min="1" max="1" chance="0.029655990510083" /> <!-- Recipe: Apocalypse Retributer (60%) -->
+				<group chance="0.0105">
+					<item id="36860" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Durable Leather - Upgrade -->
+					<item id="36773" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Apocalypse Retributer (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5370,13 +5343,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="8.791" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.712" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.781" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.104" /> <!-- Synthetic Braid -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5404,7 +5377,7 @@
 		<acquire expRate="290.94447069943" sp="591" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14213" hpRegen="8.5" mp="3144" mpRegen="3" />
+			<vitals hp="14213.315791308" hpRegen="8.5" mp="3144.0" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5440,15 +5413,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="682" max="1592" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36835" min="1" max="1" chance="100" /> <!-- Apocalypse Retributer Fragment -->
 				</group>
-				<group chance="0.036">
-					<item id="17527" min="1" max="1" chance="83.333333333333" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="17526" min="1" max="1" chance="8.3333333333333" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36773" min="1" max="1" chance="8.3333333333333" /> <!-- Recipe: Apocalypse Retributer (60%) -->
+				<group chance="0.0105">
+					<item id="36860" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Durable Leather - Upgrade -->
+					<item id="36773" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Apocalypse Retributer (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5471,13 +5443,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="8.005" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.618" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.781" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.104" /> <!-- Synthetic Braid -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5505,7 +5477,7 @@
 		<acquire expRate="224.98440453686" sp="457" />
 		<mpReward value="110" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14213" hpRegen="8.5" mp="3144" mpRegen="3" />
+			<vitals hp="14213.315791308" hpRegen="8.5" mp="3144.0" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5540,15 +5512,14 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="617" max="1441" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="36835" min="1" max="1" chance="100" /> <!-- Apocalypse Retributer Fragment -->
 				</group>
-				<group chance="0.036">
-					<item id="17527" min="1" max="1" chance="83.333333333333" /> <!-- Scroll: Enchant Armor (R-grade) -->
-					<item id="17526" min="1" max="1" chance="8.3333333333333" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36773" min="1" max="1" chance="8.3333333333333" /> <!-- Recipe: Apocalypse Retributer (60%) -->
+				<group chance="0.0105">
+					<item id="36860" min="1" max="1" chance="71.428571428571" /> <!-- Recipe: Durable Leather - Upgrade -->
+					<item id="36773" min="1" max="1" chance="28.571428571429" /> <!-- Recipe: Apocalypse Retributer (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5571,13 +5542,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="7.277" /> <!-- Thin Braid -->
-				<item id="36533" min="1" max="1" chance="1.435" /> <!-- Synthetic Braid -->
+				<item id="36532" min="1" max="1" chance="5.781" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="1.104" /> <!-- Synthetic Braid -->
 				<item id="36883" min="1" max="1" chance="0.0009" /> <!-- Recipe: Synthetic Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5605,7 +5576,7 @@
 		<acquire expRate="110.33703512397" sp="205" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13568" hpRegen="8.5" mp="2928" mpRegen="3" />
+			<vitals hp="13568.0020168508" hpRegen="8.5" mp="2928.6" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5636,7 +5607,7 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="404" max="941" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3009">
 					<item id="17333" min="1" max="1" chance="0.29910269192423" /> <!-- Apocalypse Caster -->
@@ -5667,12 +5638,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="9.829" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="12.3" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5700,7 +5671,7 @@
 		<acquire expRate="224.36592592593" sp="436" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="3035" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="3035.7" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5733,16 +5704,15 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="590" max="1377" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3009">
 					<item id="17333" min="1" max="1" chance="0.29910269192423" /> <!-- Apocalypse Caster -->
 					<item id="36834" min="1" max="1" chance="99.700897308076" /> <!-- Apocalypse Caster Fragment -->
 				</group>
-				<group chance="5.037">
-					<item id="17374" min="1" max="1" chance="99.88088147707" /> <!-- Glimmer -->
-					<item id="36772" min="1" max="1" chance="0.059559261465158" /> <!-- Recipe: Apocalypse Caster (60%) -->
-					<item id="36907" min="1" max="1" chance="0.059559261465158" /> <!-- Recipe: Adamantite Wire - Upgrade -->
+				<group chance="0.033">
+					<item id="17527" min="1" max="1" chance="90.909090909091" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36772" min="1" max="1" chance="9.0909090909091" /> <!-- Recipe: Apocalypse Caster (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5765,12 +5735,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="14.2" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="12.3" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5798,7 +5768,7 @@
 		<acquire expRate="168.98257795733" sp="321" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="2982" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="2982.0" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5829,15 +5799,15 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="513" max="1195" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3009">
 					<item id="17333" min="1" max="1" chance="0.29910269192423" /> <!-- Apocalypse Caster -->
 					<item id="36834" min="1" max="1" chance="99.700897308076" /> <!-- Apocalypse Caster Fragment -->
 				</group>
-				<group chance="0.006">
-					<item id="17526" min="1" max="1" chance="50" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36772" min="1" max="1" chance="50" /> <!-- Recipe: Apocalypse Caster (60%) -->
+				<group chance="0.033">
+					<item id="17527" min="1" max="1" chance="90.909090909091" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36772" min="1" max="1" chance="9.0909090909091" /> <!-- Recipe: Apocalypse Caster (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5860,12 +5830,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="12.35" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="12.3" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5893,7 +5863,7 @@
 		<acquire expRate="121.80027774271" sp="231" />
 		<mpReward value="74" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="2982" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="2982.0" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -5924,16 +5894,15 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="434" max="1012" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3009">
 					<item id="17333" min="1" max="1" chance="0.29910269192423" /> <!-- Apocalypse Caster -->
 					<item id="36834" min="1" max="1" chance="99.700897308076" /> <!-- Apocalypse Caster Fragment -->
 				</group>
-				<group chance="0.036">
-					<item id="9550" min="1" max="1" chance="83.333333333333" /> <!-- Dark Stone -->
-					<item id="17526" min="1" max="1" chance="8.3333333333333" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="36772" min="1" max="1" chance="8.3333333333333" /> <!-- Recipe: Apocalypse Caster (60%) -->
+				<group chance="0.033">
+					<item id="17527" min="1" max="1" chance="90.909090909091" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					<item id="36772" min="1" max="1" chance="9.0909090909091" /> <!-- Recipe: Apocalypse Caster (60%) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5956,12 +5925,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="10.44" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="12.3" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -5989,7 +5958,7 @@
 		<acquire expRate="178.25455862819" sp="354" />
 		<mpReward value="106" type="DIFF" ticks="10" affects="SOLO" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="14136" hpRegen="8.5" mp="3089" mpRegen="3" />
+			<vitals hp="14136.3203072221" hpRegen="8.5" mp="3089.7" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="180" />
@@ -6022,7 +5991,7 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="537" max="1253" chance="100" /> <!-- Adena -->
+					<item id="57" min="484" max="1129" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3009">
 					<item id="17333" min="1" max="1" chance="0.29910269192423" /> <!-- Apocalypse Caster -->
@@ -6053,12 +6022,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="40205" min="1" max="1" chance="13.07" /> <!-- Requiem Fragment -->
+				<item id="40205" min="1" max="1" chance="12.3" /> <!-- Requiem Fragment -->
 				<item id="40210" min="1" max="1" chance="0.003" /> <!-- Recipe: R (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />

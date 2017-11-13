@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.interfaces.IIdentifiable;
  */
 public final class FortSiegeSpawn extends Location implements IIdentifiable
 {
+	private static final long serialVersionUID = 8573224379845441859L;
 	private final int _npcId;
 	private final int _fortId;
 	private final int _id;

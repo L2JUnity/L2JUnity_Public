@@ -18,13 +18,14 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -32,11 +33,11 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class MCritRateFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
-		double baseValue = calcWeaponPlusBaseValue(creature, stat);
+		double baseValue = calcEquippedItemsBaseValue(creature, stat);
 		if (creature.isPlayer())
 		{
 			baseValue += calcEnchantBodyPart(creature, L2Item.SLOT_LEGS);
@@ -44,7 +45,7 @@ public class MCritRateFinalizer implements IStatsFunction
 		
 		final double witBonus = creature.getWIT() > 0 ? BaseStats.WIT.calcBonus(creature) : 1.;
 		baseValue *= witBonus * 10;
-		return Stats.defaultValue(creature, stat, baseValue);
+		return validateValue(creature, DoubleStat.defaultValue(creature, stat, baseValue), 0, PlayerConfig.MAX_MCRIT_RATE);
 	}
 	
 	@Override

@@ -18,15 +18,15 @@
  */
 package org.l2junity.gameserver.network.loginserver;
 
+import org.l2junity.gameserver.config.ServerConfig;
+import org.l2junity.gameserver.network.EventLoopGroupManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.socket.nio.NioSocketChannel;
-
-import org.l2junity.Config;
-import org.l2junity.gameserver.network.EventLoopGroupManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author NosBit
@@ -34,11 +34,11 @@ import org.slf4j.LoggerFactory;
 public class LoginServerNetworkManager
 {
 	private final Logger LOGGER = LoggerFactory.getLogger(getClass());
-
+	
 	private final Bootstrap _bootstrap;
-
+	
 	private ChannelFuture _channelFuture;
-
+	
 	public LoginServerNetworkManager()
 	{
 		//@formatter:off
@@ -49,32 +49,32 @@ public class LoginServerNetworkManager
 			.handler(new LoginServerInitializer());
 		//@formatter:on
 	}
-
+	
 	public ChannelFuture getChannelFuture()
 	{
 		return _channelFuture;
 	}
-
+	
 	public void connect() throws InterruptedException
 	{
-		if (_channelFuture != null && _channelFuture.isSuccess())
+		if ((_channelFuture != null) && _channelFuture.isSuccess())
 		{
 			return;
 		}
-		_channelFuture = _bootstrap.connect(Config.GAME_SERVER_LOGIN_HOST, Config.GAME_SERVER_LOGIN_PORT).sync();
-		LOGGER.info("Connected to {}:{}", Config.GAME_SERVER_LOGIN_HOST, Config.GAME_SERVER_LOGIN_PORT);
+		_channelFuture = _bootstrap.connect(ServerConfig.GAME_SERVER_LOGIN_HOST, ServerConfig.GAME_SERVER_LOGIN_PORT).sync();
+		LOGGER.info("Connected to {}:{}", ServerConfig.GAME_SERVER_LOGIN_HOST, ServerConfig.GAME_SERVER_LOGIN_PORT);
 	}
-
+	
 	public void disconnect() throws InterruptedException
 	{
 		_channelFuture.channel().close().sync();
 	}
-
+	
 	public static LoginServerNetworkManager getInstance()
 	{
 		return SingletonHolder._instance;
 	}
-
+	
 	private static class SingletonHolder
 	{
 		protected static final LoginServerNetworkManager _instance = new LoginServerNetworkManager();

@@ -19,8 +19,9 @@
 package org.l2junity.gameserver.model;
 
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 
@@ -105,6 +106,6 @@ public class DropProtection implements Runnable
 			throw new NullPointerException("Trying to protect dropped item to null owner");
 		}
 		
-		_task = ThreadPoolManager.getInstance().scheduleGeneral(this, PROTECTED_MILLIS_TIME);
+		_task = ThreadPool.schedule(this, PROTECTED_MILLIS_TIME, TimeUnit.MILLISECONDS);
 	}
 }

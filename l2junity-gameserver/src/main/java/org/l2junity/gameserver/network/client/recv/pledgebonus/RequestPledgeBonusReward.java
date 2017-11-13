@@ -27,6 +27,7 @@ import org.l2junity.gameserver.model.holders.SkillHolder;
 import org.l2junity.gameserver.model.pledge.ClanRewardBonus;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
+import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
 
 /**
@@ -60,7 +61,12 @@ public class RequestPledgeBonusReward implements IClientIncomingPacket
 		final L2Clan clan = player.getClan();
 		final ClanRewardType type = ClanRewardType.values()[_type];
 		final ClanMember member = clan.getClanMember(player.getObjectId());
-		if (clan.canClaimBonusReward(player, type))
+		if (member.isRewardClaimed(type))
+		{
+			player.sendPacket(SystemMessageId.THE_PRODUCT_HAS_ALREADY_BEEN_RECEIVED);
+			return;
+		}
+		else if (clan.canClaimBonusReward(player, type))
 		{
 			final ClanRewardBonus bonus = type.getAvailableBonus(player.getClan());
 			if (bonus != null)
@@ -69,6 +75,12 @@ public class RequestPledgeBonusReward implements IClientIncomingPacket
 				final SkillHolder skillReward = bonus.getSkillReward();
 				if (itemReward != null)
 				{
+					if (!player.isInventoryUnder90(false))
+					{
+						player.sendPacket(SystemMessageId.THE_ITEM_CANNOT_BE_RECEIVED_BECAUSE_THE_INVENTORY_WEIGHT_QUANTITY_LIMIT_HAS_BEEN_EXCEEDED);
+						return;
+					}
+					
 					player.addItem("ClanReward", itemReward.getId(), itemReward.getCount(), player, true);
 				}
 				else if (skillReward != null)
@@ -79,7 +91,7 @@ public class RequestPledgeBonusReward implements IClientIncomingPacket
 			}
 			else
 			{
-				_log.warn("{} Attempting to claim reward but clan({}) doesn't have such!", player, clan);
+				LOGGER.warn("{} Attempting to claim reward but clan({}) doesn't have such!", player, clan);
 			}
 		}
 	}

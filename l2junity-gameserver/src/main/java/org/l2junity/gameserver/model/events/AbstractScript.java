@@ -33,18 +33,20 @@ import java.util.concurrent.PriorityBlockingQueue;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GameTimeController;
 import org.l2junity.gameserver.ai.CtrlIntention;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.RatesConfig;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
+import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.AttributeType;
 import org.l2junity.gameserver.enums.Movie;
 import org.l2junity.gameserver.enums.QuestSound;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.FortManager;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.instancemanager.InstanceManager;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
 import org.l2junity.gameserver.model.L2Spawn;
@@ -72,7 +74,9 @@ import org.l2junity.gameserver.model.events.annotations.Ranges;
 import org.l2junity.gameserver.model.events.annotations.RegisterEvent;
 import org.l2junity.gameserver.model.events.annotations.RegisterType;
 import org.l2junity.gameserver.model.events.impl.IBaseEvent;
+import org.l2junity.gameserver.model.events.impl.character.OnCreatureAttack;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureAttacked;
+import org.l2junity.gameserver.model.events.impl.character.OnCreatureDamageReceived;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureDeath;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureSee;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureZoneEnter;
@@ -139,7 +143,7 @@ import org.l2junity.gameserver.model.olympiad.Olympiad;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.spawns.SpawnGroup;
 import org.l2junity.gameserver.model.spawns.SpawnTemplate;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.zone.ZoneType;
 import org.l2junity.gameserver.network.client.send.ExAdenaInvenCount;
 import org.l2junity.gameserver.network.client.send.ExShowScreenMessage;
@@ -160,7 +164,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractScript extends ManagedScript implements IEventTimerEvent<String>, IEventTimerCancel<String>
 {
-	protected static final Logger _log = LoggerFactory.getLogger(AbstractScript.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractScript.class);
 	private final Map<ListenerRegisterType, Set<Integer>> _registeredIds = new ConcurrentHashMap<>();
 	private final Queue<AbstractEventListener> _listeners = new PriorityBlockingQueue<>();
 	private volatile TimerExecutor<String> _timerExecutor;
@@ -184,7 +188,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	
 	public void onTimerEvent(String event, StatsSet params, Npc npc, PlayerInstance player)
 	{
-		_log.warn("[{}]: Timer event arrived at non overriden onTimerEvent method event: {} npc: {} player: {}", getClass().getSimpleName(), event, npc, player);
+		LOGGER.warn("[{}]: Timer event arrived at non overriden onTimerEvent method event: {} npc: {} player: {}", getClass().getSimpleName(), event, npc, player);
 	}
 	
 	public void onTimerCancel(String event, StatsSet params, Npc npc, PlayerInstance player)
@@ -214,10 +218,10 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		return _timerExecutor != null;
 	}
 	
-	private void initializeAnnotationListeners()
+	private void registerAnnotationFromMethods(Method[] methods)
 	{
 		final List<Integer> ids = new ArrayList<>();
-		for (Method method : getClass().getMethods())
+		for (Method method : methods)
 		{
 			if (method.isAnnotationPresent(RegisterEvent.class) && method.isAnnotationPresent(RegisterType.class))
 			{
@@ -228,17 +232,17 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 				final EventType eventType = listener.value();
 				if (method.getParameterCount() != 1)
 				{
-					_log.warn(getClass().getSimpleName() + ": Non properly defined annotation listener on method: " + method.getName() + " expected parameter count is 1 but found: " + method.getParameterCount());
+					LOGGER.warn("Non properly defined annotation listener on method: " + method.getName() + " expected parameter count is 1 but found: " + method.getParameterCount());
 					continue;
 				}
 				else if (!eventType.isEventClass(method.getParameterTypes()[0]))
 				{
-					_log.warn(getClass().getSimpleName() + ": Non properly defined annotation listener on method: " + method.getName() + " expected parameter to be type of: " + eventType.getEventClass().getSimpleName() + " but found: " + method.getParameterTypes()[0].getSimpleName());
+					LOGGER.warn("Non properly defined annotation listener on method: " + method.getName() + " expected parameter to be type of: " + eventType.getEventClass().getSimpleName() + " but found: " + method.getParameterTypes()[0].getSimpleName());
 					continue;
 				}
 				else if (!eventType.isReturnClass(method.getReturnType()))
 				{
-					_log.warn(getClass().getSimpleName() + ": Non properly defined annotation listener on method: " + method.getName() + " expected return type to be one of: " + Arrays.toString(eventType.getReturnClasses()) + " but found: " + method.getReturnType().getSimpleName());
+					LOGGER.warn("Non properly defined annotation listener on method: " + method.getName() + " expected return type to be one of: " + Arrays.toString(eventType.getReturnClasses()) + " but found: " + method.getReturnType().getSimpleName());
 					continue;
 				}
 				
@@ -274,7 +278,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 						final Range range = (Range) annotation;
 						if (range.from() > range.to())
 						{
-							_log.warn(getClass().getSimpleName() + ": Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
+							LOGGER.warn("Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
 							continue;
 						}
 						
@@ -290,7 +294,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 						{
 							if (range.from() > range.to())
 							{
-								_log.warn(getClass().getSimpleName() + ": Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
+								LOGGER.warn("Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
 								continue;
 							}
 							
@@ -305,12 +309,12 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 						final NpcLevelRange range = (NpcLevelRange) annotation;
 						if (range.from() > range.to())
 						{
-							_log.warn(getClass().getSimpleName() + ": Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
+							LOGGER.warn("Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
 							continue;
 						}
 						else if (type != ListenerRegisterType.NPC)
 						{
-							_log.warn(getClass().getSimpleName() + ": ListenerRegisterType " + type + " for " + annotation.getClass().getSimpleName() + " NPC is expected!");
+							LOGGER.warn("ListenerRegisterType " + type + " for " + annotation.getClass().getSimpleName() + " NPC is expected!");
 							continue;
 						}
 						
@@ -328,12 +332,12 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 						{
 							if (range.from() > range.to())
 							{
-								_log.warn(getClass().getSimpleName() + ": Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
+								LOGGER.warn("Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
 								continue;
 							}
 							else if (type != ListenerRegisterType.NPC)
 							{
-								_log.warn(getClass().getSimpleName() + ": ListenerRegisterType " + type + " for " + annotation.getClass().getSimpleName() + " NPC is expected!");
+								LOGGER.warn("ListenerRegisterType " + type + " for " + annotation.getClass().getSimpleName() + " NPC is expected!");
 								continue;
 							}
 							
@@ -359,6 +363,17 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 				registerAnnotation(method, eventType, type, priority, ids);
 			}
 		}
+	}
+	
+	private void initializeAnnotationListeners()
+	{
+		Class<?> parent = getClass();
+		do
+		{
+			registerAnnotationFromMethods(parent.getDeclaredMethods());
+			parent = parent.getSuperclass();
+		}
+		while (parent != null);
 	}
 	
 	/**
@@ -437,6 +452,41 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	
 	// ---------------------------------------------------------------------------------------------------------------------------
 	
+	// ---------------------------------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Provides instant callback operation when L2Attackable received damage from a player with return type.
+	 * @param callback
+	 * @param npcIds
+	 * @return
+	 */
+	protected final List<AbstractEventListener> addCreatureDamageReceivedId(Function<OnCreatureDamageReceived, ? extends AbstractEventReturn> callback, int... npcIds)
+	{
+		return registerFunction(callback, EventType.ON_CREATURE_DAMAGE_RECEIVED, ListenerRegisterType.NPC, npcIds);
+	}
+	
+	/**
+	 * Provides instant callback operation when L2Attackable received damage from a player.
+	 * @param callback
+	 * @param npcIds
+	 * @return
+	 */
+	protected final List<AbstractEventListener> setCreatureDamageReceivedId(Consumer<OnCreatureDamageReceived> callback, int... npcIds)
+	{
+		return registerConsumer(callback, EventType.ON_CREATURE_DAMAGE_RECEIVED, ListenerRegisterType.NPC, npcIds);
+	}
+	
+	/**
+	 * Provides instant callback operation when {@link Attackable} received damage from a {@link PlayerInstance}.
+	 * @param callback
+	 * @param npcIds
+	 * @return
+	 */
+	protected final List<AbstractEventListener> setCreatureDamageReceivedId(Consumer<OnCreatureDamageReceived> callback, Collection<Integer> npcIds)
+	{
+		return registerConsumer(callback, EventType.ON_CREATURE_DAMAGE_RECEIVED, ListenerRegisterType.NPC, npcIds);
+	}
+	
 	/**
 	 * Provides instant callback operation when L2Attackable dies from a player with return type.
 	 * @param callback
@@ -460,7 +510,20 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	}
 	
 	/**
-	 * Provides instant callback operation when {@link Attackable} dies from a {@link PlayerInstance}.
+	 * Useful when you want to specific when target id is attacked by something<br>
+	 * Provides instant callback operation when {@link Creature} is is attacking by another {@link Creature}
+	 * @param callback
+	 * @param npcIds
+	 * @return
+	 */
+	protected final List<AbstractEventListener> setCreatureAttackId(Consumer<OnCreatureAttack> callback, int... npcIds)
+	{
+		return registerConsumer(callback, EventType.ON_CREATURE_ATTACK, ListenerRegisterType.NPC, npcIds);
+	}
+	
+	/**
+	 * Useful when you want specific attacker to attack something<br>
+	 * Provides instant callback operation when specific {@link Creature} is is attacking by another {@link Creature}
 	 * @param callback
 	 * @param npcIds
 	 * @return
@@ -1020,7 +1083,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param npcIds
 	 * @return
 	 */
-	protected final List<AbstractEventListener> setPlayerSummonTalkId(Consumer<OnPlayerSummonSpawn> callback, Collection<Integer> npcIds)
+	protected final List<AbstractEventListener> setPlayerSummonTalkId(Consumer<OnPlayerSummonTalk> callback, Collection<Integer> npcIds)
 	{
 		return registerConsumer(callback, EventType.ON_PLAYER_SUMMON_TALK, ListenerRegisterType.NPC, npcIds);
 	}
@@ -1593,7 +1656,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 					}
 					default:
 					{
-						_log.warn(getClass().getSimpleName() + ": Unhandled register type: " + registerType);
+						LOGGER.warn("Unhandled register type: " + registerType);
 					}
 				}
 				
@@ -1606,7 +1669,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 			{
 				case OLYMPIAD:
 				{
-					final Olympiad template = Olympiad.getInstance();
+					final ListenersContainer template = Olympiad.getInstance().getListenersContainer();
 					listeners.add(template.addListener(action.apply(template)));
 					break;
 				}
@@ -1684,6 +1747,15 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 						}
 						break;
 					}
+					case SKILL:
+					{
+						final Skill template = SkillData.getInstance().getSkill(id, SkillData.getInstance().getMaxLevel(id));
+						if (template != null)
+						{
+							listeners.add(template.addListener(action.apply(template)));
+						}
+						break;
+					}
 					case CASTLE:
 					{
 						final Castle template = CastleManager.getInstance().getCastleById(id);
@@ -1713,7 +1785,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 					}
 					default:
 					{
-						_log.warn(getClass().getSimpleName() + ": Unhandled register type: " + registerType);
+						LOGGER.warn("Unhandled register type: " + registerType);
 					}
 				}
 			}
@@ -1726,7 +1798,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 			{
 				case OLYMPIAD:
 				{
-					final Olympiad template = Olympiad.getInstance();
+					final ListenersContainer template = Olympiad.getInstance().getListenersContainer();
 					listeners.add(template.addListener(action.apply(template)));
 					break;
 				}
@@ -1779,7 +1851,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 */
 	public void onSpawnActivate(SpawnTemplate template)
 	{
-	
+		
 	}
 	
 	/**
@@ -1787,7 +1859,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 */
 	public void onSpawnDeactivate(SpawnTemplate template)
 	{
-	
+		
 	}
 	
 	/**
@@ -1797,7 +1869,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 */
 	public void onSpawnNpc(SpawnTemplate template, SpawnGroup group, Npc npc)
 	{
-	
+		
 	}
 	
 	/**
@@ -1807,7 +1879,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 */
 	public void onSpawnDespawnNpc(SpawnTemplate template, SpawnGroup group, Npc npc)
 	{
-	
+		
 	}
 	
 	/**
@@ -1818,7 +1890,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 */
 	public void onSpawnNpcDeath(SpawnTemplate template, SpawnGroup group, Npc npc, Creature killer)
 	{
-	
+		
 	}
 	
 	/**
@@ -1882,7 +1954,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param pos the object containing the spawn location coordinates
 	 * @return the {@link Npc} object of the newly spawned NPC or {@code null} if the NPC doesn't exist
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean, int)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean, int)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean, int)
 	 */
 	public static Npc addSpawn(int npcId, IPositionable pos)
 	{
@@ -1910,7 +1982,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param isSummonSpawn if {@code true}, displays a summon animation on NPC spawn
 	 * @return the {@link Npc} object of the newly spawned NPC or {@code null} if the NPC doesn't exist
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean, int)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean, int)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean, int)
 	 */
 	public static Npc addSpawn(int npcId, IPositionable pos, boolean isSummonSpawn)
 	{
@@ -1925,7 +1997,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param despawnDelay time in milliseconds till the NPC is despawned (0 - only despawned on server shutdown)
 	 * @return the {@link Npc} object of the newly spawned NPC or {@code null} if the NPC doesn't exist
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean, int)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean, int)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean, int)
 	 */
 	public static Npc addSpawn(int npcId, IPositionable pos, boolean randomOffset, long despawnDelay)
 	{
@@ -1941,7 +2013,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param isSummonSpawn if {@code true}, displays a summon animation on NPC spawn
 	 * @return the {@link Npc} object of the newly spawned NPC or {@code null} if the NPC doesn't exist
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean, int)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean, int)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean, int)
 	 */
 	public static Npc addSpawn(int npcId, IPositionable pos, boolean randomOffset, long despawnDelay, boolean isSummonSpawn)
 	{
@@ -1960,7 +2032,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @see #addSpawn(int, IPositionable, boolean)
 	 * @see #addSpawn(int, IPositionable, boolean, long)
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean, int)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean, int)
 	 */
 	public static Npc addSpawn(Npc summoner, int npcId, IPositionable pos, boolean randomOffset, int instanceId)
 	{
@@ -1980,7 +2052,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @see #addSpawn(int, IPositionable, boolean)
 	 * @see #addSpawn(int, IPositionable, boolean, long)
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean, int)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean, int)
 	 */
 	public static Npc addSpawn(int npcId, IPositionable pos, boolean randomOffset, long despawnDelay, boolean isSummonSpawn, int instanceId)
 	{
@@ -1998,9 +2070,9 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param despawnDelay time in milliseconds till the NPC is despawned (0 - only despawned on server shutdown)
 	 * @return the {@link Npc} object of the newly spawned NPC or {@code null} if the NPC doesn't exist
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean, int)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean, int)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean, int)
 	 */
-	public static Npc addSpawn(int npcId, int x, int y, int z, int heading, boolean randomOffset, long despawnDelay)
+	public static Npc addSpawn(int npcId, double x, double y, double z, int heading, boolean randomOffset, long despawnDelay)
 	{
 		return addSpawn(npcId, x, y, z, heading, randomOffset, despawnDelay, false, 0);
 	}
@@ -2017,9 +2089,9 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param isSummonSpawn if {@code true}, displays a summon animation on NPC spawn
 	 * @return the {@link Npc} object of the newly spawned NPC or {@code null} if the NPC doesn't exist
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean, int)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean, int)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean, int)
 	 */
-	public static Npc addSpawn(int npcId, int x, int y, int z, int heading, boolean randomOffset, long despawnDelay, boolean isSummonSpawn)
+	public static Npc addSpawn(int npcId, double x, double y, double z, int heading, boolean randomOffset, long despawnDelay, boolean isSummonSpawn)
 	{
 		return addSpawn(npcId, x, y, z, heading, randomOffset, despawnDelay, isSummonSpawn, 0);
 	}
@@ -2037,10 +2109,10 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param instanceId the ID of the instance to spawn the NPC in (0 - the open world)
 	 * @return the {@link Npc} object of the newly spawned NPC or {@code null} if the NPC doesn't exist
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean, int)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean)
 	 */
-	public static Npc addSpawn(int npcId, int x, int y, int z, int heading, boolean randomOffset, long despawnDelay, boolean isSummonSpawn, int instanceId)
+	public static Npc addSpawn(int npcId, double x, double y, double z, int heading, boolean randomOffset, long despawnDelay, boolean isSummonSpawn, int instanceId)
 	{
 		return addSpawn(null, npcId, x, y, z, heading, randomOffset, despawnDelay, isSummonSpawn, instanceId);
 	}
@@ -2059,10 +2131,10 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param instance instance where NPC should be spawned ({@code null} - normal world)
 	 * @return the {@link Npc} object of the newly spawned NPC or {@code null} if the NPC doesn't exist
 	 * @see #addSpawn(int, IPositionable, boolean, long, boolean, int)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long)
-	 * @see #addSpawn(int, int, int, int, int, boolean, long, boolean)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long)
+	 * @see #addSpawn(int, double, double, double, int, boolean, long, boolean)
 	 */
-	public static Npc addSpawn(Npc summoner, int npcId, int x, int y, int z, int heading, boolean randomOffset, long despawnDelay, boolean isSummonSpawn, int instance)
+	public static Npc addSpawn(Npc summoner, int npcId, double x, double y, double z, int heading, boolean randomOffset, long despawnDelay, boolean isSummonSpawn, int instance)
 	{
 		try
 		{
@@ -2070,7 +2142,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 			
 			if ((x == 0) && (y == 0))
 			{
-				_log.error("addSpawn(): invalid spawn coordinates for NPC #" + npcId + "!");
+				LOGGER.error("addSpawn(): invalid spawn coordinates for NPC #" + npcId + "!");
 				return null;
 			}
 			
@@ -2093,9 +2165,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 			
 			spawn.setInstanceId(instance);
 			spawn.setHeading(heading);
-			spawn.setX(x);
-			spawn.setY(y);
-			spawn.setZ(z);
+			spawn.setXYZ(x, y, z);
 			spawn.stopRespawn();
 			
 			final Npc npc = spawn.spawnOne(isSummonSpawn);
@@ -2112,7 +2182,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not spawn NPC #" + npcId + "; error: " + e.getMessage());
+			LOGGER.warn("Could not spawn NPC #" + npcId + "; error: " + e.getMessage());
 		}
 		
 		return null;
@@ -2128,10 +2198,10 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	 * @param instanceId
 	 * @return
 	 */
-	public L2TrapInstance addTrap(int trapId, int x, int y, int z, int heading, Skill skill, int instanceId)
+	public L2TrapInstance addTrap(int trapId, double x, double y, double z, int heading, Skill skill, int instanceId)
 	{
 		final L2NpcTemplate npcTemplate = NpcData.getInstance().getTemplate(trapId);
-		L2TrapInstance trap = new L2TrapInstance(npcTemplate, instanceId, -1);
+		L2TrapInstance trap = new L2TrapInstance(npcTemplate, instanceId);
 		trap.setCurrentHp(trap.getMaxHp());
 		trap.setCurrentMp(trap.getMaxMp());
 		trap.setIsInvul(true);
@@ -2368,36 +2438,36 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		{
 			if (itemId == Inventory.ADENA_ID)
 			{
-				count *= Config.RATE_QUEST_REWARD_ADENA;
+				count *= RatesConfig.RATE_QUEST_REWARD_ADENA;
 			}
-			else if (Config.RATE_QUEST_REWARD_USE_MULTIPLIERS)
+			else if (RatesConfig.RATE_QUEST_REWARD_USE_MULTIPLIERS)
 			{
 				if (item instanceof EtcItem)
 				{
 					switch (((EtcItem) item).getItemType())
 					{
 						case POTION:
-							count *= Config.RATE_QUEST_REWARD_POTION;
+							count *= RatesConfig.RATE_QUEST_REWARD_POTION;
 							break;
 						case ENCHT_WP:
 						case ENCHT_AM:
 						case SCROLL:
-							count *= Config.RATE_QUEST_REWARD_SCROLL;
+							count *= RatesConfig.RATE_QUEST_REWARD_SCROLL;
 							break;
 						case RECIPE:
-							count *= Config.RATE_QUEST_REWARD_RECIPE;
+							count *= RatesConfig.RATE_QUEST_REWARD_RECIPE;
 							break;
 						case MATERIAL:
-							count *= Config.RATE_QUEST_REWARD_MATERIAL;
+							count *= RatesConfig.RATE_QUEST_REWARD_MATERIAL;
 							break;
 						default:
-							count *= Config.RATE_QUEST_REWARD;
+							count *= RatesConfig.RATE_QUEST_REWARD;
 					}
 				}
 			}
 			else
 			{
-				count *= Config.RATE_QUEST_REWARD;
+				count *= RatesConfig.RATE_QUEST_REWARD;
 			}
 		}
 		catch (Exception e)
@@ -2543,7 +2613,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		// set enchant level for item if that item is not adena
 		if ((attributeType != null) && (attributeValue > 0))
 		{
-			item.setAttribute(new AttributeHolder(attributeType, attributeValue));
+			item.setAttribute(new AttributeHolder(attributeType, attributeValue), true);
 			if (item.isEquipped())
 			{
 				// Recalculate all stats
@@ -2613,21 +2683,21 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 			return true;
 		}
 		
-		minAmount *= Config.RATE_QUEST_DROP;
-		maxAmount *= Config.RATE_QUEST_DROP;
-		dropChance *= Config.RATE_QUEST_DROP; // TODO separate configs for rate and amount
-		if ((npc != null) && Config.L2JMOD_CHAMPION_ENABLE && npc.isChampion())
+		minAmount *= RatesConfig.RATE_QUEST_DROP;
+		maxAmount *= RatesConfig.RATE_QUEST_DROP;
+		dropChance *= RatesConfig.RATE_QUEST_DROP; // TODO separate configs for rate and amount
+		if ((npc != null) && L2JModsConfig.L2JMOD_CHAMPION_ENABLE && npc.isChampion())
 		{
-			dropChance *= Config.L2JMOD_CHAMPION_REWARDS;
+			dropChance *= L2JModsConfig.L2JMOD_CHAMPION_REWARDS;
 			if ((itemId == Inventory.ADENA_ID) || (itemId == Inventory.ANCIENT_ADENA_ID))
 			{
-				minAmount *= Config.L2JMOD_CHAMPION_ADENAS_REWARDS;
-				maxAmount *= Config.L2JMOD_CHAMPION_ADENAS_REWARDS;
+				minAmount *= L2JModsConfig.L2JMOD_CHAMPION_ADENAS_REWARDS;
+				maxAmount *= L2JModsConfig.L2JMOD_CHAMPION_ADENAS_REWARDS;
 			}
 			else
 			{
-				minAmount *= Config.L2JMOD_CHAMPION_REWARDS;
-				maxAmount *= Config.L2JMOD_CHAMPION_REWARDS;
+				minAmount *= L2JModsConfig.L2JMOD_CHAMPION_REWARDS;
+				maxAmount *= L2JModsConfig.L2JMOD_CHAMPION_REWARDS;
 			}
 		}
 		
@@ -2795,14 +2865,42 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	}
 	
 	/**
-	 * Add EXP and SP as quest reward.
+	 * Add EXP and SP as reward. <font color=RED>Quests should NOT use this method</font>, since its not influenced by quest rates.
 	 * @param player the player whom to reward with the EXP/SP
-	 * @param exp the amount of EXP to give to the player
-	 * @param sp the amount of SP to give to the player
+	 * @param exp the base amount of EXP to give to the player. It will be influenced by XP items/buffs, but not quest rates or other config rates.
+	 * @param sp the amount of SP to give to the player. It will be influenced by SP items/buffs, but not quest rates or other config rates.
 	 */
-	public static void addExpAndSp(PlayerInstance player, long exp, int sp)
+	public static void addExpAndSp(PlayerInstance player, long exp, long sp)
 	{
-		player.addExpAndSp((long) player.getStat().getValue(Stats.EXPSP_RATE, (exp * Config.RATE_QUEST_REWARD_XP)), (int) player.getStat().getValue(Stats.EXPSP_RATE, (sp * Config.RATE_QUEST_REWARD_SP)));
+		player.addExpAndSp((long) player.getStat().getValue(DoubleStat.EXPSP_RATE, exp), (long) player.getStat().getValue(DoubleStat.EXPSP_RATE, sp));
+	}
+	
+	/**
+	 * Add EXP as quest reward. The given exp does not affect vitality/karma or any other farmable exp functions.
+	 * @param player the player whom to reward with the EXP
+	 * @param exp the base amount of EXP to give to the player. It will be influenced by RATE_QUEST_REWARD_XP, but not bonus XP items/buffs.
+	 */
+	public static void addExp(PlayerInstance player, long exp)
+	{
+		exp *= RatesConfig.RATE_QUEST_REWARD_XP;
+		if (player.getStat().addExp(exp))
+		{
+			player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_EARNED_S1_XP).addLong(exp));
+		}
+	}
+	
+	/**
+	 * Add SP as quest reward. The given sp does not affect vitality/karma or any other farmable sp functions.
+	 * @param player the player whom to reward with the SP
+	 * @param sp the base amount of SP to give to the player. It will be influenced by RATE_QUEST_REWARD_SP, but not bonus SP items/buffs.
+	 */
+	public static void addSp(PlayerInstance player, long sp)
+	{
+		sp *= RatesConfig.RATE_QUEST_REWARD_SP;
+		if (player.getStat().addSp(sp))
+		{
+			player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_SP).addLong(sp));
+		}
 	}
 	
 	/**
@@ -2870,11 +2968,11 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 	}
 	
 	/**
-	 * @return the number of ticks from the {@link org.l2junity.gameserver.GameTimeController}.
+	 * @return the number of ticks from the {@link org.l2junity.gameserver.instancemanager.GameTimeManager}.
 	 */
 	public static int getGameTicks()
 	{
-		return GameTimeController.getInstance().getGameTicks();
+		return GameTimeManager.getInstance().getGameTicks();
 	}
 	
 	/**
@@ -2934,7 +3032,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		final DoorInstance door = getDoor(doorId, instanceId);
 		if (door == null)
 		{
-			_log.warn(getClass().getSimpleName() + ": called openDoor(" + doorId + ", " + instanceId + "); but door wasnt found!", new NullPointerException());
+			LOGGER.warn("called openDoor(" + doorId + ", " + instanceId + "); but door wasnt found!", new NullPointerException());
 		}
 		else if (!door.isOpen())
 		{
@@ -2952,7 +3050,7 @@ public abstract class AbstractScript extends ManagedScript implements IEventTime
 		final DoorInstance door = getDoor(doorId, instanceId);
 		if (door == null)
 		{
-			_log.warn(getClass().getSimpleName() + ": called closeDoor(" + doorId + ", " + instanceId + "); but door wasnt found!", new NullPointerException());
+			LOGGER.warn("called closeDoor(" + doorId + ", " + instanceId + "); but door wasnt found!", new NullPointerException());
 		}
 		else if (door.isOpen())
 		{

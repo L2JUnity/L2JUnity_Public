@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.skills.Skill;
  */
 public class SkillUseHolder extends SkillHolder
 {
+	private static final long serialVersionUID = 6598919289888032393L;
 	private final ItemInstance _item;
 	private final boolean _ctrlPressed;
 	private final boolean _shiftPressed;

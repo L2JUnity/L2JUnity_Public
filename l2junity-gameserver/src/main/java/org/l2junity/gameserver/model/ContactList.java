@@ -24,7 +24,7 @@ import java.sql.ResultSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
 public class ContactList
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ContactList.class);
-
+	
 	private final PlayerInstance activeChar;
 	private final Set<String> _contacts = ConcurrentHashMap.newKeySet();
 	

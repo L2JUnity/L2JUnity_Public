@@ -20,9 +20,10 @@ package org.l2junity.gameserver.cache;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 
 /**
@@ -31,11 +32,11 @@ import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 public class WarehouseCacheManager
 {
 	protected final Map<PlayerInstance, Long> _cachedWh = new ConcurrentHashMap<>();
-	protected final long _cacheTime = Config.WAREHOUSE_CACHE_TIME * 60000L;
+	protected final long _cacheTime = GeneralConfig.WAREHOUSE_CACHE_TIME * 60000L;
 	
 	protected WarehouseCacheManager()
 	{
-		ThreadPoolManager.getInstance().scheduleAiAtFixedRate(new CacheScheduler(), 120000, 60000);
+		ThreadPool.scheduleAtFixedRate(new CacheScheduler(), 120000, 60000, TimeUnit.MILLISECONDS);
 	}
 	
 	public void addCacheTask(PlayerInstance pc)

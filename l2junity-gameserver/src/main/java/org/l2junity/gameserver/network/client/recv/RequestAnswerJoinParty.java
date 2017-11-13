@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.Party;
 import org.l2junity.gameserver.model.Party.MessageType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -74,7 +74,7 @@ public final class RequestAnswerJoinParty implements IClientIncomingPacket
 		
 		if (_response == 1)
 		{
-			if (party.getMemberCount() >= Config.ALT_PARTY_MAX_MEMBERS)
+			if (party.getMemberCount() >= PlayerConfig.ALT_PARTY_MAX_MEMBERS)
 			{
 				SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.THE_PARTY_IS_FULL);
 				player.sendPacket(sm);

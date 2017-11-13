@@ -21,7 +21,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="16.726443166038" sp="20" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2492" hpRegen="8.5" mp="1377" mpRegen="3" />
+			<vitals hp="2492.727" hpRegen="8.5" mp="1377.8" mpRegen="3" />
 			<attack physical="731.52506" magical="499.53679" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="305.35947" magical="203.311781207645" />
 			<speed>
@@ -51,7 +51,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400" aggroRange="300">
+		<ai clanHelpRange="400" aggroRange="300">
 			<clan_list>
 				<clan>EYE</clan>
 			</clan_list>
@@ -61,7 +61,7 @@
 				<group chance="70">
 					<item id="57" min="93" max="216" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0055">
+				<group chance="0.0075">
 					<item id="36549" min="1" max="1" chance="100" /> <!-- Weapon Fragment (High-grade) -->
 				</group>
 			</death>
@@ -69,9 +69,9 @@
 				<item id="36557" min="1" max="1" chance="0.75" /> <!-- Accessory Gem -->
 				<item id="36558" min="1" max="1" chance="0.075" /> <!-- Accessory Gem (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -102,7 +102,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="20.071811148582" sp="24" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2492" hpRegen="8.5" mp="1377" mpRegen="3" />
+			<vitals hp="2492.727" hpRegen="8.5" mp="1377.8" mpRegen="3" />
 			<attack physical="731.52506" magical="499.53679" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="305.35947" magical="203.311781207645" />
 			<speed>
@@ -134,7 +134,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400" aggroRange="300">
+		<ai clanHelpRange="400" aggroRange="300">
 			<clan_list>
 				<clan>EYE</clan>
 			</clan_list>
@@ -153,9 +153,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -185,7 +185,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="15.704861111111" sp="19" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2540" hpRegen="8.5" mp="1410" mpRegen="3" />
+			<vitals hp="2540.15331" hpRegen="8.5" mp="1410.0" mpRegen="3" />
 			<attack physical="752.73928" magical="514.02335" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="310.02959" magical="206.421198742611" />
 			<speed>
@@ -236,9 +236,9 @@
 				<item id="36547" min="1" max="1" chance="0.3" /> <!-- Weapon Fragment -->
 				<item id="36548" min="1" max="1" chance="0.03" /> <!-- Weapon Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="25" />
@@ -264,7 +264,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="15.884404674945" sp="20" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2632" hpRegen="8.5" mp="1475" mpRegen="3" />
+			<vitals hp="2632.19636" hpRegen="8.5" mp="1475.0" mpRegen="3" />
 			<attack physical="752.73928" magical="514.02335" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="310.02959" magical="206.421198742611" />
 			<speed>
@@ -308,12 +308,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36522" min="1" max="1" chance="1.386" /> <!-- Silver -->
+				<item id="36522" min="1" max="1" chance="1.403" /> <!-- Silver -->
 				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -343,7 +343,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="22.714844444444" sp="30" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2676" hpRegen="8.5" mp="1507" mpRegen="3" />
+			<vitals hp="2676.65854" hpRegen="8.5" mp="1507.8" mpRegen="3" />
 			<attack physical="773.81598" magical="528.41601" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="314.65987" magical="209.50409325236" />
 			<speed>
@@ -393,9 +393,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" grown="18" />
@@ -423,7 +423,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="16.726590354663" sp="21" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2586" hpRegen="8.5" mp="1442" mpRegen="3" />
+			<vitals hp="2586.66898" hpRegen="8.5" mp="1442.4" mpRegen="3" />
 			<attack physical="773.81598" magical="528.41601" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="314.65987" magical="209.50409325236" />
 			<speed>
@@ -453,7 +453,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400" aggroRange="300">
+		<ai clanHelpRange="400" aggroRange="300">
 			<clan_list>
 				<clan>EYE</clan>
 			</clan_list>
@@ -472,9 +472,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -500,7 +500,7 @@
 		<equipment rhand="6717" /> <!-- Monster Only (Einhasad Warrior) -->
 		<acquire expRate="30.267486149584" sp="41" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2758" hpRegen="8.5" mp="1540" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<attack physical="773.81598" magical="528.41601" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="314.65987" magical="209.50409325236" />
 			<speed>
@@ -549,9 +549,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="8" grown="9" />
@@ -578,7 +578,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="20.649744338934" sp="27" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2632" hpRegen="8.5" mp="1475" mpRegen="3" />
+			<vitals hp="2632.19636" hpRegen="8.5" mp="1475.0" mpRegen="3" />
 			<attack physical="794.70901" magical="542.68324" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="319.24623" magical="212.557735094503" />
 			<speed>
@@ -627,9 +627,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -655,7 +655,7 @@
 		<equipment rhand="6717" /> <!-- Monster Only (Einhasad Warrior) -->
 		<acquire expRate="27.4373418789" sp="39" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2856" hpRegen="8.5" mp="1574" mpRegen="3" />
+			<vitals hp="2856.7687256316" hpRegen="8.5" mp="1574.0" mpRegen="3" />
 			<attack physical="794.70901" magical="542.68324" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="319.24623" magical="212.557735094503" />
 			<attribute>
@@ -699,12 +699,10 @@
 				<group chance="70">
 					<item id="57" min="116" max="272" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.113">
-					<item id="8731" min="1" max="1" chance="67.385444743935" /> <!-- Life Stone - Lv. 70 -->
-					<item id="8741" min="1" max="1" chance="26.954177897574" /> <!-- Mid-grade Life Stone - Lv. 70 -->
-					<item id="8751" min="1" max="1" chance="2.6954177897574" /> <!-- High-grade Life Stone - Lv. 70 -->
-					<item id="36539" min="1" max="1" chance="2.6954177897574" /> <!-- Quality Leather Braid -->
-					<item id="8761" min="1" max="1" chance="0.26954177897574" /> <!-- Top-grade Life Stone - Lv. 70 -->
+				<group chance="0.063">
+					<item id="36539" min="1" max="1" chance="47.619047619048" /> <!-- Quality Leather Braid -->
+					<item id="45929" min="1" max="3" chance="47.619047619048" /> <!-- Spirit Stone -->
+					<item id="45930" min="1" max="1" chance="4.7619047619048" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
@@ -713,9 +711,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="8" grown="9" />
@@ -743,7 +741,7 @@
 		<equipment rhand="6717" /> <!-- Monster Only (Einhasad Warrior) -->
 		<acquire expRate="28.596221959858" sp="40" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2856" hpRegen="8.5" mp="1574" mpRegen="3" />
+			<vitals hp="2856.7687256316" hpRegen="8.5" mp="1574.0" mpRegen="3" />
 			<attack physical="856.44055895414" magical="584.837886935576" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="328.27073" magical="240.21427" />
 			<speed>
@@ -779,6 +777,27 @@
 				<clan>DIVINE</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="123" max="287" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0405">
+					<item id="45929" min="1" max="3" chance="74.074074074074" /> <!-- Spirit Stone -->
+					<item id="36544" min="1" max="1" chance="18.518518518519" /> <!-- Orichalcum Wire -->
+					<item id="45930" min="1" max="1" chance="7.4074074074074" /> <!-- Mid-grade Spirit Stone -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36534" min="1" max="1" chance="0.03" /> <!-- Durable Braid -->
+				<item id="36882" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="8" grown="9" />
 			<height normal="30" grown="36.5" />
@@ -803,7 +822,7 @@
 		<equipment rhand="6718" /> <!-- Monster Only (Einhasad Shaman) -->
 		<acquire expRate="27.437376725838" sp="40" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2974" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="2974.35686398316" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -843,12 +862,10 @@
 				<group chance="70">
 					<item id="57" min="113" max="262" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.086">
-					<item id="8732" min="1" max="1" chance="69.060773480663" /> <!-- Life Stone - Lv. 76 -->
-					<item id="8742" min="1" max="1" chance="27.624309392265" /> <!-- Mid-grade Life Stone - Lv. 76 -->
-					<item id="8752" min="1" max="1" chance="2.7624309392265" /> <!-- High-grade Life Stone - Lv. 76 -->
-					<item id="959" min="1" max="1" chance="0.27624309392265" /> <!-- Scroll: Enchant Weapon (S-grade) -->
-					<item id="36549" min="1" max="1" chance="0.27624309392265" /> <!-- Weapon Fragment (High-grade) -->
+				<group chance="0.036">
+					<item id="45929" min="1" max="3" chance="83.333333333333" /> <!-- Spirit Stone -->
+					<item id="959" min="1" max="1" chance="8.3333333333333" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					<item id="36549" min="1" max="1" chance="8.3333333333333" /> <!-- Weapon Fragment (High-grade) -->
 				</group>
 			</death>
 			<corpse>
@@ -857,9 +874,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="11" grown="13" />
@@ -884,7 +901,7 @@
 		<equipment rhand="6718" /> <!-- Monster Only (Einhasad Shaman) -->
 		<acquire expRate="25.297501643655" sp="36" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2974" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="2974.35686398316" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="815.37145" magical="556.793" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="323.78455" magical="215.579412824268" />
 			<speed>
@@ -917,6 +934,27 @@
 				<clan>DIVINE</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="104" max="241" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.036">
+					<item id="45929" min="1" max="3" chance="83.333333333333" /> <!-- Spirit Stone -->
+					<item id="959" min="1" max="1" chance="8.3333333333333" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					<item id="36554" min="1" max="1" chance="8.3333333333333" /> <!-- Armor Fragment (High-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36534" min="1" max="1" chance="0.03" /> <!-- Durable Braid -->
+				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="11" grown="13" />
 			<height normal="38.5" grown="46.5" />
@@ -980,7 +1018,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="400" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="400" isAggressive="true">
 			<clan_list>
 				<clan>EYE</clan>
 			</clan_list>
@@ -999,9 +1037,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="25" />
@@ -1064,7 +1102,7 @@
 				<group chance="70">
 					<item id="57" min="151" max="351" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0055">
+				<group chance="0.0075">
 					<item id="36564" min="1" max="1" chance="100" /> <!-- Greater Synthetic Cokes -->
 				</group>
 			</death>
@@ -1073,9 +1111,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -1176,9 +1214,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -1271,13 +1309,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="1.008" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="1.005" /> <!-- Thin Braid -->
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="22" grown="27" />
@@ -1374,13 +1412,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="1.057" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="1.095" /> <!-- Thin Braid -->
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -1481,9 +1519,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="45" grown="50" />
@@ -1576,13 +1614,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="1.097" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="1.017" /> <!-- Thin Braid -->
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -1681,13 +1719,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="1.169" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="1.155" /> <!-- Thin Braid -->
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="28" />
@@ -1780,13 +1818,13 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="1.096" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="1.059" /> <!-- Thin Braid -->
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -1809,7 +1847,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="12.49203601108" sp="17" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2758" hpRegen="8.5" mp="1540.8" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<attack physical="824.422073095" magical="562.9734023" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="323.78455" magical="236.93149" />
 			<speed>
@@ -1882,9 +1920,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="45" grown="50" />
@@ -1907,7 +1945,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="12.49203601108" sp="17" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2758" hpRegen="8.5" mp="1540.8" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<attack physical="824.422073095" magical="562.9734023" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="323.78455" magical="236.93149" />
 			<speed>
@@ -1980,9 +2018,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -2003,7 +2041,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="10.942520775623" sp="15" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2758" hpRegen="8.5" mp="1540.8" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<attack physical="824.422073095" magical="562.9734023" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="323.78455" magical="236.93149" />
 			<speed>
@@ -2074,9 +2112,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" grown="18" />
@@ -2106,7 +2144,7 @@
 		<equipment rhand="79" /> <!-- Damascus Sword -->
 		<acquire expRate="23.721032214539" sp="33" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5713" hpRegen="8.5" mp="1574.0" mpRegen="3" />
+			<vitals hp="5713.5374512632" hpRegen="8.5" mp="1574.0" mpRegen="3" />
 			<attack physical="856.44055895414" magical="584.837886935576" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="328.27073" magical="240.21427" />
 			<speed>
@@ -2176,9 +2214,9 @@
 				<item id="36557" min="1" max="1" chance="0.75" /> <!-- Accessory Gem -->
 				<item id="36558" min="1" max="1" chance="0.3" /> <!-- Accessory Gem (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -2203,7 +2241,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="22.589306797099" sp="32" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5713" hpRegen="8.5" mp="1574.0" mpRegen="3" />
+			<vitals hp="5713.5374512632" hpRegen="8.5" mp="1574.0" mpRegen="3" />
 			<attack physical="856.44055895414" magical="584.837886935576" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="328.27073" magical="240.21427" />
 			<speed>
@@ -2239,7 +2277,7 @@
 				<group chance="70">
 					<item id="57" min="87" max="204" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0055">
+				<group chance="0.0075">
 					<item id="6726" min="1" max="1" chance="100" /> <!-- Sealed Tateossian Necklace -->
 				</group>
 				<group chance="0.003">
@@ -2271,9 +2309,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -2297,7 +2335,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="22.000843312532" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5713" hpRegen="8.5" mp="1574.0" mpRegen="3" />
+			<vitals hp="5713.5374512632" hpRegen="8.5" mp="1574.0" mpRegen="3" />
 			<attack physical="856.44055895414" magical="584.837886935576" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="328.27073" magical="240.21427" />
 			<speed>
@@ -2323,7 +2361,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>ALL</clan>
 			</clan_list>
@@ -2365,9 +2403,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="8" />
@@ -2399,7 +2437,7 @@
 		<equipment rhand="79" lhand="6919" /> <!-- Damascus Sword / Monster Only (Shield of Ketra Orc) -->
 		<acquire expRate="23.428336620644" sp="34" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" shield="166" shieldRate="20" />
 			<speed>
@@ -2441,10 +2479,10 @@
 				<group chance="70">
 					<item id="57" min="93" max="218" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0055">
+				<group chance="0.0075">
 					<item id="6678" min="1" max="1" chance="100" /> <!-- Sealed Imperial Crusader Shield -->
 				</group>
-				<group chance="0.0055">
+				<group chance="0.0075">
 					<item id="10121" min="1" max="1" chance="100" /> <!-- Sealed Arcana Sigil -->
 				</group>
 				<group chance="0.0309">
@@ -2477,9 +2515,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" grown="14" />
@@ -2507,7 +2545,7 @@
 		<equipment rhand="288" /> <!-- Carnage Bow -->
 		<acquire expRate="22.957922419461" sp="33" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -2534,7 +2572,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="ARCHER" aggroRange="300" clanHelpRange="300" dodge="15" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" dodge="15" isAggressive="true">
 			<clan_list>
 				<clan>KETRA_ORC</clan>
 			</clan_list>
@@ -2547,9 +2585,9 @@
 				<group chance="0.0009">
 					<item id="7575" min="1" max="1" chance="100" /> <!-- Draconic Bow -->
 				</group>
-				<group chance="0.3055">
-					<item id="36518" min="1" max="1" chance="98.199672667758" /> <!-- Durable Leather -->
-					<item id="36553" min="1" max="1" chance="1.8003273322422" /> <!-- Armor Fragment (Mid-grade) -->
+				<group chance="0.3075">
+					<item id="36518" min="1" max="1" chance="97.560975609756" /> <!-- Durable Leather -->
+					<item id="36553" min="1" max="1" chance="2.4390243902439" /> <!-- Armor Fragment (Mid-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -2574,9 +2612,9 @@
 			<corpse>
 				<item id="36553" min="1" max="1" chance="0.3" /> <!-- Armor Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -2610,7 +2648,7 @@
 		<equipment rhand="92" /> <!-- Spirit's Staff -->
 		<acquire expRate="23.809171597633" sp="34" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" evasion="1" />
 			<speed>
@@ -2641,7 +2679,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>KETRA_ORC</clan>
@@ -2689,9 +2727,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -2715,7 +2753,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="21.770874424721" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" evasion="1" />
 			<speed>
@@ -2781,9 +2819,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="22" grown="27" />
@@ -2813,7 +2851,7 @@
 		<equipment rhand="79" lhand="6919" /> <!-- Damascus Sword / Monster Only (Shield of Ketra Orc) -->
 		<acquire expRate="21.345332018409" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" evasion="2" shield="171" shieldRate="20" />
 			<speed>
@@ -2852,7 +2890,7 @@
 				<group chance="70">
 					<item id="57" min="85" max="198" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0055">
+				<group chance="0.0075">
 					<item id="6679" min="1" max="1" chance="100" /> <!-- Sealed Imperial Crusader Helmet -->
 				</group>
 				<group chance="0.0309">
@@ -2883,9 +2921,9 @@
 				<item id="36547" min="1" max="1" chance="0.3" /> <!-- Weapon Fragment -->
 				<item id="36548" min="1" max="1" chance="0.075" /> <!-- Weapon Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" grown="14" />
@@ -2917,7 +2955,7 @@
 		<equipment rhand="6719" /> <!-- Monster Only (Ketra Orc Chieftain) -->
 		<acquire expRate="23.058842866535" sp="33" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" evasion="2" />
 			<speed>
@@ -2991,9 +3029,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="11" grown="16" />
@@ -3017,7 +3055,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="21.770874424721" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.721" mp="1607" mpRegen="3.0804" />
+			<vitals hp="5948.71372796632" hpRegen="8.721" mp="1607.4" mpRegen="3.0804" />
 			<attack physical="938.20801458" magical="656.66638089" random="20" critical="1" accuracy="12" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="354.8183475" magical="239.180922" evasion="3" />
 			<speed>
@@ -3043,7 +3081,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>ALL</clan>
 			</clan_list>
@@ -3053,9 +3091,9 @@
 				<group chance="70">
 					<item id="57" min="87" max="202" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.144">
-					<item id="36528" min="1" max="1" chance="97.377622377622" /> <!-- Metallic Fiber -->
-					<item id="960" min="1" max="1" chance="2.6223776223776" /> <!-- Scroll: Enchant Armor (S-grade) -->
+				<group chance="1.114">
+					<item id="36528" min="1" max="1" chance="97.307001795332" /> <!-- Metallic Fiber -->
+					<item id="960" min="1" max="1" chance="2.6929982046679" /> <!-- Scroll: Enchant Armor (S-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3083,9 +3121,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="35" />
@@ -3120,7 +3158,7 @@
 		<equipment rhand="92" /> <!-- Spirit's Staff -->
 		<acquire expRate="30.774983563445" sp="44" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.721" mp="1607" mpRegen="3.0804" />
+			<vitals hp="5948.71372796632" hpRegen="8.721" mp="1607.4" mpRegen="3.0804" />
 			<attack physical="938.20801458" magical="656.66638089" random="20" critical="1" accuracy="12" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="354.8183475" magical="239.180922" evasion="3" />
 			<speed>
@@ -3152,7 +3190,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>KETRA_ORC</clan>
@@ -3193,9 +3231,9 @@
 				<item id="36547" min="1" max="1" chance="0.3" /> <!-- Weapon Fragment -->
 				<item id="36548" min="1" max="1" chance="0.075" /> <!-- Weapon Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -3225,7 +3263,7 @@
 		<equipment rhand="79" /> <!-- Damascus Sword -->
 		<acquire expRate="21.345332018409" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.772" mp="1607" mpRegen="3.1008" />
+			<vitals hp="5948.71372796632" hpRegen="8.772" mp="1607.4" mpRegen="3.1008" />
 			<attack physical="961.93701102" magical="677.644106544" random="10" critical="4" accuracy="8.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="361.0859925" magical="246.330714" evasion="4" />
 			<speed>
@@ -3297,9 +3335,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3331,7 +3369,7 @@
 		<equipment rhand="80" /> <!-- Tallum Blade -->
 		<acquire expRate="23.876232741617" sp="34" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.772" mp="1607" mpRegen="3.1008" />
+			<vitals hp="5948.71372796632" hpRegen="8.772" mp="1607.4" mpRegen="3.1008" />
 			<attack physical="961.93701102" magical="677.644106544" random="10" critical="4" accuracy="8.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="361.0859925" magical="246.330714" evasion="4" />
 			<speed>
@@ -3363,7 +3401,7 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>KETRA_ORC</clan>
 			</clan_list>
@@ -3373,9 +3411,9 @@
 				<group chance="70">
 					<item id="57" min="95" max="222" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0355">
-					<item id="36544" min="1" max="1" chance="84.507042253521" /> <!-- Orichalcum Wire -->
-					<item id="959" min="1" max="1" chance="15.492957746479" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+				<group chance="0.0375">
+					<item id="36544" min="1" max="1" chance="80" /> <!-- Orichalcum Wire -->
+					<item id="959" min="1" max="1" chance="20" /> <!-- Scroll: Enchant Weapon (S-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -3403,9 +3441,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="14" />
@@ -3429,7 +3467,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="21.770874424721" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.823" mp="1607" mpRegen="3.111" />
+			<vitals hp="5948.71372796632" hpRegen="8.823" mp="1607.4" mpRegen="3.111" />
 			<attack physical="985.66600746" magical="699.2575207596" random="20" critical="1" accuracy="14" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="367.3536375" magical="253.534464" evasion="5" />
 			<speed>
@@ -3492,9 +3530,9 @@
 			<corpse>
 				<item id="36553" min="1" max="1" chance="0.075" /> <!-- Armor Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="22" grown="27" />
@@ -3528,7 +3566,7 @@
 		<equipment rhand="213" /> <!-- Branch of the Mother Tree -->
 		<acquire expRate="29.576594345825" sp="43" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.823" mp="1607" mpRegen="3.111" />
+			<vitals hp="9383.4737800055" hpRegen="8.823" mp="1641.0" mpRegen="3.111" />
 			<attack physical="985.66600746" magical="699.2575207596" random="10" critical="4" accuracy="9.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="367.3536375" magical="253.534464" evasion="5" />
 			<speed>
@@ -3559,7 +3597,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>KETRA_ORC</clan>
@@ -3606,9 +3644,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -3640,7 +3678,7 @@
 		<equipment rhand="6719" /> <!-- Monster Only (Ketra Orc Chieftain) -->
 		<acquire expRate="22.599605522682" sp="32" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.874" mp="1607" mpRegen="3.1314" />
+			<vitals hp="9383.4737800055" hpRegen="8.874" mp="1641.0" mpRegen="3.1314" />
 			<attack physical="1009.3950039" magical="719.599557852" random="20" critical="1" accuracy="15" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="373.969485" magical="261.022284" evasion="2" />
 			<speed>
@@ -3709,12 +3747,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36522" min="1" max="1" chance="2.125" /> <!-- Silver -->
+				<item id="36522" min="1" max="1" chance="2.236" /> <!-- Silver -->
 				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -3746,7 +3784,7 @@
 		<equipment rhand="80" lhand="6919" /> <!-- Tallum Blade / Monster Only (Shield of Ketra Orc) -->
 		<acquire expRate="23.473208415516" sp="34" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.874" mp="1607" mpRegen="3.1314" />
+			<vitals hp="9383.4737800055" hpRegen="8.874" mp="1641.0" mpRegen="3.1314" />
 			<attack physical="1009.3950039" magical="719.599557852" random="10" critical="4" accuracy="10.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="373.969485" magical="261.022284" evasion="2" shield="179" shieldRate="20" />
 			<speed>
@@ -3788,9 +3826,9 @@
 				<group chance="70">
 					<item id="57" min="94" max="218" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0064">
-					<item id="6678" min="1" max="1" chance="85.9375" /> <!-- Sealed Imperial Crusader Shield -->
-					<item id="6370" min="1" max="1" chance="14.0625" /> <!-- Saint Spear -->
+				<group chance="0.0084">
+					<item id="6678" min="1" max="1" chance="89.285714285714" /> <!-- Sealed Imperial Crusader Shield -->
+					<item id="6370" min="1" max="1" chance="10.714285714286" /> <!-- Saint Spear -->
 				</group>
 				<group chance="0.003">
 					<item id="36554" min="1" max="1" chance="100" /> <!-- Armor Fragment (High-grade) -->
@@ -3821,9 +3859,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -3847,7 +3885,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="21.770874424721" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.925" mp="1607" mpRegen="3.1518" />
+			<vitals hp="5948.71372796632" hpRegen="8.925" mp="1607.4" mpRegen="3.1518" />
 			<attack physical="1033.1240034" magical="740.577283506" random="10" critical="4" accuracy="11.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="380.23713" magical="268.304676" evasion="7" />
 			<speed>
@@ -3873,7 +3911,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>ALL</clan>
 			</clan_list>
@@ -3911,9 +3949,9 @@
 				<item id="36552" min="1" max="1" chance="0.3" /> <!-- Armor Fragment -->
 				<item id="36553" min="1" max="1" chance="0.03" /> <!-- Armor Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="8" />
@@ -3948,7 +3986,7 @@
 		<equipment rhand="213" /> <!-- Branch of the Mother Tree -->
 		<acquire expRate="29.912557527942" sp="43" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.925" mp="1607" mpRegen="3.1518" />
+			<vitals hp="9383.4737800055" hpRegen="8.925" mp="1641.0" mpRegen="3.1518" />
 			<attack physical="1033.1240034" magical="740.577283506" random="20" critical="1" accuracy="16" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="380.23713" magical="268.304676" evasion="7" />
 			<speed>
@@ -3980,7 +4018,7 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>KETRA_ORC</clan>
@@ -4025,12 +4063,12 @@
 			<corpse>
 				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
 				<item id="36534" min="1" max="1" chance="0.03" /> <!-- Durable Braid -->
+				<item id="36882" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -4063,7 +4101,7 @@
 		<equipment rhand="80" lhand="6919" /> <!-- Tallum Blade / Monster Only (Shield of Ketra Orc) -->
 		<acquire expRate="29.027942143327" sp="42" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.721" mp="1607" mpRegen="3.0804" />
+			<vitals hp="9383.4737800055" hpRegen="8.721" mp="1641.0" mpRegen="3.0804" />
 			<attack physical="938.20801458" magical="656.66638089" random="5" critical="8" accuracy="3" attackSpeed="253" type="DAGGER" range="40" distance="80" width="120" />
 			<defence physical="354.8183475" magical="239.180922" evasion="3" shield="173" shieldRate="20" />
 			<speed>
@@ -4094,7 +4132,7 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>KETRA_ORC</clan>
 			</clan_list>
@@ -4104,9 +4142,9 @@
 				<group chance="70">
 					<item id="57" min="116" max="269" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0064">
-					<item id="6678" min="1" max="1" chance="85.9375" /> <!-- Sealed Imperial Crusader Shield -->
-					<item id="6367" min="1" max="1" chance="14.0625" /> <!-- Angel Slayer -->
+				<group chance="0.0084">
+					<item id="6678" min="1" max="1" chance="89.285714285714" /> <!-- Sealed Imperial Crusader Shield -->
+					<item id="6367" min="1" max="1" chance="10.714285714286" /> <!-- Angel Slayer -->
 				</group>
 				<group chance="0.03">
 					<item id="36524" min="1" max="1" chance="100" /> <!-- Orichalcum -->
@@ -4115,9 +4153,9 @@
 			<corpse>
 				<item id="36553" min="1" max="1" chance="0.3" /> <!-- Armor Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -4145,7 +4183,7 @@
 		<equipment rhand="80" /> <!-- Tallum Blade -->
 		<acquire expRate="20.471729125575" sp="29" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" evasion="2" />
 			<speed>
@@ -4189,12 +4227,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36522" min="1" max="1" chance="1.929" /> <!-- Silver -->
+				<item id="36522" min="1" max="1" chance="1.927" /> <!-- Silver -->
 				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="12" />
@@ -4227,7 +4265,7 @@
 		<equipment rhand="210" /> <!-- Staff of Evil Spirits -->
 		<acquire expRate="20.225345167653" sp="29" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.925" mp="1607" mpRegen="3.1518" />
+			<vitals hp="9870.33920633081" hpRegen="8.925" mp="1674.8" mpRegen="3.1518" />
 			<attack physical="1033.1240034" magical="740.577283506" random="20" critical="1" accuracy="16" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="380.23713" magical="268.304676" evasion="7" />
 			<speed>
@@ -4254,7 +4292,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>KETRA_ORC</clan>
@@ -4278,12 +4316,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36517" min="1" max="1" chance="5.038" /> <!-- Leather -->
+				<item id="36517" min="1" max="1" chance="5.084" /> <!-- Leather -->
 				<item id="36518" min="1" max="1" chance="0.75" /> <!-- Durable Leather -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -4311,7 +4349,7 @@
 		<equipment rhand="6719" /> <!-- Monster Only (Ketra Orc Chieftain) -->
 		<acquire expRate="20.427021696252" sp="29" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.874" mp="1607" mpRegen="3.1314" />
+			<vitals hp="9383.4737800055" hpRegen="8.874" mp="1641.0" mpRegen="3.1314" />
 			<attack physical="1009.3950039" magical="719.599557852" random="20" critical="1" accuracy="15" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="373.969485" magical="261.022284" evasion="2" />
 			<speed>
@@ -4351,17 +4389,17 @@
 				<group chance="0.0009">
 					<item id="6369" min="1" max="1" chance="100" /> <!-- Dragon Hunter Axe -->
 				</group>
-				<group chance="0.3055">
-					<item id="36528" min="1" max="1" chance="98.199672667758" /> <!-- Metallic Fiber -->
-					<item id="36563" min="1" max="1" chance="1.8003273322422" /> <!-- Synthetic Cokes -->
+				<group chance="0.3075">
+					<item id="36528" min="1" max="1" chance="97.560975609756" /> <!-- Metallic Fiber -->
+					<item id="36563" min="1" max="1" chance="2.4390243902439" /> <!-- Synthetic Cokes -->
 				</group>
 			</death>
 			<corpse>
 				<item id="36553" min="1" max="1" chance="0.075" /> <!-- Armor Fragment (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="11" grown="16" />
@@ -4399,7 +4437,7 @@
 		<equipment rhand="213" /> <!-- Branch of the Mother Tree -->
 		<acquire expRate="29.912557527942" sp="43" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="9.027" mp="1607" mpRegen="3.1824" />
+			<vitals hp="9870.33920633081" hpRegen="9.027" mp="1674.8" mpRegen="3.1824" />
 			<attack physical="1076.9313816" magical="781.2613576908" random="20" critical="1" accuracy="18" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="410.87895" magical="295.9938" evasion="9" />
 			<speed>
@@ -4430,7 +4468,7 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>KETRA_ORC</clan>
@@ -4455,12 +4493,12 @@
 			<corpse>
 				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
 				<item id="36534" min="1" max="1" chance="0.03" /> <!-- Durable Braid -->
+				<item id="36882" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -4488,7 +4526,7 @@
 		<equipment rhand="6719" /> <!-- Monster Only (Ketra Orc Chieftain) -->
 		<acquire expRate="21.345332018409" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.976" mp="1607" mpRegen="3.16812" />
+			<vitals hp="5948.71372796632" hpRegen="8.976" mp="1607.4" mpRegen="3.16812" />
 			<attack physical="1055.0276874" magical="760.9193205984" random="20" critical="1" accuracy="17" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="386.504775" magical="275.616036" evasion="8" />
 			<speed>
@@ -4533,12 +4571,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36517" min="1" max="1" chance="5.349" /> <!-- Leather -->
-				<item id="36518" min="1" max="1" chance="1.028" /> <!-- Durable Leather -->
+				<item id="36517" min="1" max="1" chance="5.416" /> <!-- Leather -->
+				<item id="36518" min="1" max="1" chance="1.013" /> <!-- Durable Leather -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="11" grown="16" />
@@ -4569,7 +4607,7 @@
 		<equipment rhand="210" /> <!-- Staff of Evil Spirits -->
 		<acquire expRate="21.681295200526" sp="31" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.976" mp="1607" mpRegen="3.16812" />
+			<vitals hp="5948.71372796632" hpRegen="8.976" mp="1607.4" mpRegen="3.16812" />
 			<attack physical="1055.0276874" magical="760.9193205984" random="20" critical="1" accuracy="17" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="386.504775" magical="275.616036" evasion="8" />
 			<speed>
@@ -4597,7 +4635,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>KETRA_ORC</clan>
@@ -4615,7 +4653,7 @@
 					<item id="6680" min="1" max="1" chance="50" /> <!-- Sealed Draconic Leather Armor -->
 					<item id="6684" min="1" max="1" chance="50" /> <!-- Sealed Major Arcana Robe -->
 				</group>
-				<group chance="0.0055">
+				<group chance="0.0075">
 					<item id="36544" min="1" max="1" chance="100" /> <!-- Orichalcum Wire -->
 				</group>
 			</death>
@@ -4625,9 +4663,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -4658,7 +4696,7 @@
 		<equipment rhand="2504" lhand="6918" /> <!-- Meteor Shower / Monster Only (Shield of Silenos) -->
 		<acquire expRate="21.733850565019" sp="30" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5713" hpRegen="8.5" mp="1574.0" mpRegen="3" />
+			<vitals hp="5713.5374512632" hpRegen="8.5" mp="1574.0" mpRegen="3" />
 			<attack physical="856.44055895414" magical="584.837886935576" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="328.27073" magical="240.21427" />
 			<speed>
@@ -4734,9 +4772,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="16" />
@@ -4765,7 +4803,7 @@
 		<equipment rhand="2504" lhand="6918" /> <!-- Meteor Shower / Monster Only (Shield of Silenos) -->
 		<acquire expRate="18.087873165795" sp="25" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5713" hpRegen="8.5" mp="1574.0" mpRegen="3" />
+			<vitals hp="5713.5374512632" hpRegen="8.5" mp="1574.0" mpRegen="3" />
 			<attack physical="856.44055895414" magical="584.837886935576" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="328.27073" magical="240.21427" />
 			<speed>
@@ -4840,9 +4878,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="16" />
@@ -4868,7 +4906,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="22.544779895429" sp="32" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5713" hpRegen="8.5" mp="1574.0" mpRegen="3" />
+			<vitals hp="5713.5374512632" hpRegen="8.5" mp="1574.0" mpRegen="3" />
 			<attack physical="856.44055895414" magical="584.837886935576" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="328.27073" magical="240.21427" />
 			<speed>
@@ -4894,7 +4932,7 @@
 			<skill id="5620" level="6" /> <!-- Short-Range Physical Attack Weakness -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>ALL</clan>
 			</clan_list>
@@ -4930,13 +4968,13 @@
 			</death>
 			<corpse>
 				<item id="36533" min="1" max="1" chance="0.075" /> <!-- Synthetic Braid -->
-				<item id="36534" min="1" max="1" chance="0.0055" /> <!-- Durable Braid -->
+				<item id="36534" min="1" max="1" chance="0.0075" /> <!-- Durable Braid -->
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -4968,7 +5006,7 @@
 		<equipment rhand="142" lhand="6918" /> <!-- Keshanberk / Monster Only (Shield of Silenos) -->
 		<acquire expRate="19.329881656805" sp="28" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" shield="166" shieldRate="20" />
 			<speed>
@@ -5018,10 +5056,10 @@
 					<item id="6724" min="1" max="1" chance="50" /> <!-- Sealed Tateossian Earring -->
 					<item id="9452" min="1" max="1" chance="50" /> <!-- Sealed Dynasty Earring -->
 				</group>
-				<group chance="0.041">
-					<item id="36558" min="1" max="1" chance="73.170731707317" /> <!-- Accessory Gem (Mid-grade) -->
-					<item id="36548" min="1" max="1" chance="13.414634146341" /> <!-- Weapon Fragment (Mid-grade) -->
-					<item id="36553" min="1" max="1" chance="13.414634146341" /> <!-- Armor Fragment (Mid-grade) -->
+				<group chance="0.045">
+					<item id="36558" min="1" max="1" chance="66.666666666667" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36548" min="1" max="1" chance="16.666666666667" /> <!-- Weapon Fragment (Mid-grade) -->
+					<item id="36553" min="1" max="1" chance="16.666666666667" /> <!-- Armor Fragment (Mid-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5047,9 +5085,9 @@
 				<item id="36562" min="1" max="1" chance="0.3" /> <!-- Greater Cokes -->
 				<item id="36563" min="1" max="1" chance="0.03" /> <!-- Synthetic Cokes -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="16" />
@@ -5078,7 +5116,7 @@
 		<equipment rhand="6917" /> <!-- Monster Only (Poison Sting) -->
 		<acquire expRate="20.146285338593" sp="29" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -5106,7 +5144,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="ARCHER" aggroRange="300" clanHelpRange="300" dodge="15" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" dodge="15" isAggressive="true">
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
@@ -5153,9 +5191,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="8" />
@@ -5188,7 +5226,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="19.59188034188" sp="28" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -5220,7 +5258,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
@@ -5238,11 +5276,11 @@
 					<item id="6687" min="1" max="1" chance="50" /> <!-- Sealed Major Arcana Circlet -->
 					<item id="9526" min="1" max="1" chance="50" /> <!-- Sealed Dynasty Circlet -->
 				</group>
-				<group chance="0.0415">
-					<item id="36558" min="1" max="1" chance="72.289156626506" /> <!-- Accessory Gem (Mid-grade) -->
-					<item id="36548" min="1" max="1" chance="13.253012048193" /> <!-- Weapon Fragment (Mid-grade) -->
-					<item id="36553" min="1" max="1" chance="7.2289156626506" /> <!-- Armor Fragment (Mid-grade) -->
-					<item id="36563" min="1" max="1" chance="7.2289156626506" /> <!-- Synthetic Cokes -->
+				<group chance="0.0435">
+					<item id="36558" min="1" max="1" chance="68.965517241379" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36548" min="1" max="1" chance="17.241379310345" /> <!-- Weapon Fragment (Mid-grade) -->
+					<item id="36553" min="1" max="1" chance="6.8965517241379" /> <!-- Armor Fragment (Mid-grade) -->
+					<item id="36563" min="1" max="1" chance="6.8965517241379" /> <!-- Synthetic Cokes -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5265,12 +5303,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36517" min="1" max="1" chance="5.469" /> <!-- Leather -->
-				<item id="36518" min="1" max="1" chance="1.002" /> <!-- Durable Leather -->
+				<item id="36517" min="1" max="1" chance="5.438" /> <!-- Leather -->
+				<item id="36518" min="1" max="1" chance="1.12" /> <!-- Durable Leather -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="14" />
@@ -5296,7 +5334,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="22.309171597633" sp="32" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -5361,12 +5399,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36517" min="1" max="1" chance="3.003" /> <!-- Leather -->
+				<item id="36517" min="1" max="1" chance="3.034" /> <!-- Leather -->
 				<item id="36518" min="1" max="1" chance="0.75" /> <!-- Durable Leather -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="28" />
@@ -5397,7 +5435,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="20.267094017094" sp="29" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -5427,13 +5465,26 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
 		</ai>
 		<drop_lists>
 			<death>
+				<group chance="70">
+					<item id="57" min="90" max="209" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0009">
+					<item id="9449" min="1" max="1" chance="100" /> <!-- Dynasty Mace -->
+				</group>
+				<group chance="0.0039">
+					<item id="9525" min="1" max="1" chance="76.923076923077" /> <!-- Sealed Dynasty Stockings -->
+					<item id="9524" min="1" max="1" chance="23.076923076923" /> <!-- Sealed Dynasty Tunic -->
+				</group>
+				<group chance="0.003">
+					<item id="36564" min="1" max="1" chance="100" /> <!-- Greater Synthetic Cokes -->
+				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
 					<item id="8601" min="1" max="1" chance="40" /> <!-- Major Herb of Life -->
@@ -5454,6 +5505,15 @@
 					<item id="13028" min="1" max="1" chance="100" /> <!-- Vitality Replenishing Herb -->
 				</group>
 			</death>
+			<corpse>
+				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36534" min="1" max="1" chance="0.03" /> <!-- Durable Braid -->
+				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="9" />
@@ -5485,7 +5545,7 @@
 		<equipment rhand="142" lhand="6918" /> <!-- Keshanberk / Monster Only (Shield of Silenos) -->
 		<acquire expRate="20.962524654832" sp="30" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" shield="171" shieldRate="20" />
 			<speed>
@@ -5518,7 +5578,7 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
@@ -5558,12 +5618,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36522" min="1" max="1" chance="2.242" /> <!-- Silver -->
+				<item id="36522" min="1" max="1" chance="2.309" /> <!-- Silver -->
 				<item id="36523" min="1" max="1" chance="0.3" /> <!-- Adamantite -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="16" />
@@ -5589,7 +5649,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="22.309171597633" sp="32" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -5625,12 +5685,12 @@
 				<group chance="70">
 					<item id="57" min="49" max="113" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.4405">
-					<item id="36528" min="1" max="1" chance="68.104426787741" /> <!-- Metallic Fiber -->
-					<item id="36523" min="1" max="1" chance="17.026106696935" /> <!-- Adamantite -->
-					<item id="36553" min="1" max="1" chance="6.8104426787741" /> <!-- Armor Fragment (Mid-grade) -->
-					<item id="36558" min="1" max="1" chance="6.8104426787741" /> <!-- Accessory Gem (Mid-grade) -->
-					<item id="36563" min="1" max="1" chance="1.2485811577753" /> <!-- Synthetic Cokes -->
+				<group chance="0.4425">
+					<item id="36528" min="1" max="1" chance="67.796610169492" /> <!-- Metallic Fiber -->
+					<item id="36523" min="1" max="1" chance="16.949152542373" /> <!-- Adamantite -->
+					<item id="36553" min="1" max="1" chance="6.7796610169492" /> <!-- Armor Fragment (Mid-grade) -->
+					<item id="36558" min="1" max="1" chance="6.7796610169492" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36563" min="1" max="1" chance="1.6949152542373" /> <!-- Synthetic Cokes -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5654,13 +5714,13 @@
 			</death>
 			<corpse>
 				<item id="36533" min="1" max="1" chance="0.075" /> <!-- Synthetic Braid -->
-				<item id="36534" min="1" max="1" chance="0.0055" /> <!-- Durable Braid -->
+				<item id="36534" min="1" max="1" chance="0.0075" /> <!-- Durable Braid -->
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -5694,7 +5754,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="28.853714661407" sp="42" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -5727,7 +5787,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
@@ -5741,10 +5801,10 @@
 				<group chance="0.03">
 					<item id="9453" min="1" max="1" chance="100" /> <!-- Sealed Dynasty Necklace -->
 				</group>
-				<group chance="0.0655">
-					<item id="36548" min="1" max="1" chance="45.801526717557" /> <!-- Weapon Fragment (Mid-grade) -->
-					<item id="36558" min="1" max="1" chance="45.801526717557" /> <!-- Accessory Gem (Mid-grade) -->
-					<item id="36553" min="1" max="1" chance="8.3969465648855" /> <!-- Armor Fragment (Mid-grade) -->
+				<group chance="0.0675">
+					<item id="36548" min="1" max="1" chance="44.444444444444" /> <!-- Weapon Fragment (Mid-grade) -->
+					<item id="36558" min="1" max="1" chance="44.444444444444" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36553" min="1" max="1" chance="11.111111111111" /> <!-- Armor Fragment (Mid-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -5767,12 +5827,12 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36557" min="1" max="1" chance="1.294" /> <!-- Accessory Gem -->
+				<item id="36557" min="1" max="1" chance="1.189" /> <!-- Accessory Gem -->
 				<item id="36558" min="1" max="1" chance="0.3" /> <!-- Accessory Gem (Mid-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="14" />
@@ -5803,7 +5863,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="18.382478632479" sp="26" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -5881,9 +5941,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="11" />
@@ -5915,7 +5975,7 @@
 		<equipment rhand="2504" /> <!-- Meteor Shower -->
 		<acquire expRate="20.962524654832" sp="30" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -5964,7 +6024,7 @@
 					<item id="5487" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Robe of Nightmare Fabric -->
 					<item id="5488" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Majestic Robe Fabric -->
 				</group>
-				<group chance="0.0165">
+				<group chance="0.0225">
 					<item id="960" min="1" max="1" chance="33.333333333333" /> <!-- Scroll: Enchant Armor (S-grade) -->
 					<item id="36548" min="1" max="1" chance="33.333333333333" /> <!-- Weapon Fragment (Mid-grade) -->
 					<item id="36553" min="1" max="1" chance="33.333333333333" /> <!-- Armor Fragment (Mid-grade) -->
@@ -5995,9 +6055,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -6023,7 +6083,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="19.43063773833" sp="28" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6052,7 +6112,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>ALL</clan>
 			</clan_list>
@@ -6105,9 +6165,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -6140,7 +6200,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="25.912721893491" sp="37" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="9383.4737800055" hpRegen="8.5" mp="1641.0" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6171,7 +6231,7 @@
 		</skill_list>
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
@@ -6192,11 +6252,11 @@
 					<item id="5527" min="1" max="1" chance="33.112582781457" /> <!-- Sealed Helm of Nightmare Design -->
 					<item id="5528" min="1" max="1" chance="33.112582781457" /> <!-- Sealed Majestic Circlet Design -->
 				</group>
-				<group chance="0.0415">
-					<item id="36523" min="1" max="1" chance="72.289156626506" /> <!-- Adamantite -->
-					<item id="960" min="1" max="1" chance="7.2289156626506" /> <!-- Scroll: Enchant Armor (S-grade) -->
-					<item id="36553" min="1" max="1" chance="7.2289156626506" /> <!-- Armor Fragment (Mid-grade) -->
-					<item id="36558" min="1" max="1" chance="13.253012048193" /> <!-- Accessory Gem (Mid-grade) -->
+				<group chance="0.0435">
+					<item id="36523" min="1" max="1" chance="68.965517241379" /> <!-- Adamantite -->
+					<item id="36558" min="1" max="1" chance="17.241379310345" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="960" min="1" max="1" chance="6.8965517241379" /> <!-- Scroll: Enchant Armor (S-grade) -->
+					<item id="36553" min="1" max="1" chance="6.8965517241379" /> <!-- Armor Fragment (Mid-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -6224,9 +6284,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="14" />
@@ -6258,7 +6318,7 @@
 		<equipment rhand="2500" /> <!-- Dark Legion's Edge -->
 		<acquire expRate="19.329881656805" sp="28" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="9383.4737800055" hpRegen="8.5" mp="1641.0" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6292,7 +6352,7 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
@@ -6308,11 +6368,11 @@
 					<item id="5480" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Leather Armor of Nightmare Fabric -->
 					<item id="5481" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Majestic Leather Armor Fabric -->
 				</group>
-				<group chance="0.0394">
-					<item id="36558" min="1" max="1" chance="76.142131979695" /> <!-- Accessory Gem (Mid-grade) -->
-					<item id="36548" min="1" max="1" chance="13.959390862944" /> <!-- Weapon Fragment (Mid-grade) -->
-					<item id="36553" min="1" max="1" chance="7.6142131979695" /> <!-- Armor Fragment (Mid-grade) -->
-					<item id="959" min="1" max="1" chance="2.2842639593909" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+				<group chance="0.0414">
+					<item id="36558" min="1" max="1" chance="72.463768115942" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36548" min="1" max="1" chance="18.115942028986" /> <!-- Weapon Fragment (Mid-grade) -->
+					<item id="36553" min="1" max="1" chance="7.2463768115942" /> <!-- Armor Fragment (Mid-grade) -->
+					<item id="959" min="1" max="1" chance="2.1739130434783" /> <!-- Scroll: Enchant Weapon (S-grade) -->
 				</group>
 				<group chance="20">
 					<item id="8600" min="1" max="1" chance="50" /> <!-- Herb of Life -->
@@ -6340,9 +6400,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -6374,7 +6434,7 @@
 		<equipment rhand="2500" /> <!-- Dark Legion's Edge -->
 		<acquire expRate="22.665844838922" sp="33" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="9383.4737800055" hpRegen="8.5" mp="1641.0" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6452,14 +6512,14 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="1.069" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="1.051" /> <!-- Thin Braid -->
 				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -6485,7 +6545,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="22.309171597633" sp="32" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6511,7 +6571,7 @@
 			<skill id="5620" level="6" /> <!-- Short-Range Physical Attack Weakness -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>ALL</clan>
 			</clan_list>
@@ -6561,9 +6621,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -6597,7 +6657,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="27.845989480605" sp="40" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="9383.4737800055" hpRegen="8.5" mp="1641.0" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6630,7 +6690,7 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
@@ -6674,14 +6734,14 @@
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="1.253" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="1.237" /> <!-- Thin Braid -->
 				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="14" />
@@ -6712,7 +6772,7 @@
 		<equipment rhand="2500" /> <!-- Dark Legion's Edge -->
 		<acquire expRate="24.550460223537" sp="35" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="9383.4737800055" hpRegen="8.5" mp="1641.0" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6749,6 +6809,34 @@
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="109" max="253" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.1509">
+					<item id="305" min="1" max="1" chance="0.59642147117296" /> <!-- Tallum Glaive -->
+					<item id="5529" min="1" max="1" chance="49.701789264414" /> <!-- Dragon Slayer Edge -->
+					<item id="5541" min="1" max="1" chance="49.701789264414" /> <!-- Tallum Glaive Edge -->
+				</group>
+				<group chance="0.75">
+					<item id="5528" min="1" max="1" chance="100" /> <!-- Sealed Majestic Circlet Design -->
+				</group>
+				<group chance="0.0375">
+					<item id="960" min="1" max="1" chance="80" /> <!-- Scroll: Enchant Armor (S-grade) -->
+					<item id="5167" min="1" max="1" chance="20" /> <!-- Recipe: Blessed Spiritshot Compressed Package (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36532" min="1" max="1" chance="1.114" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="22" />
 			<height normal="51" />
@@ -6775,7 +6863,7 @@
 		<equipment rhand="2500" lhand="6918" /> <!-- Dark Legion's Edge / Monster Only (Shield of Silenos) -->
 		<acquire expRate="18.160749506903" sp="26" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6808,6 +6896,35 @@
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="80" max="187" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.606">
+					<item id="5326" min="1" max="1" chance="0.4950495049505" /> <!-- Sealed Robe of Nightmare -->
+					<item id="5329" min="1" max="1" chance="0.4950495049505" /> <!-- Sealed Majestic Robe -->
+					<item id="5487" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Robe of Nightmare Fabric -->
+					<item id="5488" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Majestic Robe Fabric -->
+				</group>
+				<group chance="0.0399">
+					<item id="36558" min="1" max="1" chance="75.187969924812" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36548" min="1" max="1" chance="7.5187969924812" /> <!-- Weapon Fragment (Mid-grade) -->
+					<item id="36553" min="1" max="1" chance="7.5187969924812" /> <!-- Armor Fragment (Mid-grade) -->
+					<item id="36563" min="1" max="1" chance="7.5187969924812" /> <!-- Synthetic Cokes -->
+					<item id="959" min="1" max="1" chance="2.2556390977444" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36532" min="1" max="1" chance="0.75" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="16" />
 			<height normal="41" />
@@ -6835,7 +6952,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="17.193293885602" sp="25" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="9870.33920633081" hpRegen="8.5" mp="1674.8" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -6863,12 +6980,40 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="76" max="177" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.1059">
+					<item id="236" min="1" max="1" chance="0.84985835694051" /> <!-- Soul Separator -->
+					<item id="5537" min="1" max="1" chance="70.821529745042" /> <!-- Soul Separator Head -->
+					<item id="7579" min="1" max="1" chance="28.328611898017" /> <!-- Draconic Bow Shaft -->
+				</group>
+				<group chance="0.6">
+					<item id="6713" min="1" max="1" chance="50" /> <!-- Sealed Major Arcana Boot Design -->
+					<item id="6714" min="1" max="1" chance="50" /> <!-- Sealed Major Arcana Circlet Pattern -->
+				</group>
+				<group chance="0.03">
+					<item id="960" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Armor (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36532" min="1" max="1" chance="0.75" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="14" />
 			<height normal="39.5" />
@@ -6895,7 +7040,7 @@
 		<equipment rhand="2500" lhand="6918" /> <!-- Dark Legion's Edge / Monster Only (Shield of Silenos) -->
 		<acquire expRate="19.809500328731" sp="28" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="9383.4737800055" hpRegen="8.5" mp="1641.0" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" shield="179" shieldRate="20" />
 			<speed>
@@ -6922,7 +7067,7 @@
 		</skill_list>
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
@@ -6938,13 +7083,13 @@
 					<item id="5487" min="1" max="1" chance="49.850448654038" /> <!-- Sealed Robe of Nightmare Fabric -->
 					<item id="5488" min="1" max="1" chance="49.850448654038" /> <!-- Sealed Majestic Robe Fabric -->
 				</group>
-				<group chance="0.0724">
-					<item id="36523" min="1" max="1" chance="41.436464088398" /> <!-- Adamantite -->
-					<item id="36528" min="1" max="1" chance="41.436464088398" /> <!-- Metallic Fiber -->
-					<item id="36553" min="1" max="1" chance="4.1436464088398" /> <!-- Armor Fragment (Mid-grade) -->
-					<item id="36558" min="1" max="1" chance="7.5966850828729" /> <!-- Accessory Gem (Mid-grade) -->
-					<item id="36563" min="1" max="1" chance="4.1436464088398" /> <!-- Synthetic Cokes -->
-					<item id="959" min="1" max="1" chance="1.2430939226519" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+				<group chance="0.0744">
+					<item id="36523" min="1" max="1" chance="40.322580645161" /> <!-- Adamantite -->
+					<item id="36528" min="1" max="1" chance="40.322580645161" /> <!-- Metallic Fiber -->
+					<item id="36558" min="1" max="1" chance="10.08064516129" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36553" min="1" max="1" chance="4.0322580645161" /> <!-- Armor Fragment (Mid-grade) -->
+					<item id="36563" min="1" max="1" chance="4.0322580645161" /> <!-- Synthetic Cokes -->
+					<item id="959" min="1" max="1" chance="1.2096774193548" /> <!-- Scroll: Enchant Weapon (S-grade) -->
 				</group>
 			</death>
 			<corpse>
@@ -6953,9 +7098,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="16" />
@@ -6987,7 +7132,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="25.084483892176" sp="36" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="9870.33920633081" hpRegen="8.5" mp="1674.8" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -7018,12 +7163,39 @@
 		<shots shotChance="50" spiritChance="50" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<skill primaryId="1" shortRangeId="1" shortRangeChance="90" longRangeId="1" longRangeChance="90" />
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="111" max="258" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.606">
+					<item id="5326" min="1" max="1" chance="0.4950495049505" /> <!-- Sealed Robe of Nightmare -->
+					<item id="5329" min="1" max="1" chance="0.4950495049505" /> <!-- Sealed Majestic Robe -->
+					<item id="5487" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Robe of Nightmare Fabric -->
+					<item id="5488" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Majestic Robe Fabric -->
+				</group>
+				<group chance="0.3084">
+					<item id="36528" min="1" max="1" chance="97.27626459144" /> <!-- Metallic Fiber -->
+					<item id="36563" min="1" max="1" chance="2.431906614786" /> <!-- Synthetic Cokes -->
+					<item id="959" min="1" max="1" chance="0.29182879377432" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36532" min="1" max="1" chance="1.169" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="17" />
 			<height normal="47.5" />
@@ -7050,7 +7222,7 @@
 		<equipment rhand="2500" lhand="6918" /> <!-- Dark Legion's Edge / Monster Only (Shield of Silenos) -->
 		<acquire expRate="20.142833662064" sp="29" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" shield="183" shieldRate="20" />
 			<speed>
@@ -7077,7 +7249,7 @@
 		</skill_list>
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
@@ -7091,13 +7263,13 @@
 					<item id="305" min="1" max="1" chance="1.1857707509881" /> <!-- Tallum Glaive -->
 					<item id="5541" min="1" max="1" chance="98.814229249012" /> <!-- Tallum Glaive Edge -->
 				</group>
-				<group chance="0.0745">
-					<item id="36523" min="1" max="1" chance="40.268456375839" /> <!-- Adamantite -->
-					<item id="36528" min="1" max="1" chance="40.268456375839" /> <!-- Metallic Fiber -->
-					<item id="960" min="1" max="1" chance="4.0268456375839" /> <!-- Scroll: Enchant Armor (S-grade) -->
-					<item id="36553" min="1" max="1" chance="4.0268456375839" /> <!-- Armor Fragment (Mid-grade) -->
-					<item id="36558" min="1" max="1" chance="7.3825503355705" /> <!-- Accessory Gem (Mid-grade) -->
-					<item id="36563" min="1" max="1" chance="4.0268456375839" /> <!-- Synthetic Cokes -->
+				<group chance="0.0765">
+					<item id="36523" min="1" max="1" chance="39.21568627451" /> <!-- Adamantite -->
+					<item id="36528" min="1" max="1" chance="39.21568627451" /> <!-- Metallic Fiber -->
+					<item id="36558" min="1" max="1" chance="9.8039215686274" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="960" min="1" max="1" chance="3.921568627451" /> <!-- Scroll: Enchant Armor (S-grade) -->
+					<item id="36553" min="1" max="1" chance="3.921568627451" /> <!-- Armor Fragment (Mid-grade) -->
+					<item id="36563" min="1" max="1" chance="3.921568627451" /> <!-- Synthetic Cokes -->
 				</group>
 			</death>
 			<corpse>
@@ -7106,9 +7278,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="16" />
@@ -7137,7 +7309,7 @@
 		<equipment rhand="6716" /> <!-- Monster Only (Silenos Shaman) -->
 		<acquire expRate="18.684582511506" sp="27" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="5948" hpRegen="8.5" mp="1607.4" mpRegen="3" />
+			<vitals hp="5948.71372796632" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" />
 			<speed>
@@ -7165,7 +7337,7 @@
 		</skill_list>
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>VARKA_SILENOS</clan>
 			</clan_list>
@@ -7181,11 +7353,11 @@
 					<item id="5480" min="1" max="1" chance="49.407114624506" /> <!-- Sealed Leather Armor of Nightmare Fabric -->
 					<item id="5481" min="1" max="1" chance="49.407114624506" /> <!-- Sealed Majestic Leather Armor Fabric -->
 				</group>
-				<group chance="0.0124">
-					<item id="36548" min="1" max="1" chance="24.193548387097" /> <!-- Weapon Fragment (Mid-grade) -->
-					<item id="36553" min="1" max="1" chance="24.193548387097" /> <!-- Armor Fragment (Mid-grade) -->
-					<item id="36558" min="1" max="1" chance="44.354838709677" /> <!-- Accessory Gem (Mid-grade) -->
-					<item id="959" min="1" max="1" chance="7.258064516129" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+				<group chance="0.0144">
+					<item id="36558" min="1" max="1" chance="52.083333333333" /> <!-- Accessory Gem (Mid-grade) -->
+					<item id="36548" min="1" max="1" chance="20.833333333333" /> <!-- Weapon Fragment (Mid-grade) -->
+					<item id="36553" min="1" max="1" chance="20.833333333333" /> <!-- Armor Fragment (Mid-grade) -->
+					<item id="959" min="1" max="1" chance="6.25" /> <!-- Scroll: Enchant Weapon (S-grade) -->
 				</group>
 			</death>
 			<corpse>
@@ -7194,9 +7366,9 @@
 				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="9" />
@@ -7413,7 +7585,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>FIRE</clan>
 			</clan_list>
@@ -7827,7 +7999,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>FIRE</clan>
 			</clan_list>
@@ -7945,7 +8117,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>6</s_npc_prop_hp_rate>
-		<ai type="ARCHER" aggroRange="300" clanHelpRange="300" dodge="15" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" dodge="15" isAggressive="true">
 			<clan_list>
 				<clan>FIRE</clan>
 			</clan_list>
@@ -8176,11 +8348,31 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>6</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>FIRE</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="292" max="679" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.15">
+					<item id="1808" min="1" max="1" chance="50" /> <!-- Recipe: Soulshot (S-grade) -->
+					<item id="5282" min="1" max="1" chance="50" /> <!-- Recipe: Greater Blessed Spiritshot Compressed Package (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36532" min="1" max="1" chance="3.017" /> <!-- Thin Braid -->
+				<item id="36533" min="1" max="1" chance="0.75" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.03" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="55" />
@@ -8237,7 +8429,7 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>6</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>FIRE</clan>
 			</clan_list>
@@ -8291,7 +8483,7 @@
 		<shots shotChance="20" spiritChance="20" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>FIRE</clan>
 			</clan_list>
@@ -8345,11 +8537,22 @@
 		<shots shotChance="30" spiritChance="30" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>6</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>FIRE</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="0.303">
+					<item id="6370" min="1" max="1" chance="0.99009900990099" /> <!-- Saint Spear -->
+					<item id="6694" min="1" max="1" chance="99.009900990099" /> <!-- Saint Spear Blade -->
+				</group>
+			</death>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="15" />
 			<height normal="75" />

@@ -28,11 +28,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.instancemanager.tasks.GrandBossManagerStoreTask;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.instance.L2GrandBossInstance;
 import org.l2junity.gameserver.model.interfaces.IStorable;
@@ -49,20 +54,20 @@ public final class GrandBossManager implements IStorable
 	private static final String UPDATE_GRAND_BOSS_DATA = "UPDATE grandboss_data set loc_x = ?, loc_y = ?, loc_z = ?, heading = ?, respawn_time = ?, currentHP = ?, currentMP = ?, status = ? where boss_id = ?";
 	private static final String UPDATE_GRAND_BOSS_DATA2 = "UPDATE grandboss_data set status = ? where boss_id = ?";
 	
-	protected static Logger _log = LoggerFactory.getLogger(GrandBossManager.class);
+	protected static Logger LOGGER = LoggerFactory.getLogger(GrandBossManager.class);
 	
-	protected static Map<Integer, L2GrandBossInstance> _bosses = new ConcurrentHashMap<>();
+	private final Map<Integer, L2GrandBossInstance> _bosses = new ConcurrentHashMap<>();
 	
-	protected static Map<Integer, StatsSet> _storedInfo = new HashMap<>();
+	private final Map<Integer, StatsSet> _storedInfo = new HashMap<>();
 	
 	private final Map<Integer, Integer> _bossStatus = new HashMap<>();
 	
 	protected GrandBossManager()
 	{
-		init();
 	}
 	
-	private void init()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = NpcData.class))
+	private void load()
 	{
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
 			Statement s = con.createStatement();
@@ -84,23 +89,23 @@ public final class GrandBossManager implements IStorable
 				int status = rs.getInt("status");
 				_bossStatus.put(bossId, status);
 				_storedInfo.put(bossId, info);
-				_log.info("{}({}) status is {}", NpcData.getInstance().getTemplate(bossId).getName(), bossId, status);
+				LOGGER.info("{}({}) status is {}", NpcData.getInstance().getTemplate(bossId).getName(), bossId, status);
 				if (status > 0)
 				{
-					_log.info("Next spawn date of {} is {}", NpcData.getInstance().getTemplate(bossId).getName(), new Date(info.getLong("respawn_time")));
+					LOGGER.info("Next spawn date of {} is {}", NpcData.getInstance().getTemplate(bossId).getName(), new Date(info.getLong("respawn_time")));
 				}
 			}
-			_log.info("Loaded {} Instances", _storedInfo.size());
+			LOGGER.info("Loaded {} Instances", _storedInfo.size());
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Could not load grandboss_data table: {}", e.getMessage(), e);
+			LOGGER.warn("Could not load grandboss_data table: {}", e.getMessage(), e);
 		}
 		catch (Exception e)
 		{
-			_log.warn("Error while initializing GrandBossManager: {}", e.getMessage(), e);
+			LOGGER.warn("Error while initializing GrandBossManager: {}", e.getMessage(), e);
 		}
-		ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new GrandBossManagerStoreTask(), 5 * 60 * 1000, 5 * 60 * 1000);
+		ThreadPool.scheduleAtFixedRate(new GrandBossManagerStoreTask(), 5 * 60 * 1000, 5 * 60 * 1000, TimeUnit.MILLISECONDS);
 	}
 	
 	public int getBossStatus(int bossId)
@@ -111,7 +116,7 @@ public final class GrandBossManager implements IStorable
 	public void setBossStatus(int bossId, int status)
 	{
 		_bossStatus.put(bossId, status);
-		_log.info("{}: Updated {}({}) status to {}", this, NpcData.getInstance().getTemplate(bossId).getName(), bossId, status);
+		LOGGER.info("Updated {}({}) status to {}", NpcData.getInstance().getTemplate(bossId).getName(), bossId, status);
 		updateDb(bossId, true);
 	}
 	
@@ -146,51 +151,44 @@ public final class GrandBossManager implements IStorable
 	@Override
 	public boolean storeMe()
 	{
-		try (Connection con = DatabaseFactory.getInstance().getConnection())
+		try (Connection con = DatabaseFactory.getInstance().getConnection();
+			PreparedStatement update = con.prepareStatement(UPDATE_GRAND_BOSS_DATA);
+			PreparedStatement update2 = con.prepareStatement(UPDATE_GRAND_BOSS_DATA2))
 		{
 			for (Entry<Integer, StatsSet> e : _storedInfo.entrySet())
 			{
 				final L2GrandBossInstance boss = _bosses.get(e.getKey());
-				StatsSet info = e.getValue();
+				final StatsSet info = e.getValue();
 				if ((boss == null) || (info == null))
 				{
-					try (PreparedStatement update = con.prepareStatement(UPDATE_GRAND_BOSS_DATA2))
-					{
-						update.setInt(1, _bossStatus.get(e.getKey()));
-						update.setInt(2, e.getKey());
-						update.executeUpdate();
-						update.clearParameters();
-					}
+					update2.setInt(1, _bossStatus.get(e.getKey()));
+					update2.setInt(2, e.getKey());
+					update2.execute();
+					continue;
 				}
-				else
+				
+				update.setInt(1, (int) boss.getX());
+				update.setInt(2, (int) boss.getY());
+				update.setInt(3, (int) boss.getZ());
+				update.setInt(4, boss.getHeading());
+				update.setLong(5, info.getLong("respawn_time"));
+				double hp = boss.getCurrentHp();
+				double mp = boss.getCurrentMp();
+				if (boss.isDead())
 				{
-					try (PreparedStatement update = con.prepareStatement(UPDATE_GRAND_BOSS_DATA))
-					{
-						update.setInt(1, boss.getX());
-						update.setInt(2, boss.getY());
-						update.setInt(3, boss.getZ());
-						update.setInt(4, boss.getHeading());
-						update.setLong(5, info.getLong("respawn_time"));
-						double hp = boss.getCurrentHp();
-						double mp = boss.getCurrentMp();
-						if (boss.isDead())
-						{
-							hp = boss.getMaxHp();
-							mp = boss.getMaxMp();
-						}
-						update.setDouble(6, hp);
-						update.setDouble(7, mp);
-						update.setInt(8, _bossStatus.get(e.getKey()));
-						update.setInt(9, e.getKey());
-						update.executeUpdate();
-						update.clearParameters();
-					}
+					hp = boss.getMaxHp();
+					mp = boss.getMaxMp();
 				}
+				update.setDouble(6, hp);
+				update.setDouble(7, mp);
+				update.setInt(8, _bossStatus.get(e.getKey()));
+				update.setInt(9, e.getKey());
+				update.execute();
 			}
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't store grandbosses to database: {}", e.getMessage(), e);
+			LOGGER.warn("Couldn't store grandbosses to database", e);
 			return false;
 		}
 		return true;
@@ -209,16 +207,16 @@ public final class GrandBossManager implements IStorable
 				{
 					ps.setInt(1, _bossStatus.get(bossId));
 					ps.setInt(2, bossId);
-					ps.executeUpdate();
+					ps.execute();
 				}
 			}
 			else
 			{
 				try (PreparedStatement ps = con.prepareStatement(UPDATE_GRAND_BOSS_DATA))
 				{
-					ps.setInt(1, boss.getX());
-					ps.setInt(2, boss.getY());
-					ps.setInt(3, boss.getZ());
+					ps.setInt(1, (int) boss.getX());
+					ps.setInt(2, (int) boss.getY());
+					ps.setInt(3, (int) boss.getZ());
 					ps.setInt(4, boss.getHeading());
 					ps.setLong(5, info.getLong("respawn_time"));
 					double hp = boss.getCurrentHp();
@@ -232,13 +230,13 @@ public final class GrandBossManager implements IStorable
 					ps.setDouble(7, mp);
 					ps.setInt(8, _bossStatus.get(bossId));
 					ps.setInt(9, bossId);
-					ps.executeUpdate();
+					ps.execute();
 				}
 			}
 		}
 		catch (SQLException e)
 		{
-			_log.warn("Couldn't update grandbosses to database:{}", e.getMessage(), e);
+			LOGGER.warn("Couldn't update grandbosses to database", e);
 		}
 	}
 	
@@ -258,13 +256,14 @@ public final class GrandBossManager implements IStorable
 	 * Gets the single instance of {@code GrandBossManager}.
 	 * @return single instance of {@code GrandBossManager}
 	 */
+	@InstanceGetter
 	public static GrandBossManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final GrandBossManager _instance = new GrandBossManager();
+		protected static final GrandBossManager INSTANCE = new GrandBossManager();
 	}
 }

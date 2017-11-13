@@ -9,46 +9,274 @@
 		<reuseDelay>60000</reuseDelay>
 	</skill>
 	<skill id="18345" toLevel="1" name="Spellbook: Dignity of the Exalted Lv. 1">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>45922</itemConsumeId> <!-- Spellbook: Dignity of the Exalted Lv. 1 -->
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>99</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19222</skillId>
+				<skillLevel>1</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLevel>2</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLevel>3</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLvl>1</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18346" toLevel="1" name="Spellbook: Dignity of the Exalted Lv. 2">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>45923</itemConsumeId> <!-- Spellbook: Dignity of the Exalted Lv. 2 -->
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>99</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLevel>1</skillLevel>
+				<hasLearned>true</hasLearned>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLevel>2</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLevel>3</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLvl>2</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18347" toLevel="1" name="Spellbook: Dignity of the Exalted Lv. 3">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>45924</itemConsumeId> <!-- Spellbook: Dignity of the Exalted Lv. 3 -->
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>99</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLevel>2</skillLevel>
+				<hasLearned>true</hasLearned>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLevel>3</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>19222</skillId> <!-- Dignity of the Exalted -->
+				<skillLvl>3</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18348" toLevel="1" name="Spellbook: Belief of the Exalted">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>45925</itemConsumeId> <!-- Spellbook: Belief of the Exalted -->
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>99</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19223</skillId> <!-- Belief of the Exalted -->
+				<skillLevel>1</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>19223</skillId> <!-- Belief of the Exalted -->
+				<skillLvl>1</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18349" toLevel="1" name="Spellbook: Blessing of the Exalted">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>45926</itemConsumeId> <!-- Spellbook: Blessing of the Exalted -->
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>99</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19224</skillId> <!-- Blessing of the Exalted -->
+				<skillLevel>1</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>19224</skillId> <!-- Blessing of the Exalted -->
+				<skillLvl>1</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18350" toLevel="1" name="Spellbook: Summon Instant Cure Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>45927</itemConsumeId> <!-- Spellbook: Summon Battle Potion -->
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>99</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpSkill">
+				<skillId>19225</skillId> <!-- Summon Battle Potion -->
+				<skillLevel>1</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>19225</skillId> <!-- Summon Battle Potion -->
+				<skillLvl>1</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18351" toLevel="2" name="Spellbook: Favor of the Exalted Lv. 1">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>
+			<value level="1">45928</value>  <!-- Spellbook: Favor of the Exalted Lv. 1 -->
+			<value level="2">45870</value>  <!-- Spellbook: Favor of the Exalted Lv. 2 -->
+		</itemConsumeId>
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>99</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="OpSkill" fromLevel="1" toLevel="1">
+				<skillId>19226</skillId> <!-- Favor of the Exalted -->
+				<skillLevel>1</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+			<condition name="OpSkill" fromLevel="1" toLevel="1">
+				<skillId>19226</skillId> <!-- Favor of the Exalted -->
+				<skillLevel>2</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+			<condition name="OpSkill" fromLevel="2" toLevel="2">
+				<skillId>19226</skillId> <!-- Favor of the Exalted -->
+				<skillLevel>1</skillLevel>
+				<hasLearned>true</hasLearned>
+			</condition>
+			<condition name="OpSkill" fromLevel="2" toLevel="2">
+				<skillId>19226</skillId> <!-- Favor of the Exalted -->
+				<skillLevel>2</skillLevel>
+				<hasLearned>false</hasLearned>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>19226</skillId> <!-- Favor of the Exalted -->
+				<skillLvl>
+					<value level="1">1</value>
+					<value level="2">2</value>
+				</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18352" toLevel="1" name="Special Magic Ornament Eternal Belt">
 		<!-- AUTO GENERATED SKILL -->
@@ -138,7 +366,7 @@
 		<icon>icon.skill_sing</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="18365" toLevel="1" name="Festival's Effect">
 		<!-- AUTO GENERATED SKILL -->
@@ -146,7 +374,7 @@
 		<icon>icon.skill_sing</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="18366" toLevel="1" name="Festival's Effect">
 		<!-- AUTO GENERATED SKILL -->
@@ -154,7 +382,7 @@
 		<icon>icon.skill_sing</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="18367" toLevel="1" name="Festival Reward">
 		<!-- AUTO GENERATED SKILL -->
@@ -239,83 +467,160 @@
 		<operateType>A1</operateType>
 		<reuseDelay>2000</reuseDelay>
 	</skill>
-	<skill id="18380" toLevel="1" name="Player Commendation - Talisman - STR">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18380" toLevel="2" name="Player Commendation - Talisman - STR">
+		<!-- Updated to GC -->
 		<!-- STR + 5 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>STR</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="18381" toLevel="1" name="Player Commendation - Talisman - INT">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18381" toLevel="2" name="Player Commendation - Talisman - INT">
+		<!-- Updated to GC -->
 		<!-- INT + 5 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="18382" toLevel="1" name="Player Commendation - Talisman - DEX">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18382" toLevel="2" name="Player Commendation - Talisman - DEX">
+		<!-- Updated to GC -->
 		<!-- DEX + 5 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>DEX</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="18383" toLevel="1" name="Player Commendation - Talisman - WIT">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18383" toLevel="2" name="Player Commendation - Talisman - WIT">
+		<!-- Updated to GC -->
 		<!-- WIT + 5 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="18384" toLevel="1" name="Player Commendation - Talisman - CON">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18384" toLevel="2" name="Player Commendation - Talisman - CON">
+		<!-- Updated to GC -->
 		<!-- CON + 5 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="18385" toLevel="1" name="Player Commendation - Talisman - MEN">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18385" toLevel="2" name="Player Commendation - Talisman - MEN">
+		<!-- Updated to GC -->
 		<!-- MEN + 5 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="18386" toLevel="1" name="Player Commendation - Talisman - Attack Attribute">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18386" toLevel="2" name="Player Commendation - Talisman - Attack Attribute">
+		<!-- Updated to GC -->
 		<!-- Attack Attribute + 50 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_attack_attribute_add">
+				<amount>50</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18387" toLevel="1" name="Player Commendation - Talisman - Fire Resistance">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Fire Resistance + 50 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>50</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18388" toLevel="1" name="Player Commendation - Talisman - Water Resistance">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Water Resistance + 50 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>50</amount>
+				<attribute>WATER</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18389" toLevel="1" name="Player Commendation - Talisman - Wind Resistance">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Wind Resistance + 50 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>50</amount>
+				<attribute>WIND</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18390" toLevel="1" name="Player Commendation - Talisman - Earth Resistance">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Earth Resistance + 50 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>50</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18391" toLevel="1" name="Player Commendation - Talisman - Holy Resistance">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Holy Resistance + 50 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>50</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18392" toLevel="1" name="Player Commendation - Talisman - Dark Resistance">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to GC -->
 		<!-- Dark Resistance + 50 when equipped. -->
 		<icon>Icon.etc_allstat_talisman_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_defence_attribute">
+				<amount>50</amount>
+				<attribute>DARK</attribute>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18393" toLevel="1" name="Dimensional Elcyum Pack">
 		<!-- AUTO GENERATED SKILL -->

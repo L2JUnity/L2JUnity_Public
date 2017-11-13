@@ -21,7 +21,7 @@ package org.l2junity.gameserver.communitybbs.BB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.communitybbs.Manager.TopicBBSManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

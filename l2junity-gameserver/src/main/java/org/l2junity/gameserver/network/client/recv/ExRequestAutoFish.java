@@ -28,7 +28,7 @@ import org.l2junity.network.PacketReader;
 public final class ExRequestAutoFish implements IClientIncomingPacket
 {
 	private boolean _start;
-
+	
 	@Override
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
@@ -44,7 +44,7 @@ public final class ExRequestAutoFish implements IClientIncomingPacket
 		{
 			return;
 		}
-
+		
 		if (_start)
 		{
 			activeChar.getFishing().startFishing();

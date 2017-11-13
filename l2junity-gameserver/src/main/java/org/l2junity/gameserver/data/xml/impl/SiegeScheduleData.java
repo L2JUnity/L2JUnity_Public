@@ -18,12 +18,15 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.SiegeScheduleDate;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.util.Util;
@@ -44,11 +47,10 @@ public class SiegeScheduleData implements IGameXmlReader
 	
 	protected SiegeScheduleData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_scheduleData.clear();
 		parseDatapackFile("config/SiegeSchedule.xml");
@@ -61,7 +63,7 @@ public class SiegeScheduleData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -116,14 +118,14 @@ public class SiegeScheduleData implements IGameXmlReader
 		return _scheduleData;
 	}
 	
+	@InstanceGetter
 	public static final SiegeScheduleData getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final SiegeScheduleData _instance = new SiegeScheduleData();
+		protected static final SiegeScheduleData INSTANCE = new SiegeScheduleData();
 	}
-	
 }

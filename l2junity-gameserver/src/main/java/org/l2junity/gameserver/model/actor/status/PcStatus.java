@@ -18,21 +18,21 @@
  */
 package org.l2junity.gameserver.model.actor.status;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.ai.CtrlIntention;
+import org.l2junity.gameserver.config.L2JModsConfig;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.instancemanager.DuelManager;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.stat.PcStat;
-import org.l2junity.gameserver.model.effects.EffectFlag;
 import org.l2junity.gameserver.model.entity.Duel;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureHpChange;
 import org.l2junity.gameserver.model.skills.AbnormalType;
+import org.l2junity.gameserver.model.stats.BooleanStat;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.Formulas;
-import org.l2junity.gameserver.model.stats.Stats;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -61,12 +61,6 @@ public class PcStatus extends PlayableStatus
 	}
 	
 	@Override
-	public final void reduceHp(double value, Creature attacker)
-	{
-		reduceHp(value, attacker, true, false, false, false);
-	}
-	
-	@Override
 	public final void reduceHp(double value, Creature attacker, boolean awake, boolean isDOT, boolean isHPConsumption)
 	{
 		reduceHp(value, attacker, awake, isDOT, isHPConsumption, false);
@@ -80,17 +74,17 @@ public class PcStatus extends PlayableStatus
 		}
 		
 		// If OFFLINE_MODE_NO_DAMAGE is enabled and player is offline and he is in store/craft mode, no damage is taken.
-		if (Config.OFFLINE_MODE_NO_DAMAGE && (getActiveChar().getClient() != null) && getActiveChar().getClient().isDetached() && ((Config.OFFLINE_TRADE_ENABLE && ((getActiveChar().getPrivateStoreType() == PrivateStoreType.SELL) || (getActiveChar().getPrivateStoreType() == PrivateStoreType.BUY))) || (Config.OFFLINE_CRAFT_ENABLE && (getActiveChar().isInCraftMode() || (getActiveChar().getPrivateStoreType() == PrivateStoreType.MANUFACTURE)))))
+		if (L2JModsConfig.OFFLINE_MODE_NO_DAMAGE && (getActiveChar().getClient() != null) && getActiveChar().getClient().isDetached() && ((L2JModsConfig.OFFLINE_TRADE_ENABLE && ((getActiveChar().getPrivateStoreType() == PrivateStoreType.SELL) || (getActiveChar().getPrivateStoreType() == PrivateStoreType.BUY))) || (L2JModsConfig.OFFLINE_CRAFT_ENABLE && (getActiveChar().getPrivateStoreType() == PrivateStoreType.MANUFACTURE))))
 		{
 			return;
 		}
 		
-		if (getActiveChar().isHpBlocked() && !(isDOT || isHPConsumption))
+		if (getActiveChar().isHpBlocked() && !isDOT)
 		{
 			return;
 		}
 		
-		if (getActiveChar().isAffected(EffectFlag.FACEOFF) && (getActiveChar().getAttackerObjId() != attacker.getObjectId()))
+		if (getActiveChar().getStat().has(BooleanStat.FACE_OFF) && (getActiveChar().getAttackerObjId() != attacker.getObjectId()))
 		{
 			return;
 		}
@@ -102,7 +96,7 @@ public class PcStatus extends PlayableStatus
 				getActiveChar().stopEffectsOnDamage();
 			}
 			// Attacked players in craft/shops stand up.
-			if (getActiveChar().isInCraftMode() || getActiveChar().isInStoreMode())
+			if (getActiveChar().isInStoreMode())
 			{
 				getActiveChar().setPrivateStoreType(PrivateStoreType.NONE);
 				getActiveChar().standUp();
@@ -121,7 +115,7 @@ public class PcStatus extends PlayableStatus
 				}
 				if (Formulas.calcRealTargetBreak())
 				{
-					getActiveChar().getEffectList().stopSkillEffects(true, AbnormalType.REAL_TARGET);
+					getActiveChar().getEffectList().stopEffects(AbnormalType.REAL_TARGET);
 				}
 			}
 		}
@@ -164,7 +158,7 @@ public class PcStatus extends PlayableStatus
 			final Summon summon = getActiveChar().getFirstServitor();
 			if ((summon != null) && Util.checkIfInRange(1000, getActiveChar(), summon, true))
 			{
-				tDmg = ((int) value * (int) getActiveChar().getStat().getValue(Stats.TRANSFER_DAMAGE_SUMMON_PERCENT, 0)) / 100;
+				tDmg = ((int) value * (int) getActiveChar().getStat().getValue(DoubleStat.TRANSFER_DAMAGE_SUMMON_PERCENT, 0)) / 100;
 				
 				// Only transfer dmg up to current HP, it should not be killed
 				tDmg = Math.min((int) summon.getCurrentHp() - 1, tDmg);
@@ -176,7 +170,7 @@ public class PcStatus extends PlayableStatus
 				}
 			}
 			
-			mpDam = ((int) value * (int) getActiveChar().getStat().getValue(Stats.MANA_SHIELD_PERCENT, 0)) / 100;
+			mpDam = ((int) value * (int) getActiveChar().getStat().getValue(DoubleStat.MANA_SHIELD_PERCENT, 0)) / 100;
 			
 			if (mpDam > 0)
 			{
@@ -184,11 +178,11 @@ public class PcStatus extends PlayableStatus
 				if (mpDam > getActiveChar().getCurrentMp())
 				{
 					getActiveChar().sendPacket(SystemMessageId.MP_BECAME_0_AND_THE_ARCANE_SHIELD_IS_DISAPPEARING);
-					getActiveChar().stopSkillEffects(true, 1556);
+					getActiveChar().getEffectList().stopEffects(AbnormalType.MP_SHIELD);
 					value = mpDam - getActiveChar().getCurrentMp();
 					getActiveChar().setCurrentMp(0);
 				}
-				else
+				else if (!getActiveChar().isHpBlocked())
 				{
 					getActiveChar().reduceCurrentMp(mpDam);
 					SystemMessage smsg = SystemMessage.getSystemMessage(SystemMessageId.ARCANE_SHIELD_DECREASED_YOUR_MP_BY_S1_INSTEAD_OF_HP);
@@ -203,7 +197,7 @@ public class PcStatus extends PlayableStatus
 			{
 				int transferDmg = 0;
 				
-				transferDmg = ((int) value * (int) getActiveChar().getStat().getValue(Stats.TRANSFER_DAMAGE_TO_PLAYER, 0)) / 100;
+				transferDmg = ((int) value * (int) getActiveChar().getStat().getValue(DoubleStat.TRANSFER_DAMAGE_TO_PLAYER, 0)) / 100;
 				transferDmg = Math.min((int) caster.getCurrentHp() - 1, transferDmg);
 				if (transferDmg > 0)
 				{
@@ -302,8 +296,7 @@ public class PcStatus extends PlayableStatus
 		
 		if ((getActiveChar().getCurrentHp() < 0.5) && !isHPConsumption && !getActiveChar().isUndying())
 		{
-			getActiveChar().abortAttack();
-			getActiveChar().abortCast();
+			getActiveChar().stopActions();
 			
 			if (getActiveChar().isInOlympiadMode())
 			{
@@ -313,9 +306,9 @@ public class PcStatus extends PlayableStatus
 				final Summon pet = getActiveChar().getPet();
 				if (pet != null)
 				{
-					pet.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
+					pet.stopActions();
 				}
-				getActiveChar().getServitors().values().forEach(s -> s.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE));
+				getActiveChar().getServitors().values().forEach(Creature::stopActions);
 				return;
 			}
 			
@@ -392,19 +385,19 @@ public class PcStatus extends PlayableStatus
 		// Modify the current CP of the L2Character and broadcast Server->Client packet StatusUpdate
 		if (getCurrentCp() < charstat.getMaxRecoverableCp())
 		{
-			setCurrentCp(getCurrentCp() + getActiveChar().getStat().getValue(Stats.REGENERATE_CP_RATE), false);
+			setCurrentCp(getCurrentCp() + getActiveChar().getStat().getValue(DoubleStat.REGENERATE_CP_RATE), false);
 		}
 		
 		// Modify the current HP of the L2Character and broadcast Server->Client packet StatusUpdate
 		if (getCurrentHp() < charstat.getMaxRecoverableHp())
 		{
-			setCurrentHp(getCurrentHp() + getActiveChar().getStat().getValue(Stats.REGENERATE_HP_RATE), false);
+			setCurrentHp(getCurrentHp() + getActiveChar().getStat().getValue(DoubleStat.REGENERATE_HP_RATE), false);
 		}
 		
 		// Modify the current MP of the L2Character and broadcast Server->Client packet StatusUpdate
 		if (getCurrentMp() < charstat.getMaxRecoverableMp())
 		{
-			setCurrentMp(getCurrentMp() + getActiveChar().getStat().getValue(Stats.REGENERATE_MP_RATE), false);
+			setCurrentMp(getCurrentMp() + getActiveChar().getStat().getValue(DoubleStat.REGENERATE_MP_RATE), false);
 		}
 		
 		getActiveChar().broadcastStatusUpdate(); // send the StatusUpdate packet

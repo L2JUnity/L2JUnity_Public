@@ -31,7 +31,8 @@ public enum AnnouncementType
 	EVENT,
 	AUTO_NORMAL,
 	AUTO_CRITICAL;
-	private static final Logger _log = LoggerFactory.getLogger(AnnouncementType.class);
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementType.class);
 	
 	public static AnnouncementType findById(int id)
 	{
@@ -42,7 +43,7 @@ public enum AnnouncementType
 				return type;
 			}
 		}
-		_log.warn(AnnouncementType.class.getSimpleName() + ": Unexistent id specified: " + id + "!", new IllegalStateException());
+		LOGGER.warn("Unexistent id specified: " + id + "!", new IllegalStateException());
 		return NORMAL;
 	}
 	
@@ -55,7 +56,7 @@ public enum AnnouncementType
 				return type;
 			}
 		}
-		_log.warn(AnnouncementType.class.getSimpleName() + ": Unexistent name specified: " + name + "!", new IllegalStateException());
+		LOGGER.warn("Non-existent name specified: " + name + "!", new IllegalStateException());
 		return NORMAL;
 	}
 }

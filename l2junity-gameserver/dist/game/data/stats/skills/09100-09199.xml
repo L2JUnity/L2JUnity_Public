@@ -21,7 +21,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="7.1429">
 						<item id="13457" count="1" />
@@ -90,7 +90,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="8.3333">
 						<item id="10215" count="1" />
@@ -153,7 +153,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="7.1429">
 						<item id="9380" count="1" />
@@ -222,7 +222,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.8824">
 						<item id="13143" count="1" />
@@ -300,7 +300,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.8824">
 						<item id="15694" count="1" />
@@ -378,7 +378,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.8824">
 						<item id="9514" count="1" />
@@ -456,7 +456,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="33.3333">
 						<item id="9570" count="1" />
@@ -492,7 +492,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="33.3333">
 						<item id="10480" count="1" />
@@ -528,7 +528,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="33.3333">
 						<item id="13071" count="1" />
@@ -564,7 +564,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16.6667">
 						<item id="8664" count="1" />
@@ -603,7 +603,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16.6667">
 						<item id="8667" count="1" />
@@ -645,7 +645,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="10">
 						<item id="8671" count="1" />
@@ -696,7 +696,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="14.2857">
 						<item id="9546" count="1" />
@@ -750,6 +750,11 @@
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="9114" toLevel="1" name="Nevit's Voice">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -765,10 +770,10 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="GiveRecommendation">
+			<effect name="i_bonuscount_up">
 				<amount>10</amount>
 			</effect>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>57</itemId>
 				<itemCount>100000</itemCount>
 			</effect>
@@ -1920,7 +1925,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.0001">
 						<item id="16026" count="1" />
@@ -1977,7 +1982,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>306</transformationId>
 			</effect>
 		</effects>
@@ -2009,7 +2014,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>305</transformationId>
 			</effect>
 		</effects>
@@ -2034,15 +2039,15 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2068,19 +2073,19 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>5</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>15</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2106,15 +2111,15 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2142,7 +2147,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.882">
 						<item id="13143" count="1" />
@@ -2228,8 +2233,6 @@
 		<effectPoint>100</effectPoint>
 		<icon>icon.etc_hot_spring_nectar_i00</icon>
 		<isMagic>4</isMagic> <!-- Item Skill -->
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>14744</itemConsumeId> <!-- Event - Vitality Replenishing Herb Tea 30 minutes -->
 		<magicLvl>-1</magicLvl>
 		<operateType>A2</operateType>
 		<reuseDelay>10000</reuseDelay>
@@ -2241,6 +2244,8 @@
 		<hitTime>100</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>14744</itemConsumeId> <!-- Event - Vitality Replenishing Herb Tea 30 minutes -->
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
@@ -2250,6 +2255,11 @@
 				<hasAbnormal>false</hasAbnormal>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9167" toLevel="1" name="Nevit's Hourglass - 1 hour(s)">
 		<!-- Increases Nevit's blessing by 1 hour(s). -->
@@ -2416,10 +2426,10 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="GiveRecommendation">
+			<effect name="i_bonuscount_up">
 				<amount>10</amount>
 			</effect>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>57</itemId>
 				<itemCount>100000</itemCount>
 			</effect>
@@ -2440,7 +2450,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="GiveSp">
+			<effect name="i_sp">
 				<sp>500000</sp>
 			</effect>
 		</effects>
@@ -2460,7 +2470,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="GiveSp">
+			<effect name="i_sp">
 				<sp>1000000</sp>
 			</effect>
 		</effects>
@@ -2481,7 +2491,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.000099">
 						<item id="15558" count="1" />
@@ -2922,7 +2932,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="7.32">
 						<item id="13722" count="250" />
@@ -2975,7 +2985,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.1">
 						<item id="15743" count="1" />
@@ -3137,14 +3147,13 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="Resurrection">
+			<effect name="i_resurrection">
 				<power>100</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="9180" toLevel="2" name="10,000,000 SP scroll">
 		<!-- High Five Skill -->
-		<table name="#amount"> 5000000 10000000 </table>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>
@@ -3160,7 +3169,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="GiveSp">
+			<effect name="i_sp">
 				<sp>
 					<value level="1">5000000</value>
 					<value level="2">10000000</value>
@@ -3222,24 +3231,26 @@
 	</skill>
 	<skill id="9183" toLevel="1" name="Freya's Refreshing Breeze - 4 hour(s)">
 		<!-- "For 4 hours, recovers vitality when Exp. is acquired through hunting." -->
+		<abnormalLvl>8</abnormalLvl>
+		<abnormalTime>14400</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>8</abnormalLvl>
-		<abnormalTime>14400</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.etc_I.etc_hot_spring_mineral_i00</icon>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>17285</itemConsumeId> <!-- Freya's Refreshing Breeze - 4 hour(s) -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
@@ -3249,27 +3260,34 @@
 				<hasAbnormal>false</hasAbnormal>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9184" toLevel="1" name="Freya's Refreshing Breeze - 4 hour(s)">
 		<!-- "For 4 hours, recovers vitality when Exp. is acquired through hunting." -->
+		<abnormalLvl>8</abnormalLvl>
+		<abnormalTime>14400</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>8</abnormalLvl>
-		<abnormalTime>14400</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.etc_I.etc_hot_spring_mineral_i00</icon>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>17286</itemConsumeId> <!-- Freya's Refreshing Breeze - 4 hour(s) - Event -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
@@ -3279,9 +3297,14 @@
 				<hasAbnormal>false</hasAbnormal>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9185" toLevel="1" name="Scroll: Enchant Weapon (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -3291,9 +3314,20 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="9186" toLevel="1" name="Scroll: Enchant Armor (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -3303,9 +3337,21 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="9187" toLevel="1" name="Blessed Scroll: Enchant Weapon (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -3315,9 +3361,20 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="9188" toLevel="1" name="Player Commendation - Scroll: Enchant Weapon (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -3327,9 +3384,21 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+				<scrollGroup>2</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="9189" toLevel="1" name="Player Commendation - Scroll: Enchant Armor (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -3339,9 +3408,22 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+				<scrollGroup>2</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="9190" toLevel="1" name="Player Commendation - Blessed Scroll: Enchant Weapon (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -3351,9 +3433,22 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+				<scrollGroup>2</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="9191" toLevel="1" name="Scroll of Escape: Cruma Tower">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
+		<!-- TODO : parse op_not_territory cond ... -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -3363,6 +3458,8 @@
 		<hitTime>20000</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>17726</itemConsumeId> <!-- Scroll of Escape: Cruma Tower -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -3370,9 +3467,17 @@
 			</condition>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_teleport">
+				<x>17225</x>
+				<y>114173</y>
+				<z>-3440</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9192" toLevel="1" name="Scroll of Escape: Tower of Insolence">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
+		<!-- TODO : parse op_not_territory cond ... -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -3382,6 +3487,8 @@
 		<hitTime>20000</hitTime>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>17727</itemConsumeId> <!-- Scroll of Escape: Tower of Insolence -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="OpAlignment">
 				<affectType>CASTER</affectType>
@@ -3389,6 +3496,13 @@
 			</condition>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_teleport">
+				<x>114649</x>
+				<y>11115</y>
+				<z>-5120</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9193" toLevel="1" name="Soulshot (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -3402,7 +3516,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
-	<skill id="9194" toLevel="1" name="Spiritshot (R-grade)">
+	<skill id="9194" toLevel="1" name="Spiritshot (R-grade) ">
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -3414,7 +3528,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
-	<skill id="9195" toLevel="1" name="Blessed Spiritshot (R-grade)">
+	<skill id="9195" toLevel="1" name="Blessed Spiritshot (R-grade) ">
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -3437,9 +3551,21 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="9197" toLevel="1" name="Scroll: 1,000,000 SP">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>200</hitTime>
@@ -3451,39 +3577,141 @@
 		<reuseDelay>3000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_sp">
+				<sp>1000000</sp>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9198" toLevel="1" name="Elixir: Horn Melody">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 30 minutes, increases P. Atk. by 17%, P. Def. by 15%, M. Atk. by 79%, and M. Def. by 30%. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
 		<icon>icon.skill11517</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>17</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>79</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_PA_PD_UP;PA_UP;PD_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_PA_PD_UP;PA_UP;PD_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9199" toLevel="1" name="Elixir: Drum Melody">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- For 30 minutes, increases Max MP by 20%, HP recovery bonus by 20%, M. Critical Rate by 20, Critical Damage during a normal attack by 20%, P. Atk. by 10%, P. Def. by 20%, Atk. Spd. by 20%, M. Atk. by 20%, M. Def. by 20%, Casting Spd. by 20%, and Debuff Resistance by 10%. Decreases damage received from a critical attack by 30% and Speed by 15%, and additionally increases Critical Damage during a normal attack when receiving more than a certain amount of damage. -->
+		<!-- Glory Days confirmed -->
+		<!-- For 30 minutes, increases Max MP by 20%, HP recovery bonus by 20%, M. Critical Rate by 20, Critical Damage during a normal attack by 20%, P. Atk. by 10%, P. Def. by 20%, Atk. Spd. by 20%, M. Atk. by 20%, M. Def. by 20%, Casting Spd. by 20%, and Debuff Resistance by 10%. Decreases damage received from a critical attack by 30% and Speed by 15%, and additionally increases Critical Damage during a normal attack when receiving more than a certain amount of damage. -->		
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_DEFENCE</abnormalType>
 		<icon>icon.skill11522</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>BUFF_SPECIAL_DEFENCE</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_trigger_skill_by_dmg">
+				<!-- Critical Damage Increase -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>107</maxAttackerLevel>
+				<chance>80</chance>
+				<targetType>SELF</targetType>
+				<minDamage>300</minDamage>
+				<skillId>11569</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_resist_abnormal_by_category">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>-15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>MULTI_BUFF;COUNTER_CRITICAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>MULTI_BUFF;COUNTER_CRITICAL</slot>
+			</effect>
+		</effects>
 	</skill>
 </list>

@@ -59,8 +59,20 @@
 		<current enchant="15-127" chance="30" /> <!-- TODO: confirm on ertheia they increased success rate "significantly" -->
 	</enchantRateGroup>
 
+	<!-- Special shadow weapon enchant group. -->
+	<enchantRateGroup name="SHADOW_WEAPON_GROUP">
+		<current enchant="0-2" chance="100" />
+		<current enchant="3" chance="58" />
+		<current enchant="4" chance="59" />
+		<current enchant="5" chance="60" />
+		<current enchant="6" chance="31" />
+		<current enchant="7" chance="28" />
+		<current enchant="8" chance="30" />
+		<current enchant="9" chance="14" />
+	</enchantRateGroup>
+
 	<!-- Default scrolls enchanting route line. -->
-	<enchantScrollGroup id="0">
+	<enchantScrollGroup id="1">
 		<!-- Bind armor group to all item slots except full armor. -->
 		<enchantRate group="ARMOR_GROUP">
 			<item slot="lhand" /> <!-- Left hand: Shields, Sigils -->
@@ -74,6 +86,9 @@
 			<item slot="rfinger;lfinger" /> <!-- Right finger, Left finger: Rings -->
 			<item slot="belt" /> <!-- Belt: Belts -->
 			<item slot="shirt" /> <!-- Shirt: Shirts -->
+			<item slot="hair" /> <!-- Hair Accessory -->
+			<item slot="hair2" /> <!-- Hair Accessory -->
+			<item slot="hairall" /> <!-- Hair Accessory -->
 		</enchantRate>
 		<!-- Bind only full armor group to to full armor slot items. -->
 		<enchantRate group="FULL_ARMOR_GROUP">
@@ -88,6 +103,21 @@
 		<enchantRate group="MAGE_WEAPON_GROUP">
 			<item slot="rhand" magicWeapon="true" /> <!-- Right hand: Weapons, Magic weapon -->
 			<item slot="lrhand" magicWeapon="true" /> <!-- Two hands: Weapons, Magic weapon -->
+		</enchantRate>
+	</enchantScrollGroup>
+
+	<enchantScrollGroup id="2" extend="1" />
+	<enchantScrollGroup id="3" extend="1" />
+	<enchantScrollGroup id="4" extend="1" />
+	<enchantScrollGroup id="5" extend="1" />
+	<enchantScrollGroup id="6" extend="1" />
+	<enchantScrollGroup id="7" extend="1" />
+	<enchantScrollGroup id="8" extend="1" />
+
+	<enchantScrollGroup id="9">
+		<enchantRate group="SHADOW_WEAPON_GROUP">
+			<item slot="rhand" /> <!-- Right hand: Weapons -->
+			<item slot="lrhand" /> <!-- Two hands: Weapons -->
 		</enchantRate>
 	</enchantScrollGroup>
 </list>

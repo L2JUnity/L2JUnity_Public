@@ -18,6 +18,8 @@
  */
 package org.l2junity.gameserver.model.holders;
 
+import java.io.Serializable;
+
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.model.skills.Skill;
 
@@ -25,8 +27,9 @@ import org.l2junity.gameserver.model.skills.Skill;
  * Simple class for storing skill id/level.
  * @author BiggBoss
  */
-public class SkillHolder
+public class SkillHolder implements Serializable
 {
+	private static final long serialVersionUID = -9109518778685462799L;
 	private final int _skillId;
 	private final int _skillLevel;
 	private final int _skillSubLevel;
@@ -103,6 +106,6 @@ public class SkillHolder
 	@Override
 	public String toString()
 	{
-		return "[SkillId: " + _skillId + " Level: " + _skillLevel + "]";
+		return "[SkillId: " + _skillId + " Level: " + _skillLevel + " SubLevel: " + _skillSubLevel + "]";
 	}
 }

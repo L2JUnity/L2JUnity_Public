@@ -21,51 +21,71 @@ package org.l2junity.gameserver.handler;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2junity.gameserver.model.skills.targets.TargetType;
-
 /**
- * @author UnAfraid
+ * @author Nik
  */
-public class TargetHandler implements IHandler<ITargetTypeHandler, Enum<TargetType>>
+public final class TargetHandler
 {
-	private final Map<Enum<TargetType>, ITargetTypeHandler> _datatable;
+	private final Map<String, ITargetTypeHandler> _targetTypeHandlers = new HashMap<>();
+	private final Map<String, IAffectScopeHandler> _affectScopeHandlers = new HashMap<>();
+	private final Map<String, IAffectObjectHandler> _affectObjectHandlers = new HashMap<>();
+	
+	public void registerTargetTypeHandler(String name, ITargetTypeHandler handler)
+	{
+		_targetTypeHandlers.put(name, handler);
+	}
+	
+	public ITargetTypeHandler getTargetTypeHandler(String name)
+	{
+		return _targetTypeHandlers.get(name);
+	}
+	
+	public void registerAffectScopeHandler(String name, IAffectScopeHandler handler)
+	{
+		_affectScopeHandlers.put(name, handler);
+	}
+	
+	public IAffectScopeHandler getAffectScopeHandler(String name)
+	{
+		return _affectScopeHandlers.get(name);
+	}
+	
+	public void registerAffectObjectHandler(String name, IAffectObjectHandler handler)
+	{
+		_affectObjectHandlers.put(name, handler);
+	}
+	
+	public IAffectObjectHandler getAffectObjectHandler(String name)
+	{
+		return _affectObjectHandlers.get(name);
+	}
+	
+	public int getTargetTypeHandlersSize()
+	{
+		return _targetTypeHandlers.size();
+	}
+	
+	public int getAffectScopeHandlersSize()
+	{
+		return _affectScopeHandlers.size();
+	}
+	
+	public int getAffectObjectHandlersSize()
+	{
+		return _affectObjectHandlers.size();
+	}
 	
 	protected TargetHandler()
 	{
-		_datatable = new HashMap<>();
 	}
-	
-	@Override
-	public void registerHandler(ITargetTypeHandler handler)
-	{
-		_datatable.put(handler.getTargetType(), handler);
-	}
-	
-	@Override
-	public synchronized void removeHandler(ITargetTypeHandler handler)
-	{
-		_datatable.remove(handler.getTargetType());
-	}
-	
-	@Override
-	public ITargetTypeHandler getHandler(Enum<TargetType> targetType)
-	{
-		return _datatable.get(targetType);
-	}
-	
-	@Override
-	public int size()
-	{
-		return _datatable.size();
-	}
-	
+
 	public static TargetHandler getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
-	
-	private static class SingletonHolder
+
+	private static final class SingletonHolder
 	{
-		protected static final TargetHandler _instance = new TargetHandler();
+		protected static final TargetHandler INSTANCE = new TargetHandler();
 	}
 }

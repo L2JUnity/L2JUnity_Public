@@ -18,6 +18,7 @@
  */
 package org.l2junity.gameserver.model.actor.request;
 
+import org.l2junity.gameserver.enums.AttributeType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 
@@ -26,13 +27,61 @@ import org.l2junity.gameserver.model.items.instance.ItemInstance;
  */
 public final class EnchantItemAttributeRequest extends AbstractRequest
 {
+	public static final int[] WEAPON_VALUES =
+	{
+		0, // Level 1
+		25, // Level 2
+		75, // Level 3
+		150, // Level 4
+		175, // Level 5
+		225, // Level 6
+		300, // Level 7
+		325, // Level 8
+		375, // Level 9
+		450, // Level 10
+		475, // Level 11
+		525, // Level 12
+		600, // Level 13
+		Integer.MAX_VALUE
+		// TODO: Higher stones
+	};
+	
+	public static final int[] ARMOR_VALUES =
+	{
+		0, // Level 1
+		12, // Level 2
+		30, // Level 3
+		60, // Level 4
+		72, // Level 5
+		90, // Level 6
+		120, // Level 7
+		132, // Level 8
+		150, // Level 9
+		180, // Level 10
+		192, // Level 11
+		210, // Level 12
+		240, // Level 13
+		Integer.MAX_VALUE
+		// TODO: Higher stones
+	};
+	
 	private volatile int _enchantingItemObjectId;
 	private volatile int _enchantingStoneObjectId;
+	final AttributeType _weaponAttribute;
+	final AttributeType _armorAttribute;
+	final int _maxLevel;
+	final int _minValue;
+	final int _maxValue;
 	
-	public EnchantItemAttributeRequest(PlayerInstance activeChar, int enchantingStoneObjectId)
+	public EnchantItemAttributeRequest(PlayerInstance activeChar, int enchantingStoneObjectId, AttributeType weaponAttribute, AttributeType armorAttribute, int maxLevel, int minValue, int maxValue)
 	{
 		super(activeChar);
 		_enchantingStoneObjectId = enchantingStoneObjectId;
+		_weaponAttribute = weaponAttribute;
+		_armorAttribute = armorAttribute;
+		_maxLevel = maxLevel;
+		_minValue = minValue;
+		_maxValue = maxValue;
 	}
 	
 	public ItemInstance getEnchantingItem()
@@ -53,6 +102,36 @@ public final class EnchantItemAttributeRequest extends AbstractRequest
 	public void setEnchantingStone(int objectId)
 	{
 		_enchantingStoneObjectId = objectId;
+	}
+	
+	public AttributeType getWeaponAttribute()
+	{
+		return _weaponAttribute;
+	}
+	
+	public AttributeType getArmorAttribute()
+	{
+		return _armorAttribute;
+	}
+	
+	public int getMaxLevel()
+	{
+		return _maxLevel;
+	}
+	
+	public int getLimit(boolean isWeapon)
+	{
+		return isWeapon ? WEAPON_VALUES[_maxLevel] : ARMOR_VALUES[_maxLevel];
+	}
+	
+	public int getMinValue()
+	{
+		return _minValue;
+	}
+	
+	public int getMaxValue()
+	{
+		return _minValue;
 	}
 	
 	@Override

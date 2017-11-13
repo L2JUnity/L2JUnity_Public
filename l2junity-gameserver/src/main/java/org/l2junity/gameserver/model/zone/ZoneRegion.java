@@ -71,21 +71,21 @@ public class ZoneRegion
 		}
 	}
 	
-	public void removeFromZones(Creature character)
+	public void removeFromZones(Creature character, boolean isLogout)
 	{
 		for (ZoneType z : getZones().values())
 		{
-			z.removeCharacter(character);
+			z.removeCharacter(character, isLogout);
 		}
 	}
 	
-	public boolean checkEffectRangeInsidePeaceZone(Skill skill, final int x, final int y, final int z)
+	public boolean checkEffectRangeInsidePeaceZone(Skill skill, final double x, final double y, final double z)
 	{
 		final int range = skill.getEffectRange();
-		final int up = y + range;
-		final int down = y - range;
-		final int left = x + range;
-		final int right = x - range;
+		final double up = y + range;
+		final double down = y - range;
+		final double left = x + range;
+		final double right = x - range;
 		
 		for (ZoneType e : getZones().values())
 		{

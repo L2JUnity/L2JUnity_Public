@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.base;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.ExperienceData;
 
 /**
@@ -28,12 +28,12 @@ import org.l2junity.gameserver.data.xml.impl.ExperienceData;
  */
 public final class SubClass
 {
-	private static final byte _maxLevel = Config.MAX_SUBCLASS_LEVEL < ExperienceData.getInstance().getMaxLevel() ? Config.MAX_SUBCLASS_LEVEL : (byte) (ExperienceData.getInstance().getMaxLevel() - 1);
+	private static final byte _maxLevel = PlayerConfig.MAX_SUBCLASS_LEVEL < ExperienceData.getInstance().getMaxLevel() ? PlayerConfig.MAX_SUBCLASS_LEVEL : (byte) (ExperienceData.getInstance().getMaxLevel() - 1);
 	
-	private PlayerClass _class;
-	private long _exp = ExperienceData.getInstance().getExpForLevel(Config.BASE_SUBCLASS_LEVEL);
+	private ClassId _class;
+	private long _exp = ExperienceData.getInstance().getExpForLevel(PlayerConfig.BASE_SUBCLASS_LEVEL);
 	private long _sp = 0;
-	private byte _level = Config.BASE_SUBCLASS_LEVEL;
+	private byte _level = PlayerConfig.BASE_SUBCLASS_LEVEL;
 	private int _classIndex = 1;
 	private int _vitalityPoints = 0;
 	private boolean _dualClass = false;
@@ -44,7 +44,7 @@ public final class SubClass
 		// using the preset default values.
 	}
 	
-	public PlayerClass getClassDefinition()
+	public ClassId getClassDefinition()
 	{
 		return _class;
 	}
@@ -90,7 +90,7 @@ public final class SubClass
 	
 	public void setClassId(int classId)
 	{
-		_class = PlayerClass.values()[classId];
+		_class = ClassId.getClassId(classId);
 	}
 	
 	public void setExp(long expValue)
@@ -129,9 +129,9 @@ public final class SubClass
 		{
 			levelValue = _maxLevel;
 		}
-		else if (levelValue < Config.BASE_SUBCLASS_LEVEL)
+		else if (levelValue < PlayerConfig.BASE_SUBCLASS_LEVEL)
 		{
-			levelValue = Config.BASE_SUBCLASS_LEVEL;
+			levelValue = PlayerConfig.BASE_SUBCLASS_LEVEL;
 		}
 		
 		_level = levelValue;
@@ -150,7 +150,7 @@ public final class SubClass
 	
 	public void decLevel()
 	{
-		if (getLevel() == Config.BASE_SUBCLASS_LEVEL)
+		if (getLevel() == PlayerConfig.BASE_SUBCLASS_LEVEL)
 		{
 			return;
 		}

@@ -18,12 +18,15 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.instance.L2StaticObjectInstance;
 import org.l2junity.gameserver.model.actor.templates.L2CharTemplate;
@@ -48,11 +51,10 @@ public final class StaticObjectData implements IGameXmlReader
 	 */
 	protected StaticObjectData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_staticObjects.clear();
 		parseDatapackFile("data/staticObjects.xml");
@@ -60,7 +62,7 @@ public final class StaticObjectData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -82,6 +84,11 @@ public final class StaticObjectData implements IGameXmlReader
 				}
 			}
 		}
+	}
+	
+	public int getObjectCount()
+	{
+		return _staticObjects.size();
 	}
 	
 	/**
@@ -111,6 +118,7 @@ public final class StaticObjectData implements IGameXmlReader
 	 * Gets the single instance of StaticObjects.
 	 * @return single instance of StaticObjects
 	 */
+	@InstanceGetter
 	public static StaticObjectData getInstance()
 	{
 		return SingletonHolder._instance;

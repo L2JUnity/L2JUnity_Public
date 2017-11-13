@@ -21,10 +21,15 @@ package org.l2junity.gameserver;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.enums.ItemLocation;
 import org.l2junity.gameserver.instancemanager.ItemsOnGroundManager;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 
 public final class ItemsAutoDestroy
@@ -33,12 +38,15 @@ public final class ItemsAutoDestroy
 	
 	protected ItemsAutoDestroy()
 	{
-		ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this::removeItems, 5000, 5000);
 	}
 	
-	public static ItemsAutoDestroy getInstance()
+	@Load(group = LoadGroup.class)
+	public void load()
 	{
-		return SingletonHolder._instance;
+		if ((GeneralConfig.AUTODESTROY_ITEM_AFTER > 0) || (GeneralConfig.HERB_AUTO_DESTROY_TIME > 0))
+		{
+			ThreadPool.scheduleAtFixedRate(this::removeItems, 5_000, 5_000, TimeUnit.MILLISECONDS);
+		}
 	}
 	
 	public synchronized void addItem(ItemInstance item)
@@ -72,18 +80,18 @@ public final class ItemsAutoDestroy
 				}
 				else if (item.getItem().hasExImmediateEffect())
 				{
-					autoDestroyTime = Config.HERB_AUTO_DESTROY_TIME;
+					autoDestroyTime = GeneralConfig.HERB_AUTO_DESTROY_TIME * 1000;
 				}
 				else
 				{
-					autoDestroyTime = ((Config.AUTODESTROY_ITEM_AFTER == 0) ? 3600000 : Config.AUTODESTROY_ITEM_AFTER * 1000);
+					autoDestroyTime = ((GeneralConfig.AUTODESTROY_ITEM_AFTER == 0) ? 3600000 : GeneralConfig.AUTODESTROY_ITEM_AFTER * 1000);
 				}
 				
 				if ((curtime - item.getDropTime()) > autoDestroyTime)
 				{
 					item.decayMe();
 					itemIterator.remove();
-					if (Config.SAVE_DROPPED_ITEM)
+					if (GeneralConfig.SAVE_DROPPED_ITEM)
 					{
 						ItemsOnGroundManager.getInstance().removeObject(item);
 					}
@@ -93,8 +101,14 @@ public final class ItemsAutoDestroy
 		}
 	}
 	
+	@InstanceGetter
+	public static ItemsAutoDestroy getInstance()
+	{
+		return SingletonHolder.INSTANCE;
+	}
+	
 	private static class SingletonHolder
 	{
-		protected static final ItemsAutoDestroy _instance = new ItemsAutoDestroy();
+		protected static final ItemsAutoDestroy INSTANCE = new ItemsAutoDestroy();
 	}
 }

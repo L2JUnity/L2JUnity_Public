@@ -46,12 +46,12 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y the y coordinate usually middle of drawing area
 	 * @param z the z coordinate usually middle of drawing area
 	 */
-	public ExServerPrimitive(String name, int x, int y, int z)
+	public ExServerPrimitive(String name, double x, double y, double z)
 	{
 		_name = name;
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 	}
 	
 	/**
@@ -72,9 +72,9 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y the y coordinate for this point
 	 * @param z the z coordinate for this point
 	 */
-	public void addPoint(String name, int color, boolean isNameColored, int x, int y, int z)
+	public void addPoint(String name, int color, boolean isNameColored, double x, double y, double z)
 	{
-		_points.add(new Point(name, color, isNameColored, x, y, z));
+		_points.add(new Point(name, color, isNameColored, (int) x, (int) y, (int) z));
 	}
 	
 	/**
@@ -96,7 +96,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y the y coordinate for this point
 	 * @param z the z coordinate for this point
 	 */
-	public void addPoint(int color, int x, int y, int z)
+	public void addPoint(int color, double x, double y, double z)
 	{
 		addPoint("", color, false, x, y, z);
 	}
@@ -120,7 +120,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y the y coordinate for this point
 	 * @param z the z coordinate for this point
 	 */
-	public void addPoint(String name, Color color, boolean isNameColored, int x, int y, int z)
+	public void addPoint(String name, Color color, boolean isNameColored, double x, double y, double z)
 	{
 		addPoint(name, color.getRGB(), isNameColored, x, y, z);
 	}
@@ -144,7 +144,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y the y coordinate for this point
 	 * @param z the z coordinate for this point
 	 */
-	public void addPoint(Color color, int x, int y, int z)
+	public void addPoint(Color color, double x, double y, double z)
 	{
 		addPoint("", color, false, x, y, z);
 	}
@@ -171,9 +171,9 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y2 the y coordinate for this line end point
 	 * @param z2 the z coordinate for this line end point
 	 */
-	public void addLine(String name, int color, boolean isNameColored, int x, int y, int z, int x2, int y2, int z2)
+	public void addLine(String name, int color, boolean isNameColored, double x, double y, double z, double x2, double y2, double z2)
 	{
-		_lines.add(new Line(name, color, isNameColored, x, y, z, x2, y2, z2));
+		_lines.add(new Line(name, color, isNameColored, (int) x, (int) y, (int) z, (int) x2, (int) y2, (int) z2));
 	}
 	
 	/**
@@ -186,7 +186,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y2 the y coordinate for this line end point
 	 * @param z2 the z coordinate for this line end point
 	 */
-	public void addLine(String name, int color, boolean isNameColored, ILocational locational, int x2, int y2, int z2)
+	public void addLine(String name, int color, boolean isNameColored, ILocational locational, double x2, double y2, double z2)
 	{
 		addLine(name, color, isNameColored, locational.getX(), locational.getY(), locational.getZ(), x2, y2, z2);
 	}
@@ -201,7 +201,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param z the z coordinate for this line start point
 	 * @param locational2 the ILocational to take coordinates for this line end point
 	 */
-	public void addLine(String name, int color, boolean isNameColored, int x, int y, int z, ILocational locational2)
+	public void addLine(String name, int color, boolean isNameColored, double x, double y, double z, ILocational locational2)
 	{
 		addLine(name, color, isNameColored, x, y, z, locational2.getX(), locational2.getY(), locational2.getZ());
 	}
@@ -229,7 +229,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y2 the y coordinate for this line end point
 	 * @param z2 the z coordinate for this line end point
 	 */
-	public void addLine(int color, int x, int y, int z, int x2, int y2, int z2)
+	public void addLine(int color, double x, double y, double z, double x2, double y2, double z2)
 	{
 		addLine("", color, false, x, y, z, x2, y2, z2);
 	}
@@ -242,7 +242,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y2 the y coordinate for this line end point
 	 * @param z2 the z coordinate for this line end point
 	 */
-	public void addLine(int color, ILocational locational, int x2, int y2, int z2)
+	public void addLine(int color, ILocational locational, double x2, double y2, double z2)
 	{
 		addLine("", color, false, locational, x2, y2, z2);
 	}
@@ -255,7 +255,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param z the z coordinate for this line start point
 	 * @param locational2 the ILocational to take coordinates for this line end point
 	 */
-	public void addLine(int color, int x, int y, int z, ILocational locational2)
+	public void addLine(int color, double x, double y, double z, ILocational locational2)
 	{
 		addLine("", color, false, x, y, z, locational2);
 	}
@@ -283,7 +283,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y2 the y coordinate for this line end point
 	 * @param z2 the z coordinate for this line end point
 	 */
-	public void addLine(String name, Color color, boolean isNameColored, int x, int y, int z, int x2, int y2, int z2)
+	public void addLine(String name, Color color, boolean isNameColored, double x, double y, double z, double x2, double y2, double z2)
 	{
 		addLine(name, color.getRGB(), isNameColored, x, y, z, x2, y2, z2);
 	}
@@ -298,7 +298,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y2 the y coordinate for this line end point
 	 * @param z2 the z coordinate for this line end point
 	 */
-	public void addLine(String name, Color color, boolean isNameColored, ILocational locational, int x2, int y2, int z2)
+	public void addLine(String name, Color color, boolean isNameColored, ILocational locational, double x2, double y2, double z2)
 	{
 		addLine(name, color.getRGB(), isNameColored, locational, x2, y2, z2);
 	}
@@ -313,7 +313,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param z the z coordinate for this line start point
 	 * @param locational2 the ILocational to take coordinates for this line end point
 	 */
-	public void addLine(String name, Color color, boolean isNameColored, int x, int y, int z, ILocational locational2)
+	public void addLine(String name, Color color, boolean isNameColored, double x, double y, double z, ILocational locational2)
 	{
 		addLine(name, color.getRGB(), isNameColored, x, y, z, locational2);
 	}
@@ -341,7 +341,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y2 the y coordinate for this line end point
 	 * @param z2 the z coordinate for this line end point
 	 */
-	public void addLine(Color color, int x, int y, int z, int x2, int y2, int z2)
+	public void addLine(Color color, double x, double y, double z, double x2, double y2, double z2)
 	{
 		addLine("", color, false, x, y, z, x2, y2, z2);
 	}
@@ -354,7 +354,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param y2 the y coordinate for this line end point
 	 * @param z2 the z coordinate for this line end point
 	 */
-	public void addLine(Color color, ILocational locational, int x2, int y2, int z2)
+	public void addLine(Color color, ILocational locational, double x2, double y2, double z2)
 	{
 		addLine("", color, false, locational, x2, y2, z2);
 	}
@@ -367,7 +367,7 @@ public class ExServerPrimitive implements IClientOutgoingPacket
 	 * @param z the z coordinate for this line start point
 	 * @param locational2 the ILocational to take coordinates for this line end point
 	 */
-	public void addLine(Color color, int x, int y, int z, ILocational locational2)
+	public void addLine(Color color, double x, double y, double z, ILocational locational2)
 	{
 		addLine("", color, false, x, y, z, locational2);
 	}

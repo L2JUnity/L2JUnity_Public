@@ -20,10 +20,12 @@ package org.l2junity.gameserver.network.client.send;
 
 import org.l2junity.gameserver.data.xml.impl.ExperienceData;
 import org.l2junity.gameserver.enums.AttributeType;
+import org.l2junity.gameserver.enums.ItemGrade;
 import org.l2junity.gameserver.enums.UserInfoType;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.Party;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.zone.ZoneId;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -141,7 +143,7 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 			packet.writeC(_activeChar.isGM() ? 0x01 : 0x00);
 			packet.writeC(_activeChar.getRace().ordinal());
 			packet.writeC(_activeChar.getAppearance().getSex() ? 0x01 : 0x00);
-			packet.writeD(_activeChar.getBaseClass());
+			packet.writeD(ClassId.getRootClassId(_activeChar.getBaseClass()).getId());
 			packet.writeD(_activeChar.getClassId().getId());
 			packet.writeC(_activeChar.getLevel());
 		}
@@ -199,8 +201,8 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 			packet.writeH(6);
 			packet.writeC(_activeChar.getMountType().ordinal());
 			packet.writeC(_activeChar.getPrivateStoreType().getId());
-			packet.writeC(_activeChar.hasDwarvenCraft() ? 1 : 0);
-			packet.writeC(_activeChar.getAbilityPointsUsed());
+			packet.writeC(_activeChar.getCrystallizeGrade() != ItemGrade.NONE ? 1 : 0);
+			packet.writeC(_activeChar.getAbilityPoints() - _activeChar.getAbilityPointsUsed());
 		}
 		
 		if (containsMask(UserInfoType.STATS))
@@ -236,9 +238,9 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		if (containsMask(UserInfoType.POSITION))
 		{
 			packet.writeH(18);
-			packet.writeD(_activeChar.getX());
-			packet.writeD(_activeChar.getY());
-			packet.writeD(_activeChar.getZ());
+			packet.writeD((int) _activeChar.getX());
+			packet.writeD((int) _activeChar.getY());
+			packet.writeD((int) _activeChar.getZ());
 			packet.writeD(_activeChar.isInVehicle() ? _activeChar.getVehicle().getObjectId() : 0);
 		}
 		
@@ -297,7 +299,7 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 			packet.writeH(22);
 			packet.writeC(_activeChar.getPvpFlag());
 			packet.writeD(_activeChar.getReputation()); // Reputation
-			packet.writeC(_activeChar.isNoble() ? 0x01 : 0x00);
+			packet.writeC(_activeChar.getNobleStatus().getClientId());
 			packet.writeC(_activeChar.isHero() ? 0x01 : 0x00);
 			packet.writeC(_activeChar.getPledgeClass());
 			packet.writeD(_activeChar.getPkKills());
@@ -321,7 +323,7 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 			packet.writeC(_activeChar.getInventory().getTalismanSlots()); // Confirmed
 			packet.writeC(_activeChar.getInventory().getBroochJewelSlots()); // Confirmed
 			packet.writeC(_activeChar.getTeam().getId()); // Confirmed
-			packet.writeD(0x00); // (1 = Red, 2 = White, 3 = White Pink, there is higher values (23, 50, 100 produces different aura) dotted / straight circle ring on the floor
+			packet.writeD(0x00); // Some kind of aura mask (1 = Red, 2 = White, 3 = White AND Red, there is higher values: 20, 50, 100 produces different aura) dotted / straight circle ring on the floor
 		}
 		
 		if (containsMask(UserInfoType.MOVEMENTS))
@@ -349,8 +351,9 @@ public class UserInfo extends AbstractMaskPacket<UserInfoType>
 		if (containsMask(UserInfoType.UNK_3))
 		{
 			packet.writeH(9);
+			packet.writeC(0x00);
 			packet.writeD(0x00);
-			packet.writeH(0x00);
+			packet.writeC(0x00);
 			packet.writeC(_activeChar.isTrueHero() ? 100 : 0x00);
 		}
 		

@@ -31,12 +31,6 @@ public class NpcStatus extends CharStatus
 	}
 	
 	@Override
-	public void reduceHp(double value, Creature attacker)
-	{
-		reduceHp(value, attacker, true, false, false);
-	}
-	
-	@Override
 	public void reduceHp(double value, Creature attacker, boolean awake, boolean isDOT, boolean isHpConsumption)
 	{
 		if (getActiveChar().isDead())

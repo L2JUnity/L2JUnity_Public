@@ -19,7 +19,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpCpHeal">
+			<effect name="i_heal_special">
 				<power>1519</power>
 			</effect>
 		</effects>
@@ -43,7 +43,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpCpHeal">
+			<effect name="i_heal_special">
 				<power>1557</power>
 			</effect>
 		</effects>
@@ -65,7 +65,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>14933</npcId>
 				<lifeTime>30</lifeTime>
 			</effect>
@@ -88,7 +88,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>14943</npcId>
 				<lifeTime>30</lifeTime>
 			</effect>
@@ -111,7 +111,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>15010</npcId>
 				<lifeTime>30</lifeTime>
 			</effect>
@@ -140,11 +140,11 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ManaHealByLevel">
+			<effect name="i_mp_by_level">
 				<power>166</power>
 			</effect>
-			<effect name="ManaHealOverTime">
-				<power>12</power>
+			<effect name="t_mp">
+				<power>-12</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -172,11 +172,11 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ManaHealByLevel">
+			<effect name="i_mp_by_level">
 				<power>174</power>
 			</effect>
-			<effect name="ManaHealOverTime">
-				<power>12</power>
+			<effect name="t_mp">
+				<power>-12</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -204,11 +204,11 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ManaHealByLevel">
+			<effect name="i_mp_by_level">
 				<power>183</power>
 			</effect>
-			<effect name="ManaHealOverTime">
-				<power>13</power>
+			<effect name="t_mp">
+				<power>-13</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -233,16 +233,16 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="DamageBlock">
+			<effect name="p_block_act" />
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="BuffBlock" />
-			<effect name="DebuffBlock" />
-			<effect name="HealPercent">
+			<effect name="p_block_buff" />
+			<effect name="p_block_debuff" />
+			<effect name="i_hp_per_max">
 				<power>100</power>
 			</effect>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>100</power>
 				<ticks>1</ticks>
 			</effect>
@@ -268,16 +268,16 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="DamageBlock">
+			<effect name="p_block_act" />
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="BuffBlock" />
-			<effect name="DebuffBlock" />
-			<effect name="HealPercent">
+			<effect name="p_block_buff" />
+			<effect name="p_block_debuff" />
+			<effect name="i_hp_per_max">
 				<power>100</power>
 			</effect>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>100</power>
 				<ticks>1</ticks>
 			</effect>
@@ -303,16 +303,16 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="DamageBlock">
+			<effect name="p_block_act" />
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="BuffBlock" />
-			<effect name="DebuffBlock" />
-			<effect name="HealPercent">
+			<effect name="p_block_buff" />
+			<effect name="p_block_debuff" />
+			<effect name="i_hp_per_max">
 				<power>100</power>
 			</effect>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>100</power>
 				<ticks>1</ticks>
 			</effect>
@@ -333,7 +333,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>6500</power>
 			</effect>
 		</effects>
@@ -353,7 +353,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>8190</power>
 			</effect>
 		</effects>
@@ -373,7 +373,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9750</power>
 			</effect>
 		</effects>
@@ -396,7 +396,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>-391</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -420,7 +420,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>-417</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -444,7 +444,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>-454</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -470,7 +470,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -498,7 +498,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>52</power>
 			</effect>
 		</effects>
@@ -525,7 +525,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>59</power>
 			</effect>
 		</effects>
@@ -552,7 +552,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>65</power>
 			</effect>
 		</effects>
@@ -579,7 +579,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>62</power>
 			</effect>
 		</effects>
@@ -606,7 +606,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>70</power>
 			</effect>
 		</effects>
@@ -633,7 +633,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>78</power>
 			</effect>
 		</effects>
@@ -660,7 +660,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>57</power>
 			</effect>
 		</effects>
@@ -687,7 +687,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>64</power>
 			</effect>
 		</effects>
@@ -714,7 +714,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>70</power>
 			</effect>
 		</effects>
@@ -741,7 +741,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>64</power>
 			</effect>
 		</effects>
@@ -768,7 +768,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>70</power>
 			</effect>
 		</effects>
@@ -795,7 +795,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>78</power>
 			</effect>
 		</effects>
@@ -816,7 +816,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>5200</power>
 			</effect>
 		</effects>
@@ -837,7 +837,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>6552</power>
 			</effect>
 		</effects>
@@ -858,7 +858,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>7800</power>
 			</effect>
 		</effects>
@@ -879,7 +879,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>6240</power>
 			</effect>
 		</effects>
@@ -900,7 +900,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>7862</power>
 			</effect>
 		</effects>
@@ -921,7 +921,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9360</power>
 			</effect>
 		</effects>
@@ -948,12 +948,12 @@
 		<abnormalTime>2</abnormalTime>
 		<trait>SHOCK</trait>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -979,12 +979,12 @@
 		<abnormalTime>2</abnormalTime>
 		<trait>SHOCK</trait>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -1010,12 +1010,12 @@
 		<abnormalTime>2</abnormalTime>
 		<trait>SHOCK</trait>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -1038,15 +1038,15 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>40</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1068,7 +1068,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>6500</power>
 			</effect>
 		</effects>
@@ -1089,7 +1089,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>8190</power>
 			</effect>
 		</effects>
@@ -1110,7 +1110,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>6500</power>
 			</effect>
 		</effects>
@@ -1130,7 +1130,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>20000</power>
 			</effect>
 		</effects>
@@ -1146,6 +1146,7 @@
 		<reuseDelay>30000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-111</effectPoint>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<basicProperty>PHYSICAL</basicProperty>
@@ -1158,15 +1159,15 @@
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>10</abnormalTime>
 		<trait>BLEED</trait>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>350</power>
 			</effect>
-			<effect name="DamOverTime">
-				<power>500</power>
+			<effect name="t_hp">
+				<power>-500</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -1193,7 +1194,7 @@
 		<abnormalTime>6</abnormalTime>
 		<trait>SHOCK</trait>
 		<affectLimit>10-10</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<fanRange>0;0;80;200</fanRange>
 		<affectRange>80</affectRange>
 		<isMagic>2</isMagic>
@@ -1201,8 +1202,8 @@
 		<affectScope>FAN_PB</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -1227,59 +1228,55 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TriggerSkillByKill">
+			<effect name="p_trigger_skill_by_kill">
 				<!-- HP Drain -->
 				<chance>100</chance>
 				<skillId>10285</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack_by_hp2">
 				<amount>30</amount>
 				<mode>PER</mode>
-				<hpPercent>60</hpPercent>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack_by_hp1">
 				<amount>10</amount>
 				<mode>PER</mode>
-				<hpPercent>30</hpPercent>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>500</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>30</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-80</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate_by_hp2">
 				<amount>100</amount>
 				<mode>DIFF</mode>
-				<hpPercent>60</hpPercent>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate_by_hp1">
 				<amount>300</amount>
 				<mode>DIFF</mode>
-				<hpPercent>30</hpPercent>
 			</effect>
 		</effects>
 	</skill>
@@ -1303,7 +1300,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>9000</power>
 			</effect>
 		</effects>
@@ -1329,12 +1326,12 @@
 		<trait>DERANGEMENT</trait>
 		<affectRange>400</affectRange>
 		<affectLimit>10-10</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 			<effect name="Fear" />
 		</effects>
 	</skill>
@@ -1353,7 +1350,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1373,7 +1370,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1393,7 +1390,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1416,7 +1413,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>29</power>
 			</effect>
 		</effects>
@@ -1438,7 +1435,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1460,7 +1457,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1482,7 +1479,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1505,7 +1502,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>29</power>
 			</effect>
 		</effects>
@@ -1520,6 +1517,7 @@
 		<coolTime>300</coolTime>
 		<reuseDelay>6000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<rideState>NONE</rideState>
@@ -1534,17 +1532,17 @@
 		<attributeType>DARK</attributeType>
 		<attributeValue>50</attributeValue>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>35</power>
+			<effect name="t_hp">
+				<power>-35</power>
 				<ticks>5</ticks>
 			</effect>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>3000</power>
-				<chance>20</chance>
+				<chanceBoost>200</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
@@ -1565,7 +1563,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1587,7 +1585,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1609,7 +1607,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3000</power>
 			</effect>
 		</effects>
@@ -1632,7 +1630,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>29</power>
 			</effect>
 		</effects>
@@ -1647,6 +1645,7 @@
 		<coolTime>300</coolTime>
 		<reuseDelay>6000</reuseDelay>
 		<effectPoint>-100</effectPoint>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<rideState>NONE</rideState>
@@ -1661,17 +1660,17 @@
 		<attributeType>DARK</attributeType>
 		<attributeValue>50</attributeValue>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>35</power>
+			<effect name="t_hp">
+				<power>-35</power>
 				<ticks>5</ticks>
 			</effect>
-			<effect name="FatalBlow">
+			<effect name="i_fatal_blow">
 				<power>3000</power>
-				<chance>20</chance>
+				<chanceBoost>200</chanceBoost>
 			</effect>
 		</effects>
 	</skill>
@@ -1710,12 +1709,12 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>1</abnormalTime>
 		<trait>SHOCK</trait>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -1741,10 +1740,10 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>-50</power>
 			</effect>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>200</power>
 			</effect>
 		</effects>
@@ -1767,7 +1766,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>CLAN</affectObject>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>500</power>
 			</effect>
 		</effects>
@@ -1791,10 +1790,10 @@
 		<affectScope>FAN_PB</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>-50</power>
 			</effect>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>20000</power>
 			</effect>
 		</effects>
@@ -1819,10 +1818,10 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>-50</power>
 			</effect>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>200</power>
 			</effect>
 		</effects>
@@ -1846,7 +1845,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>CLAN</affectObject>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>500</power>
 			</effect>
 		</effects>
@@ -1870,7 +1869,7 @@
 		<affectScope>FAN_PB</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>50000</power>
 			</effect>
 		</effects>
@@ -1895,10 +1894,10 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>-50</power>
 			</effect>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>20000</power>
 			</effect>
 		</effects>
@@ -1922,7 +1921,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>CLAN</affectObject>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>500</power>
 			</effect>
 		</effects>
@@ -1945,7 +1944,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>6000</power>
 			</effect>
 		</effects>
@@ -1969,10 +1968,10 @@
 		<affectScope>FAN_PB</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>-70</power>
 			</effect>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>20000</power>
 			</effect>
 		</effects>
@@ -2000,28 +1999,28 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ReduceCancel">
+			<effect name="p_reduce_cancel">
 				<amount>-40</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<magicType>1</magicType>
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
 		</effects>
@@ -2049,46 +2048,46 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>8</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>10</amount>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>13</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-11</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
 		</effects>
@@ -2116,67 +2115,67 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<magicType>0</magicType>
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<magicType>0</magicType>
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<magicType>3</magicType>
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<magicType>3</magicType>
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<magicType>1</magicType>
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<magicType>1</magicType>
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<magicType>22</magicType>
 				<amount>-10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<magicType>22</magicType>
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
 		</effects>
@@ -2203,11 +2202,11 @@
 		<abnormalTime>3</abnormalTime>
 		<trait>CHANGEBODY</trait>
 		<abnormalVisualEffect>CHANGEBODY</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeBody">
+			<effect name="p_changebody">
 				<templates>
 					<item templateId="500" minChance="0" maxChance="20" />
 					<item templateId="501" minChance="20" maxChance="40" />
@@ -2217,7 +2216,7 @@
 				</templates>
 			</effect>
 			<effect name="Fear" />
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 		</effects>
 	</skill>
 	<skill id="14979" toLevel="1" name="Decoration Line">
@@ -2253,15 +2252,15 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -2287,11 +2286,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2309,17 +2308,16 @@
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1400</effectRange>
 		<magicLvl>85</magicLvl>
-		<channelingTickInitialDelay>1200</channelingTickInitialDelay>
-		<channelingTickInterval>1000</channelingTickInterval>
+		<channelingStart>1.2</channelingStart>
+		<channelingTickInterval>1</channelingTickInterval>
 		<hitTime>12000</hitTime>
 		<isMagic>2</isMagic>
-		<channelingSkillId>14982</channelingSkillId>
+		<targetType>ENEMY</targetType>
 		<channelingEffects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>-10</power>
 			</effect>
 		</channelingEffects>
-		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="14983" toLevel="1" name="HP Drain">
@@ -2334,18 +2332,17 @@
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1400</effectRange>
 		<magicLvl>90</magicLvl>
-		<channelingTickInitialDelay>1200</channelingTickInitialDelay>
-		<channelingTickInterval>1000</channelingTickInterval>
+		<channelingStart>1.2</channelingStart>
+		<channelingTickInterval>1</channelingTickInterval>
 		<hitTime>12000</hitTime>
 		<isMagic>2</isMagic>
-		<channelingSkillId>14983</channelingSkillId>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<channelingEffects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>-10</power>
 			</effect>
 		</channelingEffects>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="14984" toLevel="1" name="HP Drain">
 		<!-- Glory Days confirmed -->
@@ -2359,18 +2356,17 @@
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1400</effectRange>
 		<magicLvl>95</magicLvl>
-		<channelingTickInitialDelay>1200</channelingTickInitialDelay>
-		<channelingTickInterval>1000</channelingTickInterval>
+		<channelingStart>1.2</channelingStart>
+		<channelingTickInterval>1</channelingTickInterval>
 		<hitTime>12000</hitTime>
 		<isMagic>2</isMagic>
-		<channelingSkillId>14984</channelingSkillId>
+		<targetType>ENEMY</targetType>
+		<affectScope>SINGLE</affectScope>
 		<channelingEffects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>-10</power>
 			</effect>
 		</channelingEffects>
-		<targetType>ENEMY</targetType>
-		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="14985" toLevel="1" name="Drain Status">
 		<!-- Glory Days confirmed -->
@@ -2389,12 +2385,12 @@
 		<effectRange>1000</effectRange>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>12</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>800</power>
+			<effect name="t_hp">
+				<power>-800</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -2416,12 +2412,12 @@
 		<effectRange>1000</effectRange>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>12</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>1050</power>
+			<effect name="t_hp">
+				<power>-1050</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -2443,12 +2439,12 @@
 		<effectRange>1000</effectRange>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>12</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>1300</power>
+			<effect name="t_hp">
+				<power>-1300</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -2470,12 +2466,12 @@
 		<abnormalLvl>50</abnormalLvl>
 		<abnormalTime>1000</abnormalTime>
 		<trait>HOLD</trait>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Root" />
-			<effect name="DefenceTrait">
+			<effect name="p_block_move" />
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 			</effect>
 		</effects>
@@ -2496,12 +2492,12 @@
 		<specialLevel>-1</specialLevel>
 		<abnormalLvl>50</abnormalLvl>
 		<abnormalTime>1000</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>15.5</power>
+			<effect name="t_hp">
+				<power>-15.5</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -2522,12 +2518,12 @@
 		<specialLevel>-1</specialLevel>
 		<abnormalLvl>50</abnormalLvl>
 		<abnormalTime>1000</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>20</power>
+			<effect name="t_hp">
+				<power>-20</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -2548,12 +2544,12 @@
 		<specialLevel>-1</specialLevel>
 		<abnormalLvl>50</abnormalLvl>
 		<abnormalTime>1000</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
-				<power>25</power>
+			<effect name="t_hp">
+				<power>-25</power>
 				<ticks>1</ticks>
 			</effect>
 		</effects>
@@ -2569,11 +2565,11 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>ROOT_MAGICALLY,-1;POISON,-1</dispel>
 			</effect>
 		</effects>
@@ -2599,34 +2595,34 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ReduceCancel">
+			<effect name="p_reduce_cancel">
 				<amount>-40</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -2654,48 +2650,47 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>10</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2720,45 +2715,45 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -2787,34 +2782,34 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ReduceCancel">
+			<effect name="p_reduce_cancel">
 				<amount>-40</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -2843,48 +2838,47 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>9</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>10</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -2910,45 +2904,45 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelBySlotProbability">
+			<effect name="i_dispel_by_slot_probability">
 				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
 				<rate>100</rate>
 			</effect>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -2982,14 +2976,16 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
 			</effect>
-			<effect name="TargetCancel" />
-			<effect name="Transformation">
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
 				<transformationId>23</transformationId>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>80</amount>
 				<mode>PER</mode>
 				<armorType>

@@ -38,8 +38,8 @@ public class FriendAddRequest implements IClientOutgoingPacket
 	{
 		OutgoingPackets.FRIEND_ADD_REQUEST.writeId(packet);
 		
+		packet.writeC(0x00); // Unk
 		packet.writeS(_requestorName);
-		packet.writeD(0x00);
 		return true;
 	}
 }

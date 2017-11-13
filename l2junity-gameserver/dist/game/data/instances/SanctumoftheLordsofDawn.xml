@@ -18,92 +18,698 @@
 		<door id="17240006" />
 	</doorlist>
 	<spawnlist>
-		<group>
-			<!-- Darkness of Dawn -->
-			<npc id="32579" x="-75988" y="213411" z="-7124" heading="0" respawnTime="60sec" />
-			<!-- Identity Confirm Device -->
-			<npc id="32578" x="-75695" y="213537" z="-7128" heading="0" respawnTime="60sec" />
-			<npc id="32578" x="-78289" y="205749" z="-7884" heading="0" respawnTime="60sec" />
-			<!-- Password Entry Device -->
-			<npc id="32577" x="-80152" y="205740" z="-7904" heading="0" respawnTime="60sec" />
-			<!-- Shelf -->
-			<npc id="32580" x="-81393" y="205565" z="-7960" heading="0" respawnTime="60sec" />
+		<group name="iz111_npc1724_01m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_npc1724_01" minZ="-7164" maxZ="-6964">
+					<node x="-76082" y="213315" />
+					<node x="-75882" y="213315" />
+					<node x="-75882" y="213515" />
+					<node x="-76082" y="213515" />
+				</territory>
+			</territories>
+			<npc id="32579" x="-75988" y="213411" z="-7124" respawnTime="1sec" count="1" /> <!-- Darkness of Dawn -->
 		</group>
-		<group name="high_priest_of_dawn" spawnByDefault="false">
-			<npc id="18828" x="-79229" y="205782" z="-7896" heading="28672" respawnTime="60sec" />
-			<npc id="18828" x="-79362" y="205706" z="-7896" heading="16383" respawnTime="60sec" />
-			<npc id="18828" x="-79495" y="205774" z="-7896" heading="4096" respawnTime="60sec" />
-			<npc id="18828" x="-79493" y="205930" z="-7896" heading="61440" respawnTime="60sec" />
-			<npc id="18828" x="-79362" y="206012" z="-7896" heading="49152" respawnTime="60sec" />
-			<npc id="18828" x="-79230" y="205935" z="-7896" heading="36864" respawnTime="60sec" />
+		<group name="iz111_npc1724_02m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_npc1724_02" minZ="-7164" maxZ="-6964">
+					<node x="-75865" y="213427" />
+					<node x="-75665" y="213427" />
+					<node x="-75665" y="213627" />
+					<node x="-75865" y="213627" />
+				</territory>
+			</territories>
+			<npc id="32578" x="-75695" y="213537" z="-7128" respawnTime="1sec" count="1"> <!-- Identity Confirm Device -->
+				<parameters>
+					<param name="DoorName" value="door_of_ssq_id1" />
+					<param name="DoorName2" value="door_of_ssq_id1_a" />
+				</parameters>
+			</npc>
 		</group>
-		<group name="save_point1" spawnByDefault="false">
-			<npc id="18834" x="-75190" y="210176" z="-7418" heading="0" respawnTime="60sec" />
-			<npc id="18834" x="-74743" y="209820" z="-7418" heading="32768" respawnTime="60sec" />
-			<npc id="18835" x="-75650" y="212107" z="-7322" heading="0" respawnTime="60sec" />
-			<npc id="18835" x="-74854" y="212107" z="-7322" heading="32768" respawnTime="60sec" />
-			<npc id="18835" x="-74534" y="212108" z="-7321" heading="0" respawnTime="60sec" />
-			<npc id="18835" x="-75200" y="211178" z="-7322" heading="16384" respawnTime="60sec" />
-			<npc id="18835" x="-74701" y="211460" z="-7321" heading="49151" respawnTime="60sec" />
-			<npc id="18834" x="-74934" y="213446" z="-7232" heading="33334" respawnTime="60sec" />
-			<npc id="18835" x="-74951" y="211629" z="-7321" heading="16384" respawnTime="60sec" />
-			<npc id="27351" x="-74619" y="209981" z="-7418" heading="30212" respawnTime="60sec" />
-			<npc id="27351" x="-75301" y="209980" z="-7418" heading="1722" respawnTime="60sec" />
+		<group name="iz111_npc1724_04m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_npc1724_04" minZ="-7936" maxZ="-7736">
+					<node x="-80173" y="205640" />
+					<node x="-79973" y="205640" />
+					<node x="-79973" y="205840" />
+					<node x="-80173" y="205840" />
+				</territory>
+			</territories>
+			<npc id="32577" x="-80152" y="205740" z="-7904" respawnTime="1sec" count="1"> <!-- Password Entry Device -->
+				<parameters>
+					<param name="DoorName" value="door_of_ssq_password" />
+					<param name="DoorName2" value="door_of_ssq_password_a" />
+				</parameters>
+			</npc>
 		</group>
-		<group name="save_point2" spawnByDefault="false">
-			<npc id="18834" x="-75559" y="207860" z="-7515" heading="16384" respawnTime="60sec" />
-			<npc id="18834" x="-74227" y="208290" z="-7520" heading="32768" respawnTime="60sec" />
-			<npc id="18834" x="-74522" y="207063" z="-7520" heading="0" respawnTime="60sec" />
-			<npc id="18834" x="-74956" y="206348" z="-7520" heading="16384" respawnTime="60sec" />
-			<npc id="18834" x="-75402" y="206939" z="-7520" heading="32768" respawnTime="60sec" />
-			<npc id="18834" x="-74246" y="206515" z="-7520" heading="32768" respawnTime="60sec" />
-			<npc id="18834" x="-76378" y="207852" z="-7616" heading="32768" respawnTime="60sec" />
-			<npc id="18834" x="-76628" y="208151" z="-7616" heading="32768" respawnTime="60sec" />
-			<npc id="18834" x="-76374" y="208848" z="-7616" heading="32768" respawnTime="60sec" />
-			<npc id="18834" x="-76928" y="209189" z="-7616" heading="16384" respawnTime="60sec" />
-			<npc id="18834" x="-77183" y="209443" z="-7616" heading="49151" respawnTime="60sec" />
-			<npc id="18834" x="-74955" y="207611" z="-7520" heading="0" respawnTime="60sec" />
-			<npc id="18834" x="-75654" y="208112" z="-7520" heading="2718" respawnTime="60sec" />
-			<npc id="18834" x="-75428" y="208115" z="-7520" heading="32768" respawnTime="60sec" />
-			<npc id="27351" x="-74282" y="208784" z="-7520" heading="40959" respawnTime="60sec" />
-			<npc id="27351" x="-74558" y="206625" z="-7520" heading="65102" respawnTime="60sec" />
-			<npc id="27351" x="-75454" y="206740" z="-7520" heading="34645" respawnTime="60sec" />
+		<group name="iz111_npc1724_05m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_npc1724_05" minZ="-7936" maxZ="-7736">
+					<node x="-78326" y="205714" />
+					<node x="-78126" y="205714" />
+					<node x="-78126" y="205914" />
+					<node x="-78326" y="205914" />
+				</territory>
+			</territories>
+			<npc id="32578" x="-78289" y="205749" z="-7884" respawnTime="1sec" count="1"> <!-- Identity Confirm Device -->
+				<parameters>
+					<param name="DoorName" value="door_of_ssq_id2" />
+					<param name="DoorName2" value="door_of_ssq_id2_a" />
+					<param name="scene_num" value="11" />
+					<param name="scene_sec" value="30000" />
+				</parameters>
+			</npc>
 		</group>
-		<group name="save_point3" spawnByDefault="false">
-			<npc id="18834" x="-78921" y="206110" z="-7904" heading="7872" respawnTime="60sec" />
-			<npc id="18834" x="-78855" y="206443" z="-7896" heading="24784" respawnTime="60sec" />
-			<npc id="18834" x="-79357" y="206713" z="-7904" heading="49151" respawnTime="60sec" />
-			<npc id="18834" x="-79665" y="206257" z="-7896" heading="24528" respawnTime="60sec" />
-			<npc id="18834" x="-79999" y="206302" z="-7904" heading="-8016" respawnTime="60sec" />
-			<npc id="18834" x="-79781" y="205602" z="-7904" heading="-24728" respawnTime="60sec" />
-			<npc id="18834" x="-79849" y="205260" z="-7904" heading="8032" respawnTime="60sec" />
-			<npc id="18834" x="-79363" y="205379" z="-7904" heading="49151" respawnTime="60sec" />
-			<npc id="18834" x="-78870" y="205253" z="-7904" heading="24792" respawnTime="60sec" />
-			<npc id="18834" x="-78928" y="205585" z="-7904" heading="-8184" respawnTime="60sec" />
-			<npc id="18835" x="-78054" y="208464" z="-7712" heading="0" respawnTime="60sec" />
-			<npc id="18835" x="-78521" y="208035" z="-7712" heading="0" respawnTime="60sec" />
-			<npc id="18835" x="-76881" y="208037" z="-7712" heading="32768" respawnTime="60sec" />
-			<npc id="18835" x="-78335" y="207793" z="-7712" heading="0" respawnTime="60sec" />
-			<npc id="18835" x="-77702" y="207414" z="-7712" heading="16384" respawnTime="60sec" />
-			<npc id="18835" x="-77337" y="207428" z="-7712" heading="57279" respawnTime="60sec" />
-			<npc id="18835" x="-77718" y="207512" z="-7712" heading="24550" respawnTime="60sec" />
-			<npc id="18835" x="-77216" y="208297" z="-7712" heading="35486" respawnTime="60sec" />
-			<npc id="18835" x="-77558" y="207138" z="-7712" heading="17906" respawnTime="60sec" />
-			<npc id="18835" x="-78113" y="207384" z="-7705" heading="41575" respawnTime="60sec" />
-			<npc id="18835" x="-78346" y="207146" z="-7706" heading="8680" respawnTime="60sec" />
-			<npc id="18835" x="-77159" y="207642" z="-7712" heading="32460" respawnTime="60sec" />
-			<npc id="27351" x="-76962" y="207802" z="-7712" heading="35928" respawnTime="60sec" />
-			<npc id="27351" x="-77703" y="208320" z="-7712" heading="16384" respawnTime="60sec" />
-			<npc id="27351" x="-77703" y="207275" z="-7712" heading="49151" respawnTime="60sec" />
-			<npc id="27351" x="-78926" y="205432" z="-7904" heading="23278" respawnTime="60sec" />
-			<npc id="27351" x="-79813" y="205426" z="-7904" heading="9231" respawnTime="60sec" />
-			<npc id="27351" x="-79814" y="206277" z="-7904" heading="59013" respawnTime="60sec" />
-			<npc id="27351" x="-78891" y="206272" z="-7904" heading="59013" respawnTime="60sec" />
+		<group name="iz111_npc1724_06m1" ai="INZONE_MAKER" spawnByDefault="false">
+			<territories>
+				<territory name="iz111_npc1724_06" minZ="-7984" maxZ="-7784">
+					<node x="-79542" y="205670" />
+					<node x="-79180" y="205670" />
+					<node x="-79180" y="206052" />
+					<node x="-79542" y="206052" />
+				</territory>
+			</territories>
+			<npc id="18828" x="-79229" y="205782" z="-7896" heading="28672" respawnTime="1sec" count="1" /> <!-- High Priest of Dawn -->
+			<npc id="18828" x="-79362" y="205706" z="-7896" heading="16383" respawnTime="1sec" count="1" /> <!-- High Priest of Dawn -->
+			<npc id="18828" x="-79495" y="205774" z="-7896" heading="4096" respawnTime="1sec" count="1" /> <!-- High Priest of Dawn -->
+			<npc id="18828" x="-79493" y="205930" z="-7896" heading="61440" respawnTime="1sec" count="1" /> <!-- High Priest of Dawn -->
+			<npc id="18828" x="-79362" y="206012" z="-7896" heading="49152" respawnTime="1sec" count="1" /> <!-- High Priest of Dawn -->
+			<npc id="18828" x="-79230" y="205935" z="-7896" heading="36864" respawnTime="1sec" count="1" /> <!-- High Priest of Dawn -->
 		</group>
-		<group name="save_point4" spawnByDefault="false">
-			<npc id="27351" x="-81938" y="205856" z="-8000" heading="0" respawnTime="60sec" />
-			<npc id="27351" x="-81535" y="205503" z="-8000" heading="16384" respawnTime="60sec" />
-			<npc id="27351" x="-81536" y="206223" z="-8000" heading="49151" respawnTime="60sec" />
+		<group name="iz111_npc1724_07m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_npc1724_07" minZ="-8020" maxZ="-7820">
+					<node x="-82078" y="205301" />
+					<node x="-80987" y="205297" />
+					<node x="-80988" y="206413" />
+					<node x="-82078" y="206412" />
+				</territory>
+			</territories>
+			<npc id="27351" x="-81938" y="205856" z="-8000" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone07_01" />
+					<param name="my_agro_range" value="300" />
+					<param name="my_position" value="4" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-81535" y="205503" z="-8000" heading="16384" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="300" />
+					<param name="my_position" value="4" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-81536" y="206223" z="-8000" heading="49151" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="300" />
+					<param name="my_position" value="4" />
+				</parameters>
+			</npc>
+			<npc id="32580" x="-81561" y="205795" z="-7896" respawnTime="1sec" count="1" /> <!-- -->
+		</group>
+		<group name="iz111_1724_z1_01m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z1_01" minZ="-7264" maxZ="-7064">
+					<node x="-75032" y="213335" />
+					<node x="-74832" y="213335" />
+					<node x="-74832" y="213535" />
+					<node x="-75032" y="213535" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-74934" y="213446" z="-7232" heading="33334" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z1_02m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z1_02" minZ="-7350" maxZ="-7150">
+					<node x="-75052" y="211528" />
+					<node x="-74852" y="211528" />
+					<node x="-74852" y="211728" />
+					<node x="-75052" y="211728" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-74951" y="211629" z="-7321" heading="16384" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z1_03m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z1_03" minZ="-7355" maxZ="-7155">
+					<node x="-75697" y="212007" />
+					<node x="-75314" y="212007" />
+					<node x="-75314" y="212210" />
+					<node x="-75697" y="212207" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-75650" y="212107" z="-7322" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone01_01" />
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z1_04m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z1_04" minZ="-7350" maxZ="-7150">
+					<node x="-75087" y="212006" />
+					<node x="-74802" y="212006" />
+					<node x="-74802" y="212206" />
+					<node x="-75087" y="212206" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-74854" y="212107" z="-7322" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone01_02" />
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z1_05m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z1_05" minZ="-7351" maxZ="-7151">
+					<node x="-74591" y="212013" />
+					<node x="-74205" y="212013" />
+					<node x="-74205" y="212213" />
+					<node x="-74591" y="212213" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-74534" y="212108" z="-7321" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone01_03" />
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z1_06m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z1_06" minZ="-7371" maxZ="-7171">
+					<node x="-75299" y="211128" />
+					<node x="-75099" y="211128" />
+					<node x="-75099" y="211499" />
+					<node x="-75299" y="211499" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-75200" y="211178" z="-7322" heading="16384" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone01_04" />
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z1_07m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z1_07" minZ="-7373" maxZ="-7173">
+					<node x="-74800" y="211133" />
+					<node x="-74600" y="211133" />
+					<node x="-74600" y="211497" />
+					<node x="-74800" y="211497" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-74701" y="211460" z="-7321" heading="49151" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone01_05" />
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z2_01m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z2_01" minZ="-7446" maxZ="-7246">
+					<node x="-75478" y="209697" />
+					<node x="-74430" y="209698" />
+					<node x="-74429" y="210277" />
+					<node x="-75478" y="210277" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-75190" y="210176" z="-7418" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone02_01" />
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-74743" y="209820" z="-7418" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone02_02" />
+					<param name="my_position" value="1" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-74619" y="209981" z="-7418" heading="30212" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="1" />
+					<param name="my_agro_range" value="300" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-75301" y="209980" z="-7418" heading="1722" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="1" />
+					<param name="my_agro_range" value="300" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z3_01m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z3_01" minZ="-7547" maxZ="-7347">
+					<node x="-74457" y="208616" />
+					<node x="-74257" y="208616" />
+					<node x="-74257" y="208816" />
+					<node x="-74457" y="208816" />
+				</territory>
+			</territories>
+			<npc id="27351" x="-74282" y="208784" z="-7520" heading="40959" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="300" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z3_02m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z3_02" minZ="-7544" maxZ="-7344">
+					<node x="-75664" y="207795" />
+					<node x="-75463" y="207795" />
+					<node x="-75464" y="208804" />
+					<node x="-75666" y="208804" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-75559" y="207860" z="-7515" heading="16384" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone03_01" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z3_03m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z3_03" minZ="-7543" maxZ="-7343">
+					<node x="-74560" y="208187" />
+					<node x="-74181" y="208188" />
+					<node x="-74181" y="208386" />
+					<node x="-74560" y="208385" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-74227" y="208290" z="-7520" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone03_02" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z3_04m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z3_04" minZ="-7562" maxZ="-7362">
+					<node x="-74559" y="206964" />
+					<node x="-74165" y="206964" />
+					<node x="-74165" y="207163" />
+					<node x="-74559" y="207163" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-74522" y="207063" z="-7520" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone03_03" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z3_05m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z3_05" minZ="-7546" maxZ="-7346">
+					<node x="-75728" y="206310" />
+					<node x="-74153" y="206309" />
+					<node x="-74154" y="206781" />
+					<node x="-75727" y="206780" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-74956" y="206348" z="-7520" heading="16384" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone03_04" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-74246" y="206515" z="-7520" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone03_06" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-74558" y="206625" z="-7520" heading="65102" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="2" />
+					<param name="my_agro_range" value="300" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-75454" y="206740" z="-7520" heading="34645" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="2" />
+					<param name="my_agro_range" value="300" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z3_06m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z3_06" minZ="-7542" maxZ="-7342">
+					<node x="-75724" y="206841" />
+					<node x="-75373" y="206840" />
+					<node x="-75374" y="207040" />
+					<node x="-75724" y="207039" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-75402" y="206939" z="-7520" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone03_05" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z3_07m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z3_07" minZ="-7545" maxZ="-7345">
+					<node x="-75058" y="207511" />
+					<node x="-74858" y="207511" />
+					<node x="-74858" y="207711" />
+					<node x="-75058" y="207711" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-74955" y="207611" z="-7520" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="2" />
+					<param name="my_agro_range" value="250" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z3_08m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z3_08" minZ="-7546" maxZ="-7346">
+					<node x="-75695" y="208078" />
+					<node x="-75407" y="208079" />
+					<node x="-75414" y="208435" />
+					<node x="-75695" y="208438" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-75654" y="208112" z="-7520" heading="2718" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="2" />
+					<param name="my_agro_range" value="200" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-75428" y="208115" z="-7520" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="2" />
+					<param name="my_agro_range" value="200" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z4_01m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z4_01" minZ="-7636" maxZ="-7486">
+					<node x="-76666" y="207801" />
+					<node x="-76330" y="207801" />
+					<node x="-76331" y="208229" />
+					<node x="-76667" y="208229" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-76378" y="207852" z="-7616" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone04_01" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-76628" y="208151" z="-7616" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone04_02" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z4_02m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z4_02" minZ="-7640" maxZ="-7490">
+					<node x="-76667" y="208762" />
+					<node x="-76338" y="208763" />
+					<node x="-76338" y="208962" />
+					<node x="-76668" y="208962" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-76374" y="208848" z="-7616" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone04_03" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z4_03m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z4_03" minZ="-7643" maxZ="-7493">
+					<node x="-77254" y="209156" />
+					<node x="-76875" y="209156" />
+					<node x="-76875" y="209474" />
+					<node x="-77254" y="209474" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-76928" y="209189" z="-7616" heading="16384" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone04_04" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-77183" y="209443" z="-7616" heading="49151" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone04_05" />
+					<param name="my_position" value="2" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z5_02m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z5_02" minZ="-7733" maxZ="-7533">
+					<node x="-78546" y="207473" />
+					<node x="-76913" y="207473" />
+					<node x="-76913" y="208137" />
+					<node x="-78548" y="208140" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-78521" y="208035" z="-7712" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone05_02" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18835" x="-77718" y="207512" z="-7712" heading="24550" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-76962" y="207802" z="-7712" heading="35928" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="300" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z5_03m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z5_03" minZ="-7736" maxZ="-7536">
+					<node x="-77365" y="207944" />
+					<node x="-76848" y="207943" />
+					<node x="-76849" y="208350" />
+					<node x="-77364" y="208351" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-76881" y="208037" z="-7712" heading="32768" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone05_03" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18835" x="-77216" y="208297" z="-7712" heading="35486" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z5_04m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z5_04" minZ="-7730" maxZ="-7530">
+					<node x="-78345" y="206907" />
+					<node x="-77038" y="206908" />
+					<node x="-77046" y="208686" />
+					<node x="-78348" y="208684" />
+				</territory>
+			</territories>
+			<npc id="27351" x="-77703" y="208320" z="-7712" heading="16384" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="300" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-77703" y="207275" z="-7712" heading="49151" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="300" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18835" x="-78054" y="208464" z="-7712" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone05_01" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18835" x="-78335" y="207793" z="-7712" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone05_04" />
+					<param name="my_position" value="3" />
+					<param name="my_agro_range" value="200" />
+				</parameters>
+			</npc>
+			<npc id="18835" x="-77702" y="207414" z="-7712" heading="16384" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone05_05" />
+					<param name="my_position" value="3" />
+					<param name="my_agro_range" value="200" />
+				</parameters>
+			</npc>
+			<npc id="18835" x="-77558" y="207138" z="-7712" heading="17906" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z5_06m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z5_06" minZ="-7731" maxZ="-7531">
+					<node x="-78398" y="207100" />
+					<node x="-78062" y="207099" />
+					<node x="-78063" y="207431" />
+					<node x="-78397" y="207430" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-78113" y="207384" z="-7705" heading="41575" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18835" x="-78346" y="207146" z="-7706" heading="8680" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z5_07m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z5_07" minZ="-7740" maxZ="-7540">
+					<node x="-77385" y="207029" />
+					<node x="-76939" y="207029" />
+					<node x="-76940" y="207672" />
+					<node x="-77385" y="207673" />
+				</territory>
+			</territories>
+			<npc id="18835" x="-77337" y="207428" z="-7712" heading="57279" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone05_06" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18835" x="-77159" y="207642" z="-7712" heading="32460" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+		</group>
+		<group name="iz111_1724_z6_01m1" ai="INZONE_MAKER">
+			<territories>
+				<territory name="iz111_1724_z6_01" minZ="-7925" maxZ="-7725">
+					<node x="-80164" y="205045" />
+					<node x="-78543" y="205045" />
+					<node x="-78541" y="206752" />
+					<node x="-80171" y="206749" />
+				</territory>
+			</territories>
+			<npc id="18834" x="-78921" y="206110" z="-7904" heading="7872" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_01" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-78855" y="206443" z="-7896" heading="-24784" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_02" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-79357" y="206713" z="-7904" heading="49151" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_03" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-79665" y="206257" z="-7896" heading="24528" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_04" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-79999" y="206302" z="-7904" heading="-8016" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_05" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-79781" y="205602" z="-7904" heading="-24728" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_06" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-79849" y="205260" z="-7904" heading="8032" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_07" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-79363" y="205379" z="-7904" heading="49151" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_08" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-78870" y="205253" z="-7904" heading="24792" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_09" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="18834" x="-78928" y="205585" z="-7904" heading="-8184" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="SuperPointName" value="iz111_zone06_10" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-78926" y="205432" z="-7904" heading="23278" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="200" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-79813" y="205426" z="-7904" heading="9231" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="200" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-79814" y="206277" z="-7904" heading="59013" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="200" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
+			<npc id="27351" x="-78891" y="206272" z="-7904" heading="59013" respawnTime="1sec" count="1"> <!-- Guard of the Dawn -->
+				<parameters>
+					<param name="my_agro_range" value="200" />
+					<param name="my_position" value="3" />
+				</parameters>
+			</npc>
 		</group>
 	</spawnlist>
 </instance>

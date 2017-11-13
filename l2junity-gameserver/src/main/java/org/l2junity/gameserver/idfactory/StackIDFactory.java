@@ -24,8 +24,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Stack;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.IdFactoryConfig;
 
 /**
  * This class ...
@@ -67,7 +67,7 @@ public class StackIDFactory extends IdFactory
 		}
 		catch (Exception e)
 		{
-			LOGGER.error(getClass().getSimpleName() + ": Could not be initialized properly:" + e.getMessage());
+			LOGGER.error("Could not be initialized properly:" + e.getMessage());
 		}
 	}
 	
@@ -80,7 +80,7 @@ public class StackIDFactory extends IdFactory
 			return N;
 		}
 		// check these IDs not present in DB
-		if (Config.BAD_ID_CHECKING)
+		if (IdFactoryConfig.BAD_ID_CHECKING)
 		{
 			for (String check : ID_CHECKS)
 			{

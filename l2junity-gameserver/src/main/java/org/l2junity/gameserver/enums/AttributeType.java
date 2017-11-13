@@ -24,8 +24,7 @@ package org.l2junity.gameserver.enums;
  */
 public enum AttributeType
 {
-	NONE_ARMOR(-2),
-	NONE(-1),
+	NONE(-2),
 	FIRE(0),
 	WATER(1),
 	WIND(2),
@@ -42,14 +41,14 @@ public enum AttributeType
 		HOLY,
 		DARK
 	};
-
+	
 	private final byte _clientId;
-
+	
 	AttributeType(int clientId)
 	{
 		_clientId = (byte) clientId;
 	}
-
+	
 	/**
 	 * Gets the client id.
 	 * @return the client id
@@ -58,7 +57,7 @@ public enum AttributeType
 	{
 		return _clientId;
 	}
-
+	
 	/**
 	 * Gets the opposite.
 	 * @return the opposite
@@ -67,7 +66,7 @@ public enum AttributeType
 	{
 		return ATTRIBUTE_TYPES[((getClientId() % 2) == 0) ? (getClientId() + 1) : (getClientId() - 1)];
 	}
-
+	
 	/**
 	 * Finds an attribute type by its name.
 	 * @param attributeName the attribute name
@@ -84,7 +83,7 @@ public enum AttributeType
 		}
 		return null;
 	}
-
+	
 	/**
 	 * Finds an attribute type by its client id.
 	 * @param clientId the client id

@@ -50,7 +50,7 @@ public class ExAcquirableSkillListByClass implements IClientOutgoingPacket
 		{
 			packet.writeD(skill.getSkillId());
 			packet.writeH(skill.getSkillLevel());
-			packet.writeH(skill.getSkillLevel());
+			packet.writeH(skill.getSkillLevel()); // Max level
 			packet.writeC(skill.getGetLevel());
 			packet.writeQ(skill.getLevelUpSp());
 			packet.writeC(skill.getRequiredItems().size());

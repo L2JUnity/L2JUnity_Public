@@ -42,12 +42,12 @@ public final class StopMove implements IClientOutgoingPacket
 	 * @param z
 	 * @param heading
 	 */
-	public StopMove(int objectId, int x, int y, int z, int heading)
+	public StopMove(int objectId, double x, double y, double z, int heading)
 	{
 		_objectId = objectId;
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 		_heading = heading;
 	}
 	

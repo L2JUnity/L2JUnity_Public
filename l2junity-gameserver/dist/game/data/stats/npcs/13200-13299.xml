@@ -3433,6 +3433,27 @@
 		</skill_list>
 		<shots soul="2" spirit="2" />
 		<ex_crt_effect>false</ex_crt_effect>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="2820" max="6573" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="10.52">
+					<item id="36813" min="1" max="3" chance="100" /> <!-- Immortal Leather Legging Ingredient -->
+				</group>
+				<group chance="0.33">
+					<item id="36751" min="1" max="1" chance="90.909090909091" /> <!-- Recipe: Immortal Leather Leggings (60%) -->
+					<item id="17526" min="1" max="1" chance="9.0909090909091" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40205" min="1" max="1" chance="67.07" /> <!-- Requiem Fragment -->
+				<item id="40210" min="1" max="1" chance="0.03" /> <!-- Recipe: R (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="25" />
 			<height normal="27" />
@@ -3983,7 +4004,7 @@
 		<race>HUMANOID</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="54" />
 				<run ground="180" />

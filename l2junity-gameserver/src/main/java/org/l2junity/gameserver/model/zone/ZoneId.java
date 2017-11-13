@@ -39,7 +39,6 @@ public enum ZoneId
 	NO_SUMMON_FRIEND,
 	FORT,
 	NO_STORE,
-	TOWN,
 	SCRIPT,
 	HQ,
 	DANGER_AREA,
@@ -49,7 +48,8 @@ public enum ZoneId
 	NO_RESTART,
 	SAYUNE,
 	FISHING,
-	UNDYING;
+	UNDYING,
+	TAX;
 	
 	public static int getZoneCount()
 	{

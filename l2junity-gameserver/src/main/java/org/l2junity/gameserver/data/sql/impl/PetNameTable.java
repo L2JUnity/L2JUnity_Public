@@ -26,8 +26,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.ServerConfig;
 import org.l2junity.gameserver.data.xml.impl.PetDataTable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,7 +80,7 @@ public class PetNameTable
 		Pattern pattern;
 		try
 		{
-			pattern = Pattern.compile(Config.PET_NAME_TEMPLATE);
+			pattern = Pattern.compile(ServerConfig.PET_NAME_TEMPLATE);
 		}
 		catch (PatternSyntaxException e) // case of illegal pattern
 		{

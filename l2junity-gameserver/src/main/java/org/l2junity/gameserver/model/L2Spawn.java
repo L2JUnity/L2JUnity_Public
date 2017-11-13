@@ -22,19 +22,18 @@ import java.lang.reflect.Constructor;
 import java.util.Deque;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.TimeUnit;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GeoData;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
+import org.l2junity.gameserver.geodata.GeoData;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.L2NpcInstance;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
 import org.l2junity.gameserver.model.instancezone.Instance;
 import org.l2junity.gameserver.model.interfaces.IIdentifiable;
-import org.l2junity.gameserver.model.interfaces.ILocational;
 import org.l2junity.gameserver.model.interfaces.INamable;
-import org.l2junity.gameserver.model.interfaces.IPositionable;
 import org.l2junity.gameserver.model.spawns.NpcSpawnTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,8 +45,10 @@ import org.slf4j.LoggerFactory;
  * The heading of the L2NpcInstance can be a random heading if not defined (value= -1) or an exact heading (ex : merchant...).
  * @author Nightmare
  */
-public class L2Spawn implements IPositionable, IIdentifiable, INamable
+public class L2Spawn extends Location implements IIdentifiable, INamable
 {
+	private static final long serialVersionUID = 365121670142896487L;
+	
 	protected static final Logger LOGGER = LoggerFactory.getLogger(L2Spawn.class);
 	
 	/** String identifier of this spawn */
@@ -62,8 +63,6 @@ public class L2Spawn implements IPositionable, IIdentifiable, INamable
 	protected int _scheduledCount;
 	/** The identifier of the location area where L2NpcInstance can be spwaned */
 	private int _locationId;
-	/** The Location of this NPC spawn. */
-	private Location _location = new Location(0, 0, 0, 0);
 	private int _instanceId = 0;
 	/** Minimum respawn delay */
 	private int _respawnMinDelay;
@@ -127,6 +126,7 @@ public class L2Spawn implements IPositionable, IIdentifiable, INamable
 	 */
 	public L2Spawn(L2NpcTemplate template) throws SecurityException, ClassNotFoundException, NoSuchMethodException, ClassCastException
 	{
+		super(0, 0, 0);
 		// Set the _template of the L2Spawn
 		_template = template;
 		
@@ -151,6 +151,7 @@ public class L2Spawn implements IPositionable, IIdentifiable, INamable
 	 */
 	public L2Spawn(int npcId) throws SecurityException, ClassNotFoundException, NoSuchMethodException, ClassCastException
 	{
+		super(0, 0, 0);
 		_template = Objects.requireNonNull(NpcData.getInstance().getTemplate(npcId), "NpcTemplate not found for NPC ID: " + npcId);
 		
 		String className = "org.l2junity.gameserver.model.actor.instance." + _template.getType() + "Instance";
@@ -191,123 +192,6 @@ public class L2Spawn implements IPositionable, IIdentifiable, INamable
 	public int getLocationId()
 	{
 		return _locationId;
-	}
-	
-	@Override
-	public Location getLocation()
-	{
-		return _location;
-	}
-	
-	/**
-	 * @return the X position of the spawn point.
-	 */
-	@Override
-	public int getX()
-	{
-		return _location.getX();
-	}
-	
-	/**
-	 * Set the X position of the spawn point.
-	 * @param x the x coordinate
-	 */
-	@Override
-	public void setX(int x)
-	{
-		_location.setX(x);
-	}
-	
-	/**
-	 * @return the Y position of the spawn point.
-	 */
-	@Override
-	public int getY()
-	{
-		return _location.getY();
-	}
-	
-	/**
-	 * Set the Y position of the spawn point.
-	 * @param y the y coordinate
-	 */
-	@Override
-	public void setY(int y)
-	{
-		_location.setY(y);
-	}
-	
-	/**
-	 * @return the Z position of the spawn point.
-	 */
-	@Override
-	public int getZ()
-	{
-		return _location.getZ();
-	}
-	
-	/**
-	 * Set the Z position of the spawn point.
-	 * @param z the z coordinate
-	 */
-	@Override
-	public void setZ(int z)
-	{
-		_location.setZ(z);
-	}
-	
-	/**
-	 * Set the x, y, z position of the spawn point.
-	 * @param x The x coordinate.
-	 * @param y The y coordinate.
-	 * @param z The z coordinate.
-	 */
-	@Override
-	public void setXYZ(int x, int y, int z)
-	{
-		setX(x);
-		setY(y);
-		setZ(z);
-	}
-	
-	/**
-	 * Set the x, y, z position of the spawn point.
-	 * @param loc The location.
-	 */
-	@Override
-	public void setXYZ(ILocational loc)
-	{
-		setXYZ(loc.getX(), loc.getY(), loc.getZ());
-		
-	}
-	
-	/**
-	 * @return the heading of L2NpcInstance when they are spawned.
-	 */
-	@Override
-	public int getHeading()
-	{
-		return _location.getHeading();
-	}
-	
-	/**
-	 * Set the heading of L2NpcInstance when they are spawned.
-	 * @param heading
-	 */
-	@Override
-	public void setHeading(int heading)
-	{
-		_location.setHeading(heading);
-	}
-	
-	/**
-	 * Set the XYZ position of the spawn point.
-	 * @param loc
-	 */
-	@Override
-	public void setLocation(Location loc)
-	{
-		_location = loc;
 	}
 	
 	/**
@@ -402,7 +286,7 @@ public class L2Spawn implements IPositionable, IIdentifiable, INamable
 			
 			// Create a new SpawnTask to launch after the respawn Delay
 			// ClientScheduler.getInstance().scheduleLow(new SpawnTask(npcId), _respawnDelay);
-			ThreadPoolManager.getInstance().scheduleGeneral(new SpawnTask(oldNpc), hasRespawnRandom() ? Rnd.get(_respawnMinDelay, _respawnMaxDelay) : _respawnMinDelay);
+			ThreadPool.schedule(new SpawnTask(oldNpc), hasRespawnRandom() ? Rnd.get(_respawnMinDelay, _respawnMaxDelay) : _respawnMinDelay, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -516,9 +400,9 @@ public class L2Spawn implements IPositionable, IIdentifiable, INamable
 	 */
 	private Npc initializeNpcInstance(Npc npc)
 	{
-		int newlocx = 0;
-		int newlocy = 0;
-		int newlocz = 0;
+		double newlocx = 0;
+		double newlocy = 0;
+		double newlocz = 0;
 		
 		// If Locx and Locy are not defined, the L2NpcInstance must be spawned in an area defined by location or spawn territory
 		// New method
@@ -681,7 +565,7 @@ public class L2Spawn implements IPositionable, IIdentifiable, INamable
 	@Override
 	public String toString()
 	{
-		return "L2Spawn ID: " + getId() + " " + getLocation();
+		return "L2Spawn ID: " + getId() + " X: " + getX() + " Y: " + getY() + " Z: " + getZ() + " Heading: " + getHeading();
 	}
 	
 	public final boolean getRandomWalking()

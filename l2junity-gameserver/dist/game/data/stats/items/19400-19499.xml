@@ -656,14 +656,13 @@
 	<item id="19447" name="Blessed Scroll: Enchant Weapon (R-grade)" type="EtcItem">
 		<!-- P. Atk. + 6 for R-grade one-handed sword, one-handed blunt, dagger, spear, and other weapons when enchanted. P. Atk. + 7 for two-handed sword, two-handed blunt, dualsword, two-handed fist weapon, and crossbow. P. Atk. + 12 for bow weapons. M. Atk. + 5 for all weapons. P. Atk./M. Atk. greatly increases starting at + 4. All amounts are increased for Blessed weapons. If enchanting fails, the item will not be crystallized, but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.blessed_scroll_of_enchant_weapon_i06" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="price" val="150000000" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="BLESS_ENCHT_WP" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
 		<skills>
@@ -673,14 +672,13 @@
 	<item id="19448" name="Blessed Scroll: Enchant Armor (R-grade)" type="EtcItem">
 		<!-- When enchanted, P. Def. + 2 for R-grade armor and accessories, especially starting at + 4. Can be enchanted safely to + 3. When enchanted + 4 or more, HP also increases according to the enchant value. If enchanting fails, the item will not be crystallized, but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.blessed_scroll_of_enchant_armor_i06" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="price" val="18000000" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="BLESS_ENCHT_AM" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
 		<skills>
@@ -735,6 +733,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">103</stat>
+			<stat type="maxMp">37</stat>
 		</stats>
 	</item>
 	<item id="19452" name="Istina's Earring" type="Armor">
@@ -755,6 +754,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">154</stat>
+			<stat type="maxMp">56</stat>
 		</stats>
 	</item>
 	<item id="19453" name="Istina's Necklace" type="Armor">
@@ -775,6 +775,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">205</stat>
+			<stat type="maxMp">74</stat>
 		</stats>
 	</item>
 	<item id="19454" name="Istina's Belt" type="Armor">
@@ -852,6 +853,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">103</stat>
+			<stat type="maxMp">37</stat>
 		</stats>
 	</item>
 	<item id="19458" name="Octavis' Earring" type="Armor">
@@ -872,6 +874,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">154</stat>
+			<stat type="maxMp">56</stat>
 		</stats>
 	</item>
 	<item id="19459" name="Octavis' Necklace" type="Armor">
@@ -892,6 +895,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">205</stat>
+			<stat type="maxMp">74</stat>
 		</stats>
 	</item>
 	<item id="19460" name="Octavis' Belt" type="Armor">
@@ -968,6 +972,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">170</stat>
+			<stat type="maxMp">59</stat>
 		</stats>
 	</item>
 	<item id="19464" name="Blessed Valakas' Necklace" type="Armor">
@@ -990,6 +995,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">226</stat>
+			<stat type="maxMp">79</stat>
 		</stats>
 	</item>
 	<item id="19465" name="Bottle of Antharas' Soul" type="EtcItem">

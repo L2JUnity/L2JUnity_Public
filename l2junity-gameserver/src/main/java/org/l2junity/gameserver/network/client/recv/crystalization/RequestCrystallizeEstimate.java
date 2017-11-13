@@ -18,18 +18,16 @@
  */
 package org.l2junity.gameserver.network.client.recv.crystalization;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.data.xml.impl.ItemCrystalizationData;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.data.xml.impl.ItemCrystallizationData;
 import org.l2junity.gameserver.enums.PrivateStoreType;
-import org.l2junity.gameserver.model.CrystalizationData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.actor.request.CrystallizationRequest;
 import org.l2junity.gameserver.model.holders.ItemChanceHolder;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.items.type.CrystalType;
-import org.l2junity.gameserver.model.skills.CommonSkill;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
@@ -58,34 +56,27 @@ public class RequestCrystallizeEstimate implements IClientIncomingPacket
 	public void run(L2GameClient client)
 	{
 		final PlayerInstance activeChar = client.getActiveChar();
-		if ((activeChar == null) || activeChar.isInCrystallize())
+		if (activeChar == null)
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().getTransaction().tryPerformAction("crystallize"))
+		final CrystallizationRequest request = activeChar.getRequest(CrystallizationRequest.class);
+		if (request != null)
 		{
-			activeChar.sendMessage("You are crystallizing too fast.");
+			client.sendPacket(SystemMessageId.YOU_CANNOT_DO_THAT_WHILE_CRYSTALLIZING);
 			return;
 		}
 		
 		if (_count <= 0)
 		{
-			Util.handleIllegalPlayerAction(activeChar, "[RequestCrystallizeItem] count <= 0! ban! oid: " + _objectId + " owner: " + activeChar.getName(), Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "[RequestCrystallizeItem] count <= 0! ban! oid: " + _objectId + " owner: " + activeChar.getName(), GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
-		if ((activeChar.getPrivateStoreType() != PrivateStoreType.NONE) || activeChar.isInCrystallize())
+		if (activeChar.getPrivateStoreType() != PrivateStoreType.NONE)
 		{
 			client.sendPacket(SystemMessageId.WHILE_OPERATING_A_PRIVATE_STORE_OR_WORKSHOP_YOU_CANNOT_DISCARD_DESTROY_OR_TRADE_AN_ITEM);
-			return;
-		}
-		
-		int skillLevel = activeChar.getSkillLevel(CommonSkill.CRYSTALLIZE.getId());
-		if (skillLevel <= 0)
-		{
-			client.sendPacket(SystemMessageId.YOU_MAY_NOT_CRYSTALLIZE_THIS_ITEM_YOUR_CRYSTALLIZATION_SKILL_LEVEL_IS_TOO_LOW);
-			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
@@ -102,106 +93,43 @@ public class RequestCrystallizeEstimate implements IClientIncomingPacket
 			return;
 		}
 		
-		if (!item.getItem().isCrystallizable() || (item.getItem().getCrystalCount() <= 0) || (item.getItem().getCrystalType() == CrystalType.NONE))
+		if (_count > item.getCount())
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
-			_log.warn(activeChar + ": tried to crystallize " + item.getItem());
 			return;
 		}
 		
-		if (_count > item.getCount())
+		if (!item.getItem().isCrystallizable() || (item.getItem().getCrystalCount() <= 0) || (item.getItem().getCrystalType() == CrystalType.NONE))
 		{
-			_count = activeChar.getInventory().getItemByObjectId(_objectId).getCount();
+			client.sendPacket(SystemMessageId.THIS_ITEM_CANNOT_BE_CRYSTALLIZED);
+			return;
 		}
 		
 		if (!activeChar.getInventory().canManipulateWithItemId(item.getId()))
 		{
-			activeChar.sendMessage("You cannot use this item.");
+			client.sendPacket(SystemMessageId.THIS_ITEM_CANNOT_BE_CRYSTALLIZED);
 			return;
 		}
 		
 		// Check if the char can crystallize items and return if false;
-		boolean canCrystallize = true;
-		
-		switch (item.getItem().getCrystalTypePlus())
-		{
-			case D:
-			{
-				if (skillLevel < 1)
-				{
-					canCrystallize = false;
-				}
-				break;
-			}
-			case C:
-			{
-				if (skillLevel < 2)
-				{
-					canCrystallize = false;
-				}
-				break;
-			}
-			case B:
-			{
-				if (skillLevel < 3)
-				{
-					canCrystallize = false;
-				}
-				break;
-			}
-			case A:
-			{
-				if (skillLevel < 4)
-				{
-					canCrystallize = false;
-				}
-				break;
-			}
-			case S:
-			{
-				if (skillLevel < 5)
-				{
-					canCrystallize = false;
-				}
-				break;
-			}
-			case R:
-			{
-				if (skillLevel < 6)
-				{
-					canCrystallize = false;
-				}
-				break;
-			}
-		}
-		
-		if (!canCrystallize)
+		if (activeChar.getCrystallizeGrade().ordinal() < item.getItem().getItemGrade().ordinal())
 		{
 			client.sendPacket(SystemMessageId.YOU_MAY_NOT_CRYSTALLIZE_THIS_ITEM_YOUR_CRYSTALLIZATION_SKILL_LEVEL_IS_TOO_LOW);
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
-		activeChar.setInCrystallize(true);
-		
-		// add crystals
-		int crystalId = item.getItem().getCrystalItemId();
-		int crystalAmount = item.getCrystalCount();
-		final List<ItemChanceHolder> items = new ArrayList<>();
-		items.add(new ItemChanceHolder(crystalId, 100, crystalAmount));
-		
-		final CrystalizationData data = ItemCrystalizationData.getInstance().getCrystalization(item.getId());
-		if (data != null)
+		// Show crystallization rewards window.
+		final List<ItemChanceHolder> crystallizationRewards = ItemCrystallizationData.getInstance().getCrystallizationRewards(item);
+		if ((crystallizationRewards != null) && !crystallizationRewards.isEmpty())
 		{
-			for (ItemChanceHolder holder : data.getItems())
-			{
-				if (holder.getId() != crystalId)
-				{
-					items.add(holder);
-				}
-			}
+			activeChar.addRequest(new CrystallizationRequest(activeChar, _objectId, _count));
+			client.sendPacket(new ExGetCrystalizingEstimation(crystallizationRewards));
+		}
+		else
+		{
+			client.sendPacket(SystemMessageId.CRYSTALLIZATION_CANNOT_BE_PROCEEDED_BECAUSE_THERE_ARE_NO_ITEMS_REGISTERED);
 		}
 		
-		client.sendPacket(new ExGetCrystalizingEstimation(items));
 	}
 }

@@ -1,64 +1,88 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="list">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="playerLevel">
-                    <xs:complexType>
-                        <xs:attribute type="xs:positiveInteger" name="min" use="required" />
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="baitDistance">
-                    <xs:complexType>
-                        <xs:attribute type="xs:positiveInteger" name="min" use="required" />
-                        <xs:attribute type="xs:positiveInteger" name="max" use="required" />
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="fishingTime">
-                    <xs:complexType>
-                        <xs:attribute type="xs:positiveInteger" name="min" use="required" />
-                        <xs:attribute type="xs:nonNegativeInteger" name="max" use="required" />
-                    </xs:complexType>
-                </xs:element>
-                 <xs:element name="fishingTimeWait">
-                    <xs:complexType>
-                        <xs:attribute type="xs:positiveInteger" name="min" use="required" />
-                        <xs:attribute type="xs:nonNegativeInteger" name="max" use="required" />
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="expRate">
-                    <xs:complexType>
-                        <xs:attribute type="xs:positiveInteger" name="min" use="required" />
-                        <xs:attribute type="xs:positiveInteger" name="max" use="required" />
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="spRate">
-                    <xs:complexType>
-                        <xs:attribute type="xs:positiveInteger" name="min" use="required" />
-                        <xs:attribute type="xs:positiveInteger" name="max" use="required" />
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="baits">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="bait" maxOccurs="unbounded" minOccurs="1">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="catch" maxOccurs="unbounded" minOccurs="1">
-                                            <xs:complexType>
-                                                <xs:attribute type="xs:positiveInteger" name="itemId" use="required" />
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                    <xs:attribute type="xs:positiveInteger" name="level" use="required" />
-                                    <xs:attribute type="xs:positiveInteger" name="itemId" use="required" />
-                                    <xs:attribute type="xs:double" name="chance" use="required" />
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="playerLevel">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute type="xs:byte" name="min" />
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="baitDistance">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute type="xs:byte" name="min" />
+								<xs:attribute type="xs:short" name="max" />
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="rate">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute type="xs:string" name="exp" />
+								<xs:attribute type="xs:float" name="spRate" />
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="catchRate">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute type="xs:byte" name="chance"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="rods">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="rod" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute type="xs:int" name="id" use="optional" />
+											<xs:attribute type="xs:string" name="reduceFishingTime" use="optional" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="baits">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="bait" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="catch" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute type="xs:int" name="id" use="optional" />
+														<xs:attribute type="xs:float" name="chance" use="optional" />
+														<xs:attribute type="xs:float" name="multiplier" use="optional" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute type="xs:int" name="id" use="optional" />
+									<xs:attribute type="xs:string" name="fishingTime" use="optional" />
+									<xs:attribute type="xs:string" name="fishingTimeWait" use="optional" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

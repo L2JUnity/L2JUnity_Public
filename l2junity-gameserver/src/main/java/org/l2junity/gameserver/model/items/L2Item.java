@@ -29,7 +29,9 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.AdminConfig;
+import org.l2junity.gameserver.config.OlympiadConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.AttributeType;
 import org.l2junity.gameserver.enums.ItemGrade;
@@ -52,7 +54,7 @@ import org.l2junity.gameserver.model.items.type.CrystalType;
 import org.l2junity.gameserver.model.items.type.EtcItemType;
 import org.l2junity.gameserver.model.items.type.ItemType;
 import org.l2junity.gameserver.model.items.type.MaterialType;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.functions.FuncAdd;
 import org.l2junity.gameserver.model.stats.functions.FuncSet;
 import org.l2junity.gameserver.model.stats.functions.FuncTemplate;
@@ -136,7 +138,7 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 	private int _time;
 	private int _autoDestroyTime;
 	private int _bodyPart;
-	private int _referencePrice;
+	private long _referencePrice;
 	private int _crystalCount;
 	private boolean _sellable;
 	private boolean _dropable;
@@ -158,6 +160,7 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 	private boolean _ex_immediate_effect;
 	private int _defaultEnchantLevel;
 	private ActionType _defaultAction;
+	private String _html;
 	
 	protected int _type1; // needed for item list (inventory)
 	protected int _type2; // different lists for armor, weapon, etc
@@ -172,8 +175,6 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 	private int _sharedReuseGroup;
 	
 	private CommissionItemType _commissionItemType;
-	private int _compoundItem;
-	private float _compoundChance;
 	
 	private boolean _isAppearanceable;
 	private boolean _isBlessed;
@@ -201,7 +202,7 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 		_time = set.getInt("time", -1);
 		_autoDestroyTime = set.getInt("auto_destroy_time", -1) * 1000;
 		_bodyPart = ItemTable._slots.get(set.getString("bodypart", "none"));
-		_referencePrice = set.getInt("price", 0);
+		_referencePrice = set.getLong("price", 0);
 		_crystalType = set.getEnum("crystal_type", CrystalType.class, CrystalType.NONE);
 		_crystalCount = set.getInt("crystal_count", 0);
 		
@@ -226,13 +227,12 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 		_ex_immediate_effect = set.getBoolean("ex_immediate_effect", false);
 		
 		_defaultAction = set.getEnum("default_action", ActionType.class, ActionType.NONE);
+		_html = set.getString("html", "data/html/item/" + _itemId + ".htm");
 		_useSkillDisTime = set.getInt("useSkillDisTime", 0);
 		_defaultEnchantLevel = set.getInt("enchanted", 0);
 		_reuseDelay = set.getInt("reuse_delay", 0);
 		_sharedReuseGroup = set.getInt("shared_reuse_group", 0);
 		_commissionItemType = set.getEnum("commissionItemType", CommissionItemType.class, CommissionItemType.OTHER_ITEM);
-		_compoundItem = set.getInt("compoundItem", 0);
-		_compoundChance = set.getFloat("compoundChance", 0);
 		_common = ((_itemId >= 11605) && (_itemId <= 12361));
 		_heroItem = ((_itemId >= 6611) && (_itemId <= 6621)) || ((_itemId >= 9388) && (_itemId <= 9390)) || (_itemId == 6842);
 		_pvpItem = ((_itemId >= 10667) && (_itemId <= 10835)) || ((_itemId >= 12852) && (_itemId <= 12977)) || ((_itemId >= 14363) && (_itemId <= 14525)) || (_itemId == 14528) || (_itemId == 14529) || (_itemId == 14558) || ((_itemId >= 15913) && (_itemId <= 16024)) || ((_itemId >= 16134) && (_itemId <= 16147)) || (_itemId == 16149) || (_itemId == 16151) || (_itemId == 16153) || (_itemId == 16155) || (_itemId == 16157) || (_itemId == 16159) || ((_itemId >= 16168) && (_itemId <= 16176)) || ((_itemId >= 16179) && (_itemId <= 16220));
@@ -513,7 +513,7 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 	/**
 	 * @return the price of reference of the item.
 	 */
-	public final int getReferencePrice()
+	public final long getReferencePrice()
 	{
 		return _referencePrice;
 	}
@@ -562,9 +562,14 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 	 * This method also check the enchant blacklist.
 	 * @return {@code true} if the item can be enchanted, {@code false} otherwise.
 	 */
-	public final int isEnchantable()
+	public final boolean isEnchantable()
 	{
-		return Arrays.binarySearch(Config.ENCHANT_BLACKLIST, getId()) < 0 ? _enchantable : 0;
+		return (Arrays.binarySearch(PlayerConfig.ENCHANT_BLACKLIST, getId()) < 0) && (_enchantable > 0);
+	}
+	
+	public final int getEnchantGroup()
+	{
+		return _enchantable;
 	}
 	
 	/**
@@ -749,7 +754,7 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 	
 	public boolean checkCondition(Creature activeChar, WorldObject object, boolean sendMessage)
 	{
-		if (activeChar.canOverrideCond(PcCondOverride.ITEM_CONDITIONS) && !Config.GM_ITEM_RESTRICTION)
+		if (activeChar.canOverrideCond(PcCondOverride.ITEM_CONDITIONS) && !AdminConfig.GM_ITEM_RESTRICTION)
 		{
 			return true;
 		}
@@ -773,6 +778,8 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 			activeChar.sendPacket(SystemMessageId.YOU_CANNOT_USE_THIS_ITEM_IN_THE_TOURNAMENT);
 			return false;
 		}
+		
+		// TODO: SystemMessageId.THIS_CHARACTER_CANNOT_EQUIP_THE_MODIFIED_ITEMS_PLEASE_CHECK_IF_THE_MODIFIED_APPEARANCE_IS_ONLY_AVAILABLE_TO_A_FEMALE_CHARACTER_KAMAEL_RACE_OR_THE_ERTHEIA_RACE_THIS_ITEM_CAN_BE_EQUIPPED_IF_RESTORED
 		
 		if (!isConditionAttached())
 		{
@@ -841,7 +848,7 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 	
 	public boolean isOlyRestrictedItem()
 	{
-		return _is_oly_restricted || Config.LIST_OLY_RESTRICTED_ITEMS.contains(_itemId);
+		return _is_oly_restricted || OlympiadConfig.LIST_OLY_RESTRICTED_ITEMS.contains(_itemId);
 	}
 	
 	/**
@@ -907,6 +914,14 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 		return _defaultAction;
 	}
 	
+	/**
+	 * @return a path leading to the item's html. Default is data/html/item/${itemId}.htm
+	 */
+	public String getHtml()
+	{
+		return _html;
+	}
+	
 	public int useSkillDisTime()
 	{
 		return _useSkillDisTime;
@@ -936,16 +951,6 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 		return _commissionItemType;
 	}
 	
-	public int getCompoundItem()
-	{
-		return _compoundItem;
-	}
-	
-	public float getCompoundChance()
-	{
-		return _compoundChance;
-	}
-	
 	/**
 	 * Usable in HTML windows.
 	 * @return the icon link in client files
@@ -972,7 +977,7 @@ public abstract class L2Item extends ListenersContainer implements IIdentifiable
 	{
 	}
 	
-	public double getStats(Stats stat, double defaultValue)
+	public double getStats(DoubleStat stat, double defaultValue)
 	{
 		if (_funcTemplates != null)
 		{

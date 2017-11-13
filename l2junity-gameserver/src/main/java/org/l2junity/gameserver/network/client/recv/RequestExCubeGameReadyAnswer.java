@@ -61,7 +61,7 @@ public final class RequestExCubeGameReadyAnswer implements IClientIncomingPacket
 				HandysBlockCheckerManager.getInstance().increaseArenaVotes(_arena);
 				break;
 			default:
-				_log.warn("Unknown Cube Game Answer ID: " + _answer);
+				LOGGER.warn("Unknown Cube Game Answer ID: " + _answer);
 				break;
 		}
 	}

@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 
 public interface IActionHandler
 {
-	Logger _log = LoggerFactory.getLogger(IActionHandler.class);
+	Logger LOGGER = LoggerFactory.getLogger(IActionHandler.class);
 	
 	boolean action(PlayerInstance activeChar, WorldObject target, boolean interact);
 	

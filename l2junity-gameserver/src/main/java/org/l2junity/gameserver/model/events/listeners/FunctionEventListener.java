@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class FunctionEventListener extends AbstractEventListener
 {
-	private static final Logger _log = LoggerFactory.getLogger(FunctionEventListener.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FunctionEventListener.class);
 	private final Function<IBaseEvent, ? extends AbstractEventReturn> _callback;
 	
 	@SuppressWarnings("unchecked")
@@ -53,7 +53,7 @@ public class FunctionEventListener extends AbstractEventListener
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Error while invoking " + event + " on " + getOwner(), e);
+			LOGGER.warn("Error while invoking " + event + " on " + getOwner(), e);
 		}
 		return null;
 	}

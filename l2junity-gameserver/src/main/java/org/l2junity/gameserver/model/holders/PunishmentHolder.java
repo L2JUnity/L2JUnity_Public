@@ -21,6 +21,7 @@ package org.l2junity.gameserver.model.holders;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.l2junity.gameserver.model.punishment.PunishmentAffect;
 import org.l2junity.gameserver.model.punishment.PunishmentTask;
 import org.l2junity.gameserver.model.punishment.PunishmentType;
 
@@ -30,6 +31,11 @@ import org.l2junity.gameserver.model.punishment.PunishmentType;
 public final class PunishmentHolder
 {
 	private final Map<String, Map<PunishmentType, PunishmentTask>> _holder = new ConcurrentHashMap<>();
+	
+	public PunishmentHolder(PunishmentAffect affect)
+	{
+		
+	}
 	
 	/**
 	 * Stores the punishment task in the Map.

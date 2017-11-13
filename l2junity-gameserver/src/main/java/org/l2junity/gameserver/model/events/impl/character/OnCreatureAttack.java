@@ -21,6 +21,7 @@ package org.l2junity.gameserver.model.events.impl.character;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.events.EventType;
 import org.l2junity.gameserver.model.events.impl.IBaseEvent;
+import org.l2junity.gameserver.model.skills.Skill;
 
 /**
  * An instantly executed event when L2Character is attacked by L2Character.
@@ -30,11 +31,13 @@ public class OnCreatureAttack implements IBaseEvent
 {
 	private final Creature _attacker;
 	private final Creature _target;
+	private final Skill _skill;
 	
-	public OnCreatureAttack(Creature attacker, Creature target)
+	public OnCreatureAttack(Creature attacker, Creature target, Skill skill)
 	{
 		_attacker = attacker;
 		_target = target;
+		_skill = skill;
 	}
 	
 	public final Creature getAttacker()
@@ -45,6 +48,11 @@ public class OnCreatureAttack implements IBaseEvent
 	public final Creature getTarget()
 	{
 		return _target;
+	}
+	
+	public final Skill getSkill()
+	{
+		return _skill;
 	}
 	
 	@Override

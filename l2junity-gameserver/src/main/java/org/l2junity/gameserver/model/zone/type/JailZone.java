@@ -18,8 +18,10 @@
  */
 package org.l2junity.gameserver.model.zone.type;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import java.util.concurrent.TimeUnit;
+
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -49,12 +51,12 @@ public class JailZone extends ZoneType
 		{
 			character.setInsideZone(ZoneId.JAIL, true);
 			character.setInsideZone(ZoneId.NO_SUMMON_FRIEND, true);
-			if (Config.JAIL_IS_PVP)
+			if (GeneralConfig.JAIL_IS_PVP)
 			{
 				character.setInsideZone(ZoneId.PVP, true);
 				character.sendPacket(SystemMessageId.YOU_HAVE_ENTERED_A_COMBAT_ZONE);
 			}
-			if (Config.JAIL_DISABLE_TRANSACTION)
+			if (GeneralConfig.JAIL_DISABLE_TRANSACTION)
 			{
 				character.setInsideZone(ZoneId.NO_STORE, true);
 			}
@@ -70,7 +72,7 @@ public class JailZone extends ZoneType
 			player.setInsideZone(ZoneId.JAIL, false);
 			player.setInsideZone(ZoneId.NO_SUMMON_FRIEND, false);
 			
-			if (Config.JAIL_IS_PVP)
+			if (GeneralConfig.JAIL_IS_PVP)
 			{
 				character.setInsideZone(ZoneId.PVP, false);
 				character.sendPacket(SystemMessageId.YOU_HAVE_LEFT_A_COMBAT_ZONE);
@@ -79,10 +81,10 @@ public class JailZone extends ZoneType
 			if (player.isJailed())
 			{
 				// when a player wants to exit jail even if he is still jailed, teleport him back to jail
-				ThreadPoolManager.getInstance().scheduleGeneral(new TeleportTask(player, JAIL_IN_LOC), 2000);
+				ThreadPool.schedule(new TeleportTask(player, JAIL_IN_LOC), 2000, TimeUnit.MILLISECONDS);
 				character.sendMessage("You cannot cheat your way out of here. You must wait until your jail time is over.");
 			}
-			if (Config.JAIL_DISABLE_TRANSACTION)
+			if (GeneralConfig.JAIL_DISABLE_TRANSACTION)
 			{
 				character.setInsideZone(ZoneId.NO_STORE, false);
 			}

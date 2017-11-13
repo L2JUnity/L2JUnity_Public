@@ -28,11 +28,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.GameTimeController;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
+import org.l2junity.gameserver.config.RatesConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.ItemLocation;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -46,7 +48,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class ItemContainer
 {
-	protected static final Logger _log = LoggerFactory.getLogger(ItemContainer.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(ItemContainer.class);
 	
 	protected final Map<Integer, ItemInstance> _items = new ConcurrentHashMap<>();
 	
@@ -206,6 +208,11 @@ public abstract class ItemContainer
 		if ((olditem != null) && olditem.isStackable())
 		{
 			long count = item.getCount();
+			if (!validateCount(item.getId(), (olditem.getCount() + count)))
+			{
+				return null;
+			}
+			
 			olditem.changeCount(process, count, actor, reference);
 			olditem.setLastChange(ItemInstance.MODIFIED);
 			
@@ -215,11 +222,11 @@ public abstract class ItemContainer
 			item = olditem;
 			
 			// Updates database
-			float adenaRate = Config.RATE_DROP_AMOUNT_MULTIPLIER.getOrDefault(Inventory.ADENA_ID, 1f);
+			float adenaRate = RatesConfig.RATE_DROP_AMOUNT_MULTIPLIER.getOrDefault(Inventory.ADENA_ID, 1f);
 			if ((item.getId() == Inventory.ADENA_ID) && (count < (10000 * adenaRate)))
 			{
 				// Small adena changes won't be saved to database all the time
-				if ((GameTimeController.getInstance().getGameTicks() % 5) == 0)
+				if ((GameTimeManager.getInstance().getGameTicks() % 5) == 0)
 				{
 					item.updateDatabase();
 				}
@@ -263,15 +270,20 @@ public abstract class ItemContainer
 		// If stackable item is found in inventory just add to current quantity
 		if ((item != null) && item.isStackable())
 		{
+			if (!validateCount(itemId, (item.getCount() + count)))
+			{
+				return null;
+			}
+			
 			item.changeCount(process, count, actor, reference);
 			item.setLastChange(ItemInstance.MODIFIED);
 			// Updates database
 			// If Adena drop rate is not present it will be x1.
-			float adenaRate = Config.RATE_DROP_AMOUNT_MULTIPLIER.getOrDefault(Inventory.ADENA_ID, 1f);
+			float adenaRate = RatesConfig.RATE_DROP_AMOUNT_MULTIPLIER.getOrDefault(Inventory.ADENA_ID, 1f);
 			if ((itemId == Inventory.ADENA_ID) && (count < (10000 * adenaRate)))
 			{
 				// Small adena changes won't be saved to database all the time
-				if ((GameTimeController.getInstance().getGameTicks() % 5) == 0)
+				if ((GameTimeManager.getInstance().getGameTicks() % 5) == 0)
 				{
 					item.updateDatabase();
 				}
@@ -284,12 +296,17 @@ public abstract class ItemContainer
 		// If item hasn't be found in inventory, create new one
 		else
 		{
+			if (!validateCount(itemId, count))
+			{
+				return null;
+			}
+			
 			for (int i = 0; i < count; i++)
 			{
 				L2Item template = ItemTable.getInstance().getTemplate(itemId);
 				if (template == null)
 				{
-					_log.warn((actor != null ? "[" + actor.getName() + "] " : "") + "Invalid ItemId requested: ", itemId);
+					LOGGER.warn((actor != null ? "[" + actor.getName() + "] " : "") + "Invalid ItemId requested: ", itemId);
 					return null;
 				}
 				
@@ -304,7 +321,7 @@ public abstract class ItemContainer
 				item.updateDatabase();
 				
 				// If stackable, end loop as entire count is included in 1 instance of item
-				if (template.isStackable() || !Config.MULTIPLE_ITEM_DROP)
+				if (template.isStackable() || !GeneralConfig.MULTIPLE_ITEM_DROP)
 				{
 					break;
 				}
@@ -338,6 +355,11 @@ public abstract class ItemContainer
 			return null;
 		}
 		ItemInstance targetitem = sourceitem.isStackable() ? target.getItemByItemId(sourceitem.getId()) : null;
+		
+		if (count < 0)
+		{
+			throw new IllegalArgumentException("Negative counts while transferring an item are not permitted! Process: " + process + " SourceItem: " + String.valueOf(sourceitem) + " TargetItem: " + String.valueOf(targetitem) + " Count: " + count + " Actor: " + String.valueOf(actor) + " Reference: " + String.valueOf(reference));
+		}
 		
 		synchronized (sourceitem)
 		{
@@ -417,6 +439,11 @@ public abstract class ItemContainer
 			return null;
 		}
 		
+		if (count < 0)
+		{
+			throw new IllegalArgumentException("Negative counts while detaching an item are not permitted! Process: " + process + " Item: " + item + " Count: " + count + " Actor: " + String.valueOf(actor) + " Reference: " + String.valueOf(reference));
+		}
+		
 		synchronized (item)
 		{
 			if (!_items.containsKey(item.getObjectId()))
@@ -494,6 +521,11 @@ public abstract class ItemContainer
 	 */
 	public ItemInstance destroyItem(String process, ItemInstance item, long count, PlayerInstance actor, Object reference)
 	{
+		if (count < 0)
+		{
+			throw new IllegalArgumentException("Negative counts while destroying an item are not permitted! Process: " + process + " Item: " + item + " Count: " + count + " Actor: " + String.valueOf(actor) + " Reference: " + String.valueOf(reference));
+		}
+		
 		synchronized (item)
 		{
 			// Adjust item quantity
@@ -503,7 +535,7 @@ public abstract class ItemContainer
 				item.setLastChange(ItemInstance.MODIFIED);
 				
 				// don't update often for untraced items
-				if ((process != null) || ((GameTimeController.getInstance().getGameTicks() % 10) == 0))
+				if ((process != null) || ((GameTimeManager.getInstance().getGameTicks() % 10) == 0))
 				{
 					item.updateDatabase();
 				}
@@ -527,8 +559,9 @@ public abstract class ItemContainer
 				
 				item.updateDatabase();
 				refreshWeight();
+
+				item.deleteMe();
 			}
-			item.deleteMe();
 		}
 		return item;
 	}
@@ -612,6 +645,30 @@ public abstract class ItemContainer
 		return 0;
 	}
 	
+	public long getFortuneReadingTickets()
+	{
+		for (ItemInstance item : _items.values())
+		{
+			if (item.getId() == Inventory.FORTUNE_READING_TICKET)
+			{
+				return item.getCount();
+			}
+		}
+		return 0;
+	}
+	
+	public long getLuxuryFortuneReadingTickets()
+	{
+		for (ItemInstance item : _items.values())
+		{
+			if (item.getId() == Inventory.LUXURY_FORTUNE_READING_TICKET)
+			{
+				return item.getCount();
+			}
+		}
+		return 0;
+	}
+	
 	/**
 	 * Adds item to inventory for further adjustments.
 	 * @param item : L2ItemInstance to be added from inventory
@@ -684,7 +741,7 @@ public abstract class ItemContainer
 				while (rs.next())
 				{
 					final ItemInstance item = new ItemInstance(rs);
-					World.getInstance().storeObject(item);
+					World.getInstance().addObject(item);
 					
 					final PlayerInstance owner = getOwner() != null ? getOwner().getActingPlayer() : null;
 					
@@ -703,7 +760,7 @@ public abstract class ItemContainer
 		}
 		catch (Exception e)
 		{
-			_log.warn("could not restore container:", e);
+			LOGGER.warn("could not restore container:", e);
 		}
 	}
 	
@@ -738,5 +795,25 @@ public abstract class ItemContainer
 	{
 		final L2Item template = ItemTable.getInstance().getTemplate(itemId);
 		return (template == null) || validateWeight(template.getWeight() * count);
+	}
+	
+	/**
+	 * @param itemId the item id to check.
+	 * @param count the count to check.
+	 * @return {code true} if given count is within positiv max allowed value.
+	 */
+	public static boolean validateCount(int itemId, long count)
+	{
+		return (count >= 0) && (count <= getMaximumAllowedCount(itemId));
+	}
+	
+	public static long getMaximumAllowedCount(int itemId)
+	{
+		if (itemId == Inventory.ADENA_ID)
+		{
+			return PlayerConfig.MAX_ADENA;
+		}
+		
+		return Integer.MAX_VALUE;
 	}
 }

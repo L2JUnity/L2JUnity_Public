@@ -26,10 +26,10 @@ import org.l2junity.gameserver.enums.Team;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
-import org.l2junity.gameserver.model.effects.EffectFlag;
 import org.l2junity.gameserver.model.olympiad.OlympiadGameManager;
 import org.l2junity.gameserver.model.skills.BuffInfo;
 import org.l2junity.gameserver.model.skills.Skill;
+import org.l2junity.gameserver.model.stats.BooleanStat;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
  */
 public class DoppelgangerInstance extends Npc
 {
-	protected static final Logger log = LoggerFactory.getLogger(DoppelgangerInstance.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(DoppelgangerInstance.class);
 	
 	private boolean _copySummonerEffects = true;
 	
@@ -71,7 +71,7 @@ public class DoppelgangerInstance extends Npc
 		
 		if (_copySummonerEffects && (getSummoner() != null))
 		{
-			for (BuffInfo summonerInfo : getSummoner().getEffectList().getBuffs())
+			for (BuffInfo summonerInfo : getSummoner().getEffectList().getEffects())
 			{
 				if (summonerInfo.getAbnormalTime() > 0)
 				{
@@ -88,7 +88,7 @@ public class DoppelgangerInstance extends Npc
 	{
 		if (followSummoner)
 		{
-			if ((getAI().getIntention() == CtrlIntention.AI_INTENTION_IDLE) || (getAI().getIntention() == CtrlIntention.AI_INTENTION_ACTIVE))
+			if (getAI().getIntention() == CtrlIntention.AI_INTENTION_ACTIVE)
 			{
 				setRunning();
 				getAI().setIntention(CtrlIntention.AI_INTENTION_FOLLOW, getSummoner());
@@ -98,7 +98,7 @@ public class DoppelgangerInstance extends Npc
 		{
 			if (getAI().getIntention() == CtrlIntention.AI_INTENTION_FOLLOW)
 			{
-				getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
+				getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 			}
 		}
 	}
@@ -127,6 +127,13 @@ public class DoppelgangerInstance extends Npc
 	}
 	
 	@Override
+	public void doAttack(double damage, Creature target, Skill skill, boolean isDOT, boolean directlyToHp, boolean critical, boolean reflect)
+	{
+		super.doAttack(damage, target, skill, isDOT, directlyToHp, critical, reflect);
+		sendDamageMessage(target, skill, (int) damage, critical, false);
+	}
+	
+	@Override
 	public void sendDamageMessage(Creature target, Skill skill, int damage, boolean crit, boolean miss)
 	{
 		if (miss || (getSummoner() == null) || !getSummoner().isPlayer())
@@ -144,7 +151,7 @@ public class DoppelgangerInstance extends Npc
 			
 			final SystemMessage sm;
 			
-			if ((target.isHpBlocked() && !target.isNpc()) || (target.isPlayer() && target.isAffected(EffectFlag.FACEOFF) && (target.getActingPlayer().getAttackerObjId() != getObjectId())))
+			if ((target.isHpBlocked() && !target.isNpc()) || (target.isPlayer() && target.getStat().has(BooleanStat.FACE_OFF) && (target.getActingPlayer().getAttackerObjId() != getObjectId())))
 			{
 				sm = SystemMessage.getSystemMessage(SystemMessageId.THE_ATTACK_HAS_BEEN_BLOCKED);
 			}

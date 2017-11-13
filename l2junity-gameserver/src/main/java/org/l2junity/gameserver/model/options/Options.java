@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.debugger.DebugType;
 import org.l2junity.gameserver.model.effects.AbstractEffect;
 import org.l2junity.gameserver.model.holders.SkillHolder;
 import org.l2junity.gameserver.model.skills.BuffInfo;
@@ -34,12 +35,10 @@ import org.l2junity.gameserver.network.client.send.SkillCoolTime;
 public class Options
 {
 	private final int _id;
-	private final List<AbstractEffect> _effects = new ArrayList<>();
-	
-	private SkillHolder _activeSkill = null;
-	private SkillHolder _passiveSkill = null;
-	
-	private final List<OptionsSkillHolder> _activationSkills = new ArrayList<>();
+	private List<AbstractEffect> _effects = null;
+	private List<SkillHolder> _activeSkill = null;
+	private List<SkillHolder> _passiveSkill = null;
+	private List<OptionsSkillHolder> _activationSkills = null;
 	
 	/**
 	 * @param id
@@ -56,6 +55,10 @@ public class Options
 	
 	public void addEffect(AbstractEffect effect)
 	{
+		if (_effects == null)
+		{
+			_effects = new ArrayList<>();
+		}
 		_effects.add(effect);
 	}
 	
@@ -66,51 +69,62 @@ public class Options
 	
 	public boolean hasEffects()
 	{
-		return !_effects.isEmpty();
+		return _effects != null;
 	}
 	
-	public boolean hasActiveSkill()
+	public boolean hasActiveSkills()
 	{
 		return _activeSkill != null;
 	}
 	
-	public SkillHolder getActiveSkill()
+	public List<SkillHolder> getActiveSkills()
 	{
 		return _activeSkill;
 	}
 	
-	public void setActiveSkill(SkillHolder holder)
+	public void addActiveSkill(SkillHolder holder)
 	{
-		_activeSkill = holder;
+		if (_activeSkill == null)
+		{
+			_activeSkill = new ArrayList<>();
+		}
+		_activeSkill.add(holder);
 	}
 	
-	public boolean hasPassiveSkill()
+	public boolean hasPassiveSkills()
 	{
 		return _passiveSkill != null;
 	}
 	
-	public SkillHolder getPassiveSkill()
+	public List<SkillHolder> getPassiveSkills()
 	{
 		return _passiveSkill;
 	}
 	
-	public void setPassiveSkill(SkillHolder holder)
+	public void addPassiveSkill(SkillHolder holder)
 	{
-		_passiveSkill = holder;
+		if (_passiveSkill == null)
+		{
+			_passiveSkill = new ArrayList<>();
+		}
+		_passiveSkill.add(holder);
 	}
 	
 	public boolean hasActivationSkills()
 	{
-		return !_activationSkills.isEmpty();
+		return _activationSkills != null;
 	}
 	
 	public boolean hasActivationSkills(OptionsSkillType type)
 	{
-		for (OptionsSkillHolder holder : _activationSkills)
+		if (_activationSkills != null)
 		{
-			if (holder.getSkillType() == type)
+			for (OptionsSkillHolder holder : _activationSkills)
 			{
-				return true;
+				if (holder.getSkillType() == type)
+				{
+					return true;
+				}
 			}
 		}
 		return false;
@@ -124,11 +138,14 @@ public class Options
 	public List<OptionsSkillHolder> getActivationsSkills(OptionsSkillType type)
 	{
 		List<OptionsSkillHolder> temp = new ArrayList<>();
-		for (OptionsSkillHolder holder : _activationSkills)
+		if (_activationSkills != null)
 		{
-			if (holder.getSkillType() == type)
+			for (OptionsSkillHolder holder : _activationSkills)
 			{
-				temp.add(holder);
+				if (holder.getSkillType() == type)
+				{
+					temp.add(holder);
+				}
 			}
 		}
 		return temp;
@@ -136,36 +153,30 @@ public class Options
 	
 	public void addActivationSkill(OptionsSkillHolder holder)
 	{
+		if (_activationSkills == null)
+		{
+			_activationSkills = new ArrayList<>();
+		}
 		_activationSkills.add(holder);
 	}
 	
 	public void apply(PlayerInstance player)
 	{
-		player.sendDebugMessage("Activating option id: " + _id);
+		player.sendDebugMessage("Activating option id: " + _id, DebugType.OPTIONS);
 		if (hasEffects())
 		{
 			final BuffInfo info = new BuffInfo(player, player, null, true, null, this);
 			for (AbstractEffect effect : _effects)
 			{
-				if (effect.isInstant())
+				if (effect.calcSuccess(info.getEffector(), info.getEffected(), info.getSkill()))
 				{
-					if (effect.calcSuccess(info.getEffector(), info.getEffected(), info.getSkill()))
-					{
-						effect.instant(info.getEffector(), info.getEffected(), info.getSkill(), info.getItem());
-					}
-					player.sendDebugMessage("Appling instant effect: " + effect.getClass().getSimpleName());
-				}
-				else
-				{
-					effect.continuousInstant(info.getEffector(), info.getEffected(), info.getSkill(), info.getItem());
-					effect.pump(player, info.getSkill());
-					
-					if (effect.canStart(info))
+					effect.instant(info.getEffector(), info.getEffected(), info.getSkill(), info.getItem());
+					player.sendDebugMessage("Appling instant effect: " + effect.getClass().getSimpleName(), DebugType.OPTIONS);
+					if (effect.checkPumpCondition(info.getEffector(), info.getEffected(), info.getSkill()))
 					{
 						info.addEffect(effect);
+						player.sendDebugMessage("Appling continious effect: " + effect.getClass().getSimpleName(), DebugType.OPTIONS);
 					}
-					
-					player.sendDebugMessage("Appling continious effect: " + effect.getClass().getSimpleName());
 				}
 			}
 			if (!info.getEffects().isEmpty())
@@ -173,59 +184,70 @@ public class Options
 				player.getEffectList().add(info);
 			}
 		}
-		if (hasActiveSkill())
+		if (hasActiveSkills())
 		{
-			addSkill(player, getActiveSkill().getSkill());
-			player.sendDebugMessage("Adding active skill: " + getActiveSkill());
+			for (SkillHolder holder : getActiveSkills())
+			{
+				addSkill(player, holder.getSkill());
+				player.sendDebugMessage("Adding active skill: " + getActiveSkills(), DebugType.OPTIONS);
+			}
 		}
-		if (hasPassiveSkill())
+		if (hasPassiveSkills())
 		{
-			addSkill(player, getPassiveSkill().getSkill());
-			player.sendDebugMessage("Adding passive skill: " + getPassiveSkill());
+			for (SkillHolder holder : getPassiveSkills())
+			{
+				addSkill(player, holder.getSkill());
+				player.sendDebugMessage("Adding passive skill: " + getPassiveSkills(), DebugType.OPTIONS);
+			}
 		}
 		if (hasActivationSkills())
 		{
 			for (OptionsSkillHolder holder : _activationSkills)
 			{
 				player.addTriggerSkill(holder);
-				player.sendDebugMessage("Adding trigger skill: " + holder);
+				player.sendDebugMessage("Adding trigger skill: " + holder, DebugType.OPTIONS);
 			}
 		}
 		
-		player.getStat().recalculateStats(true);
 		player.sendSkillList();
 	}
 	
 	public void remove(PlayerInstance player)
 	{
-		player.sendDebugMessage("Deactivating option id: " + _id);
+		player.sendDebugMessage("Deactivating option id: " + _id, DebugType.OPTIONS);
 		if (hasEffects())
 		{
 			for (BuffInfo info : player.getEffectList().getOptions())
 			{
 				if (info.getOption() == this)
 				{
-					player.sendDebugMessage("Removing effects: " + info.getEffects());
-					player.getEffectList().remove(false, info, this);
+					player.sendDebugMessage("Removing effects: " + info.getEffects(), DebugType.OPTIONS);
+					player.getEffectList().remove(info, false, true, true);
 				}
 			}
 		}
-		if (hasActiveSkill())
+		if (hasActiveSkills())
 		{
-			player.removeSkill(getActiveSkill().getSkill(), false, false);
-			player.sendDebugMessage("Removing active skill: " + getActiveSkill());
+			for (SkillHolder holder : getActiveSkills())
+			{
+				player.removeSkill(holder.getSkill(), false, false);
+				player.sendDebugMessage("Removing active skill: " + getActiveSkills(), DebugType.OPTIONS);
+			}
 		}
-		if (hasPassiveSkill())
+		if (hasPassiveSkills())
 		{
-			player.removeSkill(getPassiveSkill().getSkill(), false, true);
-			player.sendDebugMessage("Removing passive skill: " + getPassiveSkill());
+			for (SkillHolder holder : getPassiveSkills())
+			{
+				player.removeSkill(holder.getSkill(), false, true);
+				player.sendDebugMessage("Removing passive skill: " + getPassiveSkills(), DebugType.OPTIONS);
+			}
 		}
 		if (hasActivationSkills())
 		{
 			for (OptionsSkillHolder holder : _activationSkills)
 			{
 				player.removeTriggerSkill(holder);
-				player.sendDebugMessage("Removing trigger skill: " + holder);
+				player.sendDebugMessage("Removing trigger skill: " + holder, DebugType.OPTIONS);
 			}
 		}
 		
@@ -245,7 +267,6 @@ public class Options
 			if (remainingTime > 0)
 			{
 				player.addTimeStamp(skill, remainingTime);
-				player.disableSkill(skill, remainingTime);
 			}
 			updateTimeStamp = true;
 		}

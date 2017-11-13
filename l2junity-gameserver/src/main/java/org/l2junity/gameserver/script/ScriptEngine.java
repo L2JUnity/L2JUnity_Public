@@ -30,14 +30,14 @@ public class ScriptEngine
 	protected EngineInterface _utils = FaenorInterface.getInstance();
 	public static final Hashtable<String, ParserFactory> parserFactories = new Hashtable<>();
 	
-	protected static Parser createParser(String name) throws ParserNotCreatedException
+	public static Parser createParser(String name) throws ParserNotCreatedException
 	{
 		ParserFactory s = parserFactories.get(name);
 		if (s == null) // shape not found
 		{
 			try
 			{
-				Class.forName("org.l2junity.gameserver.script." + name);
+				Class.forName(ScriptEngine.class.getPackage().getName() + "." + name);
 				// By now the static block with no function would
 				// have been executed if the shape was found.
 				// the shape is expected to have put its factory

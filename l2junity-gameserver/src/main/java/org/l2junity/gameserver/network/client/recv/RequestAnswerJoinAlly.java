@@ -67,7 +67,7 @@ public final class RequestAnswerJoinAlly implements IClientIncomingPacket
 			if (clan.checkAllyJoinCondition(requestor, activeChar))
 			{
 				// TODO: Need correct message id
-				requestor.sendPacket(SystemMessageId.THAT_PERSON_HAS_BEEN_SUCCESSFULLY_ADDED_TO_YOUR_FRIEND_LIST);
+				requestor.sendPacket(SystemMessageId.YOU_HAVE_INVITED_SOMEONE_TO_YOUR_ALLIANCE);
 				activeChar.sendPacket(SystemMessageId.YOU_HAVE_ACCEPTED_THE_ALLIANCE);
 				
 				activeChar.getClan().setAllyId(clan.getAllyId());

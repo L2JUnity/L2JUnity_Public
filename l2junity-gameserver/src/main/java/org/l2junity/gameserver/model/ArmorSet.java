@@ -179,6 +179,7 @@ public final class ArmorSet
 	public int getLowestSetEnchant(PlayerInstance player)
 	{
 		// Player don't have full set
+		
 		if (getPiecesCount(player, ItemInstance::getId) < getMinimumPieces())
 		{
 			return 0;
@@ -186,6 +187,7 @@ public final class ArmorSet
 		
 		final PcInventory inv = player.getInventory();
 		int enchantLevel = Byte.MAX_VALUE;
+		int slotsProcessed = 0;
 		for (int armorSlot : ARMORSET_SLOTS)
 		{
 			final ItemInstance itemPart = inv.getPaperdollItem(armorSlot);
@@ -195,8 +197,19 @@ public final class ArmorSet
 				{
 					enchantLevel = itemPart.getEnchantLevel();
 				}
+				slotsProcessed++;
 			}
 		}
+		
+		for (ArmorsetSkillHolder holder : _skills)
+		{
+			if ((holder.getMinEnchant() > 0) && (holder.getMinimumPieces() > slotsProcessed))
+			{
+				enchantLevel = 0;
+				break;
+			}
+		}
+		
 		if (enchantLevel == Byte.MAX_VALUE)
 		{
 			enchantLevel = 0;

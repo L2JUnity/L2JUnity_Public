@@ -23,7 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.idfactory.IdFactory;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Couple
 {
-	private static final Logger _log = LoggerFactory.getLogger(Couple.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Couple.class);
 	
 	private int _Id = 0;
 	private int _player1Id = 0;
@@ -69,7 +69,7 @@ public class Couple
 		}
 		catch (Exception e)
 		{
-			_log.error("Exception: Couple.load(): " + e.getMessage(), e);
+			LOGGER.error("Exception: Couple.load(): " + e.getMessage(), e);
 		}
 	}
 	
@@ -101,7 +101,7 @@ public class Couple
 		}
 		catch (Exception e)
 		{
-			_log.error("Could not create couple:", e);
+			LOGGER.error("Could not create couple:", e);
 		}
 	}
 	
@@ -119,7 +119,7 @@ public class Couple
 		}
 		catch (Exception e)
 		{
-			_log.error("Could not marry: " + e.getMessage(), e);
+			LOGGER.error("Could not marry: " + e.getMessage(), e);
 		}
 	}
 	
@@ -133,7 +133,7 @@ public class Couple
 		}
 		catch (Exception e)
 		{
-			_log.error("Exception: Couple.divorce(): " + e.getMessage(), e);
+			LOGGER.error("Exception: Couple.divorce(): " + e.getMessage(), e);
 		}
 	}
 	

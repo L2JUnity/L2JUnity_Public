@@ -29,7 +29,7 @@ import org.l2junity.gameserver.model.StatsSet;
  */
 public class BypassParser extends StatsSet
 {
-	private static final String ALLOWED_CHARS = "a-zA-Z0-9-_`!@#%^&*()\\[\\]|\\\\/";
+	private static final String ALLOWED_CHARS = "a-zA-Z0-9-_`!@#%^&*()\\[\\]|\\\\/\\.\\,";
 	private static final Pattern PATTERN = Pattern.compile(String.format("([%s]*)=('([%s ]*)'|[%s]*)", ALLOWED_CHARS, ALLOWED_CHARS, ALLOWED_CHARS));
 	
 	public BypassParser(String bypass)

@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.data.xml.impl.CastleData;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.enums.ItemLocation;
@@ -82,7 +82,7 @@ public final class SiegeGuardManager
 					final ItemInstance dropticket = new ItemInstance(holder.getItemId());
 					dropticket.setItemLocation(ItemLocation.VOID);
 					dropticket.dropMe(null, x, y, z);
-					World.getInstance().storeObject(dropticket);
+					World.getInstance().addObject(dropticket);
 					_droppedTickets.add(dropticket);
 				}
 			}
@@ -123,7 +123,7 @@ public final class SiegeGuardManager
 	 */
 	public boolean isTooCloseToAnotherTicket(PlayerInstance player)
 	{
-		return _droppedTickets.stream().filter(g -> g.calculateDistance(player, true, false) < 25).findFirst().orElse(null) != null;
+		return _droppedTickets.stream().filter(g -> g.isInRadius3d(player, 25)).findFirst().orElse(null) != null;
 	}
 	
 	/**
@@ -165,9 +165,9 @@ public final class SiegeGuardManager
 			{
 				statement.setInt(1, castle.getResidenceId());
 				statement.setInt(2, holder.getNpcId());
-				statement.setInt(3, player.getX());
-				statement.setInt(4, player.getY());
-				statement.setInt(5, player.getZ());
+				statement.setInt(3, (int) player.getX());
+				statement.setInt(4, (int) player.getY());
+				statement.setInt(5, (int) player.getZ());
 				statement.setInt(6, player.getHeading());
 				statement.setInt(7, 0);
 				statement.setInt(8, 1);
@@ -182,7 +182,7 @@ public final class SiegeGuardManager
 			final ItemInstance dropticket = new ItemInstance(itemId);
 			dropticket.setItemLocation(ItemLocation.VOID);
 			dropticket.dropMe(null, player.getX(), player.getY(), player.getZ());
-			World.getInstance().storeObject(dropticket);
+			World.getInstance().addObject(dropticket);
 			_droppedTickets.add(dropticket);
 		}
 	}
@@ -263,9 +263,7 @@ public final class SiegeGuardManager
 				{
 					final L2Spawn spawn = new L2Spawn(rs.getInt("npcId"));
 					spawn.setAmount(1);
-					spawn.setX(rs.getInt("x"));
-					spawn.setY(rs.getInt("y"));
-					spawn.setZ(rs.getInt("z"));
+					spawn.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
 					spawn.setHeading(rs.getInt("heading"));
 					spawn.setRespawnDelay(rs.getInt("respawnDelay"));
 					spawn.setLocationId(0);
@@ -291,9 +289,9 @@ public final class SiegeGuardManager
 			PreparedStatement ps = con.prepareStatement("Delete From castle_siege_guards Where npcId = ? And x = ? AND y = ? AND z = ? AND isHired = 1"))
 		{
 			ps.setInt(1, npcId);
-			ps.setInt(2, pos.getX());
-			ps.setInt(3, pos.getY());
-			ps.setInt(4, pos.getZ());
+			ps.setInt(2, (int) pos.getX());
+			ps.setInt(3, (int) pos.getY());
+			ps.setInt(4, (int) pos.getZ());
 			ps.execute();
 		}
 		catch (Exception e)

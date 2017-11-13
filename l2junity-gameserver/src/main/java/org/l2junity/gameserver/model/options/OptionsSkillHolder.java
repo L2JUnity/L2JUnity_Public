@@ -25,6 +25,7 @@ import org.l2junity.gameserver.model.holders.SkillHolder;
  */
 public class OptionsSkillHolder extends SkillHolder
 {
+	private static final long serialVersionUID = 7684788619832085612L;
 	private final OptionsSkillType _type;
 	private final double _chance;
 	

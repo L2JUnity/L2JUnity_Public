@@ -13,6 +13,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="38601" name="Steel Armor Pack" type="EtcItem">
 		<!-- Double-click to obtain either Immortal, Twilight, or Seraph armor. -->
@@ -27,6 +28,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="38602" name="Steel Full Plate Helmet" type="Armor">
 		<!-- Steel Full Plate Helmet. -->
@@ -143,6 +145,7 @@
 		<set name="weight" val="660" />
 		<stats>
 			<stat type="pDef">60</stat>
+			<stat type="maxMp">225</stat>
 		</stats>
 	</item>
 	<item id="38608" name="Steel Karmian Stockings" type="Armor">
@@ -163,6 +166,7 @@
 		<set name="weight" val="323" />
 		<stats>
 			<stat type="pDef">37</stat>
+			<stat type="maxMp">141</stat>
 		</stats>
 	</item>
 	<item id="38609" name="Steel Karmian Gloves" type="Armor">
@@ -343,6 +347,7 @@
 		<set name="icon" val="icon.armor_t71_ul_i00" />
 		<set name="armor_type" val="HEAVY" />
 		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="fullarmor" />
 		<set name="crystal_type" val="B" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -396,6 +401,7 @@
 		<set name="weight" val="847" />
 		<stats>
 			<stat type="pDef">127</stat>
+			<stat type="maxMp">561</stat>
 		</stats>
 	</item>
 	<item id="38621" name="Steel Avadon Circlet" type="Armor">
@@ -539,6 +545,7 @@
 		<set name="icon" val="icon.armor_t80_ul_i00" />
 		<set name="armor_type" val="HEAVY" />
 		<set name="default_action" val="EQUIP" />
+		<set name="bodypart" val="fullarmor" />
 		<set name="crystal_type" val="A" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -649,6 +656,7 @@
 		<set name="weight" val="817" />
 		<stats>
 			<stat type="pDef">139</stat>
+			<stat type="maxMp">665</stat>
 		</stats>
 	</item>
 	<item id="38634" name="Steel Dark Crystal Helmet" type="Armor">
@@ -943,6 +951,7 @@
 		<set name="weight" val="767" />
 		<stats>
 			<stat type="pDef">166</stat>
+			<stat type="maxMp">866</stat>
 		</stats>
 	</item>
 	<item id="38649" name="Steel Major Arcana Gloves" type="Armor">
@@ -1236,6 +1245,7 @@
 		<set name="weight" val="590" />
 		<stats>
 			<stat type="pDef">113</stat>
+			<stat type="maxMp">592</stat>
 		</stats>
 	</item>
 	<item id="38664" name="Steel Dynasty Stockings" type="Armor">
@@ -1256,6 +1266,7 @@
 		<set name="weight" val="290" />
 		<stats>
 			<stat type="pDef">71</stat>
+			<stat type="maxMp">370</stat>
 		</stats>
 	</item>
 	<item id="38665" name="Steel Dynasty Circlet" type="Armor">
@@ -1564,6 +1575,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">60</stat>
+			<stat type="maxMp">20</stat>
 		</stats>
 	</item>
 	<item id="38681" name="Steel Phoenix Necklace" type="Armor">
@@ -1583,6 +1595,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">80</stat>
+			<stat type="maxMp">26</stat>
 		</stats>
 	</item>
 	<item id="38682" name="Steel Phoenix Ring" type="Armor">
@@ -1602,6 +1615,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">40</stat>
+			<stat type="maxMp">13</stat>
 		</stats>
 	</item>
 	<item id="38683" name="Steel Tateossian Earring" type="Armor">
@@ -1621,6 +1635,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">71</stat>
+			<stat type="maxMp">31</stat>
 		</stats>
 	</item>
 	<item id="38684" name="Steel Tateossian Necklace" type="Armor">
@@ -1640,6 +1655,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">95</stat>
+			<stat type="maxMp">42</stat>
 		</stats>
 	</item>
 	<item id="38685" name="Steel Tateossian Ring" type="Armor">
@@ -1659,6 +1675,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">48</stat>
+			<stat type="maxMp">21</stat>
 		</stats>
 	</item>
 	<item id="38686" name="Steel Dynasty Earring" type="Armor">
@@ -1678,6 +1695,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">79</stat>
+			<stat type="maxMp">35</stat>
 		</stats>
 	</item>
 	<item id="38687" name="Steel Dynasty Necklace" type="Armor">
@@ -1697,6 +1715,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">106</stat>
+			<stat type="maxMp">46</stat>
 		</stats>
 	</item>
 	<item id="38688" name="Steel Dynasty Ring" type="Armor">
@@ -1716,6 +1735,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">60</stat>
+			<stat type="maxMp">23</stat>
 		</stats>
 	</item>
 	<item id="38689" name="Steel Immortal Earring (30-day)" type="Armor">
@@ -1735,6 +1755,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">94</stat>
+			<stat type="maxMp">40</stat>
 		</stats>
 	</item>
 	<item id="38690" name="Steel Immortal Necklace (30-day)" type="Armor">
@@ -1754,6 +1775,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">126</stat>
+			<stat type="maxMp">53</stat>
 		</stats>
 	</item>
 	<item id="38691" name="Steel Immortal Ring (30-day)" type="Armor">
@@ -1773,6 +1795,7 @@
 		<set name="weight" val="50" />
 		<stats>
 			<stat type="mDef">63</stat>
+			<stat type="maxMp">26</stat>
 		</stats>
 	</item>
 	<item id="38692" name="Steel StormBringer" type="Weapon">
@@ -1799,6 +1822,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="rCrit">8</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="randomDamage">10</stat>
 		</stats>
 	</item>
 	<item id="38693" name="Steel Yaksa Mace" type="Weapon">
@@ -1826,6 +1850,7 @@
 			<stat type="accCombat">8</stat>
 			<stat type="rCrit">6</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="randomDamage">20</stat>
 		</stats>
 	</item>
 	<item id="38694" name="Steel Saber*Sword of Revolution" type="Weapon">
@@ -1852,6 +1877,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="rCrit">8</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="randomDamage">10</stat>
 		</stats>
 	</item>
 	<item id="38695" name="Steel Mysterious Sword" type="Weapon">
@@ -1878,6 +1904,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="rCrit">8</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="randomDamage">10</stat>
 		</stats>
 	</item>
 	<item id="38696" name="Steel Body Slasher" type="Weapon">
@@ -1905,6 +1932,7 @@
 			<stat type="rCrit">8</stat>
 			<stat type="accCombat">-3.75</stat>
 			<stat type="pAtkRange">80</stat>
+			<stat type="randomDamage">10</stat>
 		</stats>
 	</item>
 	<item id="38697" name="Steel Soulfire Dirk" type="Weapon">
@@ -1932,6 +1960,7 @@
 			<stat type="rCrit">12</stat>
 			<stat type="accCombat">-3.75</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="randomDamage">5</stat>
 		</stats>
 	</item>
 	<item id="38698" name="Steel Crystallized Ice Bow" type="Weapon">
@@ -1959,6 +1988,7 @@
 			<stat type="rCrit">12</stat>
 			<stat type="accCombat">-3.75</stat>
 			<stat type="pAtkRange">500</stat>
+			<stat type="randomDamage">5</stat>
 		</stats>
 	</item>
 	<item id="38699" name="Steel Schlager" type="Weapon">
@@ -1986,6 +2016,7 @@
 			<stat type="accCombat">2</stat>
 			<stat type="rCrit">8</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="randomDamage">15</stat>
 		</stats>
 	</item>
 </list>

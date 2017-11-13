@@ -23,9 +23,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.enums.Team;
 import org.l2junity.gameserver.instancemanager.tasks.PenaltyRemoveTask;
 import org.l2junity.gameserver.model.ArenaParticipantsHolder;
@@ -84,11 +85,11 @@ public final class HandysBlockCheckerManager
 			{
 				return;
 			}
-			if (Config.HBCE_FAIR_PLAY)
+			if (GeneralConfig.HBCE_FAIR_PLAY)
 			{
 				holder.checkAndShuffle();
 			}
-			ThreadPoolManager.getInstance().executeGeneral(holder.getEvent().new StartEvent());
+			ThreadPool.execute(holder.getEvent().new StartEvent());
 		}
 		else
 		{
@@ -159,7 +160,7 @@ public final class HandysBlockCheckerManager
 			{
 				if (_arenaPlayers[i].getAllPlayers().contains(player))
 				{
-					SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.C1_IS_ALREADY_REGISTERED_ON_THE_MATCH_WAITING_LIST);
+					SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.THE_MATCH_C1_PREVIOUSLY_PARTICIPATED_IN_SHOULD_END_BEFORE_YOU_APPLY_PLEASE_TRY_AGAIN_LATER);
 					msg.addCharName(player);
 					player.sendPacket(msg);
 					return false;
@@ -366,7 +367,7 @@ public final class HandysBlockCheckerManager
 	
 	private void schedulePenaltyRemoval(int objId)
 	{
-		ThreadPoolManager.getInstance().scheduleGeneral(new PenaltyRemoveTask(objId), 10000);
+		ThreadPool.schedule(new PenaltyRemoveTask(objId), 10000, TimeUnit.MILLISECONDS);
 	}
 	
 	/**

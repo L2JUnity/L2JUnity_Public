@@ -7,6 +7,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -29,6 +30,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="36402" name="Lucky Pouch (High-grade)" name_additional="Event" type="EtcItem">
 		<!-- Double-click to get 6 Scrolls: Midsummer Passion, 2 Vitality Replenishing Star Candies, 2 Feathers of Blessing, 2 Heavenly Cocktails, and 1 High-grade Lucky Enchant Stone: Armor (R-grade). -->
@@ -42,6 +44,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="36403" name="Lucky Pouch (Top-grade)" name_additional="Event" type="EtcItem">
 		<!-- Double-click to get 12 Scrolls: Midsummer Passion, 2 Vitality Replenishing Star Candies, 3 Feathers of Blessing, 2 Heavenly Cocktails, 2 unit s of Energy of Destruction, and a Rare Accessory Pack (Expiratory). If you are very lucky, you might get a Rare Accessory Pack (Permanent), a Weapon Pack (R99-grade), and an Unbind Scroll Pack additionally. -->
@@ -55,6 +58,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="36404" name="Scroll: Midsummer Passion" name_additional="Event" type="EtcItem">
 		<!-- Increases acquired XP and SP by 30% for 1 hour. -->
@@ -63,6 +67,7 @@
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -85,6 +90,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="36406" name="Rare Accessory Pack (Permanent)" name_additional="Event" type="EtcItem">
 		<!-- Double-click for one of the following items: Blessed Antharas' Earring, Blessed Valakas' Necklace, Tauti's Ring, and Earth Wyrm Heart Ring. -->
@@ -93,6 +99,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36407" name="Weapon Pack (R99-grade)" name_additional="Event" type="EtcItem">
 		<!-- Double-click to get 1 unidentified Amaranthine weapon. -->
@@ -101,6 +108,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36408" name="Unbind Scroll Pack" name_additional="Event" type="EtcItem">
 		<!-- Double-click to get 1 of the following: R, R95 or R99 weapon/armor Unbind Scroll -->
@@ -109,6 +117,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36409" name="Blessed Antharas' Earring (14-day)" name_additional="Event" type="Armor">
 		<!-- MP + 59, Bleed Resistance + 50%, Bleed Atk. Rate + 50%. Increases Heal Amount, Vampiric Rage Effect, Stun/Mental Attack Resistance + 40%, Stun/Mental Atk. Rate + 40%. Decreases physical/magic skill MP consumption. Increases Earth/Holy defense. CON + 3, MEN + 3. Increases P. Def. and M. Def. Can use Stun canceling skills. Momentarily increases Stun Resistance + 100%. Only one effect is applied when two of the same earrings are equipped. -->
@@ -131,6 +140,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">170</stat>
+			<stat type="maxMp">59</stat>
 		</stats>
 	</item>
 	<item id="36410" name="Blessed Valakas' Necklace (14-day)" name_additional="Event" type="Armor">
@@ -154,6 +164,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">226</stat>
+			<stat type="maxMp">79</stat>
 		</stats>
 	</item>
 	<item id="36411" name="Tauti's Ring (14-day)" name_additional="Event" type="Armor">
@@ -176,6 +187,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">108</stat>
+			<stat type="maxMp">38</stat>
 		</stats>
 	</item>
 	<item id="36412" name="Earth Wyrm Heart Ring (14-day)" name_additional="Event" type="Armor">
@@ -200,6 +212,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">108</stat>
+			<stat type="maxMp">38</stat>
 		</stats>
 	</item>
 	<item id="36413" name="Single Mesh Armor" type="Armor">
@@ -744,6 +757,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36442" name="Antharas Slasher" name_additional="Standard" type="Weapon">
@@ -769,6 +783,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36443" name="Antharas Thrower" name_additional="Standard" type="Weapon">
@@ -797,6 +812,7 @@
 			<stat type="pAtkSpd">293</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36444" name="Antharas Buster" name_additional="Standard" type="Weapon">
@@ -823,6 +839,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36445" name="Antharas Cutter" name_additional="Standard" type="Weapon">
@@ -848,6 +865,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36446" name="Antharas Stormer" name_additional="Standard" type="Weapon">
@@ -875,6 +893,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36447" name="Antharas Fighter" name_additional="Standard" type="Weapon">
@@ -901,6 +920,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36448" name="Antharas Avenger" name_additional="Standard" type="Weapon">
@@ -927,6 +947,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36449" name="Antharas Dual Blunt Weapon" name_additional="Standard" type="Weapon">
@@ -953,6 +974,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36450" name="Antharas Dualsword" name_additional="Standard" type="Weapon">
@@ -975,10 +997,10 @@
 			<stat type="pAtk">2611</stat>
 			<stat type="mAtk">935</stat>
 			<stat type="rCrit">8</stat>
-			<stat type="accCombat">8</stat>
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">500</stat>
 		</stats>
 	</item>
 	<item id="36451" name="Valakas Shaper" name_additional="Standard" type="Weapon">
@@ -1005,6 +1027,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">500</stat>
 		</stats>
 	</item>
 	<item id="36452" name="Valakas Cutter" name_additional="Standard" type="Weapon">
@@ -1030,6 +1053,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">500</stat>
 		</stats>
 	</item>
 	<item id="36453" name="Valakas Slasher" name_additional="Standard" type="Weapon">
@@ -1055,6 +1079,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">500</stat>
 		</stats>
 	</item>
 	<item id="36454" name="Valakas Thrower" name_additional="Standard" type="Weapon">
@@ -1083,6 +1108,7 @@
 			<stat type="pAtkSpd">293</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
+			<stat type="firePower">500</stat>
 		</stats>
 	</item>
 	<item id="36455" name="Valakas Buster" name_additional="Standard" type="Weapon">
@@ -1109,6 +1135,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">500</stat>
 		</stats>
 	</item>
 	<item id="36456" name="Valakas Caster" name_additional="Standard" type="Weapon">
@@ -1136,6 +1163,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">500</stat>
 		</stats>
 	</item>
 	<item id="36457" name="Valakas Retributer" name_additional="Standard" type="Weapon">
@@ -1163,6 +1191,7 @@
 			<stat type="accMagic">8</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">500</stat>
 		</stats>
 	</item>
 	<item id="36458" name="Lindvior Shaper" name_additional="Standard" type="Weapon">
@@ -1189,6 +1218,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">500</stat>
 		</stats>
 	</item>
 	<item id="36459" name="Lindvior Thrower" name_additional="Standard" type="Weapon">
@@ -1217,6 +1247,7 @@
 			<stat type="pAtkSpd">293</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
+			<stat type="windPower">500</stat>
 		</stats>
 	</item>
 	<item id="36460" name="Lindvior Slasher" name_additional="Standard" type="Weapon">
@@ -1242,6 +1273,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">500</stat>
 		</stats>
 	</item>
 	<item id="36461" name="Lindvior Caster" name_additional="Standard" type="Weapon">
@@ -1265,10 +1297,10 @@
 			<stat type="pAtk">1716</stat>
 			<stat type="mAtk">1247</stat>
 			<stat type="rCrit">8</stat>
-			<stat type="accCombat">8</stat>
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">500</stat>
 		</stats>
 	</item>
 	<item id="36462" name="Lindvior Cutter" name_additional="Standard" type="Weapon">
@@ -1294,6 +1326,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">500</stat>
 		</stats>
 	</item>
 	<item id="36463" name="Lindvior Shooter" name_additional="Standard" type="Weapon">
@@ -1321,6 +1354,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">400</stat>
+			<stat type="windPower">500</stat>
 		</stats>
 	</item>
 	<item id="36464" name="Lindvior Dual Dagger" name_additional="Standard" type="Weapon">
@@ -1347,6 +1381,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">500</stat>
 		</stats>
 	</item>
 	<item id="36465" name="Antharas Shaper" name_additional="High-grade" type="Weapon">
@@ -1374,6 +1409,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36466" name="Antharas Slasher" name_additional="High-grade" type="Weapon">
@@ -1400,6 +1436,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36467" name="Antharas Thrower" name_additional="High-grade" type="Weapon">
@@ -1429,6 +1466,7 @@
 			<stat type="pAtkSpd">293</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36468" name="Antharas Buster" name_additional="High-grade" type="Weapon">
@@ -1456,6 +1494,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36469" name="Antharas Cutter" name_additional="High-grade" type="Weapon">
@@ -1482,6 +1521,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36470" name="Antharas Stormer" name_additional="High-grade" type="Weapon">
@@ -1510,6 +1550,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36471" name="Antharas Fighter" name_additional="High-grade" type="Weapon">
@@ -1537,6 +1578,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36472" name="Antharas Avenger" name_additional="High-grade" type="Weapon">
@@ -1564,6 +1606,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36473" name="Antharas Dual Blunt Weapon" name_additional="High-grade" type="Weapon">
@@ -1591,6 +1634,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36474" name="Antharas Dualsword" name_additional="High-grade" type="Weapon">
@@ -1614,10 +1658,10 @@
 			<stat type="pAtk">3027</stat>
 			<stat type="mAtk">1084</stat>
 			<stat type="rCrit">8</stat>
-			<stat type="accCombat">8</stat>
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36475" name="Valakas Shaper" name_additional="High-grade" type="Weapon">
@@ -1645,6 +1689,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36476" name="Valakas Cutter" name_additional="High-grade" type="Weapon">
@@ -1671,6 +1716,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36477" name="Valakas Slasher" name_additional="High-grade" type="Weapon">
@@ -1697,6 +1743,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36478" name="Valakas Thrower" name_additional="High-grade" type="Weapon">
@@ -1726,6 +1773,7 @@
 			<stat type="pAtkSpd">293</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36479" name="Valakas Buster" name_additional="High-grade" type="Weapon">
@@ -1753,6 +1801,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36480" name="Valakas Caster" name_additional="High-grade" type="Weapon">
@@ -1781,6 +1830,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36481" name="Valakas Retributer" name_additional="High-grade" type="Weapon">
@@ -1809,6 +1859,7 @@
 			<stat type="accMagic">8</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36482" name="Lindvior Shaper" name_additional="High-grade" type="Weapon">
@@ -1836,6 +1887,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36483" name="Lindvior Thrower" name_additional="High-grade" type="Weapon">
@@ -1865,6 +1917,7 @@
 			<stat type="pAtkSpd">293</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 	<item id="36484" name="Lindvior Slasher" name_additional="High-grade" type="Weapon">
@@ -1891,6 +1944,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">999</stat>
 		</stats>
 	</item>
 	<item id="36485" name="Lindvior Caster" name_additional="High-grade" type="Weapon">
@@ -1915,10 +1969,10 @@
 			<stat type="pAtk">1990</stat>
 			<stat type="mAtk">1446</stat>
 			<stat type="rCrit">8</stat>
-			<stat type="accCombat">8</stat>
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">999</stat>
 		</stats>
 	</item>
 	<item id="36486" name="Lindvior Cutter" name_additional="High-grade" type="Weapon">
@@ -1945,6 +1999,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">999</stat>
 		</stats>
 	</item>
 	<item id="36487" name="Lindvior Shooter" name_additional="High-grade" type="Weapon">
@@ -1973,6 +2028,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">400</stat>
+			<stat type="windPower">999</stat>
 		</stats>
 	</item>
 	<item id="36488" name="Lindvior Dual Dagger" name_additional="High-grade" type="Weapon">
@@ -2000,6 +2056,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="windPower">999</stat>
 		</stats>
 	</item>
 	<item id="36489" name="Antharas Shaper" name_additional="Top-grade" type="Weapon">
@@ -2029,6 +2086,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36490" name="Antharas Slasher" name_additional="Top-grade" type="Weapon">
@@ -2057,6 +2115,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36491" name="Antharas Thrower" name_additional="Top-grade" type="Weapon">
@@ -2088,6 +2147,7 @@
 			<stat type="pAtkSpd">293</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">500</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36492" name="Antharas Buster" name_additional="Top-grade" type="Weapon">
@@ -2117,6 +2177,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36493" name="Antharas Cutter" name_additional="Top-grade" type="Weapon">
@@ -2145,6 +2206,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36494" name="Antharas Stormer" name_additional="Top-grade" type="Weapon">
@@ -2175,6 +2237,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">80</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36495" name="Antharas Fighter" name_additional="Top-grade" type="Weapon">
@@ -2204,6 +2267,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36496" name="Antharas Avenger" name_additional="Top-grade" type="Weapon">
@@ -2233,6 +2297,7 @@
 			<stat type="pAtkSpd">379</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36497" name="Antharas Dual Blunt Weapon" name_additional="Top-grade" type="Weapon">
@@ -2262,6 +2327,7 @@
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">20</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36498" name="Antharas Dualsword" name_additional="Top-grade" type="Weapon">
@@ -2287,10 +2353,10 @@
 			<stat type="pAtk">3509</stat>
 			<stat type="mAtk">1257</stat>
 			<stat type="rCrit">8</stat>
-			<stat type="accCombat">8</stat>
 			<stat type="pAtkSpd">325</stat>
 			<stat type="randomDamage">10</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="earthPower">999</stat>
 		</stats>
 	</item>
 	<item id="36499" name="Valakas Shaper" name_additional="Top-grade" type="Weapon">
@@ -2320,6 +2386,7 @@
 			<stat type="pAtkSpd">433</stat>
 			<stat type="randomDamage">5</stat>
 			<stat type="pAtkRange">40</stat>
+			<stat type="firePower">999</stat>
 		</stats>
 	</item>
 </list>

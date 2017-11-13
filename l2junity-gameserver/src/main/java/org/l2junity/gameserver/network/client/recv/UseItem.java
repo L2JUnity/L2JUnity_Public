@@ -19,14 +19,17 @@
 package org.l2junity.gameserver.network.client.recv;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.ai.CtrlEvent;
 import org.l2junity.gameserver.ai.CtrlIntention;
 import org.l2junity.gameserver.ai.NextAction;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.ItemSkillType;
 import org.l2junity.gameserver.enums.PrivateStoreType;
+import org.l2junity.gameserver.handler.AdminCommandHandler;
 import org.l2junity.gameserver.handler.IItemHandler;
 import org.l2junity.gameserver.handler.ItemHandler;
 import org.l2junity.gameserver.instancemanager.FortSiegeManager;
@@ -34,10 +37,15 @@ import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.effects.L2EffectType;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerUseItem;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.model.holders.ItemSkillHolder;
 import org.l2junity.gameserver.model.items.EtcItem;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
+import org.l2junity.gameserver.model.items.type.ActionType;
+import org.l2junity.gameserver.model.stats.BooleanStat;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.ExUseSharedGroupItem;
@@ -74,6 +82,11 @@ public final class UseItem implements IClientIncomingPacket
 			return;
 		}
 		
+		if (activeChar.isSpawnProtected() && !PlayerConfig.SPAWN_PROTECTION_ALLOWED_ITEMS.contains(_itemId))
+		{
+			activeChar.onActionRequest();
+		}
+		
 		if (activeChar.getActiveTradeList() != null)
 		{
 			activeChar.cancelActiveTrade();
@@ -95,20 +108,26 @@ public final class UseItem implements IClientIncomingPacket
 				final WorldObject obj = World.getInstance().findObject(_objectId);
 				if (obj instanceof ItemInstance)
 				{
-					activeChar.useAdminCommand("admin_use_item " + _objectId);
+					AdminCommandHandler.getInstance().useAdminCommand(activeChar, "admin_use_item " + _objectId, true);
 				}
 			}
 			return;
 		}
 		
-		if (item.getItem().getType2() == L2Item.TYPE2_QUEST)
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerUseItem(activeChar, item, _ctrlPressed), activeChar, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
+			return;
+		}
+		
+		if (item.isQuestItem() && (item.getItem().getDefaultAction() != ActionType.NONE))
 		{
 			activeChar.sendPacket(SystemMessageId.YOU_CANNOT_USE_QUEST_ITEMS);
 			return;
 		}
 		
 		// No UseItem is allowed while the player is in special conditions
-		if (activeChar.hasBlockActions() || activeChar.isControlBlocked() || activeChar.isAlikeDead())
+		if ((activeChar.hasBlockActions() && !activeChar.getStat().isBlockedActionsAllowedItem(item)) || activeChar.isControlBlocked() || activeChar.isAlikeDead())
 		{
 			return;
 		}
@@ -135,7 +154,7 @@ public final class UseItem implements IClientIncomingPacket
 			return;
 		}
 		
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_TELEPORT && (activeChar.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_TELEPORT && (activeChar.getReputation() < 0))
 		{
 			final List<ItemSkillHolder> skills = item.getItem().getSkills(ItemSkillType.NORMAL);
 			if ((skills != null) && skills.stream().anyMatch(holder -> holder.getSkill().hasEffectType(L2EffectType.TELEPORT)))
@@ -165,6 +184,13 @@ public final class UseItem implements IClientIncomingPacket
 				sendSharedGroupUpdate(activeChar, sharedReuseGroup, reuseOnGroup, reuseDelay);
 				return;
 			}
+		}
+		
+		// If item's default action is to show html, show item's main html.
+		if (item.getItem().getDefaultAction() == ActionType.SHOW_HTML)
+		{
+			item.onBypassFeedback(activeChar, null);
+			return;
 		}
 		
 		if (item.isEquipable())
@@ -205,7 +231,7 @@ public final class UseItem implements IClientIncomingPacket
 						return;
 					}
 					
-					if (activeChar.isMounted() || activeChar.isDisarmed())
+					if (activeChar.isMounted() || activeChar.getStat().has(BooleanStat.DISARMED))
 					{
 						activeChar.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 						return;
@@ -247,7 +273,7 @@ public final class UseItem implements IClientIncomingPacket
 			}
 			else if (activeChar.isAttackingNow())
 			{
-				ThreadPoolManager.getInstance().scheduleGeneral(() ->
+				ThreadPool.schedule(() ->
 				{
 					// If character is still engaged in strike we should not change weapon
 					if (activeChar.isAttackingNow())
@@ -257,7 +283,7 @@ public final class UseItem implements IClientIncomingPacket
 					
 					// Equip or unEquip
 					activeChar.useEquippableItem(item, false);
-				} , activeChar.getAttackEndTime() - System.currentTimeMillis());
+				}, activeChar.getAttackEndTime() - TimeUnit.MILLISECONDS.toNanos(System.currentTimeMillis()), TimeUnit.MILLISECONDS);
 			}
 			else
 			{
@@ -267,16 +293,55 @@ public final class UseItem implements IClientIncomingPacket
 		else
 		{
 			final EtcItem etcItem = item.getEtcItem();
+			// TODO: Well aware this is crap, we need to be able to register handler based on their etcItemType to trigger such crap
+			// Made as PoC for speed
+			if (etcItem != null)
+			{
+				switch (etcItem.getItemType())
+				{
+					case ENCHT_WP:
+					case ENCHT_AM:
+					case BLESS_ENCHT_WP:
+					case BLESS_ENCHT_AM:
+					case MULTI_ENCHT_WP:
+					case MULTI_ENCHT_AM:
+					{
+						final IItemHandler handler = ItemHandler.getInstance().getHandler("EnchantScrolls");
+						if (handler.useItem(activeChar, item, _ctrlPressed))
+						{
+							if (reuseDelay > 0)
+							{
+								activeChar.addTimeStampItem(item, reuseDelay);
+								sendSharedGroupUpdate(activeChar, sharedReuseGroup, reuseDelay, reuseDelay);
+							}
+						}
+						return;
+					}
+					case CHANGE_ATTR:
+					{
+						final IItemHandler handler = ItemHandler.getInstance().getHandler("ChangeAttribute");
+						if (handler.useItem(activeChar, item, _ctrlPressed))
+						{
+							if (reuseDelay > 0)
+							{
+								activeChar.addTimeStampItem(item, reuseDelay);
+								sendSharedGroupUpdate(activeChar, sharedReuseGroup, reuseDelay, reuseDelay);
+							}
+						}
+						return;
+					}
+				}
+			}
 			final IItemHandler handler = ItemHandler.getInstance().getHandler(etcItem);
 			if (handler == null)
 			{
 				if ((etcItem != null) && (etcItem.getHandlerName() != null))
 				{
-					_log.warn("Unmanaged Item handler: " + etcItem.getHandlerName() + " for Item Id: " + _itemId + "!");
+					LOGGER.warn("Unmanaged Item handler: " + etcItem.getHandlerName() + " for Item Id: " + _itemId + "!");
 				}
-				else if (Config.DEBUG)
+				else if (GeneralConfig.DEBUG)
 				{
-					_log.warn("No Item handler registered for Item Id: " + _itemId + "!");
+					LOGGER.warn("No Item handler registered for Item Id: " + _itemId + "!");
 				}
 			}
 			else if (handler.useItem(activeChar, item, _ctrlPressed))

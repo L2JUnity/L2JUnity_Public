@@ -27,12 +27,10 @@ import java.time.Instant;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
-import org.l2junity.gameserver.data.xml.impl.ClanHallData;
 import org.l2junity.gameserver.enums.ClanHallGrade;
 import org.l2junity.gameserver.enums.ClanHallType;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
@@ -41,7 +39,6 @@ import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.DoorInstance;
-import org.l2junity.gameserver.model.holders.ClanHallTeleportHolder;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
 import org.l2junity.gameserver.model.residences.AbstractResidence;
 import org.l2junity.gameserver.model.zone.type.ClanHallZone;
@@ -56,6 +53,12 @@ import org.slf4j.LoggerFactory;
  */
 public final class ClanHall extends AbstractResidence
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ClanHall.class);
+
+	private static final String INSERT_CLANHALL = "INSERT INTO clanhall (id, ownerId, paidUntil) VALUES (?,?,?)";
+	private static final String LOAD_CLANHALL = "SELECT * FROM clanhall WHERE id=?";
+	private static final String UPDATE_CLANHALL = "UPDATE clanhall SET ownerId=?,paidUntil=? WHERE id=?";
+
 	// Static parameters
 	private final ClanHallGrade _grade;
 	private final ClanHallType _type;
@@ -64,19 +67,13 @@ public final class ClanHall extends AbstractResidence
 	private final int _deposit;
 	private final List<Integer> _npcs;
 	private final List<DoorInstance> _doors;
-	private final List<ClanHallTeleportHolder> _teleports;
 	private final Location _ownerLocation;
 	private final Location _banishLocation;
 	// Dynamic parameters
 	private L2Clan _owner = null;
 	private long _paidUntil = 0;
 	protected ScheduledFuture<?> _checkPaymentTask = null;
-	// Other
-	private static final String INSERT_CLANHALL = "INSERT INTO clanhall (id, ownerId, paidUntil) VALUES (?,?,?)";
-	private static final String LOAD_CLANHALL = "SELECT * FROM clanhall WHERE id=?";
-	private static final String UPDATE_CLANHALL = "UPDATE clanhall SET ownerId=?,paidUntil=? WHERE id=?";
-	private static final Logger LOGGER = LoggerFactory.getLogger(ClanHallData.class);
-	
+
 	public ClanHall(StatsSet params)
 	{
 		super(params.getInt("id"));
@@ -89,7 +86,6 @@ public final class ClanHall extends AbstractResidence
 		_deposit = params.getInt("deposit");
 		_npcs = params.getList("npcList", Integer.class);
 		_doors = params.getList("doorList", DoorInstance.class);
-		_teleports = params.getList("teleportList", ClanHallTeleportHolder.class);
 		_ownerLocation = params.getLocation("owner_loc");
 		_banishLocation = params.getLocation("banish_loc");
 		// Set dynamic parameters (from DB)
@@ -265,7 +261,7 @@ public final class ClanHall extends AbstractResidence
 			
 			final int failDays = getCostFailDay();
 			final long time = failDays > 0 ? (failDays > 8 ? Instant.now().toEpochMilli() : Instant.ofEpochMilli(getPaidUntil()).plus(Duration.ofDays(failDays + 1)).toEpochMilli()) : getPaidUntil();
-			_checkPaymentTask = ThreadPoolManager.getInstance().scheduleGeneral(new CheckPaymentTask(), time - System.currentTimeMillis());
+			_checkPaymentTask = ThreadPool.schedule(new CheckPaymentTask(), time - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 		}
 		else
 		{
@@ -323,16 +319,6 @@ public final class ClanHall extends AbstractResidence
 		return _banishLocation;
 	}
 	
-	public List<ClanHallTeleportHolder> getTeleportList()
-	{
-		return _teleports;
-	}
-	
-	public List<ClanHallTeleportHolder> getTeleportList(int functionLevel)
-	{
-		return _teleports.stream().filter(holder -> holder.getMinFunctionLevel() <= functionLevel).collect(Collectors.toList());
-	}
-	
 	public int getMinBid()
 	{
 		return _minBid;
@@ -365,7 +351,7 @@ public final class ClanHall extends AbstractResidence
 					}
 					else
 					{
-						_checkPaymentTask = ThreadPoolManager.getInstance().scheduleGeneral(new CheckPaymentTask(), 1, TimeUnit.DAYS);
+						_checkPaymentTask = ThreadPool.schedule(new CheckPaymentTask(), 1, TimeUnit.DAYS);
 						final SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.PAYMENT_FOR_YOUR_CLAN_HALL_HAS_NOT_BEEN_MADE_PLEASE_MAKE_PAYMENT_TO_YOUR_CLAN_WAREHOUSE_BY_S1_TOMORROW);
 						sm.addInt(getLease());
 						clan.broadcastToOnlineMembers(sm);
@@ -375,7 +361,7 @@ public final class ClanHall extends AbstractResidence
 				{
 					clan.getWarehouse().destroyItem("Clan Hall Lease", Inventory.ADENA_ID, getLease(), null, null);
 					setPaidUntil(Instant.ofEpochMilli(getPaidUntil()).plus(Duration.ofDays(7)).toEpochMilli());
-					_checkPaymentTask = ThreadPoolManager.getInstance().scheduleGeneral(new CheckPaymentTask(), getPaidUntil() - System.currentTimeMillis());
+					_checkPaymentTask = ThreadPool.schedule(new CheckPaymentTask(), getPaidUntil() - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 					updateDB();
 				}
 			}

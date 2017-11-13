@@ -25,8 +25,11 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.enums.ChatType;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.announce.Announcement;
 import org.l2junity.gameserver.model.announce.AnnouncementType;
@@ -42,15 +45,15 @@ import org.slf4j.LoggerFactory;
  */
 public final class AnnouncementsTable
 {
-	private static Logger LOGGER = LoggerFactory.getLogger(AnnouncementsTable.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementsTable.class);
 	
 	private final Map<Integer, IAnnouncement> _announcements = new ConcurrentSkipListMap<>();
 	
 	protected AnnouncementsTable()
 	{
-		load();
 	}
 	
+	@Load(group = LoadGroup.class)
 	private void load()
 	{
 		_announcements.clear();
@@ -160,13 +163,14 @@ public final class AnnouncementsTable
 	/**
 	 * @return Single instance of {@link AnnouncementsTable}
 	 */
+	@InstanceGetter
 	public static AnnouncementsTable getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
-	private static class SingletonHolder
+	private static final class SingletonHolder
 	{
-		protected static final AnnouncementsTable _instance = new AnnouncementsTable();
+		protected static final AnnouncementsTable INSTANCE = new AnnouncementsTable();
 	}
 }

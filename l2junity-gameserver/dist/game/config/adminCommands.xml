@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../data/xsd/adminCommands.xsd">
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/adminCommands.xsd">
 	<!-- ADMIN COND EXCEPTIONS -->
 	<admin command="admin_exceptions" accessLevel="7" />
 	<admin command="admin_set_exception" accessLevel="7" confirmDlg="true" />
@@ -30,6 +30,7 @@
 	<admin command="admin_worldchat" accessLevel="7" />
 	<admin command="admin_zones" accessLevel="7"/>
 	<admin command="admin_pointpicking" accessLevel="7"/>
+	<admin command="admin_settime" accessLevel="7"/>
 
 	<!-- ADMIN ANNOUNCEMENTS -->
 	<admin command="admin_announce" accessLevel="7" />
@@ -50,6 +51,7 @@
 	<admin command="admin_getbuffs" accessLevel="7" />
 	<admin command="admin_stopbuff" accessLevel="7" />
 	<admin command="admin_stopallbuffs" accessLevel="7" confirmDlg="true" />
+	<admin command="admin_viewblockedeffects" accessLevel="7" />
 	<admin command="admin_areacancel" accessLevel="7" />
 	<admin command="admin_removereuse" accessLevel="7" />
 	<admin command="admin_switch_gm_buffs" accessLevel="7" />
@@ -91,7 +93,6 @@
 	<admin command="admin_cw_info" accessLevel="7" />
 	<admin command="admin_cw_remove" accessLevel="7" />
 	<admin command="admin_cw_goto" accessLevel="7" />
-	<admin command="admin_cw_reload" accessLevel="7" />
 	<admin command="admin_cw_add" accessLevel="7" confirmDlg="true" />
 	<admin command="admin_cw_info_menu" accessLevel="7" />
 
@@ -149,6 +150,8 @@
 	<admin command="admin_set_cp" accessLevel="7" />
 	<admin command="admin_setparam" accessLevel="7" />
 	<admin command="admin_unsetparam" accessLevel="7" />
+	<admin command="admin_premium" accessLevel="7" />
+	<admin command="admin_factions" accessLevel="7" />
 
 	<!-- ADMIN EFFECTS -->
 	<admin command="admin_invis" accessLevel="7" />
@@ -162,7 +165,10 @@
 	<admin command="admin_bighead" accessLevel="7" />
 	<admin command="admin_shrinkhead" accessLevel="7" />
 	<admin command="admin_gmspeed" accessLevel="7" />
-	<admin command="admin_gmspeed_menu" accessLevel="7" />
+	<admin command="admin_superhaste" accessLevel="7" />
+	<admin command="admin_superhaste_menu" accessLevel="7" />
+	<admin command="admin_speed" accessLevel="7" />
+	<admin command="admin_speed_menu" accessLevel="7" />
 	<admin command="admin_unpara_all" accessLevel="7" />
 	<admin command="admin_para_all" accessLevel="7" />
 	<admin command="admin_unpara" accessLevel="7" />
@@ -181,6 +187,7 @@
 	<admin command="admin_social" accessLevel="7" />
 	<admin command="admin_social_menu" accessLevel="7" />
 	<admin command="admin_effect" accessLevel="7" />
+	<admin command="admin_npc_use_skill" accessLevel="7" />
 	<admin command="admin_effect_menu" accessLevel="7" />
 	<admin command="admin_ave_abnormal" accessLevel="7" />
 	<admin command="admin_play_sounds" accessLevel="7" />
@@ -281,6 +288,7 @@
 	<admin command="admin_geo_can_see" accessLevel="7" />
 	<admin command="admin_geo_can_move" accessLevel="7" />
 	<admin command="admin_geogrid" accessLevel="7" />
+	<admin command="admin_showgeogrid" accessLevel="7" />
 
 	<!-- ADMIN GEO EDITOR -->
 	<admin command="admin_ge_status" accessLevel="7" />
@@ -346,6 +354,7 @@
 
 	<!-- ADMIN KILL -->
 	<admin command="admin_kill" accessLevel="7" />
+	<admin command="admin_killnpc" accessLevel="7" />
 	<admin command="admin_kill_monster" accessLevel="7" />
 
 	<!-- ADMIN LEVEL -->
@@ -437,14 +446,16 @@
 	<admin command="admin_untransform" accessLevel="7" />
 	<admin command="admin_transform_menu" accessLevel="7" />
 	
-		<!-- ADMIN PRIME POINTS -->
+	<!-- ADMIN PRIME POINTS -->
 	<admin command="admin_primepoints" accessLevel="7" />
+	
+	<!-- ADMIN PC CAFE POINTS -->
+	<admin command="admin_pccafepoints" accessLevel="7" />
 
 	<!-- ADMIN QUEST -->
 	<admin command="admin_quest_reload" accessLevel="8" />
 	<admin command="admin_script_load" accessLevel="8" />
 	<admin command="admin_script_unload" accessLevel="8" />
-	<admin command="admin_script_dir" accessLevel="8" />
 	<admin command="admin_show_quests" accessLevel="7" />
 	<admin command="admin_quest_info" accessLevel="7" />
 
@@ -473,10 +484,13 @@
 	<!-- ADMIN SHOP -->
 	<admin command="admin_buy" accessLevel="7" />
 	<admin command="admin_gmshop" accessLevel="7" />
+	<admin command="admin_multisell" accessLevel="7" />
+	<admin command="admin_exc_multisell" accessLevel="7" />
 
 	<!-- ADMIN SHOW QUEST -->
 	<admin command="admin_charquestmenu" accessLevel="7" />
 	<admin command="admin_setcharquest" accessLevel="7" />
+	<admin command="admin_setquest" accessLevel="7" />
 
 	<!-- ADMIN SHUTDOWN -->
 	<admin command="admin_server_shutdown" accessLevel="8" confirmDlg="true" />
@@ -545,6 +559,7 @@
 	<admin command="admin_walk" accessLevel="7" />
 	<admin command="teleportto" accessLevel="7" />
 	<admin command="recall" accessLevel="7" />
+	<admin command="admin_come_to_me" accessLevel="7" />
 	<admin command="admin_recall_npc" accessLevel="7" />
 	<admin command="admin_gonorth" accessLevel="7" />
 	<admin command="admin_gosouth" accessLevel="7" />
@@ -593,8 +608,32 @@
 	<admin command="admin_scan" accessLevel="7" />
 	<admin command="admin_deleteNpcByObjectId" accessLevel="7" confirmDlg="true" />
 
+	<!-- ADMIN FENCE -->
+	<admin command="admin_addfence" accessLevel="7" />
+	<admin command="admin_setfencestate" accessLevel="7" />
+	<admin command="admin_removefence" accessLevel="7" />
+	<admin command="admin_listfence" accessLevel="7" />
+	<admin command="admin_gofence" accessLevel="7" />
+
 	<!-- VOICE COMMANDS -->
 	<admin command="banchat" accessLevel="7" />
 	<admin command="debug" accessLevel="7" />
 	<admin command="unbanchat" accessLevel="7" />
+
+	<!-- SYSTEM INFO -->
+	<admin command="admin_system_time" accessLevel="7" />
+	<admin command="admin_os_info" accessLevel="7" />
+	<admin command="admin_cpu_info" accessLevel="7" />
+	<admin command="admin_runtime_info" accessLevel="7" />
+	<admin command="admin_jre_info" accessLevel="7" />
+	<admin command="admin_jvm_info" accessLevel="7" />
+	<admin command="admin_memory_usage" accessLevel="7" />
+	<admin command="admin_view_threads" accessLevel="7" />
+	<admin command="admin_dump_threads" accessLevel="7" />
+	
+	<!-- HIDE -->
+	<admin command="admin_hide" accessLevel="7" />
+	
+	<!-- VARIABLES -->
+	<admin command="admin_vars" accessLevel="7" />
 </list>

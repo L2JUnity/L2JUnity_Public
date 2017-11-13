@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.gameserver.util.Util;
@@ -35,7 +35,8 @@ import org.slf4j.LoggerFactory;
  */
 public final class CommunityBoardHandler implements IHandler<IParseBoardHandler, String>
 {
-	private static final Logger LOG = LoggerFactory.getLogger(CommunityBoardHandler.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CommunityBoardHandler.class);
+	
 	/** The registered handlers. */
 	private final Map<String, IParseBoardHandler> _datatable = new HashMap<>();
 	/** The bypasses used by the players. */
@@ -108,7 +109,7 @@ public final class CommunityBoardHandler implements IHandler<IParseBoardHandler,
 			return;
 		}
 		
-		if (!Config.ENABLE_COMMUNITY_BOARD)
+		if (!GeneralConfig.ENABLE_COMMUNITY_BOARD)
 		{
 			player.sendPacket(SystemMessageId.THE_COMMUNITY_SERVER_IS_CURRENTLY_OFFLINE);
 			return;
@@ -117,7 +118,7 @@ public final class CommunityBoardHandler implements IHandler<IParseBoardHandler,
 		final IParseBoardHandler cb = getHandler(command);
 		if (cb == null)
 		{
-			LOG.warn(CommunityBoardHandler.class.getSimpleName() + ": Couldn't find parse handler for command " + command + "!");
+			LOGGER.warn("Couldn't find parse handler for command " + command + "!");
 			return;
 		}
 		
@@ -141,7 +142,7 @@ public final class CommunityBoardHandler implements IHandler<IParseBoardHandler,
 			return;
 		}
 		
-		if (!Config.ENABLE_COMMUNITY_BOARD)
+		if (!GeneralConfig.ENABLE_COMMUNITY_BOARD)
 		{
 			player.sendPacket(SystemMessageId.THE_COMMUNITY_SERVER_IS_CURRENTLY_OFFLINE);
 			return;
@@ -180,16 +181,16 @@ public final class CommunityBoardHandler implements IHandler<IParseBoardHandler,
 		final IParseBoardHandler cb = getHandler(cmd);
 		if (cb == null)
 		{
-			LOG.warn(CommunityBoardHandler.class.getSimpleName() + ": Couldn't find write handler for command " + cmd + "!");
+			LOGGER.warn("Couldn't find write handler for command {}!", cmd);
 			return;
 		}
 		
 		if (!(cb instanceof IWriteBoardHandler))
 		{
-			LOG.warn(CommunityBoardHandler.class.getSimpleName() + ": " + cb.getClass().getSimpleName() + " doesn't implement write!");
+			LOGGER.warn("{} doesn't implement write!", cb.getClass().getSimpleName());
 			return;
 		}
-		((IWriteBoardHandler) cb).writeCommunityBoardCommand(player, arg1, arg2, arg3, arg4, arg5);
+		((IWriteBoardHandler) cb).writeCommunityBoardCommand(player, url, arg1, arg2, arg3, arg4, arg5);
 	}
 	
 	/**

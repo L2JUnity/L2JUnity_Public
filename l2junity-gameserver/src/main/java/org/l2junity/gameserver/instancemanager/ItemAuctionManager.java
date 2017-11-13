@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,9 +28,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.datatables.ItemTable;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.itemauction.ItemAuctionInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +55,7 @@ public final class ItemAuctionManager implements IGameXmlReader
 	
 	protected ItemAuctionManager()
 	{
-		if (!Config.ALT_ITEM_AUCTION_ENABLED)
+		if (!GeneralConfig.ALT_ITEM_AUCTION_ENABLED)
 		{
 			LOGGER.info("Disabled by config.");
 			return;
@@ -69,20 +74,23 @@ public final class ItemAuctionManager implements IGameXmlReader
 		{
 			LOGGER.error("Failed loading auctions.", e);
 		}
-		
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ItemTable.class))
+	private void load() throws Exception
 	{
+		if (!GeneralConfig.ALT_ITEM_AUCTION_ENABLED)
+		{
+			LOGGER.info("Disabled by config.");
+			return;
+		}
 		_managerInstances.clear();
 		parseDatapackFile("data/ItemAuctions.xml");
 		LOGGER.info("Loaded {} instance(s).", _managerInstances.size());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		try
 		{
@@ -159,6 +167,7 @@ public final class ItemAuctionManager implements IGameXmlReader
 	 * Gets the single instance of {@code ItemAuctionManager}.
 	 * @return single instance of {@code ItemAuctionManager}
 	 */
+	@InstanceGetter
 	public static ItemAuctionManager getInstance()
 	{
 		return SingletonHolder._instance;

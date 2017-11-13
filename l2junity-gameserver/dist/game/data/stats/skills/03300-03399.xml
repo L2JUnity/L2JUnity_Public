@@ -7,7 +7,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>5</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -20,7 +20,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>10</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -33,7 +33,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -46,7 +46,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>10</BLEED>
 			</effect>
 		</effects>
@@ -58,7 +58,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>10</SLEEP>
 			</effect>
 		</effects>
@@ -70,7 +70,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>10</SHOCK>
 			</effect>
 		</effects>
@@ -82,7 +82,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DERANGEMENT>10</DERANGEMENT>
 			</effect>
 		</effects>
@@ -94,7 +94,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>10</PARALYZE>
 			</effect>
 		</effects>
@@ -106,7 +106,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>10</HOLD>
 			</effect>
 		</effects>
@@ -118,7 +118,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="ResistDispelByCategory">
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>BUFF</slot>
 			</effect>
@@ -131,7 +131,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -144,7 +144,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="CpRegen">
+			<effect name="p_cp_regen">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -157,7 +157,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>40</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -170,15 +170,15 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>5</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -191,7 +191,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="WeightLimit">
+			<effect name="p_weight_limit">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
@@ -211,7 +211,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>-3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -224,7 +224,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>-100</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -242,7 +242,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
-		<channelingTickInitialDelay>1000</channelingTickInitialDelay>
+		<channelingStart>1</channelingStart>
 		<channelingTickInterval>0</channelingTickInterval>
 		<targetType>FORTRESS_FLAGPOLE</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -250,10 +250,10 @@
 			<condition name="OpCheckFlag" />
 		</targetConditions>
 		<startEffects>
-			<effect name="TakeFortStart" />
+			<effect name="i_capture_flag_start" />
 		</startEffects>
 		<effects>
-			<effect name="TakeFort" />
+			<effect name="i_capture_flag" />
 		</effects>
 	</skill>
 	<skill id="3319" toLevel="1" name="Divine Protection of Ring">
@@ -261,7 +261,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<GUST>100</GUST>
 			</effect>
 		</effects>
@@ -273,7 +273,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -300,11 +300,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -317,7 +317,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>1</slots>
 			</effect>
 		</effects>
@@ -329,7 +329,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>2</slots>
 			</effect>
 		</effects>
@@ -341,7 +341,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>3</slots>
 			</effect>
 		</effects>
@@ -353,7 +353,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>4</slots>
 			</effect>
 		</effects>
@@ -364,7 +364,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>5</slots>
 			</effect>
 		</effects>
@@ -375,7 +375,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="TalismanSlot">
+			<effect name="p_expand_deco_slot">
 				<slots>6</slots>
 			</effect>
 		</effects>
@@ -398,7 +398,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>11500</power>
 			</effect>
 		</effects>
@@ -421,7 +421,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>11500</power>
 			</effect>
 		</effects>
@@ -447,7 +447,7 @@
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>15000</power>
 			</effect>
 		</effects>
@@ -472,12 +472,12 @@
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
 		<affectRange>200</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HpDrain">
+			<effect name="i_hp_drain">
 				<power>200</power>
 				<percentage>5</percentage>
 			</effect>
@@ -507,7 +507,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>10166</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -537,7 +537,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>8626</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -567,7 +567,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>8632</itemId>
 				<itemCount>1</itemCount>
 			</effect>
@@ -597,7 +597,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>102</transformationId>
 			</effect>
 		</effects>
@@ -626,10 +626,10 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>103</transformationId>
 			</effect>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>BIG_HEAD,9</dispel>
 			</effect>
 		</effects>
@@ -659,7 +659,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>104</transformationId>
 			</effect>
 		</effects>
@@ -721,23 +721,22 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>13</SHOCK>
 			</effect>
-			<effect name="EnableCloak" />
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5.4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -750,24 +749,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5.4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>234</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>24.6</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -780,20 +778,19 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>5.4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
@@ -807,20 +804,19 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>5.4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -834,23 +830,22 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>13</HOLD>
 			</effect>
-			<effect name="EnableCloak" />
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>492</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4.3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>2.66</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -863,24 +858,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>4.3</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>2.66</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>1.72</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -893,24 +887,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="ReduceCancel">
+			<effect name="p_reduce_cancel">
 				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -923,24 +916,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
-			<effect name="ReduceCancel">
+			<effect name="p_reduce_cancel">
 				<amount>-15</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -954,24 +946,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>2.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>2.6</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -984,20 +975,19 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="EnableCloak" />
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>5.4</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>321</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1011,23 +1001,23 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>-80</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>-80</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-80</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-80</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-80</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1057,7 +1047,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>101</transformationId>
 			</effect>
 		</effects>
@@ -1068,12 +1058,12 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-12</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-12</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
@@ -1118,7 +1108,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>18</SHOCK>
 			</effect>
 		</effects>
@@ -1128,7 +1118,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>8</SHOCK>
 			</effect>
 		</effects>
@@ -1138,7 +1128,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>12</SHOCK>
 			</effect>
 		</effects>
@@ -1163,7 +1153,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>11</BLEED>
 			</effect>
 		</effects>
@@ -1173,7 +1163,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>5</BLEED>
 			</effect>
 		</effects>
@@ -1183,7 +1173,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>8</BLEED>
 			</effect>
 		</effects>
@@ -1208,7 +1198,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>16</POISON>
 			</effect>
 		</effects>
@@ -1218,7 +1208,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>7</POISON>
 			</effect>
 		</effects>
@@ -1228,7 +1218,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>11</POISON>
 			</effect>
 		</effects>
@@ -1253,7 +1243,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>9</PARALYZE>
 			</effect>
 		</effects>
@@ -1263,7 +1253,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>4</PARALYZE>
 			</effect>
 		</effects>
@@ -1273,7 +1263,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>6</PARALYZE>
 			</effect>
 		</effects>
@@ -1298,7 +1288,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>18</HOLD>
 			</effect>
 		</effects>
@@ -1308,7 +1298,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>8</HOLD>
 			</effect>
 		</effects>
@@ -1318,7 +1308,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>12</HOLD>
 			</effect>
 		</effects>
@@ -1343,7 +1333,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>18</SLEEP>
 			</effect>
 		</effects>
@@ -1353,7 +1343,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>8</SLEEP>
 			</effect>
 		</effects>
@@ -1363,7 +1353,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>12</SLEEP>
 			</effect>
 		</effects>

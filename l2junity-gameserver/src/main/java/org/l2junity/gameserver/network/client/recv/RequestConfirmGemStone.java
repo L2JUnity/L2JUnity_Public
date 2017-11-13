@@ -18,8 +18,10 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
+import org.l2junity.gameserver.data.xml.impl.VariationData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
+import org.l2junity.gameserver.model.options.VariationFee;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExPutCommissionResultForVariationMake;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -32,17 +34,17 @@ import org.l2junity.network.PacketReader;
 public final class RequestConfirmGemStone extends AbstractRefinePacket
 {
 	private int _targetItemObjId;
-	private int _refinerItemObjId;
-	private int _gemstoneItemObjId;
-	private long _gemStoneCount;
+	private int _mineralItemObjId;
+	private int _feeItemObjId;
+	private long _feeCount;
 	
 	@Override
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
 		_targetItemObjId = packet.readD();
-		_refinerItemObjId = packet.readD();
-		_gemstoneItemObjId = packet.readD();
-		_gemStoneCount = packet.readQ();
+		_mineralItemObjId = packet.readD();
+		_feeItemObjId = packet.readD();
+		_feeCount = packet.readQ();
 		return true;
 	}
 	
@@ -54,42 +56,39 @@ public final class RequestConfirmGemStone extends AbstractRefinePacket
 		{
 			return;
 		}
-		ItemInstance targetItem = activeChar.getInventory().getItemByObjectId(_targetItemObjId);
+		
+		final ItemInstance targetItem = activeChar.getInventory().getItemByObjectId(_targetItemObjId);
 		if (targetItem == null)
 		{
 			return;
 		}
-		ItemInstance refinerItem = activeChar.getInventory().getItemByObjectId(_refinerItemObjId);
+		
+		final ItemInstance refinerItem = activeChar.getInventory().getItemByObjectId(_mineralItemObjId);
 		if (refinerItem == null)
 		{
 			return;
 		}
-		ItemInstance gemStoneItem = activeChar.getInventory().getItemByObjectId(_gemstoneItemObjId);
+		
+		final ItemInstance gemStoneItem = activeChar.getInventory().getItemByObjectId(_feeItemObjId);
 		if (gemStoneItem == null)
 		{
 			return;
 		}
 		
-		// Make sure the item is a gemstone
-		if (!isValid(activeChar, targetItem, refinerItem, gemStoneItem))
+		final VariationFee fee = VariationData.getInstance().getFee(targetItem.getId(), refinerItem.getId());
+		if (!isValid(activeChar, targetItem, refinerItem, gemStoneItem, fee))
 		{
 			client.sendPacket(SystemMessageId.THIS_IS_NOT_A_SUITABLE_ITEM);
 			return;
 		}
 		
-		// Check for gemstone count
-		final LifeStone ls = getLifeStone(refinerItem.getId());
-		if (ls == null)
-		{
-			return;
-		}
-		
-		if (_gemStoneCount != getGemStoneCount(targetItem.getItem().getCrystalType(), ls.getGrade()))
+		// Check for fee count
+		if (_feeCount != fee.getItemCount())
 		{
 			client.sendPacket(SystemMessageId.GEMSTONE_QUANTITY_IS_INCORRECT);
 			return;
 		}
 		
-		client.sendPacket(new ExPutCommissionResultForVariationMake(_gemstoneItemObjId, _gemStoneCount, gemStoneItem.getId()));
+		client.sendPacket(new ExPutCommissionResultForVariationMake(_feeItemObjId, _feeCount, gemStoneItem.getId()));
 	}
 }

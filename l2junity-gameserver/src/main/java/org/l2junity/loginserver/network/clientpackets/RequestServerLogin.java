@@ -18,7 +18,6 @@
  */
 package org.l2junity.loginserver.network.clientpackets;
 
-import org.l2junity.Config;
 import org.l2junity.loginserver.LoginController;
 import org.l2junity.loginserver.SessionKey;
 import org.l2junity.loginserver.network.serverpackets.LoginFail.LoginFailReason;
@@ -82,7 +81,7 @@ public class RequestServerLogin extends L2LoginClientPacket
 		SessionKey sk = getClient().getSessionKey();
 		
 		// if we didnt showed the license we cant check these values
-		if (!Config.SHOW_LICENCE || sk.checkLoginPair(_skey1, _skey2))
+		if (sk.loginPairCheckDisabled || sk.checkLoginPair(_skey1, _skey2))
 		{
 			if (LoginController.getInstance().isLoginPossible(getClient(), _serverId))
 			{

@@ -52,7 +52,7 @@ public class RequestMagicSkillList implements IClientIncomingPacket
 		
 		if (activeChar.getObjectId() != _objectId)
 		{
-			_log.warn("Player: {} requested {} with different object id: {}", activeChar, getClass().getSimpleName(), _objectId);
+			LOGGER.warn("Player: {} requested {} with different object id: {}", activeChar, getClass().getSimpleName(), _objectId);
 			return;
 		}
 		

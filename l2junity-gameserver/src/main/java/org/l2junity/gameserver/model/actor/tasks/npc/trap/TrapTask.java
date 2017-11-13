@@ -18,8 +18,8 @@
  */
 package org.l2junity.gameserver.model.actor.tasks.npc.trap;
 
-import org.l2junity.gameserver.model.World;
-import org.l2junity.gameserver.model.actor.Creature;
+import java.util.Objects;
+
 import org.l2junity.gameserver.model.actor.instance.L2TrapInstance;
 import org.l2junity.gameserver.network.client.send.SocialAction;
 import org.slf4j.Logger;
@@ -31,13 +31,14 @@ import org.slf4j.LoggerFactory;
  */
 public class TrapTask implements Runnable
 {
-	private static final Logger _log = LoggerFactory.getLogger(TrapTask.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TrapTask.class);
+	
 	private static final int TICK = 1000; // 1s
 	private final L2TrapInstance _trap;
 	
 	public TrapTask(L2TrapInstance trap)
 	{
-		_trap = trap;
+		_trap = Objects.requireNonNull(trap);
 	}
 	
 	@Override
@@ -47,7 +48,7 @@ public class TrapTask implements Runnable
 		{
 			if (!_trap.isTriggered())
 			{
-				if (_trap.hasLifeTime())
+				if (_trap.getLifeTime() > 0)
 				{
 					_trap.setRemainingTime(_trap.getRemainingTime() - TICK);
 					if (_trap.getRemainingTime() < (_trap.getLifeTime() - 15000))
@@ -61,19 +62,15 @@ public class TrapTask implements Runnable
 					}
 				}
 				
-				for (Creature target : World.getInstance().getVisibleObjects(_trap, Creature.class))
+				if (!_trap.getSkill().getTargetsAffected(_trap, _trap).isEmpty())
 				{
-					if (_trap.checkTarget(target))
-					{
-						_trap.triggerTrap(target);
-						break;
-					}
+					_trap.triggerTrap(_trap);
 				}
 			}
 		}
 		catch (Exception e)
 		{
-			_log.error(TrapTask.class.getSimpleName() + ": " + e.getMessage());
+			LOGGER.error("", e);
 			_trap.unSummon();
 		}
 	}

@@ -18,13 +18,11 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.entity.L2Event;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
-import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
-import org.l2junity.gameserver.taskmanager.AttackStanceTaskManager;
+import org.l2junity.gameserver.util.OfflineTradeUtil;
 import org.l2junity.network.PacketReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class Logout implements IClientIncomingPacket
 {
-	protected static final Logger _logAccounting = LoggerFactory.getLogger("accounting");
+	protected static final Logger LOG_ACCOUNTING = LoggerFactory.getLogger("accounting");
 	
 	@Override
 	public boolean read(L2GameClient client, PacketReader packet)
@@ -49,44 +47,21 @@ public final class Logout implements IClientIncomingPacket
 		final PlayerInstance player = client.getActiveChar();
 		if (player == null)
 		{
+			client.closeNow();
 			return;
 		}
 		
-		if (player.hasItemRequest())
+		if (!player.canLogout())
 		{
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
-		if (player.isLocked())
+		LOG_ACCOUNTING.info("Logged out, {}", client);
+		
+		if (!OfflineTradeUtil.enteredOfflineMode(player))
 		{
-			_log.warn("Player " + player.getName() + " tried to logout during class change.");
-			player.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			Disconnection.of(client, player).defaultSequence(false);
 		}
-		
-		// Don't allow leaving if player is fighting
-		if (AttackStanceTaskManager.getInstance().hasAttackStanceTask(player))
-		{
-			if (player.isGM() && Config.GM_RESTART_FIGHTING)
-			{
-				return;
-			}
-			
-			player.sendPacket(SystemMessageId.YOU_CANNOT_EXIT_THE_GAME_WHILE_IN_COMBAT);
-			player.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-		
-		if (L2Event.isParticipant(player))
-		{
-			player.sendMessage("A superior power doesn't allow you to leave the event.");
-			player.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-		
-		_logAccounting.info("Disconnected, {}", client);
-		
-		player.logout();
 	}
 }

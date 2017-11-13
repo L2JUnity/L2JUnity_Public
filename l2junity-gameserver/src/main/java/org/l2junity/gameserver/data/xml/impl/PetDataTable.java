@@ -18,12 +18,15 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.enums.MountType;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.PetData;
 import org.l2junity.gameserver.model.PetLevelData;
 import org.l2junity.gameserver.model.StatsSet;
@@ -49,11 +52,10 @@ public final class PetDataTable implements IGameXmlReader
 	 */
 	protected PetDataTable()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_pets.clear();
 		parseDatapackDirectory("data/stats/pets", false);
@@ -61,7 +63,7 @@ public final class PetDataTable implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		NamedNodeMap attrs;
 		Node n = doc.getFirstChild();
@@ -79,37 +81,11 @@ public final class PetDataTable implements IGameXmlReader
 					{
 						attrs = p.getAttributes();
 						String type = attrs.getNamedItem("name").getNodeValue();
-						if ("food".equals(type))
-						{
-							for (String foodId : attrs.getNamedItem("val").getNodeValue().split(";"))
-							{
-								data.addFood(Integer.valueOf(foodId));
-							}
-						}
-						else if ("load".equals(type))
-						{
-							data.setLoad(parseInteger(attrs, "val"));
-						}
-						else if ("hungry_limit".equals(type))
-						{
-							data.setHungryLimit(parseInteger(attrs, "val"));
-						}
-						else if ("sync_level".equals(type))
+						if ("syncLevel".equals(type))
 						{
 							data.setSyncLevel(parseInteger(attrs, "val") == 1);
 						}
 						// evolve ignored
-					}
-					else if (p.getNodeName().equals("skills"))
-					{
-						for (Node s = p.getFirstChild(); s != null; s = s.getNextSibling())
-						{
-							if (s.getNodeName().equals("skill"))
-							{
-								attrs = s.getAttributes();
-								data.addNewSkill(parseInteger(attrs, "skillId"), parseInteger(attrs, "skillLvl"), parseInteger(attrs, "minLvl"));
-							}
-						}
 					}
 					else if (p.getNodeName().equals("stats"))
 					{
@@ -153,6 +129,11 @@ public final class PetDataTable implements IGameXmlReader
 				_pets.put(npcId, data);
 			}
 		}
+	}
+	
+	public int getPetCount()
+	{
+		return _pets.size();
 	}
 	
 	/**
@@ -202,16 +183,6 @@ public final class PetDataTable implements IGameXmlReader
 	}
 	
 	/**
-	 * Gets the pet min level.
-	 * @param petId the pet Id.
-	 * @return the pet min level
-	 */
-	public int getPetMinLevel(int petId)
-	{
-		return _pets.get(petId).getMinLevel();
-	}
-	
-	/**
 	 * Gets the pet items by npc.
 	 * @param npcId the NPC ID to get its summoning item
 	 * @return summoning item for the given NPC ID
@@ -235,6 +206,7 @@ public final class PetDataTable implements IGameXmlReader
 	 * Gets the single instance of PetDataTable.
 	 * @return this class unique instance.
 	 */
+	@InstanceGetter
 	public static PetDataTable getInstance()
 	{
 		return SingletonHolder._instance;

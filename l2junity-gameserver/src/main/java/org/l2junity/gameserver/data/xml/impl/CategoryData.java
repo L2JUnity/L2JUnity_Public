@@ -18,14 +18,18 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
-import java.util.HashMap;
+import java.nio.file.Path;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.enums.CategoryType;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -40,23 +44,34 @@ public final class CategoryData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CategoryData.class);
 	
-	private final Map<CategoryType, Set<Integer>> _categories = new HashMap<>();
+	private final Map<CategoryType, Set<Integer>> _categories = new EnumMap<>(CategoryType.class);
 	
 	protected CategoryData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_categories.clear();
 		parseDatapackFile("data/categoryData.xml");
 		LOGGER.info("Loaded {} Categories.", _categories.size());
+		
+		if (GeneralConfig.DEBUG)
+		{
+			for (CategoryType ct : CategoryType.values())
+			{
+				Set<Integer> ids = _categories.get(ct);
+				if ((ids == null) || ids.isEmpty())
+				{
+					LOGGER.info("Category {} has missing values.", ct);
+				}
+			}
+		}
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node node = doc.getFirstChild(); node != null; node = node.getNextSibling())
 		{
@@ -89,6 +104,11 @@ public final class CategoryData implements IGameXmlReader
 		}
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _categories.size();
+	}
+	
 	/**
 	 * Checks if ID is in category.
 	 * @param type The category type
@@ -116,6 +136,7 @@ public final class CategoryData implements IGameXmlReader
 		return _categories.get(type);
 	}
 	
+	@InstanceGetter
 	public static CategoryData getInstance()
 	{
 		return SingletonHolder._instance;

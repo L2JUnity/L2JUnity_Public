@@ -34,7 +34,8 @@
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute type="xs:byte" name="id" />
+						<xs:attribute type="xs:byte" name="id" use="required" />
+						<xs:attribute type="xs:byte" name="extend" use="optional" />
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>

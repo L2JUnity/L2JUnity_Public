@@ -23,7 +23,7 @@ import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_ATTACK;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_REST;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GeoData;
+import org.l2junity.gameserver.geodata.GeoData;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
@@ -43,19 +43,19 @@ public class FriendlyNpcAI extends AttackableAI
 	@Override
 	protected void thinkActive()
 	{
-	
+		
 	}
 	
 	@Override
 	protected void onEvtAttacked(Creature attacker)
 	{
-	
+		
 	}
 	
 	@Override
 	protected void onEvtAggression(Creature target, int aggro)
 	{
-	
+		
 	}
 	
 	@Override
@@ -128,9 +128,9 @@ public class FriendlyNpcAI extends AttackableAI
 		{
 			for (Attackable nearby : World.getInstance().getVisibleObjects(npc, Attackable.class))
 			{
-				if (npc.isInsideRadius(nearby, collision, false, false) && (nearby != originalAttackTarget))
+				if (npc.isInRadius2d(nearby, collision) && (nearby != originalAttackTarget))
 				{
-					int newX = combinedCollision + Rnd.get(40);
+					double newX = combinedCollision + Rnd.get(40);
 					if (Rnd.nextBoolean())
 					{
 						newX = originalAttackTarget.getX() + newX;
@@ -139,7 +139,7 @@ public class FriendlyNpcAI extends AttackableAI
 					{
 						newX = originalAttackTarget.getX() - newX;
 					}
-					int newY = combinedCollision + Rnd.get(40);
+					double newY = combinedCollision + Rnd.get(40);
 					if (Rnd.nextBoolean())
 					{
 						newY = originalAttackTarget.getY() + newY;
@@ -149,9 +149,9 @@ public class FriendlyNpcAI extends AttackableAI
 						newY = originalAttackTarget.getY() - newY;
 					}
 					
-					if (!npc.isInsideRadius(newX, newY, 0, collision, false, false))
+					if (!npc.isInRadius2d(newX, newY, collision))
 					{
-						int newZ = npc.getZ() + 30;
+						double newZ = npc.getZ() + 30;
 						if (GeoData.getInstance().canMove(npc.getX(), npc.getY(), npc.getZ(), newX, newY, newZ, npc.getInstanceWorld()))
 						{
 							moveTo(newX, newY, newZ);
@@ -166,12 +166,11 @@ public class FriendlyNpcAI extends AttackableAI
 		{
 			if (Rnd.get(100) <= npc.getTemplate().getDodge())
 			{
-				double distance2 = npc.calculateDistance(originalAttackTarget, false, true);
-				if (Math.sqrt(distance2) <= (60 + combinedCollision))
+				if (npc.distance2d(originalAttackTarget) <= (60 + combinedCollision))
 				{
-					int posX = npc.getX();
-					int posY = npc.getY();
-					int posZ = npc.getZ() + 30;
+					double posX = npc.getX();
+					double posY = npc.getY();
+					double posZ = npc.getZ() + 30;
 					
 					if (originalAttackTarget.getX() < posX)
 					{
@@ -200,7 +199,7 @@ public class FriendlyNpcAI extends AttackableAI
 			}
 		}
 		
-		double dist = npc.calculateDistance(originalAttackTarget, false, false);
+		double dist = npc.distance2d(originalAttackTarget);
 		int dist2 = (int) dist - collision;
 		int range = npc.getPhysicalAttackRange() + combinedCollision;
 		if (originalAttackTarget.isMoving())
@@ -226,7 +225,7 @@ public class FriendlyNpcAI extends AttackableAI
 			return;
 		}
 		
-		_actor.doAttack(originalAttackTarget);
+		_actor.doAutoAttack(originalAttackTarget);
 	}
 	
 	@Override

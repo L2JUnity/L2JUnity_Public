@@ -18,7 +18,6 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExUISetting;
@@ -26,6 +25,7 @@ import org.l2junity.network.PacketReader;
 
 /**
  * @author KenM / mrTJO
+ * @Reworked by Supreme - Grand Crusade / Classic 2.1
  */
 public class RequestKeyMapping implements IClientIncomingPacket
 {
@@ -44,7 +44,7 @@ public class RequestKeyMapping implements IClientIncomingPacket
 			return;
 		}
 		
-		if (Config.STORE_UI_SETTINGS)
+		if (activeChar.getAccountVariables().hasUiSettings())
 		{
 			client.sendPacket(new ExUISetting(activeChar));
 		}

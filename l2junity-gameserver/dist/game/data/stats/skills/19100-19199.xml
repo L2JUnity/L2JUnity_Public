@@ -53,14 +53,14 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
@@ -74,19 +74,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>700</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>3</amount>
 				<mode>PER</mode>
 			</effect>
@@ -100,19 +100,19 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>1000</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PvpPhysicalAttackDefenceBonus">
+			<effect name="p_pvp_physical_attack_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpMagicalSkillDefenceBonus">
+			<effect name="p_pvp_magical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDefenceBonus">
+			<effect name="p_pvp_physical_skill_defence_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -133,15 +133,15 @@
 			</condition>
 		</passiveConditions>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>13</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>13</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>13</amount>
 				<mode>PER</mode>
 			</effect>
@@ -154,7 +154,6 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
 		<passiveConditions>
 			<condition name="CheckLevel">
 				<minLevel>1</minLevel>
@@ -163,15 +162,15 @@
 			</condition>
 		</passiveConditions>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>15</amount>
 				<mode>PER</mode>
 			</effect>
@@ -185,9 +184,8 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="ExpModify">
+			<effect name="p_exp_modify">
 				<amount>3</amount>
-				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -199,9 +197,8 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="ExpModify">
+			<effect name="p_exp_modify">
 				<amount>5</amount>
-				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -223,16 +220,53 @@
 		<abnormalType>TRANSFORM</abnormalType>
 	</skill>
 	<skill id="19110" toLevel="5" name="Clan Resilience">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Clan members' resistance to Knock Back / Knock Down + 12. Elder or above only. -->
+		<!-- Updated to Helios -->
+		<!-- Level 1: Clan members' resistance to Knock Back / Knock Down + 12. Elder or above only. -->
+		<!-- Level 2: Clan members' resistance to Knock Back / Knock Down + 13. Elder or above only. -->
+		<!-- Level 3: Clan members' resistance to Knock Back / Knock Down + 14. Elder or above only. -->
+		<!-- Level 4: Clan members' resistance to Knock Back / Knock Down + 15. Elder or above only. -->
+		<!-- Level 5: Clan members' resistance to Knock Back / Knock Down + 16. Elder or above only. -->
 		<icon>icon.skill_tough_spirit</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_defence_trait">
+				<KNOCKBACK>
+					<value level="1">12</value>
+					<value level="2">13</value>
+					<value level="3">14</value>
+					<value level="4">15</value>
+					<value level="5">16</value>
+				</KNOCKBACK>
+				<KNOCKDOWN>
+					<value level="1">12</value>
+					<value level="2">13</value>
+					<value level="3">14</value>
+					<value level="4">15</value>
+					<value level="5">16</value>
+				</KNOCKDOWN>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="19111" toLevel="5" name="Clan Steadfastness">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Clan members' resistance to Aerial Yoke + 12. Elder or above only. -->
+		<!-- Updated to Helios -->
+		<!-- Level 1: Clan members' resistance to Aerial Yoke + 12. Elder or above only. -->
+		<!-- Level 2: Clan members' resistance to Aerial Yoke + 13. Elder or above only. -->
+		<!-- Level 3: Clan members' resistance to Aerial Yoke + 14. Elder or above only. -->
+		<!-- Level 4: Clan members' resistance to Aerial Yoke + 15. Elder or above only. -->
+		<!-- Level 5: Clan members' resistance to Aerial Yoke + 16. Elder or above only. -->
 		<icon>icon.skill_heavy_heart</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_defence_trait">
+				<AIRBIND>
+					<value level="1">12</value>
+					<value level="2">13</value>
+					<value level="3">14</value>
+					<value level="4">15</value>
+					<value level="5">16</value>
+				</AIRBIND>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="19112" toLevel="1" name="Clan Escape">
 		<!-- AUTO GENERATED SKILL -->
@@ -253,7 +287,7 @@
 		<hitTime>2000</hitTime>
 		<reuseDelay>1800000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="19114" toLevel="1" name="Clan Resurrection Lock">
 		<!-- AUTO GENERATED SKILL -->
@@ -266,7 +300,7 @@
 		<reuseDelay>1800000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="19115" toLevel="1" name="Air Bike">
 		<!-- AUTO GENERATED SKILL -->
@@ -321,12 +355,14 @@
 		<isMagic>1</isMagic>
 	</skill>
 	<skill id="19120" toLevel="4" name="Noble Shield">
-		<!-- P. Def. + 2%. -->
-		<table name="#bonus"> 1.02 1.04 1.06 1.08 </table>
+		<!-- Level 1: P. Def. + 2%. -->
+		<!-- Level 2: P. Def. + 4%. -->
+		<!-- Level 3: P. Def. + 6%. -->
+		<!-- Level 4: P. Def. + 8%. -->
 		<icon>icon.skill19120</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -338,12 +374,14 @@
 		</effects>
 	</skill>
 	<skill id="19121" toLevel="4" name="Noble Magic Barrier">
-		<!-- M. Def. + 3%. -->
-		<table name="#bonus"> 1.03 1.05 1.07 1.10 </table>
+		<!-- Level 1: M. Def. + 3%. -->
+		<!-- Level 2: M. Def. + 5%. -->
+		<!-- Level 3: M. Def. + 7%. -->
+		<!-- Level 4: M. Def. + 10%. -->
 		<icon>icon.skill19121</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -355,12 +393,14 @@
 		</effects>
 	</skill>
 	<skill id="19122" toLevel="4" name="Noble Blessed Body">
-		<!-- Max HP + 6%. -->
-		<table name="#bonus"> 6 10 12 16 </table>
+		<!-- Level 1: Max HP + 6%. -->
+		<!-- Level 2: Max HP + 10%. -->
+		<!-- Level 3: Max HP + 12%. -->
+		<!-- Level 4: Max HP + 16%. -->
 		<icon>icon.skill1045</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">10</value>
@@ -372,12 +412,14 @@
 		</effects>
 	</skill>
 	<skill id="19123" toLevel="4" name="Noble Haste">
-		<!-- Atk. Spd. + 2%. -->
-		<table name="#bonus"> 1.02 1.04 1.06 1.09 </table>
+		<!-- Level 1: Atk. Spd. + 2%. -->
+		<!-- Level 2: Atk. Spd. + 4%. -->
+		<!-- Level 3: Atk. Spd. + 6%. -->
+		<!-- Level 4: Atk. Spd. + 9%. -->
 		<icon>icon.skill1086</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -389,12 +431,12 @@
 		</effects>
 	</skill>
 	<skill id="19124" toLevel="2" name="Noble Knight Buffs">
-		<!-- Paralysis/Stun success rate and defense rate + 5%. -->
-		<table name="#bonus"> 5 10 </table>
+		<!-- Level 1: Paralysis/Stun success rate and defense rate + 5%. -->
+		<!-- Level 2: Paralysis/Stun success rate and defense rate + 10%. -->
 		<icon>icon.skill19124</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<PARALYZE>
 					<value level="1">5</value>
 					<value level="2">10</value>
@@ -404,7 +446,7 @@
 					<value level="2">10</value>
 				</SHOCK>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>
 					<value level="1">5</value>
 					<value level="2">10</value>
@@ -417,12 +459,12 @@
 		</effects>
 	</skill>
 	<skill id="19125" toLevel="2" name="Noble Critical Focus">
-		<!-- Physical Skill Critical Rate + 5%. -->
-		<table name="#bonus"> 1.05 1.10 </table>
+		<!-- Level 1: Physical Skill Critical Rate + 5%. -->
+		<!-- Level 2: Physical Skill Critical Rate + 10%. -->
 		<icon>icon.skill0193</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_critical_rate">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">10</value>
@@ -432,12 +474,12 @@
 		</effects>
 	</skill>
 	<skill id="19126" toLevel="2" name="Noble Mindset">
-		<!-- MP Recovery Bonus + 4. -->
-		<table name="#bonus"> 4 10 </table>
+		<!-- Level 1: MP Recovery Bonus + 4. -->
+		<!-- Level 2: MP Recovery Bonus + 10. -->
 		<icon>icon.skill0229</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">10</value>
@@ -447,110 +489,127 @@
 		</effects>
 	</skill>
 	<skill id="19127" toLevel="2" name="Noble Guidance">
-		<!-- P. Accuracy + 8, M. Accuracy + 8, servitor's P. Accuracy + 15. -->
-		<table name="#bonus"> 8 16 </table>
+		<!-- Level 1: P. Accuracy + 8, M. Accuracy + 8, servitor's P. Accuracy + 15. -->
+		<!-- Level 2: P. Accuracy + 16, M. Accuracy + 16, servitor's P. Accuracy + 23. -->
 		<icon>icon.skill19127</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">16</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicAccuracy">
+			<effect name="p_magic_hit">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">16</value>
 				</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_ability_change">
+				<ACCURACY_COMBAT>
+					<value level="1">15</value>
+					<value level="2">23</value>
+				</ACCURACY_COMBAT>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19128" toLevel="2" name="Noble Sting">
-		<!-- Physical Skill Critical Damage + 5%. -->
+		<!-- Level 1: Physical Skill Critical Damage + 5%. -->
+		<!-- Level 2: Physical Skill Critical Damage + 10%. -->
 		<icon>icon.skill10655</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PhysicalSkillPower">
-				<amount>5</amount>
+			<effect name="p_skill_critical_damage">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19129" toLevel="2" name="Noble Protection">
-		<!-- Critical rate in a normal attack - 2%. -->
-		<table name="#bonus"> 0.02 0.04 </table>
+		<!-- Level 1: Critical rate in a normal attack - 2%. -->
+		<!-- Level 2: Critical rate in a normal attack - 4%. -->
 		<icon>icon.skill19129</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>
-					<value level="1">2</value>
-					<value level="2">4</value>
+					<value level="1">-2</value>
+					<value level="2">-4</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19130" toLevel="2" name="Noble Attributes">
-		<!-- Attack Attribute + 20. 6 Attributes Resistance + 20. -->
-		<table name="#bonus"> 20 50 </table>
+		<!-- Level 1: Attack Attribute + 20. 6 Attributes Resistance + 20. -->
+		<!-- Level 2: Attack Attribute + 50. 6 Attributes Resistance + 50. -->
 		<icon>icon.skill19130</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>HOLY</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>DARK</attribute>
 			</effect>
+			<effect name="p_attack_attribute_add">
+				<amount>
+					<value level="1">20</value>
+					<value level="2">50</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="19131" toLevel="2" name="Noble Expertise">
-		<!-- P. Atk. + 3% when a melee two-handed weapon is equipped. Atk. Spd. + 3% when a shield is equipped. -->
-		<table name="#bonus"> 1.03 1.05 </table>
+		<!-- Level 1: P. Atk. + 3% when a melee two-handed weapon is equipped. Atk. Spd. + 3% when a shield is equipped. -->
+		<!-- Level 2: P. Atk. + 5% when a melee two-handed weapon is equipped. Atk. Spd. + 5% when a shield is equipped. -->
 		<icon>icon.skill19131</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -560,21 +619,25 @@
 					<item>POLE</item>
 				</weaponType>
 			</effect>
-			<effect name="TwoHandedSwordBonus">
+			<effect name="p_2h_sword_bonus">
 				<pAtkAmount>
 					<value level="1">3</value>
 					<value level="2">5</value>
 				</pAtkAmount>
 				<pAtkmode>PER</pAtkmode>
+				<accuracyAmount>0</accuracyAmount>
+				<accuracyMode>DIFF</accuracyMode>
 			</effect>
-			<effect name="TwoHandedBluntBonus">
+			<effect name="p_2h_blunt_bonus">
 				<pAtkAmount>
 					<value level="1">3</value>
 					<value level="2">5</value>
 				</pAtkAmount>
 				<pAtkmode>PER</pAtkmode>
+				<accuracyAmount>0</accuracyAmount>
+				<accuracyMode>DIFF</accuracyMode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -587,12 +650,12 @@
 		</effects>
 	</skill>
 	<skill id="19132" toLevel="2" name="Noble Mind">
-		<!-- Physical Skill Cooldown - 3%. -->
-		<table name="#bonus"> 0.97 0.95 </table>
+		<!-- Level 1: Physical Skill Cooldown - 3%. -->
+		<!-- Level 2: Physical Skill Cooldown - 5%. -->
 		<icon>icon.skill19132</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">-3</value>
 					<value level="2">-5</value>
@@ -607,14 +670,14 @@
 		<icon>icon.skill19133</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>3</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>HEAVY</item>
 				</armorType>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_mp">
 				<amount>6</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -624,12 +687,14 @@
 		</effects>
 	</skill>
 	<skill id="19134" toLevel="4" name="Noble Heavy Armor Defense">
-		<!-- When equipped with Heavy Armor, P. Def. + 3%. -->
-		<table name="#bonus"> 1.03 1.05 1.07 1.10 </table>
+		<!-- Level 1: When equipped with Heavy Armor, P. Def. + 3%. -->
+		<!-- Level 2: When equipped with Heavy Armor, P. Def. + 5%. -->
+		<!-- Level 3: When equipped with Heavy Armor, P. Def. + 7%. -->
+		<!-- Level 4: When equipped with Heavy Armor, P. Def. + 10%. -->
 		<icon>icon.skill19134</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -644,12 +709,14 @@
 		</effects>
 	</skill>
 	<skill id="19135" toLevel="4" name="Noble Heavy Armor Attack">
-		<!-- When equipped with Heavy Armor, P. Atk. + 2%. -->
-		<table name="#bonus"> 1.02 1.04 1.06 1.08 </table>
+		<!-- Level 1: When equipped with Heavy Armor, P. Atk. + 2%. -->
+		<!-- Level 2: When equipped with Heavy Armor, P. Atk. + 4%. -->
+		<!-- Level 3: When equipped with Heavy Armor, P. Atk. + 6%. -->
+		<!-- Level 4: When equipped with Heavy Armor, P. Atk. + 8%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19135</icon>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -664,12 +731,13 @@
 		</effects>
 	</skill>
 	<skill id="19136" toLevel="3" name="Noble Prayer">
-		<!-- Received heal amount + 3%. -->
-		<table name="#bonus"> 1.03 1.06 1.09 </table>
+		<!-- Level 1: Received heal amount + 3%. -->
+		<!-- Level 2: Received heal amount + 6%. -->
+		<!-- Level 3: Received heal amount + 9%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1273</icon>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -683,26 +751,39 @@
 		<!-- Received damage - 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19137</icon>
-		<!-- TODO: Handle received damage - 10% -->
+		<effects>
+			<effect name="p_damage_by_attack">
+				<amount>-10</amount>
+				<type>PK</type>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_by_attack">
+				<amount>-10</amount>
+				<type>ENEMY_ALL</type>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="19138" toLevel="1" name="Noble Frenzy">
 		<!-- Physical Skill Power + 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19138</icon>
 		<effects>
-			<effect name="PhysicalSkillPower">
+			<effect name="p_skill_power">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19139" toLevel="4" name="Noble Might">
-		<!-- P. Atk. + 2%. -->
-		<table name="#bonus"> 1.02 1.04 1.06 1.09 </table>
+		<!-- Level 1: P. Atk. + 2%. -->
+		<!-- Level 2: P. Atk. + 4%. -->
+		<!-- Level 3: P. Atk. + 6%. -->
+		<!-- Level 4: P. Atk. + 9%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19139</icon>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -714,12 +795,12 @@
 		</effects>
 	</skill>
 	<skill id="19140" toLevel="2" name="Noble Cost">
-		<!-- Physical Skill MP Consumption - 5%. -->
-		<table name="#bonus"> 0.95 0.90 </table>
+		<!-- Level 1: Physical Skill MP Consumption - 5%. -->
+		<!-- Level 2: Physical Skill MP Consumption - 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19140</icon>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-5</value>
 					<value level="2">-10</value>
@@ -730,12 +811,12 @@
 		</effects>
 	</skill>
 	<skill id="19141" toLevel="2" name="Noble Wind Walk">
-		<!-- Speed + 5. -->
-		<table name="#bonus"> 5 10 </table>
+		<!-- Level 1: Speed + 5. -->
+		<!-- Level 2: Speed + 10. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1204</icon>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">10</value>
@@ -745,33 +826,40 @@
 		</effects>
 	</skill>
 	<skill id="19142" toLevel="2" name="Noble Warrior Buffs">
-		<!-- Stun/Restrain success rate and defense rate + 5%. -->
-		<table name="#bonus"> 5 10 </table>
+		<!-- Level 1: Stun/Restrain success rate and defense rate + 5%. -->
+		<!-- Level 2: Stun/Restrain success rate and defense rate + 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19142</icon>
 		<effects>
-			<!-- TODO: Handle Restrain trait -->
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>
 					<value level="1">5</value>
 					<value level="2">10</value>
 				</SHOCK>
+				<AIRBIND>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</AIRBIND>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>
 					<value level="1">5</value>
 					<value level="2">10</value>
 				</SHOCK>
+				<AIRBIND>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</AIRBIND>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19143" toLevel="2" name="Noble Focus">
-		<!-- P. Critical Rate + 20. -->
-		<table name="#bonus"> 20 40 </table>
+		<!-- Level 1: P. Critical Rate + 20. -->
+		<!-- Level 2: P. Critical Rate + 40. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1077</icon>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">40</value>
@@ -781,19 +869,27 @@
 		</effects>
 	</skill>
 	<skill id="19144" toLevel="2" name="Noble Backfire">
-		<!-- Rear Damage + 3%. -->
-		<table name="#bonus"> 1.03 1.05 </table>
+		<!-- Level 1: Rear Damage + 3%. -->
+		<!-- Level 2: Rear Damage + 6%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill0030</icon>
-		<!-- TODO: Handle rear damage stat -->
+		<effects>
+			<effect name="p_attack_damage_position">
+				<amount>
+					<value level="1">3</value>
+					<value level="2">6</value>
+				</amount>
+				<position>BACK</position>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="19145" toLevel="2" name="Noble Death Whisper">
-		<!-- Physical Critical Damage + 3%. -->
-		<table name="#bonus"> 1.03 1.05 </table>
+		<!-- Level 1: Physical Critical Damage + 3%. -->
+		<!-- Level 2: Physical Critical Damage + 5%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill4278</icon>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -803,26 +899,32 @@
 		</effects>
 	</skill>
 	<skill id="19146" toLevel="2" name="Noble Protection Magic">
-		<!-- Chance of receiving an M. Critical attack - 2%. -->
+		<!-- Level 1: Chance of receiving an M. Critical attack - 2%. -->
+		<!-- Level 2: Chance of receiving an M. Critical attack - 4%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19146</icon>
 		<effects>
-			<!-- TODO: Find which skill triggers and under what circumstances -->
+			<effect name="p_magic_defence_critical_dmg">
+				<amount>
+					<value level="1">-2</value>
+					<value level="2">-4</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="19147" toLevel="2" name="Noble Ambush">
-		<!-- Spd. + 6 when not engaged in battle. -->
-		<table name="#bonus"> 6 12 </table>
+		<!-- Level 1: Spd. + 6 when not engaged in battle. -->
+		<!-- Level 2: Spd. + 12 when not engaged in battle. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1905</icon>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed_out_of_fight">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">12</value>
 				</amount>
 				<mode>DIFF</mode>
-				<inCombat>false</inCombat>
 			</effect>
 		</effects>
 	</skill>
@@ -831,14 +933,14 @@
 		<operateType>P</operateType>
 		<icon>icon.skill19148</icon>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_hp">
 				<amount>6</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>LIGHT</item>
 				</armorType>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_mp">
 				<amount>6</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -848,12 +950,14 @@
 		</effects>
 	</skill>
 	<skill id="19149" toLevel="4" name="Noble Anti Magic">
-		<!-- When equipped with Light Armor, M. Def. + 3%. -->
-		<table name="#bonus"> 1.03 1.05 1.09 1.12 </table>
+		<!-- Level 1: When equipped with Light Armor, M. Def. + 3%. -->
+		<!-- Level 2: When equipped with Light Armor, M. Def. + 5%. -->
+		<!-- Level 3: When equipped with Light Armor, M. Def. + 9%. -->
+		<!-- Level 4: When equipped with Light Armor, M. Def. + 12%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill0146</icon>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -868,12 +972,14 @@
 		</effects>
 	</skill>
 	<skill id="19150" toLevel="4" name="Noble Light Armor Attack">
-		<!-- When equipped with Light Armor, P. Atk. + 2%. -->
-		<table name="#bonus"> 1.02 1.04 1.06 1.08 </table>
+		<!-- Level 1: When equipped with Light Armor, P. Atk. + 2%. -->
+		<!-- Level 2: When equipped with Light Armor, P. Atk. + 4%. -->
+		<!-- Level 3: When equipped with Light Armor, P. Atk. + 6%. -->
+		<!-- Level 4: When equipped with Light Armor, P. Atk. + 8%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19150</icon>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -888,12 +994,13 @@
 		</effects>
 	</skill>
 	<skill id="19151" toLevel="3" name="Noble Vampiric Rage">
-		<!-- During an attack, there is a chance of restoring 3% of damage as HP. -->
-		<table name="#bonus"> 3 6 9 </table>
+		<!-- Level 1: During an attack, there is a chance of restoring 3% of damage as HP. -->
+		<!-- Level 2: During an attack, there is a chance of restoring 6% of damage as HP. -->
+		<!-- Level 3: During an attack, there is a chance of restoring 9% of damage as HP. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1268</icon>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -914,27 +1021,29 @@
 		<operateType>P</operateType>
 		<icon>icon.skill19153</icon>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="SkillCriticalProbability">
+			<effect name="p_skill_critical_probability">
 				<amount>50</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19154" toLevel="4" name="Noble Empower">
-		<!-- M. Atk. + 3% and recovery magic Power + 47. -->
-		<table name="#bonus"> 1.03 1.06 1.09 1.14 </table>
+		<!-- Level 1: M. Atk. + 3% and recovery magic Power + 47. -->
+		<!-- Level 2: M. Atk. + 6% and recovery magic Power + 94. -->
+		<!-- Level 3: M. Atk. + 9% and recovery magic Power + 141. -->
+		<!-- Level 4: M. Atk. + 14% and recovery magic Power + 211. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1059</icon>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -943,15 +1052,24 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
+			<effect name="p_heal_effect">
+				<amount>
+					<value level="1">47</value>
+					<value level="2">94</value>
+					<value level="3">141</value>
+					<value level="4">211</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="19155" toLevel="2" name="Noble Acumen">
-		<!-- Casting Spd. + 2%. -->
-		<table name="#bonus"> 1.02 1.04 </table>
+		<!-- Level 1: Casting Spd. + 2%. -->
+		<!-- Level 2: Casting Spd. + 4%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1085</icon>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>
@@ -961,33 +1079,40 @@
 		</effects>
 	</skill>
 	<skill id="19156" toLevel="2" name="Noble Wizard Buffs">
-		<!-- Restrain/Mind success rate and defense rate + 5%. -->
-		<table name="#bonus"> 5 10 </table>
+		<!-- Level 1: Restrain/Mind success rate and defense rate + 5%. -->
+		<!-- Level 2: Restrain/Mind success rate and defense rate + 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19156</icon>
 		<effects>
-			<!-- TODO: Handle Restrain trait -->
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<DERANGEMENT>
 					<value level="1">5</value>
 					<value level="2">10</value>
 				</DERANGEMENT>
+				<AIRBIND>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</AIRBIND>
 			</effect>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DERANGEMENT>
 					<value level="1">5</value>
 					<value level="2">10</value>
 				</DERANGEMENT>
+				<AIRBIND>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</AIRBIND>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19157" toLevel="2" name="Noble Wild Magic">
-		<!-- M. Critical Rate + 20. -->
-		<table name="#bonus"> 20 30 </table>
+		<!-- Level 1: M. Critical Rate + 20. -->
+		<!-- Level 2: M. Critical Rate + 30. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1303</icon>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">30</value>
@@ -997,12 +1122,12 @@
 		</effects>
 	</skill>
 	<skill id="19158" toLevel="2" name="Noble Blessed Soul">
-		<!-- Max MP + 6%. -->
-		<table name="#bonus"> 1.06 1.10	</table>
+		<!-- Level 1: Max MP + 6%. -->
+		<!-- Level 2: Max MP + 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1048</icon>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">10</value>
@@ -1012,12 +1137,12 @@
 		</effects>
 	</skill>
 	<skill id="19159" toLevel="2" name="Noble Resistance">
-		<!-- Debuff Resistance + 5%. -->
-		<table name="#bonus"> 5 10 </table>
+		<!-- Level 1: Debuff Resistance + 5%. -->
+		<!-- Level 2: Debuff Resistance + 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill11567</icon>
 		<effects>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>
 					<value level="1">-5</value>
 					<value level="2">-10</value>
@@ -1027,27 +1152,34 @@
 		</effects>
 	</skill>
 	<skill id="19160" toLevel="2" name="Noble Magic Death">
-		<!-- M. Critical Damage + 3% and recovery magic Power + 94. -->
-		<table name="#bonus"> 1.03 1.05 </table>
+		<!-- Level 1: M. Critical Damage + 3% and recovery magic Power + 94. -->
+		<!-- Level 2: M. Critical Damage + 5% and recovery magic Power + 211. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19160</icon>
 		<effects>
-			<effect name="MagicCriticalDamage">
+			<effect name="p_magic_critical_dmg">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
+			<effect name="p_heal_effect">
+				<amount>
+					<value level="1">94</value>
+					<value level="2">211</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="19161" toLevel="2" name="Noble Protection Armor">
-		<!-- Critical Damage during a normal attack - 2%. -->
-		<table name="#defCritDamage"> 0.98 0.96 </table>
+		<!-- Level 1: Critical Damage during a normal attack - 2%. -->
+		<!-- Level 2: Critical Damage during a normal attack - 4%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19161</icon>
 		<effects>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>
 					<value level="1">-2</value>
 					<value level="2">-4</value>
@@ -1057,12 +1189,12 @@
 		</effects>
 	</skill>
 	<skill id="19162" toLevel="2" name="Noble Recovery">
-		<!-- MP Recovery Bonus + 8 while running. -->
+		<!-- Level 1: MP Recovery Bonus + 8 while running. -->
+		<!-- Level 2: MP Recovery Bonus + 12 while running. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19162</icon>
 		<effects>
-			<effect name="StatByMoveType">
-				<stat>REGENERATE_MP_RATE</stat>
+			<effect name="p_mp_regen_by_move_mode">
 				<type>RUNNING</type>
 				<value>
 					<value level="1">8</value>
@@ -1072,12 +1204,12 @@
 		</effects>
 	</skill>
 	<skill id="19163" toLevel="2" name="Noble Skill Mastery">
-		<!-- Skill Mastery rate + 30%. -->
-		<table name="#bonus"> 1.30 1.50 </table>
+		<!-- Level 1: Skill Mastery rate + 30%. -->
+		<!-- Level 2: Skill Mastery rate + 50%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill0330</icon>
 		<effects>
-			<effect name="SkillCriticalProbability">
+			<effect name="p_skill_critical_probability">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">50</value>
@@ -1091,14 +1223,14 @@
 		<operateType>P</operateType>
 		<icon>icon.skill19164</icon>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>3</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>6</amount>
 				<mode>PER</mode>
 				<armorType>
@@ -1108,12 +1240,14 @@
 		</effects>
 	</skill>
 	<skill id="19165" toLevel="4" name="Noble Robe Defense">
-		<!-- When equipped with a Robe, P. Def. + 3%. -->
-		<table name="#bonus"> 1.03 1.05 1.07 1.10 </table>
+		<!-- Level 1: When equipped with a Robe, P. Def. + 3%. -->
+		<!-- Level 2: When equipped with a Robe, P. Def. + 5%. -->
+		<!-- Level 3: When equipped with a Robe, P. Def. + 7%. -->
+		<!-- Level 4: When equipped with a Robe, P. Def. + 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19165</icon>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -1128,12 +1262,14 @@
 		</effects>
 	</skill>
 	<skill id="19166" toLevel="4" name="Noble Robe Attack">
-		<!-- When equipped with a Robe, M. Atk. + 3% and recovery skill Power + 47. -->
-		<table name="#bonus"> 1.03 1.06 1.09 1.12 </table>
+		<!-- Level 1: When equipped with a Robe, M. Atk. + 3% and recovery skill Power + 47. -->
+		<!-- Level 2: When equipped with a Robe, M. Atk. + 6% and recovery skill Power + 94. -->
+		<!-- Level 3: When equipped with a Robe, M. Atk. + 9%. -->
+		<!-- Level 4: When equipped with a Robe, M. Atk. + 12%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19166</icon>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -1145,15 +1281,23 @@
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
+			<effect name="p_heal_effect">
+				<amount>
+					<value level="1">47</value>
+					<value level="2">94</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="19167" toLevel="3" name="Noble Heal Boost">
-		<!-- Recovery effects not affected by magic + 3%. -->
-		<table name="#bonus"> 1.03 1.06 1.09 </table>
+		<!-- Level 1: Recovery effects not affected by magic + 3%. -->
+		<!-- Level 2: Recovery effects not affected by magic + 6%. -->
+		<!-- Level 3: Recovery effects not affected by magic + 9%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19167</icon>
 		<effects>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">6</value>
@@ -1168,11 +1312,11 @@
 		<operateType>P</operateType>
 		<icon>icon.skill19168</icon>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1183,24 +1327,24 @@
 		<operateType>P</operateType>
 		<icon>icon.skill19169</icon>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>33</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Reuse">
-				<amount>5</amount>
+			<effect name="p_reuse_delay">
+				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19170" toLevel="2" name="Noble Blessing">
-		<!-- P. Def. + 3%. -->
-		<table name="#bonus"> 1.03 1.05 </table>
+		<!-- Level 1: P. Def. + 3%. -->
+		<!-- Level 2: P. Def. + 5%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19120</icon>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -1210,12 +1354,14 @@
 		</effects>
 	</skill>
 	<skill id="19171" toLevel="4" name="Noble Condition">
-		<!-- Max HP + 6%. -->
-		<table name="#bonus"> 6 10 14 20 </table>
+		<!-- Level 1: Max HP + 6%. -->
+		<!-- Level 2: Max HP + 10%. -->
+		<!-- Level 3: Max HP + 14%. -->
+		<!-- Level 4: Max HP + 20%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1045</icon>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">10</value>
@@ -1227,84 +1373,99 @@
 		</effects>
 	</skill>
 	<skill id="19172" toLevel="2" name="Noble Eagle Eye">
-		<!-- P. Accuracy + 8, M. Accuracy + 8, servitor's P. Accuracy + 15. -->
-		<table name="#bonus"> 8 16 </table>
+		<!-- Level 1: P. Accuracy + 8, M. Accuracy + 8, servitor's P. Accuracy + 15. -->
+		<!-- Level 2: P. Accuracy + 16, M. Accuracy + 16, servitor's P. Accuracy + 23. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19127</icon>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">16</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicAccuracy">
+			<effect name="p_magic_hit">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">16</value>
 				</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_ability_change">
+				<ACCURACY_COMBAT>
+					<value level="1">15</value>
+					<value level="2">23</value>
+				</ACCURACY_COMBAT>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19173" toLevel="2" name="Noble Emblem">
-		<!-- Attack Attribute + 20. 6 Attributes Resistance + 20. -->
-		<table name="#bonus"> 20 50 </table>
+		<!-- Level 1: Attack Attribute + 20. 6 Attributes Resistance + 20. -->
+		<!-- Level 2: Attack Attribute + 50. 6 Attributes Resistance + 50. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19130</icon>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>HOLY</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>DARK</attribute>
 			</effect>
+			<effect name="p_attack_attribute_add">
+				<amount>
+					<value level="1">20</value>
+					<value level="2">50</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="19174" toLevel="4" name="Noble Earth">
-		<!-- Physical P. Def. + 3%. -->
-		<table name="#bonus"> 1.03 1.05 1.06 1.08 </table>
+		<!-- Level 1: Physical P. Def. + 3%. -->
+		<!-- Level 2: Physical P. Def. + 5%. -->
+		<!-- Level 3: Physical P. Def. + 6%. -->
+		<!-- Level 4: Physical P. Def. + 8%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19121</icon>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">5</value>
@@ -1316,12 +1477,12 @@
 		</effects>
 	</skill>
 	<skill id="19175" toLevel="2" name="Noble Life">
-		<!-- Max HP + 6%. -->
-		<table name="#bonus"> 6 10 </table>
+		<!-- Level 1: Max HP + 6%. -->
+		<!-- Level 2: Max HP + 10%. -->
 		<operateType>P</operateType>
 		<icon>icon.skill1045</icon>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">6</value>
 					<value level="2">10</value>
@@ -1331,74 +1492,87 @@
 		</effects>
 	</skill>
 	<skill id="19176" toLevel="2" name="Noble Vision">
-		<!-- P. Accuracy + 8, M. Accuracy + 8, servitor's P. Accuracy + 15. -->
-		<table name="#bonus"> 8 16 </table>
+		<!-- Level 1: P. Accuracy + 8, M. Accuracy + 8, servitor's P. Accuracy + 15. -->
+		<!-- Level 2: P. Accuracy + 16, M. Accuracy + 16, servitor's P. Accuracy + 23. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19127</icon>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">16</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicAccuracy">
+			<effect name="p_magic_hit">
 				<amount>
 					<value level="1">8</value>
 					<value level="2">16</value>
 				</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_ability_change">
+				<ACCURACY_COMBAT>
+					<value level="1">15</value>
+					<value level="2">23</value>
+				</ACCURACY_COMBAT>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="19177" toLevel="2" name="Noble Spirit">
-		<!-- Attack Attribute + 20. 6 Attributes Resistance + 20. -->
-		<table name="#bonus"> 20 50 </table>
+		<!-- Level 1: Attack Attribute + 20. 6 Attributes Resistance + 20. -->
+		<!-- Level 2: Attack Attribute + 50. 6 Attributes Resistance + 50. -->
 		<operateType>P</operateType>
 		<icon>icon.skill19130</icon>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>HOLY</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">50</value>
 				</amount>
 				<attribute>DARK</attribute>
+			</effect>
+			<effect name="p_attack_attribute_add">
+				<amount>
+					<value level="1">20</value>
+					<value level="2">50</value>
+				</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1459,7 +1633,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>120000</reuseDelay>
 		<effectPoint>-379</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="19188" toLevel="1" name="Snicker">
 		<!-- AUTO GENERATED SKILL -->
@@ -1526,7 +1700,7 @@
 		<reuseDelay>10000</reuseDelay>
 		<isMagic>4</isMagic>
 	</skill>
-	<skill id="19198" toLevel="1" name="Cancel Target">
+	<skill id="19198" toLevel="1" name="Cancel target">
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0445</icon>
 		<operateType>A1</operateType>

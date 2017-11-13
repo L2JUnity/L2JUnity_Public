@@ -18,10 +18,10 @@
  */
 package org.l2junity.loginserver;
 
-import java.io.File;
 import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.file.Path;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.spec.RSAKeyGenParameterSpec;
@@ -33,9 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.loginserver.network.gameserverpackets.ServerStatus;
 import org.l2junity.util.IPSubnet;
 import org.slf4j.Logger;
@@ -47,7 +46,7 @@ import org.w3c.dom.NodeList;
  * The Class GameServerTable loads the game server names and initialize the game server tables.
  * @author KenM, Zoey76
  */
-public final class GameServerTable implements IGameXmlReader
+public final class GameServerTable implements ILoginXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(GameServerTable.class);
 	
@@ -64,25 +63,31 @@ public final class GameServerTable implements IGameXmlReader
 	 */
 	public GameServerTable()
 	{
-		load();
-		
 		loadRegisteredGameServers();
-		LOGGER.info(GameServerTable.class.getSimpleName() + ": Loaded " + GAME_SERVER_TABLE.size() + " registered Game Servers");
+		LOGGER.info("Loaded " + GAME_SERVER_TABLE.size() + " registered Game Servers");
 		
 		initRSAKeys();
-		LOGGER.info(GameServerTable.class.getSimpleName() + ": Cached " + _keyPairs.length + " RSA keys for Game Server communication.");
+		LOGGER.info("Cached " + _keyPairs.length + " RSA keys for Game Server communication.");
+		
+		try
+		{
+			load();
+		}
+		catch (Exception e)
+		{
+			LOGGER.warn("Failed to load server names", e);
+		}
 	}
 	
-	@Override
-	public void load()
+	private void load() throws Exception
 	{
 		SERVER_NAMES.clear();
 		parseDatapackFile("data/servername.xml");
-		LOGGER.info(GameServerTable.class.getSimpleName() + ": Loaded " + SERVER_NAMES.size() + " server names");
+		LOGGER.info("Loaded " + SERVER_NAMES.size() + " server names");
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		final NodeList servers = doc.getElementsByTagName("server");
 		for (int s = 0; s < servers.getLength(); s++)
@@ -108,7 +113,7 @@ public final class GameServerTable implements IGameXmlReader
 		}
 		catch (Exception e)
 		{
-			LOGGER.error(GameServerTable.class.getSimpleName() + ": Error loading RSA keys for Game Server communication!");
+			LOGGER.error("Error loading RSA keys for Game Server communication!");
 		}
 	}
 	
@@ -130,7 +135,7 @@ public final class GameServerTable implements IGameXmlReader
 		}
 		catch (Exception e)
 		{
-			LOGGER.error(GameServerTable.class.getSimpleName() + ": Error loading registered game servers!");
+			LOGGER.error("Error loading registered game servers!");
 		}
 	}
 	
@@ -234,7 +239,7 @@ public final class GameServerTable implements IGameXmlReader
 		}
 		catch (Exception e)
 		{
-			LOGGER.error(GameServerTable.class.getSimpleName() + ": Error while saving gameserver!");
+			LOGGER.error("Error while saving gameserver!");
 		}
 	}
 	
@@ -677,7 +682,7 @@ public final class GameServerTable implements IGameXmlReader
 	 */
 	public static GameServerTable getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	/**
@@ -685,6 +690,6 @@ public final class GameServerTable implements IGameXmlReader
 	 */
 	private static class SingletonHolder
 	{
-		protected static final GameServerTable _instance = new GameServerTable();
+		protected static final GameServerTable INSTANCE = new GameServerTable();
 	}
 }

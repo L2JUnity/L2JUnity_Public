@@ -46,7 +46,7 @@ public class BannedSpawnTerritory
 		return _territory.getRandomPoint();
 	}
 	
-	public boolean isInsideZone(int x, int y, int z)
+	public boolean isInsideZone(double x, double y, double z)
 	{
 		return _territory.isInsideZone(x, y, z);
 	}

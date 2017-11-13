@@ -54,6 +54,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="36309" name="Healing Potion (Battleground)" type="EtcItem">
 		<!-- Restores 2,500 HP, and the remaining power restores CP. Battleground only. -->
@@ -230,6 +231,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9770" level="1" /> <!-- Lyn Draco's Accessory Pack -->
 		</skills>
@@ -243,6 +245,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9769" level="1" /> <!-- Lyn Draco's Gift -->
 		</skills>
@@ -257,6 +260,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9773" level="1" /> <!-- Draco's Shiny Accessory Pack (Event) -->
 		</skills>
@@ -270,6 +274,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="OTHER_ITEM" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9771" level="1" /> <!-- Draco's Gift (Event) -->
 		</skills>
@@ -283,6 +288,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="commissionItemType" val="OTHER_ITEM" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9772" level="1" /> <!-- Draco's Shiny Gift (Event) -->
 		</skills>
@@ -295,6 +301,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -313,6 +320,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -330,6 +338,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -347,6 +356,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -364,6 +374,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -382,6 +393,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -405,11 +417,13 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="36334" name="Adrenaline Energy Drink" name_additional="Event" type="EtcItem">
 		<!-- Energy drink meant to make one run like the wind. Speed + 15. Formulated for special events, the recipe remains a secret. Cannot be used in Olympiad. The body does not remember the drink's potent effect after 30 minutes. -->
 		<set name="icon" val="icon.etc_oblivion_yellow_i00" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -422,6 +436,7 @@
 		<!-- Energy drink that boosts dexterity and clears one's mind with a single cup. DEX + 10. Formulated for special events, this energy drink should be used with care as it can raise pulse rate and blood pressure. Cannot be used in Olympiad. The body does not remember the drink's potent effect after 30 minutes. -->
 		<set name="icon" val="icon.etc_oblivion_green_i00" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -434,6 +449,7 @@
 		<!-- Energy drink that creates monstrous muscle mass. STR + 10. Formulated for special events, this energy drink makes one extremely powerful. Cannot be used in Olympiad. The body does not remember the drink's potent effect after 30 minutes. -->
 		<set name="icon" val="icon.etc_oblivion_blue_i00" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
 		<set name="is_stackable" val="true" />
@@ -445,6 +461,7 @@
 		<!-- Energy drink that increases brain power. INT + 10. Formulated for special events, this energy drink sharpens Mental/magical attacks unto one's enemy while strengthening the brain from the resulting whiplash. Cannot be used in Olympiad. The body does not remember the drink's potent effect after 30 minutes. -->
 		<set name="icon" val="icon.etc_oblivion_violet_i00" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
 		<set name="is_stackable" val="true" />
@@ -456,6 +473,7 @@
 		<!-- Energy drink that stimulates the nerves, activating the neurons in the brain. WIT + 10. Formulated for special events, this energy drink is said to help with Mental activity. Cannot be used in Olympiad. The body does not remember the drink's potent effect after 30 minutes. -->
 		<set name="icon" val="icon.etc_oblivion_white_i00" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -548,6 +566,7 @@
 		<!-- Increases acquired XP and SP by 30% for 30 min. -->
 		<set name="icon" val="icon.etc_london_olympic_scroll_i01" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="is_stackable" val="true" />
@@ -758,6 +777,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="36367" name="Luminous Golden Chest" name_additional="Event" type="EtcItem">
 		<!-- Luminous Golden Chest with bright energy. Special reward prepared by Amadeo Cadmus, the king of Aden. Double-click to get the reward. -->
@@ -765,6 +785,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36368" name="Treasure Chest" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Small Reward Box for your help in the reconstruction of Aden. -->
@@ -773,6 +794,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36369" name="Hero's Treasure Chest" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Reward Box for your great help in the reconstruction of Aden. -->
@@ -781,6 +803,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36370" name="Hair Accessory Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing hair accessory. -->
@@ -789,6 +812,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36371" name="Pendant Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing pendant that enchants a hair accessory. -->
@@ -797,6 +821,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36372" name="Enchant Scroll Pack (S-grade)" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing S-grade enchant scroll. -->
@@ -805,6 +830,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36373" name="Enchant Scroll Pack (R-grade)" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing R-grade enchant scroll. -->
@@ -813,6 +839,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36374" name="Attribute Stone Fragment Box" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing attribute stone. -->
@@ -821,6 +848,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36375" name="Ingredient Box" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing various materials required for item crafting. -->
@@ -829,6 +857,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36376" name="Hero's Lucky Enchant Stone Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Lucky Echant Stone. -->
@@ -837,6 +866,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36377" name="Destruction Enchant Scroll Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Enchant Scroll of Destruction. -->
@@ -845,6 +875,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36378" name="Hero's Giant Enchant Scroll Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Giant's Enchant Scroll. -->
@@ -853,6 +884,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36379" name="Hero's Blessed Enchant Scroll Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Hero's Blessed Enchant Scroll. -->
@@ -861,6 +893,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36380" name="Hero's Unbind Scroll Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Pack containing Unbind Scroll. -->
@@ -869,6 +902,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36381" name="Hero's Attribute Crystal Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing either an attribute crystal or a Super - 60/150 ore. -->
@@ -877,6 +911,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36382" name="PK Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Scroll: PK. -->
@@ -885,6 +920,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36383" name="Reputation Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Scroll: Reputation. -->
@@ -893,6 +929,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36384" name="Mysterious Shot Pack" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Mysterious Soulshots/Spiritshots (R-grade). -->
@@ -901,6 +938,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36385" name="Kaliel's Energy Box" name_additional="Aden Reconstruction" type="EtcItem">
 		<!-- Box containing Kaliel's Energy. -->
@@ -909,63 +947,91 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36386" name="Giant's Scroll: Enchant Weapon (R-grade)" type="EtcItem">
 		<!-- Upon enchantment, P. Atk. for one-handed sword/blunt, dagger, spear, etc. (R-grade) + 6, and two-handed sword/blunt/fist, dualsword, and crossbow + 7. P. Atk. for bows + 12. M. Atk. for all weapons + 5. When weapons are enchanted to +4 or above, P. Atk. and M. Atk. Increase greatly. The increase is greater for blessed weapons than standard weapons. Weapons are randomly enchanted between + 1 and + 3. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_r" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<skills>
+			<skill id="9814" level="1" /> <!-- Giant's Scroll: Enchant Weapon (R-grade) -->
+		</skills>
 	</item>
 	<item id="36387" name="Giant's Scroll: Enchant Weapon (S-grade)" type="EtcItem">
 		<!-- Upon enchantment, P. Atk. for one-handed sword/blunt, dagger, spear, etc. (S-grade) + 5, and two-handed sword/blunt/fist, dualsword, and crossbow + 6. P. Atk. for bows + 10. M. Atk. for all weapons + 4. When weapons are enchanted to +4 or above, P. Atk. and M. Atk. double. Weapons are randomly enchanted between + 1 and + 3. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_s" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
+		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
-		<set name="is_stackable" val="true" />
+		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<skills>
+			<skill id="9815" level="1" /> <!-- Giant's Scroll: Enchant Weapon (S-grade) -->
+		</skills>
 	</item>
 	<item id="36388" name="Giant's Scroll: Enchant Weapon (A-grade)" type="EtcItem">
 		<!-- Upon enchantment, P. Atk. for one-handed sword/blunt, dagger, spear, etc. (A-grade) + 4, and two-handed sword/blunt/fist, dualsword, and crossbow + 5. P. Atk. for bows + 8. M. Atk. for all weapons + 3. When weapons are enchanted to +4 or above, P. Atk. and M. Atk. double. Weapons are randomly enchanted between + 1 and + 3. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_a" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
+		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
-		<set name="is_stackable" val="true" />
+		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<skills>
+			<skill id="9816" level="1" /> <!-- Giant's Scroll: Enchant Weapon (A-grade) -->
+		</skills>
 	</item>
 	<item id="36389" name="Giant's Scroll: Enchant Armor (R-grade)" type="EtcItem">
 		<!-- Upon enchantment, P. Def. for R-grade armor and accessories increases by 2, and by a significant amount starting from +4. Armor and accessories can be safely enchanted up to +3. When armor is enchanted to +4 or above, HP also increases according to the enchant value. Armor and accessories are randomly enchanted between + 1 and + 3. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_r" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<skills>
+			<skill id="9817" level="1" /> <!-- Giant's Scroll: Enchant Armor (R-grade) -->
+		</skills>
 	</item>
 	<item id="36390" name="Giant's Scroll: Enchant Armor (S-grade)" type="EtcItem">
 		<!-- P. Def. for S-grade armor and accessories increases by 1, and by 3 starting from +4. Armor and accessories can be safely enchanted up to +3. One-piece armor can be safely enchanted up to +4. When armor is enchanted to +4 or above, HP also increases according to the enchant value. Armor and accessories are randomly enchanted between +1 and +3. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_s" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<skills>
+			<skill id="9818" level="1" /> <!-- Giant's Scroll: Enchant Armor (S-grade) -->
+		</skills>
 	</item>
 	<item id="36391" name="Giant's Scroll: Enchant Armor (A-grade)" type="EtcItem">
 		<!-- P. Def. for A-grade armor and accessories increases by 1, and by 3 starting from +4. Armor and accessories can be safely enchanted up to +3. One-piece armor can be safely enchanted up to +4. When armor is enchanted to +4 or above, HP also increases according to the enchant value. Armor and accessories are randomly enchanted between +1 and +3. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_a" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
+		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
-		<set name="is_stackable" val="true" />
+		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<skills>
+			<skill id="9819" level="1" /> <!-- Giant's Scroll: Enchant Armor (A-grade) -->
+		</skills>
 	</item>
 	<item id="36392" name="Mark of Travis" type="EtcItem">
 		<!-- Mark of those who resurrected and returned with Travis. Take this to the Aden Vanguard Quartermaster at the border of the cemetery and the Seal of Shilen to get a reward. -->
@@ -1011,6 +1077,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36395" name="Golden Chest (Reward)" type="EtcItem">
 		<!-- You can get a gift that Amadeo Cadmus, the king of Aden, prepared for your return. You can sometimes get a Luminous Golden Chest. -->
@@ -1018,6 +1085,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36396" name="Energy Drink Pack" type="EtcItem">
 		<!-- Each energy drink pack randomly contains 1 of 5 different energy drinks. Open the pack to receive 3 units of one energy drink. -->
@@ -1025,6 +1093,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36397" name="Chest of Glory" type="EtcItem">
 		<!-- Chest of Glory given by Cocoring to celebrate the winning of the glorious gold medal. Double-click to receive a Medal of Glory/Victory/Friendship at a certain probability. -->
@@ -1038,6 +1107,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36398" name="Chest of Victory" type="EtcItem">
 		<!-- Chest of Victory given by Cocoring to celebrate the winning of the glorious silver medal. Double-click to receive a Medal of Glory/Victory/Friendship at a certain probability. -->
@@ -1051,6 +1121,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="36399" name="Chest of Friendship" type="EtcItem">
 		<!-- Chest of Friendship given by Cocoring to celebrate the winning of the glorious gold medal. Double-click to receive a Medal of Glory/Victory/Friendship at a certain probability. -->
@@ -1064,5 +1135,6 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 </list>

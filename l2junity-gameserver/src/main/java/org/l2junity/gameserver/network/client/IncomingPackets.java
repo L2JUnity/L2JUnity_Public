@@ -26,6 +26,7 @@ import java.util.function.Supplier;
 import org.l2junity.gameserver.network.client.recv.*;
 import org.l2junity.gameserver.network.client.recv.friend.RequestAnswerFriendInvite;
 import org.l2junity.gameserver.network.client.recv.friend.RequestFriendDel;
+import org.l2junity.gameserver.network.client.recv.friend.RequestFriendInvite;
 import org.l2junity.gameserver.network.client.recv.friend.RequestFriendList;
 import org.l2junity.gameserver.network.client.recv.friend.RequestSendFriendMsg;
 import org.l2junity.network.IConnectionState;
@@ -37,7 +38,7 @@ import org.l2junity.network.IIncomingPackets;
  */
 public enum IncomingPackets implements IIncomingPackets<L2GameClient>
 {
-	LOGOUT(0x00, Logout::new, ConnectionState.AUTHENTICATED, ConnectionState.IN_GAME),
+	LOGOUT(0x00, Logout::new, ConnectionState.AUTHENTICATED, ConnectionState.CONNECTED, ConnectionState.IN_GAME),
 	ATTACK(0x01, Attack::new, ConnectionState.IN_GAME),
 	REQUEST_START_PLEDGE_WAR(0x03, RequestStartPledgeWar::new, ConnectionState.IN_GAME),
 	REQUEST_REPLY_START_PLEDGE(0x04, RequestReplyStartPledgeWar::new, ConnectionState.IN_GAME),

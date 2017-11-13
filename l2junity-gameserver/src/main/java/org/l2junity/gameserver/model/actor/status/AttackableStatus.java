@@ -29,12 +29,6 @@ public class AttackableStatus extends NpcStatus
 	}
 	
 	@Override
-	public final void reduceHp(double value, Creature attacker)
-	{
-		reduceHp(value, attacker, true, false, false);
-	}
-	
-	@Override
 	public final void reduceHp(double value, Creature attacker, boolean awake, boolean isDOT, boolean isHpConsumption)
 	{
 		if (getActiveChar().isDead())
@@ -65,12 +59,6 @@ public class AttackableStatus extends NpcStatus
 			// And the attacker's hit didn't kill the mob, clear the over-hit flag
 			getActiveChar().overhitEnabled(false);
 		}
-	}
-	
-	@Override
-	public boolean setCurrentHp(double newHp, boolean broadcastPacket)
-	{
-		return super.setCurrentHp(newHp, true);
 	}
 	
 	@Override

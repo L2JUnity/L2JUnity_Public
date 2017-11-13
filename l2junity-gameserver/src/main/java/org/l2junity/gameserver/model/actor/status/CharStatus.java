@@ -21,24 +21,25 @@ package org.l2junity.gameserver.model.actor.status;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.stat.CharStat;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.OnCreatureHpChange;
 import org.l2junity.gameserver.model.skills.AbnormalType;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.Formulas;
-import org.l2junity.gameserver.model.stats.Stats;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CharStatus
 {
-	protected static final Logger _log = LoggerFactory.getLogger(CharStatus.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(CharStatus.class);
 	
 	private final Creature _activeChar;
 	
@@ -124,21 +125,6 @@ public class CharStatus
 	{
 	}
 	
-	/**
-	 * Reduce the current HP of the L2Character and launch the doDie Task if necessary.
-	 * @param value
-	 * @param attacker
-	 */
-	public void reduceHp(double value, Creature attacker)
-	{
-		reduceHp(value, attacker, true, false, false);
-	}
-	
-	public void reduceHp(double value, Creature attacker, boolean isHpConsumption)
-	{
-		reduceHp(value, attacker, true, false, isHpConsumption);
-	}
-	
 	public void reduceHp(double value, Creature attacker, boolean awake, boolean isDOT, boolean isHPConsumption)
 	{
 		final Creature activeChar = getActiveChar();
@@ -148,7 +134,7 @@ public class CharStatus
 		}
 		
 		// invul handling
-		if (activeChar.isHpBlocked() && !(isDOT || isHPConsumption))
+		if (activeChar.isHpBlocked() && !isDOT)
 		{
 			return;
 		}
@@ -174,7 +160,7 @@ public class CharStatus
 			}
 			if (Formulas.calcRealTargetBreak())
 			{
-				getActiveChar().getEffectList().stopSkillEffects(true, AbnormalType.REAL_TARGET);
+				getActiveChar().getEffectList().stopEffects(AbnormalType.REAL_TARGET);
 			}
 		}
 		
@@ -209,16 +195,16 @@ public class CharStatus
 	{
 		if ((_regTask == null) && !getActiveChar().isDead())
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.debug("HP/MP regen started");
+				LOGGER.debug("HP/MP regen started");
 			}
 			
 			// Get the Regeneration period
 			int period = Formulas.getRegeneratePeriod(getActiveChar());
 			
 			// Create the HP/MP/CP Regeneration task
-			_regTask = ThreadPoolManager.getInstance().scheduleEffectAtFixedRate(new RegenTask(), period, period);
+			_regTask = ThreadPool.scheduleAtFixedRate(new RegenTask(), period, period, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -234,9 +220,9 @@ public class CharStatus
 	{
 		if (_regTask != null)
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.debug("HP/MP regen stop");
+				LOGGER.debug("HP/MP regen stop");
 			}
 			
 			// Stop the HP/MP/CP Regeneration task
@@ -333,7 +319,7 @@ public class CharStatus
 			{
 				if (_previousHpPercent.compareAndSet(lastHpPercent, currentHpPercent))
 				{
-					_activeChar.getStat().recalculateStats(true);
+					_activeChar.getStat().recalculateStats(broadcastPacket);
 				}
 			}
 			
@@ -426,13 +412,13 @@ public class CharStatus
 		// Modify the current HP of the L2Character and broadcast Server->Client packet StatusUpdate
 		if (getCurrentHp() < charstat.getMaxRecoverableHp())
 		{
-			setCurrentHp(getCurrentHp() + getActiveChar().getStat().getValue(Stats.REGENERATE_HP_RATE), false);
+			setCurrentHp(getCurrentHp() + getActiveChar().getStat().getValue(DoubleStat.REGENERATE_HP_RATE), false);
 		}
 		
 		// Modify the current MP of the L2Character and broadcast Server->Client packet StatusUpdate
 		if (getCurrentMp() < charstat.getMaxRecoverableMp())
 		{
-			setCurrentMp(getCurrentMp() + getActiveChar().getStat().getValue(Stats.REGENERATE_MP_RATE), false);
+			setCurrentMp(getCurrentMp() + getActiveChar().getStat().getValue(DoubleStat.REGENERATE_MP_RATE), false);
 		}
 		
 		if (!getActiveChar().isInActiveRegion())
@@ -462,7 +448,7 @@ public class CharStatus
 			}
 			catch (Exception e)
 			{
-				_log.error("", e);
+				LOGGER.error("", e);
 			}
 		}
 	}

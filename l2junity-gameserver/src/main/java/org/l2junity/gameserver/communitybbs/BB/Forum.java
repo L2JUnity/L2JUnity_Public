@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.communitybbs.Manager.ForumsBBSManager;
 import org.l2junity.gameserver.communitybbs.Manager.TopicBBSManager;
 import org.slf4j.Logger;

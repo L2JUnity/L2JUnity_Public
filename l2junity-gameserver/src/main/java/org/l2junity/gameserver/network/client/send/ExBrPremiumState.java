@@ -18,21 +18,20 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
+import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
 /**
- * @author GodKratos
+ * @author Sdw
  */
 public class ExBrPremiumState implements IClientOutgoingPacket
 {
-	private final int _objId;
-	private final int _state;
+	private final PlayerInstance _player;
 	
-	public ExBrPremiumState(int id, int state)
+	public ExBrPremiumState(PlayerInstance player)
 	{
-		_objId = id;
-		_state = state;
+		_player = player;
 	}
 	
 	@Override
@@ -40,8 +39,8 @@ public class ExBrPremiumState implements IClientOutgoingPacket
 	{
 		OutgoingPackets.EX_BR_PREMIUM_STATE.writeId(packet);
 		
-		packet.writeD(_objId);
-		packet.writeC(_state);
+		packet.writeD(_player.getObjectId());
+		packet.writeC(_player.isPremium() ? 0x01 : 0x00);
 		return true;
 	}
 }

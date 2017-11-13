@@ -28,14 +28,17 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GameTimeController;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.PlayerConfig;
+import org.l2junity.gameserver.config.PremiumConfig;
+import org.l2junity.gameserver.config.RatesConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.PartyDistributionType;
 import org.l2junity.gameserver.instancemanager.DuelManager;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.model.actor.Attackable;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Summon;
@@ -45,7 +48,7 @@ import org.l2junity.gameserver.model.holders.ItemHolder;
 import org.l2junity.gameserver.model.instancezone.Instance;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.network.client.send.ExAskModifyPartyLooting;
 import org.l2junity.gameserver.network.client.send.ExCloseMPCC;
 import org.l2junity.gameserver.network.client.send.ExOpenMPCC;
@@ -71,7 +74,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Party extends AbstractPlayerGroup
 {
-	private static final Logger _log = LoggerFactory.getLogger(Party.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Party.class);
 	
 	// @formatter:off
 	private static final double[] BONUS_EXP_SP =
@@ -127,6 +130,7 @@ public class Party extends AbstractPlayerGroup
 		_members.add(leader);
 		_partyLvl = leader.getLevel();
 		_distributionType = partyDistributionType;
+		World.getInstance().incrementParty();
 	}
 	
 	/**
@@ -146,7 +150,7 @@ public class Party extends AbstractPlayerGroup
 	public void setPendingInvitation(boolean val)
 	{
 		_pendingInvitation = val;
-		_pendingInviteTimeout = GameTimeController.getInstance().getGameTicks() + (PlayerInstance.REQUEST_TIMEOUT * GameTimeController.TICKS_PER_SECOND);
+		_pendingInviteTimeout = GameTimeManager.getInstance().getGameTicks() + (PlayerInstance.REQUEST_TIMEOUT * GameTimeManager.TICKS_PER_SECOND);
 	}
 	
 	/**
@@ -156,7 +160,7 @@ public class Party extends AbstractPlayerGroup
 	 */
 	public boolean isInvitationRequestExpired()
 	{
-		return (_pendingInviteTimeout <= GameTimeController.getInstance().getGameTicks());
+		return (_pendingInviteTimeout <= GameTimeManager.getInstance().getGameTicks());
 	}
 	
 	/**
@@ -170,7 +174,7 @@ public class Party extends AbstractPlayerGroup
 		final List<PlayerInstance> availableMembers = new ArrayList<>();
 		for (PlayerInstance member : getMembers())
 		{
-			if (member.getInventory().validateCapacityByItemId(itemId) && Util.checkIfInRange(Config.ALT_PARTY_RANGE2, target, member, true))
+			if (member.getInventory().validateCapacityByItemId(itemId) && Util.checkIfInRange(PlayerConfig.ALT_PARTY_RANGE2, target, member, true))
 			{
 				availableMembers.add(member);
 			}
@@ -196,7 +200,7 @@ public class Party extends AbstractPlayerGroup
 			try
 			{
 				member = getMembers().get(_itemLastLoot);
-				if (member.getInventory().validateCapacityByItemId(ItemId) && Util.checkIfInRange(Config.ALT_PARTY_RANGE2, target, member, true))
+				if (member.getInventory().validateCapacityByItemId(ItemId) && Util.checkIfInRange(PlayerConfig.ALT_PARTY_RANGE2, target, member, true))
 				{
 					return member;
 				}
@@ -372,7 +376,7 @@ public class Party extends AbstractPlayerGroup
 		
 		if (_positionBroadcastTask == null)
 		{
-			_positionBroadcastTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(() ->
+			_positionBroadcastTask = ThreadPool.scheduleAtFixedRate(() ->
 			{
 				if (_positionPacket == null)
 				{
@@ -383,9 +387,10 @@ public class Party extends AbstractPlayerGroup
 					_positionPacket.reuse(this);
 				}
 				broadcastPacket(_positionPacket);
-			} , PARTY_POSITION_BROADCAST_INTERVAL.toMillis() / 2, PARTY_POSITION_BROADCAST_INTERVAL.toMillis());
+			}, PARTY_POSITION_BROADCAST_INTERVAL.toMillis() / 2, PARTY_POSITION_BROADCAST_INTERVAL.toMillis(), TimeUnit.MILLISECONDS);
 		}
 		applyTacticalSigns(player, false);
+		World.getInstance().incrementPartyMember();
 	}
 	
 	private Map<Integer, Creature> getTacticalSigns()
@@ -498,7 +503,7 @@ public class Party extends AbstractPlayerGroup
 			final boolean isLeader = isLeader(player);
 			if (!_disbanding)
 			{
-				if ((getMembers().size() == 2) || (isLeader && !Config.ALT_LEAVE_PARTY_LEADER && (type != MessageType.DISCONNECTED)))
+				if ((getMembers().size() == 2) || (isLeader && !PlayerConfig.ALT_LEAVE_PARTY_LEADER && (type != MessageType.DISCONNECTED)))
 				{
 					disbandParty();
 					return;
@@ -527,7 +532,7 @@ public class Party extends AbstractPlayerGroup
 			}
 			catch (Exception e)
 			{
-				_log.warn("", e);
+				LOGGER.warn("", e);
 			}
 			
 			SystemMessage msg;
@@ -546,6 +551,8 @@ public class Party extends AbstractPlayerGroup
 				broadcastPacket(msg);
 			}
 			
+			World.getInstance().decrementPartyMember();
+			
 			// UI update.
 			player.sendPacket(PartySmallWindowDeleteAll.STATIC_PACKET);
 			player.setParty(null);
@@ -562,7 +569,7 @@ public class Party extends AbstractPlayerGroup
 			{
 				player.sendPacket(ExCloseMPCC.STATIC_PACKET);
 			}
-			if (isLeader && (getMembers().size() > 1) && (Config.ALT_LEAVE_PARTY_LEADER || (type == MessageType.DISCONNECTED)))
+			if (isLeader && (getMembers().size() > 1) && (PlayerConfig.ALT_LEAVE_PARTY_LEADER || (type == MessageType.DISCONNECTED)))
 			{
 				msg = SystemMessage.getSystemMessage(SystemMessageId.C1_HAS_BECOME_THE_PARTY_LEADER);
 				msg.addString(getLeader().getName());
@@ -625,6 +632,7 @@ public class Party extends AbstractPlayerGroup
 				}
 			}
 		}
+		World.getInstance().decrementParty();
 	}
 	
 	/**
@@ -790,7 +798,7 @@ public class Party extends AbstractPlayerGroup
 		List<PlayerInstance> toReward = new LinkedList<>();
 		for (PlayerInstance member : getMembers())
 		{
-			if (Util.checkIfInRange(Config.ALT_PARTY_RANGE2, target, member, true))
+			if (Util.checkIfInRange(PlayerConfig.ALT_PARTY_RANGE2, target, member, true))
 			{
 				toReward.add(member);
 			}
@@ -822,7 +830,7 @@ public class Party extends AbstractPlayerGroup
 	 * @param partyDmg
 	 * @param target
 	 */
-	public void distributeXpAndSp(long xpReward, int spReward, List<PlayerInstance> rewardedMembers, int topLvl, int partyDmg, Attackable target)
+	public void distributeXpAndSp(double xpReward, double spReward, List<PlayerInstance> rewardedMembers, int topLvl, int partyDmg, Attackable target)
 	{
 		final List<PlayerInstance> validMembers = getValidMembers(rewardedMembers, topLvl);
 		
@@ -848,33 +856,39 @@ public class Party extends AbstractPlayerGroup
 				// The servitor penalty
 				float penalty = 1;
 				
-				final Summon summon = member.getServitors().values().stream().filter(s -> ((L2ServitorInstance) s).getExpMultiplier() > 1).findFirst().orElse(null);
+				final L2ServitorInstance summon = member.getServitors().values().stream().map(L2ServitorInstance.class::cast).filter(s -> s.getExpMultiplier() < 1).findFirst().orElse(null);
 				if (summon != null)
 				{
-					penalty = ((L2ServitorInstance) summon).getExpMultiplier();
+					penalty = summon.getExpMultiplier();
 				}
 				
 				final double sqLevel = member.getLevel() * member.getLevel();
 				final double preCalculation = (sqLevel / sqLevelSum) * penalty;
 				
 				// Add the XP/SP points to the requested party member
-				long addexp = Math.round(member.getStat().getValue(Stats.EXPSP_RATE, xpReward * preCalculation));
-				int addsp = (int) member.getStat().getValue(Stats.EXPSP_RATE, spReward * preCalculation);
+				double exp = member.getStat().getValue(DoubleStat.EXPSP_RATE, xpReward * preCalculation);
+				double sp = member.getStat().getValue(DoubleStat.EXPSP_RATE, spReward * preCalculation);
 				
-				addexp = calculateExpSpPartyCutoff(member.getActingPlayer(), topLvl, addexp, addsp, target.useVitalityRate());
-				if (addexp > 0)
+				if (member.isPremium())
+				{
+					exp += exp * (PremiumConfig.RATE_PREMIUM_XP / validMembers.size());
+					sp += sp * (PremiumConfig.RATE_PREMIUM_SP / validMembers.size());
+				}
+				
+				exp = calculateExpSpPartyCutoff(member.getActingPlayer(), topLvl, exp, sp, target.useVitalityRate());
+				if (exp > 0)
 				{
 					final L2Clan clan = member.getClan();
 					if (clan != null)
 					{
-						long finalExp = addexp;
+						double finalExp = exp;
 						if (target.useVitalityRate())
 						{
 							finalExp *= member.getStat().getExpBonusMultiplier();
 						}
 						clan.addHuntingPoints(member, target, finalExp);
 					}
-					member.updateVitalityPoints(target.getVitalityPoints(member.getLevel(), addexp, target.isRaid()), true, false);
+					member.updateVitalityPoints(target.getVitalityPoints(member.getLevel(), exp, target.isRaid()), true, true);
 				}
 			}
 			else
@@ -884,20 +898,20 @@ public class Party extends AbstractPlayerGroup
 		}
 	}
 	
-	private long calculateExpSpPartyCutoff(PlayerInstance player, int topLvl, long addExp, int addSp, boolean vit)
+	private double calculateExpSpPartyCutoff(PlayerInstance player, int topLvl, double addExp, double addSp, boolean vit)
 	{
-		long xp = addExp;
-		int sp = addSp;
-		if (Config.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("highfive"))
+		double xp = addExp;
+		double sp = addSp;
+		if (PlayerConfig.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("highfive"))
 		{
 			int i = 0;
 			final int lvlDiff = topLvl - player.getLevel();
-			for (int[] gap : Config.PARTY_XP_CUTOFF_GAPS)
+			for (int[] gap : PlayerConfig.PARTY_XP_CUTOFF_GAPS)
 			{
 				if ((lvlDiff >= gap[0]) && (lvlDiff <= gap[1]))
 				{
-					xp = (addExp * Config.PARTY_XP_CUTOFF_GAP_PERCENTS[i]) / 100;
-					sp = (addSp * Config.PARTY_XP_CUTOFF_GAP_PERCENTS[i]) / 100;
+					xp = (addExp * PlayerConfig.PARTY_XP_CUTOFF_GAP_PERCENTS[i]) / 100;
+					sp = (addSp * PlayerConfig.PARTY_XP_CUTOFF_GAP_PERCENTS[i]) / 100;
 					player.addExpAndSp(xp, sp, vit);
 					break;
 				}
@@ -938,18 +952,18 @@ public class Party extends AbstractPlayerGroup
 		final List<PlayerInstance> validMembers = new ArrayList<>();
 		
 		// Fixed LevelDiff cutoff point
-		if (Config.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("level"))
+		if (PlayerConfig.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("level"))
 		{
 			for (PlayerInstance member : members)
 			{
-				if ((topLvl - member.getLevel()) <= Config.PARTY_XP_CUTOFF_LEVEL)
+				if ((topLvl - member.getLevel()) <= PlayerConfig.PARTY_XP_CUTOFF_LEVEL)
 				{
 					validMembers.add(member);
 				}
 			}
 		}
 		// Fixed MinPercentage cutoff point
-		else if (Config.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("percentage"))
+		else if (PlayerConfig.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("percentage"))
 		{
 			int sqLevelSum = 0;
 			for (PlayerInstance member : members)
@@ -960,14 +974,14 @@ public class Party extends AbstractPlayerGroup
 			for (PlayerInstance member : members)
 			{
 				int sqLevel = member.getLevel() * member.getLevel();
-				if ((sqLevel * 100) >= (sqLevelSum * Config.PARTY_XP_CUTOFF_PERCENT))
+				if ((sqLevel * 100) >= (sqLevelSum * PlayerConfig.PARTY_XP_CUTOFF_PERCENT))
 				{
 					validMembers.add(member);
 				}
 			}
 		}
 		// Automatic cutoff method
-		else if (Config.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("auto"))
+		else if (PlayerConfig.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("auto"))
 		{
 			int sqLevelSum = 0;
 			for (PlayerInstance member : members)
@@ -995,11 +1009,11 @@ public class Party extends AbstractPlayerGroup
 			}
 		}
 		// High Five cutoff method
-		else if (Config.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("highfive"))
+		else if (PlayerConfig.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("highfive"))
 		{
 			validMembers.addAll(members);
 		}
-		else if (Config.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("none"))
+		else if (PlayerConfig.PARTY_XP_CUTOFF_METHOD.equalsIgnoreCase("none"))
 		{
 			validMembers.addAll(members);
 		}
@@ -1023,13 +1037,13 @@ public class Party extends AbstractPlayerGroup
 	
 	private double getExpBonus(int membersCount, Instance instance)
 	{
-		final float rateMul = instance != null ? instance.getExpPartyRate() : Config.RATE_PARTY_XP;
+		final float rateMul = instance != null ? instance.getExpPartyRate() : RatesConfig.RATE_PARTY_XP;
 		return (membersCount < 2) ? (getBaseExpSpBonus(membersCount)) : (getBaseExpSpBonus(membersCount) * rateMul);
 	}
 	
 	private double getSpBonus(int membersCount, Instance instance)
 	{
-		final float rateMul = instance != null ? instance.getSPPartyRate() : Config.RATE_PARTY_SP;
+		final float rateMul = instance != null ? instance.getSPPartyRate() : RatesConfig.RATE_PARTY_SP;
 		return (membersCount < 2) ? (getBaseExpSpBonus(membersCount)) : (getBaseExpSpBonus(membersCount) * rateMul);
 	}
 	
@@ -1076,7 +1090,7 @@ public class Party extends AbstractPlayerGroup
 		}
 		_changeRequestDistributionType = partyDistributionType;
 		_changeDistributionTypeAnswers = new HashSet<>();
-		_changeDistributionTypeRequestTask = ThreadPoolManager.getInstance().scheduleGeneral(() -> finishLootRequest(false), PARTY_DISTRIBUTION_TYPE_REQUEST_TIMEOUT.toMillis());
+		_changeDistributionTypeRequestTask = ThreadPool.schedule(() -> finishLootRequest(false), PARTY_DISTRIBUTION_TYPE_REQUEST_TIMEOUT.toMillis(), TimeUnit.MILLISECONDS);
 		
 		broadcastToPartyMembers(getLeader(), new ExAskModifyPartyLooting(getLeader().getName(), partyDistributionType));
 		

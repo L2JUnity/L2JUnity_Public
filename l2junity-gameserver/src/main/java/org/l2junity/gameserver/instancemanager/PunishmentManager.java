@@ -24,7 +24,10 @@ import java.sql.Statement;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.holders.PunishmentHolder;
 import org.l2junity.gameserver.model.punishment.PunishmentAffect;
 import org.l2junity.gameserver.model.punishment.PunishmentTask;
@@ -43,17 +46,11 @@ public final class PunishmentManager
 	
 	protected PunishmentManager()
 	{
-		load();
 	}
 	
+	@Load(group = LoadGroup.class)
 	private void load()
 	{
-		// Initiate task holders.
-		for (PunishmentAffect affect : PunishmentAffect.values())
-		{
-			_tasks.put(affect, new PunishmentHolder());
-		}
-		
 		int initiated = 0;
 		int expired = 0;
 		
@@ -80,7 +77,7 @@ public final class PunishmentManager
 					else
 					{
 						initiated++;
-						_tasks.get(affect).addPunishment(new PunishmentTask(id, key, affect, type, expirationTime, reason, punishedBy, true));
+						_tasks.computeIfAbsent(affect, PunishmentHolder::new).addPunishment(new PunishmentTask(id, key, affect, type, expirationTime, reason, punishedBy, true));
 					}
 				}
 			}
@@ -95,7 +92,7 @@ public final class PunishmentManager
 	
 	public void startPunishment(PunishmentTask task)
 	{
-		_tasks.get(task.getAffect()).addPunishment(task);
+		_tasks.computeIfAbsent(task.getAffect(), PunishmentHolder::new).addPunishment(task);
 	}
 	
 	public void stopPunishment(PunishmentAffect affect, PunishmentType type)
@@ -112,38 +109,39 @@ public final class PunishmentManager
 		final PunishmentTask task = getPunishment(key, affect, type);
 		if (task != null)
 		{
-			_tasks.get(affect).stopPunishment(task);
+			_tasks.computeIfAbsent(affect, PunishmentHolder::new).stopPunishment(task);
 		}
 	}
 	
 	public boolean hasPunishment(Object key, PunishmentAffect affect, PunishmentType type)
 	{
-		final PunishmentHolder holder = _tasks.get(affect);
+		final PunishmentHolder holder = _tasks.computeIfAbsent(affect, PunishmentHolder::new);
 		return holder.hasPunishment(String.valueOf(key), type);
 	}
 	
 	public long getPunishmentExpiration(Object key, PunishmentAffect affect, PunishmentType type)
 	{
-		final PunishmentTask p = getPunishment(key, affect, type);
-		return p != null ? p.getExpirationTime() : 0;
+		final PunishmentTask punishTask = getPunishment(key, affect, type);
+		return punishTask != null ? punishTask.getExpirationTime() : 0;
 	}
 	
 	private PunishmentTask getPunishment(Object key, PunishmentAffect affect, PunishmentType type)
 	{
-		return _tasks.get(affect).getPunishment(String.valueOf(key), type);
+		return _tasks.computeIfAbsent(affect, PunishmentHolder::new).getPunishment(String.valueOf(key), type);
 	}
 	
 	/**
 	 * Gets the single instance of {@code PunishmentManager}.
 	 * @return single instance of {@code PunishmentManager}
 	 */
+	@InstanceGetter
 	public static PunishmentManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final PunishmentManager _instance = new PunishmentManager();
+		protected static final PunishmentManager INSTANCE = new PunishmentManager();
 	}
 }

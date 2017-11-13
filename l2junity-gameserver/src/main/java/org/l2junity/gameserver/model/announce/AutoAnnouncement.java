@@ -24,9 +24,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.util.Broadcast;
 
 /**
@@ -114,7 +115,7 @@ public final class AutoAnnouncement extends Announcement implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't store announcement: ", e);
+			LOGGER.warn("Couldn't store announcement: ", e);
 			return false;
 		}
 		return true;
@@ -137,7 +138,7 @@ public final class AutoAnnouncement extends Announcement implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Couldn't update announcement: ", e);
+			LOGGER.warn("Couldn't update announcement: ", e);
 			return false;
 		}
 		return true;
@@ -160,7 +161,7 @@ public final class AutoAnnouncement extends Announcement implements Runnable
 			_task.cancel(false);
 		}
 		_currentState = _repeat;
-		_task = ThreadPoolManager.getInstance().scheduleGeneral(this, _initial);
+		_task = ThreadPool.schedule(this, _initial, TimeUnit.MILLISECONDS);
 	}
 	
 	@Override
@@ -178,7 +179,7 @@ public final class AutoAnnouncement extends Announcement implements Runnable
 				_currentState--;
 			}
 			
-			_task = ThreadPoolManager.getInstance().scheduleGeneral(this, _delay);
+			_task = ThreadPool.schedule(this, _delay, TimeUnit.MILLISECONDS);
 		}
 	}
 }

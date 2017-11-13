@@ -18,25 +18,20 @@
  */
 package org.l2junity.gameserver.model.effects;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
+import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
-import org.l2junity.gameserver.model.skills.BuffInfo;
 import org.l2junity.gameserver.model.skills.Skill;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Abstract effect implementation.<br>
- * Instant effects should not override {@link #onExit(BuffInfo)}.<br>
- * Instant effects should not override {@link #canStart(BuffInfo)}, all checks should be done {@link #onStart(BuffInfo)}.<br>
- * Do not call super class methods {@link #onStart(BuffInfo)} nor {@link #onExit(BuffInfo)}.
+ * Instant effects should not override {@link #pumpEnd(Creature, Creature, Skill)}.<br>
+ * Do not call super class methods {@link #pumpStart(Creature, Creature, Skill)} nor {@link #pumpEnd(Creature, Creature, Skill)}.
  * @author Zoey76
  */
 public abstract class AbstractEffect
 {
-	protected static final Logger _log = LoggerFactory.getLogger(AbstractEffect.class);
-	
 	private int _ticks;
 	
 	/**
@@ -59,7 +54,7 @@ public abstract class AbstractEffect
 	
 	public double getTicksMultiplier()
 	{
-		return (getTicks() * Config.EFFECT_TICK_RATIO) / 1000f;
+		return (getTicks() * PlayerConfig.EFFECT_TICK_RATIO) / 1000f;
 	}
 	
 	/**
@@ -67,12 +62,88 @@ public abstract class AbstractEffect
 	 * If it lands will be scheduled and added to the character effect list.<br>
 	 * Override in effect implementation to change behavior. <br>
 	 * <b>Warning:</b> Must be used only for instant effects continuous effects will not call this they have their success handled by activate_rate.
-	 * @param effector
-	 * @param effected
+	 * @param caster
+	 * @param target
 	 * @param skill
 	 * @return {@code true} if this effect land, {@code false} otherwise
 	 */
-	public boolean calcSuccess(Creature effector, Creature effected, Skill skill)
+	public boolean calcSuccess(Creature caster, WorldObject target, Skill skill)
+	{
+		return true;
+	}
+	
+	/**
+	 * Called upon cast.<br>
+	 * @param caster
+	 * @param target
+	 * @param skill
+	 * @param item
+	 */
+	public void instant(Creature caster, WorldObject target, Skill skill, ItemInstance item)
+	{
+		
+	}
+	
+	/**
+	 * Called when effect start.<br>
+	 * @param caster
+	 * @param target
+	 * @param skill
+	 */
+	public void pumpStart(Creature caster, Creature target, Skill skill)
+	{
+		
+	}
+	
+	/**
+	 * Called when effect exit.<br>
+	 * @param caster
+	 * @param target
+	 * @param skill
+	 */
+	public void pumpEnd(Creature caster, Creature target, Skill skill)
+	{
+		
+	}
+	
+	/**
+	 * Called on each tick.<br>
+	 * If the abnormal time is lesser than zero it will last forever.
+	 * @param caster
+	 * @param target
+	 * @param skill
+	 */
+	public void tick(Creature caster, Creature target, Skill skill)
+	{
+		
+	}
+	
+	/**
+	 * @param caster
+	 * @param target
+	 * @param skill
+	 * @return {@code true} if pump can be invoked, {@code false} otherwise
+	 */
+	public boolean checkPumpCondition(Creature caster, Creature target, Skill skill)
+	{
+		return true;
+	}
+	
+	/**
+	 * @param target
+	 * @param skill
+	 */
+	public void pump(Creature target, Skill skill)
+	{
+		
+	}
+	
+	/**
+	 * @param target
+	 * @param skill
+	 * @return {@code false} if skill must be cancelled, {@code true} otherwise
+	 */
+	public boolean consume(Creature target, Skill skill)
 	{
 		return true;
 	}
@@ -87,107 +158,9 @@ public abstract class AbstractEffect
 		return L2EffectType.NONE;
 	}
 	
-	/**
-	 * Verify if the buff can start.<br>
-	 * Used for continuous effects.
-	 * @param info the buff info
-	 * @return {@code true} if all the start conditions are meet, {@code false} otherwise
-	 */
-	public boolean canStart(BuffInfo info)
-	{
-		return true;
-	}
-	
-	public void instant(Creature effector, Creature effected, Skill skill, ItemInstance item)
-	{
-		
-	}
-	
-	public void continuousInstant(Creature effector, Creature effected, Skill skill, ItemInstance item)
-	{
-		
-	}
-	
-	public void onStart(Creature effector, Creature effected, Skill skill)
-	{
-		
-	}
-	
-	/**
-	 * Called on effect start.
-	 * @param info the buff info
-	 */
-	public void onStart(BuffInfo info)
-	{
-		
-	}
-	
-	/**
-	 * Called on each tick.<br>
-	 * If the abnormal time is lesser than zero it will last forever.
-	 * @param info the buff info
-	 * @return if {@code true} this effect will continue forever, if {@code false} it will stop after abnormal time has passed
-	 */
-	public boolean onActionTime(BuffInfo info)
-	{
-		return false;
-	}
-	
-	/**
-	 * Called when the effect is exited.
-	 * @param info the buff info
-	 */
-	public void onExit(BuffInfo info)
-	{
-		
-	}
-	
-	/**
-	 * Get the effect flags.
-	 * @return bit flag for current effect
-	 */
-	public long getEffectFlags()
-	{
-		return EffectFlag.NONE.getMask();
-	}
-	
 	@Override
 	public String toString()
 	{
 		return "Effect " + getClass().getSimpleName();
-	}
-	
-	public boolean checkCondition(Object obj)
-	{
-		return true;
-	}
-	
-	/**
-	 * Verify if this effect is an instant effect.
-	 * @return {@code true} if this effect is instant, {@code false} otherwise
-	 */
-	public boolean isInstant()
-	{
-		return false;
-	}
-	
-	/**
-	 * @param effector
-	 * @param effected
-	 * @param skill
-	 * @return {@code true} if pump can be invoked, {@code false} otherwise
-	 */
-	public boolean canPump(Creature effector, Creature effected, Skill skill)
-	{
-		return true;
-	}
-	
-	/**
-	 * @param effected
-	 * @param skill
-	 */
-	public void pump(Creature effected, Skill skill)
-	{
-		
 	}
 }

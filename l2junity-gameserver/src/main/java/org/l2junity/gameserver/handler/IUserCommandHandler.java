@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 
 public interface IUserCommandHandler
 {
-	Logger _log = LoggerFactory.getLogger(IUserCommandHandler.class);
+	Logger LOGGER = LoggerFactory.getLogger(IUserCommandHandler.class);
 	
 	/**
 	 * this is the worker method that is called when someone uses an admin command.

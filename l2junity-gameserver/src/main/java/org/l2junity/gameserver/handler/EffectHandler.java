@@ -24,7 +24,6 @@ import java.util.function.Function;
 
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.scripting.ScriptEngineManager;
 
 /**
  * @author BiggBoss, UnAfraid
@@ -32,41 +31,33 @@ import org.l2junity.gameserver.scripting.ScriptEngineManager;
 public final class EffectHandler
 {
 	private final Map<String, Function<StatsSet, AbstractEffect>> _effectHandlerFactories = new HashMap<>();
-
+	
 	public void registerHandler(String name, Function<StatsSet, AbstractEffect> handlerFactory)
 	{
 		_effectHandlerFactories.put(name, handlerFactory);
 	}
-
+	
 	public Function<StatsSet, AbstractEffect> getHandlerFactory(String name)
 	{
 		return _effectHandlerFactories.get(name);
 	}
-
+	
 	public int size()
 	{
 		return _effectHandlerFactories.size();
 	}
 	
-	public void executeScript()
+	protected EffectHandler()
 	{
-		try
-		{
-			ScriptEngineManager.getInstance().executeEffectMasterHandler();
-		}
-		catch (Exception e)
-		{
-			throw new Error("Problems while running EffectMansterHandler", e);
-		}
 	}
 	
 	private static final class SingletonHolder
 	{
-		protected static final EffectHandler _instance = new EffectHandler();
+		protected static final EffectHandler INSTANCE = new EffectHandler();
 	}
-	
+
 	public static EffectHandler getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 }

@@ -29,28 +29,88 @@
 		<isMagic>4</isMagic>
 	</skill>
 	<skill id="17104" toLevel="1" name="Bae Kisung Teleport - Town of Aden">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Teleport to the Town of Aden. Usable only when Agathion's Seal is released. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
 		<reuseDelay>1800000</reuseDelay>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>146818</x>
+				<y>25807</y>
+				<z>-2008</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17105" toLevel="1" name="Bae Kisung Teleport - Town of Rune">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Teleport to the Town of Rune. Usable only when Agathion's Seal is released. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
 		<reuseDelay>1800000</reuseDelay>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>43840</x>
+				<y>-47779</y>
+				<z>-792</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17106" toLevel="1" name="Bae Kisung Teleport - Talking Island Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Teleport to the Talking Island Village. Usable only when Agathion's Seal is released. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
 		<reuseDelay>1800000</reuseDelay>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>-114558</x>
+				<y>253605</y>
+				<z>-1536</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17107" toLevel="1" name="Snowman's Gift">
 		<!-- AUTO GENERATED SKILL -->
@@ -59,7 +119,7 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>-2</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="17108" toLevel="1" name="Snowman's Buff">
 		<!-- AUTO GENERATED SKILL -->
@@ -97,7 +157,7 @@
 		<hitTime>1500</hitTime>
 		<reuseDelay>10000</reuseDelay>
 	</skill>
-	<skill id="17113" toLevel="1" name="Winter Holiday Gift">
+	<skill id="17113" toLevel="1" name="2012 Christmas Gift">
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -120,13 +180,27 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="17117" toLevel="2" name="Rune of Bountiful Growth">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Increases acquired XP and SP by 20%. -->
 		<icon>
 			<value level="1">icon.ev_charge_run</value>
 			<value level="2">br_cashtex.item.br_cash_rune_of_feather_i00</value>
 		</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_exp_modify">
+				<amount>
+					<value level="1">20</value>
+					<value level="2">30</value>
+				</amount>
+			</effect>
+			<effect name="p_sp_modify">
+				<amount>
+					<value level="1">20</value>
+					<value level="2">30</value>
+				</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17118" toLevel="1" name="Emperor's Growth Scroll">
 		<!-- AUTO GENERATED SKILL -->
@@ -275,94 +349,841 @@
 		<isMagic>4</isMagic>
 	</skill>
 	<skill id="17131" toLevel="1" name="Treasure Chest">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37607</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="0.46">
+						<item id="37608" count="1" /> <!-- Hair Accessory Pack -->
+					</item>
+					<item chance="0.01">
+						<item id="37609" count="1" /> <!-- Pendant Pack -->
+					</item>
+					<item chance="1.36">
+						<item id="37610" count="1" /> <!-- Enchant Scroll Pack -->
+					</item>
+					<item chance="37.11">
+						<item id="37611" count="1" /> <!-- Attribute Stone Pack -->
+					</item>
+					<item chance="61.06">
+						<item id="37612" count="1" /> <!-- Ingredient Box -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17132" toLevel="1" name="Hair Accessory Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37608</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="10.87">
+						<item id="8916" count="1" /> <!-- Eyepatch -->
+					</item>
+					<item chance="4.35">
+						<item id="7681" count="1" /> <!-- Outlaw's Eyepatch -->
+					</item>
+					<item chance="13.04">
+						<item id="6845" count="1" /> <!-- Pirate's Eyepatch -->
+					</item>
+					<item chance="4.53">
+						<item id="8921" count="1" /> <!-- Demon Circlet -->
+					</item>
+					<item chance="13.04">
+						<item id="6843" count="1" /> <!-- Cat Ears -->
+					</item>
+					<item chance="6.52">
+						<item id="8565" count="1" /> <!-- Romantic Chapeau -->
+					</item>
+					<item chance="4.35">
+						<item id="8920" count="1" /> <!-- Angel Halo -->
+					</item>
+					<item chance="6.52">
+						<item id="8184" count="1" /> <!-- Party Hat -->
+					</item>
+					<item chance="17.21">
+						<item id="7680" count="1" /> <!-- Raccoon Ears -->
+					</item>
+					<item chance="8.7">
+						<item id="7683" count="1" /> <!-- Rabbit Ears -->
+					</item>
+					<item chance="4.35">
+						<item id="13495" count="1" /> <!-- Refined Devil Horn -->
+					</item>
+					<item chance="6.52">
+						<item id="13494" count="1" /> <!-- Refined Angel Ring -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17133" toLevel="1" name="Pendant Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37609</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="7.14">
+						<item id="35903" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35904" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35905" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35902" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35913" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35910" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35906" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35901" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35908" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35914" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35911" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35912" count="1" />
+					</item>
+					<item chance="7.14">
+						<item id="35909" count="1" />
+					</item>
+					<item chance="7.18">
+						<item id="35907" count="1" />
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17134" toLevel="1" name="Enchant Scroll Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37610</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="6.2">
+						<item id="959" count="1" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+					</item>
+					<item chance="60.29">
+						<item id="960" count="1" /> <!-- Scroll: Enchant Armor (S-grade) -->
+					</item>
+					<item chance="1.47">
+						<item id="6577" count="1" /> <!-- Blessed Scroll: Enchant Weapon (S-grade) -->
+					</item>
+					<item chance="2.9">
+						<item id="6578" count="1" /> <!-- Blessed Scroll: Enchant Armor (S-grade) -->
+					</item>
+					<item chance="1.47">
+						<item id="17526" count="1" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					</item>
+					<item chance="22.79">
+						<item id="17527" count="1" /> <!-- Scroll: Enchant Armor (R-grade) -->
+					</item>
+					<item chance="1.2">
+						<item id="19447" count="1" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					</item>
+					<item chance="3.68">
+						<item id="19448" count="1" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17135" toLevel="1" name="Attribute Stone Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37611</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="8.61">
+						<item id="9546" count="1" /> <!-- Fire Stone -->
+					</item>
+					<item chance="9.7">
+						<item id="9547" count="1" /> <!-- Water Stone -->
+					</item>
+					<item chance="8.71">
+						<item id="9548" count="1" /> <!-- Earth Stone -->
+					</item>
+					<item chance="9.04">
+						<item id="9549" count="1" /> <!-- Wind Stone -->
+					</item>
+					<item chance="8.32">
+						<item id="9550" count="1" /> <!-- Dark Stone -->
+					</item>
+					<item chance="9.58">
+						<item id="9551" count="1" /> <!-- Holy Stone -->
+					</item>
+					<item chance="1.1">
+						<item id="9552" count="1" /> <!-- Fire Crystal -->
+					</item>
+					<item chance="1.15">
+						<item id="9553" count="1" /> <!-- Water Crystal -->
+					</item>
+					<item chance="1.03">
+						<item id="9554" count="1" /> <!-- Earth Crystal -->
+					</item>
+					<item chance="0.97">
+						<item id="9555" count="1" /> <!-- Wind Crystal -->
+					</item>
+					<item chance="1.11">
+						<item id="9556" count="1" /> <!-- Dark Crystal -->
+					</item>
+					<item chance="1.44">
+						<item id="9557" count="1" /> <!-- Holy Crystal -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17136" toLevel="1" name="Ingredient Box">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37612</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="2.55">
+						<item id="35562" count="1" /> <!-- Energy of Destruction -->
+					</item>
+					<item chance="13.64">
+						<item id="36547" count="1" /> <!-- Weapon Fragment -->
+					</item>
+					<item chance="2.55">
+						<item id="36548" count="1" /> <!-- Weapon Fragment (Mid-grade) -->
+					</item>
+					<item chance="0.43">
+						<item id="36549" count="1" /> <!-- Weapon Fragment (High-grade) -->
+					</item>
+					<item chance="12.87">
+						<item id="36552" count="1" /> <!-- Armor Fragment -->
+					</item>
+					<item chance="2.05">
+						<item id="36553" count="1" /> <!-- Armor Fragment (Mid-grade) -->
+					</item>
+					<item chance="0.28">
+						<item id="36554" count="1" /> <!-- Armor Fragment (High-grade) -->
+					</item>
+					<item chance="43.33">
+						<item id="36557" count="1" /> <!-- Accessory Gem -->
+					</item>
+					<item chance="8.16">
+						<item id="36558" count="1" /> <!-- Accessory Gem (Mid-grade) -->
+					</item>
+					<item chance="0.61">
+						<item id="36559" count="1" /> <!-- Accessory Gem (High-grade) -->
+					</item>
+					<item chance="11.22">
+						<item id="36562" count="1" /> <!-- Greater Cokes -->
+					</item>
+					<item chance="2.11">
+						<item id="36563" count="1" /> <!-- Synthetic Cokes -->
+					</item>
+					<item chance="0.21">
+						<item id="36564" count="1" /> <!-- Greater Synthetic Cokes -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17137" toLevel="1" name="Hero's Treasure Chest">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37613</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="6.24">
+						<item id="37614" count="1" /> <!-- Hero's Lucky Enchant Stone Pack -->
+					</item>
+					<item chance="3.15">
+						<item id="37615" count="1" /> <!-- Hero's Giant Enchant Scroll Pack -->
+					</item>
+					<item chance="3.07">
+						<item id="37616" count="1" /> <!-- Hero's Blessed Enchant Scroll Pack -->
+					</item>
+					<item chance="7.02">
+						<item id="37617" count="1" /> <!-- Hero's Unbind Scroll Pack -->
+					</item>
+					<item chance="11.87">
+						<item id="37618" count="1" /> <!-- Hero's Attribute Crystal Pack -->
+					</item>
+					<item chance="6.38">
+						<item id="37619" count="1" /> <!-- PK Pack -->
+					</item>
+					<item chance="8.84">
+						<item id="37620" count="1" /> <!-- Reputation Pack -->
+					</item>
+					<item chance="27.72">
+						<item id="37621" count="1" /> <!-- Mysterious Shot Pack -->
+					</item>
+					<item chance="5.20">
+						<item id="37622" count="1" /> <!-- Kaliel's Energy Box -->
+					</item>
+					<item chance="0.07">
+						<item id="37623" count="1" /> <!-- Soul Bottle Pack -->
+					</item>
+					<item chance="20.44">
+						<item id="37624" count="1" /> <!-- Top-grade Life Stone Pack -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17138" toLevel="1" name="Hero's Lucky Enchant Stone Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37614</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="4.81">
+						<item id="12366" count="1" /> <!-- Lucky Enchant Stone: Weapon (S-grade) -->
+					</item>
+					<item chance="25.48">
+						<item id="12371" count="1" /> <!-- Lucky Enchant Stone: Armor (S-grade) -->
+					</item>
+					<item chance="8.33">
+						<item id="30381" count="1" /> <!-- Lucky Enchant Stone: Weapon (R-grade) -->
+					</item>
+					<item chance="61.38">
+						<item id="30382" count="1" /> <!-- Lucky Enchant Stone: Armor (R-grade) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17139" toLevel="1" name="Hero's Giant Enchant Scroll Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37615</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="1.27">
+						<item id="36387" count="1" /> <!-- Giant's Scroll: Enchant Weapon (S-grade) -->
+					</item>
+					<item chance="31.11">
+						<item id="36390" count="1" /> <!-- Giant's Scroll: Enchant Armor (S-grade) -->
+					</item>
+					<item chance="11.75">
+						<item id="36386" count="1" /> <!-- Giant's Scroll: Enchant Weapon (R-grade) -->
+					</item>
+					<item chance="55.87">
+						<item id="36389" count="1" /> <!-- Giant's Scroll: Enchant Armor (R-grade) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17140" toLevel="1" name="Hero's Blessed Enchant Scroll Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37616</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="4.23">
+						<item id="6577" count="1" /> <!-- Blessed Scroll: Enchant Weapon (S-grade) -->
+					</item>
+					<item chance="20.52">
+						<item id="6578" count="1" /> <!-- Blessed Scroll: Enchant Armor (S-grade) -->
+					</item>
+					<item chance="8.79">
+						<item id="19447" count="1" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					</item>
+					<item chance="66.45">
+						<item id="19448" count="1" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17141" toLevel="1" name="Hero's Unbind Scroll Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37617</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="54.99">
+						<item id="36285" count="1" /> <!-- Unbind Scroll: Armor (R-grade) -->
+					</item>
+					<item chance="18.8">
+						<item id="36286" count="1" /> <!-- Unbind Scroll: Armor (R95-grade) -->
+					</item>
+					<item chance="9.97">
+						<item id="36287" count="1" /> <!-- Unbind Scroll: Armor (R99-grade) -->
+					</item>
+					<item chance="11.25">
+						<item id="36288" count="1" /> <!-- Unbind Scroll: Weapon (R-grade) -->
+					</item>
+					<item chance="2.99">
+						<item id="36289" count="1" /> <!-- Unbind Scroll: Weapon (R95-grade) -->
+					</item>
+					<item chance="1.99">
+						<item id="36290" count="1" /> <!-- Unbind Scroll: Weapon (R99-grade) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17142" toLevel="1" name="Hero's Attribute Crystal Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37618</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="14.74">
+						<item id="9552" count="1" /> <!-- Fire Crystal -->
+					</item>
+					<item chance="13.31">
+						<item id="9553" count="1" /> <!-- Water Crystal -->
+					</item>
+					<item chance="14.83">
+						<item id="9554" count="1" /> <!-- Earth Crystal -->
+					</item>
+					<item chance="11.96">
+						<item id="9555" count="1" /> <!-- Wind Crystal -->
+					</item>
+					<item chance="13.31">
+						<item id="9556" count="1" /> <!-- Dark Crystal -->
+					</item>
+					<item chance="12.13">
+						<item id="9557" count="1" /> <!-- Holy Crystal -->
+					</item>
+					<item chance="2.11">
+						<item id="33863" count="1" /> <!-- Fire Stone (+ 60) -->
+					</item>
+					<item chance="2.61">
+						<item id="33864" count="1" /> <!-- Water Stone (+ 60) -->
+					</item>
+					<item chance="2.36">
+						<item id="33865" count="1" /> <!-- Earth Stone (+ 60) -->
+					</item>
+					<item chance="2.11">
+						<item id="33866" count="1" /> <!-- Wind Stone (+ 60) -->
+					</item>
+					<item chance="2.78">
+						<item id="33867" count="1" /> <!-- Dark Stone (+ 60) -->
+					</item>
+					<item chance="1.6">
+						<item id="33868" count="1" /> <!-- Holy Stone (+ 60) -->
+					</item>
+					<item chance="1.35">
+						<item id="33869" count="1" /> <!-- Fire Stone (+ 150) -->
+					</item>
+					<item chance="1.01">
+						<item id="33870" count="1" /> <!-- Water Stone (+ 150) -->
+					</item>
+					<item chance="0.76">
+						<item id="33871" count="1" /> <!-- Earth Stone (+ 150) -->
+					</item>
+					<item chance="1.01">
+						<item id="33872" count="1" /> <!-- Wind Stone (+ 150) -->
+					</item>
+					<item chance="1.01">
+						<item id="33873" count="1" /> <!-- Dark Stone (+ 150) -->
+					</item>
+					<item chance="1.01">
+						<item id="33874" count="1" /> <!-- Holy Stone (+ 150) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17143" toLevel="1" name="PK Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37619</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="59.87">
+						<item id="35741" count="1" /> <!-- Scroll: PK (Low-grade) -->
+					</item>
+					<item chance="20.38">
+						<item id="35752" count="1" /> <!-- Scroll: PK (Mid-grade) -->
+					</item>
+					<item chance="12.54">
+						<item id="35753" count="1" /> <!-- Scroll: PK (High-grade) -->
+					</item>
+					<item chance="7.21">
+						<item id="35754" count="1" /> <!-- Scroll: PK (Top-grade) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17144" toLevel="1" name="Reputation Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37620</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="81.9">
+						<item id="35742" count="1" /> <!-- Scroll: Reputation (Low-grade) -->
+					</item>
+					<item chance="15.61">
+						<item id="35755" count="1" /> <!-- Scroll: Reputation (Mid-grade) -->
+					</item>
+					<item chance="2.04">
+						<item id="35756" count="1" /> <!-- Scroll: Reputation (High-grade) -->
+					</item>
+					<item chance="10.0">
+						<item id="35757" count="1" /> <!-- Scroll: Reputation (Top-grade) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17145" toLevel="1" name="Mysterious Shot Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37621</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="52.78">
+						<item id="34609" count="10000" /> <!-- Mysterious Soulshot (R-grade) -->
+					</item>
+					<item chance="47.22">
+						<item id="34616" count="3000" /> <!-- Mysterious Blessed Spiritshot (R-grade) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17146" toLevel="1" name="Kaliel's Energy Box">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37622</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="85.58">
+						<item id="36184" count="1" /> <!-- Kaliel's Energy -->
+					</item>
+					<item chance="9.04">
+						<item id="36185" count="1" /> <!-- Kaliel's Energy -->
+					</item>
+					<item chance="5.38">
+						<item id="36186" count="1" /> <!-- Kaliel's Energy -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17147" toLevel="1" name="Soul Bottle Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37623</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="71.43">
+						<item id="19465" count="1" /> <!-- Bottle of Antharas' Soul -->
+					</item>
+					<item chance="28.57">
+						<item id="19466" count="1" /> <!-- Bottle of Valakas' Soul -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17148" toLevel="1" name="Top-grade Life Stone Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>37624</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="56.07">
+						<item id="45931" count="1" /> <!-- High-grade Spirit Stone -->
+					</item>
+					<item chance="43.88">
+						<item id="45932" count="1" /> <!-- Top-grade Spirit Stone -->
+					</item>
+					<item chance="0.05">
+						<item id="36731" count="1" /> <!-- Life Stone Instilled with Giants' Power -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17149" toLevel="1" name="Legendary Card Pouch: Dragon">
 		<!-- AUTO GENERATED SKILL -->
@@ -460,6 +1281,7 @@
 	<skill id="17161" toLevel="1" name="Chocolate Truffle">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Vitality is replenished in peace zones. -->
+		<abnormalType>VITALITY_TIME_UP</abnormalType>
 		<icon>icon.etc_whiteday_choco_long</icon>
 		<operateType>A2</operateType>
 		<castRange>900</castRange>
@@ -469,6 +1291,7 @@
 	<skill id="17162" toLevel="1" name="Candy Heart">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Vitality is replenished in peace zones. -->
+		<abnormalType>VITALITY_TIME_UP</abnormalType>
 		<icon>icon.etc_whiteday_candy_long</icon>
 		<operateType>A2</operateType>
 		<castRange>900</castRange>
@@ -478,6 +1301,7 @@
 	<skill id="17163" toLevel="1" name="Comfort Cookie">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Vitality is replenished in peace zones. -->
+		<abnormalType>VITALITY_TIME_UP</abnormalType>
 		<icon>icon.etc_whiteday_cookie_long</icon>
 		<operateType>A2</operateType>
 		<castRange>900</castRange>
@@ -495,100 +1319,735 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="17166" toLevel="1" name="GM's Blessing - Knight's Harmony">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, P. Atk. + 12%, P. Critical Damage + 35%, P. Critical Rate + 100%, P. Def. + 45%, Shield Defense Rate + 30%, and Shield Defense + 50%. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_CLASS</abnormalType>
 		<icon>icon.skill11523</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<castRange>900</castRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<effectRange>1100</effectRange>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetMyParty">
+				<includeMe>true</includeMe>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>12</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>45</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_shield_defence_rate">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_shield_defence">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17167" toLevel="1" name="GM's Blessing - Warrior's Harmony">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, P. Atk. + 35%, P. Critical Damage + 35%, P. Critical Rate + 100%, Atk. Spd. + 8%, M. Atk. + 16%, Casting Spd. + 8%, Speed + 8. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_CLASS</abnormalType>
 		<icon>icon.skill11524</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<castRange>900</castRange>
+		<effectRange>1100</effectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<effectRange>1100</effectRange>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetMyParty">
+				<includeMe>true</includeMe>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>16</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>8</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17168" toLevel="1" name="GM's Blessing - Wizard's Harmony">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, M. Atk. + 40%, M. Critical Rate + 100%, Casting Spd. + 8%, P. Atk. + 8%, Atk. Spd. + 8%, Spd. + 8, M. Def. + 14%, and MP Recovery Bonus + 20%. Also, M. Skill MP Consumption - 15%, P. Skill MP Consumption - 5%, and Skill Cooldown - 20%. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_CLASS</abnormalType>
 		<icon>icon.skill11525</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<castRange>900</castRange>
+		<effectRange>1100</effectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<effectRange>1100</effectRange>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetMyParty">
+				<includeMe>true</includeMe>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="p_magical_attack">
+				<amount>40</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>100</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>8</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>14</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_mp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;INSTINCT;BERSERKER;PA_PD_UP;IMPROVE_SHIELD_RATE_DEFENCE_UP;SHIELD_PROB_UP;SHIELD_DEFENCE_UP;CANCEL_PROB_DOWN;MA_UP_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17169" toLevel="1" name="GM's Blessing - Horn Melody">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, increases P. Atk. + 23%, P. Def. + 15%, M. Atk. + 91%, and M. Def. + 30%. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_ATTACK</abnormalType>
 		<icon>icon.skill11517</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>99</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<affectLimit>50-50</affectLimit>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY_PLEDGE</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>23</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>91</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_PA_PD_UP;PA_UP;PD_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_PA_PD_UP;PA_UP;PD_UP;IMPROVE_MA_MD_UP;MD_UP;MA_UP;KAMAEL_SPECIAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17170" toLevel="1" name="GM's Blessing - Drum Melody">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, Max MP + 20%, HP Recovery Bonus + 20%, M. Critical Rate + 20, Critical Damage during a normal attack + 20%, P. Atk. + 10%, P. Def. + 20%, Atk. Spd. + 20%, M. Atk. + 20%, M. Def. + 20%, Casting Spd. + 20%, and Debuff Resistance + 10%. Decreases critical damage - 30%. Additionally increases Critical Damage during a normal attack when receiving more than a certain amount of damage while equipped with a melee weapon, bow, or crossbow. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_DEFENCE</abnormalType>
 		<icon>icon.skill11522</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<affectRange>1000</affectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>99</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<affectLimit>50-50</affectLimit>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY_PLEDGE</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_trigger_skill_by_dmg">
+				<!-- Critical Damage Increase -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>107</maxAttackerLevel>
+				<chance>80</chance>
+				<targetType>SELF</targetType>
+				<minDamage>300</minDamage>
+				<skillId>11569</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_resist_abnormal_by_category">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>MULTI_BUFF;COUNTER_CRITICAL</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>MULTI_BUFF;COUNTER_CRITICAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17171" toLevel="1" name="GM's Blessing - Pipe Organ Melody">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, increases Max HP + 43%, Max MP + 43%, Max CP + 43%, and HP recovery bonus + 20%. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_CONDITION</abnormalType>
 		<icon>icon.skill11519</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<affectRange>1000</affectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>99</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<affectLimit>50-50</affectLimit>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY_PLEDGE</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>43</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>43</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>43</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_HP_MP_UP;MAX_HP_UP;MAX_MP_UP;HP_REGEN_UP</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_HP_MP_UP;MAX_HP_UP;MAX_MP_UP;HP_REGEN_UP</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17172" toLevel="1" name="GM's Blessing - Guitar Melody">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, increases P. Critical Rate + 38%, P. Critical Damage + 35%, and M. Critical Rate + 20. Decreases MP consumption for physical skills - 20% and magic skills - 10%. Decreases MP consumption for Iss Enchanter's enchant skills - 20%. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_CRITICAL</abnormalType>
 		<icon>icon.skill11520</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<affectRange>1000</affectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>99</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<affectLimit>50-50</affectLimit>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY_PLEDGE</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_critical_rate">
+				<amount>38</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>22</magicType>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_CRT_RATE_DMG_UP;CRITICAL_PROB_UP;CRITICAL_DMG_UP;CHEAP_MAGIC;MAGIC_CRITICAL_UP</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_CRT_RATE_DMG_UP;CRITICAL_PROB_UP;CRITICAL_DMG_UP;CHEAP_MAGIC;MAGIC_CRITICAL_UP</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17173" toLevel="1" name="GM's Blessing - Harp Melody">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, increases P. Accuracy + 8, physical and magic evasion + 8, and speed + 37. Decreases received critical damage - 30%. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_HITAVOID</abnormalType>
 		<icon>icon.skill11521</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<affectRange>1000</affectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>99</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<affectLimit>50-50</affectLimit>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY_PLEDGE</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_hit">
+				<amount>8</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_avoid">
+				<amount>8</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_avoid">
+				<amount>8</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>37</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_HIT_DEFENCE_CRT_RATE_UP;HIT_UP;T_CRT_DMG_DOWN;IMPROVE_SPEED_AVOID_UP;SPEED_UP;AVOID_UP</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_HIT_DEFENCE_CRT_RATE_UP;HIT_UP;T_CRT_DMG_DOWN;IMPROVE_SPEED_AVOID_UP;SPEED_UP;AVOID_UP</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17174" toLevel="1" name="GM's Blessing - Lute Melody">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, increases Atk. Spd. + 37% and Casting Spd. + 34%. Applies Vampiric Rage effect + 9% with a certain probability. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_MOVE</abnormalType>
 		<icon>icon.skill11518</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<affectRange>1000</affectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>99</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<affectLimit>50-50</affectLimit>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY_PLEDGE</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>37</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>34</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>9</amount>
+				<chance>80</chance>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>IMPROVE_VAMPIRIC_HASTE;ATTACK_TIME_DOWN;VAMPIRIC_ATTACK;CASTING_TIME_DOWN</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>IMPROVE_VAMPIRIC_HASTE;ATTACK_TIME_DOWN;VAMPIRIC_ATTACK;CASTING_TIME_DOWN</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17175" toLevel="1" name="GM's Blessing - Prevailing Sonata">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, increases Atk. Spd. by 15%, Casting Spd. by 30%, Max HP by 30%, MP recovery bonus by 20% and decreases MP Consumption for magic skill by 10% and the magic cancel rate. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_AURA</abnormalType>
 		<icon>icon.skill11529</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<affectRange>1000</affectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_mp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_reduce_cancel">
+				<amount>-40</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17176" toLevel="1" name="GM's Blessing - Daring Sonata">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, increases P. Atk. by 8%, M. Atk. by 16%, Atk. Spd. and Casting Spd. by 8% and decreases P. Def. by 3%, M. Def. by 11% and P. Evasion by 4. Also bestows an 8% Vampiric Rage effect and a chance of reflecting 10% of the damage received. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>ENCHANTER_MOD</abnormalType>
 		<icon>icon.skill11530</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<affectRange>1000</affectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>16</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>-3</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>-11</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_avoid">
+				<amount>-4</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>9</amount>
+				<chance>30</chance>
+			</effect>
+			<effect name="p_damage_shield">
+				<amount>10</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17177" toLevel="1" name="GM's Blessing - Refreshing Sonata">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- The GM is always with you. For 1 hour, increases HP Recovery Bonus by 20%, P.ﾠAccuracy by 4, P.ﾠEvasion by 3, Speed by 20, and decreases MP Consumption for skills by 20% and skill Cooldown by 10%. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>SYNERGY_IS</abnormalType>
 		<icon>icon.skill11532</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
+		<affectRange>1000</affectRange>
 		<reuseDelay>1000</reuseDelay>
+		<isMagic>22</isMagic>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>PARTY</affectScope>
+		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hit">
+				<amount>4</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_avoid">
+				<amount>3</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17178" toLevel="1" name="Transformation Scroll: Makeshift Bat">
 		<!-- AUTO GENERATED SKILL -->
@@ -689,7 +2148,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HairAccessorySet" />
+			<effect name="i_set_hair_accessory_slot" />
 		</effects>
 	</skill>
 	<skill id="17193" toLevel="1" name="Indomitable Hero's Olympiad Reward Box">

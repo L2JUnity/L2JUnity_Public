@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  */
 public class BlowFishKey extends BaseSendablePacket
 {
-	private static Logger _log = LoggerFactory.getLogger(BlowFishKey.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(BlowFishKey.class);
 	
 	/**
 	 * @param blowfishKey
@@ -50,7 +50,7 @@ public class BlowFishKey extends BaseSendablePacket
 		}
 		catch (Exception e)
 		{
-			_log.error("Error While encrypting blowfish key for transmision (Crypt error): " + e.getMessage(), e);
+			LOGGER.error("Error While encrypting blowfish key for transmision (Crypt error): " + e.getMessage(), e);
 		}
 	}
 	

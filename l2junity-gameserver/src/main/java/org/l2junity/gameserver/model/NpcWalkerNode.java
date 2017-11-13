@@ -26,6 +26,7 @@ import org.l2junity.gameserver.network.client.send.string.NpcStringId;
  */
 public class NpcWalkerNode extends Location
 {
+	private static final long serialVersionUID = 6179417606301402588L;
 	private final String _chatString;
 	private final NpcStringId _npcString;
 	private final int _delay;

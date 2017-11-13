@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.GeoDataConfig;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.zone.ZoneId;
@@ -59,14 +60,14 @@ public class ValidatePosition implements IClientIncomingPacket
 			return;
 		}
 		
-		final int realX = activeChar.getX();
-		final int realY = activeChar.getY();
-		int realZ = activeChar.getZ();
+		final double realX = activeChar.getX();
+		final double realY = activeChar.getY();
+		double realZ = activeChar.getZ();
 		
-		if (Config.DEVELOPER)
+		if (GeneralConfig.DEVELOPER)
 		{
-			_log.debug("client pos: " + _x + " " + _y + " " + _z + " head " + _heading);
-			_log.debug("server pos: " + realX + " " + realY + " " + realZ + " head " + activeChar.getHeading());
+			LOGGER.debug("client pos: " + _x + " " + _y + " " + _z + " head " + _heading);
+			LOGGER.debug("server pos: " + realX + " " + realY + " " + realZ + " head " + activeChar.getHeading());
 		}
 		
 		if ((_x == 0) && (_y == 0))
@@ -76,13 +77,13 @@ public class ValidatePosition implements IClientIncomingPacket
 				return;
 			}
 		}
-		
-		int dx, dy, dz;
+
+		double dx, dy, dz;
 		double diffSq;
 		
 		if (activeChar.isInBoat())
 		{
-			if (Config.COORD_SYNCHRONIZE == 2)
+			if (GeoDataConfig.COORD_SYNCHRONIZE == 2)
 			{
 				dx = _x - activeChar.getInVehiclePosition().getX();
 				dy = _y - activeChar.getInVehiclePosition().getY();
@@ -146,13 +147,13 @@ public class ValidatePosition implements IClientIncomingPacket
 		}
 		else if (diffSq < 360000) // if too large, messes observation
 		{
-			if (Config.COORD_SYNCHRONIZE == -1) // Only Z coordinate synched to server,
+			if (GeoDataConfig.COORD_SYNCHRONIZE == -1) // Only Z coordinate synched to server,
 			// mainly used when no geodata but can be used also with geodata
 			{
 				activeChar.setXYZ(realX, realY, _z);
 				return;
 			}
-			if (Config.COORD_SYNCHRONIZE == 1) // Trusting also client x,y coordinates (should not be used with geodata)
+			if (GeoDataConfig.COORD_SYNCHRONIZE == 1) // Trusting also client x,y coordinates (should not be used with geodata)
 			{
 				if (!activeChar.isMoving() || !activeChar.validateMovementHeading(_heading)) // Heading changed on client = possible obstacle
 				{
@@ -190,9 +191,9 @@ public class ValidatePosition implements IClientIncomingPacket
 				}
 				else
 				{
-					if (Config.DEVELOPER)
+					if (GeneralConfig.DEVELOPER)
 					{
-						_log.info(activeChar.getName() + ": Synchronizing position Server --> Client");
+						LOGGER.info(activeChar.getName() + ": Synchronizing position Server --> Client");
 					}
 					
 					activeChar.sendPacket(new ValidateLocation(activeChar));

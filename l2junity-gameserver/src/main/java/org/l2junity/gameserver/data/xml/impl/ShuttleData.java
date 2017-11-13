@@ -18,13 +18,17 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.VehiclePathPoint;
@@ -51,11 +55,10 @@ public final class ShuttleData implements IGameXmlReader
 	
 	protected ShuttleData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = DoorData.class))
+	private void load() throws Exception
 	{
 		if (!_shuttleInstances.isEmpty())
 		{
@@ -71,7 +74,7 @@ public final class ShuttleData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		NamedNodeMap attrs;
 		StatsSet set;
@@ -162,6 +165,11 @@ public final class ShuttleData implements IGameXmlReader
 		}
 	}
 	
+	public int getShuttleCount()
+	{
+		return _shuttles.size();
+	}
+	
 	private void init()
 	{
 		for (L2ShuttleData data : _shuttles.values())
@@ -192,6 +200,7 @@ public final class ShuttleData implements IGameXmlReader
 		return null;
 	}
 	
+	@InstanceGetter
 	public static ShuttleData getInstance()
 	{
 		return SingletonHolder._instance;

@@ -76,7 +76,7 @@
 			<skill id="4416" level="18" /> <!-- Dwarves -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="19" />
@@ -137,18 +137,18 @@
 			<skill id="4416" level="18" /> <!-- Dwarves -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="11" />
 			<height normal="17" />
 		</collision>
 	</npc>
-	<npc id="35903" level="95" type="L2Npc" name="Supply Box">
+	<npc id="35903" level="100" type="L2Npc" name="Supply Box">
 		<!-- Confirmed CT2.5 -->
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8446" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="8446.44475689713" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="970.537548504614" magical="662.751329129412" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="341.375" magical="249.80341" />
 			<attribute>
@@ -175,7 +175,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8.5" />
 			<height normal="8.5" />
@@ -223,7 +223,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="23.5" />
@@ -269,7 +269,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -315,7 +315,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -364,7 +364,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -394,7 +394,7 @@
 		<equipment rhand="2500" lhand="6377" /> <!-- Dark Legion's Edge / Imperial Crusader Shield -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1037827" hpRegen="8.5" mp="43380" mpRegen="30" />
+			<vitals hp="1037827.0969533" hpRegen="8.5" mp="43380.0" mpRegen="30" />
 			<attack physical="37184.6066131423" magical="6590.82182407988" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3333.00100834426" magical="1885.60138963509" />
 			<attribute>
@@ -454,7 +454,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -511,7 +511,7 @@
 		<equipment rhand="97" /> <!-- Lance -->
 		<acquire expRate="0.49993687665699" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<attack physical="4186.37204072787" magical="748.3800155032" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="431.257386064511" magical="238.085267564491" />
 			<attribute>
@@ -568,7 +568,7 @@
 		<equipment rhand="98" /> <!-- Halberd -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13256" hpRegen="8.5" mp="1881" mpRegen="3" />
+			<vitals hp="13256.684816413" hpRegen="8.5" mp="1881.8" mpRegen="3" />
 			<attack physical="3631.33830052703" magical="652.921765425807" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="406.383466826966" magical="221.085839209057" />
 			<attribute>
@@ -626,7 +626,7 @@
 		<equipment rhand="287" /> <!-- Bow of Peril -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13256" hpRegen="8.5" mp="1881" mpRegen="3" />
+			<vitals hp="13256.684816413" hpRegen="8.5" mp="1881.8" mpRegen="3" />
 			<attack physical="3631.33830052703" magical="652.921765425807" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="406.383466826966" magical="221.085839209057" />
 			<attribute>
@@ -655,7 +655,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="300">
+		<ai clanHelpRange="300" dodge="15" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -697,7 +697,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -708,7 +708,7 @@
 			<height normal="59.5" />
 		</collision>
 	</npc>
-	<npc id="35914" level="90" type="L2Defender" name="Dwarven Gunnery Sergeant">
+	<npc id="35914" level="99" type="L2Defender" name="Dwarven Gunnery Sergeant">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="MoveAroundSocial" value="165" />
@@ -726,7 +726,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -797,7 +797,7 @@
 		<equipment rhand="80" lhand="641" /> <!-- Tallum Blade / Dark Crystal Shield -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -832,7 +832,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -863,7 +863,7 @@
 		<equipment rhand="75" /> <!-- Caliburs -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -922,7 +922,7 @@
 		<equipment rhand="75" /> <!-- Caliburs -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -993,7 +993,7 @@
 		<sex>FEMALE</sex>
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -1062,7 +1062,7 @@
 		<equipment rhand="6579" /> <!-- Arcana Mace -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -1128,7 +1128,7 @@
 		<equipment rhand="92" /> <!-- Spirit's Staff -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -1193,7 +1193,7 @@
 		<equipment rhand="10212" /> <!-- For NPC (Bow) -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -1224,7 +1224,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="300">
+		<ai clanHelpRange="300" dodge="15" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -1254,7 +1254,7 @@
 		<equipment rhand="287" /> <!-- Bow of Peril -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -1284,7 +1284,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="1000">
+		<ai clanHelpRange="300" dodge="15" aggroRange="1000">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -1334,7 +1334,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>8</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="112" />
 			<height normal="59" />
@@ -1419,7 +1419,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>FORTRESS_ATTACKER</clan>
 			</clan_list>
@@ -1469,7 +1469,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>FORTRESS_ATTACKER</clan>
 			</clan_list>
@@ -1510,7 +1510,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="46" />
 			<height normal="72.5" />
@@ -1558,7 +1558,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="7" />
 			<height normal="24" />
@@ -1604,7 +1604,7 @@
 			<skill id="4416" level="17" /> <!-- Orcs -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="27" />
@@ -1653,7 +1653,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="10" />
 			<height normal="23.75" />
@@ -1694,7 +1694,7 @@
 			<skill id="4416" level="15" /> <!-- Elves -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="300" />
+		<ai clanHelpRange="300" dodge="15" aggroRange="300" />
 		<collision>
 			<radius normal="10" />
 			<height normal="23.5" />
@@ -1736,7 +1736,7 @@
 			<skill id="4416" level="22" /> <!-- Defending Army -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="14.5" />
 			<height normal="30" />
@@ -1818,7 +1818,7 @@
 			<skill id="4416" level="18" /> <!-- Dwarves -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="19" />
@@ -1879,18 +1879,18 @@
 			<skill id="4416" level="18" /> <!-- Dwarves -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="11" />
 			<height normal="17" />
 		</collision>
 	</npc>
-	<npc id="35935" level="95" type="L2Npc" name="Supply Box">
+	<npc id="35935" level="100" type="L2Npc" name="Supply Box">
 		<!-- Confirmed CT2.5 -->
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8446" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="8446.44475689713" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="970.537548504614" magical="662.751329129412" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="341.375" magical="249.80341" />
 			<attribute>
@@ -1917,7 +1917,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8.5" />
 			<height normal="8.5" />
@@ -1965,7 +1965,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="23.5" />
@@ -2011,7 +2011,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -2057,7 +2057,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -2106,7 +2106,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -2136,7 +2136,7 @@
 		<equipment rhand="2500" lhand="6377" /> <!-- Dark Legion's Edge / Imperial Crusader Shield -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1037827" hpRegen="8.5" mp="43380" mpRegen="30" />
+			<vitals hp="1037827.0969533" hpRegen="8.5" mp="43380.0" mpRegen="30" />
 			<attack physical="37184.6066131423" magical="6590.82182407988" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3333.00100834426" magical="1885.60138963509" />
 			<attribute>
@@ -2196,7 +2196,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -2253,7 +2253,7 @@
 		<equipment rhand="97" /> <!-- Lance -->
 		<acquire expRate="0.49993687665699" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<attack physical="4186.37204072787" magical="748.3800155032" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="431.257386064511" magical="238.085267564491" />
 			<attribute>
@@ -2310,7 +2310,7 @@
 		<equipment rhand="98" /> <!-- Halberd -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13256" hpRegen="8.5" mp="1881" mpRegen="3" />
+			<vitals hp="13256.684816413" hpRegen="8.5" mp="1881.8" mpRegen="3" />
 			<attack physical="3631.33830052703" magical="652.921765425807" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="406.383466826966" magical="221.085839209057" />
 			<attribute>
@@ -2368,7 +2368,7 @@
 		<equipment rhand="287" /> <!-- Bow of Peril -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13256" hpRegen="8.5" mp="1881" mpRegen="3" />
+			<vitals hp="13256.684816413" hpRegen="8.5" mp="1881.8" mpRegen="3" />
 			<attack physical="3631.33830052703" magical="652.921765425807" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="406.383466826966" magical="221.085839209057" />
 			<attribute>
@@ -2397,7 +2397,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="300">
+		<ai clanHelpRange="300" dodge="15" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -2448,7 +2448,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -2494,7 +2494,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -2544,7 +2544,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -2586,7 +2586,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -2597,7 +2597,7 @@
 			<height normal="59.5" />
 		</collision>
 	</npc>
-	<npc id="35949" level="90" type="L2Defender" name="Dwarven Gunnery Sergeant">
+	<npc id="35949" level="99" type="L2Defender" name="Dwarven Gunnery Sergeant">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="MoveAroundSocial" value="165" />
@@ -2615,7 +2615,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -2672,7 +2672,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13568" hpRegen="8.5" mp="1952" mpRegen="3" />
+			<vitals hp="13568.0020168508" hpRegen="8.5" mp="1952.4" mpRegen="3" />
 			<attack physical="3992.46856160874" magical="715.083260014663" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="422.801358886775" magical="232.278309819016" />
 			<attribute>
@@ -2701,7 +2701,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>1.61051</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -2741,7 +2741,7 @@
 		<equipment rhand="80" lhand="641" /> <!-- Tallum Blade / Dark Crystal Shield -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -2776,7 +2776,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -2807,7 +2807,7 @@
 		<equipment rhand="75" /> <!-- Caliburs -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -2866,7 +2866,7 @@
 		<equipment rhand="75" /> <!-- Caliburs -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -2937,7 +2937,7 @@
 		<sex>FEMALE</sex>
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -3006,7 +3006,7 @@
 		<equipment rhand="6579" /> <!-- Arcana Mace -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -3072,7 +3072,7 @@
 		<equipment rhand="92" /> <!-- Spirit's Staff -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -3137,7 +3137,7 @@
 		<equipment rhand="10212" /> <!-- For NPC (Bow) -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -3168,7 +3168,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="300">
+		<ai clanHelpRange="300" dodge="15" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -3198,7 +3198,7 @@
 		<equipment rhand="287" /> <!-- Bow of Peril -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -3228,7 +3228,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="1000">
+		<ai clanHelpRange="300" dodge="15" aggroRange="1000">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -3262,7 +3262,7 @@
 		<equipment rhand="9813" lhand="9813" /> <!-- Orc Officer / Orc Officer -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="DUAL" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -3293,7 +3293,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -3325,7 +3325,7 @@
 		<equipment rhand="7895" /> <!-- Flaming Dragon Skull -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -3356,7 +3356,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -3406,7 +3406,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>8</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="112" />
 			<height normal="59" />
@@ -3491,7 +3491,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>FORTRESS_ATTACKER</clan>
 			</clan_list>
@@ -3541,7 +3541,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>3</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>FORTRESS_ATTACKER</clan>
 			</clan_list>
@@ -3582,7 +3582,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="46" />
 			<height normal="72.5" />
@@ -3630,7 +3630,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="7" />
 			<height normal="24" />
@@ -3676,7 +3676,7 @@
 			<skill id="4416" level="17" /> <!-- Orcs -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="27" />
@@ -3725,7 +3725,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="10" />
 			<height normal="23.75" />
@@ -3766,7 +3766,7 @@
 			<skill id="4416" level="15" /> <!-- Elves -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="300" />
+		<ai clanHelpRange="300" dodge="15" aggroRange="300" />
 		<collision>
 			<radius normal="10" />
 			<height normal="23.5" />
@@ -3808,7 +3808,7 @@
 			<skill id="4416" level="22" /> <!-- Defending Army -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="14.5" />
 			<height normal="30" />
@@ -3890,7 +3890,7 @@
 			<skill id="4416" level="18" /> <!-- Dwarves -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="19" />
@@ -3951,18 +3951,18 @@
 			<skill id="4416" level="18" /> <!-- Dwarves -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="11" />
 			<height normal="17" />
 		</collision>
 	</npc>
-	<npc id="35973" level="95" type="L2Npc" name="Supply Box">
+	<npc id="35973" level="100" type="L2Npc" name="Supply Box">
 		<!-- Confirmed CT2.5 -->
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="8446" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="8446.44475689713" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="970.537548504614" magical="662.751329129412" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="341.375" magical="249.80341" />
 			<attribute>
@@ -3989,7 +3989,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8.5" />
 			<height normal="8.5" />
@@ -4037,7 +4037,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="23.5" />
@@ -4083,7 +4083,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -4129,7 +4129,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -4178,7 +4178,7 @@
 			<skill id="4416" level="14" /> <!-- Humans -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="8" />
 			<height normal="24" />
@@ -4208,7 +4208,7 @@
 		<equipment rhand="2500" lhand="6377" /> <!-- Dark Legion's Edge / Imperial Crusader Shield -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1037827" hpRegen="8.5" mp="43380" mpRegen="30" />
+			<vitals hp="1037827.0969533" hpRegen="8.5" mp="43380.0" mpRegen="30" />
 			<attack physical="37184.6066131423" magical="6590.82182407988" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3333.00100834426" magical="1885.60138963509" />
 			<attribute>
@@ -4268,7 +4268,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -4325,7 +4325,7 @@
 		<equipment rhand="97" /> <!-- Lance -->
 		<acquire expRate="0.49993687665699" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13812" hpRegen="8.5" mp="1988" mpRegen="3" />
+			<vitals hp="13812.8884780208" hpRegen="8.5" mp="1988.0" mpRegen="3" />
 			<attack physical="4186.37204072787" magical="748.3800155032" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="431.257386064511" magical="238.085267564491" />
 			<attribute>
@@ -4382,7 +4382,7 @@
 		<equipment rhand="98" /> <!-- Halberd -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13256" hpRegen="8.5" mp="1881" mpRegen="3" />
+			<vitals hp="13256.684816413" hpRegen="8.5" mp="1881.8" mpRegen="3" />
 			<attack physical="3631.33830052703" magical="652.921765425807" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="406.383466826966" magical="221.085839209057" />
 			<attribute>
@@ -4440,7 +4440,7 @@
 		<equipment rhand="287" /> <!-- Bow of Peril -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13256" hpRegen="8.5" mp="1881" mpRegen="3" />
+			<vitals hp="13256.684816413" hpRegen="8.5" mp="1881.8" mpRegen="3" />
 			<attack physical="3631.33830052703" magical="652.921765425807" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="406.383466826966" magical="221.085839209057" />
 			<attribute>
@@ -4469,7 +4469,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="300">
+		<ai clanHelpRange="300" dodge="15" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -4520,7 +4520,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -4566,7 +4566,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -4616,7 +4616,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -4658,7 +4658,7 @@
 			<skill id="4416" level="19" /> <!-- Others -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -4669,7 +4669,7 @@
 			<height normal="59.5" />
 		</collision>
 	</npc>
-	<npc id="35987" level="90" type="L2Defender" name="Dwarven Gunnery Sergeant">
+	<npc id="35987" level="99" type="L2Defender" name="Dwarven Gunnery Sergeant">
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<param name="MoveAroundSocial" value="165" />
@@ -4687,7 +4687,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -4744,7 +4744,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13568" hpRegen="8.5" mp="1952" mpRegen="3" />
+			<vitals hp="13568.0020168508" hpRegen="8.5" mp="1952.4" mpRegen="3" />
 			<attack physical="3992.46856160874" magical="715.083260014663" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="422.801358886775" magical="232.278309819016" />
 			<attribute>
@@ -4773,7 +4773,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>1.61051</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -4813,7 +4813,7 @@
 		<equipment rhand="80" lhand="641" /> <!-- Tallum Blade / Dark Crystal Shield -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -4848,7 +4848,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -4879,7 +4879,7 @@
 		<equipment rhand="75" /> <!-- Caliburs -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -4938,7 +4938,7 @@
 		<equipment rhand="75" /> <!-- Caliburs -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -5009,7 +5009,7 @@
 		<sex>FEMALE</sex>
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -5078,7 +5078,7 @@
 		<equipment rhand="6579" /> <!-- Arcana Mace -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -5144,7 +5144,7 @@
 		<equipment rhand="92" /> <!-- Spirit's Staff -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -5209,7 +5209,7 @@
 		<equipment rhand="10212" /> <!-- For NPC (Bow) -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -5240,7 +5240,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="300">
+		<ai clanHelpRange="300" dodge="15" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -5270,7 +5270,7 @@
 		<equipment rhand="287" /> <!-- Bow of Peril -->
 		<acquire expRate="0.5" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="13886" hpRegen="8.5" mp="2023" mpRegen="3" />
+			<vitals hp="13886.8196074377" hpRegen="8.5" mp="2023.8" mpRegen="3" />
 			<attack physical="4393.39231302655" magical="784.547871934874" random="5" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="439.882533785801" magical="244.037399253603" />
 			<attribute>
@@ -5300,7 +5300,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="1000">
+		<ai clanHelpRange="300" dodge="15" aggroRange="1000">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -5334,7 +5334,7 @@
 		<equipment rhand="9813" lhand="9813" /> <!-- Orc Officer / Orc Officer -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="DUAL" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -5365,7 +5365,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -5397,7 +5397,7 @@
 		<equipment rhand="7895" /> <!-- Flaming Dragon Skull -->
 		<acquire expRate="0.5" sp="1" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="981460" hpRegen="8.5" mp="41920" mpRegen="30" />
+			<vitals hp="981460.651926953" hpRegen="8.5" mp="41920.0" mpRegen="30" />
 			<attack physical="33815.7837326838" magical="6015.97783382643" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="3203.57651705523" magical="1794.74254813572" />
 			<attribute>
@@ -5428,7 +5428,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>DOOR</clan>
 				<clan>FORTRESS</clan>
@@ -5478,7 +5478,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>8</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="112" />
 			<height normal="59" />

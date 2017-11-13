@@ -18,6 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
+import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.interfaces.IUpdateTypeComponent;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
@@ -31,7 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public interface IClientOutgoingPacket extends IOutgoingPacket
 {
-	Logger _log = LoggerFactory.getLogger(IClientOutgoingPacket.class);
+	Logger LOGGER = LoggerFactory.getLogger(IClientOutgoingPacket.class);
 	
 	int[] PAPERDOLL_ORDER = new int[]
 	{
@@ -68,7 +69,7 @@ public interface IClientOutgoingPacket extends IOutgoingPacket
 		Inventory.PAPERDOLL_BROOCH_JEWEL4,
 		Inventory.PAPERDOLL_BROOCH_JEWEL5,
 		Inventory.PAPERDOLL_BROOCH_JEWEL6
-		
+	
 	};
 	
 	int[] PAPERDOLL_ORDER_AUGMENT = new int[]
@@ -121,14 +122,14 @@ public interface IClientOutgoingPacket extends IOutgoingPacket
 	 * {@code L2World.getInstance().getPlayers().forEach(packet::sendTo)}
 	 * @param player
 	 */
-	default void sendTo(PlayerInstance player)
+	default void sendTo(WorldObject player)
 	{
 		player.sendPacket(this);
 	}
 	
 	default void runImpl(PlayerInstance player)
 	{
-	
+		
 	}
 	
 	default void writeOptionalD(PacketWriter packet, int value)

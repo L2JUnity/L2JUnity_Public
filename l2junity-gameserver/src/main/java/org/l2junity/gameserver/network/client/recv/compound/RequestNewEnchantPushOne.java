@@ -18,8 +18,12 @@
  */
 package org.l2junity.gameserver.network.client.recv.compound;
 
+import java.util.List;
+
+import org.l2junity.gameserver.data.xml.impl.CombinationItemsData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.CompoundRequest;
+import org.l2junity.gameserver.model.items.combination.CombinationItem;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
@@ -63,8 +67,17 @@ public class RequestNewEnchantPushOne implements IClientIncomingPacket
 			return;
 		}
 		
-		final CompoundRequest request = new CompoundRequest(activeChar);
-		if (!activeChar.addRequest(request))
+		CompoundRequest request = activeChar.getRequest(CompoundRequest.class);
+		if (request == null)
+		{
+			request = new CompoundRequest(activeChar);
+			if (!activeChar.addRequest(request))
+			{
+				client.sendPacket(ExEnchantOneFail.STATIC_PACKET);
+				return;
+			}
+		}
+		else if (request.isProcessing())
 		{
 			client.sendPacket(ExEnchantOneFail.STATIC_PACKET);
 			return;
@@ -80,8 +93,10 @@ public class RequestNewEnchantPushOne implements IClientIncomingPacket
 			return;
 		}
 		
+		final List<CombinationItem> combinationItems = CombinationItemsData.getInstance().getItemsByFirstSlot(itemOne.getId());
+		
 		// Not implemented or not able to merge!
-		if ((itemOne.getItem().getCompoundItem() == 0) || (itemOne.getItem().getCompoundChance() == 0))
+		if (combinationItems.isEmpty())
 		{
 			client.sendPacket(ExEnchantOneFail.STATIC_PACKET);
 			activeChar.removeRequest(request.getClass());

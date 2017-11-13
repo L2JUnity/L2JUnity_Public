@@ -20,7 +20,9 @@ package org.l2junity.gameserver.model.primeshop;
 
 import java.util.List;
 
+import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.model.StatsSet;
+import org.l2junity.gameserver.model.items.L2Item;
 
 /**
  * @author UnAfraid
@@ -100,7 +102,11 @@ public class PrimeShopGroup
 	
 	public long getCount()
 	{
-		return _items.stream().mapToLong(PrimeShopItem::getCount).sum();
+		return _items.stream().mapToLong(item ->
+		{
+			final L2Item itemTemplate = ItemTable.getInstance().getTemplate(item.getId());
+			return ((itemTemplate != null) && itemTemplate.isStackable()) ? 1 : item.getCount();
+		}).sum();
 	}
 	
 	public int getWeight()

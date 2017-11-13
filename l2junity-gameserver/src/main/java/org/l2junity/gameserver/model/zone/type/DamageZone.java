@@ -18,14 +18,16 @@
  */
 package org.l2junity.gameserver.model.zone.type;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import java.util.concurrent.TimeUnit;
+
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.entity.Castle;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.zone.AbstractZoneSettings;
 import org.l2junity.gameserver.model.zone.TaskZoneSettings;
 import org.l2junity.gameserver.model.zone.ZoneType;
@@ -123,7 +125,7 @@ public class DamageZone extends ZoneType
 			{
 				if (getSettings().getTask() == null)
 				{
-					getSettings().setTask(ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new ApplyDamage(this), _startTask, _reuseTask));
+					getSettings().setTask(ThreadPool.scheduleAtFixedRate(new ApplyDamage(this), _startTask, _reuseTask, TimeUnit.MILLISECONDS));
 				}
 			}
 		}
@@ -204,7 +206,7 @@ public class DamageZone extends ZoneType
 						}
 					}
 					
-					double multiplier = 1 + (temp.getStat().getValue(Stats.DAMAGE_ZONE_VULN, 0) / 100);
+					double multiplier = 1 + (temp.getStat().getValue(DoubleStat.DAMAGE_ZONE_VULN, 0) / 100);
 					
 					if (getHPDamagePerSecond() != 0)
 					{

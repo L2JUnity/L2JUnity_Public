@@ -18,7 +18,9 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.AdminConfig;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.AdminData;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.PcCondOverride;
@@ -73,12 +75,12 @@ public final class RequestDropItem implements IClientIncomingPacket
 		
 		ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
 		
-		if ((item == null) || (_count == 0) || !activeChar.validateItemManipulation(_objectId, "drop") || (!Config.ALLOW_DISCARDITEM && !activeChar.canOverrideCond(PcCondOverride.DROP_ALL_ITEMS)) || (!item.isDropable() && !(activeChar.canOverrideCond(PcCondOverride.DROP_ALL_ITEMS) && Config.GM_TRADE_RESTRICTED_ITEMS)) || ((item.getItemType() == EtcItemType.PET_COLLAR) && activeChar.havePetInvItems()) || activeChar.isInsideZone(ZoneId.NO_ITEM_DROP))
+		if ((item == null) || (_count == 0) || !activeChar.validateItemManipulation(_objectId, "drop") || (!GeneralConfig.ALLOW_DISCARDITEM && !activeChar.canOverrideCond(PcCondOverride.DROP_ALL_ITEMS)) || (!item.isDropable() && !(activeChar.canOverrideCond(PcCondOverride.DROP_ALL_ITEMS) && AdminConfig.GM_TRADE_RESTRICTED_ITEMS)) || ((item.getItemType() == EtcItemType.PET_COLLAR) && activeChar.havePetInvItems()) || activeChar.isInsideZone(ZoneId.NO_ITEM_DROP))
 		{
 			activeChar.sendPacket(SystemMessageId.THIS_ITEM_CANNOT_BE_DESTROYED);
 			return;
 		}
-		if (item.isQuestItem() && !(activeChar.canOverrideCond(PcCondOverride.DROP_ALL_ITEMS) && Config.GM_TRADE_RESTRICTED_ITEMS))
+		if (item.isQuestItem() && !(activeChar.canOverrideCond(PcCondOverride.DROP_ALL_ITEMS) && AdminConfig.GM_TRADE_RESTRICTED_ITEMS))
 		{
 			return;
 		}
@@ -89,7 +91,7 @@ public final class RequestDropItem implements IClientIncomingPacket
 			return;
 		}
 		
-		if ((Config.PLAYER_SPAWN_PROTECTION > 0) && activeChar.isInvul() && !activeChar.isGM())
+		if ((PlayerConfig.PLAYER_SPAWN_PROTECTION > 0) && activeChar.isInvul() && !activeChar.isGM())
 		{
 			activeChar.sendPacket(SystemMessageId.THIS_ITEM_CANNOT_BE_DESTROYED);
 			return;
@@ -97,17 +99,17 @@ public final class RequestDropItem implements IClientIncomingPacket
 		
 		if (_count < 0)
 		{
-			Util.handleIllegalPlayerAction(activeChar, "[RequestDropItem] Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to drop item with oid " + _objectId + " but has count < 0!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "[RequestDropItem] Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to drop item with oid " + _objectId + " but has count < 0!", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
 		if (!item.isStackable() && (_count > 1))
 		{
-			Util.handleIllegalPlayerAction(activeChar, "[RequestDropItem] Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to drop non-stackable item with oid " + _objectId + " but has count > 1!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "[RequestDropItem] Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to drop non-stackable item with oid " + _objectId + " but has count > 1!", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
-		if (Config.JAIL_DISABLE_TRANSACTION && activeChar.isJailed())
+		if (GeneralConfig.JAIL_DISABLE_TRANSACTION && activeChar.isJailed())
 		{
 			activeChar.sendMessage("You cannot drop items in Jail.");
 			return;
@@ -151,19 +153,19 @@ public final class RequestDropItem implements IClientIncomingPacket
 		
 		if ((L2Item.TYPE2_QUEST == item.getItem().getType2()) && !activeChar.canOverrideCond(PcCondOverride.DROP_ALL_ITEMS))
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.trace(activeChar.getObjectId() + ":player tried to drop quest item");
+				LOGGER.trace(activeChar.getObjectId() + ":player tried to drop quest item");
 			}
 			activeChar.sendPacket(SystemMessageId.THAT_ITEM_CANNOT_BE_DISCARDED_OR_EXCHANGED);
 			return;
 		}
 		
-		if (!activeChar.isInsideRadius(_x, _y, 0, 150, false, false) || (Math.abs(_z - activeChar.getZ()) > 50))
+		if (!activeChar.isInRadius2d(_x, _y, 150) || (Math.abs(_z - activeChar.getZ()) > 50))
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.trace(activeChar.getObjectId() + ": trying to drop too far away");
+				LOGGER.trace(activeChar.getObjectId() + ": trying to drop too far away");
 			}
 			activeChar.sendPacket(SystemMessageId.YOU_CANNOT_DISCARD_SOMETHING_THAT_FAR_AWAY_FROM_YOU);
 			return;
@@ -175,27 +177,23 @@ public final class RequestDropItem implements IClientIncomingPacket
 			return;
 		}
 		
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.debug("requested drop item " + _objectId + "(" + item.getCount() + ") at " + _x + "/" + _y + "/" + _z);
+			LOGGER.debug("requested drop item " + _objectId + "(" + item.getCount() + ") at " + _x + "/" + _y + "/" + _z);
 		}
 		
 		if (item.isEquipped())
 		{
-			ItemInstance[] unequiped = activeChar.getInventory().unEquipItemInSlotAndRecord(item.getLocationSlot());
-			for (ItemInstance itm : unequiped)
-			{
-				itm.unChargeAllShots();
-			}
+			activeChar.getInventory().unEquipItemInSlot(item.getLocationSlot());
 			activeChar.broadcastUserInfo();
 			activeChar.sendItemList(true);
 		}
 		
 		ItemInstance dropedItem = activeChar.dropItem("Drop", _objectId, _count, _x, _y, _z, null, false, false);
 		
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.debug("dropping " + _objectId + " item(" + _count + ") at: " + _x + " " + _y + " " + _z);
+			LOGGER.debug("dropping " + _objectId + " item(" + _count + ") at: " + _x + " " + _y + " " + _z);
 		}
 		
 		// activeChar.broadcastUserInfo();
@@ -209,7 +207,7 @@ public final class RequestDropItem implements IClientIncomingPacket
 		if ((dropedItem != null) && (dropedItem.getId() == Inventory.ADENA_ID) && (dropedItem.getCount() >= 1000000))
 		{
 			String msg = "Character (" + activeChar.getName() + ") has dropped (" + dropedItem.getCount() + ")adena at (" + _x + "," + _y + "," + _z + ")";
-			_log.warn(msg);
+			LOGGER.warn(msg);
 			AdminData.getInstance().broadcastMessageToGMs(msg);
 		}
 	}

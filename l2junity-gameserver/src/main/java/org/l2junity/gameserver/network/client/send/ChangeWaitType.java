@@ -38,9 +38,9 @@ public class ChangeWaitType implements IClientOutgoingPacket
 		_charObjId = character.getObjectId();
 		_moveType = newMoveType;
 		
-		_x = character.getX();
-		_y = character.getY();
-		_z = character.getZ();
+		_x = (int) character.getX();
+		_y = (int) character.getY();
+		_z = (int) character.getZ();
 	}
 	
 	@Override

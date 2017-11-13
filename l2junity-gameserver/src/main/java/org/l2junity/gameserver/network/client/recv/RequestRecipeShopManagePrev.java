@@ -44,7 +44,14 @@ public final class RequestRecipeShopManagePrev implements IClientIncomingPacket
 		{
 			return;
 		}
-		else if (player.isAlikeDead() || (player.getTarget() == null) || !player.getTarget().isPlayer())
+		
+		if (player.isAlikeDead() || (player.getTarget() == null) || !player.getTarget().isPlayer())
+		{
+			client.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
+		}
+		
+		if (!player.isInRadius3d(player.getTarget(), 250))
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;

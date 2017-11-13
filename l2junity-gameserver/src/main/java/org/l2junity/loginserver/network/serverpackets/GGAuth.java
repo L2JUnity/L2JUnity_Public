@@ -18,7 +18,7 @@
  */
 package org.l2junity.loginserver.network.serverpackets;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +35,7 @@ public final class GGAuth extends L2LoginServerPacket
 	public GGAuth(int response)
 	{
 		_response = response;
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			_log.warn("Reason Hex: " + (Integer.toHexString(response)));
 		}

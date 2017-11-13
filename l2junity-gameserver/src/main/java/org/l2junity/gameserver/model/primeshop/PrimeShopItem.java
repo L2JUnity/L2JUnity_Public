@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.holders.ItemHolder;
 
 public class PrimeShopItem extends ItemHolder
 {
+	private static final long serialVersionUID = 4228850273393782548L;
 	private final int _weight;
 	private final int _isTradable;
 	

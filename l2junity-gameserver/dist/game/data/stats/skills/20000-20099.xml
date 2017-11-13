@@ -44,13 +44,14 @@
 		</conditions>
 	</skill>
 	<skill id="20002" toLevel="1" name="Dragon Kick">
+		<!-- Glory Days confirmed -->
 		<!-- A dragon's powerful blow that attacks an enemy with 3420 Power added to P. Atk. Over-hit is possible. -->
 		<castRange>20</castRange>
-		<effectRange>400</effectRange> <!-- FIXME: value unconfirmed -->
+		<effectRange>400</effectRange>
 		<hitTime>2000</hitTime>
-		<magicLvl>85</magicLvl> <!-- FIXME: value unconfirmed -->
-		<operateType>A1</operateType> <!-- FIXME: value unconfirmed -->
-		<reuseDelay>7000</reuseDelay> <!-- FIXME: value unconfirmed -->
+		<magicLvl>85</magicLvl>
+		<operateType>A1</operateType>
+		<reuseDelay>7000</reuseDelay>
 		<rideState>NONE</rideState>
 		<effectPoint>-347</effectPoint>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -60,21 +61,22 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="FatalBlow">
+			<effect name="i_p_attack">
 				<power>3420</power>
+				<pAtkMod>5</pAtkMod>
 				<overHit>true</overHit>
-				<chance>20</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="20003" toLevel="1" name="Dragon Slash">
+		<!-- Glory Days confirmed -->
 		<!-- A dragon's powerful slash that attacks an enemy with 3420 Power added to P. Atk. Over-hit is possible. -->
 		<castRange>20</castRange>
-		<effectRange>400</effectRange> <!-- FIXME: value unconfirmed -->
+		<effectRange>400</effectRange>
 		<hitTime>2000</hitTime>
-		<magicLvl>85</magicLvl> <!-- FIXME: value unconfirmed -->
+		<magicLvl>85</magicLvl>
 		<operateType>A1</operateType>
-		<reuseDelay>7000</reuseDelay> <!-- FIXME: value unconfirmed -->
+		<reuseDelay>7000</reuseDelay>
 		<rideState>NONE</rideState>
 		<effectPoint>-348</effectPoint>
 		<magicCriticalRate>5</magicCriticalRate>
@@ -84,58 +86,61 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>3420</power>
+				<pAtkMod>5</pAtkMod>
 				<overHit>true</overHit>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="20004" toLevel="1" name="Dragon Dash">
+		<!-- Glory Days confirmed -->
 		<!-- Increases Speed by 100% for 5 seconds with a dragon's strength. -->
+		<abnormalLvl>2</abnormalLvl>
 		<abnormalTime>5</abnormalTime>
+		<abnormalType>SPEED_UP_SPECIAL</abnormalType>
 		<mpConsume>1</mpConsume>
 		<operateType>A2</operateType>
-		<reuseDelay>25000</reuseDelay> <!-- FIXME: value unconfirmed -->
+		<reuseDelay>25000</reuseDelay>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<effectPoint>689</effectPoint>
-		<abnormalType>SPEED_UP_SPECIAL</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
-		<abnormalLvl>2</abnormalLvl>
 		<icon>icon.skill_transform_buff</icon>
 		<isMagic>1</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>100</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="20005" toLevel="1" name="Dragon Aura">
+		<!-- Glory Days confirmed -->
 		<!-- Increases Critical Rate by 30% for 20 minutes with a dragon's strength. -->
+		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>1200</abnormalTime>
+		<abnormalType>IMPROVE_CRT_RATE_DMG_UP</abnormalType>
 		<hitTime>4000</hitTime>
 		<mpConsume>1</mpConsume>
 		<operateType>A2</operateType>
-		<reuseDelay>1800000</reuseDelay> <!-- FIXME: value unconfirmed -->
+		<reuseDelay>1800000</reuseDelay>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<effectPoint>635</effectPoint>
-		<abnormalType>IMPROVE_CRT_RATE_DMG_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effectRange>900</effectRange>
 		<magicLvl>70</magicLvl>
-		<abnormalLvl>3</abnormalLvl>
 		<icon>icon.skill_transform_buff</icon>
 		<isMagic>1</isMagic>
 		<castRange>400</castRange>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -159,47 +164,48 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CpHealPercent">
-				<power>15</power>
-			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>15</amount>
 				<mode>PER</mode>
 				<heal>true</heal>
 			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>15</amount>
 				<mode>PER</mode>
+				<heal>true</heal>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="20007" toLevel="1" name="Block Invincibility">
-		<!-- Updated to Ertheia -->
+		<!-- Updated to GC -->
 		<!-- Skill activates once Celestial Aegis wears off. -->
 		<!-- For 2 min., HP/MP Recovery Bonus increase, and Speed + 5. You cannot receive the Celestial Aegis, Celestial Protection, or the Celestial Party Protection effect. -->
 		<icon>icon.skill11560</icon>
 		<abnormalLvl>9</abnormalLvl>
-		<abnormalTime>70</abnormalTime> <!-- Tested, PLEASE CONFIRM AGAIN -->
-		<abnormalType>INVINCIBILITY_SPECIAL</abnormalType>
+		<abnormalTime>120</abnormalTime>
+		<abnormalType>BLOCK_INVINCIBILITY</abnormalType>
 		<operateType>A2</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<isMagic>1</isMagic>
 		<effectPoint>1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<canBeDispelled>false</canBeDispelled>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>5</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>1</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>1</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>INVINCIBILITY_SPECIAL;BLOCK_INVINCIBILITY</slot>
 			</effect>
 		</effects>
 	</skill>

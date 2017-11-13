@@ -112,6 +112,11 @@ public enum Movie
 	EPIC_FREYA_SCENE(115, true),
 	EPIC_KELBIM_SCENE(116, false),
 	EPIC_TAUTI_SCENE(117, false),
+	BARLER_SCENE(118, true),
+	SC_RAMONA_TRANS_A(119, true), // TODO: confirm escapable
+	SC_RAMONA_TRANS_B(120, true), // TODO: confirm escapable
+	SC_HELIOS_TRANS_A(121, true), // TODO: confirm escapable
+	SC_HELIOS_TRANS_B(122, true), // TODO: confirm escapable
 	LAND_KSERTH_A(1000, true),
 	LAND_KSERTH_B(1001, true),
 	LAND_UNDEAD_A(1002, true),

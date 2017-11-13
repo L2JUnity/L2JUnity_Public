@@ -484,6 +484,7 @@
 			<npc id="27452" x="-17366" y="143132" z="-3888" heading="39248" respawnTime="60sec" /> <!-- Poslof -->
 			<npc id="33087" x="-19120" y="136816" z="-3752" respawnTime="60sec" /> <!-- Teleport Device -->
 			<npc id="33178" x="-19268" y="136854" z="-3760" heading="19408" respawnTime="60sec" /> <!-- Silvan -->
+			<npc id="33429" x="-20004" y="137137" z="-3894" heading="11520" respawnTime="60sec" /> <!-- Guard -->
 			<npc id="33430" x="-20746" y="136445" z="-3896" heading="61052" respawnTime="60sec" /> <!-- Guard -->
 			<npc id="33430" x="-20782" y="136940" z="-3896" respawnTime="60sec" /> <!-- Guard -->
 			<npc id="33430" x="-20763" y="136893" z="-3896" heading="8948" respawnTime="60sec" /> <!-- Guard -->
@@ -497,8 +498,16 @@
 			<npc id="33430" x="-18936" y="137004" z="-3760" heading="50420" respawnTime="60sec" /> <!-- Guard -->
 			<npc id="33430" x="-18951" y="136971" z="-3760" heading="13092" respawnTime="60sec" /> <!-- Guard -->
 			<npc id="33510" x="-8142" y="143228" z="-3424" heading="52857" respawnTime="60sec" /> <!-- Lef -->
-			<npc id="33432" x="-20518" y="137777" z="-3895" heading="-6452" respawnTime="60sec" /> <!-- Guard -->
-			<npc id="33432" x="-20563" y="135333" z="-3898" heading="22532" respawnTime="60sec" /> <!-- Guard -->
+			<npc id="33432" x="-20518" y="137777" z="-3895" heading="-6452" respawnTime="60sec"> <!-- Guard -->
+				<parameters>
+					<param name="SuperPointName" value="despairruins_decoline1" />
+				</parameters>
+			</npc>
+			<npc id="33432" x="-20563" y="135333" z="-3898" heading="22532" respawnTime="60sec"> <!-- Guard -->
+				<parameters>
+					<param name="SuperPointName" value="despairruins_decoline2" />
+				</parameters>
+			</npc>
 		</group>
 	</spawn>
 </list>

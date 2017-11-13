@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.RatesConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -36,7 +36,7 @@ public class ExVitalityEffectInfo implements IClientOutgoingPacket
 	{
 		_points = cha.getVitalityPoints();
 		_vitalityBonus = (int) cha.getStat().getVitalityExpBonus() * 100;
-		_vitalityItemsRemaining = cha.getVitalityItemsUsed() - Config.VITALITY_MAX_ITEMS_ALLOWED;
+		_vitalityItemsRemaining = RatesConfig.VITALITY_MAX_ITEMS_ALLOWED - cha.getVitalityItemsUsed();
 	}
 	
 	@Override
@@ -48,7 +48,7 @@ public class ExVitalityEffectInfo implements IClientOutgoingPacket
 		packet.writeD(_vitalityBonus); // Vitality Bonus
 		packet.writeH(0x00); // Vitality additional bonus in %
 		packet.writeH(_vitalityItemsRemaining); // How much vitality items remaining for use
-		packet.writeH(Config.VITALITY_MAX_ITEMS_ALLOWED); // Max number of items for use
+		packet.writeH(RatesConfig.VITALITY_MAX_ITEMS_ALLOWED); // Max number of items for use
 		return true;
 	}
 }

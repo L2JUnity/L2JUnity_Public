@@ -218,4 +218,54 @@ public class HtmlUtil
 		sb.append("</table>");
 		return sb.toString();
 	}
+	
+	/**
+	 * Lets the player's client interpret the residence name for the specified residence id.
+	 * @param residenceId
+	 * @return {@code &%residenceId;}
+	 */
+	public static String getResidenceName(int residenceId)
+	{
+		return "&%" + residenceId + ";";
+	}
+	
+	/**
+	 * Lets the player's client interpret the npc name for the specified npc id.
+	 * @param npcId
+	 * @return {@code &@npcId;}
+	 */
+	public static String getNpcName(int npcId)
+	{
+		return "&@" + npcId + ";";
+	}
+	
+	/**
+	 * Lets the player's client interpret the system string for the specified system string id.
+	 * @param systemStringId
+	 * @return {@code &$systemStringId;}
+	 */
+	public static String getSystemString(int systemStringId)
+	{
+		return "&$" + systemStringId + ";";
+	}
+	
+	/**
+	 * Lets the player's client interpret the item name for the specified item id.
+	 * @param itemId
+	 * @return {@code &#itemId;}
+	 */
+	public static String getItemName(int itemId)
+	{
+		return "&#" + itemId + ";";
+	}
+	
+	/**
+	 * Lets the player's client interpret the class name for the specified class id.
+	 * @param classId
+	 * @return {@code <ClassId>classId</ClassId>}
+	 */
+	public static String getClassName(int classId)
+	{
+		return "<ClassId>" + classId + "</ClassId>";
+	}
 }

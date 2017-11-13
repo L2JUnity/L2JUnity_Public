@@ -42,7 +42,7 @@ public abstract class AbstractMaskPacket<T extends IUpdateTypeComponent> impleme
 	
 	protected void onNewMaskAdded(T component)
 	{
-	
+		
 	}
 	
 	@SafeVarargs

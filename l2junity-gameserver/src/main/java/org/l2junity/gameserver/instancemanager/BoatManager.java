@@ -21,7 +21,7 @@ package org.l2junity.gameserver.instancemanager;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.VehiclePathPoint;
 import org.l2junity.gameserver.model.World;
@@ -54,7 +54,7 @@ public class BoatManager
 	
 	public L2BoatInstance getNewBoat(int boatId, int x, int y, int z, int heading)
 	{
-		if (!Config.ALLOW_BOAT)
+		if (!GeneralConfig.ALLOW_BOAT)
 		{
 			return null;
 		}
@@ -179,9 +179,9 @@ public class BoatManager
 	{
 		for (PlayerInstance player : World.getInstance().getPlayers())
 		{
-			double dx = (double) player.getX() - point1.getX();
-			double dy = (double) player.getY() - point1.getY();
-			if (Math.sqrt((dx * dx) + (dy * dy)) < Config.BOAT_BROADCAST_RADIUS)
+			double dx = player.getX() - point1.getX();
+			double dy = player.getY() - point1.getY();
+			if (Math.sqrt((dx * dx) + (dy * dy)) < GeneralConfig.BOAT_BROADCAST_RADIUS)
 			{
 				for (IClientOutgoingPacket p : packets)
 				{
@@ -190,9 +190,9 @@ public class BoatManager
 			}
 			else
 			{
-				dx = (double) player.getX() - point2.getX();
-				dy = (double) player.getY() - point2.getY();
-				if (Math.sqrt((dx * dx) + (dy * dy)) < Config.BOAT_BROADCAST_RADIUS)
+				dx = player.getX() - point2.getX();
+				dy = player.getY() - point2.getY();
+				if (Math.sqrt((dx * dx) + (dy * dy)) < GeneralConfig.BOAT_BROADCAST_RADIUS)
 				{
 					for (IClientOutgoingPacket p : packets)
 					{

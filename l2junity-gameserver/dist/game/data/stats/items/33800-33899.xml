@@ -35,6 +35,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="33800" min="1" max="1" chance="100" /> <!-- Mentee Certificate -->
 			<item id="33801" min="1" max="1" chance="100" /> <!-- Mentoring Guidebook -->
@@ -85,7 +86,7 @@
 	<item id="33806" name="Giant's Scroll: Enchant Weapon (D-grade)" name_additional="Event" type="EtcItem">
 		<!-- When enchanted, P. Atk. + 2 for all D-grade weapons with the exception of bows. P. Atk. + 4 for bow weapons. M. Atk. + 2 for all weapons. Doubles P. Atk./M. Atk. starting at + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_d" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -97,7 +98,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -108,7 +108,7 @@
 	<item id="33807" name="Giant's Scroll: Enchant Weapon (C-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Atk. + 3 for C-grade one-handed sword, one-handed blunt, dagger, spear, and other weapons when enchanted. P. Atk. + 4 for two-handed sword, two-handed blunt, dualsword, and two-handed fist weapon. P. Atk. + 6 for bow weapons. M. Atk. + 3 for all weapons. Doubles P. Atk./M. Atk. starting at + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_c" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -120,7 +120,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -131,7 +130,7 @@
 	<item id="33808" name="Giant's Scroll: Enchant Weapon (B-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Atk. + 3 for B-grade one-handed sword, one-handed blunt, dagger, spear, and other weapons when enchanted. P. Atk. + 4 for two-handed sword, two-handed blunt, dualsword, and two-handed fist weapon. P. Atk. + 6 for bow weapons. M. Atk. + 3 for all weapons. Doubles P. Atk./M. Atk. starting at + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_b" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -143,7 +142,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -154,7 +152,7 @@
 	<item id="33809" name="Giant's Scroll: Enchant Weapon (A-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Atk. + 4 for A-grade one-handed sword, one-handed blunt, dagger, spear, and other weapons when enchanted. P. Atk. + 5 for two-handed sword, two-handed blunt, dualsword, and two-handed fist weapon. P. Atk. + 8 for bow weapons. M. Atk. + 3 for all weapons. Doubles P. Atk./M. Atk. starting at + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_a" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -166,7 +164,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -177,7 +174,7 @@
 	<item id="33810" name="Giant's Scroll: Enchant Weapon (S-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Atk. + 5 for S-grade one-handed sword, one-handed blunt, dagger, spear, and other weapons when enchanted. P. Atk. + 6 for two-handed sword, two-handed blunt, dualsword, and two-handed fist weapon. P. Atk. + 10 for bow weapons. M. Atk. + 4 for all weapons. Doubles P. Atk./M. Atk. starting at + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_s" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -189,7 +186,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -200,7 +196,7 @@
 	<item id="33811" name="Giant's Scroll: Enchant Weapon (R-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Atk. + 6 for R-grade one-handed sword, one-handed blunt, dagger, spear, and other weapons when enchanted. P. Atk. + 7 for two-handed sword, two-handed blunt, dualsword, two-handed fist weapon and crossbow. P. Atk. + 12 for bow weapons. M. Atk. + 5 for all weapons. Doubles P. Atk./M. Atk. starting at + 4. Every enchant attempt has a chance of increasing the enchant value between + 1 and + 3 chosen randomly. For blessed weapons, all stats increases more than normal weapons. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_wp_r" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -212,7 +208,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_WP" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_WEAPON" />
@@ -223,7 +218,7 @@
 	<item id="33812" name="Giant's Scroll: Enchant Armor (D-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Def. + 1 for D-grade armor and accessories. Increases by 3 starting from + 4. It can safely be enchanted up to + 3. For one-piece armor, it can safely be enchanted up to + 4. HP gradually increases with each enchant level starting from + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_d" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -235,7 +230,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -246,7 +240,7 @@
 	<item id="33813" name="Giant's Scroll: Enchant Armor (C-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Def. + 1 for C-grade armor and accessories. Increases by 3 starting from + 4. It can safely be enchanted up to + 3. For one-piece armor, it can safely be enchanted up to + 4. HP gradually increases with each enchant level starting from + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_c" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -258,7 +252,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -269,7 +262,7 @@
 	<item id="33814" name="Giant's Scroll: Enchant Armor (B-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Def. + 1 for B-grade armor and accessories. Starting from + 4, P. Def. + 3. Can be safely enchanted up to + 3. For one-piece armor, it can safely be enchanted up to + 4. HP gradually increases with each enchant level starting from + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_b" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -281,7 +274,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -292,7 +284,7 @@
 	<item id="33815" name="Giant's Scroll: Enchant Armor (A-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Def. + 1 for A-grade armor and accessories. Starting from + 4, P. Def. + 3. Can be safely enchanted up to + 3. For one-piece armor, it can safely be enchanted up to + 4. HP gradually increases with each enchant level starting from + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_a" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -304,7 +296,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -315,7 +306,7 @@
 	<item id="33816" name="Giant's Scroll: Enchant Armor (S-grade)" name_additional="Event" type="EtcItem">
 		<!-- P. Def. + 1 for S-grade armor and accessories. Increases by 3 starting from + 4. It can safely be enchanted up to + 3. For one-piece armor, it can safely be enchanted up to + 4. HP gradually increases with each enchant level starting from + 4. Between + 1 and + 3, enchanting occurs at random. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_s" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -327,7 +318,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -338,7 +328,7 @@
 	<item id="33817" name="Giant's Scroll: Enchant Armor (R-grade)" name_additional="Event" type="EtcItem">
 		<!-- When enchanted, P. Def. + 2 for R-grade armor and accessories. It is greatly increased starting at + 4. Can be safely enchanted to + 3. When enchanted to + 4 or more, HP also increases according to the enchant value. Every enchant attempt has a chance of increasing the enchant value between + 1 and + 3 chosen randomly. -->
 		<set name="icon" val="icon.giant_scrl_of_ench_am_r" />
-		<set name="weight" val="100" />
+		<set name="weight" val="10" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
@@ -350,7 +340,6 @@
 		<set name="is_oly_restricted" val="true" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="MULTI_ENCHT_AM" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -372,7 +361,6 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="ENCHT_AM" />
-		<set name="handler" val="EnchantScrolls" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
 		<set name="commissionItemType" val="SCROLL_ENCHANT_ARMOR" />
@@ -408,6 +396,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="208050" />
 	</item>
 	<item id="33821" name="Unbind Scroll (C-grade)" name_additional="Event" type="EtcItem">
 		<!-- Transforms a C-grade bound item into a standard item through the Blacksmith of Mammon. -->
@@ -422,6 +411,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="312075" />
 	</item>
 	<item id="33822" name="Unbind Scroll (B-grade)" name_additional="Event" type="EtcItem">
 		<!-- Transforms a B-grade bound item into a standard item through the Blacksmith of Mammon. -->
@@ -436,6 +426,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="468113" />
 	</item>
 	<item id="33823" name="Unbind Scroll (A-grade)" name_additional="Event" type="EtcItem">
 		<!-- Transforms an A-grade bound item into a standard item through the Blacksmith of Mammon. -->
@@ -450,6 +441,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="702169" />
 	</item>
 	<item id="33824" name="Unbind Scroll (S-grade)" name_additional="Event" type="EtcItem">
 		<!-- Transforms an S-grade bound item into a standard item through the Blacksmith of Mammon. -->
@@ -464,6 +456,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="1053253" />
 	</item>
 	<item id="33825" name="Unbind Scroll (S80-grade)" name_additional="Event" type="EtcItem">
 		<!-- Transforms an S80-grade bound item into a standard item through the Blacksmith of Mammon. -->
@@ -478,6 +471,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="1579880" />
 	</item>
 	<item id="33826" name="Unbind Scroll (R-grade)" name_additional="Event" type="EtcItem">
 		<!-- Converts a Bound item (R-grade) to Standard state through the Blacksmith of Mammon. -->
@@ -522,6 +516,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="5540000" />
 	</item>
 	<item id="33829" name="Soul Crystal Change Stone (S-grade)" name_additional="Event" type="EtcItem">
 		<!-- With this item you can change the Special Ability of an S-grade weapon when you visit the Blacksmith of Mammon. In order to use this item you will need an S-grade weapon with a Special Ability and S-grade Gemstones. -->
@@ -536,6 +531,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="7900000" />
 	</item>
 	<item id="33830" name="Soul Crystal Change Stone (S80-grade)" name_additional="Event" type="EtcItem">
 		<!-- With this item you can change the Special Ability of a S80-grade weapon when you visit the Blacksmith of Mammon. In order to use this item you will need a S80-grade weapon with a Special Ability and S-grade Gemstones. -->
@@ -550,6 +546,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="11300000" />
 	</item>
 	<item id="33831" name="Soul Crystal Change Stone (R-grade)" name_additional="Event" type="EtcItem">
 		<!-- With this item you can change the Special Ability of an R-grade weapon when you visit the Blacksmith of Mammon. In order to use this item you will need an R-grade weapon with a Special Ability and R-grade Gemstones. -->
@@ -564,6 +561,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="14400000" />
 	</item>
 	<item id="33832" name="Soul Crystal Change Stone (R95-grade)" name_additional="Event" type="EtcItem">
 		<!-- With this item you can change the Special Ability of a R95-grade weapon when you visit the Blacksmith of Mammon. In order to use this item you will need a R95-grade weapon with a Special Ability and R-grade Gemstones. -->
@@ -578,6 +576,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="price" val="31200000" />
 	</item>
 	<item id="33833" name="Attribute Change Crystal (S-grade)" name_additional="Event" type="EtcItem">
 		<!-- Can change an S-grade weapon's attribute. -->
@@ -1008,6 +1007,7 @@
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="price" val="13464000" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -1027,6 +1027,7 @@
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="price" val="88043000" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -1122,6 +1123,7 @@
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="price" val="6145500" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -1141,6 +1143,7 @@
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
 		<set name="is_tradable" val="false" />
+		<set name="price" val="20026000" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />

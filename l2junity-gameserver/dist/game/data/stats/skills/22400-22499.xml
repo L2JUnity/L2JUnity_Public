@@ -59,7 +59,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.002525">
 						<item id="22202" count="1" />
@@ -227,7 +227,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.000089">
 						<item id="6657" count="1" />
@@ -309,7 +309,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="7.14286">
 						<item id="15544" count="1" />
@@ -370,7 +370,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.88235">
 						<item id="15726" count="1" />
@@ -429,29 +429,36 @@
 	</skill>
 	<skill id="22407" toLevel="1" name="PC Vitality">
 		<!-- Desciption: For 60 minutes, recovers Vitality when Exp. is acquired through hunting. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>4</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.etc_pccafe_point_i00</icon>
 		<hitTime>100</hitTime>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>22279</itemConsumeId> <!-- PC Vitality (1-hour) -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22408" toLevel="1" name="Enchanting Tool Box">
 		<!-- Desciption: There is no available description. -->
@@ -466,7 +473,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="40">
 						<item id="22204" count="1" />
@@ -537,7 +544,7 @@
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>85</minLevel>
-				<maxLevel>99</maxLevel>
+				<maxLevel>106</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 		</conditions>
@@ -598,7 +605,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="33.1">
 						<item id="22391" count="1" />
@@ -623,69 +630,152 @@
 		</effects>
 	</skill>
 	<skill id="22415" toLevel="1" name="Halloween Cookie">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases Speed by 33 for 60 minutes. -->
-		<icon>BranchSys3.Icon.ev_halloween_cookie</icon>
-		<operateType>A2</operateType>
-		<effectPoint>100</effectPoint>
-		<abnormalType>PA_PD_UP</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-1</specialLevel>
-		<hitCancelTime>0</hitCancelTime>
 		<abnormalLvl>4</abnormalLvl>
 		<abnormalTime>3600</abnormalTime>
-		<irreplacableBuff>true</irreplacableBuff>
-		<staticReuse>true</staticReuse>
-		<isMagic>2</isMagic>
-		<reuseDelay>3600000</reuseDelay>
-		<targetType>SELF</targetType>
-		<affectScope>SINGLE</affectScope>
-	</skill>
-	<skill id="22416" toLevel="1" name="Halloween Special Cookie">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- For 60 minutes, increases Max MP by 20%, HP recovery bonus by 20%, attack M. Critical Rate by 2, critical rate during a normal attack by 20%, P. Atk. by 10%, P. Def. by 20%, Atk. Spd. by 20%, M. Atk. by 20%, M. Def. by 20%, Casting Spd. by 20%, Debuff Resistance by 10%, and P. Def. upon evading a critical attack. Decreases speed by 15%. Also for party members who are equipped with melee weapons, bows, or crossbows that receive more than a set amount of damage, critical power increases during a normal attack. -->
+		<abnormalType>PA_PD_UP</abnormalType>
 		<icon>BranchSys3.Icon.ev_halloween_cookie</icon>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>BUFF_SPECIAL_DEFENCE</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>25</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>3600000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_speed">
+				<amount>33</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="22416" toLevel="1" name="Halloween Special Cookie">
+		<!-- Glory Days confirmed -->
+		<!-- For 60 minutes, increases Max MP by 20%, HP recovery bonus by 20%, attack M. Critical Rate by 20, critical rate during a normal attack by 20%, P. Atk. by 10%, P. Def. by 20%, Atk. Spd. by 20%, M. Atk. by 20%, M. Def. by 20%, Casting Spd. by 20%, Debuff Resistance by 10%, and P. Def. upon evading a critical attack. Decreases speed by 15%. Also for party members who are equipped with melee weapons, bows, or crossbows that receive more than a set amount of damage, critical power increases during a normal attack. -->
+		<abnormalLvl>25</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>BUFF_SPECIAL_DEFENCE</abnormalType>
+		<icon>BranchSys3.Icon.ev_halloween_cookie</icon>
+		<operateType>A2</operateType>
+		<effectPoint>100</effectPoint>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-1</specialLevel>
+		<hitCancelTime>0</hitCancelTime>
+		<irreplacableBuff>true</irreplacableBuff>
+		<staticReuse>true</staticReuse>
+		<isMagic>2</isMagic>
+		<reuseDelay>3600000</reuseDelay>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_mp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_resist_abnormal_by_category">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+			<effect name="p_speed">
+				<amount>-15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_trigger_skill_by_dmg">
+				<!-- Critical Damage Increase -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>300</minDamage>
+				<chance>80</chance>
+				<targetType>SELF</targetType>
+				<skillId>11569</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+			<effect name="i_dispel_by_slot">
+				<dispel>MULTI_BUFF,-1;COUNTER_CRITICAL,-1</dispel>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>MULTI_BUFF;COUNTER_CRITICAL</slot>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22417" toLevel="1" name="Equip Magic Saddle">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- When the magic saddle is equipped, your mount runs at maximum speed for 30 seconds. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>30</abnormalTime>
+		<abnormalType>SPECIAL_RIDE</abnormalType>
 		<icon>BranchSys3.Icon.s_g_magic_saddle_up</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>SPECIAL_RIDE</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>1</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>30</abnormalTime>
 		<reuseDelay>45000</reuseDelay>
 		<isMagic>2</isMagic>
 		<withoutAction>true</withoutAction>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_speed">
+				<amount>95</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22418" toLevel="1" name="Root of Evolution">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>1500</hitTime>
@@ -698,6 +788,18 @@
 		<reuseDelay>86400000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_summon_npc">
+				<npcId>5007</npcId>
+				<npcCount>1</npcCount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22419" toLevel="1" name="Weapon Appearance Stone (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -938,6 +1040,20 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22439" toLevel="1" name="Ancient Scroll: Enchant Weapon (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -950,6 +1066,30 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22440" toLevel="1" name="Divine Scroll: Enchant Weapon (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -962,6 +1102,30 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>11</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>6</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon">
+				<bonusRate>1</bonusRate>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22441" toLevel="1" name="Scroll: Enchant Armor (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -974,6 +1138,21 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22442" toLevel="1" name="Ancient Scroll: Enchant Armor (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -986,6 +1165,26 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>15</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>10</bonusRate>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22443" toLevel="1" name="Divine Scroll: Enchant Armor (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -998,6 +1197,26 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>0</minEnchant>
+				<maxEnchant>6</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor">
+				<bonusRate>1</bonusRate>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22444" toLevel="1" name="Radiant Fortuna Box">
 		<!-- AUTO GENERATED SKILL -->
@@ -1011,7 +1230,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="27">
 						<item id="20517" count="2" />
@@ -1077,7 +1296,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="26.25">
 						<item id="20518" count="2" />
@@ -1162,11 +1381,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22433</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -1179,11 +1397,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22433</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -1196,11 +1413,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22434</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -1213,11 +1429,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22434</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -1237,7 +1452,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="9">
 						<item id="34015" count="1" />
@@ -1365,7 +1580,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="1.1236">
 						<item id="9914" count="1" />
@@ -1649,6 +1864,17 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>D</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="22455" toLevel="1" name="Scroll: Enchant Armor (D-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1661,6 +1887,18 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>D</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22456" toLevel="1" name="Scroll: Enchant Weapon (C-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1673,6 +1911,17 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>C</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="22457" toLevel="1" name="Scroll: Enchant Armor (C-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1685,6 +1934,18 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>C</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22458" toLevel="1" name="Scroll: Enchant Weapon (B-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1697,6 +1958,17 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="22459" toLevel="1" name="Scroll: Enchant Armor (B-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1709,6 +1981,18 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>B</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22460" toLevel="1" name="Scroll: Enchant Weapon (A-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1721,6 +2005,17 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="22461" toLevel="1" name="Scroll: Enchant Armor (A-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1733,6 +2028,18 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>A</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22462" toLevel="1" name="Scroll: Enchant Weapon (S-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1745,6 +2052,17 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="22463" toLevel="1" name="Scroll: Enchant Armor (S-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1757,6 +2075,18 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>S</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22464" toLevel="1" name="Scroll: Enchant Weapon (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1769,6 +2099,17 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="22465" toLevel="1" name="Scroll: Enchant Armor (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -1781,9 +2122,21 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22466" toLevel="1" name="Scroll of Escape">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1796,9 +2149,14 @@
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_escape">
+				<escapeType>TOWN</escapeType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22467" toLevel="1" name="Scroll of Escape: Castle">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1811,9 +2169,14 @@
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_escape">
+				<escapeType>CASTLE</escapeType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22468" toLevel="1" name="Scroll of Escape: Clan Hall">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1826,9 +2189,14 @@
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_escape">
+				<escapeType>CLANHALL</escapeType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22469" toLevel="1" name="Blessed Scroll of Escape">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1842,9 +2210,14 @@
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_escape">
+				<escapeType>TOWN</escapeType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22470" toLevel="1" name="Blessed Scroll of Escape: Castle">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1858,9 +2231,14 @@
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_escape">
+				<escapeType>CASTLE</escapeType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22471" toLevel="1" name="Blessed Scroll of Escape: Clan Hall">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1874,9 +2252,14 @@
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_escape">
+				<escapeType>CLANHALL</escapeType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22472" toLevel="1" name="Blessed Scroll of Resurrection (Pet)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<castRange>400</castRange>
@@ -1896,6 +2279,11 @@
 				<type>PET</type>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_resurrection">
+				<power>200</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22473" toLevel="1" name="Agathion Pack">
 		<!-- AUTO GENERATED SKILL -->
@@ -1911,7 +2299,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="40">
 						<item id="21331" count="1" />
@@ -1936,11 +2324,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22433</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -1953,11 +2340,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22434</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -1970,11 +2356,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22433</itemId>
 				<itemCount>3000</itemCount>
 			</effect>
@@ -1987,11 +2372,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22434</itemId>
 				<itemCount>3000</itemCount>
 			</effect>
@@ -2004,11 +2388,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22247</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2021,34 +2404,98 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>22252</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="22480" toLevel="1" name="Leaf of Appreciation">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 1 hour, with the help from the Leaf of Appreciation, increases Max MP by 20%, MP Recovery Bonus by 20%, HP recovery bonus by 20%, the chance of prominent damage occurring through magic damage by 2, the power of critical attacks by 20%, P. Atk. by 10%, P. Def. by 20%, Atk. Spd. by 20%, M. Atk. by 20%, M. Def. by 20%, Casting Spd. by 20%, and Debuff Resistance by 10%. Decreases Speed by 20% and MP consumption needed for skill use by 5%. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>MULTI_BUFF</abnormalType>
 		<icon>icon.etc_leaf_green_i00</icon>
 		<operateType>A2</operateType>
-		<abnormalType>MULTI_BUFF</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<abnormalLvl>4</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>10000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_mp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_mp_regen">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_resist_abnormal_by_category">
+				<amount>-10</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+			<effect name="p_speed">
+				<amount>-20</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22481" toLevel="10" name="Mysterious Soulshot d 10000">
 		<!-- AUTO GENERATED SKILL -->
@@ -2057,11 +2504,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21846</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2074,11 +2520,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21846</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -2091,11 +2536,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21847</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2108,11 +2552,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21847</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -2125,11 +2568,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21848</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2142,11 +2584,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21848</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -2159,11 +2600,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21849</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2176,11 +2616,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21849</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -2193,11 +2632,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21852</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2210,11 +2648,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21852</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -2227,11 +2664,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21853</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2244,11 +2680,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21853</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -2261,11 +2696,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21854</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2278,11 +2712,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21854</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -2295,11 +2728,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21855</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2312,11 +2744,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21855</itemId>
 				<itemCount>5000</itemCount>
 			</effect>
@@ -2329,11 +2760,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21856</itemId>
 				<itemCount>10000</itemCount>
 			</effect>
@@ -2346,11 +2776,10 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>21856</itemId>
 				<itemCount>5000</itemCount>
 			</effect>

@@ -23,14 +23,12 @@ import java.util.List;
 
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.skills.BuffInfo;
-import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
 public class PartySpelled implements IClientOutgoingPacket
 {
 	private final List<BuffInfo> _effects = new ArrayList<>();
-	private final List<Skill> _effects2 = new ArrayList<>();
 	private final Creature _activeChar;
 	
 	public PartySpelled(Creature cha)
@@ -43,11 +41,6 @@ public class PartySpelled implements IClientOutgoingPacket
 		_effects.add(info);
 	}
 	
-	public void addSkill(Skill skill)
-	{
-		_effects2.add(skill);
-	}
-	
 	@Override
 	public boolean write(PacketWriter packet)
 	{
@@ -55,27 +48,16 @@ public class PartySpelled implements IClientOutgoingPacket
 		
 		packet.writeD(_activeChar.isServitor() ? 2 : _activeChar.isPet() ? 1 : 0);
 		packet.writeD(_activeChar.getObjectId());
-		packet.writeD(_effects.size() + _effects2.size());
+		packet.writeD(_effects.size());
 		for (BuffInfo info : _effects)
 		{
 			if ((info != null) && info.isInUse())
 			{
 				packet.writeD(info.getSkill().getDisplayId());
 				packet.writeH(info.getSkill().getDisplayLevel());
-				packet.writeH(0x00); // Sub level
+				packet.writeH(info.getSkill().getSubLevel());
 				packet.writeD(info.getSkill().getAbnormalType().getClientId());
 				writeOptionalD(packet, info.getTime());
-			}
-		}
-		for (Skill skill : _effects2)
-		{
-			if (skill != null)
-			{
-				packet.writeD(skill.getDisplayId());
-				packet.writeH(skill.getDisplayLevel());
-				packet.writeH(0x00); // Sub level
-				packet.writeD(skill.getAbnormalType().getClientId());
-				packet.writeH(-1);
 			}
 		}
 		return true;

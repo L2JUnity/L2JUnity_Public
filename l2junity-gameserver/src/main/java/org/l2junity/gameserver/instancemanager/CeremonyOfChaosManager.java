@@ -24,9 +24,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.enums.CategoryType;
 import org.l2junity.gameserver.enums.CeremonyOfChaosState;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.StatsSet;
@@ -291,7 +290,7 @@ public class CeremonyOfChaosManager extends AbstractEventManager<CeremonyOfChaos
 			sm = SystemMessageId.YOU_CANNOT_PARTICIPATE_IN_THE_CEREMONY_OF_CHAOS_AS_A_FLYING_TRANSFORMED_OBJECT;
 			canRegister = false;
 		}
-		else if (!player.isInCategory(CategoryType.AWAKEN_GROUP))
+		else if (!player.isAwakenedClass())
 		{
 			sm = SystemMessageId.ONLY_CHARACTERS_WHO_HAVE_COMPLETED_THE_3RD_CLASS_TRANSFER_MAY_PARTICIPATE;
 			canRegister = false;
@@ -409,7 +408,7 @@ public class CeremonyOfChaosManager extends AbstractEventManager<CeremonyOfChaos
 	}
 	
 	@RegisterEvent(EventType.ON_PLAYER_LOGOUT)
-	@RegisterType(ListenerRegisterType.GLOBAL_PLAYERS)
+	@RegisterType(ListenerRegisterType.GLOBAL)
 	private void OnPlayerLogout(OnPlayerLogout event)
 	{
 		if (getState() == CeremonyOfChaosState.REGISTRATION)

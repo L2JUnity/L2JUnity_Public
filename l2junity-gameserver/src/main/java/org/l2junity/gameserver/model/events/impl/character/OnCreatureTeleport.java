@@ -29,13 +29,13 @@ import org.l2junity.gameserver.model.instancezone.Instance;
 public class OnCreatureTeleport implements IBaseEvent
 {
 	private final Creature _creature;
-	private final int _destX;
-	private final int _destY;
-	private final int _destZ;
+	private final double _destX;
+	private final double _destY;
+	private final double _destZ;
 	private final int _destHeading;
 	private final Instance _destInstance;
 	
-	public OnCreatureTeleport(Creature creature, int destX, int destY, int destZ, int destHeading, Instance destInstance)
+	public OnCreatureTeleport(Creature creature, double destX, double destY, double destZ, int destHeading, Instance destInstance)
 	{
 		_creature = creature;
 		_destX = destX;
@@ -50,17 +50,17 @@ public class OnCreatureTeleport implements IBaseEvent
 		return _creature;
 	}
 	
-	public int getDestX()
+	public double getDestX()
 	{
 		return _destX;
 	}
 	
-	public int getDestY()
+	public double getDestY()
 	{
 		return _destY;
 	}
 	
-	public int getDestZ()
+	public double getDestZ()
 	{
 		return _destZ;
 	}

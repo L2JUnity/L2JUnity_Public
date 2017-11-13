@@ -90,6 +90,12 @@ public final class NpcHtmlMessage extends AbstractHtmlPacket
 	}
 	
 	@Override
+	protected String getChatName()
+	{
+		return "HTML";
+	}
+	
+	@Override
 	public HtmlActionScope getScope()
 	{
 		return _itemId == 0 ? HtmlActionScope.NPC_HTML : HtmlActionScope.NPC_ITEM_HTML;

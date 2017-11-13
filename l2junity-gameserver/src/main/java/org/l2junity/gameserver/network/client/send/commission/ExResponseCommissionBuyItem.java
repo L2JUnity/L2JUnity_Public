@@ -47,7 +47,7 @@ public class ExResponseCommissionBuyItem implements IClientOutgoingPacket
 		if (_commissionItem != null)
 		{
 			final ItemInfo itemInfo = _commissionItem.getItemInfo();
-			packet.writeD(itemInfo.getEnchant());
+			packet.writeD(itemInfo.getEnchantLevel());
 			packet.writeD(itemInfo.getItem().getId());
 			packet.writeQ(itemInfo.getCount());
 		}

@@ -18,9 +18,8 @@
  */
 package org.l2junity.gameserver.model.actor.instance;
 
-import org.l2junity.Config;
-import org.l2junity.commons.util.Rnd;
 import org.l2junity.gameserver.ai.CtrlIntention;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldRegion;
@@ -31,7 +30,6 @@ import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.EventType;
 import org.l2junity.gameserver.model.events.impl.character.npc.OnNpcFirstTalk;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
-import org.l2junity.gameserver.network.client.send.SocialAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +38,7 @@ import org.slf4j.LoggerFactory;
  */
 public class L2GuardInstance extends Attackable
 {
-	private static Logger _log = LoggerFactory.getLogger(L2GuardInstance.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2GuardInstance.class);
 	
 	/**
 	 * Constructor of L2GuardInstance (use L2Character and L2NpcInstance constructor).<br>
@@ -64,6 +62,11 @@ public class L2GuardInstance extends Attackable
 		if (attacker.isMonster())
 		{
 			return true;
+		}
+		
+		if (attacker.isPlayer())
+		{
+			return attacker.getReputation() < 0;
 		}
 		
 		return super.isAutoAttackable(attacker);
@@ -150,9 +153,9 @@ public class L2GuardInstance extends Attackable
 			// Check if the L2PcInstance is in the _aggroList of the L2GuardInstance
 			if (containsTarget(player))
 			{
-				if (Config.DEBUG)
+				if (GeneralConfig.DEBUG)
 				{
-					_log.debug(player.getObjectId() + ": Attacked guard " + getObjectId());
+					LOGGER.debug(player.getObjectId() + ": Attacked guard " + getObjectId());
 				}
 				
 				// Set the L2PcInstance Intention to AI_INTENTION_ATTACK
@@ -168,10 +171,6 @@ public class L2GuardInstance extends Attackable
 				}
 				else
 				{
-					// Send a Server->Client packet SocialAction to the all L2PcInstance on the _knownPlayer of the L2NpcInstance
-					// to display a social action of the L2GuardInstance on their client
-					broadcastPacket(new SocialAction(getObjectId(), Rnd.nextInt(8)));
-					
 					player.setLastFolkNPC(this);
 					
 					// Open a chat window on client with the text of the L2GuardInstance

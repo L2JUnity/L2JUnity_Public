@@ -23,10 +23,11 @@ import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_FOLLOW;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_IDLE;
 
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GameTimeController;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -101,6 +102,8 @@ public abstract class AbstractAI implements Ctrl
 	protected int _moveToPawnTimeout;
 	
 	protected Future<?> _followTask = null;
+	private ILocational _followEvadeTarget = null;
+	private long _followEvadeStart;
 	private static final int FOLLOW_INTERVAL = 1000;
 	private static final int ATTACK_FOLLOW_INTERVAL = 500;
 	
@@ -129,8 +132,10 @@ public abstract class AbstractAI implements Ctrl
 	
 	/**
 	 * Set the Intention of this AbstractAI.<br>
-	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method is USED by AI classes</B></FONT><B><U><br> Overridden in </U> : </B><BR> <B>L2AttackableAI</B> : Create an AI Task executed every 1s (if necessary)<BR> <B>L2PlayerAI</B> : Stores the current AI intention parameters to later restore it if
-	 * necessary.
+	 * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method is USED by AI classes</B></FONT><B><U><br>
+	 * Overridden in </U> : </B><BR>
+	 * <B>L2AttackableAI</B> : Create an AI Task executed every 1s (if necessary)<BR>
+	 * <B>L2PlayerAI</B> : Stores the current AI intention parameters to later restore it if necessary.
 	 * @param intention The new Intention to set to the AI
 	 * @param args The first parameter of the Intention
 	 */
@@ -186,7 +191,7 @@ public abstract class AbstractAI implements Ctrl
 				onIntentionCast((Skill) args[0], (WorldObject) args[1], args.length > 2 ? (ItemInstance) args[2] : null, args.length > 3 ? (boolean) args[3] : false, args.length > 4 ? (boolean) args[4] : false);
 				break;
 			case AI_INTENTION_MOVE_TO:
-				onIntentionMoveTo((Location) args[0]);
+				onIntentionMoveTo((ILocational) args[0]);
 				break;
 			case AI_INTENTION_FOLLOW:
 				onIntentionFollow((Creature) args[0]);
@@ -253,8 +258,8 @@ public abstract class AbstractAI implements Ctrl
 			case EVT_AGGRESSION:
 				onEvtAggression((Creature) arg0, ((Number) arg1).intValue());
 				break;
-			case EVT_ACTION_BLOCKED:
-				onEvtActionBlocked((Creature) arg0);
+			case EVT_ACTION_STOPPED:
+				onEvtActionStopped((Creature) arg0);
 				break;
 			case EVT_ROOTED:
 				onEvtRooted((Creature) arg0);
@@ -325,7 +330,7 @@ public abstract class AbstractAI implements Ctrl
 	
 	protected abstract void onIntentionCast(Skill skill, WorldObject target, ItemInstance item, boolean forceUse, boolean dontMove);
 	
-	protected abstract void onIntentionMoveTo(Location destination);
+	protected abstract void onIntentionMoveTo(ILocational destination);
 	
 	protected abstract void onIntentionFollow(Creature target);
 	
@@ -339,7 +344,7 @@ public abstract class AbstractAI implements Ctrl
 	
 	protected abstract void onEvtAggression(Creature target, int aggro);
 	
-	protected abstract void onEvtActionBlocked(Creature attacker);
+	protected abstract void onEvtActionStopped(Creature attacker);
 	
 	protected abstract void onEvtRooted(Creature attacker);
 	
@@ -400,7 +405,7 @@ public abstract class AbstractAI implements Ctrl
 			{
 				if (_clientMovingToPawnOffset == offset)
 				{
-					if (GameTimeController.getInstance().getGameTicks() < _moveToPawnTimeout)
+					if (GameTimeManager.getInstance().getGameTicks() < _moveToPawnTimeout)
 					{
 						return;
 					}
@@ -408,7 +413,7 @@ public abstract class AbstractAI implements Ctrl
 				else if (_actor.isOnGeodataPath())
 				{
 					// minimum time to calculate new route is 2 seconds
-					if (GameTimeController.getInstance().getGameTicks() < (_moveToPawnTimeout + 10))
+					if (GameTimeManager.getInstance().getGameTicks() < (_moveToPawnTimeout + 10))
 					{
 						return;
 					}
@@ -419,8 +424,8 @@ public abstract class AbstractAI implements Ctrl
 			_clientMoving = true;
 			_clientMovingToPawnOffset = offset;
 			_target = pawn;
-			_moveToPawnTimeout = GameTimeController.getInstance().getGameTicks();
-			_moveToPawnTimeout += 1000 / GameTimeController.MILLIS_IN_TICK;
+			_moveToPawnTimeout = GameTimeManager.getInstance().getGameTicks();
+			_moveToPawnTimeout += 1000 / GameTimeManager.MILLIS_IN_TICK;
 			
 			if (pawn == null)
 			{
@@ -472,7 +477,7 @@ public abstract class AbstractAI implements Ctrl
 	 * @param y
 	 * @param z
 	 */
-	protected void moveTo(int x, int y, int z)
+	protected void moveTo(double x, double y, double z)
 	{
 		// Chek if actor can move
 		if (!_actor.isMovementDisabled())
@@ -675,10 +680,8 @@ public abstract class AbstractAI implements Ctrl
 			_followTask = null;
 		}
 		
-		setTarget(target);
-		
 		final int followRange = range == -1 ? Rnd.get(50, 100) : range;
-		_followTask = ThreadPoolManager.getInstance().scheduleAiAtFixedRate(() ->
+		_followTask = ThreadPool.scheduleAtFixedRate(() ->
 		{
 			try
 			{
@@ -687,20 +690,19 @@ public abstract class AbstractAI implements Ctrl
 					return;
 				}
 				
-				final WorldObject followTarget = getTarget(); // copy to prevent NPE
-				if (followTarget == null)
+				if (target == null)
 				{
 					if (_actor.isSummon())
 					{
 						((Summon) _actor).setFollowStatus(false);
 					}
-					setIntention(AI_INTENTION_IDLE);
+					setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 					return;
 				}
 				
-				if (!_actor.isInsideRadius(followTarget, followRange, true, false))
+				if (!_actor.isInRadius3d(target, followRange) || ((_followEvadeTarget != null) && _actor.isInRadius2d(_followEvadeTarget, 300)))
 				{
-					if (!_actor.isInsideRadius(followTarget, 3000, true, false))
+					if (!_actor.isInRadius3d(target, 3000))
 					{
 						// if the target is too far (maybe also teleported)
 						if (_actor.isSummon())
@@ -708,18 +710,39 @@ public abstract class AbstractAI implements Ctrl
 							((Summon) _actor).setFollowStatus(false);
 						}
 						
-						setIntention(AI_INTENTION_IDLE);
+						setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 						return;
 					}
 					
-					moveToPawn(followTarget, followRange);
+					// Follow with evading certain target location. Summons for instance in retail run as far as possible from attacker for 20 seconds.
+					// Even if attacker tries to reach them, they keep running away leaving owner to be in the middle between summon and attacker.
+					if ((_followEvadeTarget != null) && ((_followEvadeStart + 20000) > System.currentTimeMillis()) && (_followEvadeTarget != target))
+					{
+						final int maxFollowRange = Math.max(90, followRange); // In retail it always evades at max distance.
+						final double evadeX = _followEvadeTarget.getX();
+						final double evadeY = _followEvadeTarget.getY();
+						final double targetX = target.getX();
+						final double targetY = target.getY();
+						
+						// Add 30 degree to be in a more triangle form (in retail seems they don't do straight line, but a rather trianglish form).
+						final double angle = Math.atan2(targetY - evadeY, targetX - evadeX) + (Math.PI / 6);
+						
+						final double tx = targetX + (maxFollowRange * Math.cos(angle));
+						final double ty = targetY + (maxFollowRange * Math.sin(angle));
+						final double tz = target.getZ();
+						
+						moveTo(tx, ty, tz);
+						return;
+					}
+					
+					moveToPawn(target, followRange);
 				}
 			}
 			catch (Exception e)
 			{
 				LOGGER.warn("Error: " + e.getMessage());
 			}
-		} , 5, range == -1 ? FOLLOW_INTERVAL : ATTACK_FOLLOW_INTERVAL);
+		}, 5, range == -1 ? FOLLOW_INTERVAL : ATTACK_FOLLOW_INTERVAL, TimeUnit.MILLISECONDS);
 	}
 	
 	/**
@@ -743,6 +766,16 @@ public abstract class AbstractAI implements Ctrl
 	public WorldObject getTarget()
 	{
 		return _target;
+	}
+	
+	/**
+	 * AI starts to go as far as possible from the given target when its following someone. Think it like a magnet repulsion.
+	 * @param target which AI will try to avoid by going as far as possible away from it within follow range.
+	 */
+	public void startFollowEvadeTarget(Creature target)
+	{
+		_followEvadeTarget = target;
+		_followEvadeStart = System.currentTimeMillis();
 	}
 	
 	/**

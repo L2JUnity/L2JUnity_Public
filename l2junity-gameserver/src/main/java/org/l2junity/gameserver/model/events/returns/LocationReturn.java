@@ -27,9 +27,9 @@ import org.l2junity.gameserver.model.interfaces.ILocational;
 public class LocationReturn extends TerminateReturn
 {
 	private final boolean _overrideLocation;
-	private int _x;
-	private int _y;
-	private int _z;
+	private double _x;
+	private double _y;
+	private double _z;
 	private int _heading;
 	private Instance _instance;
 	
@@ -54,17 +54,17 @@ public class LocationReturn extends TerminateReturn
 		}
 	}
 	
-	public void setX(int x)
+	public void setX(double x)
 	{
 		_x = x;
 	}
 	
-	public void setY(int y)
+	public void setY(double y)
 	{
 		_y = y;
 	}
 	
-	public void setZ(int z)
+	public void setZ(double z)
 	{
 		_z = z;
 	}
@@ -84,17 +84,17 @@ public class LocationReturn extends TerminateReturn
 		return _overrideLocation;
 	}
 	
-	public int getX()
+	public double getX()
 	{
 		return _x;
 	}
 	
-	public int getY()
+	public double getY()
 	{
 		return _y;
 	}
 	
-	public int getZ()
+	public double getZ()
 	{
 		return _z;
 	}

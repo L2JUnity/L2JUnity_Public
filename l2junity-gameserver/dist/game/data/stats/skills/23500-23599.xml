@@ -277,7 +277,7 @@
 		<abnormalLvl>30</abnormalLvl>
 		<abnormalTime>300</abnormalTime>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<targetConditions>
@@ -311,7 +311,7 @@
 		<abnormalTime>60</abnormalTime>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<targetConditions>
@@ -339,7 +339,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>150</effectRange>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<targetConditions>
@@ -402,7 +402,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>27</abnormalTime>
 		<abnormalVisualEffect>FLESH_STONE</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -441,7 +441,7 @@
 		<magicLvl>90</magicLvl>
 		<affectRange>700</affectRange>
 		<affectLimit>9-10</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -530,7 +530,7 @@
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>15</abnormalTime>
 		<affectRange>600</affectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -589,7 +589,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<effectRange>400</effectRange>
 		<magicLvl>99</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<targetConditions>
@@ -621,7 +621,7 @@
 		<abnormalTime>60</abnormalTime>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<targetConditions>
@@ -653,7 +653,7 @@
 		<abnormalTime>30</abnormalTime>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<targetConditions>
@@ -1021,7 +1021,7 @@
 		<abnormalTime>4</abnormalTime>
 		<trait>SHOCK</trait>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1067,7 +1067,7 @@
 		<affectRange>200</affectRange>
 		<affectLimit>10-10</affectLimit>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -1131,7 +1131,7 @@
 		<affectRange>500</affectRange>
 		<affectLimit>10-10</affectLimit>
 		<staticReuse>true</staticReuse>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -1199,11 +1199,11 @@
 		</abnormalTime>
 		<trait>CHANGEBODY</trait>
 		<abnormalVisualEffect>CHANGEBODY</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ChangeBody">
+			<effect name="p_changebody">
 				<templates>
 					<item templateId="20019" minChance="0" maxChance="100" />
 				</templates>
@@ -1231,7 +1231,7 @@
 		<affectObject>CLAN</affectObject>
 	</skill>
 	<skill id="23553" toLevel="1" name="(Wind Strike)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0003</icon>
 		<operateType>A1</operateType>
 		<mpConsume>10</mpConsume>
@@ -1248,9 +1248,14 @@
 		<isMagic>1</isMagic>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_m_attack">
+				<power>150</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23554" toLevel="1" name="Blessing of Queen">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Increases allies' P. Def. for some time. -->
 		<icon>icon.skill1040</icon>
 		<operateType>A2</operateType>
@@ -1271,9 +1276,15 @@
 		<targetType>SELF</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>CLAN</affectObject>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23555" toLevel="2" name="(Power Smash)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<mpConsume>80</mpConsume>
@@ -1290,9 +1301,17 @@
 		<hitTime>1000</hitTime>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_p_attack">
+				<power>
+					<value level="1">35005</value>
+					<value level="2">40359</value>
+				</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23556" toLevel="1" name="Piercing Attack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Pierces the enemy and inflicts Bleed. -->
 		<icon>icon.skill0096</icon>
 		<operateType>A2</operateType>
@@ -1301,6 +1320,7 @@
 		<hitTime>1000</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<basicProperty>PHYSICAL</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1313,12 +1333,21 @@
 		<abnormalTime>10</abnormalTime>
 		<trait>BLEED</trait>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_p_attack">
+				<power>25012</power>
+			</effect>
+			<effect name="t_hp">
+				<power>-720</power>
+				<ticks>5</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23557" toLevel="2" name="Energy Burst">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Shoots energy gathered inside toward nearby enemies and momentarily decreases their Speed. -->
 		<icon>icon.skill1160</icon>
 		<operateType>A2</operateType>
@@ -1340,13 +1369,22 @@
 		<abnormalTime>6</abnormalTime>
 		<affectRange>200</affectRange>
 		<affectLimit>5-15</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_p_attack">
+				<power>20000</power>
+			</effect>
+			<effect name="p_speed">
+				<amount>-30</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23558" toLevel="1" name="(Chain Strike)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Pulls target and nearby enemies toward you. -->
 		<icon>icon.skill10016</icon>
 		<operateType>A2</operateType>
@@ -1367,13 +1405,22 @@
 		<trait>PULL</trait>
 		<affectRange>200</affectRange>
 		<affectLimit>10-10</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_pull">
+				<speed>90</speed>
+				<delay>600</delay>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23559" toLevel="1" name="Mega Storm Strike">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<mpConsume>26</mpConsume>
@@ -1390,9 +1437,14 @@
 		<isMagic>1</isMagic>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_p_attack">
+				<power>18000</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23560" toLevel="1" name="Decrease P. Def.">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- P. Def. decreased. -->
 		<icon>icon.skill0122</icon>
 		<operateType>A2</operateType>
@@ -1411,18 +1463,25 @@
 		<magicLvl>93</magicLvl>
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalTime>10</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>-23</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23561" toLevel="1" name="Massive Blow">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Inflicts physical damage and Bleed on nearby enemies. -->
 		<icon>icon.skill0096</icon>
 		<operateType>A2</operateType>
 		<castRange>1500</castRange>
 		<hitTime>5000</hitTime>
 		<effectPoint>-100</effectPoint>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1438,13 +1497,22 @@
 		<attributeValue>50</attributeValue>
 		<affectRange>1200</affectRange>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_p_attack">
+				<power>80000</power>
+			</effect>
+			<effect name="t_hp">
+				<power>-1500</power>
+				<ticks>5</ticks>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23562" toLevel="1" name="Black Out">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Knocks Down all enemies. -->
 		<icon>icon.skill10266</icon>
 		<operateType>A2</operateType>
@@ -1467,13 +1535,30 @@
 		<attributeValue>50</attributeValue>
 		<affectRange>1200</affectRange>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_knockback">
+				<distance>50</distance>
+				<speed>400</speed>
+				<knockDown>true</knockDown>
+			</effect>
+			<effect name="p_defence_trait">
+				<DERANGEMENT>100</DERANGEMENT>
+				<CHANGEBODY>100</CHANGEBODY>
+				<HOLD>100</HOLD>
+				<SLEEP>100</SLEEP>
+				<SHOCK>100</SHOCK>
+			</effect>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23563" toLevel="1" name="Body Slice">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0003</icon>
 		<operateType>A1</operateType>
 		<mpConsume>10</mpConsume>
@@ -1490,9 +1575,14 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>FAN</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
+		<effects>
+			<effect name="i_p_attack">
+				<power>80000</power>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="23564" toLevel="1" name="Agathion Cute Trick - Griffin">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="23564" toLevel="1" name="Agathion Cute Trick - Griffin ">
+		<!-- Glory Days confirmed -->
 		<!-- See Agathion's cute trick. -->
 		<icon>icon.skill_agathion_cute</icon>
 		<operateType>A1</operateType>
@@ -1509,7 +1599,7 @@
 		</conditions>
 	</skill>
 	<skill id="23565" toLevel="1" name="Griffin Agathion Special Skill: Wind Walk">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 20 min., Speed + 33. Cooldown is 1 hr. -->
 		<icon>icon.skill_agathion_special</icon>
 		<operateType>A2</operateType>
@@ -1532,9 +1622,15 @@
 		<conditions>
 			<condition name="OpNeedAgathion" />
 		</conditions>
+		<effects>
+			<effect name="p_speed">
+				<amount>33</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23566" toLevel="1" name="Blessed Griffin Egg">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>2700</hitTime>
@@ -1552,14 +1648,14 @@
 			<condition name="OpNeedAgathion" />
 		</conditions>
 		<effects>
-			<effect name="Restoration">
+			<effect name="i_restoration">
 				<itemId>23387</itemId>
 				<itemCount>1</itemCount>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="23567" toLevel="1" name="Cancel Transformation">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Cancels Transformation. -->
 		<icon>icon.skilltransform2</icon>
 		<operateType>A1</operateType>
@@ -1578,6 +1674,11 @@
 				<hasAbnormal>true</hasAbnormal>
 			</condition>
 		</targetConditions>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>TRANSFORM,-1</dispel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23568" toLevel="1" name="Monster Dueling">
 		<!-- AUTO GENERATED SKILL -->
@@ -1598,7 +1699,7 @@
 		<abnormalTime>180</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 	</skill>
@@ -1626,7 +1727,7 @@
 		<castRange>300</castRange>
 		<hitTime>1500</hitTime>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23572" toLevel="1" name="Throw Basin">
 		<!-- AUTO GENERATED SKILL -->
@@ -1637,7 +1738,7 @@
 		<hitTime>3000</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23573" toLevel="1" name="Summon Pomona">
 		<!-- AUTO GENERATED SKILL -->
@@ -1666,7 +1767,7 @@
 		<operateType>A2</operateType>
 		<castRange>300</castRange>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23577" toLevel="1" name="Agathion Cute Trick - Van Halter's Memory">
 		<!-- AUTO GENERATED SKILL -->
@@ -1681,7 +1782,7 @@
 		<icon>icon.skill1170</icon>
 		<operateType>A2</operateType>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23580" toLevel="1" name="Dimensional Poisoning">
 		<!-- AUTO GENERATED SKILL -->
@@ -1690,7 +1791,7 @@
 		<operateType>A2</operateType>
 		<castRange>600</castRange>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23581" toLevel="1" name="Poison Seed">
 		<!-- AUTO GENERATED SKILL -->
@@ -1699,7 +1800,7 @@
 		<operateType>A2</operateType>
 		<castRange>900</castRange>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23582" toLevel="1" name="Poison Zone">
 		<!-- AUTO GENERATED SKILL -->
@@ -1708,7 +1809,7 @@
 		<operateType>A2</operateType>
 		<hitTime>500</hitTime>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23583" toLevel="1" name="Aftershock">
 		<!-- AUTO GENERATED SKILL -->
@@ -1727,7 +1828,7 @@
 		<hitTime>1000</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23585" toLevel="1" name="Katura Quake Bomber">
 		<!-- AUTO GENERATED SKILL -->
@@ -1739,7 +1840,7 @@
 		<hitTime>3000</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-352</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23587" toLevel="1" name="Katura Power Slam">
 		<!-- AUTO GENERATED SKILL -->
@@ -1751,7 +1852,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-867</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23588" toLevel="1" name="Lunatic Hit">
 		<!-- AUTO GENERATED SKILL -->
@@ -1763,7 +1864,7 @@
 		<hitTime>2000</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-10000</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23589" toLevel="1" name="Lunatic Poison Blast">
 		<!-- AUTO GENERATED SKILL -->
@@ -1775,7 +1876,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>7000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23590" toLevel="1" name="Lunatic Pull">
 		<!-- AUTO GENERATED SKILL -->
@@ -1787,7 +1888,7 @@
 		<coolTime>1000</coolTime>
 		<reuseDelay>45000</reuseDelay>
 		<effectPoint>-2400</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23591" toLevel="1" name="Banished Prey">
 		<!-- AUTO GENERATED SKILL -->
@@ -1800,7 +1901,7 @@
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-687</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23592" toLevel="1" name="Weakened Blood Seal">
 		<!-- AUTO GENERATED SKILL -->
@@ -1809,7 +1910,7 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23593" toLevel="1" name="Burning Seal">
 		<!-- AUTO GENERATED SKILL -->
@@ -1869,7 +1970,7 @@
 		<mpConsume>142</mpConsume>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-635</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="23599" toLevel="1" name="P. Atk./ Atk. Spd. Boost">
 		<!-- AUTO GENERATED SKILL -->

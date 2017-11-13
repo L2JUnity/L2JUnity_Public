@@ -24,14 +24,9 @@ package org.l2junity.gameserver.enums;
 public enum AISkillScope
 {
 	BUFF,
-	DEBUFF,
-	NEGATIVE,
-	ATTACK,
 	IMMOBILIZE,
 	HEAL,
-	RES,
 	COT,
-	UNIVERSAL,
 	LONG_RANGE,
 	SHORT_RANGE,
 	GENERAL,

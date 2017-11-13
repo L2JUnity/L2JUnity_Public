@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.PartyDistributionType;
 import org.l2junity.gameserver.model.BlockList;
 import org.l2junity.gameserver.model.Party;
@@ -26,6 +26,9 @@ import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.PartyRequest;
 import org.l2junity.gameserver.model.ceremonyofchaos.CeremonyOfChaosEvent;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerInviteToParty;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.AskJoinParty;
@@ -70,6 +73,12 @@ public final class RequestJoinParty implements IClientIncomingPacket
 		if ((target.getClient() == null) || target.getClient().isDetached())
 		{
 			requestor.sendMessage("Player is in offline mode.");
+			return;
+		}
+		
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerInviteToParty(requestor, target), requestor, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
 			return;
 		}
 		
@@ -171,7 +180,7 @@ public final class RequestJoinParty implements IClientIncomingPacket
 		{
 			requestor.sendPacket(SystemMessageId.ONLY_THE_LEADER_CAN_GIVE_OUT_INVITATIONS);
 		}
-		else if (party.getMemberCount() >= Config.ALT_PARTY_MAX_MEMBERS)
+		else if (party.getMemberCount() >= PlayerConfig.ALT_PARTY_MAX_MEMBERS)
 		{
 			requestor.sendPacket(SystemMessageId.THE_PARTY_IS_FULL);
 		}

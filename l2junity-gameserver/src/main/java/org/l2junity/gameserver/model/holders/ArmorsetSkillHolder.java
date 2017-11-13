@@ -29,6 +29,7 @@ import org.l2junity.gameserver.model.items.instance.ItemInstance;
  */
 public class ArmorsetSkillHolder extends SkillHolder
 {
+	private static final long serialVersionUID = 3681506293996190683L;
 	private final int _minimumPieces;
 	private final int _minEnchant;
 	private final boolean _isOptional;

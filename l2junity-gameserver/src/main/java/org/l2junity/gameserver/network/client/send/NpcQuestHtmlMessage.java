@@ -48,6 +48,12 @@ public final class NpcQuestHtmlMessage extends AbstractHtmlPacket
 	}
 	
 	@Override
+	protected String getChatName()
+	{
+		return "Quest HTML"; // TODO confirm me please...
+	}
+	
+	@Override
 	public HtmlActionScope getScope()
 	{
 		return HtmlActionScope.NPC_QUEST_HTML;

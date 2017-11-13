@@ -18,7 +18,9 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import java.util.concurrent.TimeUnit;
+
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.data.xml.impl.ClanHallData;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.FortManager;
@@ -90,7 +92,7 @@ public final class RequestRestartPoint implements IClientIncomingPacket
 		}
 		else if (!activeChar.isDead())
 		{
-			_log.warn("Living player [" + activeChar.getName() + "] called RestartPointPacket! Ban this player!");
+			LOGGER.warn("Living player [" + activeChar.getName() + "] called RestartPointPacket! Ban this player!");
 			return;
 		}
 		
@@ -100,7 +102,7 @@ public final class RequestRestartPoint implements IClientIncomingPacket
 			if ((activeChar.getClan() != null) && castle.getSiege().checkIsAttacker(activeChar.getClan()))
 			{
 				// Schedule respawn delay for attacker
-				ThreadPoolManager.getInstance().scheduleGeneral(new DeathTask(activeChar), castle.getSiege().getAttackerRespawnDelay());
+				ThreadPool.schedule(new DeathTask(activeChar), castle.getSiege().getAttackerRespawnDelay(), TimeUnit.MILLISECONDS);
 				if (castle.getSiege().getAttackerRespawnDelay() > 0)
 				{
 					activeChar.sendMessage("You will be re-spawned in " + (castle.getSiege().getAttackerRespawnDelay() / 1000) + " seconds");
@@ -129,7 +131,7 @@ public final class RequestRestartPoint implements IClientIncomingPacket
 			{
 				if ((activeChar.getClan() == null) || (activeChar.getClan().getHideoutId() == 0))
 				{
-					_log.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - To Clanhall and he doesn't have Clanhall!");
+					LOGGER.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - To Clanhall and he doesn't have Clanhall!");
 					return;
 				}
 				loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, TeleportWhereType.CLANHALL);
@@ -157,7 +159,7 @@ public final class RequestRestartPoint implements IClientIncomingPacket
 					}
 					else
 					{
-						_log.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - To Castle and he doesn't have Castle!");
+						LOGGER.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - To Castle and he doesn't have Castle!");
 						return;
 					}
 				}
@@ -180,7 +182,7 @@ public final class RequestRestartPoint implements IClientIncomingPacket
 			{
 				if ((activeChar.getClan() == null) || (activeChar.getClan().getFortId() == 0))
 				{
-					_log.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - To Fortress and he doesn't have Fortress!");
+					LOGGER.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - To Fortress and he doesn't have Fortress!");
 					return;
 				}
 				loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, TeleportWhereType.FORTRESS);
@@ -209,7 +211,7 @@ public final class RequestRestartPoint implements IClientIncomingPacket
 				
 				if (((siegeClan == null) || siegeClan.getFlag().isEmpty()))
 				{
-					_log.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - To Siege HQ and he doesn't have Siege HQ!");
+					LOGGER.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - To Siege HQ and he doesn't have Siege HQ!");
 					return;
 				}
 				loc = MapRegionManager.getInstance().getTeleToLocation(activeChar, TeleportWhereType.SIEGEFLAG);
@@ -219,7 +221,7 @@ public final class RequestRestartPoint implements IClientIncomingPacket
 			{
 				if (!activeChar.isGM() && !activeChar.getInventory().haveItemForSelfResurrection())
 				{
-					_log.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - Fixed and he isn't festival participant!");
+					LOGGER.warn("Player [" + activeChar.getName() + "] called RestartPointPacket - Fixed and he isn't festival participant!");
 					return;
 				}
 				if (activeChar.isGM() || activeChar.destroyItemByItemId("Feather", 10649, 1, activeChar, false) || activeChar.destroyItemByItemId("Feather", 13300, 1, activeChar, false) || activeChar.destroyItemByItemId("Feather", 13128, 1, activeChar, false))

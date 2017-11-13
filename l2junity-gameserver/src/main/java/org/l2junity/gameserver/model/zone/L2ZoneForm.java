@@ -18,6 +18,8 @@
  */
 package org.l2junity.gameserver.model.zone;
 
+import java.awt.geom.Line2D;
+
 import org.l2junity.gameserver.idfactory.IdFactory;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
 import org.l2junity.gameserver.model.Location;
@@ -31,11 +33,11 @@ public abstract class L2ZoneForm
 {
 	protected static final int STEP = 10;
 	
-	public abstract boolean isInsideZone(int x, int y, int z);
+	public abstract boolean isInsideZone(double x, double y, double z);
 	
-	public abstract boolean intersectsRectangle(int x1, int x2, int y1, int y2);
+	public abstract boolean intersectsRectangle(double x1, double x2, double y1, double y2);
 	
-	public abstract double getDistanceToZone(int x, int y);
+	public abstract double getDistanceToZone(double x, double y);
 	
 	public abstract int getLowZ(); // Support for the ability to extract the z coordinates of zones.
 	
@@ -43,14 +45,14 @@ public abstract class L2ZoneForm
 	
 	// landing coordinates.
 	
-	protected boolean lineSegmentsIntersect(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2)
+	protected boolean lineSegmentsIntersect(double ax1, double ay1, double ax2, double ay2, double bx1, double by1, double bx2, double by2)
 	{
-		return java.awt.geom.Line2D.linesIntersect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2);
+		return Line2D.linesIntersect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2);
 	}
 	
-	public abstract void visualizeZone(int z);
+	public abstract void visualizeZone(double z);
 	
-	protected final void dropDebugItem(int itemId, int num, int x, int y, int z)
+	protected final void dropDebugItem(int itemId, int num, double x, double y, double z)
 	{
 		ItemInstance item = new ItemInstance(IdFactory.getInstance().getNextId(), itemId);
 		item.setCount(num);

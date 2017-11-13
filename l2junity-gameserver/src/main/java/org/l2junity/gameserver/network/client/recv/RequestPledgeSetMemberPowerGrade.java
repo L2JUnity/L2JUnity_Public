@@ -23,6 +23,9 @@ import org.l2junity.gameserver.model.ClanPrivilege;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
+import org.l2junity.gameserver.network.client.send.PledgeShowMemberListUpdate;
+import org.l2junity.gameserver.network.client.send.SystemMessage;
+import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
 
 /**
@@ -73,15 +76,16 @@ public final class RequestPledgeSetMemberPowerGrade implements IClientIncomingPa
 			return;
 		}
 		
-		if (member.getPledgeType() == L2Clan.SUBUNIT_ACADEMY)
+		if (member.isAcademyMember())
 		{
 			// also checked from client side
-			activeChar.sendMessage("You cannot change academy member grade");
+			activeChar.sendPacket(SystemMessageId.THAT_PRIVILEGE_CANNOT_BE_GRANTED_TO_A_CLAN_ACADEMY_MEMBER);
 			return;
 		}
 		
 		member.setPowerGrade(_powerGrade);
-		clan.broadcastClanStatus();
+		clan.broadcastToOnlineMembers(new PledgeShowMemberListUpdate(member));
+		clan.broadcastToOnlineMembers(SystemMessage.getSystemMessage(SystemMessageId.CLAN_MEMBER_C1_S_PRIVILEGE_LEVEL_HAS_BEEN_CHANGED_TO_S2).addString(member.getName()).addInt(_powerGrade));
 	}
 	
 }

@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.function.Function;
 
 import org.l2junity.gameserver.model.OneDayRewardDataHolder;
-import org.l2junity.gameserver.scripting.ScriptEngineManager;
 
 /**
  * @author Sdw
@@ -47,19 +46,10 @@ public class OneDayRewardHandler
 		return _handlerFactories.size();
 	}
 	
-	public void executeScript()
+	protected OneDayRewardHandler()
 	{
-		try
-		{
-			
-			ScriptEngineManager.getInstance().executeOneDayRewardMasterHandler();
-		}
-		catch (Exception e)
-		{
-			throw new Error("Problems while running OneDayRewardMasterHandler", e);
-		}
 	}
-	
+
 	public static OneDayRewardHandler getInstance()
 	{
 		return SingletonHolder._instance;

@@ -19,7 +19,7 @@
 package org.l2junity.gameserver.model.zone.form;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GeoData;
+import org.l2junity.gameserver.geodata.GeoData;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
 import org.l2junity.gameserver.model.zone.L2ZoneForm;
@@ -43,7 +43,7 @@ public class ZoneCylinder extends L2ZoneForm
 	}
 	
 	@Override
-	public boolean isInsideZone(int x, int y, int z)
+	public boolean isInsideZone(double x, double y, double z)
 	{
 		if (((Math.pow(_x - x, 2) + Math.pow(_y - y, 2)) > _radS) || (z < _z1) || (z > _z2))
 		{
@@ -53,7 +53,7 @@ public class ZoneCylinder extends L2ZoneForm
 	}
 	
 	@Override
-	public boolean intersectsRectangle(int ax1, int ax2, int ay1, int ay2)
+	public boolean intersectsRectangle(double ax1, double ax2, double ay1, double ay2)
 	{
 		// Circles point inside the rectangle?
 		if ((_x > ax1) && (_x < ax2) && (_y > ay1) && (_y < ay2))
@@ -107,7 +107,7 @@ public class ZoneCylinder extends L2ZoneForm
 	}
 	
 	@Override
-	public double getDistanceToZone(int x, int y)
+	public double getDistanceToZone(double x, double y)
 	{
 		return (Math.sqrt((Math.pow(_x - x, 2) + Math.pow(_y - y, 2))) - _rad);
 	}
@@ -126,7 +126,7 @@ public class ZoneCylinder extends L2ZoneForm
 	}
 	
 	@Override
-	public void visualizeZone(int z)
+	public void visualizeZone(double z)
 	{
 		int count = (int) ((2 * Math.PI * _rad) / STEP);
 		double angle = (2 * Math.PI) / count;

@@ -18,11 +18,14 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
+import org.l2junity.gameserver.data.xml.impl.RecipeData;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.holders.RecipeHolder;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.RecipeShopItemInfo;
+import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
 
 /**
@@ -51,12 +54,25 @@ public final class RequestRecipeShopMakeInfo implements IClientIncomingPacket
 			return;
 		}
 		
-		final PlayerInstance shop = World.getInstance().getPlayer(_playerObjectId);
-		if ((shop == null) || (shop.getPrivateStoreType() != PrivateStoreType.MANUFACTURE))
+		final PlayerInstance manufacturer = World.getInstance().getPlayer(_playerObjectId);
+		if ((manufacturer == null) || (manufacturer.getPrivateStoreType() != PrivateStoreType.MANUFACTURE))
 		{
 			return;
 		}
 		
-		client.sendPacket(new RecipeShopItemInfo(shop, _recipeId));
+		final RecipeHolder recipe = RecipeData.getInstance().getRecipe(_recipeId);
+		if (recipe == null)
+		{
+			player.sendPacket(SystemMessageId.THE_RECIPE_IS_INCORRECT);
+			return;
+		}
+		
+		final Long manufactureRecipeCost = manufacturer.getManufactureItems().get(_recipeId);
+		if (manufactureRecipeCost == null)
+		{
+			return;
+		}
+		
+		client.sendPacket(new RecipeShopItemInfo(manufacturer, _recipeId, manufactureRecipeCost, recipe.getMaxOffering()));
 	}
 }

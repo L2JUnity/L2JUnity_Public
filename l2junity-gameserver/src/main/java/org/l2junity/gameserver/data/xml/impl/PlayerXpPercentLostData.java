@@ -18,10 +18,15 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.Arrays;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -36,23 +41,23 @@ public final class PlayerXpPercentLostData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PlayerXpPercentLostData.class);
 	
-	private final int _maxlevel = ExperienceData.getInstance().getMaxLevel();
-	private final double[] _playerXpPercentLost = new double[_maxlevel + 1];
+	private double[] _playerXpPercentLost = new double[ExperienceData.getInstance().getMaxLevel() + 1];
 	
 	protected PlayerXpPercentLostData()
 	{
 		Arrays.fill(_playerXpPercentLost, 1.);
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("xploss")
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ExperienceData.class))
+	protected void load() throws Exception
 	{
+		_playerXpPercentLost = new double[ExperienceData.getInstance().getMaxLevel() + 1];
 		parseDatapackFile("data/stats/chars/playerXpPercentLost.xml");
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -63,7 +68,12 @@ public final class PlayerXpPercentLostData implements IGameXmlReader
 					if ("xpLost".equalsIgnoreCase(d.getNodeName()))
 					{
 						NamedNodeMap attrs = d.getAttributes();
-						_playerXpPercentLost[parseInteger(attrs, "level")] = parseDouble(attrs, "val");
+						
+						final int level = parseInteger(attrs, "level");
+						if (level < _playerXpPercentLost.length)
+						{
+							_playerXpPercentLost[level] = parseDouble(attrs, "val");
+						}
 					}
 				}
 			}
@@ -72,10 +82,10 @@ public final class PlayerXpPercentLostData implements IGameXmlReader
 	
 	public double getXpPercent(final int level)
 	{
-		if (level > _maxlevel)
+		if (level >= _playerXpPercentLost.length)
 		{
 			LOGGER.warn("Require to high level inside PlayerXpPercentLostData (" + level + ")");
-			return _playerXpPercentLost[_maxlevel];
+			return _playerXpPercentLost[_playerXpPercentLost.length - 1];
 		}
 		return _playerXpPercentLost[level];
 	}
@@ -84,6 +94,7 @@ public final class PlayerXpPercentLostData implements IGameXmlReader
 	 * Gets the single instance of PlayerXpPercentLostData.
 	 * @return single instance of PlayerXpPercentLostData.
 	 */
+	@InstanceGetter
 	public static PlayerXpPercentLostData getInstance()
 	{
 		return SingletonHolder._instance;

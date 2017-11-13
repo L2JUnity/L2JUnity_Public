@@ -18,11 +18,14 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.base.ClassInfo;
 import org.slf4j.Logger;
@@ -32,7 +35,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 /**
- * Loads the the list of classes and it's info.
+ * Loads the the list of classes and its info.
  * @author Zoey76
  */
 public final class ClassListData implements IGameXmlReader
@@ -46,11 +49,10 @@ public final class ClassListData implements IGameXmlReader
 	 */
 	protected ClassListData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_classData.clear();
 		parseDatapackFile("data/stats/chars/classList.xml");
@@ -58,7 +60,7 @@ public final class ClassListData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		NamedNodeMap attrs;
 		Node attr;
@@ -85,6 +87,11 @@ public final class ClassListData implements IGameXmlReader
 				}
 			}
 		}
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _classData.size();
 	}
 	
 	/**
@@ -121,6 +128,7 @@ public final class ClassListData implements IGameXmlReader
 	 * Gets the single instance of ClassListData.
 	 * @return single instance of ClassListData
 	 */
+	@InstanceGetter
 	public static ClassListData getInstance()
 	{
 		return SingletonHolder._instance;

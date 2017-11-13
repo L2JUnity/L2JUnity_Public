@@ -31,11 +31,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.enums.ItemLocation;
 import org.l2junity.gameserver.enums.MailType;
 import org.l2junity.gameserver.model.actor.Npc;
@@ -62,7 +63,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class CommissionManager
 {
-	private static final Logger _log = LoggerFactory.getLogger(CommissionManager.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CommissionManager.class);
 	
 	private static final int INTERACTION_DISTANCE = 250;
 	private static final int ITEMS_LIMIT_PER_REQUEST = 999;
@@ -105,7 +106,7 @@ public final class CommissionManager
 					final ItemInstance itemInstance = itemInstances.get(rs.getInt("item_object_id"));
 					if (itemInstance == null)
 					{
-						_log.warn(getClass().getSimpleName() + ": Failed loading commission item with commission id " + commissionId + " because item instance does not exist or failed to load.");
+						LOGGER.warn("Failed loading commission item with commission id " + commissionId + " because item instance does not exist or failed to load.");
 						continue;
 					}
 					final CommissionItem commissionItem = new CommissionItem(commissionId, itemInstance, rs.getLong("price_per_unit"), rs.getTimestamp("start_time").toInstant(), rs.getByte("duration_in_days"));
@@ -116,14 +117,14 @@ public final class CommissionManager
 					}
 					else
 					{
-						commissionItem.setSaleEndTask(ThreadPoolManager.getInstance().scheduleGeneral(() -> expireSale(commissionItem), Duration.between(Instant.now(), commissionItem.getEndTime()).toMillis()));
+						commissionItem.setSaleEndTask(ThreadPool.schedule(() -> expireSale(commissionItem), Duration.between(Instant.now(), commissionItem.getEndTime()).toMillis(), TimeUnit.MILLISECONDS));
 					}
 				}
 			}
 		}
 		catch (SQLException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Failed loading commission items.", e);
+			LOGGER.warn("Failed loading commission items.", e);
 		}
 	}
 	
@@ -261,7 +262,7 @@ public final class CommissionManager
 					if (rs.next())
 					{
 						final CommissionItem commissionItem = new CommissionItem(rs.getLong(1), itemInstance, pricePerUnit, startTime, durationInDays);
-						final ScheduledFuture<?> saleEndTask = ThreadPoolManager.getInstance().scheduleGeneral(() -> expireSale(commissionItem), Duration.between(Instant.now(), commissionItem.getEndTime()).toMillis());
+						final ScheduledFuture<?> saleEndTask = ThreadPool.schedule(() -> expireSale(commissionItem), Duration.between(Instant.now(), commissionItem.getEndTime()).toMillis(), TimeUnit.MILLISECONDS);
 						commissionItem.setSaleEndTask(saleEndTask);
 						_commissionItems.put(commissionItem.getCommissionId(), commissionItem);
 						player.getLastCommissionInfos().put(itemInstance.getId(), new ExResponseCommissionInfo(itemInstance.getId(), pricePerUnit, itemCount, (byte) ((durationInDays - 1) / 2)));
@@ -272,7 +273,7 @@ public final class CommissionManager
 			}
 			catch (SQLException e)
 			{
-				_log.warn(getClass().getSimpleName() + ": Failed inserting commission item. ItemInstance: " + itemInstance, e);
+				LOGGER.warn("Failed inserting commission item. ItemInstance: " + itemInstance, e);
 				player.sendPacket(SystemMessageId.THE_ITEM_HAS_FAILED_TO_BE_REGISTERED);
 				player.sendPacket(ExResponseCommissionRegister.FAILED);
 			}
@@ -411,7 +412,7 @@ public final class CommissionManager
 		}
 		catch (SQLException e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Failed deleting commission item. Commission ID: " + commissionId, e);
+			LOGGER.warn("Failed deleting commission item. Commission ID: " + commissionId, e);
 		}
 		return false;
 	}
@@ -458,7 +459,7 @@ public final class CommissionManager
 		final Npc npc = player.getLastFolkNPC();
 		if ((npc != null) && (npc instanceof CommissionManagerInstance))
 		{
-			return npc.calculateDistance(player, true, false) <= INTERACTION_DISTANCE;
+			return npc.isInRadius3d(player, INTERACTION_DISTANCE);
 		}
 		return false;
 	}

@@ -19,9 +19,9 @@
 package org.l2junity.gameserver.network.client.recv;
 
 import static org.l2junity.gameserver.model.itemcontainer.Inventory.ADENA_ID;
-import static org.l2junity.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.sql.impl.CharNameTable;
 import org.l2junity.gameserver.data.xml.impl.AdminData;
 import org.l2junity.gameserver.enums.PrivateStoreType;
@@ -30,6 +30,8 @@ import org.l2junity.gameserver.model.AccessLevel;
 import org.l2junity.gameserver.model.BlockList;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.entity.Message;
+import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.itemcontainer.Mail;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.zone.ZoneId;
@@ -54,9 +56,6 @@ public final class RequestSendPost implements IClientIncomingPacket
 	private static final int INBOX_SIZE = 240;
 	private static final int OUTBOX_SIZE = 240;
 	
-	private static final int MESSAGE_FEE = 100;
-	private static final int MESSAGE_FEE_PER_SLOT = 1000; // 100 adena message fee + 1000 per each item slot
-	
 	private String _receiver;
 	private boolean _isCod;
 	private String _subject;
@@ -77,7 +76,7 @@ public final class RequestSendPost implements IClientIncomingPacket
 		_text = packet.readS();
 		
 		int attachCount = packet.readD();
-		if ((attachCount < 0) || (attachCount > Config.MAX_ITEM_IN_PACKET) || (((attachCount * BATCH_LENGTH) + 8) != packet.getReadableBytes()))
+		if ((attachCount < 0) || (attachCount > PlayerConfig.MAX_ITEM_IN_PACKET) || (((attachCount * BATCH_LENGTH) + 8) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -105,7 +104,7 @@ public final class RequestSendPost implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		if (!Config.ALLOW_MAIL)
+		if (!GeneralConfig.ALLOW_MAIL)
 		{
 			return;
 		}
@@ -116,7 +115,7 @@ public final class RequestSendPost implements IClientIncomingPacket
 			return;
 		}
 		
-		if (!Config.ALLOW_ATTACHMENTS)
+		if (!GeneralConfig.ALLOW_ATTACHMENTS)
 		{
 			_items = null;
 			_isCod = false;
@@ -178,7 +177,7 @@ public final class RequestSendPost implements IClientIncomingPacket
 			return;
 		}
 		
-		if ((_reqAdena < 0) || (_reqAdena > MAX_ADENA))
+		if (!ItemContainer.validateCount(Inventory.ADENA_ID, _reqAdena))
 		{
 			return;
 		}
@@ -221,7 +220,7 @@ public final class RequestSendPost implements IClientIncomingPacket
 			return;
 		}
 		
-		if (activeChar.isJailed() && ((Config.JAIL_DISABLE_TRANSACTION && (_items != null)) || Config.JAIL_DISABLE_CHAT))
+		if (activeChar.isJailed() && ((GeneralConfig.JAIL_DISABLE_TRANSACTION && (_items != null)) || GeneralConfig.JAIL_DISABLE_CHAT))
 		{
 			activeChar.sendPacket(SystemMessageId.YOU_CANNOT_FORWARD_IN_A_NON_PEACE_ZONE_LOCATION);
 			return;
@@ -265,7 +264,7 @@ public final class RequestSendPost implements IClientIncomingPacket
 	private boolean removeItems(PlayerInstance player, Message msg)
 	{
 		long currentAdena = player.getAdena();
-		long fee = MESSAGE_FEE;
+		long fee = PlayerConfig.ALT_MESSAGE_FEE;
 		
 		if (_items != null)
 		{
@@ -279,7 +278,7 @@ public final class RequestSendPost implements IClientIncomingPacket
 					return false;
 				}
 				
-				fee += MESSAGE_FEE_PER_SLOT;
+				fee += PlayerConfig.ALT_MESSAGE_FEE_PER_SLOT;
 				
 				if (item.getId() == ADENA_ID)
 				{
@@ -309,21 +308,21 @@ public final class RequestSendPost implements IClientIncomingPacket
 		}
 		
 		// Proceed to the transfer
-		InventoryUpdate playerIU = Config.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
+		InventoryUpdate playerIU = GeneralConfig.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
 		for (AttachmentItem i : _items)
 		{
 			// Check validity of requested item
 			ItemInstance oldItem = player.checkItemManipulation(i.getObjectId(), i.getCount(), "attach");
 			if ((oldItem == null) || !oldItem.isTradeable() || oldItem.isEquipped())
 			{
-				_log.warn("Error adding attachment for char " + player.getName() + " (olditem == null)");
+				LOGGER.warn("Error adding attachment for char " + player.getName() + " (olditem == null)");
 				return false;
 			}
 			
 			final ItemInstance newItem = player.getInventory().transferItem("SendMail", i.getObjectId(), i.getCount(), attachments, player, msg.getReceiverName() + "[" + msg.getReceiverId() + "]");
 			if (newItem == null)
 			{
-				_log.warn("Error adding attachment for char " + player.getName() + " (newitem == null)");
+				LOGGER.warn("Error adding attachment for char " + player.getName() + " (newitem == null)");
 				continue;
 			}
 			newItem.setItemLocation(newItem.getItemLocation(), msg.getId());

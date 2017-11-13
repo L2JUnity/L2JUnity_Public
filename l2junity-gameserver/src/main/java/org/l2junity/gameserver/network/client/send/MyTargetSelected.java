@@ -48,6 +48,7 @@ public class MyTargetSelected implements IClientOutgoingPacket
 	{
 		OutgoingPackets.MY_TARGET_SELECTED.writeId(packet);
 		
+		packet.writeD(0x01); // if 0, target is set to null in client
 		packet.writeD(_objectId);
 		packet.writeH(_color);
 		packet.writeD(0x00);

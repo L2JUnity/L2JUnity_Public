@@ -18,9 +18,10 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.NpcConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.ClanHallData;
 import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.FortManager;
@@ -32,8 +33,8 @@ import org.l2junity.gameserver.model.residences.AbstractResidence;
 import org.l2junity.gameserver.model.residences.ResidenceFunction;
 import org.l2junity.gameserver.model.residences.ResidenceFunctionType;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 import org.l2junity.gameserver.model.zone.ZoneId;
 import org.l2junity.gameserver.model.zone.type.CastleZone;
 import org.l2junity.gameserver.model.zone.type.ClanHallZone;
@@ -46,12 +47,12 @@ import org.l2junity.gameserver.model.zone.type.MotherTreeZone;
 public class RegenMPFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
-		double baseValue = creature.isPlayer() ? creature.getActingPlayer().getTemplate().getBaseMpRegen(creature.getLevel()) : creature.getTemplate().getBaseMpReg();
-		baseValue *= creature.isRaid() ? Config.RAID_MP_REGEN_MULTIPLIER : Config.MP_REGEN_MULTIPLIER;
+		double baseValue = creature.getStat().getValue(DoubleStat.REGENERATE_MP_RATE_ADD, creature.isPlayer() ? creature.getActingPlayer().getTemplate().getBaseMpRegen(creature.getLevel()) : creature.getTemplate().getBaseMpReg());
+		baseValue *= creature.isRaid() ? NpcConfig.RAID_MP_REGEN_MULTIPLIER : PlayerConfig.MP_REGEN_MULTIPLIER;
 		
 		if (creature.isPlayer())
 		{
@@ -102,7 +103,7 @@ public class RegenMPFinalizer implements IStatsFunction
 				int fortIndex = player.getClan().getFortId();
 				if ((fortIndex > 0) && (fortIndex == posFortIndex))
 				{
-					final AbstractResidence residense = FortManager.getInstance().getFortById(player.getClan().getCastleId());
+					final AbstractResidence residense = FortManager.getInstance().getFortById(player.getClan().getFortId());
 					if (residense != null)
 					{
 						final ResidenceFunction func = residense.getFunction(ResidenceFunctionType.MP_REGEN);
@@ -141,9 +142,9 @@ public class RegenMPFinalizer implements IStatsFunction
 		}
 		else if (creature.isPet())
 		{
-			baseValue = ((L2PetInstance) creature).getPetLevelData().getPetRegenMP() * Config.PET_MP_REGEN_MULTIPLIER;
+			baseValue = ((L2PetInstance) creature).getPetLevelData().getPetRegenMP() * NpcConfig.PET_MP_REGEN_MULTIPLIER;
 		}
 		
-		return Stats.defaultValue(creature, stat, baseValue);
+		return DoubleStat.defaultValue(creature, stat, baseValue);
 	}
 }

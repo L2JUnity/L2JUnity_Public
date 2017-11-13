@@ -18,7 +18,9 @@
  */
 package org.l2junity.gameserver.model.actor.tasks.npc.trap;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import java.util.concurrent.TimeUnit;
+
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.actor.instance.L2TrapInstance;
 
 /**
@@ -40,7 +42,7 @@ public class TrapTriggerTask implements Runnable
 		try
 		{
 			_trap.doCast(_trap.getSkill());
-			ThreadPoolManager.getInstance().scheduleGeneral(new TrapUnsummonTask(_trap), _trap.getSkill().getHitTime() + 300);
+			ThreadPool.schedule(new TrapUnsummonTask(_trap), _trap.getSkill().getHitTime() + 300, TimeUnit.MILLISECONDS);
 		}
 		catch (Exception e)
 		{

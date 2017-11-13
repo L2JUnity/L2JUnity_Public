@@ -20,6 +20,7 @@ package org.l2junity.gameserver.network.client.send;
 
 import java.util.Collection;
 
+import org.l2junity.gameserver.model.actor.Summon;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
@@ -30,14 +31,17 @@ import org.l2junity.network.PacketWriter;
  */
 public class ExBuySellList extends AbstractItemPacket
 {
-	private Collection<ItemInstance> _sellList = null;
+	private final Collection<ItemInstance> _sellList;
 	private Collection<ItemInstance> _refundList = null;
 	private final boolean _done;
-	private double _taxRate = 1;
+	private final int _inventorySlots;
+	private double _castleTaxRate = 1;
 	
 	public ExBuySellList(PlayerInstance player, boolean done)
 	{
-		_sellList = player.getInventory().getAvailableItems(false, false, false);
+		final Summon pet = player.getPet();
+		_sellList = player.getInventory().getItems(item -> !item.isEquipped() && item.isSellable() && ((pet == null) || (item.getObjectId() != pet.getControlObjectId())));
+		_inventorySlots = player.getInventory().getItems((item) -> !item.isQuestItem()).size();
 		if (player.hasRefund())
 		{
 			_refundList = player.getRefund().getItems();
@@ -45,10 +49,10 @@ public class ExBuySellList extends AbstractItemPacket
 		_done = done;
 	}
 	
-	public ExBuySellList(PlayerInstance player, boolean done, double taxRate)
+	public ExBuySellList(PlayerInstance player, boolean done, double castleTaxRate)
 	{
 		this(player, done);
-		_taxRate = 1 - taxRate;
+		_castleTaxRate = 1 - castleTaxRate;
 	}
 	
 	@Override
@@ -57,7 +61,7 @@ public class ExBuySellList extends AbstractItemPacket
 		OutgoingPackets.EX_BUY_SELL_LIST.writeId(packet);
 		
 		packet.writeD(0x01); // Type SELL
-		packet.writeD(0x00); // TODO: inventory count
+		packet.writeD(_inventorySlots);
 		
 		if ((_sellList != null))
 		{
@@ -65,7 +69,7 @@ public class ExBuySellList extends AbstractItemPacket
 			for (ItemInstance item : _sellList)
 			{
 				writeItem(packet, item);
-				packet.writeQ((long) ((item.getItem().getReferencePrice() / 2) * _taxRate));
+				packet.writeQ((long) ((item.getItem().getReferencePrice() / 2) * _castleTaxRate));
 			}
 		}
 		else

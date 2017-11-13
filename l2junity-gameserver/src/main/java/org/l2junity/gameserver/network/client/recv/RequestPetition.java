@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.AdminData;
 import org.l2junity.gameserver.instancemanager.PetitionManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -77,7 +77,7 @@ public final class RequestPetition implements IClientIncomingPacket
 			return;
 		}
 		
-		if (PetitionManager.getInstance().getPendingPetitionCount() == Config.MAX_PETITIONS_PENDING)
+		if (PetitionManager.getInstance().getPendingPetitionCount() == PlayerConfig.MAX_PETITIONS_PENDING)
 		{
 			client.sendPacket(SystemMessageId.THE_PETITION_SERVICE_IS_CURRENTLY_UNAVAILABLE_PLEASE_SEND_A_SUPPORT_TICKET_BY_VISITING_HTTPS_SUPPORT_LINEAGE2_COM);
 			return;
@@ -85,7 +85,7 @@ public final class RequestPetition implements IClientIncomingPacket
 		
 		int totalPetitions = PetitionManager.getInstance().getPlayerTotalPetitionCount(activeChar) + 1;
 		
-		if (totalPetitions > Config.MAX_PETITIONS_PER_PLAYER)
+		if (totalPetitions > PlayerConfig.MAX_PETITIONS_PER_PLAYER)
 		{
 			SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.WE_HAVE_RECEIVED_S1_PETITIONS_FROM_YOU_TODAY_AND_THAT_IS_THE_MAXIMUM_THAT_YOU_CAN_SUBMIT_IN_ONE_DAY_YOU_CANNOT_SUBMIT_ANY_MORE_PETITIONS);
 			sm.addInt(totalPetitions);
@@ -107,7 +107,7 @@ public final class RequestPetition implements IClientIncomingPacket
 		
 		sm = SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_SUBMITTED_S1_PETITION_S_NYOU_MAY_SUBMIT_S2_MORE_PETITION_S_TODAY);
 		sm.addInt(totalPetitions);
-		sm.addInt(Config.MAX_PETITIONS_PER_PLAYER - totalPetitions);
+		sm.addInt(PlayerConfig.MAX_PETITIONS_PER_PLAYER - totalPetitions);
 		client.sendPacket(sm);
 		
 		sm = SystemMessage.getSystemMessage(SystemMessageId.THERE_ARE_S1_PETITIONS_CURRENTLY_ON_THE_WAITING_LIST);

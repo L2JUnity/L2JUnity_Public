@@ -34,13 +34,16 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.taskmanager.tasks.TaskBirthday;
 import org.l2junity.gameserver.taskmanager.tasks.TaskCleanUp;
 import org.l2junity.gameserver.taskmanager.tasks.TaskRestart;
-import org.l2junity.gameserver.taskmanager.tasks.TaskScript;
 import org.l2junity.gameserver.taskmanager.tasks.TaskShutdown;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,6 +67,11 @@ public final class TaskManager
 	};
 	
 	protected TaskManager()
+	{
+	}
+	
+	@Load(group = LoadGroup.class)
+	private void load()
 	{
 		initializate();
 		startAllTasks();
@@ -180,7 +188,6 @@ public final class TaskManager
 		registerTask(new TaskBirthday());
 		registerTask(new TaskCleanUp());
 		registerTask(new TaskRestart());
-		registerTask(new TaskScript());
 		registerTask(new TaskShutdown());
 	}
 	
@@ -227,7 +234,6 @@ public final class TaskManager
 	
 	private boolean launchTask(ExecutedTask task)
 	{
-		final ThreadPoolManager scheduler = ThreadPoolManager.getInstance();
 		final TaskTypes type = task.getType();
 		long delay, interval;
 		switch (type)
@@ -237,12 +243,12 @@ public final class TaskManager
 				return false;
 			case TYPE_SHEDULED:
 				delay = Long.valueOf(task.getParams()[0]);
-				task.scheduled = scheduler.scheduleGeneral(task, delay);
+				task.scheduled = ThreadPool.schedule(task, delay, TimeUnit.MILLISECONDS);
 				return true;
 			case TYPE_FIXED_SHEDULED:
 				delay = Long.valueOf(task.getParams()[0]);
 				interval = Long.valueOf(task.getParams()[1]);
-				task.scheduled = scheduler.scheduleGeneralAtFixedRate(task, delay, interval);
+				task.scheduled = ThreadPool.scheduleAtFixedRate(task, delay, interval, TimeUnit.MILLISECONDS);
 				return true;
 			case TYPE_TIME:
 				try
@@ -251,7 +257,7 @@ public final class TaskManager
 					long diff = desired.getTime() - System.currentTimeMillis();
 					if (diff >= 0)
 					{
-						task.scheduled = scheduler.scheduleGeneral(task, diff);
+						task.scheduled = ThreadPool.schedule(task, diff, TimeUnit.MILLISECONDS);
 						return true;
 					}
 					LOGGER.info("Task {} is obsoleted.", task.getId());
@@ -300,7 +306,7 @@ public final class TaskManager
 				{
 					delay += interval;
 				}
-				task.scheduled = scheduler.scheduleGeneralAtFixedRate(task, delay, interval);
+				task.scheduled = ThreadPool.scheduleAtFixedRate(task, delay, interval, TimeUnit.MILLISECONDS);
 				return true;
 			default:
 				return false;
@@ -370,13 +376,14 @@ public final class TaskManager
 		return false;
 	}
 	
+	@InstanceGetter
 	public static TaskManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final TaskManager _instance = new TaskManager();
+		protected static final TaskManager INSTANCE = new TaskManager();
 	}
 }

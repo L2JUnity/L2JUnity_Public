@@ -26,13 +26,13 @@ public class ExGetOffAirShip implements IClientOutgoingPacket
 {
 	private final int _playerId, _airShipId, _x, _y, _z;
 	
-	public ExGetOffAirShip(Creature player, Creature ship, int x, int y, int z)
+	public ExGetOffAirShip(Creature player, Creature ship, double x, double y, double z)
 	{
 		_playerId = player.getObjectId();
 		_airShipId = ship.getObjectId();
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 	}
 	
 	@Override

@@ -45,20 +45,19 @@
 		<itemConsumeId>39514</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
-		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>78301</x>
 				<y>-83468</y>
 				<z>-3608</z>
@@ -78,18 +77,17 @@
 		<itemConsumeId>39515</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
-		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>179809</x>
 				<y>-111771</y>
 				<z>-5832</z>
@@ -109,18 +107,17 @@
 		<itemConsumeId>39516</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
-		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>85233</x>
 				<y>16072</y>
 				<z>-3672</z>
@@ -141,16 +138,16 @@
 		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>147416</x>
 				<y>-52553</y>
 				<z>-2733</z>
@@ -223,55 +220,236 @@
 		<reuseDelay>600000</reuseDelay>
 	</skill>
 	<skill id="18017" toLevel="1" name="Maphr's Pouch">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Use to obtain 400,000 XP. Can combine 2 Lv. 1 pouches. Below Lv. 85 only. -->
-		<icon>icon.skill0000</icon>
+		<isMagic>2</isMagic>
+		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
 		<reuseDelay>1000</reuseDelay>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>1</minLevel>
+				<maxLevel>84</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_get_exp">
+				<exp>400000</exp>
+				<minLevel>1</minLevel>
+				<underMinLevelExpPercent>20</underMinLevelExpPercent>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18018" toLevel="1" name="Maphr's Pouch">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Use to obtain 1,600,000 XP. Can combine 2 Lv. 2 pouches. Below Lv. 85 only. -->
-		<icon>icon.skill0000</icon>
+		<isMagic>2</isMagic>
+		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
 		<reuseDelay>1000</reuseDelay>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>1</minLevel>
+				<maxLevel>84</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_get_exp">
+				<exp>1600000</exp>
+				<minLevel>1</minLevel>
+				<underMinLevelExpPercent>20</underMinLevelExpPercent>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18019" toLevel="1" name="Maphr's Pouch">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Use to obtain 6,400,000 XP. Below Lv. 85 only. -->
-		<icon>icon.skill0000</icon>
+		<isMagic>2</isMagic>
+		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
 		<reuseDelay>5000</reuseDelay>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>1</minLevel>
+				<maxLevel>84</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_get_exp">
+				<exp>6400000</exp>
+				<minLevel>1</minLevel>
+				<underMinLevelExpPercent>20</underMinLevelExpPercent>
+			</effect>
+			<effect name="i_call_skill">
+				<skillId>18020</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18020" toLevel="2" name="Maphr's Pouch">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Random Prize. -->
 		<icon>icon.skill0000</icon>
+		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
 		<reuseDelay>1000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>1</minLevel>
+				<maxLevel>84</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random" fromLevel="1" toLevel="1">
+				<items>
+					<item chance="72.0">
+						<item id="57" count="20000" /> <!-- Adena -->
+					</item>
+					<item chance="9.0">
+						<item id="57" count="200000" /> <!-- Adena -->
+					</item>
+					<item chance="5.0">
+						<item id="57" count="2000000" /> <!-- Adena -->
+					</item>
+					<item chance="2.0">
+						<item id="57" count="20000000" /> <!-- Adena -->
+					</item>
+					<item chance="0.5">
+						<item id="57" count="200000000" /> <!-- Adena -->
+					</item>
+					<item chance="1.0">
+						<item id="39631" count="10" /> <!-- Fortune Pocket - Stage 3 -->
+					</item>
+					<item chance="2.0">
+						<item id="39720" count="1" /> <!-- Maphr's Luck Potion -->
+					</item>
+					<item chance="4.5">
+						<item id="39386" count="1" /> <!-- Lv. 1 Windy LUC Dye -->
+					</item>
+					<item chance="3.5">
+						<item id="39387" count="1" /> <!-- Lv. 2 Windy LUC Dye -->
+					</item>
+					<item chance="0.5">
+						<item id="39388" count="1" /> <!-- Lv. 3 Windy LUC Dye -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18021" toLevel="1" name="Maphr's Pouch">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Use to obtain 80,000 XP. Can combine 2 Lv. 4 pouches. -->
-		<icon>icon.skill0000</icon>
+		<isMagic>2</isMagic>
+		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
 		<hitTime>200</hitTime>
 		<reuseDelay>1000</reuseDelay>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>85</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_sp">
+				<sp>80000</sp>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18022" toLevel="1" name="Maphr's Pouch">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Use to obtain 256,000 SP. -->
-		<icon>icon.skill0000</icon>
+		<isMagic>2</isMagic>
+		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
 		<hitTime>200</hitTime>
 		<reuseDelay>3000</reuseDelay>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>85</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_sp">
+				<sp>256000</sp>
+			</effect>
+			<effect name="i_call_skill">
+				<skillId>18023</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18023" toLevel="2" name="Maphr's Pouch">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Random Prize. -->
 		<icon>icon.skill0000</icon>
+		<magicLvl>1</magicLvl>
 		<operateType>A1</operateType>
 		<reuseDelay>1000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="CheckLevel">
+				<minLevel>85</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random" fromLevel="1" toLevel="1">
+				<items>
+					<item chance="60">
+						<item id="57" count="100000" /> <!-- Adena -->
+					</item>
+					<item chance="9.0">
+						<item id="57" count="1000000" /> <!-- Adena -->
+					</item>
+					<item chance="5.0">
+						<item id="57" count="10000000" /> <!-- Adena -->
+					</item>
+					<item chance="4.5">
+						<item id="39633" count="10" /> <!-- Fortune Pocket - Stage 5 -->
+					</item>
+					<item chance="15.5">
+						<item id="39720" count="1" /> <!-- Maphr's Luck Potion -->
+					</item>
+					<item chance="2.0">
+						<item id="39389" count="1" /> <!-- Lv. 4 Windy LUC Dye -->
+					</item>
+					<item chance="0.5">
+						<item id="39390" count="1" /> <!-- Lv. 5 Windy LUC Dye -->
+					</item>
+					<item chance="3.0">
+						<item id="57" count="100000000" /> <!-- Adena -->
+					</item>
+					<item chance="0.5">
+						<item id="57" count="1000000000" /> <!-- Adena -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18024" toLevel="24" name="Venir's Talisman">
 		<!-- Updated to Infinity Odyssey -->
@@ -304,7 +482,7 @@
 		</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -333,7 +511,7 @@
 				</amount>
 				<stat>STR</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -362,7 +540,7 @@
 				</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -391,7 +569,7 @@
 				</amount>
 				<stat>CON</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -420,7 +598,7 @@
 				</amount>
 				<stat>DEX</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">1</value>
@@ -449,7 +627,7 @@
 				</amount>
 				<stat>WIT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">1</value>
@@ -478,7 +656,7 @@
 				</amount>
 				<stat>MEN</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -507,7 +685,7 @@
 				</amount>
 				<stat>CHA</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -551,11 +729,25 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="18050" toLevel="1" name="Luck Potion">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- For 15 sec.k LUC + 5. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>15</abnormalTime>
+		<abnormalType>ATTRIBUTE_POTION</abnormalType> <!-- TODO: Check correct abnormalType -->
 		<icon>icon.etc_instant_lucky_potion_i00</icon>
+		<isMagic>2</isMagic>
+		<magicLvl>76</magicLvl>
 		<operateType>A2</operateType>
 		<reuseDelay>20000</reuseDelay>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>LUC</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18051" toLevel="1" name="Prevailing Sonata - Dance">
 		<!-- AUTO GENERATED SKILL -->
@@ -566,295 +758,687 @@
 		<isMagic>3</isMagic>
 	</skill>
 	<skill id="18052" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Can equip 1 Talisman. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>1</slots>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18053" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Can equip 2 Talismans. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>2</slots>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18054" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Can equip 3 Talismans. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>3</slots>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18055" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Can equip 4 Talismans. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>4</slots>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18056" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Can equip 5 Talismans. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>5</slots>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18057" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Can equip 6 Talismans. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_expand_deco_slot">
+				<slots>6</slots>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18058" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 1. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18059" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 2. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>STR</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18060" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 3. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>STR</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18061" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 4. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>4</amount>
+				<stat>STR</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18062" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- STR + 5. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>STR</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18063" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- DEX + 1. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18064" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- DEX + 2. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>DEX</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18065" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- DEX + 3. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>DEX</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18066" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- DEX + 4. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>4</amount>
+				<stat>DEX</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18067" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- DEX + 5. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>DEX</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18068" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CON + 1. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18069" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CON + 2. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18070" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CON + 3. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18071" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CON + 4. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>4</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18072" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CON + 5. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18073" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- INT + 1. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18074" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- INT + 2. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18075" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- INT + 3. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18076" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- INT + 4. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>4</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18077" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- INT + 5. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>INT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18078" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- MEN + 1. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18079" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- MEN + 2. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18080" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- MEN + 3. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18081" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- MEN + 4. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>4</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18082" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- MEN + 5. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18083" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- WIT + 1. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18084" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- WIT + 2. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18085" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- WIT + 3. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18086" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- WIT + 4. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>4</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18087" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- WIT + 5. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18088" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- LUC + 1. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>LUC</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18089" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- LUC + 2. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>LUC</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18090" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- LUC + 3. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>LUC</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18091" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- LUC + 4. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>4</amount>
+				<stat>LUC</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18092" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- LUC + 5. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>LUC</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18093" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CHA + 1. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CHA</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18094" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CHA + 2. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>2</amount>
+				<stat>CHA</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18095" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CHA + 3. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>3</amount>
+				<stat>CHA</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18096" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CHA + 4. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>4</amount>
+				<stat>CHA</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18097" toLevel="1" name="Dimensional Bracelet">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- CHA + 5. -->
 		<icon>icon.skill0000</icon>
 		<operateType>P</operateType>
+		<magicLvl>85</magicLvl>
+		<magicCriticalRate>5</magicCriticalRate>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>5</amount>
+				<stat>CHA</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18098" toLevel="1" name="Scroll: 1,000 SP">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Instantly boosts 1,000 SP. -->
 		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
 		<hitTime>200</hitTime>
 		<reuseDelay>3000</reuseDelay>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>40049</itemConsumeId> <!-- Scroll: 1,000 SP -->
+		<magicLvl>1</magicLvl>
+		<operateType>A1</operateType>
+		<reuseDelay>2000</reuseDelay>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_sp">
+				<sp>1000</sp>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18099" toLevel="1" name="Scroll: 10,000 SP">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Instantly boosts 10,000 SP. -->
 		<icon>icon.skill0000</icon>
-		<operateType>A1</operateType>
 		<hitTime>200</hitTime>
 		<reuseDelay>3000</reuseDelay>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>40050</itemConsumeId> <!-- Scroll: 10,000 SP -->
+		<magicLvl>1</magicLvl>
+		<operateType>A1</operateType>
+		<reuseDelay>2000</reuseDelay>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_sp">
+				<sp>10000</sp>
+			</effect>
+		</effects>
 	</skill>
 </list>

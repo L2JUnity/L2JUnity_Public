@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/MultiboxProtection.xsd">
+	<protection name="Olympiad" type="IP" maxClients="-1" restrictionHtmlFile="data/html/mods/Olympiad/MultiboxRestriction.htm"  unregisterOnDisconnected="true" />
+	<protection name="GameServer" type="IP" maxClients="-1" unregisterOnDisconnected="true">
+		<whitelist source="127.0.0.1" maxClients="-1" /> <!-- Unlimited connections from localhost -->
+	</protection>
+</list>

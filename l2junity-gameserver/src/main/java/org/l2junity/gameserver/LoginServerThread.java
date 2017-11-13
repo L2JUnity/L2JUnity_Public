@@ -41,9 +41,15 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.commons.util.CommonUtil;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.HexUtil;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.HexIDConfig;
+import org.l2junity.gameserver.config.NetworkConfig;
+import org.l2junity.gameserver.config.ServerConfig;
+import org.l2junity.gameserver.loader.ClientAccessLoadGroup;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.ConnectionState;
@@ -112,6 +118,7 @@ public class LoginServerThread extends Thread
 	private String _serverName;
 	private final List<String> _subnets;
 	private final List<String> _hosts;
+	private int _serverId;
 	
 	/**
 	 * Instantiates a new login server thread.
@@ -119,30 +126,37 @@ public class LoginServerThread extends Thread
 	protected LoginServerThread()
 	{
 		super("LoginServerThread");
-		_port = Config.GAME_SERVER_LOGIN_PORT;
-		_gamePort = Config.PORT_GAME;
-		_hostname = Config.GAME_SERVER_LOGIN_HOST;
-		_hexID = Config.HEX_ID;
+		_port = ServerConfig.GAME_SERVER_LOGIN_PORT;
+		_gamePort = ServerConfig.PORT_GAME;
+		_hostname = ServerConfig.GAME_SERVER_LOGIN_HOST;
+		_hexID = HexIDConfig.HEX_ID;
 		if (_hexID == null)
 		{
-			_requestID = Config.REQUEST_ID;
-			_hexID = CommonUtil.generateHex(16);
+			_requestID = ServerConfig.REQUEST_ID;
+			_hexID = HexUtil.generateHex(16);
 		}
 		else
 		{
-			_requestID = Config.SERVER_ID;
+			_requestID = HexIDConfig.SERVER_ID;
 		}
-		_acceptAlternate = Config.ACCEPT_ALTERNATE_ID;
-		_reserveHost = Config.RESERVE_HOST_ON_LOGIN;
-		_subnets = Config.GAME_SERVER_SUBNETS;
-		_hosts = Config.GAME_SERVER_HOSTS;
-		_maxPlayer = Config.MAXIMUM_ONLINE_USERS;
+		_acceptAlternate = ServerConfig.ACCEPT_ALTERNATE_ID;
+		_reserveHost = ServerConfig.RESERVE_HOST_ON_LOGIN;
+		_subnets = NetworkConfig.GAME_SERVER_SUBNETS;
+		_hosts = NetworkConfig.GAME_SERVER_HOSTS;
+		_maxPlayer = ServerConfig.MAXIMUM_ONLINE_USERS;
+	}
+	
+	@Load(group = ClientAccessLoadGroup.class)
+	private void load()
+	{
+		start();
 	}
 	
 	/**
 	 * Gets the single instance of LoginServerThread.
 	 * @return single instance of LoginServerThread
 	 */
+	@InstanceGetter
 	public static LoginServerThread getInstance()
 	{
 		return SingletonHolder._instance;
@@ -166,7 +180,7 @@ public class LoginServerThread extends Thread
 				_out = new BufferedOutputStream(_loginSocket.getOutputStream());
 				
 				// init Blowfish
-				final byte[] blowfishKey = CommonUtil.generateHex(40);
+				final byte[] blowfishKey = HexUtil.generateHex(40);
 				_blowfish = new NewCrypt("_;v.]05-31!|+-%xT!^[$\00");
 				while (!isInterrupted())
 				{
@@ -247,12 +261,12 @@ public class LoginServerThread extends Thread
 							break;
 						case 0x02:
 							AuthResponse aresp = new AuthResponse(incoming);
-							int serverID = aresp.getServerId();
+							_serverId = aresp.getServerId();
 							_serverName = aresp.getServerName();
-							Config.saveHexid(serverID, hexToString(_hexID));
-							LOGGER.info("Registered on login as Server {}: {}", serverID, _serverName);
+							HexIDConfig.saveHexid(_serverId, hexToString(_hexID));
+							LOGGER.info("Registered on login as Server {}: {}", _serverId, _serverName);
 							ServerStatus st = new ServerStatus();
-							if (Config.SERVER_LIST_BRACKET)
+							if (GeneralConfig.SERVER_LIST_BRACKET)
 							{
 								st.addAttribute(ServerStatus.SERVER_LIST_SQUARE_BRACKET, ServerStatus.ON);
 							}
@@ -260,8 +274,8 @@ public class LoginServerThread extends Thread
 							{
 								st.addAttribute(ServerStatus.SERVER_LIST_SQUARE_BRACKET, ServerStatus.OFF);
 							}
-							st.addAttribute(ServerStatus.SERVER_TYPE, Config.SERVER_LIST_TYPE);
-							if (Config.SERVER_GMONLY)
+							st.addAttribute(ServerStatus.SERVER_TYPE, GeneralConfig.SERVER_LIST_TYPE);
+							if (GeneralConfig.SERVER_GMONLY)
 							{
 								st.addAttribute(ServerStatus.SERVER_LIST_STATUS, ServerStatus.STATUS_GM_ONLY);
 							}
@@ -269,11 +283,11 @@ public class LoginServerThread extends Thread
 							{
 								st.addAttribute(ServerStatus.SERVER_LIST_STATUS, ServerStatus.STATUS_AUTO);
 							}
-							if (Config.SERVER_LIST_AGE == 15)
+							if (GeneralConfig.SERVER_LIST_AGE == 15)
 							{
 								st.addAttribute(ServerStatus.SERVER_AGE, ServerStatus.SERVER_AGE_15);
 							}
-							else if (Config.SERVER_LIST_AGE == 18)
+							else if (GeneralConfig.SERVER_LIST_AGE == 18)
 							{
 								st.addAttribute(ServerStatus.SERVER_AGE, ServerStatus.SERVER_AGE_18);
 							}
@@ -663,7 +677,7 @@ public class LoginServerThread extends Thread
 	public void sendServerType()
 	{
 		ServerStatus ss = new ServerStatus();
-		ss.addAttribute(ServerStatus.SERVER_TYPE, Config.SERVER_LIST_TYPE);
+		ss.addAttribute(ServerStatus.SERVER_TYPE, GeneralConfig.SERVER_LIST_TYPE);
 		try
 		{
 			sendPacket(ss);
@@ -708,6 +722,14 @@ public class LoginServerThread extends Thread
 	public String getServerName()
 	{
 		return _serverName;
+	}
+	
+	/**
+	 * @return the server ID which this gameserver has accepted from the loginserver, or {@code 0} if this gameserver has not yet obtained any id from the loginserver.
+	 */
+	public int getServerId()
+	{
+		return _serverId;
 	}
 	
 	/**

@@ -20,6 +20,7 @@ package org.l2junity.gameserver.model.matching;
 
 import org.l2junity.gameserver.enums.MatchingMemberType;
 import org.l2junity.gameserver.enums.MatchingRoomType;
+import org.l2junity.gameserver.enums.PartyMatchingRoomLevelType;
 import org.l2junity.gameserver.enums.UserInfoType;
 import org.l2junity.gameserver.instancemanager.MatchingRoomManager;
 import org.l2junity.gameserver.model.Party;
@@ -44,8 +45,9 @@ public final class PartyMatchingRoom extends MatchingRoom
 	@Override
 	protected void onRoomCreation(PlayerInstance player)
 	{
-		player.broadcastUserInfo(UserInfoType.CLAN);
-		player.sendPacket(new ListPartyWaiting(player.getLevel(), -1, 1));
+		player.broadcastUserInfo(UserInfoType.POSITION, UserInfoType.CLAN);
+		player.sendPacket(new ListPartyWaiting(PartyMatchingRoomLevelType.ALL, -1, 1, player.getLevel()));
+		player.sendPacket(SystemMessageId.YOU_HAVE_CREATED_A_PARTY_ROOM);
 	}
 	
 	@Override

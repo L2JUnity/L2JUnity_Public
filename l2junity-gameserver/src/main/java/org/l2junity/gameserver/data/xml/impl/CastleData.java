@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,9 +26,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.enums.CastleSide;
 import org.l2junity.gameserver.enums.SiegeGuardType;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.holders.CastleSpawnHolder;
 import org.l2junity.gameserver.model.holders.SiegeGuardHolder;
 import org.w3c.dom.Document;
@@ -45,11 +48,10 @@ public final class CastleData implements IGameXmlReader
 	
 	protected CastleData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_spawns.clear();
 		_siegeGuards.clear();
@@ -57,7 +59,7 @@ public final class CastleData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node listNode = doc.getFirstChild(); listNode != null; listNode = listNode.getNextSibling())
 		{
@@ -137,6 +139,7 @@ public final class CastleData implements IGameXmlReader
 	 * Gets the single instance of CastleData.
 	 * @return single instance of CastleData
 	 */
+	@InstanceGetter
 	public static CastleData getInstance()
 	{
 		return SingletonHolder._instance;

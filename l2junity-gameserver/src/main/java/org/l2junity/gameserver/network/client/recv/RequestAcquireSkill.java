@@ -20,12 +20,13 @@ package org.l2junity.gameserver.network.client.recv;
 
 import java.util.List;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
-import org.l2junity.gameserver.enums.CategoryType;
 import org.l2junity.gameserver.enums.IllegalActionPunishmentType;
 import org.l2junity.gameserver.enums.Race;
+import org.l2junity.gameserver.enums.SubclassType;
 import org.l2junity.gameserver.enums.UserInfoType;
 import org.l2junity.gameserver.model.ClanPrivilege;
 import org.l2junity.gameserver.model.L2Clan;
@@ -39,9 +40,10 @@ import org.l2junity.gameserver.model.base.AcquireSkillType;
 import org.l2junity.gameserver.model.base.SubClass;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerSkillLearn;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerLearnSkill;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.model.holders.ItemHolder;
 import org.l2junity.gameserver.model.holders.SkillHolder;
-import org.l2junity.gameserver.model.quest.QuestState;
 import org.l2junity.gameserver.model.skills.CommonSkill;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.variables.PlayerVariables;
@@ -67,8 +69,8 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 {
 	private static final String[] REVELATION_VAR_NAMES =
 	{
-		"RevelationSkill1",
-		"RevelationSkill2"
+		PlayerVariables.REVELATION_SKILL_1_MAIN_CLASS,
+		PlayerVariables.REVELATION_SKILL_2_MAIN_CLASS
 	};
 	
 	private static final String[] DUALCLASS_REVELATION_VAR_NAMES =
@@ -106,8 +108,14 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 		
 		if ((_level < 1) || (_level > 1000) || (_id < 1) || (_id > 32000))
 		{
-			Util.handleIllegalPlayerAction(activeChar, "Wrong Packet Data in Aquired Skill", Config.DEFAULT_PUNISH);
-			_log.warn("Recived Wrong Packet Data in Aquired Skill - id: " + _id + " level: " + _level + " for " + activeChar);
+			Util.handleIllegalPlayerAction(activeChar, "Wrong Packet Data in Aquired Skill", GeneralConfig.DEFAULT_PUNISH);
+			LOGGER.warn("Recived Wrong Packet Data in Aquired Skill - id: " + _id + " level: " + _level + " for " + activeChar);
+			return;
+		}
+		
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerLearnSkill(activeChar, _id, _level, _skillType, _subType), activeChar, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
 			return;
 		}
 		
@@ -125,7 +133,7 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 		final Skill skill = SkillData.getInstance().getSkill(_id, _level);
 		if (skill == null)
 		{
-			_log.warn(RequestAcquireSkill.class.getSimpleName() + ": Player " + activeChar.getName() + " is trying to learn a null skill Id: " + _id + " level: " + _level + "!");
+			LOGGER.warn("Player " + activeChar.getName() + " is trying to learn a null skill Id: " + _id + " level: " + _level + "!");
 			return;
 		}
 		
@@ -135,12 +143,11 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 		{
 			if (prevSkillLevel == _level)
 			{
-				_log.warn("Player " + activeChar.getName() + " is trying to learn a skill that already knows, Id: " + _id + " level: " + _level + "!");
+				LOGGER.warn("Player " + activeChar.getName() + " is trying to learn a skill that already knows, Id: " + _id + " level: " + _level + "!");
 				return;
 			}
 			
-			final int tmpLv = (prevSkillLevel == -1) ? 0 : prevSkillLevel;
-			if (tmpLv != (_level - 1))
+			if (prevSkillLevel != (_level - 1))
 			{
 				// The previous level skill has not been learned.
 				activeChar.sendPacket(SystemMessageId.THE_PREVIOUS_LEVEL_SKILL_HAS_NOT_BEEN_LEARNED);
@@ -168,7 +175,7 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 			case TRANSFORM:
 			{
 				// Hack check.
-				if (!canTransform(activeChar))
+				if (!PlayerConfig.ALLOW_TRANSFORM_WITHOUT_QUEST && !activeChar.hasQuestCompleted("Q00136_MoreThanMeetsTheEye"))
 				{
 					activeChar.sendPacket(SystemMessageId.YOU_HAVE_NOT_COMPLETED_THE_NECESSARY_QUEST_FOR_SKILL_ACQUISITION);
 					Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " is requesting skill Id: " + _id + " level " + _level + " without required quests!", IllegalActionPunishmentType.NONE);
@@ -200,7 +207,7 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 				int repCost = s.getLevelUpSp();
 				if (clan.getReputationScore() >= repCost)
 				{
-					if (Config.LIFE_CRYSTAL_NEEDED)
+					if (PlayerConfig.LIFE_CRYSTAL_NEEDED)
 					{
 						for (ItemHolder item : s.getRequiredItems())
 						{
@@ -408,7 +415,6 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 						activeChar.sendPacket(new ExAcquirableSkillListByClass(alchemySkills, AcquireSkillType.ALCHEMY));
 					}
 				}
-				
 				break;
 			}
 			case REVELATION:
@@ -419,7 +425,7 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 					Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " is requesting skill Id: " + _id + " level " + _level + " while Sub-Class is active!", IllegalActionPunishmentType.NONE);
 					return;
 				}
-				if ((activeChar.getLevel() < 85) || !activeChar.isInCategory(CategoryType.AWAKEN_GROUP))
+				if ((activeChar.getLevel() < 85) || !activeChar.isAwakenedClass())
 				{
 					activeChar.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_THE_NECESSARY_MATERIALS_OR_PREREQUISITES_TO_LEARN_THIS_SKILL);
 					Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " is requesting skill Id: " + _id + " level " + _level + " while not being level 85 or awaken!", IllegalActionPunishmentType.NONE);
@@ -451,6 +457,16 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 					
 					giveSkill(activeChar, trainer, skill);
 				}
+				
+				final List<SkillLearn> skills = SkillTreesData.getInstance().getAvailableRevelationSkills(activeChar, SubclassType.BASECLASS);
+				if (skills.size() > 0)
+				{
+					activeChar.sendPacket(new ExAcquirableSkillListByClass(skills, AcquireSkillType.REVELATION));
+				}
+				else
+				{
+					activeChar.sendPacket(SystemMessageId.THERE_ARE_NO_OTHER_SKILLS_TO_LEARN);
+				}
 				break;
 			}
 			case REVELATION_DUALCLASS:
@@ -462,7 +478,7 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 					return;
 				}
 				
-				if ((activeChar.getLevel() < 85) || !activeChar.isInCategory(CategoryType.AWAKEN_GROUP))
+				if ((activeChar.getLevel() < 85) || !activeChar.isAwakenedClass())
 				{
 					activeChar.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_THE_NECESSARY_MATERIALS_OR_PREREQUISITES_TO_LEARN_THIS_SKILL);
 					Util.handleIllegalPlayerAction(activeChar, "Player " + activeChar.getName() + " is requesting skill Id: " + _id + " level " + _level + " while not being level 85 or awaken!", IllegalActionPunishmentType.NONE);
@@ -494,11 +510,21 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 					
 					giveSkill(activeChar, trainer, skill);
 				}
+				
+				final List<SkillLearn> skills = SkillTreesData.getInstance().getAvailableRevelationSkills(activeChar, SubclassType.DUALCLASS);
+				if (skills.size() > 0)
+				{
+					activeChar.sendPacket(new ExAcquirableSkillListByClass(skills, AcquireSkillType.REVELATION_DUALCLASS));
+				}
+				else
+				{
+					activeChar.sendPacket(SystemMessageId.THERE_ARE_NO_OTHER_SKILLS_TO_LEARN);
+				}
 				break;
 			}
 			default:
 			{
-				_log.warn("Recived Wrong Packet Data in Aquired Skill, unknown skill type:" + _skillType);
+				LOGGER.warn("Recived Wrong Packet Data in Aquired Skill, unknown skill type:" + _skillType);
 				break;
 			}
 		}
@@ -577,7 +603,7 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 				}
 				
 				// First it checks that the skill require SP and the player has enough SP to learn it.
-				final int levelUpSp = skillLearn.getCalculatedLevelUpSp(player.getClassId(), player.getLearningClass());
+				final int levelUpSp = skillLearn.getLevelUpSp();
 				if ((levelUpSp > 0) && (levelUpSp > player.getSp()))
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_SP_TO_LEARN_THIS_SKILL);
@@ -585,7 +611,7 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 					return false;
 				}
 				
-				if (!Config.DIVINE_SP_BOOK_NEEDED && (_id == CommonSkill.DIVINE_INSPIRATION.getId()))
+				if (!PlayerConfig.DIVINE_SP_BOOK_NEEDED && (_id == CommonSkill.DIVINE_INSPIRATION.getId()))
 				{
 					return true;
 				}
@@ -737,21 +763,5 @@ public final class RequestAcquireSkill implements IClientIncomingPacket
 		{
 			L2FishermanInstance.showFishSkillList(player);
 		}
-	}
-	
-	/**
-	 * TODO: CHECK & REMOVE THIS SHIT!!!!!!!!!!!!!!<br>
-	 * Verify if the player can transform.
-	 * @param player the player to verify
-	 * @return {@code true} if the player meets the required conditions to learn a transformation, {@code false} otherwise
-	 */
-	public static boolean canTransform(PlayerInstance player)
-	{
-		if (Config.ALLOW_TRANSFORM_WITHOUT_QUEST)
-		{
-			return true;
-		}
-		final QuestState st = player.getQuestState("Q00136_MoreThanMeetsTheEye");
-		return (st != null) && st.isCompleted();
 	}
 }

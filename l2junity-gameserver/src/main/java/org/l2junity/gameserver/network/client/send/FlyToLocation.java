@@ -49,27 +49,27 @@ public final class FlyToLocation implements IClientOutgoingPacket
 		WARP_FORWARD
 	}
 	
-	public FlyToLocation(Creature cha, int destX, int destY, int destZ, FlyType type)
+	public FlyToLocation(Creature cha, double destX, double destY, double destZ, FlyType type)
 	{
 		_chaObjId = cha.getObjectId();
-		_chaX = cha.getX();
-		_chaY = cha.getY();
-		_chaZ = cha.getZ();
-		_destX = destX;
-		_destY = destY;
-		_destZ = destZ;
+		_chaX = (int) cha.getX();
+		_chaY = (int) cha.getY();
+		_chaZ = (int) cha.getZ();
+		_destX = (int) destX;
+		_destY = (int) destY;
+		_destZ = (int) destZ;
 		_type = type;
 	}
 	
-	public FlyToLocation(Creature cha, int destX, int destY, int destZ, FlyType type, int flySpeed, int flyDelay, int animationSpeed)
+	public FlyToLocation(Creature cha, double destX, double destY, double destZ, FlyType type, int flySpeed, int flyDelay, int animationSpeed)
 	{
 		_chaObjId = cha.getObjectId();
-		_chaX = cha.getX();
-		_chaY = cha.getY();
-		_chaZ = cha.getZ();
-		_destX = destX;
-		_destY = destY;
-		_destZ = destZ;
+		_chaX = (int) cha.getX();
+		_chaY = (int) cha.getY();
+		_chaZ = (int) cha.getZ();
+		_destX = (int) destX;
+		_destY = (int) destY;
+		_destZ = (int) destZ;
 		_type = type;
 		_flySpeed = flySpeed;
 		_flyDelay = flyDelay;

@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.instancezone.Instance;
+import org.l2junity.gameserver.model.interfaces.IParameterized;
 import org.l2junity.gameserver.model.interfaces.ITerritorized;
 import org.l2junity.gameserver.model.zone.type.BannedSpawnTerritory;
 import org.l2junity.gameserver.model.zone.type.SpawnTerritory;
@@ -32,23 +33,31 @@ import org.l2junity.gameserver.model.zone.type.SpawnTerritory;
 /**
  * @author UnAfraid
  */
-public class SpawnGroup implements Cloneable, ITerritorized
+public class SpawnGroup implements Cloneable, ITerritorized, IParameterized<StatsSet>
 {
+	private final String _ai;
 	private final String _name;
 	private final boolean _spawnByDefault;
 	private List<SpawnTerritory> _territories;
 	private List<BannedSpawnTerritory> _bannedTerritories;
 	private final List<NpcSpawnTemplate> _spawns = new ArrayList<>();
+	private StatsSet _parameters;
 	
 	public SpawnGroup(StatsSet set)
 	{
-		this(set.getString("name", null), set.getBoolean("spawnByDefault", true));
+		this(set.getString("ai", null), set.getString("name", null), set.getBoolean("spawnByDefault", true));
 	}
 	
-	private SpawnGroup(String name, boolean spawnByDefault)
+	private SpawnGroup(String ai, String name, boolean spawnByDefault)
 	{
+		_ai = ai;
 		_name = name;
 		_spawnByDefault = spawnByDefault;
+	}
+	
+	public String getAI()
+	{
+		return _ai;
 	}
 	
 	public String getName()
@@ -103,6 +112,18 @@ public class SpawnGroup implements Cloneable, ITerritorized
 		return _bannedTerritories != null ? _bannedTerritories : Collections.emptyList();
 	}
 	
+	@Override
+	public StatsSet getParameters()
+	{
+		return _parameters;
+	}
+	
+	@Override
+	public void setParameters(StatsSet parameters)
+	{
+		_parameters = parameters;
+	}
+	
 	public List<NpcSpawnTemplate> getSpawnsById(int id)
 	{
 		return _spawns.stream().filter(spawn -> spawn.getId() == id).collect(Collectors.toList());
@@ -126,7 +147,7 @@ public class SpawnGroup implements Cloneable, ITerritorized
 	@Override
 	public SpawnGroup clone()
 	{
-		final SpawnGroup group = new SpawnGroup(_name, _spawnByDefault);
+		final SpawnGroup group = new SpawnGroup(_ai, _name, _spawnByDefault);
 		
 		// Clone banned territories
 		for (BannedSpawnTerritory territory : getBannedTerritories())

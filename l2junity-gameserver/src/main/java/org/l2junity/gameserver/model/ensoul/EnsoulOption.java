@@ -25,6 +25,7 @@ import org.l2junity.gameserver.model.holders.SkillHolder;
  */
 public class EnsoulOption extends SkillHolder
 {
+	private static final long serialVersionUID = 8006504041653360204L;
 	private final int _id;
 	private final String _name;
 	private final String _desc;
@@ -50,5 +51,11 @@ public class EnsoulOption extends SkillHolder
 	public String getDesc()
 	{
 		return _desc;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Ensoul Id: " + _id + " Name: " + _name + " Desc: " + _desc;
 	}
 }

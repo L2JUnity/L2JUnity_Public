@@ -18,14 +18,13 @@
  */
 package org.l2junity.gameserver.model.actor.instance;
 
-import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_IDLE;
-
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.ai.CtrlIntention;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
@@ -33,6 +32,7 @@ import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
+import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
 import org.l2junity.gameserver.model.effects.L2EffectType;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.skills.Skill;
@@ -57,21 +57,21 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 	private static final int DURATION_INCREASE_INTERVAL = 20000; // 20 secs (gained upon feeding)
 	private static final int BUFF_INTERVAL = 5000; // 5 seconds
 	private int _remainingTime = MAX_DURATION;
-	private int _homeX, _homeY, _homeZ;
+	private double _homeX, _homeY, _homeZ;
 	protected PlayerInstance _owner;
 	private Future<?> _buffTask = null;
 	private Future<?> _durationCheckTask = null;
 	protected boolean _isFreyaBeast;
 	private List<Skill> _beastSkills = null;
 	
-	public L2TamedBeastInstance(int npcTemplateId)
+	public L2TamedBeastInstance(L2NpcTemplate template)
 	{
-		super(NpcData.getInstance().getTemplate(npcTemplateId));
+		super(template);
 		setInstanceType(InstanceType.L2TamedBeastInstance);
 		setHome(this);
 	}
 	
-	public L2TamedBeastInstance(int npcTemplateId, PlayerInstance owner, int foodSkillId, int x, int y, int z)
+	public L2TamedBeastInstance(int npcTemplateId, PlayerInstance owner, int foodSkillId, double x, double y, double z)
 	{
 		super(NpcData.getInstance().getTemplate(npcTemplateId));
 		_isFreyaBeast = false;
@@ -84,7 +84,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 		spawnMe(x, y, z);
 	}
 	
-	public L2TamedBeastInstance(int npcTemplateId, PlayerInstance owner, int food, int x, int y, int z, boolean isFreyaBeast)
+	public L2TamedBeastInstance(int npcTemplateId, PlayerInstance owner, int food, double x, double y, double z, boolean isFreyaBeast)
 	{
 		super(NpcData.getInstance().getTemplate(npcTemplateId));
 		_isFreyaBeast = isFreyaBeast;
@@ -116,7 +116,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 		return new Location(_homeX, _homeY, _homeZ);
 	}
 	
-	public void setHome(int x, int y, int z)
+	public void setHome(double x, double y, double z)
 	{
 		_homeX = x;
 		_homeY = y;
@@ -155,7 +155,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 			{
 				_durationCheckTask.cancel(true);
 			}
-			_durationCheckTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new CheckDuration(this), DURATION_CHECK_INTERVAL, DURATION_CHECK_INTERVAL);
+			_durationCheckTask = ThreadPool.scheduleAtFixedRate(new CheckDuration(this), DURATION_CHECK_INTERVAL, DURATION_CHECK_INTERVAL, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -219,10 +219,10 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 		int delay = 100;
 		for (Skill skill : _beastSkills)
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(new buffCast(skill), delay);
+			ThreadPool.schedule(new buffCast(skill), delay, TimeUnit.MILLISECONDS);
 			delay += (100 + skill.getHitTime());
 		}
-		ThreadPoolManager.getInstance().scheduleGeneral(new buffCast(null), delay);
+		ThreadPool.schedule(new buffCast(null), delay, TimeUnit.MILLISECONDS);
 	}
 	
 	private class buffCast implements Runnable
@@ -286,7 +286,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 				{
 					_buffTask.cancel(true);
 				}
-				_buffTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new CheckOwnerBuffs(this, totalBuffsAvailable), BUFF_INTERVAL, BUFF_INTERVAL);
+				_buffTask = ThreadPool.scheduleAtFixedRate(new CheckOwnerBuffs(this, totalBuffsAvailable), BUFF_INTERVAL, BUFF_INTERVAL, TimeUnit.MILLISECONDS);
 			}
 		}
 		else
@@ -297,7 +297,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 	
 	public boolean isTooFarFromHome()
 	{
-		return !isInsideRadius(_homeX, _homeY, _homeZ, MAX_DISTANCE_FROM_HOME, true, true);
+		return !isInRadius3d(_homeX, _homeY, _homeZ, MAX_DISTANCE_FROM_HOME);
 	}
 	
 	@Override
@@ -308,7 +308,6 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 			_buffTask.cancel(true);
 		}
 		_durationCheckTask.cancel(true);
-		stopHpMpRegeneration();
 		
 		// clean up variables
 		if ((_owner != null) && (_owner.getTrainedBeasts() != null))
@@ -337,7 +336,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 			return;
 		}
 		// if the owner is too far away, stop anything else and immediately run towards the owner.
-		if (!_owner.isInsideRadius(this, MAX_DISTANCE_FROM_OWNER, true, true))
+		if (!_owner.isInRadius3d(this, MAX_DISTANCE_FROM_OWNER))
 		{
 			getAI().startFollow(_owner);
 			return;
@@ -403,7 +402,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 	{
 		stopMove(null);
 		broadcastPacket(new StopMove(this));
-		getAI().setIntention(AI_INTENTION_IDLE);
+		getAI().setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 		
 		setTarget(target);
 		doCast(skill);
@@ -509,7 +508,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance
 				return;
 			}
 			// if the owner is too far away, stop anything else and immediately run towards the owner.
-			if (!isInsideRadius(owner, MAX_DISTANCE_FROM_OWNER, true, true))
+			if (!isInRadius3d(owner, MAX_DISTANCE_FROM_OWNER))
 			{
 				getAI().startFollow(owner);
 				return;

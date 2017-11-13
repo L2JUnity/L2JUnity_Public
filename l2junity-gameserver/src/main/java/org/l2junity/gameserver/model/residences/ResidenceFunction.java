@@ -20,8 +20,9 @@ package org.l2junity.gameserver.model.residences;
 
 import java.time.Instant;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.data.xml.impl.ResidenceFunctionsData;
 import org.l2junity.gameserver.model.L2Clan;
@@ -67,7 +68,7 @@ public class ResidenceFunction
 		final ResidenceFunctionTemplate template = getTemplate();
 		if ((template != null) && (_expiration > System.currentTimeMillis()))
 		{
-			_task = ThreadPoolManager.getInstance().scheduleGeneral(this::onFunctionExpiration, _expiration - System.currentTimeMillis());
+			_task = ThreadPool.schedule(this::onFunctionExpiration, _expiration - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 		}
 	}
 	

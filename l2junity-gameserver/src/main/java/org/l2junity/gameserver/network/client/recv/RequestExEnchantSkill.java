@@ -18,11 +18,10 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.EnchantSkillGroupsData;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
-import org.l2junity.gameserver.enums.CategoryType;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.enums.SkillEnchantType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -83,7 +82,7 @@ public final class RequestExEnchantSkill implements IClientIncomingPacket
 			return;
 		}
 		
-		if (!player.isInCategory(CategoryType.AWAKEN_GROUP))
+		if (!player.isAwakenedClass())
 		{
 			return;
 		}
@@ -181,7 +180,7 @@ public final class RequestExEnchantSkill implements IClientIncomingPacket
 				if (Rnd.get(100) <= enchantSkillHolder.getChance(_type))
 				{
 					final Skill enchantedSkill = SkillData.getInstance().getSkill(_skillId, _skillLvl, _skillSubLvl);
-					if (Config.LOG_SKILL_ENCHANTS)
+					if (GeneralConfig.LOG_SKILL_ENCHANTS)
 					{
 						LOGGER_ENCHANT.info("Success, Character:{} [{}] Account:{} IP:{}, +{} {} - {} ({}), {}({}) [{}], {}", player.getName(), player.getObjectId(), player.getAccountName(), player.getIPAddress(), enchantedSkill.getLevel(), enchantedSkill.getSubLevel(), enchantedSkill.getName(), enchantedSkill.getId(), enchantSkillHolder.getChance(_type));
 					}
@@ -195,7 +194,7 @@ public final class RequestExEnchantSkill implements IClientIncomingPacket
 				}
 				else
 				{
-					final int newSubLevel = skill.getSubLevel() > 0 ? ((skill.getSubLevel() - (skill.getSubLevel() % 1000)) + enchantSkillHolder.getEnchantFailLevel()) : 0;
+					final int newSubLevel = ((skill.getSubLevel() > 0) && (enchantSkillHolder.getEnchantFailLevel() > 0)) ? ((skill.getSubLevel() - (skill.getSubLevel() % 1000)) + enchantSkillHolder.getEnchantFailLevel()) : 0;
 					final Skill enchantedSkill = SkillData.getInstance().getSkill(_skillId, _skillLvl, _type == SkillEnchantType.NORMAL ? newSubLevel : skill.getSubLevel());
 					if (_type == SkillEnchantType.NORMAL)
 					{
@@ -208,7 +207,7 @@ public final class RequestExEnchantSkill implements IClientIncomingPacket
 					}
 					player.sendPacket(ExEnchantSkillResult.STATIC_PACKET_FALSE);
 					
-					if (Config.LOG_SKILL_ENCHANTS)
+					if (GeneralConfig.LOG_SKILL_ENCHANTS)
 					{
 						LOGGER_ENCHANT.info("Failed, Character:{} [{}] Account:{} IP:{}, +{} {} - {} ({}), {}({}) [{}], {}", player.getName(), player.getObjectId(), player.getAccountName(), player.getIPAddress(), enchantedSkill.getLevel(), enchantedSkill.getSubLevel(), enchantedSkill.getName(), enchantedSkill.getId(), enchantSkillHolder.getChance(_type));
 					}
@@ -220,7 +219,7 @@ public final class RequestExEnchantSkill implements IClientIncomingPacket
 				if (Rnd.get(100) <= enchantSkillHolder.getChance(_type))
 				{
 					final Skill enchantedSkill = SkillData.getInstance().getSkill(_skillId, _skillLvl, _skillSubLvl);
-					if (Config.LOG_SKILL_ENCHANTS)
+					if (GeneralConfig.LOG_SKILL_ENCHANTS)
 					{
 						LOGGER_ENCHANT.info("Success, Character:{} [{}] Account:{} IP:{}, +{} {} - {} ({}), {}({}) [{}], {}", player.getName(), player.getObjectId(), player.getAccountName(), player.getIPAddress(), enchantedSkill.getLevel(), enchantedSkill.getSubLevel(), enchantedSkill.getName(), enchantedSkill.getId(), enchantSkillHolder.getChance(_type));
 					}
@@ -239,7 +238,7 @@ public final class RequestExEnchantSkill implements IClientIncomingPacket
 					player.sendPacket(SystemMessageId.SKILL_ENCHANT_FAILED_THE_SKILL_WILL_BE_INITIALIZED);
 					player.sendPacket(ExEnchantSkillResult.STATIC_PACKET_FALSE);
 					
-					if (Config.LOG_SKILL_ENCHANTS)
+					if (GeneralConfig.LOG_SKILL_ENCHANTS)
 					{
 						LOGGER_ENCHANT.info("Failed, Character:{} [{}] Account:{} IP:{}, +{} {} - {} ({}), {}({}) [{}], {}", player.getName(), player.getObjectId(), player.getAccountName(), player.getIPAddress(), enchantedSkill.getLevel(), enchantedSkill.getSubLevel(), enchantedSkill.getName(), enchantedSkill.getId(), enchantSkillHolder.getChance(_type));
 					}
@@ -254,6 +253,6 @@ public final class RequestExEnchantSkill implements IClientIncomingPacket
 		skill = player.getKnownSkill(_skillId);
 		player.sendPacket(new ExEnchantSkillInfo(skill.getId(), skill.getLevel(), skill.getSubLevel(), skill.getSubLevel()));
 		player.sendPacket(new ExEnchantSkillInfoDetail(_type, skill.getId(), skill.getLevel(), Math.min(skill.getSubLevel() + 1, EnchantSkillGroupsData.MAX_ENCHANT_LEVEL), player));
-		player.updateShortCuts(skill.getLevel(), skill.getSubLevel(), skill.getSubLevel());
+		player.updateShortCuts(skill.getId(), skill.getLevel(), skill.getSubLevel());
 	}
 }

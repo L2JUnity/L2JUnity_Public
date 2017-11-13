@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -66,7 +67,7 @@ public final class RequestGiveItemToPet implements IClientIncomingPacket
 		}
 		
 		// Alt game - Karma punishment
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_TRADE && (player.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_TRADE && (player.getReputation() < 0))
 		{
 			return;
 		}
@@ -85,7 +86,7 @@ public final class RequestGiveItemToPet implements IClientIncomingPacket
 		
 		if (_amount > item.getCount())
 		{
-			Util.handleIllegalPlayerAction(player, getClass().getSimpleName() + ": Character " + player.getName() + " of account " + player.getAccountName() + " tried to get item with oid " + _objectId + " from pet but has invalid count " + _amount + " item count: " + item.getCount(), Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, getClass().getSimpleName() + ": Character " + player.getName() + " of account " + player.getAccountName() + " tried to get item with oid " + _objectId + " from pet but has invalid count " + _amount + " item count: " + item.getCount(), GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
@@ -121,7 +122,7 @@ public final class RequestGiveItemToPet implements IClientIncomingPacket
 		
 		if (player.transferItem("Transfer", _objectId, _amount, pet.getInventory(), pet) == null)
 		{
-			_log.warn("Invalid item transfer request: " + pet.getName() + "(pet) --> " + player.getName());
+			LOGGER.warn("Invalid item transfer request: " + pet.getName() + "(pet) --> " + player.getName());
 		}
 	}
 }

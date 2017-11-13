@@ -35,9 +35,9 @@ public class TargetUnselected implements IClientOutgoingPacket
 	public TargetUnselected(Creature character)
 	{
 		_targetObjId = character.getObjectId();
-		_x = character.getX();
-		_y = character.getY();
-		_z = character.getZ();
+		_x = (int) character.getX();
+		_y = (int) character.getY();
+		_z = (int) character.getZ();
 	}
 	
 	@Override

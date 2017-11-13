@@ -24,7 +24,7 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.communitybbs.BB.Forum;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
 
 public class ForumsBBSManager extends BaseBBSManager
 {
-	private static Logger _log = LoggerFactory.getLogger(ForumsBBSManager.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ForumsBBSManager.class);
 	private final List<Forum> _table;
 	private int _lastid = 1;
 	
@@ -55,7 +55,7 @@ public class ForumsBBSManager extends BaseBBSManager
 		}
 		catch (Exception e)
 		{
-			_log.warn("Data error on Forum (root): " + e.getMessage(), e);
+			LOGGER.warn("Data error on Forum (root): " + e.getMessage(), e);
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class ForumsBBSManager extends BaseBBSManager
 		{
 			f.vload();
 		}
-		_log.info("Loaded " + _table.size() + " forums. Last forum id used: " + _lastid);
+		LOGGER.info("Loaded " + _table.size() + " forums. Last forum id used: " + _lastid);
 	}
 	
 	/**

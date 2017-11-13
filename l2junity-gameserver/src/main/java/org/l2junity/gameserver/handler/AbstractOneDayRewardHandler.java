@@ -25,7 +25,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.enums.OneDayRewardStatus;
 import org.l2junity.gameserver.model.OneDayRewardDataHolder;
 import org.l2junity.gameserver.model.OneDayRewardPlayerEntry;
@@ -71,6 +71,12 @@ public abstract class AbstractOneDayRewardHandler extends ListenersContainer
 		return entry != null ? entry.getProgress() : 0;
 	}
 	
+	public boolean getRecentlyCompleted(PlayerInstance player)
+	{
+		final OneDayRewardPlayerEntry entry = getPlayerEntry(player.getObjectId(), false);
+		return (entry != null) && entry.getRecentlyCompleted();
+	}
+	
 	public synchronized void reset()
 	{
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
@@ -99,6 +105,7 @@ public abstract class AbstractOneDayRewardHandler extends ListenersContainer
 			final OneDayRewardPlayerEntry entry = getPlayerEntry(player.getObjectId(), true);
 			entry.setStatus(OneDayRewardStatus.COMPLETED);
 			entry.setLastCompleted(System.currentTimeMillis());
+			entry.setRecentlyCompleted(true);
 			storePlayerEntry(entry);
 			
 			return true;

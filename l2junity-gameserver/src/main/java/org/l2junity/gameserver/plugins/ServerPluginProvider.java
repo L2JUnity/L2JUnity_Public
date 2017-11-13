@@ -26,6 +26,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.ServiceLoader;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.gameserver.loader.LoadGroup;
+import org.l2junity.gameserver.loader.ScriptLoadGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,9 +50,15 @@ public final class ServerPluginProvider
 	
 	private void init()
 	{
-		final ServiceLoader<AbstractServerPlugin> provider = ServiceLoader.load(AbstractServerPlugin.class);
+		final List<AbstractServerPlugin> plugins = new ArrayList<>();
+		if (ServerPluginClassPathProvider.getInstance().getClassLoader() != Thread.currentThread().getContextClassLoader())
+		{
+			ServiceLoader.load(AbstractServerPlugin.class, ServerPluginClassPathProvider.getInstance().getClassLoader()).forEach(plugins::add);
+		}
+		
+		ServiceLoader.load(AbstractServerPlugin.class).forEach(plugins::add);
 		final Map<String, Integer> versions = new HashMap<>();
-		for (AbstractServerPlugin plugin : provider)
+		for (AbstractServerPlugin plugin : plugins)
 		{
 			// Skip older plugins
 			final ServerPlugin serverPlugin = PluginsTable.getInstance().getPlugin(plugin.getName());
@@ -81,7 +91,7 @@ public final class ServerPluginProvider
 			.filter(Objects::nonNull)
 			.forEach(_activePlugins::add);
 		//@formatter:on
-		LOGGER.info("Loaded " + _allPlugins.size() + " plugins");
+		LOGGER.info("Loaded {} plugin(s).", _allPlugins.size());
 	}
 	
 	public List<AbstractServerPlugin> getPlugins()
@@ -89,6 +99,7 @@ public final class ServerPluginProvider
 		return _allPlugins;
 	}
 	
+	@Load(group = LoadGroup.class)
 	public void onInit()
 	{
 		try
@@ -101,6 +112,7 @@ public final class ServerPluginProvider
 		}
 	}
 	
+	@Load(group = ScriptLoadGroup.class)
 	public void onLoad()
 	{
 		try
@@ -177,6 +189,7 @@ public final class ServerPluginProvider
 	 * Gets the single instance of ServerPluginProvider.
 	 * @return single instance of ServerPluginProvider
 	 */
+	@InstanceGetter
 	public static ServerPluginProvider getInstance()
 	{
 		return SingletonHolder.INSTANCE;

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -26,12 +26,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.OneDayRewardDataHolder;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.holders.ItemHolder;
+import org.l2junity.gameserver.scripting.ScriptsManager;
+import org.l2junity.gameserver.scripting.annotations.OneDayRewardScript;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -46,19 +51,19 @@ public class OneDayRewardData implements IGameXmlReader
 	
 	protected OneDayRewardData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_oneDayReward.clear();
+		ScriptsManager.getInstance().runScripts(OneDayRewardScript.class);
 		parseDatapackFile("data/OneDayReward.xml");
 		LOGGER.info("Loaded {} one day rewards.", _oneDayReward.size());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, "list", listNode -> forEach(listNode, "reward", rewardNode ->
 		{
@@ -100,6 +105,11 @@ public class OneDayRewardData implements IGameXmlReader
 		}));
 	}
 	
+	public int getRewardCount()
+	{
+		return _oneDayReward.size();
+	}
+	
 	public Collection<OneDayRewardDataHolder> getOneDayRewardData()
 	{
 		//@formatter:off
@@ -130,6 +140,7 @@ public class OneDayRewardData implements IGameXmlReader
 	 * Gets the single instance of OneDayRewardData.
 	 * @return single instance of OneDayRewardData
 	 */
+	@InstanceGetter
 	public static final OneDayRewardData getInstance()
 	{
 		return SingletonHolder._instance;

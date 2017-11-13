@@ -18,7 +18,7 @@
  */
 package org.l2junity.loginserver.network.clientpackets;
 
-import org.l2junity.Config;
+import org.l2junity.loginserver.config.LoginServerConfig;
 import org.l2junity.loginserver.network.serverpackets.PIAgreementCheck;
 
 /**
@@ -44,6 +44,6 @@ public class RequestPIAgreementCheck extends L2LoginClientPacket
 	@Override
 	public void run()
 	{
-		getClient().sendPacket(new PIAgreementCheck(_accountId, Config.SHOW_PI_AGREEMENT ? 0x01 : 0x00));
+		getClient().sendPacket(new PIAgreementCheck(_accountId, LoginServerConfig.SHOW_PI_AGREEMENT ? 0x01 : 0x00));
 	}
 }

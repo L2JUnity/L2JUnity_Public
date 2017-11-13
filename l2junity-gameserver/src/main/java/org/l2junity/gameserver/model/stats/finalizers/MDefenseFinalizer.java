@@ -18,17 +18,17 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -45,7 +45,7 @@ public class MDefenseFinalizer implements IStatsFunction
 	};
 	
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
@@ -85,15 +85,18 @@ public class MDefenseFinalizer implements IStatsFunction
 		}
 		if (creature.isRaid())
 		{
-			baseValue *= Config.RAID_MDEFENCE_MULTIPLIER;
+			baseValue *= NpcConfig.RAID_MDEFENCE_MULTIPLIER;
 		}
 		
-		final double bonus = creature.getMEN() > 0 ? BaseStats.MEN.calcBonus(creature) : 1.;
-		baseValue *= bonus * creature.getLevelMod();
+		baseValue *= creature.getMEN() > 1 ? BaseStats.MEN.calcBonus(creature) : 1.;
+		if (creature.getLevel() > 0)
+		{
+			baseValue *= creature.getLevelMod();
+		}
 		return defaultValue(creature, stat, baseValue);
 	}
 	
-	private double defaultValue(Creature creature, Stats stat, double baseValue)
+	private double defaultValue(Creature creature, DoubleStat stat, double baseValue)
 	{
 		final double mul = Math.max(creature.getStat().getMul(stat), 0.5);
 		final double add = creature.getStat().getAdd(stat);

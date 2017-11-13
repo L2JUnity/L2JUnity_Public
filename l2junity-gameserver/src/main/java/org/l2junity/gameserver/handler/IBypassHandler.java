@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  */
 public interface IBypassHandler
 {
-	Logger _log = LoggerFactory.getLogger(IBypassHandler.class);
+	Logger LOGGER = LoggerFactory.getLogger(IBypassHandler.class);
 	
 	/**
 	 * This is the worker method that is called when someone uses an bypass command.

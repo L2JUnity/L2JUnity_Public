@@ -39,10 +39,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.crypto.Cipher;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.loginserver.GameServerTable.GameServerInfo;
+import org.l2junity.loginserver.config.LoginServerConfig;
 import org.l2junity.loginserver.model.data.AccountInfo;
 import org.l2junity.loginserver.network.L2LoginClient;
 import org.l2junity.loginserver.network.gameserverpackets.ServerStatus;
@@ -194,9 +195,9 @@ public class LoginController
 			_failedLoginAttemps.put(addr, failedLoginAttemps);
 		}
 		
-		if (failedLoginAttemps >= Config.LOGIN_TRY_BEFORE_BAN)
+		if (failedLoginAttemps >= LoginServerConfig.LOGIN_TRY_BEFORE_BAN)
 		{
-			addBanForAddress(addr, Config.LOGIN_BLOCK_AFTER_BAN * 1000);
+			addBanForAddress(addr, LoginServerConfig.LOGIN_BLOCK_AFTER_BAN * 1000);
 			// we need to clear the failed login attempts here, so after the ip ban is over the client has another 5 attempts
 			clearFailedLoginAttemps(addr);
 			_log.warn("Added banned address " + addr.getHostAddress() + "! Too many login attemps.");
@@ -228,7 +229,7 @@ public class LoginController
 				{
 					if (rset.next())
 					{
-						if (Config.DEBUG)
+						if (GeneralConfig.DEBUG)
 						{
 							_log.debug("Account '" + login + "' exists.");
 						}
@@ -259,7 +260,7 @@ public class LoginController
 				}
 			}
 			
-			if (!autoCreateIfEnabled || !Config.AUTO_CREATE_ACCOUNTS)
+			if (!autoCreateIfEnabled || !LoginServerConfig.AUTO_CREATE_ACCOUNTS)
 			{
 				// account does not exist and auto create account is not desired
 				recordFailedLoginAttemp(addr);

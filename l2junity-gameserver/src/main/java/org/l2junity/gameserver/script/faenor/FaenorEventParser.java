@@ -20,10 +20,11 @@ package org.l2junity.gameserver.script.faenor;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.script.ScriptContext;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.script.DateRange;
 import org.l2junity.gameserver.script.Parser;
 import org.l2junity.gameserver.script.ParserFactory;
@@ -37,7 +38,7 @@ import org.w3c.dom.Node;
  */
 public class FaenorEventParser extends FaenorParser
 {
-	static Logger _log = LoggerFactory.getLogger(FaenorEventParser.class);
+	static final Logger LOGGER = LoggerFactory.getLogger(FaenorEventParser.class);
 	private DateRange _eventDates = null;
 	
 	@Override
@@ -49,14 +50,14 @@ public class FaenorEventParser extends FaenorParser
 		Date currentDate = new Date();
 		if (_eventDates.getEndDate().before(currentDate))
 		{
-			_log.info("Event ID: (" + ID + ") has passed... Ignored.");
+			LOGGER.info("Event ID: (" + ID + ") has passed... Ignored.");
 			return;
 		}
 		
 		if (_eventDates.getStartDate().after(currentDate))
 		{
-			_log.info("Event ID: (" + ID + ") is not active yet... Ignored.");
-			ThreadPoolManager.getInstance().scheduleGeneral(() -> parseEventDropAndMessage(eventNode), _eventDates.getStartDate().getTime() - currentDate.getTime());
+			LOGGER.info("Event ID: (" + ID + ") is not active yet... Ignored.");
+			ThreadPool.schedule(() -> parseEventDropAndMessage(eventNode), _eventDates.getStartDate().getTime() - currentDate.getTime(), TimeUnit.MILLISECONDS);
 			return;
 		}
 		
@@ -92,7 +93,7 @@ public class FaenorEventParser extends FaenorParser
 		}
 		catch (Exception e)
 		{
-			_log.warn("Error in event parser: " + e.getMessage(), e);
+			LOGGER.warn("Error in event parser: " + e.getMessage(), e);
 		}
 	}
 	
@@ -119,7 +120,7 @@ public class FaenorEventParser extends FaenorParser
 		}
 		catch (Exception e)
 		{
-			_log.warn("ERROR(parseEventDrop):" + e.getMessage(), e);
+			LOGGER.warn("ERROR(parseEventDrop):" + e.getMessage(), e);
 		}
 	}
 	

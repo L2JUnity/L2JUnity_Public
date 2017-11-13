@@ -4,6 +4,7 @@
 		<!-- For 30 minutes, provides the effect of Knight's Harmony. Can be used only by characters above level 85. Cooldown is 2 min. -->
 		<set name="icon" val="icon.etc_super_potion_i03" />
 		<set name="weight" val="5" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="crystal_type" val="R" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -16,6 +17,7 @@
 		<!-- For 30 minutes, provides the effect of Wizard's Harmony. Can be used only by characters above level 85. Cooldown is 2 min. -->
 		<set name="icon" val="icon.etc_super_potion_i03" />
 		<set name="weight" val="5" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="crystal_type" val="R" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -28,6 +30,7 @@
 		<!-- For 30 minutes, provides the effect of Warrior's Harmony. Can be used only by characters above level 85. Cooldown is 2 min. -->
 		<set name="icon" val="icon.etc_super_potion_i03" />
 		<set name="weight" val="5" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="crystal_type" val="R" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -45,6 +48,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="recipe_id" val="4154" /> <!-- mk_high_elixir_of_life_r_common -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37104" name="Recipe: High-grade Elixir of Mind (R-grade)" type="EtcItem">
 		<!-- For those who have completed the fourth class transfer only. Recipe for Elixir of Mind (R-grade). Requires Create Common Item (Lv. 10). Success rate is 100%. -->
@@ -55,6 +59,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="recipe_id" val="4155" /> <!-- mk_high_elixir_of_mental_r_common -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37105" name="Recipe: High-grade Elixir of CP (R-grade)" type="EtcItem">
 		<!-- For those who have completed the fourth class transfer only. Recipe for Elixir of CP (R-grade). Requires Create Common Item (Lv. 10). Success rate is 100%. -->
@@ -65,6 +70,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="recipe_id" val="4156" /> <!-- mk_high_elixir_of_combative_r_common -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37106" name="Recipe: High-grade Elixir of Life (R-grade)" type="EtcItem">
 		<!-- For Dwarves only. Recipe for Elixir of Life (R-grade). Requires Create Item (Lv. 11). Success rate is 100%. -->
@@ -76,6 +82,7 @@
 		<set name="commissionItemType" val="RECIPE" />
 		<set name="recipe_id" val="4157" /> <!-- mk_high_elixir_of_life_r -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37107" name="Recipe: High-grade Elixir of Mind (R-grade)" type="EtcItem">
 		<!-- For Dwarves only. Recipe for Elixir of Mind (R-grade). Requires Create Item (Lv. 11). Success rate is 100%. -->
@@ -87,6 +94,7 @@
 		<set name="commissionItemType" val="RECIPE" />
 		<set name="recipe_id" val="4158" /> <!-- mk_high_elixir_of_mental_r -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37108" name="Recipe: High-grade Elixir of CP (R-grade)" type="EtcItem">
 		<!-- For Dwarves only. Recipe for Elixir of Life (R-grade). Requires Create Item (Lv. 11). Success rate is 100%. -->
@@ -97,6 +105,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="recipe_id" val="4159" /> <!-- mk_high_elixir_of_combative_r -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37109" name="Recipe: Elixir of Protection" type="EtcItem">
 		<!-- For Dwarves only. Recipe for Elixir of Protection. Requires Create Item (Lv. 11). Success rate is 100%. -->
@@ -107,6 +116,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="recipe_id" val="4160" /> <!-- mk_elixir_of_guardian_harmony -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37110" name="Recipe: Elixir of Magic" type="EtcItem">
 		<!-- For Dwarves only. Recipe for Elixir of Magic. Requires Create Item (Lv. 11). Success rate is 100%. -->
@@ -117,6 +127,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="recipe_id" val="4161" /> <!-- mk_elixir_of_magician_harmony -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37111" name="Recipe: Elixir of Aggression" type="EtcItem">
 		<!-- For Dwarves only. Recipe for Elixir of Aggression. Requires Create Item (Lv. 11). Success rate is 100%. -->
@@ -127,6 +138,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="recipe_id" val="4162" /> <!-- mk_elixir_of_berserker_harmony -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37112" name="Scroll of Escape: Heine" type="EtcItem">
 		<!-- Teleports you close to Captain Gosta in Heine. -->
@@ -135,6 +147,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -152,6 +165,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -169,6 +183,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -186,6 +201,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -293,6 +309,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -330,6 +347,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -347,6 +365,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -364,6 +383,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -381,6 +401,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -398,6 +419,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -421,6 +443,23 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<capsuled_items>
+			<item id="57" min="2000000000" max="2000000000" chance="100" /> <!-- Adena -->
+			<item id="3936" min="100" max="100" chance="100" /> <!-- Blessed Scroll of Resurrection -->
+			<item id="33509" min="1" max="1" chance="100" /> <!-- Returning Hero's Shirt -->
+			<item id="34989" min="1" max="1" chance="100" /> <!-- Talisman - Longing -->
+			<item id="35294" min="1" max="1" chance="100" /> <!-- Enhanced Tauti's Bracelet -->
+			<item id="36167" min="1" max="1" chance="100" /> <!-- Nurka's Belt -->
+			<item id="37129" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Pack -->
+			<item id="37130" min="1" max="1" chance="100" /> <!-- Bloody Eternal Pack -->
+			<item id="37131" min="1" max="1" chance="100" /> <!-- Istina/ Octavis Accessory Pack -->
+			<item id="37132" min="1" max="1" chance="100" /> <!-- Top-grade Enchantment Pack -->
+			<item id="37133" min="1" max="1" chance="100" /> <!-- Hair Accessory/ Pendant Pack -->
+			<item id="37134" min="1" max="1" chance="100" /> <!-- Lv. 5 Legendary Dye Pack (Event) -->
+			<item id="37395" min="10" max="10" chance="100" /> <!-- Scroll: 10,000,000 SP -->
+		</capsuled_items>
 	</item>
 	<item id="37129" name="Bloody Amaranthine Pack" name_additional="Event" type="EtcItem">
 		<!-- Double-click to receive 1 of each Bloody Amaranthine Weapon with Double Crystal Enhancement. -->
@@ -435,6 +474,53 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="immediate_effect" val="true" />
+		<capsuled_items>
+			<item id="35249" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Shaper -->
+			<item id="35250" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Shaper -->
+			<item id="35251" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Shaper -->
+			<item id="35252" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Cutter -->
+			<item id="35253" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Cutter -->
+			<item id="35254" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Cutter -->
+			<item id="35255" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Slasher -->
+			<item id="35256" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Slasher -->
+			<item id="35257" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Slasher -->
+			<item id="35258" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Avenger -->
+			<item id="35259" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Avenger -->
+			<item id="35260" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Avenger -->
+			<item id="35261" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Fighter -->
+			<item id="35262" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Fighter -->
+			<item id="35263" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Fighter -->
+			<item id="35264" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Stormer -->
+			<item id="35265" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Stormer -->
+			<item id="35266" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Stormer -->
+			<item id="35267" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Thrower -->
+			<item id="35268" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Thrower -->
+			<item id="35269" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Thrower -->
+			<item id="35270" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Shooter -->
+			<item id="35271" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Shooter -->
+			<item id="35272" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Shooter -->
+			<item id="35273" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Buster -->
+			<item id="35274" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Buster -->
+			<item id="35275" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Buster -->
+			<item id="35276" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Caster -->
+			<item id="35277" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Caster -->
+			<item id="35278" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Caster -->
+			<item id="35279" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Retributer -->
+			<item id="35280" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Retributer -->
+			<item id="35281" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Retributer -->
+			<item id="35282" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dualsword -->
+			<item id="35283" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dualsword -->
+			<item id="35284" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dualsword -->
+			<item id="35285" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dual Dagger -->
+			<item id="35286" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dual Dagger -->
+			<item id="35287" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dual Dagger -->
+			<item id="35288" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dual Blunt Weapon -->
+			<item id="35289" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dual Blunt Weapon -->
+			<item id="35290" min="1" max="1" chance="100" /> <!-- Bloody Amaranthine Dual Blunt Weapon -->
+		</capsuled_items>
 	</item>
 	<item id="37130" name="Bloody Eternal Pack" name_additional="Event" type="EtcItem">
 		<!-- Double-click to receive 1 of each Bloody Eternal Armor. -->
@@ -449,6 +535,28 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="immediate_effect" val="true" />
+		<capsuled_items>
+			<item id="35079" min="1" max="1" chance="100" /> <!-- Bloody Eternal Helmet -->
+			<item id="35080" min="1" max="1" chance="100" /> <!-- Bloody Eternal Breastplate -->
+			<item id="35081" min="1" max="1" chance="100" /> <!-- Bloody Eternal Gaiters -->
+			<item id="35082" min="1" max="1" chance="100" /> <!-- Bloody Eternal Gauntlets -->
+			<item id="35083" min="1" max="1" chance="100" /> <!-- Bloody Eternal Boots -->
+			<item id="35085" min="1" max="1" chance="100" /> <!-- Bloody Eternal Leather Helmet -->
+			<item id="35086" min="1" max="1" chance="100" /> <!-- Bloody Eternal Leather Armor -->
+			<item id="35087" min="1" max="1" chance="100" /> <!-- Bloody Eternal Leather Leggings -->
+			<item id="35088" min="1" max="1" chance="100" /> <!-- Bloody Eternal Leather Gloves -->
+			<item id="35089" min="1" max="1" chance="100" /> <!-- Bloody Eternal Leather Boots -->
+			<item id="35090" min="1" max="1" chance="100" /> <!-- Bloody Eternal Circlet -->
+			<item id="35091" min="1" max="1" chance="100" /> <!-- Bloody Eternal Tunic -->
+			<item id="35092" min="1" max="1" chance="100" /> <!-- Bloody Eternal Stockings -->
+			<item id="35093" min="1" max="1" chance="100" /> <!-- Bloody Eternal Gloves -->
+			<item id="35094" min="1" max="1" chance="100" /> <!-- Bloody Eternal Shoes -->
+			<item id="18088" min="1" max="1" chance="100" /> <!-- Blessed Eternal Shield -->
+			<item id="18099" min="1" max="1" chance="100" /> <!-- Blessed Eternal Sigil -->
+		</capsuled_items>
 	</item>
 	<item id="37131" name="Istina/ Octavis Accessory Pack" name_additional="Event" type="EtcItem">
 		<!-- Double-click to receive 1 Istina's Necklace, 1 Octavis' Ring, 1 Istina's Ring, 1 Istina's Earring, and 1 Octavis' Earring. -->
@@ -463,6 +571,17 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="immediate_effect" val="true" />
+		<capsuled_items>
+			<item id="19451" min="1" max="1" chance="100" /> <!-- Istina's Ring -->
+			<item id="19452" min="1" max="1" chance="100" /> <!-- Istina's Earring -->
+			<item id="19453" min="1" max="1" chance="100" /> <!-- Istina's Necklace -->
+			<item id="19457" min="1" max="1" chance="100" /> <!-- Octavis' Ring -->
+			<item id="19458" min="1" max="1" chance="100" /> <!-- Octavis' Earring -->
+			<item id="19459" min="1" max="1" chance="100" /> <!-- Octavis' Necklace -->
+		</capsuled_items>
 	</item>
 	<item id="37132" name="Top-grade Enchantment Pack" name_additional="Event" type="EtcItem">
 		<!-- Double-click to receive 20 Scrolls: Enchant Weapon of Destruction (R-grade), 220 Scrolls: Enchant Armor of Destruction (R-grade), 3 Scrolls: Enchant Weapon (R-grade), 33 Scrolls: Enchant Armor (R-grade), each of the 12 Super Attribute Stones and 1 Life Stone Instilled with Giants' Power. -->
@@ -477,6 +596,28 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="immediate_effect" val="true" />
+		<capsuled_items>
+			<item id="17526" min="3" max="3" chance="100" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+			<item id="17527" min="33" max="33" chance="100" /> <!-- Scroll: Enchant Armor (R-grade) -->
+			<item id="33478" min="220" max="220" chance="100" /> <!-- Destruction Scroll: Enchant Weapon (R-grade) -->
+			<item id="33479" min="20" max="20" chance="100" /> <!-- Destruction Scroll: Enchant Armor (R-grade) -->
+			<item id="33481" min="12" max="12" chance="100" /> <!-- Fire Stone - Super -->
+			<item id="33482" min="12" max="12" chance="100" /> <!-- Water Stone - Super -->
+			<item id="33483" min="12" max="12" chance="100" /> <!-- Earth Stone - Super -->
+			<item id="33484" min="12" max="12" chance="100" /> <!-- Wind Stone - Super -->
+			<item id="33485" min="12" max="12" chance="100" /> <!-- Dark Stone - Super -->
+			<item id="33486" min="12" max="12" chance="100" /> <!-- Holy Stone - Super -->
+			<item id="33487" min="12" max="12" chance="100" /> <!-- Fire Crystal - Super -->
+			<item id="33488" min="12" max="12" chance="100" /> <!-- Water Crystal - Super -->
+			<item id="33489" min="12" max="12" chance="100" /> <!-- Earth Crystal - Super -->
+			<item id="33490" min="12" max="12" chance="100" /> <!-- Wind Crystal - Super -->
+			<item id="33491" min="12" max="12" chance="100" /> <!-- Dark Crystal - Super -->
+			<item id="33492" min="12" max="12" chance="100" /> <!-- Holy Crystal - Super -->
+			<item id="36731" min="1" max="1" chance="100" /> <!-- Life Stone Instilled with Giants' Power -->
+		</capsuled_items>
 	</item>
 	<item id="37133" name="Hair Accessory/ Pendant Pack" name_additional="Event" type="EtcItem">
 		<!-- Double-click to receive 1 of each Hair Accessory and Hair Accessory Pendant. -->
@@ -491,6 +632,37 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="immediate_effect" val="true" />
+		<capsuled_items>
+			<item id="6843" min="1" max="1" chance="100" /> <!-- Cat Ears -->
+			<item id="6845" min="1" max="1" chance="100" /> <!-- Pirate's Eyepatch -->
+			<item id="7680" min="1" max="1" chance="100" /> <!-- Raccoon Ears -->
+			<item id="7681" min="1" max="1" chance="100" /> <!-- Outlaw's Eyepatch -->
+			<item id="7683" min="1" max="1" chance="100" /> <!-- Rabbit Ears -->
+			<item id="8184" min="1" max="1" chance="100" /> <!-- Party Hat -->
+			<item id="8565" min="1" max="1" chance="100" /> <!-- Romantic Chapeau -->
+			<item id="8916" min="1" max="1" chance="100" /> <!-- Eyepatch -->
+			<item id="8920" min="1" max="1" chance="100" /> <!-- Angel Halo -->
+			<item id="8921" min="1" max="1" chance="100" /> <!-- Demon Circlet -->
+			<item id="13494" min="1" max="1" chance="100" /> <!-- Refined Angel Ring -->
+			<item id="13495" min="1" max="1" chance="100" /> <!-- Refined Devil Horn -->
+			<item id="35901" min="1" max="1" chance="100" /> <!-- STR Pendant -->
+			<item id="35902" min="1" max="1" chance="100" /> <!-- DEX Pendant -->
+			<item id="35903" min="1" max="1" chance="100" /> <!-- CON Pendant -->
+			<item id="35904" min="1" max="1" chance="100" /> <!-- MEN Pendant -->
+			<item id="35905" min="1" max="1" chance="100" /> <!-- INT Pendant -->
+			<item id="35906" min="1" max="1" chance="100" /> <!-- WIT Pendant -->
+			<item id="35907" min="1" max="1" chance="100" /> <!-- Critical Rate Pendant -->
+			<item id="35908" min="1" max="1" chance="100" /> <!-- Critical Damage Pendant -->
+			<item id="35909" min="1" max="1" chance="100" /> <!-- P. Def. Pendant -->
+			<item id="35910" min="1" max="1" chance="100" /> <!-- M. Def. Pendant -->
+			<item id="35911" min="1" max="1" chance="100" /> <!-- Evasion Pendant -->
+			<item id="35912" min="1" max="1" chance="100" /> <!-- P. Atk. Pendant -->
+			<item id="35913" min="1" max="1" chance="100" /> <!-- M. Atk. Pendant -->
+			<item id="35914" min="1" max="1" chance="100" /> <!-- Accuracy Pendant -->
+		</capsuled_items>
 	</item>
 	<item id="37134" name="Lv. 5 Legendary Dye Pack" name_additional="Event" type="EtcItem">
 		<!-- Double-click to receive 3 of each Lv. 5 Legendary Dye Pack. -->
@@ -505,6 +677,17 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="immediate_effect" val="true" />
+		<capsuled_items>
+			<item id="36137" min="3" max="3" chance="100" /> <!-- Lv. 5 Legendary MEN Dye 10-unit Pack -->
+			<item id="36138" min="3" max="3" chance="100" /> <!-- Lv. 5 Legendary WIT Dye 10-unit Pack -->
+			<item id="36139" min="3" max="3" chance="100" /> <!-- Lv. 5 Legendary DEX Dye 10-unit Pack -->
+			<item id="36140" min="3" max="3" chance="100" /> <!-- Lv. 5 Legendary CON Dye 10-unit Pack -->
+			<item id="36141" min="3" max="3" chance="100" /> <!-- Lv. 5 Legendary INT Dye 10-unit Pack -->
+			<item id="36142" min="3" max="3" chance="100" /> <!-- Lv. 5 Legendary STR Dye 10-unit Pack -->
+		</capsuled_items>
 	</item>
 	<item id="37135" name="Steel Plate Helmet (60-day)" type="Armor">
 		<!-- Full Plate Helmet with limited ability enhancement (enchantment, soul crystal enhancement and augmenting). 60-day. -->
@@ -621,6 +804,7 @@
 		<set name="weight" val="660" />
 		<stats>
 			<stat type="pDef">60</stat>
+			<stat type="maxMp">225</stat>
 		</stats>
 	</item>
 	<item id="37141" name="Steel Karmian Stockings (60-day)" type="Armor">
@@ -641,6 +825,7 @@
 		<set name="weight" val="323" />
 		<stats>
 			<stat type="pDef">37</stat>
+			<stat type="maxMp">141</stat>
 		</stats>
 	</item>
 	<item id="37142" name="Steel Karmian Gloves (60-day)" type="Armor">
@@ -874,6 +1059,7 @@
 		<set name="weight" val="847" />
 		<stats>
 			<stat type="pDef">127</stat>
+			<stat type="maxMp">561</stat>
 		</stats>
 	</item>
 	<item id="37154" name="Steel Avadon Circlet (60-day)" type="Armor">
@@ -1127,6 +1313,7 @@
 		<set name="weight" val="817" />
 		<stats>
 			<stat type="pDef">139</stat>
+			<stat type="maxMp">665</stat>
 		</stats>
 	</item>
 	<item id="37167" name="Steel Dark Crystal Helmet (60-day)" type="Armor">
@@ -1421,6 +1608,7 @@
 		<set name="weight" val="767" />
 		<stats>
 			<stat type="pDef">166</stat>
+			<stat type="maxMp">866</stat>
 		</stats>
 	</item>
 	<item id="37182" name="Steel Major Arcana Gloves (60-day)" type="Armor">
@@ -1714,6 +1902,7 @@
 		<set name="weight" val="590" />
 		<stats>
 			<stat type="pDef">113</stat>
+			<stat type="maxMp">592</stat>
 		</stats>
 	</item>
 	<item id="37197" name="Steel Dynasty Stockings (60-day)" type="Armor">
@@ -1734,6 +1923,7 @@
 		<set name="weight" val="290" />
 		<stats>
 			<stat type="pDef">71</stat>
+			<stat type="maxMp">370</stat>
 		</stats>
 	</item>
 	<item id="37198" name="Steel Dynasty Circlet (60-day)" type="Armor">

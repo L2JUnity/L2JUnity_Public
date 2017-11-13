@@ -25,9 +25,11 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.RatesConfig;
 import org.l2junity.gameserver.model.items.L2Item;
+import org.l2junity.gameserver.model.items.type.EtcItemType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,33 +38,30 @@ import org.slf4j.LoggerFactory;
  */
 public final class Product
 {
-	private static final Logger _log = LoggerFactory.getLogger(Product.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Product.class);
 	
 	private final int _buyListId;
 	private final L2Item _item;
 	private final long _price;
 	private final long _restockDelay;
 	private final long _maxCount;
+	private final double _baseTax;
 	private AtomicLong _count = null;
 	private ScheduledFuture<?> _restockTask = null;
 	
-	public Product(int buyListId, L2Item item, long price, long restockDelay, long maxCount)
+	public Product(int buyListId, L2Item item, long price, long restockDelay, long maxCount, int baseTax)
 	{
 		Objects.requireNonNull(item);
 		_buyListId = buyListId;
 		_item = item;
-		_price = price;
+		_price = (price < 0) ? item.getReferencePrice() : price;
 		_restockDelay = restockDelay * 60000;
 		_maxCount = maxCount;
+		_baseTax = baseTax / 100.0;
 		if (hasLimitedStock())
 		{
 			_count = new AtomicLong(maxCount);
 		}
-	}
-	
-	public int getBuyListId()
-	{
-		return _buyListId;
 	}
 	
 	public L2Item getItem()
@@ -77,11 +76,17 @@ public final class Product
 	
 	public long getPrice()
 	{
-		if (_price < 0)
+		long price = _price;
+		if (_item.getItemType().equals(EtcItemType.CASTLE_GUARD))
 		{
-			return getItem().getReferencePrice();
+			price *= RatesConfig.RATE_SIEGE_GUARDS_PRICE;
 		}
-		return _price;
+		return price;
+	}
+	
+	public double getBaseTaxRate()
+	{
+		return _baseTax;
 	}
 	
 	public long getRestockDelay()
@@ -121,7 +126,7 @@ public final class Product
 		}
 		if ((_restockTask == null) || _restockTask.isDone())
 		{
-			_restockTask = ThreadPoolManager.getInstance().scheduleGeneral(this::restock, getRestockDelay());
+			_restockTask = ThreadPool.schedule(this::restock, getRestockDelay(), TimeUnit.MILLISECONDS);
 		}
 		boolean result = _count.addAndGet(-val) >= 0;
 		save();
@@ -138,7 +143,7 @@ public final class Product
 		long remainTime = nextRestockTime - System.currentTimeMillis();
 		if (remainTime > 0)
 		{
-			_restockTask = ThreadPoolManager.getInstance().scheduleGeneral(this::restock, remainTime);
+			_restockTask = ThreadPool.schedule(this::restock, remainTime, TimeUnit.MILLISECONDS);
 		}
 		else
 		{
@@ -157,7 +162,7 @@ public final class Product
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
 			PreparedStatement statement = con.prepareStatement("INSERT INTO `buylists`(`buylist_id`, `item_id`, `count`, `next_restock_time`) VALUES(?, ?, ?, ?) ON DUPLICATE KEY UPDATE `count` = ?, `next_restock_time` = ?"))
 		{
-			statement.setInt(1, getBuyListId());
+			statement.setInt(1, _buyListId);
 			statement.setInt(2, getItemId());
 			statement.setLong(3, getCount());
 			statement.setLong(5, getCount());
@@ -176,7 +181,7 @@ public final class Product
 		}
 		catch (Exception e)
 		{
-			_log.warn("Failed to save Product buylist_id:" + getBuyListId() + " item_id:" + getItemId(), e);
+			LOGGER.warn("Failed to save Product buylist_id:" + _buyListId + " item_id:" + getItemId(), e);
 		}
 	}
 }

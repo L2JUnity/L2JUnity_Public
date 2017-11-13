@@ -21,6 +21,10 @@ package org.l2junity.gameserver.network.client.recv;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.actor.request.ClanInvitationRequest;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerInviteToClan;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.AskJoinPledge;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -65,15 +69,21 @@ public final class RequestJoinPledge implements IClientIncomingPacket
 			return;
 		}
 		
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerInviteToClan(activeChar, target), activeChar, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
+			return;
+		}
+		
 		if (!clan.checkClanJoinCondition(activeChar, target, _pledgeType))
 		{
 			return;
 		}
 		
-		if (!activeChar.getRequest().setRequest(target, this))
-		{
-			return;
-		}
+		final ClanInvitationRequest request = new ClanInvitationRequest(activeChar, target, _pledgeType);
+		request.scheduleTimeout(30 * 1000);
+		activeChar.addRequest(request);
+		target.addRequest(request);
 		
 		final String pledgeName = activeChar.getClan().getName();
 		final String subPledgeName = (activeChar.getClan().getSubPledge(_pledgeType) != null ? activeChar.getClan().getSubPledge(_pledgeType).getName() : null);

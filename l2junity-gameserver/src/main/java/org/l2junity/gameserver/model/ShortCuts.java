@@ -24,7 +24,7 @@ import java.sql.ResultSet;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.enums.ShortcutType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.interfaces.IRestorable;
@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
 
 public class ShortCuts implements IRestorable
 {
-	private static Logger _log = LoggerFactory.getLogger(ShortCuts.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ShortCuts.class);
 	private static final int MAX_SHORTCUTS_PER_BAR = 12;
 	private final PlayerInstance _owner;
 	private final Map<Integer, Shortcut> _shortCuts = new TreeMap<>();
@@ -106,7 +106,7 @@ public class ShortCuts implements IRestorable
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not store character shortcut: " + e.getMessage(), e);
+			LOGGER.warn("Could not store character shortcut: " + e.getMessage(), e);
 		}
 	}
 	
@@ -171,7 +171,7 @@ public class ShortCuts implements IRestorable
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not delete character shortcut: " + e.getMessage(), e);
+			LOGGER.warn("Could not delete character shortcut: " + e.getMessage(), e);
 		}
 	}
 	
@@ -201,7 +201,7 @@ public class ShortCuts implements IRestorable
 		}
 		catch (Exception e)
 		{
-			_log.warn("Could not restore character shortcuts: " + e.getMessage(), e);
+			LOGGER.warn("Could not restore character shortcuts: " + e.getMessage(), e);
 			return false;
 		}
 		

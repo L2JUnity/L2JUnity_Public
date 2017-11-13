@@ -34,7 +34,7 @@ public final class ExShowTrace implements IClientOutgoingPacket
 {
 	private final List<Location> _locations = new ArrayList<>();
 	
-	public void addLocation(int x, int y, int z)
+	public void addLocation(double x, double y, double z)
 	{
 		_locations.add(new Location(x, y, z));
 	}
@@ -54,9 +54,9 @@ public final class ExShowTrace implements IClientOutgoingPacket
 		packet.writeH(_locations.size());
 		for (Location loc : _locations)
 		{
-			packet.writeD(loc.getX());
-			packet.writeD(loc.getY());
-			packet.writeD(loc.getZ());
+			packet.writeD((int) loc.getX());
+			packet.writeD((int) loc.getY());
+			packet.writeD((int) loc.getZ());
 		}
 		return true;
 	}

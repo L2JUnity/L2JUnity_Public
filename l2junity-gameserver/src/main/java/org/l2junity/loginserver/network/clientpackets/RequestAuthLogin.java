@@ -23,10 +23,11 @@ import java.security.GeneralSecurityException;
 
 import javax.crypto.Cipher;
 
-import org.l2junity.Config;
+import org.l2junity.loginserver.GameServerTable;
 import org.l2junity.loginserver.GameServerTable.GameServerInfo;
 import org.l2junity.loginserver.LoginController;
 import org.l2junity.loginserver.LoginController.AuthLoginResult;
+import org.l2junity.loginserver.config.LoginServerConfig;
 import org.l2junity.loginserver.model.data.AccountInfo;
 import org.l2junity.loginserver.network.L2LoginClient;
 import org.l2junity.loginserver.network.L2LoginClient.LoginClientState;
@@ -35,6 +36,7 @@ import org.l2junity.loginserver.network.serverpackets.AccountKicked.AccountKicke
 import org.l2junity.loginserver.network.serverpackets.LoginFail.LoginFailReason;
 import org.l2junity.loginserver.network.serverpackets.LoginOk;
 import org.l2junity.loginserver.network.serverpackets.LoginOtpFail;
+import org.l2junity.loginserver.network.serverpackets.PlayOk;
 import org.l2junity.loginserver.network.serverpackets.ServerList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -161,13 +163,40 @@ public class RequestAuthLogin extends L2LoginClientPacket
 				client.setState(LoginClientState.AUTHED_LOGIN);
 				client.setSessionKey(lc.assignSessionKeyToClient(info.getLogin(), client));
 				lc.getCharactersOnAccount(info.getLogin());
-				if (Config.SHOW_LICENCE)
+				
+				switch (LoginServerConfig.AUTO_SERVER_LOGIN)
 				{
-					client.sendPacket(new LoginOk(client.getSessionKey()));
-				}
-				else
-				{
-					client.sendPacket(new ServerList(client));
+					case Auto:
+					{
+						if (GameServerTable.getInstance().getRegisteredGameServers().size() > 1)
+						{
+							break;
+						}
+					}
+					case True:
+					{
+						if (client.getLastServer() > 0)
+						{
+							if (LoginController.getInstance().isLoginPossible(client, client.getLastServer()))
+							{
+								client.getSessionKey().loginPairCheckDisabled = true;
+								client.setJoinedGS(true);
+								client.sendPacket(new PlayOk(client.getSessionKey()));
+								break;
+							}
+						}
+					}
+					default:
+					{
+						if (LoginServerConfig.SHOW_LICENCE)
+						{
+							client.sendPacket(new LoginOk(client.getSessionKey()));
+						}
+						else
+						{
+							client.sendPacket(new ServerList(client));
+						}
+					}
 				}
 				break;
 			case INVALID_PASSWORD:

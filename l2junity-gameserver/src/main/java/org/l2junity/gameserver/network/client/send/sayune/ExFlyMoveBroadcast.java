@@ -55,13 +55,13 @@ public class ExFlyMoveBroadcast implements IClientOutgoingPacket
 		packet.writeD(_type.ordinal());
 		packet.writeD(_mapId);
 		
-		packet.writeD(_targetLoc.getX());
-		packet.writeD(_targetLoc.getY());
-		packet.writeD(_targetLoc.getZ());
+		packet.writeD((int) _targetLoc.getX());
+		packet.writeD((int) _targetLoc.getY());
+		packet.writeD((int) _targetLoc.getZ());
 		packet.writeD(0x00); // ?
-		packet.writeD(_currentLoc.getX());
-		packet.writeD(_currentLoc.getY());
-		packet.writeD(_currentLoc.getZ());
+		packet.writeD((int) _currentLoc.getX());
+		packet.writeD((int) _currentLoc.getY());
+		packet.writeD((int) _currentLoc.getZ());
 		return true;
 	}
 }

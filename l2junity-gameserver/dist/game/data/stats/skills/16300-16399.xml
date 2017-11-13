@@ -138,7 +138,7 @@
 		<hitTime>10000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16322" toLevel="1" name="Orc Cyclone">
 		<!-- AUTO GENERATED SKILL -->
@@ -147,7 +147,7 @@
 		<operateType>A2</operateType>
 		<coolTime>500</coolTime>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16323" toLevel="1" name="Orc Typhoon">
 		<!-- AUTO GENERATED SKILL -->
@@ -157,7 +157,7 @@
 		<hitTime>10000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16324" toLevel="1" name="Orc Typhoon">
 		<!-- AUTO GENERATED SKILL -->
@@ -166,7 +166,7 @@
 		<operateType>A2</operateType>
 		<coolTime>500</coolTime>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16325" toLevel="1" name="Aerial Yoke">
 		<!-- AUTO GENERATED SKILL -->
@@ -177,7 +177,7 @@
 		<hitTime>2000</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-2</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16326" toLevel="1" name="Phoenix Rush">
 		<!-- AUTO GENERATED SKILL -->
@@ -264,7 +264,7 @@
 		<coolTime>800</coolTime>
 		<reuseDelay>15000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16335" toLevel="1" name="Fear">
 		<!-- AUTO GENERATED SKILL -->
@@ -275,7 +275,7 @@
 		<hitTime>2000</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16336" toLevel="1" name="Physical Decrease">
 		<!-- AUTO GENERATED SKILL -->
@@ -287,7 +287,7 @@
 		<reuseDelay>8000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16337" toLevel="3" name="Magic Blast">
 		<!-- AUTO GENERATED SKILL -->
@@ -315,7 +315,7 @@
 		<icon>icon.skill11510</icon>
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16340" toLevel="1" name="Reaper's Seal">
 		<!-- AUTO GENERATED SKILL -->
@@ -323,7 +323,7 @@
 		<icon>icon.skill0000</icon>
 		<operateType>A2</operateType>
 		<mpConsume>42</mpConsume>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16341" toLevel="1" name="Spell of Light">
 		<!-- AUTO GENERATED SKILL -->
@@ -372,7 +372,7 @@
 		<hitTime>500</hitTime>
 		<reuseDelay>2000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16346" toLevel="1" name="Deadly Fear">
 		<!-- AUTO GENERATED SKILL -->
@@ -396,7 +396,7 @@
 		<reuseDelay>8000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16348" toLevel="3" name="Breeze Point">
 		<!-- AUTO GENERATED SKILL -->
@@ -440,7 +440,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16352" toLevel="1" name="Kain's Sonic Storm">
 		<!-- AUTO GENERATED SKILL -->
@@ -484,7 +484,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16356" toLevel="1" name="Sacred Sphere">
 		<!-- AUTO GENERATED SKILL -->
@@ -504,10 +504,29 @@
 		<operateType>P</operateType>
 	</skill>
 	<skill id="16358" toLevel="3" name="Dimensional Armor">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Half-kill Resistance + 40%, and Received P. Critical Damage + 10%. -->
+		<!-- Updated to Helios -->
+		<!-- Level 1: Half-kill Resistance + 40%, and Received P. Critical Damage + 10%. -->
+		<!-- Level 2: Half-kill Resistance + 80%, and Received P. Critical Damage + 20%. -->
+		<!-- Level 3: Half-kill Resistance + 100%, and Received P. Critical Damage + 30%. -->
 		<icon>icon.skill0329</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_instant_kill_resist">
+				<amount>
+					<value level="1">40</value>
+					<value level="2">80</value>
+					<value level="3">100</value>
+				</amount>
+			</effect>
+			<effect name="p_defence_critical_damage">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">30</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="16359" toLevel="1" name="Dimensional Warp Hold">
 		<!-- AUTO GENERATED SKILL -->
@@ -555,7 +574,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16366" toLevel="1" name="Dimensional Resistance Decrease">
 		<!-- AUTO GENERATED SKILL -->
@@ -568,7 +587,7 @@
 		<reuseDelay>3000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16367" toLevel="1" name="Dimensional Speed Decrease">
 		<!-- AUTO GENERATED SKILL -->
@@ -580,7 +599,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16368" toLevel="1" name="Dimensional Strike">
 		<!-- AUTO GENERATED SKILL -->
@@ -671,7 +690,7 @@
 		<hitTime>2500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16376" toLevel="1" name="Dimensional Bind">
 		<!-- AUTO GENERATED SKILL -->
@@ -682,7 +701,7 @@
 		<hitTime>2500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16377" toLevel="1" name="Dimensional Chain">
 		<!-- AUTO GENERATED SKILL -->
@@ -693,7 +712,7 @@
 		<hitTime>2500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16378" toLevel="1" name="Dimensional Eruption">
 		<!-- AUTO GENERATED SKILL -->
@@ -703,7 +722,7 @@
 		<hitTime>2500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16379" toLevel="1" name="Dimensional Remedy">
 		<!-- AUTO GENERATED SKILL -->
@@ -723,7 +742,7 @@
 		<hitTime>2500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16381" toLevel="1" name="Dimensional Shield">
 		<!-- AUTO GENERATED SKILL -->
@@ -754,7 +773,7 @@
 		<reuseDelay>3000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16384" toLevel="1" name="Dimensional Bleed">
 		<!-- AUTO GENERATED SKILL -->
@@ -765,7 +784,7 @@
 		<hitTime>2500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16385" toLevel="1" name="Dimesional Devil">
 		<!-- AUTO GENERATED SKILL -->
@@ -786,7 +805,7 @@
 		<hitTime>2500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16387" toLevel="1" name="Chain Smash">
 		<!-- AUTO GENERATED SKILL -->
@@ -799,7 +818,7 @@
 		<coolTime>1000</coolTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-150</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16388" toLevel="1" name="Kain's Wrath">
 		<!-- AUTO GENERATED SKILL -->
@@ -809,7 +828,7 @@
 		<mpConsume>10</mpConsume>
 		<coolTime>1000</coolTime>
 		<reuseDelay>5000</reuseDelay>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16389" toLevel="1" name="Absorb Wind">
 		<!-- AUTO GENERATED SKILL -->
@@ -946,7 +965,7 @@
 		<reuseDelay>2000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-150</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16399" toLevel="1" name="Ferin's Cure">
 		<!-- AUTO GENERATED SKILL -->

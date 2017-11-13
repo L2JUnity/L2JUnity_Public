@@ -21,6 +21,9 @@ package org.l2junity.gameserver.network.client.recv;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerInviteToAlly;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.AskJoinAlly;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
@@ -63,6 +66,12 @@ public final class RequestJoinAlly implements IClientIncomingPacket
 			return;
 		}
 		
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerInviteToAlly(activeChar, target), activeChar, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
+			return;
+		}
+		
 		if (!clan.checkAllyJoinCondition(activeChar, target))
 		{
 			return;
@@ -76,6 +85,6 @@ public final class RequestJoinAlly implements IClientIncomingPacket
 		sm.addString(activeChar.getClan().getAllyName());
 		sm.addString(activeChar.getName());
 		target.sendPacket(sm);
-		target.sendPacket(new AskJoinAlly(activeChar.getObjectId(), activeChar.getClan().getAllyName()));
+		target.sendPacket(new AskJoinAlly(activeChar.getObjectId(), activeChar.getClan().getAllyName(), activeChar.getName()));
 	}
 }

@@ -37,9 +37,8 @@ import org.l2junity.gameserver.model.holders.SkillHolder;
 import org.l2junity.gameserver.model.interfaces.IIdentifiable;
 import org.l2junity.gameserver.model.items.type.WeaponType;
 import org.l2junity.gameserver.model.skills.AbnormalType;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.network.client.send.ExBasicActionList;
-import org.l2junity.gameserver.network.client.send.ExUserInfoAbnormalVisualEffect;
 import org.l2junity.gameserver.network.client.send.ExUserInfoEquipSlot;
 import org.l2junity.gameserver.network.client.send.SkillCoolTime;
 
@@ -261,7 +260,7 @@ public final class Transform implements IIdentifiable
 			}
 			
 			// Get player a bit higher so he doesn't drops underground after transformation happens
-			creature.setZ(creature.getZ() + (int) getCollisionHeight(creature, 0));
+			creature.setXYZ(creature.getX(), creature.getY(), creature.getZ() + getCollisionHeight(creature, 0));
 			
 			if (creature.isPlayer())
 			{
@@ -341,7 +340,6 @@ public final class Transform implements IIdentifiable
 					player.sendPacket(new SkillCoolTime(player));
 				}
 				
-				player.sendPacket(new ExUserInfoAbnormalVisualEffect(player));
 				player.broadcastUserInfo();
 				
 				// Notify to scripts
@@ -354,6 +352,7 @@ public final class Transform implements IIdentifiable
 			
 			// I don't know why, but you need to broadcast this to trigger the transformation client-side.
 			// Usually should be sent naturally after applying effect, but sometimes is sent before that... i just dont know...
+			// Also, broadcastUserInfo should always be sent before this, or else it will result in incorrect collision change.
 			creature.updateAbnormalVisualEffects();
 		}
 	}
@@ -398,8 +397,8 @@ public final class Transform implements IIdentifiable
 				
 				player.sendPacket(ExBasicActionList.STATIC_PACKET);
 				
-				player.getEffectList().stopSkillEffects(false, AbnormalType.TRANSFORM);
-				player.getEffectList().stopSkillEffects(false, AbnormalType.CHANGEBODY);
+				player.getEffectList().stopEffects(AbnormalType.TRANSFORM);
+				player.getEffectList().stopEffects(AbnormalType.CHANGEBODY);
 				
 				if (hasTransformSkills)
 				{
@@ -455,7 +454,7 @@ public final class Transform implements IIdentifiable
 		return defaultAttackType;
 	}
 	
-	public double getStats(Creature creature, Stats stats, double defaultValue)
+	public double getStats(Creature creature, DoubleStat stats, double defaultValue)
 	{
 		double val = defaultValue;
 		final TransformTemplate template = getTemplate(creature);
@@ -485,7 +484,7 @@ public final class Transform implements IIdentifiable
 	 */
 	public double getLevelMod(Creature creature)
 	{
-		double val = -1;
+		double val = 1;
 		final TransformTemplate template = getTemplate(creature);
 		if (template != null)
 		{
@@ -496,5 +495,11 @@ public final class Transform implements IIdentifiable
 			}
 		}
 		return val;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return (getClass().getSimpleName() + ":" + _id);
 	}
 }

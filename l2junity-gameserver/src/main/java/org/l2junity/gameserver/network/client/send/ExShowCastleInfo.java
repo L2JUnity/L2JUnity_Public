@@ -57,7 +57,7 @@ public class ExShowCastleInfo implements IClientOutgoingPacket
 				}
 				else
 				{
-					_log.warn("Castle owner with no name! Castle: " + castle.getName() + " has an OwnerId = " + castle.getOwnerId() + " who does not have a  name!");
+					LOGGER.warn("Castle owner with no name! Castle: {} has an OwnerId = {} who does not have a name!", castle.getName(), castle.getOwnerId());
 					packet.writeS("");
 				}
 			}
@@ -67,6 +67,8 @@ public class ExShowCastleInfo implements IClientOutgoingPacket
 			}
 			packet.writeD(castle.getTaxPercent(TaxType.BUY));
 			packet.writeD((int) (castle.getSiege().getSiegeDate().getTimeInMillis() / 1000));
+			packet.writeC(castle.getSiege().isInProgress() ? 0x01 : 0x00);
+			packet.writeC(castle.getSide().ordinal());
 		}
 		return true;
 	}

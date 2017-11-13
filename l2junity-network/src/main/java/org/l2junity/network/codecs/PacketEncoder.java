@@ -18,17 +18,15 @@
  */
 package org.l2junity.network.codecs;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-
-import java.nio.ByteOrder;
-
 import org.l2junity.network.IOutgoingPacket;
 import org.l2junity.network.PacketWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
 
 /**
  * @author Nos
@@ -38,24 +36,17 @@ public class PacketEncoder extends MessageToByteEncoder<IOutgoingPacket>
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PacketEncoder.class);
 	
-	private final ByteOrder _byteOrder;
 	private final int _maxPacketSize;
 	
-	public PacketEncoder(ByteOrder byteOrder, int maxPacketSize)
+	public PacketEncoder(int maxPacketSize)
 	{
 		super();
-		_byteOrder = byteOrder;
 		_maxPacketSize = maxPacketSize;
 	}
 	
 	@Override
 	protected void encode(ChannelHandlerContext ctx, IOutgoingPacket packet, ByteBuf out)
 	{
-		if (out.order() != _byteOrder)
-		{
-			out = out.order(_byteOrder);
-		}
-
 		try
 		{
 			if (packet.write(new PacketWriter(out)))

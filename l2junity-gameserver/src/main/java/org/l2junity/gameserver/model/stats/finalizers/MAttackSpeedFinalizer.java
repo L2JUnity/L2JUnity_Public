@@ -18,13 +18,14 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -32,19 +33,26 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class MAttackSpeedFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
 		double baseValue = calcWeaponBaseValue(creature, stat);
-		if (Config.L2JMOD_CHAMPION_ENABLE && creature.isChampion())
+		if (L2JModsConfig.L2JMOD_CHAMPION_ENABLE && creature.isChampion())
 		{
-			baseValue *= Config.L2JMOD_CHAMPION_SPD_ATK;
+			baseValue *= L2JModsConfig.L2JMOD_CHAMPION_SPD_ATK;
 		}
 		
 		final double chaBonus = creature.isPlayer() ? BaseStats.CHA.calcBonus(creature) : 1.;
 		final double witBonus = creature.getWIT() > 0 ? BaseStats.WIT.calcBonus(creature) : 1.;
 		baseValue *= witBonus * chaBonus;
-		return validateValue(creature, Stats.defaultValue(creature, stat, baseValue), 1, Config.MAX_MATK_SPEED);
+		return validateValue(creature, defaultValue(creature, stat, baseValue), 1, PlayerConfig.MAX_MATK_SPEED);
+	}
+	
+	private double defaultValue(Creature creature, DoubleStat stat, double baseValue)
+	{
+		final double mul = Math.max(creature.getStat().getMul(stat), 0.7);
+		final double add = creature.getStat().getAdd(stat);
+		return (baseValue * mul) + add + creature.getStat().getMoveTypeValue(stat, creature.getMoveType());
 	}
 }

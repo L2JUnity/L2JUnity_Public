@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.events.impl.character.player;
 
-import org.l2junity.gameserver.model.Augmentation;
+import org.l2junity.gameserver.model.VariationInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.events.EventType;
 import org.l2junity.gameserver.model.events.impl.IBaseEvent;
@@ -31,10 +31,10 @@ public class OnPlayerAugment implements IBaseEvent
 {
 	private final PlayerInstance _activeChar;
 	private final ItemInstance _item;
-	private final Augmentation _augmentation;
+	private final VariationInstance _augmentation;
 	private final boolean _isAugment; // true = is being augmented // false = augment is being removed
 	
-	public OnPlayerAugment(PlayerInstance activeChar, ItemInstance item, Augmentation augment, boolean isAugment)
+	public OnPlayerAugment(PlayerInstance activeChar, ItemInstance item, VariationInstance augment, boolean isAugment)
 	{
 		_activeChar = activeChar;
 		_item = item;
@@ -52,7 +52,7 @@ public class OnPlayerAugment implements IBaseEvent
 		return _item;
 	}
 	
-	public Augmentation getAugmentation()
+	public VariationInstance getAugmentation()
 	{
 		return _augmentation;
 	}

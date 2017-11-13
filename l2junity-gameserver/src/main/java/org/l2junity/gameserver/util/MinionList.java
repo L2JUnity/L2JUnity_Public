@@ -20,10 +20,12 @@ package org.l2junity.gameserver.util;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -38,7 +40,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MinionList
 {
-	private static final Logger _log = LoggerFactory.getLogger(MinionList.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MinionList.class);
 	
 	protected final L2MonsterInstance _master;
 	/** List containing the current spawned minions */
@@ -190,10 +192,10 @@ public class MinionList
 			_reusedMinionReferences.add(minion);
 		}
 		
-		final int time = respawnTime < 0 ? _master.isRaid() ? (int) Config.RAID_MINION_RESPAWN_TIMER : 0 : respawnTime;
+		final int time = respawnTime < 0 ? _master.isRaid() ? (int) NpcConfig.RAID_MINION_RESPAWN_TIMER : 0 : respawnTime;
 		if ((time > 0) && !_master.isAlikeDead())
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(new MinionRespawnTask(minion), time);
+			ThreadPool.schedule(new MinionRespawnTask(minion), time, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -242,9 +244,9 @@ public class MinionList
 		{
 			if ((minion != null) && !minion.isDead() && !minion.isMovementDisabled())
 			{
-				int newX = Rnd.get(minRadius * 2, offset * 2); // x
-				int newY = Rnd.get(newX, offset * 2); // distance
-				newY = (int) Math.sqrt((newY * newY) - (newX * newX)); // y
+				double newX = Rnd.get(minRadius * 2, offset * 2); // x
+				double newY = Rnd.get((int) newX, offset * 2); // distance
+				newY = Math.sqrt((newY * newY) - (newX * newX)); // y
 				if (newX > (offset + minRadius))
 				{
 					newX = (_master.getX() + newX) - offset;
@@ -348,12 +350,15 @@ public class MinionList
 	
 	protected static final L2MonsterInstance initializeNpcInstance(L2MonsterInstance master, L2MonsterInstance minion)
 	{
-		minion.stopAllEffects();
+		// Remove all effects and recalculate stats without broadcasting.
+		minion.getEffectList().stopAllEffects(false);
+		
 		minion.setIsDead(false);
 		minion.setDecayed(false);
 		
-		// Set the Minion HP, MP and Heading
-		minion.setCurrentHpMp(minion.getMaxHp(), minion.getMaxMp());
+		// Set the Minion HP, MP (without broadcasting) and Heading
+		minion.setCurrentHp(minion.getMaxHp(), false);
+		minion.setCurrentMp(minion.getMaxMp(), false);
 		minion.setHeading(master.getHeading());
 		
 		// Set the Minion leader to this RaidBoss
@@ -366,9 +371,9 @@ public class MinionList
 		final int offset = 200;
 		final int minRadius = (int) master.getCollisionRadius() + 30;
 		
-		int newX = Rnd.get(minRadius * 2, offset * 2); // x
-		int newY = Rnd.get(newX, offset * 2); // distance
-		newY = (int) Math.sqrt((newY * newY) - (newX * newX)); // y
+		double newX = Rnd.get(minRadius * 2, offset * 2); // x
+		double newY = Rnd.get((int) newX, offset * 2); // distance
+		newY = Math.sqrt((newY * newY) - (newX * newX)); // y
 		if (newX > (offset + minRadius))
 		{
 			newX = (master.getX() + newX) - offset;
@@ -388,9 +393,9 @@ public class MinionList
 		
 		minion.spawnMe(newX, newY, master.getZ());
 		
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.info("Spawned minion template " + minion.getId() + " with objid: " + minion.getObjectId() + " to boss " + master.getObjectId() + " ,at: " + minion.getX() + " x, " + minion.getY() + " y, " + minion.getZ() + " z");
+			LOGGER.info("Spawned minion template " + minion.getId() + " with objid: " + minion.getObjectId() + " to boss " + master.getObjectId() + " ,at: " + minion.getX() + " x, " + minion.getY() + " y, " + minion.getZ() + " z");
 		}
 		
 		return minion;

@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.skills.AbnormalType;
  */
 public class AlterSkillHolder extends SkillHolder
 {
+	private static final long serialVersionUID = -5633544975663726126L;
 	private final int _chance;
 	private final AbnormalType _abnormalType;
 	

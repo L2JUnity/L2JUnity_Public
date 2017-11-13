@@ -17,9 +17,28 @@
 		<reuseDelay>3000</reuseDelay>
 	</skill>
 	<skill id="18502" toLevel="1" name="Scroll: Enchant Shadow Weapon">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>ITEM</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+				<scrollGroup>9</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="18503" toLevel="1" name="Blessed Zodiac Agathion Pack (30-day)">
 		<!-- AUTO GENERATED SKILL -->
@@ -106,7 +125,7 @@
 		<operateType>A2</operateType>
 		<castRange>500</castRange>
 		<effectPoint>-692</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="18516" toLevel="1" name="Seal Altar of Wind">
 		<!-- AUTO GENERATED SKILL -->
@@ -161,7 +180,7 @@
 		<effectPoint>1000</effectPoint>
 		<reuseDelay>1800000</reuseDelay>
 	</skill>
-	<skill id="18531" toLevel="1" name="Rare Accessory Box">
+	<skill id="18531" toLevel="1" name="Rare Accessory Pack">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Double-click to get one of the following: Blessed Antharas' Earring, Blessed Valakas' Necklace, Tauti's Ring, Earth Wyrm Heart Ring, or Blessed Zaken's Earring (7-day). Cannot be used in the Olympiad. Deleted after event. -->
 		<icon>icon.skill0000</icon>
@@ -200,7 +219,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>-49743</x>
 				<y>-148045</y>
 				<z>-14152</z>
@@ -318,7 +337,7 @@
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="18557" toLevel="1" name="Zubei Armor Appearance Stone">
+	<skill id="18557" toLevel="1" name="Red Zubei Armor Appearance Stone">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Changes the appearance of your entire armor into that of Red Zubei. Tops and one-pieces only. -->
 		<icon>icon.skill0000</icon>
@@ -366,35 +385,145 @@
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 	</skill>
-	<skill id="18565" toLevel="5" name="Tanzanite - Barrier">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18565" toLevel="6" name="Tanzanite - Barrier">
+		<!-- Updated to Helios -->
 		<!-- Creates a protection shield that absorbs 5,000 damage for 5 seconds. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>
+			<value level="1">5</value>
+			<value level="2">5</value>
+			<value level="3">10</value>
+			<value level="4">10</value>
+			<value fromLevel="5" toLevel="6">15</value>
+		</abnormalTime>
+		<abnormalType>BARRIER</abnormalType>
 		<icon>icon.etc_bm_jewel_tanzanite</icon>
 		<operateType>A2</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLvl>1</magicLvl>
 		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
+		<staticReuse>true</staticReuse>
+		<rideState>NONE</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_absorb_damage">
+				<damage>
+					<value level="1">5000</value>
+					<value level="2">10000</value>
+					<value level="3">15000</value>
+					<value level="4">30000</value>
+					<value fromLevel="5" toLevel="6">50000</value>
+				</damage>
+			</effect>
+			<effect name="i_hp_per_max" fromLevel="6" toLevel="6">
+				<power>15</power>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="18566" toLevel="5" name="Garnet">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18566" toLevel="6" name="Garnet">
+		<!-- Updated to Helios -->
 		<!-- Resistance to Debuffs + 3%. -->
 		<icon>icon.etc_bm_jewel_garnet</icon>
 		<operateType>P</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_resist_abnormal_by_category">
+				<amount>
+					<value level="1">3</value>
+					<value level="2">6</value>
+					<value level="3">12</value>
+					<value level="4">20</value>
+					<value fromLevel="5" toLevel="6">30</value>
+				</amount>
+				<slot>DEBUFF</slot>
+			</effect>
+			<effect name="p_trigger_skill_by_dmg">
+				<attackerType>L2Playable</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<chance>100</chance>
+				<targetType>SELF</targetType>
+				<minDamage>1</minDamage>
+				<skillId>18721</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
-	<skill id="18567" toLevel="1" name="Garnet - Purge">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18567" toLevel="2" name="Garnet - Purge">
+		<!-- Updated to Helios -->
 		<!-- Cancels your debuffs. -->
-		<icon>icon.etc_bm_jewel_garnet</icon>
-		<operateType>A1</operateType>
+		<abnormalLvl>
+			<value level="2">5</value> <!-- Guessed -->
+		</abnormalLvl>
+		<abnormalTime>
+			<value level="2">7</value>
+		</abnormalTime>
+		<abnormalType>
+			<value level="2">ABNORMAL_INVINCIBILITY</value> <!-- Guessed -->
+		</abnormalType>
+		<icon>
+			<value level="1">icon.etc_bm_jewel_garnet</value>
+			<value level="2">icon.bm_jewel_garnet_high_lv1_lavianrose</value>
+		</icon>
+		<operateType>
+			<value level="1">A1</value>
+			<value level="2">A2</value>
+		</operateType>
 		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
+		<rideState>NONE</rideState>
+		<staticReuse>true</staticReuse>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_dispel_by_category">
+				<slot>DEBUFF</slot>
+				<rate>100</rate>
+				<max>10</max>
+			</effect>
+			<effect name="p_block_debuff" fromLevel="2" toLevel="2" />
+		</effects>
 	</skill>
-	<skill id="18568" toLevel="5" name="Vital Stone">
-		<!-- AUTO GENERATED SKILL -->
+	<skill id="18568" toLevel="6" name="Vital Stone">
+		<!-- Updated to Helios -->
 		<!-- Increases Vitality Status Bonus EXP by 3%. -->
 		<icon>icon.etc_bm_jewel_vital</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="VitalityExpRate">
+				<amount>
+					<value level="1">3</value>
+					<value level="2">6</value>
+					<value level="3">12</value>
+					<value level="4">20</value>
+					<value level="5">30</value>
+					<value level="6">30</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="VitalityPointsRate" fromLevel="4" toLevel="6">
+				<amount>
+					<value level="4">-7</value>
+					<value fromLevel="5" toLevel="6">-15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_exp_modify" level="6">
+				<amount>10</amount>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="18569" toLevel="1" name="Reward Fishing Rod Pack">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
 	</skill>
 	<skill id="18570" toLevel="1" name="Function Test Item">
 		<!-- AUTO GENERATED SKILL -->
@@ -403,9 +532,460 @@
 		<hitTime>500</hitTime>
 		<coolTime>500</coolTime>
 	</skill>
+	<skill id="18571" toLevel="1" name="Warrior Basics I">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- XP/SP +3%%. -->
+		<icon>icon.skill18571</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="18572" toLevel="1" name="Warrior Basics II">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- XP/SP +7%%. -->
+		<icon>icon.skill18572</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="18573" toLevel="1" name="Warrior Basics III">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- XP/SP +3%%, P. Atk. +3%%, M. Atk. +3%%, P. Def. +3%%, M. Def. +3%%. -->
+		<icon>icon.skill18573</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="18574" toLevel="1" name="Peaceful Town of Giran">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Stay in the Peace Zone to recover vitality. -->
+		<icon>icon.skill18574</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="18575" toLevel="1" name="Hunting Cry I">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- P. Atk. +5%%, M. Atk. +5%%, P. Critical Rate +20, M. Critical Rate +20, Bow/Crossbow Range +100. -->
+		<icon>icon.skill18575</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="18576" toLevel="1" name="Hunting Cry II">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- P. Def. +10%%, M. Def. +10%%, Bow/Crossbow Resistance +10%%. -->
+		<icon>icon.skill18576</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="18577" toLevel="1" name="Roar of the Battlefield">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- PvP Damage Received -5%%, Debuff Resistance +10%%. -->
+		<icon>icon.skill18577</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="18578" toLevel="1" name="The World's Next Top Singer">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- World Chat Points +20. -->
+		<icon>icon.skill18578</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+	</skill>
 	<skill id="18579" toLevel="1" name="Entrance Pass: Embryo Command Post">
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+	</skill>
+	<skill id="18580" toLevel="1" name="Entrance Pass: Nightmare Kamaloka">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+	</skill>
+	<skill id="18581" toLevel="1" name="Pa'agrio's Blessing">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- For 30 minutes, Attack Attribute +100, P. Atk. +20%%, M. Atk. +30%%, Atk. Spd. +10%%, Casting Spd. +10%%, P. Accuracy +4, M. Accuracy +4, Movement Speed +10, Max HP/MP/CP +10%%, P. Def. +10%%, M. Def. +10%%, and Skill MP Consumption -10%%. Cannot be used together with the Art of Seduction buff. Buff remains after death. -->
+		<icon>icon.nshop_bless_of_paagrio</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>3000</hitTime>
+		<reuseDelay>300000</reuseDelay>
+		<effectPoint>1</effectPoint>
+		<isMagic>4</isMagic>
+	</skill>
+	<skill id="18582" toLevel="7" name="Teleport to the Town of Goddard">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>1500</hitTime>
+	</skill>
+	<skill id="18583" toLevel="1" name="Inject Shine Energy">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- The energy of the Shine Stone is injected into the Root of the Lesser Giant to trigger evolution. -->
+		<icon>icon.etc_energy_stone_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<castRange>300</castRange>
+		<hitTime>1500</hitTime>
+		<reuseDelay>20000</reuseDelay>
+	</skill>
+	<skill id="18584" toLevel="1" name="Steel Armor Pack">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
+	</skill>
+	<skill id="18585" toLevel="1" name="Schumadriba's Reward Treasure Chest">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
+	</skill>
+	<skill id="18586" toLevel="1" name="Schumadriba's Advanced Reward Treasure Chest">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
+	</skill>
+	<skill id="18587" toLevel="1" name="Giant Evolution Control">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>2000</hitTime>
+		<reuseDelay>40000</reuseDelay>
+	</skill>
+	<skill id="18588" toLevel="13" name="Shadai's Good Fortune Jewelry Box">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
+	</skill>
+	<skill id="18589" toLevel="1" name="Vitality Replenishing Potion of Quest Pride">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<reuseDelay>10000</reuseDelay>
+	</skill>
+	<skill id="18590" toLevel="1" name="Equipment Enchantment Chest of Quest Pride">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
+	</skill>
+	<skill id="18591" toLevel="1" name="Skill Enchantment Chest of Quest Pride">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
+	</skill>
+	<skill id="18592" toLevel="1" name="Good Fortune Chest of Quest Pride">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
+	</skill>
+	<skill id="18593" toLevel="1" name="Mentor's Harmony">
+		<!-- Updated to Helios -->
+		<!-- With your Mentor's help, your P. Atk. +35%, M. Atk. +40%, P. Critical Rate +100, M. Critical Rate +100, P. Critical Damage +35%, Atk. Spd. +8%, Casting Spd. +8%, Movement Speed +8, Skill MP Consumption -15%, and Skill Cooldown -20%. Buff is triggered only when your Mentor is active. Buff is maintained for 5 minutes when your Mentor goes offline. -->
+		<abnormalTime>-1</abnormalTime>
+		<canBeDispelled>false</canBeDispelled>
+		<icon>icon.skill11524</icon>
+		<isMagic>1</isMagic>
+		<magicLvl>-2</magicLvl>
+		<operateType>A2</operateType>
+		<effectPoint>1</effectPoint>
+		<abnormalType>BUFF_SPECIAL_CLASS</abnormalType>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-2</specialLevel>
+		<abnormalLvl>0</abnormalLvl>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMentoring>true</isMentoring>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>40</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_critical_rate">
+				<amount>100</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_critical_rate">
+				<amount>100</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>35</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>8</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>8</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-15</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-20</amount>
+				<mode>PER</mode>
+				<magicType>3</magicType>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="18594" toLevel="1" name="Mentor's Art of Seduction">
+		<!-- Updated to Helios -->
+		<!-- For 2 hours, Max HP/MP/CP +15%, P. Def. +15%, M. Def. +15%, P. Atk. +10%, M. Atk. +10%, and Movement Speed +10 for the selected mentee. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>7200</abnormalTime>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
+		<blockedInOlympiad>true</blockedInOlympiad>
+		<effectPoint>687</effectPoint>
+		<icon>icon.bm_freya_rose_red_i00</icon>
+		<magicLvl>85</magicLvl>
+		<operateType>A2</operateType>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<basicProperty>NONE</basicProperty>
+		<magicCriticalRate>-5</magicCriticalRate>
+		<specialLevel>-3</specialLevel>
+		<hitCancelTime>0</hitCancelTime>
+		<castRange>900</castRange>
+		<effectRange>1400</effectRange>
+		<hitTime>700</hitTime>
+		<coolTime>300</coolTime>
+		<mpConsume>140</mpConsume>
+		<reuseDelay>2000</reuseDelay>
+		<targetType>TARGET</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_max_hp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_cp">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>15</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>10</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="18595" toLevel="1" name="Blue Dynasty Transformation">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Armor is transformed into the Blue Dynasty for 1 hour. -->
+		<icon>icon.general_stone_i01</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<reuseDelay>60000</reuseDelay>
+		<isMagic>4</isMagic>
+	</skill>
+	<skill id="18596" toLevel="1" name="Red Zubei Transformation">
+		<!-- AUTO GENERATED SKILL -->
+		<!-- Armor is transformed into the Red Zubei for 1 hour. -->
+		<icon>icon.general_stone_i00</icon>
+		<operateType>A2</operateType>
+		<targetType>SELF</targetType>
+		<reuseDelay>60000</reuseDelay>
+		<isMagic>4</isMagic>
+	</skill>
+	<skill id="18597" toLevel="5" name="Paulina's Equipment Set (R-grade)">
+		<!-- Updated to Helios -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<reuseDelay>10000</reuseDelay>
+		<itemConsumeId>
+			<value level="1">46849</value>
+			<value level="2">46850</value>
+			<value level="3">46851</value>
+			<value level="4">46852</value>
+			<value level="5">46919</value>
+		</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
+		<conditions>
+			<condition name="CheckLevel" level="1">
+				<minLevel>20</minLevel>
+				<maxLevel>39</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="CheckLevel" level="2">
+				<minLevel>40</minLevel>
+				<maxLevel>60</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="CheckLevel" level="3">
+				<minLevel>61</minLevel>
+				<maxLevel>75</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="CheckLevel" level="4">
+				<minLevel>76</minLevel>
+				<maxLevel>84</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+			<condition name="CheckLevel" level="5">
+				<minLevel>85</minLevel>
+				<maxLevel>111</maxLevel>
+				<affectType>CASTER</affectType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_by_category" level="1">
+				<categories>
+					<item category="HEAVY_ARMOR_CLASS">
+						<item id="46837" count="1" /> <!-- Paulina's Heavy Armor Box (D-grade) -->
+					</item>
+					<item category="LIGHT_ARMOR_CLASS">
+						<item id="46838" count="1" /> <!-- Paulina's Light Armor Box (D-grade) -->
+					</item>
+					<item category="ROBE_CLASS">
+						<item id="46839" count="1" /> <!-- Paulina's Robe Box (D-grade) -->
+					</item>
+				</categories>
+			</effect>
+			<effect name="i_restoration_by_category" level="2">
+				<categories>
+					<item category="HEAVY_ARMOR_CLASS">
+						<item id="46840" count="1" /> <!-- Paulina's Heavy Armor Box (C-grade) -->
+					</item>
+					<item category="LIGHT_ARMOR_CLASS">
+						<item id="46841" count="1" /> <!-- Paulina's Light Armor Box (C-grade) -->
+					</item>
+					<item category="ROBE_CLASS">
+						<item id="46842" count="1" /> <!-- Paulina's Robe Box (C-grade) -->
+					</item>
+				</categories>
+			</effect>
+			<effect name="i_restoration_by_category" level="3">
+				<categories>
+					<item category="HEAVY_ARMOR_CLASS">
+						<item id="46843" count="1" /> <!-- Paulina's Heavy Armor Box (A-grade) -->
+					</item>
+					<item category="LIGHT_ARMOR_CLASS">
+						<item id="46844" count="1" /> <!-- Paulina's Light Armor Box (A-grade) -->
+					</item>
+					<item category="ROBE_CLASS">
+						<item id="46845" count="1" /> <!-- Paulina's Robe Box (A-grade) -->
+					</item>
+				</categories>
+			</effect>
+			<effect name="i_restoration_by_category" level="4">
+				<categories>
+					<item category="HEAVY_ARMOR_CLASS">
+						<item id="46846" count="1" /> <!-- Paulina's Heavy Armor Box (S-grade) -->
+					</item>
+					<item category="LIGHT_ARMOR_CLASS">
+						<item id="46847" count="1" /> <!-- Paulina's Light Armor Box (S-grade) -->
+					</item>
+					<item category="ROBE_CLASS">
+						<item id="46848" count="1" /> <!-- Paulina's Robe Box (S-grade) -->
+					</item>
+				</categories>
+			</effect>
+			<effect name="i_restoration_by_category" level="5">
+				<categories>
+					<item category="HEAVY_ARMOR_CLASS">
+						<item id="46924" count="1" /> <!-- Paulina's Heavy Armor Box (R-grade) -->
+					</item>
+					<item category="LIGHT_ARMOR_CLASS">
+						<item id="46925" count="1" /> <!-- Paulina's Light Armor Box (R-grade) -->
+					</item>
+					<item category="ROBE_CLASS">
+						<item id="46926" count="1" /> <!-- Paulina's Robe Box (R-grade) -->
+					</item>
+				</categories>
+			</effect>
+		</effects>
+	</skill>
+	<skill id="18598" toLevel="5" name="Venir's Talisman Box">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
+	</skill>
+	<skill id="18599" toLevel="3" name="Basic Supply Box">
+		<!-- AUTO GENERATED SKILL -->
+		<icon>icon.skill0000</icon>
+		<operateType>A1</operateType>
+		<targetType>SELF</targetType>
+		<hitTime>500</hitTime>
+		<coolTime>500</coolTime>
 	</skill>
 </list>

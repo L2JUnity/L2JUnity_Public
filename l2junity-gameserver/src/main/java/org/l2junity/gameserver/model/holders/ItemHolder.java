@@ -18,6 +18,8 @@
  */
 package org.l2junity.gameserver.model.holders;
 
+import java.io.Serializable;
+
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.interfaces.IIdentifiable;
 
@@ -26,8 +28,9 @@ import org.l2junity.gameserver.model.interfaces.IIdentifiable;
  * Extended by {@link ItemChanceHolder}, {@link QuestItemHolder}, {@link UniqueItemHolder}.
  * @author UnAfraid
  */
-public class ItemHolder implements IIdentifiable
+public class ItemHolder implements IIdentifiable, Serializable
 {
+	private static final long serialVersionUID = -5114343930481285815L;
 	private final int _id;
 	private final long _count;
 	

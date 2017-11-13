@@ -18,8 +18,10 @@
  */
 package org.l2junity.gameserver.model.actor.tasks.attackable;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import java.util.concurrent.TimeUnit;
+
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.Attackable;
 
 /**
@@ -42,7 +44,7 @@ public final class CommandChannelTimer implements Runnable
 			return;
 		}
 		
-		if ((System.currentTimeMillis() - _attackable.getCommandChannelLastAttack()) > Config.LOOT_RAIDS_PRIVILEGE_INTERVAL)
+		if ((System.currentTimeMillis() - _attackable.getCommandChannelLastAttack()) > PlayerConfig.LOOT_RAIDS_PRIVILEGE_INTERVAL)
 		{
 			_attackable.setCommandChannelTimer(null);
 			_attackable.setFirstCommandChannelAttacked(null);
@@ -50,7 +52,7 @@ public final class CommandChannelTimer implements Runnable
 		}
 		else
 		{
-			ThreadPoolManager.getInstance().scheduleGeneral(this, 10000); // 10sec
+			ThreadPool.schedule(this, 10000, TimeUnit.MILLISECONDS); // 10sec
 		}
 	}
 	

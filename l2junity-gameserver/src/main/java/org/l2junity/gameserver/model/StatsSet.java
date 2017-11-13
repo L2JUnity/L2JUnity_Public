@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -713,6 +714,20 @@ public class StatsSet implements IParserAdvUtils
 		return (A) obj;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public final <A> A getObject(String name, Class<A> type, A defaultValue)
+	{
+		Objects.requireNonNull(name);
+		Objects.requireNonNull(type);
+		final Object obj = _set.get(name);
+		if ((obj == null) || !type.isAssignableFrom(obj.getClass()))
+		{
+			return defaultValue;
+		}
+		
+		return (A) obj;
+	}
+	
 	public SkillHolder getSkillHolder(String key)
 	{
 		Objects.requireNonNull(key);
@@ -723,6 +738,11 @@ public class StatsSet implements IParserAdvUtils
 		}
 		
 		return (SkillHolder) obj;
+	}
+	
+	public Optional<SkillHolder> getSkillHolder(int skillId)
+	{
+		return _set.values().stream().filter(object -> (object instanceof SkillHolder)).map(object -> (SkillHolder) object).filter(holder -> holder.getSkillId() == skillId).findFirst();
 	}
 	
 	public Location getLocation(String key)
@@ -860,6 +880,26 @@ public class StatsSet implements IParserAdvUtils
 			}
 		}
 		return (Map<K, V>) obj;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <K, V> Map<K, List<V>> getMapOfList(String key, Class<K> keyClass, Class<V> valueClass)
+	{
+		final Object obj = _set.get(key);
+		if ((obj == null) || !(obj instanceof Map<?, ?>))
+		{
+			return null;
+		}
+		
+		final Map<?, ?> originalList = (Map<?, ?>) obj;
+		if (!originalList.isEmpty())
+		{
+			if ((!originalList.keySet().stream().allMatch(keyClass::isInstance)) || (!originalList.values().stream().allMatch(List.class::isInstance)))
+			{
+				LOGGER.warn("getMap(\"{}\", {}, {}) requested with wrong generic type: {}!", key, keyClass.getSimpleName(), valueClass.getSimpleName(), obj.getClass().getGenericInterfaces()[0], new ClassNotFoundException());
+			}
+		}
+		return (Map<K, List<V>>) obj;
 	}
 	
 	public StatsSet set(String name, Object value)

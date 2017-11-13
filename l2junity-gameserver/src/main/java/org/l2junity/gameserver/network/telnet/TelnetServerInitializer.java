@@ -34,7 +34,7 @@ public class TelnetServerInitializer extends ChannelInitializer<SocketChannel>
 	private static final StringEncoder ENCODER = new StringEncoder();
 	private static final StringDecoder DECODER = new StringDecoder();
 	private static final TelnetServerHandler HANDLER = new TelnetServerHandler();
-
+	
 	@Override
 	public void initChannel(SocketChannel ch)
 	{

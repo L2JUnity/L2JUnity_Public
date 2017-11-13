@@ -124,7 +124,7 @@ public final class MobGroup
 		return false;
 	}
 	
-	public void spawnGroup(int x, int y, int z)
+	public void spawnGroup(double x, double y, double z)
 	{
 		if (getActiveMobCount() > 0)
 		{
@@ -142,9 +142,7 @@ public final class MobGroup
 				int randX = Rnd.nextInt(MobGroupTable.RANDOM_RANGE);
 				int randY = Rnd.nextInt(MobGroupTable.RANDOM_RANGE);
 				
-				spawn.setX(x + (signX * randX));
-				spawn.setY(y + (signY * randY));
-				spawn.setZ(z);
+				spawn.setXYZ(x + (signX * randX), y + (signY * randY), z);
 				spawn.stopRespawn();
 				
 				SpawnTable.getInstance().addNewSpawn(spawn, false);
@@ -177,8 +175,8 @@ public final class MobGroup
 			
 			if (!mobInst.isDead())
 			{
-				int x = player.getX() + Rnd.nextInt(50);
-				int y = player.getY() + Rnd.nextInt(50);
+				double x = player.getX() + Rnd.nextInt(50);
+				double y = player.getY() + Rnd.nextInt(50);
 				
 				mobInst.teleToLocation(new Location(x, y, player.getZ()), true);
 				ControllableMobAI ai = (ControllableMobAI) mobInst.getAI();

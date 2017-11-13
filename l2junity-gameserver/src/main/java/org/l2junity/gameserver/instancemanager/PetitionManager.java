@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.AdminData;
 import org.l2junity.gameserver.enums.ChatType;
 import org.l2junity.gameserver.enums.PetitionState;
@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class PetitionManager
 {
-	protected static final Logger _log = LoggerFactory.getLogger(PetitionManager.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(PetitionManager.class);
 	
 	private final Map<Integer, Petition> _pendingPetitions;
 	private final Map<Integer, Petition> _completedPetitions;
@@ -58,7 +58,7 @@ public final class PetitionManager
 		final int numPetitions = getPendingPetitionCount();
 		
 		getCompletedPetitions().clear();
-		_log.info(getClass().getSimpleName() + ": Completed petition data cleared. " + numPetitions + " petition(s) removed.");
+		LOGGER.info("Completed petition data cleared. {} petition(s) removed.", numPetitions);
 	}
 	
 	public void clearPendingPetitions()
@@ -66,7 +66,7 @@ public final class PetitionManager
 		final int numPetitions = getPendingPetitionCount();
 		
 		getPendingPetitions().clear();
-		_log.info(getClass().getSimpleName() + ": Pending petition queue cleared. " + numPetitions + " petition(s) removed.");
+		LOGGER.info("Pending petition queue cleared. {} petition(s) removed.", numPetitions);
 	}
 	
 	public boolean acceptPetition(PlayerInstance respondingAdmin, int petitionId)
@@ -279,7 +279,7 @@ public final class PetitionManager
 	
 	public boolean isPetitioningAllowed()
 	{
-		return Config.PETITIONING_ALLOWED;
+		return PlayerConfig.PETITIONING_ALLOWED;
 	}
 	
 	public boolean isPlayerPetitionPending(PlayerInstance petitioner)

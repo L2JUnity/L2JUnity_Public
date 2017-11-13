@@ -22,6 +22,7 @@ import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.FortManager;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.actor.request.ClanInvitationRequest;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExPledgeCount;
 import org.l2junity.gameserver.network.client.send.JoinPledge;
@@ -56,8 +57,22 @@ public final class RequestAnswerJoinPledge implements IClientIncomingPacket
 			return;
 		}
 		
-		PlayerInstance requestor = activeChar.getRequest().getPartner();
+		final ClanInvitationRequest request = activeChar.getRequest(ClanInvitationRequest.class);
+		if ((request == null) || request.isProcessing() || !activeChar.removeRequest(request.getClass()))
+		{
+			return;
+		}
+		request.setProcessing(true);
+		
+		final PlayerInstance requestor = request.getActiveChar();
 		if (requestor == null)
+		{
+			return;
+		}
+		
+		final L2Clan clan = request.getClan();
+		final L2Clan requestorClan = requestor.getClan();
+		if ((requestorClan == null) || (requestorClan != clan))
 		{
 			return;
 		}
@@ -73,20 +88,13 @@ public final class RequestAnswerJoinPledge implements IClientIncomingPacket
 		}
 		else
 		{
-			if (!(requestor.getRequest().getRequestPacket() instanceof RequestJoinPledge))
-			{
-				return; // hax
-			}
-			
-			RequestJoinPledge requestPacket = (RequestJoinPledge) requestor.getRequest().getRequestPacket();
-			final L2Clan clan = requestor.getClan();
 			// we must double check this cause during response time conditions can be changed, i.e. another player could join clan
-			if (clan.checkClanJoinCondition(requestor, activeChar, requestPacket.getPledgeType()))
+			if (clan.checkClanJoinCondition(requestor, activeChar, request.getPledgeType()))
 			{
 				activeChar.sendPacket(new JoinPledge(requestor.getClanId()));
 				
-				activeChar.setPledgeType(requestPacket.getPledgeType());
-				if (requestPacket.getPledgeType() == L2Clan.SUBUNIT_ACADEMY)
+				activeChar.setPledgeType(request.getPledgeType());
+				if (request.getPledgeType() == L2Clan.SUBUNIT_ACADEMY)
 				{
 					activeChar.setPowerGrade(9); // adademy
 					activeChar.setLvlJoinedAcademy(activeChar.getLevel());

@@ -14,7 +14,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16">
 						<item id="22622" count="1" />
@@ -132,7 +132,7 @@
 		</effects>
 	</skill>
 	<skill id="22501" toLevel="1" name="Blessed Scroll of Escape">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -146,9 +146,14 @@
 		<conditions>
 			<condition name="OpCanEscape" />
 		</conditions>
+		<effects>
+			<effect name="i_escape">
+				<escapeType>TOWN</escapeType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22502" toLevel="1" name="Blessed Scroll of Resurrection">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<castRange>400</castRange>
@@ -164,6 +169,11 @@
 		<conditions>
 			<condition name="OpResurrection" />
 		</conditions>
+		<effects>
+			<effect name="i_resurrection">
+				<power>200</power>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22503" toLevel="7" name="Superior Elixir of Life (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -173,18 +183,17 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>85</minLevel>
-				<maxLevel>99</maxLevel>
+				<maxLevel>106</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>4725</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -198,18 +207,17 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>85</minLevel>
-				<maxLevel>99</maxLevel>
+				<maxLevel>106</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>1060</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -223,18 +231,17 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>85</minLevel>
-				<maxLevel>99</maxLevel>
+				<maxLevel>106</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>2450</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -251,6 +258,17 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="22507" toLevel="1" name="Scroll: Enchant Armor (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -263,6 +281,18 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22508" toLevel="1" name="Fire Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -278,6 +308,13 @@
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>FIRE</weaponAttribute>
+				<armorAttribute>WATER</armorAttribute>
+				<maxLevel>3</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22509" toLevel="1" name="Water Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -293,6 +330,13 @@
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>WATER</weaponAttribute>
+				<armorAttribute>FIRE</armorAttribute>
+				<maxLevel>3</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22510" toLevel="1" name="Wind Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -308,6 +352,13 @@
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>WIND</weaponAttribute>
+				<armorAttribute>EARTH</armorAttribute>
+				<maxLevel>3</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22511" toLevel="1" name="Earth Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -323,6 +374,13 @@
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>EARTH</weaponAttribute>
+				<armorAttribute>WIND</armorAttribute>
+				<maxLevel>3</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22512" toLevel="1" name="Holy Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -338,6 +396,13 @@
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>HOLY</weaponAttribute>
+				<armorAttribute>DARK</armorAttribute>
+				<maxLevel>3</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22513" toLevel="1" name="Dark Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -353,6 +418,13 @@
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>DARK</weaponAttribute>
+				<armorAttribute>HOLY</armorAttribute>
+				<maxLevel>3</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22514" toLevel="2" name="Fire Crystal">
 		<!-- AUTO GENERATED SKILL -->
@@ -361,12 +433,18 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>FIRE</weaponAttribute>
+				<armorAttribute>WATER</armorAttribute>
+				<maxLevel>6</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22515" toLevel="2" name="Water Crystal">
 		<!-- AUTO GENERATED SKILL -->
@@ -375,12 +453,18 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>WATER</weaponAttribute>
+				<armorAttribute>FIRE</armorAttribute>
+				<maxLevel>6</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22516" toLevel="2" name="Wind Crystal">
 		<!-- AUTO GENERATED SKILL -->
@@ -389,12 +473,18 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>WIND</weaponAttribute>
+				<armorAttribute>EARTH</armorAttribute>
+				<maxLevel>6</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22517" toLevel="2" name="Earth Crystal">
 		<!-- AUTO GENERATED SKILL -->
@@ -403,12 +493,18 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>EARTH</weaponAttribute>
+				<armorAttribute>WIND</armorAttribute>
+				<maxLevel>6</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22518" toLevel="2" name="Holy Crystal">
 		<!-- AUTO GENERATED SKILL -->
@@ -417,12 +513,18 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>HOLY</weaponAttribute>
+				<armorAttribute>DARK</armorAttribute>
+				<maxLevel>6</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22519" toLevel="2" name="Dark Crystal">
 		<!-- AUTO GENERATED SKILL -->
@@ -431,12 +533,18 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanEnchantAttribute" />
 		</conditions>
+		<effects>
+			<effect name="i_enchant_attribute">
+				<weaponAttribute>DARK</weaponAttribute>
+				<armorAttribute>HOLY</armorAttribute>
+				<maxLevel>6</maxLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22520" toLevel="1" name="Blessed Scroll: Enchant Weapon (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -449,6 +557,17 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="22521" toLevel="1" name="Blessed Scroll: Enchant Armor (R-grade)">
 		<!-- AUTO GENERATED SKILL -->
@@ -461,6 +580,18 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22522" toLevel="1" name="Emerald Weapon Appearance Stone: Sword">
 		<!-- AUTO GENERATED SKILL -->
@@ -991,23 +1122,26 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22566" toLevel="1" name="Vitality Suspending Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Vitality Lv. is halted, and you cannot receive the Vitality bonus. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>br_cashtex.item.br_cash_adv_swift_attack_potion_i00</icon>
 		<operateType>A2</operateType>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_stop_vitality_effect" />
+		</effects>
 	</skill>
 	<skill id="22567" toLevel="1" name="Japanese Sword Appearance Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -1243,20 +1377,61 @@
 		</conditions>
 	</skill>
 	<skill id="22587" toLevel="4" name="Drop Rate Rune">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Monsters' item drop rate + 30%. -->
 		<icon>BranchSys3.lcon.g_rune_itemdrop_up</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_droprate_modify">
+				<drop>
+					<value level="1">30</value>
+					<value level="2">50</value>
+					<value level="3">100</value>
+					<value level="4">200</value>
+				</drop>
+				<spoil>
+					<value level="1">30</value>
+					<value level="2">50</value>
+					<value level="3">100</value>
+					<value level="4">200</value>
+				</spoil>
+				<adena>
+					<value level="1">30</value>
+					<value level="2">50</value>
+					<value level="3">100</value>
+					<value level="4">200</value>
+				</adena>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22588" toLevel="3" name="High-grade Drop Rate Rune">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Item acquisition through monster drop rates, amount, and Spoil + 30%. -->
 		<icon>BranchSys3.lcon.g_rune_itemdrop_up</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_droprate_modify">
+				<drop>
+					<value level="1">30</value>
+					<value level="2">50</value>
+					<value level="3">100</value>
+				</drop>
+				<spoil>
+					<value level="1">30</value>
+					<value level="2">50</value>
+					<value level="3">100</value>
+				</spoil>
+				<adena>
+					<value level="1">30</value>
+					<value level="2">50</value>
+					<value level="3">100</value>
+				</adena>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22591" toLevel="1" name="Check Item">
 		<!-- Glory Days confirmed -->
@@ -1278,7 +1453,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="22592" toLevel="1" name="Check Item">
@@ -1301,7 +1476,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="22593" toLevel="1" name="Check Item">
@@ -1324,7 +1499,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="22594" toLevel="1" name="Check Item">
@@ -1347,11 +1522,11 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="22595" toLevel="1" name="Scroll: Replenish Vitality">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>200</hitTime>
@@ -1368,9 +1543,14 @@
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="VitalityPointUp">
+				<amount>35000</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22596" toLevel="2" name="Scroll: Replenish Vitality">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>200</hitTime>
@@ -1379,16 +1559,20 @@
 		<magicLvl>1</magicLvl>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="VitalityPointUp">
+				<amount>70000</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22597" toLevel="3" name="Scroll: Replenish Vitality">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>200</hitTime>
@@ -1397,16 +1581,20 @@
 		<magicLvl>1</magicLvl>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="VitalityPointUp">
+				<amount>140000</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22599" toLevel="1" name="Ancient Kartia's Labyrinth Origins">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>100</hitTime>
@@ -1430,5 +1618,15 @@
 				<alignment>LAWFUL</alignment>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_get_exp">
+				<exp>1200000000</exp>
+				<minLevel>85</minLevel>
+				<underMinLevelExpPercent>20</underMinLevelExpPercent>
+			</effect>
+			<effect name="i_sp">
+				<sp>9500000</sp>
+			</effect>
+		</effects>
 	</skill>
 </list>

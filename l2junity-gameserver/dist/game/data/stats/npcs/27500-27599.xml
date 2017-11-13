@@ -5,7 +5,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3290" hpRegen="8.5" mp="1674" mpRegen="3" />
+			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
 			<speed>
 				<walk ground="27" />
 				<run ground="128" />
@@ -30,7 +30,7 @@
 		<race>ANIMAL</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3290" hpRegen="8.5" mp="1674" mpRegen="3" />
+			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
 			<speed>
 				<walk ground="26" />
 				<run ground="128" />
@@ -55,7 +55,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3290" hpRegen="8.5" mp="1674" mpRegen="3" />
+			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
 			<speed>
 				<walk ground="25" />
 				<run ground="128" />
@@ -80,7 +80,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="3290" hpRegen="8.5" mp="1674" mpRegen="3" />
+			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
 			<speed>
 				<walk ground="25" />
 				<run ground="128" />
@@ -105,7 +105,7 @@
 		<race>GIANT</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1933" hpRegen="6.5" mp="1036" mpRegen="2.4" />
+			<vitals hp="1933.24044" hpRegen="6.5" mp="1036.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="80" />
 				<run ground="128" />
@@ -130,7 +130,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4039" hpRegen="9.5" mp="1812" mpRegen="3.3" />
+			<vitals hp="4039.04270539801" hpRegen="9.5" mp="1812.0" mpRegen="3.3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -155,7 +155,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="4039" hpRegen="9.5" mp="1812" mpRegen="3.3" />
+			<vitals hp="4039.04270539801" hpRegen="9.5" mp="1812.0" mpRegen="3.3" />
 			<speed>
 				<walk ground="18" />
 				<run ground="128" />
@@ -180,7 +180,7 @@
 		<race>UNDEAD</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="10.5" mp="2355" mpRegen="3.6" />
+			<vitals hp="15841.7282909073" hpRegen="10.5" mp="2355.0" mpRegen="3.6" />
 			<speed>
 				<walk ground="60" />
 				<run ground="128" />
@@ -195,6 +195,26 @@
 		<skill_list>
 			<skill id="4416" level="1" /> <!-- Undead -->
 		</skill_list>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="2202" max="5131" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3318">
+					<item id="36563" min="1" max="1" chance="90.415913200723" /> <!-- Synthetic Cokes -->
+					<item id="36564" min="1" max="1" chance="9.0415913200723" /> <!-- Greater Synthetic Cokes -->
+					<item id="35569" min="1" max="1" chance="0.27124773960217" /> <!-- Bloody Eternal Enhancement Stone -->
+					<item id="36879" min="1" max="1" chance="0.27124773960217" /> <!-- Recipe: Exquisite Fiber - Upgrade -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="17.72" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="20" />
 			<height normal="34" />
@@ -205,7 +225,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2193" hpRegen="7.5" mp="1188" mpRegen="2.7" />
+			<vitals hp="2193.43142" hpRegen="7.5" mp="1188.8" mpRegen="2.7" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -230,7 +250,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2193" hpRegen="7.5" mp="1188" mpRegen="2.7" />
+			<vitals hp="2193.43142" hpRegen="7.5" mp="1188.8" mpRegen="2.7" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -255,7 +275,7 @@
 		<race>HUMAN</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2444" hpRegen="7.5" mp="1345.8" mpRegen="2.7" />
+			<vitals hp="2444.46819" hpRegen="7.5" mp="1345.8" mpRegen="2.7" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -280,7 +300,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2758" hpRegen="8.5" mp="1540" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -305,7 +325,7 @@
 		<race>HUMAN</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2758" hpRegen="8.5" mp="1540" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -330,7 +350,7 @@
 		<race>ANIMAL</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2974" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="2974.35686398316" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<speed>
 				<walk ground="50" />
 				<run ground="128" />
@@ -355,7 +375,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2758" hpRegen="8.5" mp="1540" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -380,7 +400,7 @@
 		<race>HUMAN</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2758" hpRegen="8.5" mp="1540" mpRegen="3" />
+			<vitals hp="2758.05923328" hpRegen="8.5" mp="1540.8" mpRegen="3" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -405,7 +425,7 @@
 		<race>ANIMAL</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2974" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="2974.35686398316" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<speed>
 				<walk ground="50" />
 				<run ground="128" />
@@ -430,7 +450,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="2193" hpRegen="7.5" mp="1188" mpRegen="2.7" />
+			<vitals hp="2193.43142" hpRegen="7.5" mp="1188.8" mpRegen="2.7" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -455,7 +475,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1421" hpRegen="5.5" mp="747" mpRegen="2.1" />
+			<vitals hp="1421.00103" hpRegen="5.5" mp="747.8" mpRegen="2.1" />
 			<speed>
 				<walk ground="70" />
 				<run ground="128" />
@@ -477,7 +497,7 @@
 		<race>HUMAN</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1724" hpRegen="6.5" mp="918" mpRegen="2.4" />
+			<vitals hp="1724.6831" hpRegen="6.5" mp="918.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="128" />
@@ -489,6 +509,43 @@
 		<skill_list>
 			<skill id="4416" level="12" /> <!-- Bugs -->
 		</skill_list>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="39" max="92" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0201">
+					<item id="2502" min="1" max="1" chance="14.925373134328" /> <!-- Dwarven War Hammer -->
+					<item id="91" min="1" max="1" chance="4.4776119402985" /> <!-- Heavy War Axe -->
+					<item id="206" min="1" max="1" chance="4.4776119402985" /> <!-- Demon's Staff -->
+					<item id="210" min="1" max="1" chance="4.4776119402985" /> <!-- Staff of Evil Spirits -->
+					<item id="2503" min="1" max="1" chance="4.4776119402985" /> <!-- Yaksa Mace -->
+					<item id="7891" min="1" max="1" chance="4.4776119402985" /> <!-- Ecliptic Axe -->
+					<item id="7892" min="1" max="1" chance="4.4776119402985" /> <!-- Spell Breaker -->
+					<item id="7893" min="1" max="1" chance="4.4776119402985" /> <!-- Kaim Vanul's Bones -->
+					<item id="7900" min="1" max="1" chance="4.4776119402985" /> <!-- Ice Storm Hammer -->
+					<item id="205" min="1" max="1" chance="4.4776119402985" /> <!-- Ghoul's Staff -->
+					<item id="204" min="1" max="1" chance="4.4776119402985" /> <!-- Deadman's Staff -->
+					<item id="92" min="1" max="1" chance="4.4776119402985" /> <!-- Spirit's Staff -->
+					<item id="171" min="1" max="1" chance="4.4776119402985" /> <!-- Deadman's Glory -->
+					<item id="174" min="1" max="1" chance="4.4776119402985" /> <!-- Nirvana Axe -->
+					<item id="175" min="1" max="1" chance="4.4776119402985" /> <!-- Art of Battle Axe -->
+					<item id="196" min="1" max="1" chance="4.4776119402985" /> <!-- Stick of Eternity -->
+					<item id="201" min="1" max="1" chance="4.4776119402985" /> <!-- Club of Nature -->
+					<item id="202" min="1" max="1" chance="4.4776119402985" /> <!-- Mace of Underworld -->
+					<item id="203" min="1" max="1" chance="4.4776119402985" /> <!-- Pa'agrio Axe -->
+					<item id="7901" min="1" max="1" chance="4.4776119402985" /> <!-- Star Buster -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36533" min="1" max="1" chance="0.075" /> <!-- Synthetic Braid -->
+				<item id="36534" min="1" max="1" chance="0.0075" /> <!-- Durable Braid -->
+				<item id="36880" min="1" max="1" chance="0.003" /> <!-- Recipe: Thread - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="37" />
 			<height normal="64" />
@@ -499,7 +556,7 @@
 		<race>GIANT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1933" hpRegen="6.5" mp="1036" mpRegen="2.4" />
+			<vitals hp="1933.24044" hpRegen="6.5" mp="1036.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="80" />
 				<run ground="128" />
@@ -521,7 +578,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2141" hpRegen="7.5" mp="1158" mpRegen="2.7" />
+			<vitals hp="2141.82127" hpRegen="7.5" mp="1158.0" mpRegen="2.7" />
 			<speed>
 				<walk ground="40" />
 				<run ground="128" />
@@ -543,7 +600,7 @@
 		<race>ELEMENTAL</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="543" hpRegen="3.5" mp="300" mpRegen="1.5" />
+			<vitals hp="543.79576" hpRegen="3.5" mp="300.96" mpRegen="1.5" />
 			<speed>
 				<walk ground="12" />
 				<run ground="128" />
@@ -560,16 +617,16 @@
 				<group chance="70">
 					<item id="57" min="6" max="14" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="21.69">
+				<group chance="20.31">
 					<item id="36526" min="1" max="1" chance="100" /> <!-- Fiber -->
 				</group>
 			</death>
 			<corpse>
 				<item id="36532" min="1" max="1" chance="0.3" /> <!-- Thin Braid -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="23" />
@@ -581,7 +638,7 @@
 		<race>PLANT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="55" />
 				<run ground="128" />
@@ -603,7 +660,7 @@
 		<race>GIANT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1933" hpRegen="6.5" mp="1036" mpRegen="2.4" />
+			<vitals hp="1933.24044" hpRegen="6.5" mp="1036.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="80" />
 				<run ground="128" />
@@ -625,7 +682,7 @@
 		<race>DARK_ELF</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1933" hpRegen="6.5" mp="1036" mpRegen="2.4" />
+			<vitals hp="1933.24044" hpRegen="6.5" mp="1036.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="29.8" />
 				<run ground="128" />
@@ -664,13 +721,22 @@
 		<ex_crt_effect>false</ex_crt_effect>
 		<drop_lists>
 			<death>
-				<group chance="100">
-					<item id="8605" min="1" max="1" chance="100" /> <!-- Superior Herb of Mana -->
+				<group chance="70">
+					<item id="57" min="1" max="1" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="100">
-					<item id="8602" min="1" max="1" chance="100" /> <!-- Superior Herb of Life -->
+				<group chance="0.075">
+					<item id="8" min="1" max="1" chance="100" /> <!-- Willow Staff -->
+				</group>
+				<group chance="0.3">
+					<item id="36526" min="1" max="1" chance="100" /> <!-- Fiber -->
 				</group>
 			</death>
+			<corpse>
+				<item id="36516" min="1" max="1" chance="1.284" /> <!-- Worn Leather -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -682,7 +748,7 @@
 		<race>ANIMAL</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="80.17319" hpRegen="2" mp="69.6" mpRegen="0.9" />
+			<vitals hp="801731.9" hpRegen="2" mp="69.6" mpRegen="0.9" />
 			<attack physical="12.34006" magical="8.42666" random="20" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="51.60553" magical="37.76269" />
 			<speed>
@@ -698,13 +764,22 @@
 		</skill_list>
 		<drop_lists>
 			<death>
-				<group chance="100">
-					<item id="8605" min="1" max="1" chance="100" /> <!-- Superior Herb of Mana -->
+				<group chance="70">
+					<item id="57" min="2" max="5" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="100">
-					<item id="8602" min="1" max="1" chance="100" /> <!-- Superior Herb of Life -->
+				<group chance="0.075">
+					<item id="9" min="1" max="1" chance="100" /> <!-- Cedar Staff -->
+				</group>
+				<group chance="1.402">
+					<item id="36526" min="1" max="1" chance="100" /> <!-- Fiber -->
 				</group>
 			</death>
+			<corpse>
+				<item id="36532" min="1" max="1" chance="0.075" /> <!-- Thin Braid -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -716,7 +791,7 @@
 		<race>UNDEAD</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="966" hpRegen="4.5" mp="478" mpRegen="1.8" />
+			<vitals hp="966.57792" hpRegen="4.5" mp="478.8" mpRegen="1.8" />
 			<speed>
 				<walk ground="50" />
 				<run ground="170" />
@@ -738,7 +813,7 @@
 		<race>UNDEAD</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="966" hpRegen="4.5" mp="478" mpRegen="1.8" />
+			<vitals hp="966.57792" hpRegen="4.5" mp="478.8" mpRegen="1.8" />
 			<speed>
 				<walk ground="50" />
 				<run ground="170" />
@@ -760,7 +835,7 @@
 		<race>DEMONIC</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="3290" hpRegen="8.5" mp="1674" mpRegen="3" />
+			<vitals hp="3290.11306877694" hpRegen="8.5" mp="1674.8" mpRegen="3" />
 			<speed>
 				<walk ground="60" />
 				<run ground="128" />
@@ -786,7 +861,7 @@
 		<race>ELEMENTAL</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="80" hpRegen="2" mp="69" mpRegen="0.9" />
+			<vitals hp="80.17319" hpRegen="2" mp="69.6" mpRegen="0.9" />
 			<speed>
 				<walk ground="39" />
 				<run ground="170" />
@@ -800,13 +875,22 @@
 		</skill_list>
 		<drop_lists>
 			<death>
-				<group chance="100">
-					<item id="8605" min="1" max="1" chance="100" /> <!-- Superior Herb of Mana -->
+				<group chance="70">
+					<item id="57" min="1" max="1" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="100">
-					<item id="8602" min="1" max="1" chance="100" /> <!-- Superior Herb of Life -->
+				<group chance="0.075">
+					<item id="8" min="1" max="1" chance="100" /> <!-- Willow Staff -->
+				</group>
+				<group chance="0.3">
+					<item id="36526" min="1" max="1" chance="100" /> <!-- Fiber -->
 				</group>
 			</death>
+			<corpse>
+				<item id="36516" min="1" max="1" chance="1.284" /> <!-- Worn Leather -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="10" />
@@ -829,7 +913,7 @@
 			<hit_time>370</hit_time>
 			<abnormalResist physical="10" magical="10" />
 		</stats>
-		<status undying="false" canBeSown="true" />
+		<status undying="false" canBeSown="true" canMove="false" />
 		<skill_list>
 			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
 			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
@@ -840,6 +924,7 @@
 			<skill id="4414" level="2" /> <!-- Standard Type -->
 			<skill id="4415" level="3" /> <!-- One-handed Sword -->
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
+			<skill id="4151" level="1" /> <!-- Wind Strike -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<collision>
@@ -852,7 +937,7 @@
 		<race>UNDEAD</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1183" hpRegen="5.5" mp="610" mpRegen="2.1" />
+			<vitals hp="1183.80594" hpRegen="5.5" mp="610.8" mpRegen="2.1" />
 			<speed>
 				<walk ground="45" />
 				<run ground="170" />
@@ -874,7 +959,7 @@
 		<race>GIANT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1421" hpRegen="5.5" mp="747" mpRegen="2.1" />
+			<vitals hp="1421.00103" hpRegen="5.5" mp="747.8" mpRegen="2.1" />
 			<speed>
 				<walk ground="80" />
 				<run ground="170" />
@@ -896,7 +981,7 @@
 		<race>GIANT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1421" hpRegen="5.5" mp="747" mpRegen="2.1" />
+			<vitals hp="1421.00103" hpRegen="5.5" mp="747.8" mpRegen="2.1" />
 			<speed>
 				<walk ground="22" />
 				<run ground="170" />
@@ -920,7 +1005,7 @@
 		<race>CONSTRUCT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2193" hpRegen="7.5" mp="1188" mpRegen="2.7" />
+			<vitals hp="2193.43142" hpRegen="7.5" mp="1188.8" mpRegen="2.7" />
 			<speed>
 				<walk ground="1" />
 				<run ground="170" />
@@ -942,7 +1027,7 @@
 		<race>CONSTRUCT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2193" hpRegen="7.5" mp="1188" mpRegen="2.7" />
+			<vitals hp="2193.43142" hpRegen="7.5" mp="1188.8" mpRegen="2.7" />
 			<speed>
 				<walk ground="1" />
 				<run ground="170" />
@@ -964,7 +1049,7 @@
 		<race>CONSTRUCT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2193" hpRegen="7.5" mp="1188" mpRegen="2.7" />
+			<vitals hp="2193.43142" hpRegen="7.5" mp="1188.8" mpRegen="2.7" />
 			<speed>
 				<walk ground="1" />
 				<run ground="170" />
@@ -986,7 +1071,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1828" hpRegen="6.5" mp="977" mpRegen="2.4" />
+			<vitals hp="1828.68266" hpRegen="6.5" mp="977.4" mpRegen="2.4" />
 			<speed>
 				<walk ground="40" />
 				<run ground="170" />
@@ -1008,7 +1093,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1933" hpRegen="6.5" mp="1036" mpRegen="2.4" />
+			<vitals hp="1933.24044" hpRegen="6.5" mp="1036.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="40" />
 				<run ground="170" />
@@ -1030,7 +1115,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="1933" hpRegen="6.5" mp="1036" mpRegen="2.4" />
+			<vitals hp="1933.24044" hpRegen="6.5" mp="1036.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="40" />
 				<run ground="170" />
@@ -1052,7 +1137,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2345" hpRegen="7.5" mp="1282" mpRegen="2.7" />
+			<vitals hp="2345.76698" hpRegen="7.5" mp="1282.4" mpRegen="2.7" />
 			<speed>
 				<walk ground="40" />
 				<run ground="170" />
@@ -1076,7 +1161,7 @@
 		<race>HUMANOID</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2244" hpRegen="7.5" mp="1219" mpRegen="2.7" />
+			<vitals hp="2244.67715" hpRegen="7.5" mp="1219.8" mpRegen="2.7" />
 			<speed>
 				<walk ground="25" />
 				<run ground="170" />
@@ -1088,6 +1173,27 @@
 		<skill_list>
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="113" max="263" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.03">
+					<item id="5313" min="1" max="1" chance="100" /> <!-- Sealed Gauntlets of Nightmare -->
+				</group>
+				<group chance="0.03">
+					<item id="36529" min="1" max="1" chance="100" /> <!-- Quality Fiber -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36534" min="1" max="1" chance="0.03" /> <!-- Durable Braid -->
+				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="15" />
 			<height normal="36" />
@@ -1098,7 +1204,7 @@
 		<race>CONSTRUCT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="4234" hpRegen="9.5" mp="1846" mpRegen="3.3" />
+			<vitals hp="4234.06312688557" hpRegen="9.5" mp="1846.8" mpRegen="3.3" />
 			<speed>
 				<walk ground="90" />
 				<run ground="170" />
@@ -1121,7 +1227,7 @@
 		<race>CONSTRUCT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="4234" hpRegen="9.5" mp="1846" mpRegen="3.3" />
+			<vitals hp="4234.06312688557" hpRegen="9.5" mp="1846.8" mpRegen="3.3" />
 			<speed>
 				<walk ground="100" />
 				<run ground="170" />
@@ -1144,7 +1250,7 @@
 		<race>CONSTRUCT</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="4234" hpRegen="9.5" mp="1846" mpRegen="3.3" />
+			<vitals hp="4234.06312688557" hpRegen="9.5" mp="1846.8" mpRegen="3.3" />
 			<speed>
 				<walk ground="23" />
 				<run ground="170" />

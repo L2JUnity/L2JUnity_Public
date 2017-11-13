@@ -18,6 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
+import org.l2junity.gameserver.enums.PcCafeConsumeType;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
@@ -27,31 +28,21 @@ import org.l2junity.network.PacketWriter;
  */
 public class ExPCCafePointInfo implements IClientOutgoingPacket
 {
-	private final int _points;
-	private final int _mAddPoint;
+	private final long _points;
+	private final long _mAddPoint;
 	private final int _mPeriodType;
 	private final int _remainTime;
-	private final int _pointType;
+	private final PcCafeConsumeType _pointType;
 	private final int _time;
 	
-	public ExPCCafePointInfo()
-	{
-		_points = 0;
-		_mAddPoint = 0;
-		_remainTime = 0;
-		_mPeriodType = 0;
-		_pointType = 0;
-		_time = 0;
-	}
-	
-	public ExPCCafePointInfo(int points, int pointsToAdd, int time)
+	public ExPCCafePointInfo(long points, long pointsToAdd, PcCafeConsumeType type)
 	{
 		_points = points;
 		_mAddPoint = pointsToAdd;
 		_mPeriodType = 1;
-		_remainTime = 42; // No idea why but retail sends 42..
-		_pointType = pointsToAdd < 0 ? 3 : 0; // When using points is 3
-		_time = time;
+		_remainTime = 0;
+		_pointType = type;
+		_time = 0;
 		
 	}
 	
@@ -60,12 +51,12 @@ public class ExPCCafePointInfo implements IClientOutgoingPacket
 	{
 		OutgoingPackets.EX_PCCAFE_POINT_INFO.writeId(packet);
 		
-		packet.writeD(_points); // num points
-		packet.writeD(_mAddPoint); // points inc display
+		packet.writeD((int) _points); // Total Points
+		packet.writeD((int) _mAddPoint); // Earned Points
 		packet.writeC(_mPeriodType); // period(0=don't show window,1=acquisition,2=use points)
 		packet.writeD(_remainTime); // period hours left
-		packet.writeC(_pointType); // points inc display color(0=yellow, 1=cyan-blue, 2=red, all other black)
-		packet.writeD(_time * 3); // value is in seconds * 3
+		packet.writeC(_pointType.ordinal()); // points inc display color(0=yellow, 1=cyan-blue, 2=red, all other black)
+		packet.writeD(_time); // value is in seconds * 3
 		return true;
 	}
 }

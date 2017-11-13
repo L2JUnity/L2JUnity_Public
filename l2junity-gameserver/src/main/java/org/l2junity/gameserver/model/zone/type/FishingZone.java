@@ -19,13 +19,14 @@
 package org.l2junity.gameserver.model.zone.type;
 
 import java.lang.ref.WeakReference;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
-import org.l2junity.gameserver.model.Fishing;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.PcCondOverride;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.fishing.Fishing;
 import org.l2junity.gameserver.model.zone.ZoneId;
 import org.l2junity.gameserver.model.zone.ZoneType;
 import org.l2junity.gameserver.network.client.send.fishing.ExAutoFishAvailable;
@@ -46,10 +47,11 @@ public class FishingZone extends ZoneType
 	{
 		if (character.isPlayer())
 		{
-			if ((Config.ALLOWFISHING || character.canOverrideCond(PcCondOverride.ZONE_CONDITIONS)) && !character.isInsideZone(ZoneId.FISHING))
+			if ((GeneralConfig.ALLOWFISHING || character.canOverrideCond(PcCondOverride.ZONE_CONDITIONS)) && !character.isInsideZone(ZoneId.FISHING))
 			{
 				WeakReference<PlayerInstance> weakPlayer = new WeakReference<>(character.getActingPlayer());
-				ThreadPoolManager.getInstance().executeGeneral(new Runnable() {
+				ThreadPool.execute(new Runnable()
+				{
 					@Override
 					public void run()
 					{
@@ -62,11 +64,15 @@ public class FishingZone extends ZoneType
 								if (fishing.canFish() && !fishing.isFishing())
 								{
 									if (fishing.isAtValidLocation())
+									{
 										player.sendPacket(ExAutoFishAvailable.YES);
+									}
 									else
+									{
 										player.sendPacket(ExAutoFishAvailable.NO);
+									}
 								}
-								ThreadPoolManager.getInstance().scheduleGeneral(this, 7000);
+								ThreadPool.schedule(this, 7000, TimeUnit.MILLISECONDS);
 							}
 							else
 							{

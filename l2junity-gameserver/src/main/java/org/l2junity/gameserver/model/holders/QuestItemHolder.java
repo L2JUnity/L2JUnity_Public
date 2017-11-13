@@ -25,6 +25,7 @@ package org.l2junity.gameserver.model.holders;
  */
 public class QuestItemHolder extends ItemHolder
 {
+	private static final long serialVersionUID = -272170908683523890L;
 	private final int _chance;
 	
 	public QuestItemHolder(int id, int chance)

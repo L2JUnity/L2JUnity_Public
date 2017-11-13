@@ -23,7 +23,8 @@ import static org.l2junity.gameserver.model.itemcontainer.Inventory.ADENA_ID;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.holders.ItemHolder;
@@ -49,7 +50,7 @@ public final class SendWareHouseDepositList implements IClientIncomingPacket
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
 		final int size = packet.readD();
-		if ((size <= 0) || (size > Config.MAX_ITEM_IN_PACKET) || ((size * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((size <= 0) || (size > PlayerConfig.MAX_ITEM_IN_PACKET) || ((size * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -110,18 +111,17 @@ public final class SendWareHouseDepositList implements IClientIncomingPacket
 		
 		if (player.hasItemRequest())
 		{
-			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to use enchant Exploit!", Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Player " + player.getName() + " tried to use enchant Exploit!", GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
 		// Alt game - Karma punishment
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (player.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (player.getReputation() < 0))
 		{
 			return;
 		}
 		
-		// Freight price from config or normal price per item slot (30)
-		final long fee = _items.size() * 30;
+		final long fee = _items.size() * PlayerConfig.WH_DEPOSIT_PRICE_PER_ITEM;
 		long currentAdena = player.getAdena();
 		int slots = 0;
 		
@@ -130,7 +130,7 @@ public final class SendWareHouseDepositList implements IClientIncomingPacket
 			ItemInstance item = player.checkItemManipulation(i.getId(), i.getCount(), "deposit");
 			if (item == null)
 			{
-				_log.warn("Error depositing a warehouse object for char " + player.getName() + " (validity check)");
+				LOGGER.warn("Error depositing a warehouse object for char " + player.getName() + " (validity check)");
 				return;
 			}
 			
@@ -170,14 +170,14 @@ public final class SendWareHouseDepositList implements IClientIncomingPacket
 		}
 		
 		// Proceed to the transfer
-		InventoryUpdate playerIU = Config.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
+		InventoryUpdate playerIU = GeneralConfig.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
 		for (ItemHolder i : _items)
 		{
 			// Check validity of requested item
 			ItemInstance oldItem = player.checkItemManipulation(i.getId(), i.getCount(), "deposit");
 			if (oldItem == null)
 			{
-				_log.warn("Error depositing a warehouse object for char " + player.getName() + " (olditem == null)");
+				LOGGER.warn("Error depositing a warehouse object for char " + player.getName() + " (olditem == null)");
 				return;
 			}
 			
@@ -189,7 +189,7 @@ public final class SendWareHouseDepositList implements IClientIncomingPacket
 			final ItemInstance newItem = player.getInventory().transferItem(warehouse.getName(), i.getId(), i.getCount(), warehouse, player, manager);
 			if (newItem == null)
 			{
-				_log.warn("Error depositing a warehouse object for char " + player.getName() + " (newitem == null)");
+				LOGGER.warn("Error depositing a warehouse object for char " + player.getName() + " (newitem == null)");
 				continue;
 			}
 			

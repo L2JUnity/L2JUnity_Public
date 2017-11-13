@@ -495,6 +495,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="17824" level="1" /> <!-- La Vie En Rose's Jewelry Box -->
+		</skills>
 	</item>
 	<item id="24334" name="La Vie En Rose's Jewelry Pack" type="EtcItem">
 		<!-- Double-click to acquire 10 La Vie En Rose's Jewelry Boxes. Cannot be used in the auction house. -->
@@ -503,6 +509,12 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="24333" min="10" max="10" chance="100" /> <!-- La Vie En Rose's Jewelry Box -->
+		</capsuled_items>
 	</item>
 	<item id="24335" name="La Vie En Rose's Noble Brooch" type="EtcItem">
 		<!-- Double-click to acquire 30 La Vie En Rose's Jewelry Boxes and 1 Noble Brooch Chest. Cannot be used in the auction house. -->
@@ -511,6 +523,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="24333" min="30" max="30" chance="100" /> <!-- La Vie En Rose's Jewelry Box -->
+			<item id="38767" min="1" max="1" chance="100" /> <!-- La Vie En Rose's Noble Brooch -->
+		</capsuled_items>
 	</item>
 	<item id="24336" name="La Vie En Rose's Brilliant Brooch" type="EtcItem">
 		<!-- Double-click to acquire 55 La Vie En Rose's Jewelry Boxes and 1 Noble Brooch Chest. Cannot be used in the auction house. -->
@@ -519,6 +538,13 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<capsuled_items>
+			<item id="24333" min="55" max="55" chance="100" /> <!-- La Vie En Rose's Jewelry Box -->
+			<item id="38767" min="1" max="1" chance="100" /> <!-- La Vie En Rose's Noble Brooch -->
+		</capsuled_items>
 	</item>
 	<item id="24337" name="Starlight Jar Pouch" type="EtcItem">
 		<!-- Double-click to acquire a Starlight Jar. Cannot be used in the auction house. -->
@@ -527,6 +553,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24338" name="Starlight Jar Pack" type="EtcItem">
 		<!-- Double-click to acquire 10 Starlight Jar Pouches. Cannot be used in the auction house. -->
@@ -535,6 +562,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24339" name="Starlight Jar Pouch" type="EtcItem">
 		<!-- Double-click to acquire a Starlight Jar. Cannot be used in the auction house. -->
@@ -543,6 +571,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24340" name="Starlight Jar Pack" type="EtcItem">
 		<!-- Double-click to acquire 10 Starlight Jar Pouches. Cannot be used in the auction house. -->
@@ -551,6 +580,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24341" name="Blessed Giant's Lucky Enchant Stone: Weapon Pack (R-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Blessed Giant's Lucky Enchant Stone: Weapon (R-grade). -->
@@ -559,6 +589,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24342" name="Blessed Giant's Lucky Enchant Stone: Armor Pack (R-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Blessed Giant's Lucky Enchant Stone: Armor (R-grade). -->
@@ -567,6 +598,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24343" name="Blessed Lucky Enchant Stone: Weapon Pack (R-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Blessed Lucky Enchant Stone: Weapon (R-grade). -->
@@ -575,6 +607,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24344" name="Lesser Giant's Lucky Enchant Stone: Weapon Pack (R-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Lesser Giant's Lucky Enchant Stone: Weapon (R-grade). -->
@@ -583,6 +616,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24345" name="Blessed Lucky Enchant Stone: Armor Pack (R-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Blessed Lucky Enchant Stone: Armor (R-grade). -->
@@ -591,6 +625,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24346" name="Lesser Giant's Lucky Enchant Stone: Armor Pack (R-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Lesser Giant's Lucky Enchant Stone: Armor (R-grade). -->
@@ -599,6 +634,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24347" name="Scroll: Enchant Weapon Pack (R-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Scroll: Enchant Weapon (R-grade) with 10% increase in enchant success rate. -->
@@ -607,6 +643,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24348" name="Scroll: Enchant Armor Pack (R-grade)" type="EtcItem">
 		<!-- Wrapped Pack containing a Scroll: Enchant Armor (R-grade) with 10% increase in enchant success rate. -->
@@ -615,6 +652,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24349" name="XP Rune III (Lv. 1-100+) 100% Pack (30-day)" type="EtcItem">
 		<!-- Wrapped Pack containing XP Rune III (Lv. 1-99) 100% (30-day). -->
@@ -623,6 +661,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24350" name="Prestige Rune 100% Pack" name_additional="30-day" type="EtcItem">
 		<!-- Wrapped Pack containing a Prestige Rune 100% (30-day). -->
@@ -631,7 +670,8 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
-		<set name="time" val="2592000" />
+		<set name="time" val="43200" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24351" name="Talisman - Hunter" name_additional="Abundance / 3-day" type="Armor">
 		<!-- P. Atk. + 231, M. Atk. + 271, P./M. Evasion + 7, Attribute Resistance + 15, Debuff Resistance + 13%, P./M. Critical Rate + 13%. Received Critical Damage -15%, Received Skill Damage during PVP - 15%. Extra defense against skill damage in PvP.\nNote: Equipping 2 will give the effect of 1. -->
@@ -692,6 +732,9 @@
 	<item id="24355" name="Premium Account: Art of Seduction" type="EtcItem">
 		<!-- For 30 min., Max HP/MP/CP + 30%, P./M. Def. + 30%, P./Atk. + 10%, M. Atk. + 20%. Effect disappears if active while receiving Art of Seduction. Cannot be exchanged, dropped, or used in the Olympiad. Can be used in the Ceremony of Chaos. Can be stored in the private warehouse. -->
 		<set name="icon" val="BranchSys2.icon.br_rosalia_rose_blue_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
+		<set name="reuse_delay" val="300000" />
 		<set name="weight" val="1" />
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
@@ -703,6 +746,11 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="is_oly_restricted" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<skills>
+			<skill id="17290" level="1" /> <!-- Elixir: Divine Protection -->
+		</skills>
 	</item>
 	<item id="24356" name="Draco's Hat: Wizard" name_additional="7-day" type="Armor">
 		<!-- Cute Draco Hat. 7-day. STR/DEX/CON + 2. Can use Blessed Resurrection. Cooldown is 1 hr. Cannot be used in the Olympiad. Can be destroyed and sold in a private warehouse. -->
@@ -717,7 +765,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="604800" />
+		<set name="time" val="10080" />
 	</item>
 	<item id="24357" name="Draco's Hat: Warrior" name_additional="7-day" type="Armor">
 		<!-- Cute Draco Hat. 7-day. INT/WIT/MEN + 2. Can use Blessed Resurrection. Cooldown is 1 hr. Cannot be used in the Olympiad. Can be destroyed and sold in a private warehouse. -->
@@ -732,7 +780,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="time" val="604800" />
+		<set name="time" val="10080" />
 	</item>
 	<item id="24358" name="Premium Account: Quick Healing Potion" type="EtcItem">
 		<!-- Rerstores 1250 HP, and remaining power restores CP. No duration. Cannot be exchanged, dropped, sold, used in the Olympiad, or used in the Ceremony of Chaos. Can be stored in the private warehouse. -->
@@ -748,6 +796,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="24359" name="Antharas' Earring" name_additional="3-day" type="Armor">
 		<!-- MP + 37, Bleed Resistance + 40%, Bleed Attack Rate + 40%, Heal Amount increase, Vampiric Rage Effect, Stun/Mental Resistance + 30%, Stun/Mental Attack Rate + 30% , MP Consumption decrease, Earth Resistance increase. Equipping 2 will give the effect of 1. Cannot be used in the Olympiad. Can be stored in the private warehouse. -->
@@ -767,6 +816,7 @@
 		<set name="time" val="259200" />
 		<stats>
 			<stat type="mDef">94</stat>
+			<stat type="maxMp">37</stat>
 		</stats>
 	</item>
 	<item id="24360" name="Valakas' Necklace" name_additional="3-day" type="Armor">
@@ -787,6 +837,7 @@
 		<set name="time" val="259200" />
 		<stats>
 			<stat type="mDef">95</stat>
+			<stat type="maxMp">50</stat>
 		</stats>
 	</item>
 	<item id="24361" name="Zaken's Earring" name_additional="3-day" type="Armor">
@@ -807,6 +858,7 @@
 		<set name="time" val="259200" />
 		<stats>
 			<stat type="mDef">71</stat>
+			<stat type="maxMp">31</stat>
 		</stats>
 	</item>
 	<item id="24362" name="Queen Ant's Ring" name_additional="3-day" type="Armor">
@@ -827,6 +879,7 @@
 		<set name="time" val="259200" />
 		<stats>
 			<stat type="mDef">48</stat>
+			<stat type="maxMp">21</stat>
 		</stats>
 	</item>
 	<item id="24363" name="Baium's Ring" name_additional="3-day" type="Armor">
@@ -847,6 +900,7 @@
 		<set name="time" val="259200" />
 		<stats>
 			<stat type="mDef">48</stat>
+			<stat type="maxMp">21</stat>
 		</stats>
 	</item>
 	<item id="24364" name="Dark Assassin Suit" type="Armor">
@@ -878,6 +932,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="handler" val="Appearance" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="24366" name="Luck Box 1" name_additional="Gemini" type="EtcItem">
 		<!-- Has a chance of obtaining either a Sealed Talisman - Longing, Immortal Scroll, Talisman - Abundance, Elycum, Energy of Destruction 20-unit Pack, Giant's Energy, Top-grade Augmentation Pack (R95-grade), Top-grade Augmentation Pack (R99-grade), or Agathion - Gemini. -->
@@ -886,6 +941,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="24367" name="Luck Box 2" name_additional="Cancer" type="EtcItem">
 		<!-- Has a chance of obtaining either a Sealed Talisman - Longing, Immortal Scroll, Talisman - Abundance, Elycum, Energy of Destruction 20-unit Pack, Giant's Energy, Top-grade Augmentation Pack (R95-grade), Top-grade Augmentation Pack (R99-grade), or Agathion - Cancer. -->
@@ -894,6 +950,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="24368" name="Sayha's Rune: Growth" name_additional="Stage 1" type="EtcItem">
 		<!-- 10-min. When possessed, XP gain + 1%. -->
@@ -1110,6 +1167,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24385" name="Sayha's Rune: Growth Pack Stage 2" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Growth Stage 2. -->
@@ -1118,6 +1176,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24386" name="Sayha's Rune: Growth Pack Stage 3" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Growth Stage 3. -->
@@ -1126,6 +1185,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24387" name="Sayha's Rune: Growth Pack Stage 4" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Growth Stage 4. -->
@@ -1134,6 +1194,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24388" name="Sayha's Rune: Skill Pack Stage 1" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Skill Stage 1. -->
@@ -1142,6 +1203,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24389" name="Sayha's Rune: Skill Pack Stage 2" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Skill Stage 2. -->
@@ -1150,6 +1212,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24390" name="Sayha's Rune: Skill Pack Stage 3" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Skill Stage 3. -->
@@ -1158,6 +1221,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24391" name="Sayha's Rune: Skill Pack Stage 4" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Skill Stage 4. -->
@@ -1166,6 +1230,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24392" name="Sayha's Rune: Luck Pack Stage 1" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Luck Stage 1. -->
@@ -1174,6 +1239,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24393" name="Sayha's Rune: Luck Pack Stage 2" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Luck Stage 2. -->
@@ -1182,6 +1248,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24394" name="Sayha's Rune: Luck Pack Stage 3" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Luck Stage 3. -->
@@ -1190,6 +1257,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24395" name="Sayha's Rune: Luck Pack Stage 4" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Luck Stage 4. -->
@@ -1198,6 +1266,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24396" name="Sayha's Rune Pack Stage 1" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Stage 1. -->
@@ -1206,6 +1275,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24397" name="Sayha's Rune Pack Stage 2" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Stage 2. -->
@@ -1214,6 +1284,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24398" name="Sayha's Rune Pack Stage 3" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Stage 3. -->
@@ -1222,6 +1293,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="24399" name="Sayha's Rune Pack Stage 4" type="EtcItem">
 		<!-- Wrapped Pack containing Sayha's Rune: Stage 4. -->
@@ -1230,5 +1302,6 @@
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 </list>

@@ -69,10 +69,6 @@ public final class ProductList
 	
 	public boolean isNpcAllowed(int npcId)
 	{
-		if (_allowedNpcs == null)
-		{
-			return false;
-		}
-		return _allowedNpcs.contains(npcId);
+		return (_allowedNpcs != null) && _allowedNpcs.contains(npcId);
 	}
 }

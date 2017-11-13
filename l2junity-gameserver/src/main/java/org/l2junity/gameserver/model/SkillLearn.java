@@ -23,10 +23,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.enums.Race;
-import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.base.SocialClass;
 import org.l2junity.gameserver.model.holders.ItemHolder;
 import org.l2junity.gameserver.model.holders.SkillHolder;
@@ -35,28 +33,28 @@ import org.l2junity.gameserver.model.skills.Skill;
 /**
  * @author Zoey76
  */
-public final class SkillLearn
+public class SkillLearn
 {
-	private final String _skillName;
-	private final int _skillId;
-	private final int _skillLvl;
-	private final int _getLevel;
-	private final int _getDualClassLevel;
-	private final boolean _autoGet;
-	private final int _levelUpSp;
-	private final List<ItemHolder> _requiredItems = new ArrayList<>();
-	private final List<Race> _races = new ArrayList<>();
-	private final List<SkillHolder> _preReqSkills = new ArrayList<>();
-	private SocialClass _socialClass;
-	private final boolean _residenceSkill;
-	private final List<Integer> _residenceIds = new ArrayList<>();
-	private final boolean _learnedByNpc;
-	private final boolean _learnedByFS;
-	private final Set<Integer> _removeSkills = new HashSet<>(1);
-	private final int _treeId;
-	private final int _row;
-	private final int _column;
-	private final int _pointsRequired;
+	protected String _skillName;
+	protected int _skillId;
+	protected int _skillLvl;
+	protected int _getLevel;
+	protected int _getDualClassLevel;
+	protected boolean _autoGet;
+	protected int _levelUpSp;
+	protected final List<ItemHolder> _requiredItems = new ArrayList<>();
+	protected final List<Race> _races = new ArrayList<>();
+	protected final List<SkillHolder> _preReqSkills = new ArrayList<>();
+	protected SocialClass _socialClass;
+	protected boolean _residenceSkill;
+	protected final List<Integer> _residenceIds = new ArrayList<>();
+	protected boolean _learnedByNpc;
+	protected boolean _learnedByFS;
+	protected final Set<Integer> _removeSkills = new HashSet<>(1);
+	protected int _treeId;
+	protected int _row;
+	protected int _column;
+	protected int _pointsRequired;
 	
 	/**
 	 * Constructor for L2SkillLearn.
@@ -78,6 +76,13 @@ public final class SkillLearn
 		_row = set.getInt("row", 0);
 		_column = set.getInt("row", 0);
 		_pointsRequired = set.getInt("pointsRequired", 0);
+	}
+	
+	/**
+	 * Constructor for subclasses extending this class.
+	 */
+	protected SkillLearn()
+	{
 	}
 	
 	/**
@@ -276,38 +281,6 @@ public final class SkillLearn
 	public int getPointsRequired()
 	{
 		return _pointsRequired;
-	}
-	
-	/**
-	 * Used for AltGameSkillLearn mod.<br>
-	 * If the alternative skill learn system is enabled and the player is learning a skill from a different class apply a fee.<br>
-	 * If the player is learning a skill from other class type (mage learning warrior skills or vice versa) the fee is higher.
-	 * @param playerClass the player class Id.
-	 * @param learningClass the skill learning player class Id.
-	 * @return the amount of SP required to acquire this skill, by calculating the cost for the alternative skill learn system.
-	 */
-	public int getCalculatedLevelUpSp(ClassId playerClass, ClassId learningClass)
-	{
-		if ((playerClass == null) || (learningClass == null))
-		{
-			return _levelUpSp;
-		}
-		
-		int levelUpSp = _levelUpSp;
-		// If the alternative skill learn system is enabled and the player is learning a skill from a different class apply a fee.
-		if (Config.ALT_GAME_SKILL_LEARN && (playerClass != learningClass))
-		{
-			// If the player is learning a skill from other class type (mage learning warrior skills or vice versa) the fee is higher.
-			if (playerClass.isMage() != learningClass.isMage())
-			{
-				levelUpSp *= 3;
-			}
-			else
-			{
-				levelUpSp *= 2;
-			}
-		}
-		return levelUpSp;
 	}
 	
 	@Override

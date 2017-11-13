@@ -18,9 +18,9 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
 import org.l2junity.gameserver.LoginServerThread;
 import org.l2junity.gameserver.LoginServerThread.SessionKey;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.network.PacketReader;
 
@@ -57,15 +57,15 @@ public final class AuthLogin implements IClientIncomingPacket
 	{
 		if (_loginName.isEmpty() || !client.isProtocolOk())
 		{
-			client.close(null);
+			client.closeNow();
 			return;
 		}
 		
 		SessionKey key = new SessionKey(_loginKey1, _loginKey2, _playKey1, _playKey2);
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
-			_log.info("user:" + _loginName);
-			_log.info("key:" + key);
+			LOGGER.info("user:" + _loginName);
+			LOGGER.info("key:" + key);
 		}
 		
 		// avoid potential exploits

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
@@ -36,12 +36,9 @@ public class CombatFlag
 	private ItemInstance _itemInstance;
 	private final Location _location;
 	private final int _itemId;
-	@SuppressWarnings("unused")
-	private final int _fortId;
 	
 	public CombatFlag(int fort_id, int x, int y, int z, int heading, int item_id)
 	{
-		_fortId = fort_id;
 		_location = new Location(x, y, z, heading);
 		_itemId = item_id;
 	}
@@ -86,7 +83,7 @@ public class CombatFlag
 		_player.sendPacket(sm);
 		
 		// Refresh inventory
-		if (!Config.FORCE_INVENTORY_UPDATE)
+		if (!GeneralConfig.FORCE_INVENTORY_UPDATE)
 		{
 			InventoryUpdate iu = new InventoryUpdate();
 			iu.addItem(_item);

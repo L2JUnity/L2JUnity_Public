@@ -18,12 +18,20 @@
  */
 package org.l2junity.gameserver.plugins;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,8 +43,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.BasePathProvider;
 import org.l2junity.gameserver.data.xml.impl.AdminData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -139,7 +147,7 @@ public abstract class AbstractServerPlugin
 		{
 			uninstallFiles();
 		}
-		catch (SecurityException e)
+		catch (IOException e)
 		{
 			LOGGER.warn("Plugin: " + getName() + " couldn't uninstall plugin: files {}", getName(), _filesToInstall, e);
 			return false;
@@ -191,33 +199,38 @@ public abstract class AbstractServerPlugin
 	/**
 	 * Installs all prepared files
 	 * @throws IOException
+	 * @throws URISyntaxException
+	 * @throws IllegalArgumentException
 	 */
-	protected void installFiles() throws IOException
+	protected void installFiles() throws IOException, URISyntaxException, IllegalArgumentException
 	{
-		for (ServerPluginInstallFile file : _filesToInstall)
+		final URL location = getClass().getProtectionDomain().getCodeSource().getLocation();
+		if (location.getProtocol().equals("file"))
 		{
-			final File destFile;
-			if (file.getDestination().startsWith("config/"))
+			final Path path = Paths.get(location.toURI());
+			if (location.getPath().endsWith(".jar"))
 			{
-				destFile = new File(file.getDestination());
+				try (FileSystem fs = FileSystems.newFileSystem(path, getClass().getClassLoader()))
+				{
+					for (ServerPluginInstallFile file : _filesToInstall)
+					{
+						installResources(Paths.get(file.getDestination()), fs.getPath("/" + file.getSource()));
+						onFileInstalled(file);
+					}
+				}
 			}
 			else
 			{
-				destFile = new File(Config.DATAPACK_ROOT, file.getDestination());
+				for (ServerPluginInstallFile file : _filesToInstall)
+				{
+					installResources(Paths.get(file.getDestination()), path.resolve(file.getSource().startsWith("/") ? file.getSource().substring(1) : file.getSource()));
+					onFileInstalled(file);
+				}
 			}
-			
-			// Create parent directories
-			if (!destFile.getParentFile().exists())
-			{
-				destFile.getParentFile().mkdirs();
-			}
-			
-			// Copy file
-			try (InputStream source = getClass().getResourceAsStream(file.getSource()))
-			{
-				Files.copy(source, destFile.getAbsoluteFile().toPath(), StandardCopyOption.REPLACE_EXISTING);
-				onFileInstalled(file);
-			}
+		}
+		else
+		{
+			throw new IllegalArgumentException("Source of class " + getClass() + " is not of a file protocol. Source URL: " + location);
 		}
 	}
 	
@@ -310,26 +323,65 @@ public abstract class AbstractServerPlugin
 		}
 	}
 	
+	private void installResources(final Path destination, final Path source) throws IOException
+	{
+		Files.walkFileTree(source, new SimpleFileVisitor<Path>()
+		{
+			@Override
+			public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException
+			{
+				Path dst = destination.resolve(source.relativize(dir).toString());
+				Files.createDirectories(dst);
+				return super.preVisitDirectory(dir, attrs);
+			}
+			
+			@Override
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException
+			{
+				Path dst = destination.resolve(source.relativize(file).toString());
+				Files.copy(Files.newInputStream(file), dst, StandardCopyOption.REPLACE_EXISTING);
+				return super.visitFile(file, attrs);
+			}
+		});
+	}
+	
 	/**
 	 * Uninstalls all prepared files
-	 * @throws SecurityException
+	 * @throws IOException
 	 */
-	protected void uninstallFiles() throws SecurityException
+	protected void uninstallFiles() throws IOException
 	{
-		for (ServerPluginInstallFile file : _filesToInstall)
+		for (ServerPluginInstallFile pluginFile : _filesToInstall)
 		{
-			final File destFile;
-			if (file.getDestination().startsWith("config/"))
+			final Path destFile = BasePathProvider.resolvePath(pluginFile.getDestination());
+			if (pluginFile.isDirectory())
 			{
-				destFile = new File(file.getDestination());
+				Files.walkFileTree(destFile, new SimpleFileVisitor<Path>()
+				{
+					@Override
+					public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException
+					{
+						Files.deleteIfExists(file);
+						return FileVisitResult.CONTINUE;
+					}
+					
+					@Override
+					public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException
+					{
+						if (exc != null)
+						{
+							throw exc;
+						}
+						Files.deleteIfExists(dir);
+						return FileVisitResult.CONTINUE;
+					}
+				});
 			}
 			else
 			{
-				destFile = new File(Config.DATAPACK_ROOT, file.getDestination());
+				Files.deleteIfExists(destFile);
 			}
-			
-			destFile.delete();
-			onFileUninstalled(file);
+			onFileUninstalled(pluginFile);
 		}
 	}
 	
@@ -339,7 +391,7 @@ public abstract class AbstractServerPlugin
 	 */
 	protected void onFileInstalled(ServerPluginInstallFile file)
 	{
-		broadcastMessage("New file: " + file.getDestination());
+		broadcastMessage("New " + (file.isDirectory() ? "directory" : "file") + ": " + file.getDestination());
 	}
 	
 	/**
@@ -348,7 +400,7 @@ public abstract class AbstractServerPlugin
 	 */
 	protected void onFileUninstalled(ServerPluginInstallFile file)
 	{
-		broadcastMessage("File removed: " + file.getDestination());
+		broadcastMessage("" + (file.isDirectory() ? "Directory" : "File") + " removed: " + file.getDestination());
 	}
 	
 	/**
@@ -357,7 +409,14 @@ public abstract class AbstractServerPlugin
 	 */
 	protected void onNewDatabaseTableInstalled(ServerPluginInstallSQLFile file)
 	{
-		broadcastMessage("New database table: " + file.getTable() + " on database: " + file.getDatabase());
+		if (file.getDatabase() != null)
+		{
+			broadcastMessage("New database table: " + file.getTable() + " on database: " + file.getDatabase());
+		}
+		else
+		{
+			broadcastMessage("New database table: " + file.getTable());
+		}
 	}
 	
 	/**

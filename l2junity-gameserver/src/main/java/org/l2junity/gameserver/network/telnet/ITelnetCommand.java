@@ -18,8 +18,6 @@
  */
 package org.l2junity.gameserver.network.telnet;
 
-import io.netty.channel.ChannelHandlerContext;
-
 /**
  * @author UnAfraid
  */
@@ -29,5 +27,5 @@ public interface ITelnetCommand
 	
 	String getUsage();
 	
-	String handle(ChannelHandlerContext ctx, String[] args);
+	String handle(String ipAddress, String[] args);
 }

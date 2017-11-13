@@ -23,6 +23,7 @@ import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.itemauction.ItemAuction;
 import org.l2junity.gameserver.model.itemauction.ItemAuctionInstance;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.network.PacketReader;
 
@@ -58,7 +59,7 @@ public final class RequestBidItemAuction implements IClientIncomingPacket
 			return;
 		}
 		
-		if ((_bid < 0) || (_bid > Inventory.MAX_ADENA))
+		if (!ItemContainer.validateCount(Inventory.ADENA_ID, _bid))
 		{
 			return;
 		}

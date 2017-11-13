@@ -18,9 +18,9 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.L2PetInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -28,8 +28,8 @@ import org.l2junity.gameserver.model.itemcontainer.Inventory;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -48,7 +48,7 @@ public class PDefenseFinalizer implements IStatsFunction
 	};
 	
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		double baseValue = creature.getTemplate().getBaseValue(stat, 0);
@@ -83,14 +83,17 @@ public class PDefenseFinalizer implements IStatsFunction
 		}
 		if (creature.isRaid())
 		{
-			baseValue *= Config.RAID_PDEFENCE_MULTIPLIER;
+			baseValue *= NpcConfig.RAID_PDEFENCE_MULTIPLIER;
 		}
-		baseValue *= creature.getLevelMod();
+		if (creature.getLevel() > 0)
+		{
+			baseValue *= creature.getLevelMod();
+		}
 		
 		return defaultValue(creature, stat, baseValue);
 	}
 	
-	private double defaultValue(Creature creature, Stats stat, double baseValue)
+	private double defaultValue(Creature creature, DoubleStat stat, double baseValue)
 	{
 		final double mul = Math.max(creature.getStat().getMul(stat), 0.5);
 		final double add = creature.getStat().getAdd(stat);

@@ -291,7 +291,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>870</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -321,47 +321,47 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-10</amount>
 				<slot>DEBUFF</slot>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
@@ -384,7 +384,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>50</power>
 			</effect>
 		</effects>
@@ -400,8 +400,6 @@
 		<hitTime>100</hitTime>
 		<icon>icon.etc_hot_spring_mineral_i00</icon>
 		<isMagic>4</isMagic> <!-- Item Skill -->
-		<itemConsumeCount>1</itemConsumeCount>
-		<itemConsumeId>21212</itemConsumeId> <!-- Vitality Replenishing Herb Tea -->
 		<magicLvl>-1</magicLvl>
 		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
@@ -414,14 +412,15 @@
 		<staticReuse>true</staticReuse>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeCount>1</itemConsumeCount>
+		<itemConsumeId>21212</itemConsumeId> <!-- Vitality Replenishing Herb Tea -->
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -454,7 +453,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>306</transformationId>
 			</effect>
 		</effects>
@@ -476,7 +475,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>100</power>
 			</effect>
 		</effects>
@@ -498,7 +497,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>100</power>
 			</effect>
 		</effects>
@@ -520,7 +519,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>20000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -543,7 +542,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>20000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -572,7 +571,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>20000</value>
+				<amount>20000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -599,7 +598,7 @@
 		</conditions>
 		<effects>
 			<effect name="VitalityPointUp">
-				<value>20000</value>
+				<amount>20000</amount>
 			</effect>
 		</effects>
 	</skill>
@@ -631,10 +630,8 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-100</amount>
-				<mode>PER</mode>
-				<magicType>1</magicType>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -666,10 +663,8 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-100</amount>
-				<mode>PER</mode>
-				<magicType>1</magicType>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -888,7 +883,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="3.3333">
 						<item id="9552" count="1" />
@@ -945,7 +940,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="3.3333">
 						<item id="9552" count="1" />
@@ -1002,7 +997,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5">
 						<item id="6577" count="1" />
@@ -1059,7 +1054,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5">
 						<item id="6577" count="1" />
@@ -1116,7 +1111,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.5">
 						<item id="21579" count="1" />
@@ -1158,7 +1153,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.5">
 						<item id="21579" count="1" />
@@ -1200,7 +1195,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="2.5">
 						<item id="21383" count="1" />
@@ -1257,7 +1252,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="2.5">
 						<item id="21383" count="1" />
@@ -1314,7 +1309,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="3.4333">
 						<item id="21553" count="1" />
@@ -1362,7 +1357,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="3.4333">
 						<item id="21553" count="1" />
@@ -1410,7 +1405,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="4">
 						<item id="21255" count="25" />
@@ -1461,7 +1456,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="4">
 						<item id="21255" count="25" />
@@ -1506,6 +1501,19 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESSORY</item>
+				</itemType>
+				<crystalType>NONE</crystalType>
+				<scrollGroup>5</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22248" toLevel="1" name="Blessed Olf's T-shirt Enchant Scroll">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -1516,6 +1524,19 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESSORY</item>
+				</itemType>
+				<crystalType>NONE</crystalType>
+				<scrollGroup>5</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22249" toLevel="1" name="Birthday Cake">
 		<!-- High Five Skill -->
@@ -1539,7 +1560,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>139</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>1200000</despawnDelay>
@@ -1569,10 +1590,8 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-100</amount>
-				<mode>PER</mode>
-				<magicType>1</magicType>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -1635,6 +1654,19 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESSORY</item>
+				</itemType>
+				<crystalType>NONE</crystalType>
+				<scrollGroup>5</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22255" toLevel="1" name="Honey Rice Cakes">
 		<!-- none -->
@@ -1976,7 +2008,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.1274">
 						<item id="123" count="1" />
@@ -2107,7 +2139,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.6081">
 						<item id="78" count="1" />
@@ -2238,7 +2270,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="2.97">
 						<item id="9376" count="1" />
@@ -2386,7 +2418,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20">
 						<item id="9814" count="15" />
@@ -2421,7 +2453,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="1.1236">
 						<item id="9914" count="1" />
@@ -2707,7 +2739,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="14.3">
 						<item id="21114" count="1" />
@@ -2791,15 +2823,16 @@
 	</skill>
 	<skill id="22283" toLevel="1" name="Player Commendation - Blessing">
 		<!-- "For 20 minute(s), recovers energy when Exp. is acquired through hunting." -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>1200</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>1200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<affectRange>1000</affectRange>
 		<icon>BranchSys.icon.br_flag_of_bookmark_i00</icon>
@@ -2807,32 +2840,40 @@
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<itemConsumeId>21863</itemConsumeId> <!-- Player Commendation - Blessing -->
+		<itemConsumeCount>1</itemConsumeCount>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>false</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22284" toLevel="1" name="PC Vitality">
 		<!-- "For 60 minute(s), energy is replenished when Exp. is acquired through hunting." -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>4</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.etc_pccafe_point_i00</icon>
 		<hitTime>100</hitTime>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>21861</itemConsumeId> <!-- PC Vitality (1-hour) -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
@@ -2842,28 +2883,35 @@
 				<affectType>CASTER</affectType>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22285" toLevel="1" name="PC Vitality">
 		<!-- "For 2 hours, recovers energy when Exp. is acquired through hunting." -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>7200</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>4</abnormalLvl>
-		<abnormalTime>7200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.etc_pccafe_point_i00</icon>
 		<hitTime>100</hitTime>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>21865</itemConsumeId> <!-- PC Vitality (2-hour) -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
@@ -2873,28 +2921,35 @@
 				<affectType>CASTER</affectType>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22286" toLevel="1" name="PC Vitality">
 		<!-- "For 3 hours, recovers energy when Exp. is acquired through hunting." -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>10800</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>4</abnormalLvl>
-		<abnormalTime>10800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.etc_pccafe_point_i00</icon>
 		<hitTime>100</hitTime>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>21866</itemConsumeId> <!-- PC Vitality (3-hour) -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
@@ -2904,28 +2959,35 @@
 				<affectType>CASTER</affectType>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22287" toLevel="1" name="PC Vitality">
 		<!-- "For 4 hours, recovers energy when Exp. is acquired through hunting." -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>14400</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>4</abnormalLvl>
-		<abnormalTime>14400</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<icon>icon.etc_pccafe_point_i00</icon>
 		<hitTime>100</hitTime>
 		<reuseDelay>3600000</reuseDelay>
 		<isMagic>4</isMagic>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>21867</itemConsumeId> <!-- PC Vitality (4-hour) -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
@@ -2935,6 +2997,11 @@
 				<affectType>CASTER</affectType>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22288" toLevel="1" name="Player Commendation - Vitality Pack">
 		<!-- none -->
@@ -2949,7 +3016,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="25">
 						<item id="21861" count="3" />
@@ -2980,7 +3047,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="50">
 						<item id="21711" count="1" />
@@ -3142,7 +3209,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>183624</x>
 				<y>-114891</y>
 				<z>-3340</z>
@@ -3166,7 +3233,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>183624</x>
 				<y>-114891</y>
 				<z>-3340</z>
@@ -3190,7 +3257,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>154596</x>
 				<y>121127</y>
 				<z>-3812</z>
@@ -3214,7 +3281,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>154596</x>
 				<y>121127</y>
 				<z>-3812</z>
@@ -3236,7 +3303,7 @@
 			<condition name="CanUseInDragonLair" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>143</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>1800000</despawnDelay>
@@ -3258,7 +3325,7 @@
 			<condition name="CanUseInDragonLair" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>144</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>1800000</despawnDelay>
@@ -3267,7 +3334,6 @@
 	</skill>
 	<skill id="22296" toLevel="1" name="Totem of Courage">
 		<blockedInOlympiad>true</blockedInOlympiad>
-		<despawnDelay>1800000</despawnDelay>
 		<magicLvl>85</magicLvl>
 		<operateType>A1</operateType>
 		<reuseDelay>600000</reuseDelay>
@@ -3281,7 +3347,7 @@
 			<condition name="CanUseInDragonLair" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>145</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>1800000</despawnDelay>
@@ -3303,7 +3369,7 @@
 			<condition name="CanUseInDragonLair" />
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>146</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>1800000</despawnDelay>
@@ -3331,7 +3397,7 @@
 			<condition name="CanUseInDragonLair" />
 		</conditions>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>1100</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3359,7 +3425,7 @@
 			<condition name="CanUseInDragonLair" />
 		</conditions>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>360</amount>
 				<mode>DIFF</mode>
 			</effect>

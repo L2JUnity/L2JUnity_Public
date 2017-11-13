@@ -18,39 +18,17 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
 public final class SpawnItem implements IClientOutgoingPacket
 {
-	private final int _objectId;
-	private int _itemId;
-	private final int _x, _y, _z;
-	private int _stackable;
-	private long _count;
+	private final ItemInstance _item;
 	
-	public SpawnItem(WorldObject obj)
+	public SpawnItem(ItemInstance item)
 	{
-		_objectId = obj.getObjectId();
-		_x = obj.getX();
-		_y = obj.getY();
-		_z = obj.getZ();
-		
-		if (obj.isItem())
-		{
-			ItemInstance item = (ItemInstance) obj;
-			_itemId = item.getDisplayId();
-			_stackable = item.isStackable() ? 0x01 : 0x00;
-			_count = item.getCount();
-		}
-		else
-		{
-			_itemId = obj.getPoly().getPolyId();
-			_stackable = 0;
-			_count = 1;
-		}
+		_item = item;
 	}
 	
 	@Override
@@ -58,16 +36,18 @@ public final class SpawnItem implements IClientOutgoingPacket
 	{
 		OutgoingPackets.SPAWN_ITEM.writeId(packet);
 		
-		packet.writeD(_objectId);
-		packet.writeD(_itemId);
-		
-		packet.writeD(_x);
-		packet.writeD(_y);
-		packet.writeD(_z);
+		packet.writeD(_item.getObjectId());
+		packet.writeD(_item.getDisplayId());
+		packet.writeD((int) _item.getX());
+		packet.writeD((int) _item.getY());
+		packet.writeD((int) _item.getZ());
 		// only show item count if it is a stackable item
-		packet.writeD(_stackable);
-		packet.writeQ(_count);
+		packet.writeD(_item.isStackable() ? 0x01 : 0x00);
+		packet.writeQ(_item.getCount());
 		packet.writeD(0x00); // c2
+		packet.writeC(_item.getEnchantLevel());
+		packet.writeC(_item.getAugmentation() != null ? 1 : 0);
+		packet.writeC(_item.getSpecialAbilities().size());
 		return true;
 	}
 }

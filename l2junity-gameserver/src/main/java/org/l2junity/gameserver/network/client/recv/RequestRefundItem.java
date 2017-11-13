@@ -20,7 +20,8 @@ package org.l2junity.gameserver.network.client.recv;
 
 import static org.l2junity.gameserver.model.actor.Npc.INTERACTION_DISTANCE;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.BuyListData;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -52,7 +53,7 @@ public final class RequestRefundItem implements IClientIncomingPacket
 	{
 		_listId = packet.readD();
 		final int count = packet.readD();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((count <= 0) || (count > PlayerConfig.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -80,20 +81,14 @@ public final class RequestRefundItem implements IClientIncomingPacket
 			return;
 		}
 		
-		if (_items == null)
-		{
-			client.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-		
-		if (!player.hasRefund())
+		if ((_items == null) || !player.hasRefund())
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		WorldObject target = player.getTarget();
-		if (!player.isGM() && ((target == null) || !(target instanceof L2MerchantInstance) || (player.getInstanceWorld() != target.getInstanceWorld()) || !player.isInsideRadius(target, INTERACTION_DISTANCE, true, false)))
+		if (!player.isGM() && ((target == null) || !(target instanceof L2MerchantInstance) || (player.getInstanceWorld() != target.getInstanceWorld()) || !player.isInRadius3d(target, INTERACTION_DISTANCE)))
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
@@ -119,7 +114,7 @@ public final class RequestRefundItem implements IClientIncomingPacket
 		final ProductList buyList = BuyListData.getInstance().getBuyList(_listId);
 		if (buyList == null)
 		{
-			Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId, Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId, GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
@@ -141,7 +136,7 @@ public final class RequestRefundItem implements IClientIncomingPacket
 			int idx = _items[i];
 			if ((idx < 0) || (idx >= refund.length))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent invalid refund index", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent invalid refund index", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			
@@ -150,7 +145,7 @@ public final class RequestRefundItem implements IClientIncomingPacket
 			{
 				if (idx == _items[j])
 				{
-					Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent duplicate refund index", Config.DEFAULT_PUNISH);
+					Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent duplicate refund index", GeneralConfig.DEFAULT_PUNISH);
 					return;
 				}
 			}
@@ -164,7 +159,7 @@ public final class RequestRefundItem implements IClientIncomingPacket
 			{
 				if (objectIds[i] == objectIds[j])
 				{
-					Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " has duplicate items in refund list", Config.DEFAULT_PUNISH);
+					Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " has duplicate items in refund list", GeneralConfig.DEFAULT_PUNISH);
 					return;
 				}
 			}
@@ -208,8 +203,7 @@ public final class RequestRefundItem implements IClientIncomingPacket
 			ItemInstance item = player.getRefund().transferItem("Refund", objectIds[i], Long.MAX_VALUE, player.getInventory(), player, player.getLastFolkNPC());
 			if (item == null)
 			{
-				_log.warn("Error refunding object for char " + player.getName() + " (newitem == null)");
-				continue;
+				LOGGER.warn("Error refunding object for char " + player.getName() + " (newitem == null)");
 			}
 		}
 		

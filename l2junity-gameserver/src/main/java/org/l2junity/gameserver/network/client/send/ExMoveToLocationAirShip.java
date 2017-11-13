@@ -24,17 +24,17 @@ import org.l2junity.network.PacketWriter;
 
 public class ExMoveToLocationAirShip implements IClientOutgoingPacket
 {
-	private final int _objId, _tx, _ty, _tz, _x, _y, _z;
+	private final int _objectId, _tx, _ty, _tz, _x, _y, _z;
 	
 	public ExMoveToLocationAirShip(Creature cha)
 	{
-		_objId = cha.getObjectId();
-		_tx = cha.getXdestination();
-		_ty = cha.getYdestination();
-		_tz = cha.getZdestination();
-		_x = cha.getX();
-		_y = cha.getY();
-		_z = cha.getZ();
+		_objectId = cha.getObjectId();
+		_tx = (int) cha.getXdestination();
+		_ty = (int) cha.getYdestination();
+		_tz = (int) cha.getZdestination();
+		_x = (int) cha.getX();
+		_y = (int) cha.getY();
+		_z = (int) cha.getZ();
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class ExMoveToLocationAirShip implements IClientOutgoingPacket
 	{
 		OutgoingPackets.EX_MOVE_TO_LOCATION_AIR_SHIP.writeId(packet);
 		
-		packet.writeD(_objId);
+		packet.writeD(_objectId);
 		packet.writeD(_tx);
 		packet.writeD(_ty);
 		packet.writeD(_tz);

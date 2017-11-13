@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -31,15 +32,20 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.l2junity.Config;
-import org.l2junity.commons.util.CommonUtil;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
+import org.l2junity.commons.util.ArrayUtil;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.enums.AISkillScope;
 import org.l2junity.gameserver.enums.MpRewardAffectType;
 import org.l2junity.gameserver.enums.MpRewardType;
+import org.l2junity.gameserver.instancemanager.ZoneManager;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
-import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.drops.DropListScope;
 import org.l2junity.gameserver.model.drops.GeneralDropItem;
 import org.l2junity.gameserver.model.drops.GroupedGeneralDropItem;
@@ -67,18 +73,24 @@ public class NpcData implements IGameXmlReader
 	
 	protected NpcData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Reload("npc")
+	@Load(group = LoadGroup.class, dependencies =
 	{
-		_minionData = new MinionData();
+		@Dependency(clazz = SkillData.class),
+		@Dependency(clazz = LevelBonusData.class),
+		@Dependency(clazz = ZoneManager.class),
+		@Dependency(clazz = MinionData.class)
+	})
+	public void load() throws IOException
+	{
+		_minionData = MinionData.getInstance();
 		
 		parseDatapackDirectory("data/stats/npcs", false);
 		LOGGER.info("Loaded {} NPCs.", _npcs.size());
 		
-		if (Config.CUSTOM_NPC_DATA)
+		if (GeneralConfig.CUSTOM_NPC_DATA)
 		{
 			final int npcCount = _npcs.size();
 			parseDatapackDirectory("data/stats/npcs/custom", true);
@@ -86,11 +98,10 @@ public class NpcData implements IGameXmlReader
 		}
 		
 		_minionData = null;
-		loadNpcsSkillLearn();
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node node = doc.getFirstChild(); node != null; node = node.getNextSibling())
 		{
@@ -265,15 +276,15 @@ public class NpcData implements IGameXmlReader
 													{
 														case "walk":
 														{
-															set.set("baseWalkSpd", parseDouble(attrs, "ground"));
-															set.set("baseSwimWalkSpd", parseDouble(attrs, "swim"));
+															set.set("baseMoveSpdwalk", parseDouble(attrs, "ground"));
+															set.set("baseMoveSpdslowSwim", parseDouble(attrs, "swim"));
 															set.set("baseFlyWalkSpd", parseDouble(attrs, "fly"));
 															break;
 														}
 														case "run":
 														{
-															set.set("baseRunSpd", parseDouble(attrs, "ground"));
-															set.set("baseSwimRunSpd", parseDouble(attrs, "swim"));
+															set.set("baseMoveSpdrun", parseDouble(attrs, "ground"));
+															set.set("baseMoveSpdfastSwim", parseDouble(attrs, "swim"));
 															set.set("baseFlyRunSpd", parseDouble(attrs, "fly"));
 															break;
 														}
@@ -304,6 +315,7 @@ public class NpcData implements IGameXmlReader
 									set.set("passableDoor", parseBoolean(attrs, "passableDoor"));
 									set.set("hasSummoner", parseBoolean(attrs, "hasSummoner"));
 									set.set("canBeSown", parseBoolean(attrs, "canBeSown"));
+									set.set("isDeathPenalty", parseBoolean(attrs, "isDeathPenalty"));
 									break;
 								}
 								case "skill_list":
@@ -323,7 +335,7 @@ public class NpcData implements IGameXmlReader
 											}
 											else
 											{
-												LOGGER.warn("[{}] skill not found. NPC ID: {} Skill ID: {} Skill Level: {}", f.getName(), npcId, skillId, skillLevel);
+												LOGGER.warn("[{}] skill not found. NPC ID: {} Skill ID: {} Skill Level: {}", path, npcId, skillId, skillLevel);
 											}
 										}
 									}
@@ -415,6 +427,7 @@ public class NpcData implements IGameXmlReader
 										}
 										catch (Exception e)
 										{
+											LOGGER.warn("[{}] is not a proper drop node name. NPC ID: {}", drop_lists_node.getNodeName(), npcId);
 										}
 										
 										if (dropListScope != null)
@@ -425,7 +438,7 @@ public class NpcData implements IGameXmlReader
 											}
 											
 											List<IDropItem> dropList = new ArrayList<>();
-											parseDropList(f, drop_lists_node, dropListScope, dropList);
+											parseDropList(path, drop_lists_node, dropListScope, dropList);
 											dropLists.put(dropListScope, Collections.unmodifiableList(dropList));
 										}
 									}
@@ -527,31 +540,19 @@ public class NpcData implements IGameXmlReader
 											}
 											else
 											{
-												aiSkillScopes.add(AISkillScope.DEBUFF);
 												aiSkillScopes.add(AISkillScope.COT);
 												aiSkillScopes.add(shortOrLongRangeScope);
 											}
 										}
 										else
 										{
-											if (skill.hasEffectType(L2EffectType.DISPEL, L2EffectType.DISPEL_BY_SLOT))
+											if (skill.hasEffectType(L2EffectType.DISPEL, L2EffectType.DISPEL_BY_SLOT, L2EffectType.DMG_OVER_TIME, L2EffectType.DMG_OVER_TIME_PERCENT, L2EffectType.PHYSICAL_ATTACK, L2EffectType.PHYSICAL_ATTACK_HP_LINK, L2EffectType.MAGICAL_ATTACK, L2EffectType.DEATH_LINK, L2EffectType.HP_DRAIN))
 											{
-												aiSkillScopes.add(AISkillScope.NEGATIVE);
 												aiSkillScopes.add(shortOrLongRangeScope);
 											}
 											else if (skill.hasEffectType(L2EffectType.HEAL))
 											{
 												aiSkillScopes.add(AISkillScope.HEAL);
-											}
-											else if (skill.hasEffectType(L2EffectType.PHYSICAL_ATTACK, L2EffectType.PHYSICAL_ATTACK_HP_LINK, L2EffectType.MAGICAL_ATTACK, L2EffectType.DEATH_LINK, L2EffectType.HP_DRAIN))
-											{
-												aiSkillScopes.add(AISkillScope.ATTACK);
-												aiSkillScopes.add(AISkillScope.UNIVERSAL);
-												aiSkillScopes.add(shortOrLongRangeScope);
-											}
-											else if (skill.hasEffectType(L2EffectType.SLEEP))
-											{
-												aiSkillScopes.add(AISkillScope.IMMOBILIZE);
 											}
 											else if (skill.hasEffectType(L2EffectType.BLOCK_ACTIONS, L2EffectType.ROOT))
 											{
@@ -563,31 +564,12 @@ public class NpcData implements IGameXmlReader
 												aiSkillScopes.add(AISkillScope.COT);
 												aiSkillScopes.add(shortOrLongRangeScope);
 											}
-											else if (skill.hasEffectType(L2EffectType.DMG_OVER_TIME, L2EffectType.DMG_OVER_TIME_PERCENT))
-											{
-												aiSkillScopes.add(shortOrLongRangeScope);
-											}
-											else if (skill.hasEffectType(L2EffectType.RESURRECTION))
-											{
-												aiSkillScopes.add(AISkillScope.RES);
-											}
-											else
-											{
-												aiSkillScopes.add(AISkillScope.UNIVERSAL);
-											}
 										}
 									}
 									
 									for (AISkillScope aiSkillScope : aiSkillScopes)
 									{
-										List<Skill> aiSkills = aiSkillLists.get(aiSkillScope);
-										if (aiSkills == null)
-										{
-											aiSkills = new ArrayList<>();
-											aiSkillLists.put(aiSkillScope, aiSkills);
-										}
-										
-										aiSkills.add(skill);
+										aiSkillLists.computeIfAbsent(aiSkillScope, k -> new ArrayList<>()).add(skill);
 									}
 								}
 							}
@@ -612,7 +594,7 @@ public class NpcData implements IGameXmlReader
 		
 	}
 	
-	private void parseDropList(File f, Node drop_list_node, DropListScope dropListScope, List<IDropItem> drops)
+	private void parseDropList(Path path, Node drop_list_node, DropListScope dropListScope, List<IDropItem> drops)
 	{
 		for (Node drop_node = drop_list_node.getFirstChild(); drop_node != null; drop_node = drop_node.getNextSibling())
 		{
@@ -637,7 +619,7 @@ public class NpcData implements IGameXmlReader
 						}
 						else
 						{
-							LOGGER.warn("[" + f + "] grouped general drop item supports only general drop item.");
+							LOGGER.warn("[" + path + "] grouped general drop item supports only general drop item.");
 						}
 					}
 					dropItem.setItems(items);
@@ -669,6 +651,11 @@ public class NpcData implements IGameXmlReader
 				break;
 			}
 		}
+	}
+	
+	public int getNpcTemplateCount()
+	{
+		return _npcs.size();
 	}
 	
 	/**
@@ -746,7 +733,7 @@ public class NpcData implements IGameXmlReader
 	 */
 	public List<L2NpcTemplate> getAllOfLevel(int... lvls)
 	{
-		return getTemplates(template -> CommonUtil.contains(lvls, template.getLevel()));
+		return getTemplates(template -> ArrayUtil.contains(lvls, template.getLevel()));
 	}
 	
 	/**
@@ -756,7 +743,7 @@ public class NpcData implements IGameXmlReader
 	 */
 	public List<L2NpcTemplate> getAllMonstersOfLevel(int... lvls)
 	{
-		return getTemplates(template -> CommonUtil.contains(lvls, template.getLevel()) && template.isType("L2Monster"));
+		return getTemplates(template -> ArrayUtil.contains(lvls, template.getLevel()) && template.isType("L2Monster"));
 	}
 	
 	/**
@@ -776,19 +763,7 @@ public class NpcData implements IGameXmlReader
 	 */
 	public List<L2NpcTemplate> getAllNpcOfClassType(String... classTypes)
 	{
-		return getTemplates(template -> CommonUtil.contains(classTypes, template.getType(), true));
-	}
-	
-	public void loadNpcsSkillLearn()
-	{
-		_npcs.values().forEach(template ->
-		{
-			final List<ClassId> teachInfo = SkillLearnData.getInstance().getSkillLearnData(template.getId());
-			if (teachInfo != null)
-			{
-				template.addTeachInfo(teachInfo);
-			}
-		});
+		return getTemplates(template -> ArrayUtil.contains(classTypes, template.getType(), true));
 	}
 	
 	/**
@@ -796,7 +771,7 @@ public class NpcData implements IGameXmlReader
 	 * Once Spawn System gets reworked delete this class<br>
 	 * @author Zealar
 	 */
-	private static final class MinionData implements IGameXmlReader
+	public static final class MinionData implements IGameXmlReader
 	{
 		private static final Logger MINION_LOGGER = LoggerFactory.getLogger(MinionData.class);
 		
@@ -804,11 +779,10 @@ public class NpcData implements IGameXmlReader
 		
 		protected MinionData()
 		{
-			load();
 		}
 		
-		@Override
-		public void load()
+		@Load(group = LoadGroup.class)
+		private void load() throws Exception
 		{
 			_tempMinions.clear();
 			parseDatapackFile("data/minionData.xml");
@@ -816,7 +790,7 @@ public class NpcData implements IGameXmlReader
 		}
 		
 		@Override
-		public void parseDocument(Document doc, File f)
+		public void parseDocument(Document doc, Path path)
 		{
 			for (Node node = doc.getFirstChild(); node != null; node = node.getNextSibling())
 			{
@@ -843,12 +817,24 @@ public class NpcData implements IGameXmlReader
 				}
 			}
 		}
+		
+		private static final class SingletonHolder
+		{
+			protected static final NpcData.MinionData INSTANCE = new NpcData.MinionData();
+		}
+		
+		@InstanceGetter
+		public static NpcData.MinionData getInstance()
+		{
+			return SingletonHolder.INSTANCE;
+		}
 	}
 	
 	/**
 	 * Gets the single instance of NpcData.
 	 * @return single instance of NpcData
 	 */
+	@InstanceGetter
 	public static NpcData getInstance()
 	{
 		return SingletonHolder._instance;

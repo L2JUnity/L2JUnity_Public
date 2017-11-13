@@ -23,17 +23,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.LoginServerThread;
+import org.l2junity.gameserver.config.L2JModsConfig;
 import org.l2junity.gameserver.enums.PrivateStoreType;
-import org.l2junity.gameserver.model.ManufactureItem;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.TradeItem;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.holders.SellBuffHolder;
-import org.l2junity.gameserver.network.client.ConnectionState;
+import org.l2junity.gameserver.network.client.Disconnection;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +54,19 @@ public class OfflineTradersTable
 	private static final String CLEAR_OFFLINE_TABLE_ITEMS = "DELETE FROM character_offline_trade_items";
 	private static final String LOAD_OFFLINE_STATUS = "SELECT * FROM character_offline_trade";
 	private static final String LOAD_OFFLINE_ITEMS = "SELECT * FROM character_offline_trade_items WHERE charId = ?";
+	
+	protected OfflineTradersTable()
+	{
+	}
+	
+	@Load(group = LoadGroup.class)
+	private void load()
+	{
+		if ((L2JModsConfig.OFFLINE_TRADE_ENABLE || L2JModsConfig.OFFLINE_CRAFT_ENABLE) && L2JModsConfig.RESTORE_OFFLINERS)
+		{
+			restoreOfflineTraders();
+		}
+	}
 	
 	public void storeOffliners()
 	{
@@ -76,7 +94,7 @@ public class OfflineTradersTable
 						switch (pc.getPrivateStoreType())
 						{
 							case BUY:
-								if (!Config.OFFLINE_TRADE_ENABLE)
+								if (!L2JModsConfig.OFFLINE_TRADE_ENABLE)
 								{
 									continue;
 								}
@@ -93,7 +111,7 @@ public class OfflineTradersTable
 								break;
 							case SELL:
 							case PACKAGE_SELL:
-								if (!Config.OFFLINE_TRADE_ENABLE)
+								if (!L2JModsConfig.OFFLINE_TRADE_ENABLE)
 								{
 									continue;
 								}
@@ -124,17 +142,17 @@ public class OfflineTradersTable
 								}
 								break;
 							case MANUFACTURE:
-								if (!Config.OFFLINE_CRAFT_ENABLE)
+								if (!L2JModsConfig.OFFLINE_CRAFT_ENABLE)
 								{
 									continue;
 								}
 								title = pc.getStoreName();
-								for (ManufactureItem i : pc.getManufactureItems().values())
+								for (Entry<Integer, Long> entry : pc.getManufactureItems().entrySet())
 								{
 									stm_items.setInt(1, pc.getObjectId());
-									stm_items.setInt(2, i.getRecipeId());
+									stm_items.setInt(2, entry.getKey());
 									stm_items.setLong(3, 0);
-									stm_items.setLong(4, i.getCost());
+									stm_items.setLong(4, entry.getValue());
 									stm_items.executeUpdate();
 									stm_items.clearParameters();
 								}
@@ -169,11 +187,11 @@ public class OfflineTradersTable
 			while (rs.next())
 			{
 				long time = rs.getLong("time");
-				if (Config.OFFLINE_MAX_DAYS > 0)
+				if (L2JModsConfig.OFFLINE_MAX_DAYS > 0)
 				{
 					Calendar cal = Calendar.getInstance();
 					cal.setTimeInMillis(time);
-					cal.add(Calendar.DAY_OF_YEAR, Config.OFFLINE_MAX_DAYS);
+					cal.add(Calendar.DAY_OF_YEAR, L2JModsConfig.OFFLINE_MAX_DAYS);
 					if (cal.getTimeInMillis() <= System.currentTimeMillis())
 					{
 						continue;
@@ -211,7 +229,6 @@ public class OfflineTradersTable
 					client.setActiveChar(player);
 					player.setOnlineStatus(true, false);
 					client.setAccountName(player.getAccountNamePlayer());
-					client.setConnectionState(ConnectionState.IN_GAME);
 					player.setClient(client);
 					player.setOfflineStartTime(time);
 					
@@ -262,19 +279,21 @@ public class OfflineTradersTable
 									player.getSellList().setPackaged(type == PrivateStoreType.PACKAGE_SELL);
 									break;
 								case MANUFACTURE:
+									final Map<Integer, Long> manufactureItems = new HashMap<>();
 									while (items.next())
 									{
-										player.getManufactureItems().put(items.getInt(2), new ManufactureItem(items.getInt(2), items.getLong(4)));
+										manufactureItems.put(items.getInt(2), items.getLong(4));
 									}
+									player.setManufactureItems(manufactureItems);
 									player.setStoreName(rs.getString("title"));
 									break;
 							}
 						}
 					}
 					player.sitDown();
-					if (Config.OFFLINE_SET_NAME_COLOR)
+					if (L2JModsConfig.OFFLINE_SET_NAME_COLOR)
 					{
-						player.getAppearance().setNameColor(Config.OFFLINE_NAME_COLOR);
+						player.getAppearance().setNameColor(L2JModsConfig.OFFLINE_NAME_COLOR);
 					}
 					player.setPrivateStoreType(type);
 					player.setOnlineStatus(true, true);
@@ -287,7 +306,7 @@ public class OfflineTradersTable
 					LOGGER.warn("Error loading trader: " + player, e);
 					if (player != null)
 					{
-						player.deleteMe();
+						Disconnection.of(player).defaultSequence(false);
 					}
 				}
 			}
@@ -310,13 +329,14 @@ public class OfflineTradersTable
 	 * Gets the single instance of OfflineTradersTable.
 	 * @return single instance of OfflineTradersTable
 	 */
+	@InstanceGetter
 	public static OfflineTradersTable getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final OfflineTradersTable _instance = new OfflineTradersTable();
+		protected static final OfflineTradersTable INSTANCE = new OfflineTradersTable();
 	}
 }

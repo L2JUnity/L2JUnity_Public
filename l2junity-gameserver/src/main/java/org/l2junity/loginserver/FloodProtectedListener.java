@@ -25,7 +25,7 @@ import java.net.Socket;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
+import org.l2junity.loginserver.config.LoginServerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,13 +59,13 @@ public abstract class FloodProtectedListener extends Thread
 			try
 			{
 				connection = _serverSocket.accept();
-				if (Config.FLOOD_PROTECTION)
+				if (LoginServerConfig.FLOOD_PROTECTION)
 				{
 					ForeignConnection fConnection = _floodProtection.get(connection.getInetAddress().getHostAddress());
 					if (fConnection != null)
 					{
 						fConnection.connectionNumber += 1;
-						if (((fConnection.connectionNumber > Config.FAST_CONNECTION_LIMIT) && ((System.currentTimeMillis() - fConnection.lastConnection) < Config.NORMAL_CONNECTION_TIME)) || ((System.currentTimeMillis() - fConnection.lastConnection) < Config.FAST_CONNECTION_TIME) || (fConnection.connectionNumber > Config.MAX_CONNECTION_PER_IP))
+						if (((fConnection.connectionNumber > LoginServerConfig.FAST_CONNECTION_LIMIT) && ((System.currentTimeMillis() - fConnection.lastConnection) < LoginServerConfig.NORMAL_CONNECTION_TIME)) || ((System.currentTimeMillis() - fConnection.lastConnection) < LoginServerConfig.FAST_CONNECTION_TIME) || (fConnection.connectionNumber > LoginServerConfig.MAX_CONNECTION_PER_IP))
 						{
 							fConnection.lastConnection = System.currentTimeMillis();
 							connection.close();
@@ -132,7 +132,7 @@ public abstract class FloodProtectedListener extends Thread
 	
 	public void removeFloodProtection(String ip)
 	{
-		if (!Config.FLOOD_PROTECTION)
+		if (!LoginServerConfig.FLOOD_PROTECTION)
 		{
 			return;
 		}

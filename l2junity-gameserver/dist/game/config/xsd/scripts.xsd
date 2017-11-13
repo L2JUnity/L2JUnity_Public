@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="list">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="excludePackage" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element name="includePackage" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element name="excludeClass" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element name="includeClass" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

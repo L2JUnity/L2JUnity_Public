@@ -1,0 +1,1 @@
+UPDATE `character_variables` SET var='WORLD_CHAT_USED' WHERE var='WORLD_CHAT_POINTS';

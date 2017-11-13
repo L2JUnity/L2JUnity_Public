@@ -25,15 +25,18 @@ public class AskJoinAlly implements IClientOutgoingPacket
 {
 	private final String _requestorName;
 	private final int _requestorObjId;
+	private final String _requestorAllyName;
 	
 	/**
 	 * @param requestorObjId
+	 * @param requestorAllyName
 	 * @param requestorName
 	 */
-	public AskJoinAlly(int requestorObjId, String requestorName)
+	public AskJoinAlly(int requestorObjId, String requestorAllyName, String requestorName)
 	{
 		_requestorName = requestorName;
 		_requestorObjId = requestorObjId;
+		_requestorAllyName = requestorAllyName;
 	}
 	
 	@Override
@@ -42,7 +45,7 @@ public class AskJoinAlly implements IClientOutgoingPacket
 		OutgoingPackets.ASK_JOIN_ALLIANCE.writeId(packet);
 		
 		packet.writeD(_requestorObjId);
-		packet.writeS(null); // Ally Name ?
+		packet.writeS(_requestorAllyName);
 		packet.writeS(null); // TODO: Find me!
 		packet.writeS(_requestorName);
 		return true;

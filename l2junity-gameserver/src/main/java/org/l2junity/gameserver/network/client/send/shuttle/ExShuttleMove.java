@@ -31,12 +31,12 @@ public class ExShuttleMove implements IClientOutgoingPacket
 	private final L2ShuttleInstance _shuttle;
 	private final int _x, _y, _z;
 	
-	public ExShuttleMove(L2ShuttleInstance shuttle, int x, int y, int z)
+	public ExShuttleMove(L2ShuttleInstance shuttle, double x, double y, double z)
 	{
 		_shuttle = shuttle;
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 	}
 	
 	@Override

@@ -432,7 +432,7 @@
 		<shots soul="2" spirit="2" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400">
+		<ai clanHelpRange="400">
 			<clan_list>
 				<clan>NONPET</clan>
 				<clan>PET</clan>
@@ -496,7 +496,7 @@
 		<shots soul="2" spirit="2" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400">
+		<ai clanHelpRange="400">
 			<clan_list>
 				<clan>NONPET</clan>
 				<clan>PET</clan>
@@ -564,7 +564,7 @@
 		<shots soul="2" spirit="2" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400">
+		<ai clanHelpRange="400">
 			<clan_list>
 				<clan>NONPET</clan>
 				<clan>PET</clan>
@@ -628,7 +628,7 @@
 		<shots soul="2" spirit="2" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400">
+		<ai clanHelpRange="400">
 			<clan_list>
 				<clan>NONPET</clan>
 				<clan>PET</clan>
@@ -698,7 +698,7 @@
 		<shots soul="2" spirit="2" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400">
+		<ai clanHelpRange="400">
 			<clan_list>
 				<clan>NONPET</clan>
 				<clan>PET</clan>
@@ -763,7 +763,7 @@
 		<shots soul="2" spirit="2" />
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="400">
+		<ai clanHelpRange="400">
 			<clan_list>
 				<clan>NONPET</clan>
 				<clan>PET</clan>
@@ -1015,7 +1015,6 @@
 		<shots soul="2" spirit="2" />
 		<corpse_time>86400</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" />
 		<collision>
 			<radius normal="25" />
 			<height normal="21.412" />
@@ -1742,7 +1741,6 @@
 		<shots soul="2" spirit="2" />
 		<corpse_time>86400</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" />
 		<collision>
 			<radius normal="23" />
 			<height normal="31" />
@@ -1844,7 +1842,6 @@
 		<shots soul="2" spirit="2" />
 		<corpse_time>86400</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" />
 		<collision>
 			<radius normal="23" />
 			<height normal="31" />
@@ -1884,7 +1881,6 @@
 		<shots soul="2" spirit="2" />
 		<corpse_time>86400</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" />
 		<collision>
 			<radius normal="23" />
 			<height normal="31" />
@@ -2370,7 +2366,6 @@
 		<shots soul="2" spirit="2" />
 		<corpse_time>86400</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" />
 		<collision>
 			<radius normal="6.5" />
 			<height normal="12.5" />
@@ -2458,7 +2453,6 @@
 		<shots soul="2" spirit="2" />
 		<corpse_time>86400</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" />
 		<collision>
 			<radius normal="10" />
 			<height normal="15" />
@@ -4086,6 +4080,119 @@
 		</skill_list>
 		<shots soul="2" spirit="2" />
 		<status undying="false" />
+		<drop_lists>
+			<death>
+				<group chance="100">
+					<item id="17435" min="1" max="3" chance="14.251375095166" /> <!-- Eternal Shield - Heavy Armor -->
+					<item id="17417" min="1" max="3" chance="7.8254249322076" /> <!-- Amaranthine Cutter -->
+					<item id="17424" min="1" max="3" chance="7.8031838906425" /> <!-- Amaranthine Buster -->
+					<item id="17425" min="1" max="3" chance="7.798051342589" /> <!-- Amaranthine Caster -->
+					<item id="17426" min="1" max="3" chance="7.7937742192111" /> <!-- Amaranthine Retributer -->
+					<item id="17419" min="1" max="3" chance="7.7826536984286" /> <!-- Amaranthine Avenger -->
+					<item id="17422" min="1" max="3" chance="7.7758103010239" /> <!-- Amaranthine Thrower -->
+					<item id="17423" min="1" max="3" chance="7.7629789308902" /> <!-- Amaranthine Shooter -->
+					<item id="17418" min="1" max="3" chance="7.75528010881" /> <!-- Amaranthine Slasher -->
+					<item id="17420" min="1" max="3" chance="7.7458704373786" /> <!-- Amaranthine Fighter -->
+					<item id="17421" min="1" max="3" chance="7.7330390672449" /> <!-- Amaranthine Stormer -->
+					<item id="17416" min="1" max="3" chance="7.7159305737333" /> <!-- Amaranthine Shaper -->
+					<item id="36425" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Dual Blunt Weapon - Fragment -->
+					<item id="36424" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Avenger - Fragment -->
+					<item id="36423" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Fighter - Fragment -->
+					<item id="36422" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Stormer - Fragment -->
+					<item id="36421" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Cutter - Fragment -->
+					<item id="36420" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Buster - Fragment -->
+					<item id="36419" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Thrower - Fragment -->
+					<item id="36418" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Slasher - Fragment -->
+					<item id="36417" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Shaper - Fragment -->
+					<item id="36426" min="1" max="1" chance="0.025662740267406" /> <!-- Antharas Dualsword - Fragment -->
+				</group>
+				<group chance="100">
+					<item id="17438" min="1" max="3" chance="19.223936418887" /> <!-- Eternal Leather Leggings - Light Armor -->
+					<item id="17437" min="1" max="3" chance="18.33567087424" /> <!-- Eternal Leather Armor - Light Armor -->
+					<item id="17443" min="1" max="3" chance="15.932678821879" /> <!-- Eternal Stockings - Robe -->
+					<item id="17442" min="1" max="3" chance="15.876577840112" /> <!-- Eternal Tunic - Robe -->
+					<item id="17432" min="1" max="3" chance="15.465170640486" /> <!-- Eternal Gaiters - Heavy Armor -->
+					<item id="17431" min="1" max="3" chance="15.165965404395" /> <!-- Eternal Breastplate - Heavy Armor -->
+				</group>
+				<group chance="100">
+					<item id="17439" min="1" max="3" chance="11.605968143773" /> <!-- Eternal Leather Gloves - Light Armor -->
+					<item id="17440" min="1" max="3" chance="11.471600929373" /> <!-- Eternal Leather Boots - Light Armor -->
+					<item id="17436" min="1" max="3" chance="10.710186714442" /> <!-- Eternal Leather Helmet - Light Armor -->
+					<item id="17446" min="1" max="3" chance="9.727626459144" /> <!-- Eternal Sigil - Robe -->
+					<item id="17445" min="1" max="3" chance="9.6408476331775" /> <!-- Eternal Shoes - Robe -->
+					<item id="17434" min="1" max="3" chance="9.422500909778" /> <!-- Eternal Boots - Heavy Armor -->
+					<item id="17433" min="1" max="3" chance="9.3721132043781" /> <!-- Eternal Gauntlets - Heavy Armor -->
+					<item id="17441" min="1" max="3" chance="9.3665145704448" /> <!-- Eternal Circlet - Robe -->
+					<item id="17444" min="1" max="3" chance="9.3553173025782" /> <!-- Eternal Gloves - Robe -->
+					<item id="17430" min="1" max="3" chance="9.3273241329116" /> <!-- Eternal Helmet - Heavy Armor -->
+				</group>
+				<group chance="20.59">
+					<item id="6656" min="1" max="1" chance="100" /> <!-- Antharas' Earring -->
+				</group>
+				<group chance="100">
+					<item id="19465" min="1" max="1" chance="8.4517922448045" /> <!-- Bottle of Antharas' Soul -->
+					<item id="36414" min="1" max="1" chance="8.4517922448045" /> <!-- Dragon Claw -->
+					<item id="37781" min="1" max="1" chance="4.2639291875039" /> <!-- Scroll of Blessing: Armor (R99-grade) -->
+					<item id="37772" min="1" max="1" chance="4.1760305481579" /> <!-- Scroll of Blessing: Weapon (R99-grade) -->
+					<item id="35568" min="1" max="1" chance="4.1439137376276" /> <!-- Bloody Amaranthine Enhancement Stone -->
+					<item id="19448" min="10" max="10" chance="2.6023068321753" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="36389" min="10" max="10" chance="2.4087607897693" /> <!-- Giant's Scroll: Enchant Armor (R-grade) -->
+					<item id="46507" min="1" max="2" chance="2.0292753179776" /> <!-- Lionel's Soul Crystal - Stage 4 -->
+					<item id="46492" min="1" max="2" chance="1.9709579514884" /> <!-- Pantheon's Soul Crystal - Stage 4 -->
+					<item id="46508" min="1" max="1" chance="1.9253182733665" /> <!-- Lionel's Soul Crystal - Stage 5 -->
+					<item id="46478" min="1" max="1" chance="1.9253182733665" /> <!-- Leona's Soul Crystal - Stage 5 -->
+					<item id="46477" min="1" max="2" chance="1.9126405849993" /> <!-- Leona's Soul Crystal - Stage 4 -->
+					<item id="46493" min="1" max="1" chance="1.8889755667138" /> <!-- Pantheon's Soul Crystal - Stage 5 -->
+					<item id="19447" min="10" max="10" chance="1.7393788439808" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="36386" min="10" max="10" chance="1.6945843450833" /> <!-- Giant's Scroll: Enchant Weapon (R-grade) -->
+					<item id="46509" min="1" max="1" chance="1.6480994877369" /> <!-- Lionel's Soul Crystal - Stage 6 -->
+					<item id="36162" min="1" max="1" chance="1.6514802046348" /> <!-- Scroll of Blessing: (R99-grade) -->
+					<item id="46494" min="1" max="1" chance="1.5948531965946" /> <!-- Pantheon's Soul Crystal - Stage 6 -->
+					<item id="46479" min="1" max="1" chance="1.5534394145951" /> <!-- Leona's Soul Crystal - Stage 6 -->
+					<item id="39483" min="1" max="1" chance="1.4773732843918" /> <!-- Alchemic Tome: Enchant Scroll -->
+					<item id="17697" min="1" max="1" chance="1.4756829259429" /> <!-- Lv. 5 Giant STR Dye - STR + 5 -->
+					<item id="39484" min="1" max="1" chance="1.468921492147" /> <!-- Alchemic Tome: Life Stone -->
+					<item id="17705" min="1" max="1" chance="1.4630052375757" /> <!-- Lv. 5 Ancient CON Dye - CON + 5 / Dark Resistance + 25 -->
+					<item id="17706" min="1" max="1" chance="1.4604696999022" /> <!-- Lv. 5 Ancient INT Dye - INT + 5 / Water Resistance + 25 -->
+					<item id="17708" min="1" max="1" chance="1.4520179076574" /> <!-- Lv. 5 Ancient MEN Dye - MEN + 5 / Holy Resistance + 25 -->
+					<item id="17710" min="1" max="1" chance="1.426662530923" /> <!-- Lv. 5 Legendary DEX Dye - DEX + 5 / CON + 1 / Earth Resistance + 25 -->
+					<item id="17703" min="1" max="1" chance="1.4190559179027" /> <!-- Lv. 5 Ancient STR Dye - STR + 5 / Fire Resistance + 25 -->
+					<item id="17711" min="1" max="1" chance="1.4156752010047" /> <!-- Lv. 5 Legendary CON Dye - CON + 5 / STR + 1 / Dark Resistance + 25 -->
+					<item id="39485" min="1" max="1" chance="1.4063782295355" /> <!-- Alchemic Tome: Dye -->
+					<item id="17700" min="1" max="1" chance="1.4013071541886" /> <!-- Lv. 5 Giant INT Dye - INT + 5 -->
+					<item id="17702" min="1" max="1" chance="1.3979264372907" /> <!-- Lv. 5 Giant MEN Dye - Men + 5 -->
+					<item id="17704" min="1" max="1" chance="1.3886294658214" /> <!-- Lv. 5 Ancient DEX Dye - DEX + 5 / Earth Resistance + 25 -->
+					<item id="17707" min="1" max="1" chance="1.3852487489235" /> <!-- Lv. 5 Ancient WIT Dye - WIT + 5 / Wind Resistance + 25 -->
+					<item id="17701" min="1" max="1" chance="1.3649644475359" /> <!-- Lv. 5 Giant WIT Dye - Wit + 5 -->
+					<item id="17698" min="1" max="1" chance="1.3624289098625" /> <!-- Lv. 5 Giant DEX Dye - DEX + 5 -->
+					<item id="17714" min="1" max="1" chance="1.3539771176177" /> <!-- Lv. 5 Legendary MEN Dye - MEN + 5 / INT + 1 / Holy Resistance + 25 -->
+					<item id="17709" min="1" max="1" chance="1.3531319383932" /> <!-- Lv. 5 Legendary STR Dye - STR + 5 / DEX + 1 / Fire Resistance + 25 -->
+					<item id="17713" min="1" max="1" chance="1.3505964007198" /> <!-- Lv. 5 Legendary WIT Dye - WIT + 5 / MEN + 1 / Wind Resistance + 25 -->
+					<item id="17699" min="1" max="1" chance="1.3429897876994" /> <!-- Lv. 5 Giant CON Dye - CON + 5 -->
+					<item id="17712" min="1" max="1" chance="1.3429897876994" /> <!-- Lv. 5 Legendary INT Dye - INT + 5 / WIT + 1 / Water Resistance + 25 -->
+					<item id="46448" min="1" max="1" chance="1.3218603070874" /> <!-- Kain's Soul Crystal - Stage 5 -->
+					<item id="46447" min="1" max="2" chance="1.3015760056999" /> <!-- Kain's Soul Crystal - Stage 4 -->
+					<item id="46462" min="1" max="2" chance="1.2804465250879" /> <!-- Mermoden's Soul Crystal - Stage 4 -->
+					<item id="46463" min="1" max="1" chance="1.2618525821493" /> <!-- Mermoden's Soul Crystal - Stage 5 -->
+					<item id="46464" min="1" max="1" chance="1.1342305192528" /> <!-- Mermoden's Soul Crystal - Stage 6 -->
+					<item id="46449" min="1" max="1" chance="1.1114106801918" /> <!-- Kain's Soul Crystal - Stage 6 -->
+					<item id="46510" min="1" max="1" chance="1.0116795317031" /> <!-- Lionel's Soul Crystal - Stage 7 -->
+					<item id="46495" min="1" max="1" chance="0.96434949513219" /> <!-- Pantheon's Soul Crystal - Stage 7 -->
+					<item id="46480" min="1" max="1" chance="0.93730375994882" /> <!-- Leona's Soul Crystal - Stage 7 -->
+					<item id="46450" min="1" max="1" chance="0.65983142055189" /> <!-- Kain's Soul Crystal - Stage 7 -->
+					<item id="46465" min="1" max="1" chance="0.65357709429073" /> <!-- Mermoden's Soul Crystal - Stage 7 -->
+					<item id="46481" min="1" max="1" chance="0.65087252077239" /> <!-- Leona's Soul Crystal - Stage 8 -->
+					<item id="46496" min="1" max="1" chance="0.64926668024588" /> <!-- Pantheon's Soul Crystal - Stage 8 -->
+					<item id="46511" min="1" max="1" chance="0.64622403503775" /> <!-- Lionel's Soul Crystal - Stage 8 -->
+					<item id="46466" min="1" max="1" chance="0.43704217697884" /> <!-- Mermoden's Soul Crystal - Stage 8 -->
+					<item id="46451" min="1" max="1" chance="0.43619699775436" /> <!-- Kain's Soul Crystal - Stage 8 -->
+				</group>
+			</death>
+			<luck>
+				<item id="39629" min="3" max="3" chance="100" />
+				<item id="40199" min="1" max="1" chance="5.049" />
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="3" />
 			<height normal="5.15" />
@@ -4152,7 +4259,7 @@
 		<race>ETC</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="50" />
 				<run ground="180" />
@@ -4180,7 +4287,7 @@
 		<race>FAIRY</race>
 		<sex>FEMALE</sex>
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="50" />
 				<run ground="180" />
@@ -4209,7 +4316,7 @@
 		<sex>FEMALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="50" />
 				<run ground="180" />
@@ -4238,7 +4345,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4267,7 +4374,7 @@
 		<sex>FEMALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4296,7 +4403,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4325,7 +4432,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4354,7 +4461,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="50" />
 				<run ground="180" />
@@ -4383,7 +4490,7 @@
 		<sex>FEMALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4412,7 +4519,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4441,7 +4548,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4470,7 +4577,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4499,7 +4606,7 @@
 		<sex>FEMALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="79" int="74" dex="42" wit="65" con="75" men="72">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4528,7 +4635,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="60" />
 				<run ground="180" />
@@ -4557,7 +4664,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="50" />
 				<run ground="180" />
@@ -4587,7 +4694,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="50" />
 				<run ground="180" />
@@ -4617,7 +4724,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="50" />
 				<run ground="180" />
@@ -4647,7 +4754,7 @@
 		<sex>MALE</sex>
 		<mpReward value="20" type="PER" ticks="10" affects="PARTY" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4676,7 +4783,7 @@
 		<race>DEMONIC</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />
@@ -4704,7 +4811,7 @@
 		<race>DEMONIC</race>
 		<sex>MALE</sex>
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="1673" hpRegen="6.5" mp="889" mpRegen="2.4" />
+			<vitals hp="1673.05473" hpRegen="6.5" mp="889.8" mpRegen="2.4" />
 			<speed>
 				<walk ground="45" />
 				<run ground="180" />

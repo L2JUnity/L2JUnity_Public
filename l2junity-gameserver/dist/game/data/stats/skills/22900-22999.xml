@@ -348,7 +348,6 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>1</effectPoint>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="22929" toLevel="1" name="Horn Melody - Heavenly Cocktail">
 		<!-- AUTO GENERATED SKILL -->
@@ -365,7 +364,6 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>1</effectPoint>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="22931" toLevel="1" name="Drum Melody - Heavenly Cocktail">
 		<!-- AUTO GENERATED SKILL -->
@@ -382,7 +380,6 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>1</effectPoint>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="22933" toLevel="1" name="Lute Melody - Heavenly Cocktail">
 		<!-- AUTO GENERATED SKILL -->
@@ -399,7 +396,6 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>1</effectPoint>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="22935" toLevel="1" name="Pipe Organ Melody - Heavenly Cocktail">
 		<!-- AUTO GENERATED SKILL -->
@@ -416,7 +412,6 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>1</effectPoint>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="22937" toLevel="1" name="Guitar Melody - Heavenly Cocktail">
 		<!-- AUTO GENERATED SKILL -->
@@ -433,7 +428,6 @@
 		<operateType>A2</operateType>
 		<isMagic>1</isMagic>
 		<effectPoint>1</effectPoint>
-		<isDebuff>false</isDebuff>
 	</skill>
 	<skill id="22939" toLevel="1" name="Harp Melody - Heavenly Cocktail">
 		<!-- AUTO GENERATED SKILL -->
@@ -548,64 +542,120 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22960" toLevel="1" name="Blessed Lucky Enchant Stone: Weapon (D-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22961" toLevel="1" name="Blessed Lucky Enchant Stone: Weapon (C-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22962" toLevel="1" name="Blessed Lucky Enchant Stone: Weapon (B-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22963" toLevel="1" name="Blessed Lucky Enchant Stone: Weapon (A-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22964" toLevel="1" name="Blessed Lucky Enchant Stone: Weapon (S-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22965" toLevel="1" name="Blessed Lucky Enchant Stone: Weapon (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>ITEM</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>3</minEnchant>
+				<maxEnchant>9</maxEnchant>
+				<type>NORMAL</type>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>3</minEnchant>
+				<maxEnchant>9</maxEnchant>
+				<type>MAGIC</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon_rate">
+				<bonusRate>10</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22966" toLevel="1" name="Blessed Lucky Enchant Stone: Armor (D-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22967" toLevel="1" name="Blessed Lucky Enchant Stone: Armor (C-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22968" toLevel="1" name="Blessed Lucky Enchant Stone: Armor (B-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22969" toLevel="1" name="Blessed Lucky Enchant Stone: Armor (A-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22970" toLevel="1" name="Blessed Lucky Enchant Stone: Armor (S-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="22971" toLevel="1" name="Blessed Lucky Enchant Stone: Armor (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<isMagic>2</isMagic> <!-- Static Skill -->
+		<magicLvl>1</magicLvl>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<targetType>ITEM</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESSORY</item>
+				</itemType>
+				<crystalType>R</crystalType>
+			</condition>
+			<condition name="OpEnchantRange">
+				<minEnchant>3</minEnchant>
+				<maxEnchant>9</maxEnchant>
+				<type>NONE</type>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon_rate">
+				<bonusRate>10</bonusRate>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22972" toLevel="1" name="Uthanka's Treasure Chest">
 		<!-- AUTO GENERATED SKILL -->

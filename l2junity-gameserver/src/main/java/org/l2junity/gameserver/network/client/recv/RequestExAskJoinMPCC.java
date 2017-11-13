@@ -21,6 +21,7 @@ package org.l2junity.gameserver.network.client.recv;
 import org.l2junity.gameserver.model.Party;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.stats.BooleanStat;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExAskJoinMPCC;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
@@ -150,7 +151,7 @@ public final class RequestExAskJoinMPCC implements IClientIncomingPacket
 			// TODO: Should destroyed after successful invite?
 			hasRight = true;
 		}
-		else if ((requestor.getPledgeClass() >= 5) && (requestor.getKnownSkill(391) != null))
+		else if (requestor.getStat().has(BooleanStat.CAN_CREATE_COMMAND_CHANNEL))
 		{
 			// At least Baron or higher and the skill Clan Imperium
 			hasRight = true;

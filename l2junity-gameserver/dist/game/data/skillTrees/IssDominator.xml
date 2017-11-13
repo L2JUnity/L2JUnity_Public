@@ -2,6 +2,56 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/skillTrees.xsd">
 	<!-- Iss Dominator -->
 	<skillTree type="classSkillTree" classId="174" parentClassId="115">
+		<!-- Awakening race skills -->
+		<skill skillName="Aim" skillId="1901" skillLvl="1" getLevel="85" autoGet="true">
+			<race>HUMAN</race>
+		</skill>
+		<skill skillName="Mental Fortress" skillId="1902" skillLvl="1" getLevel="85" autoGet="true">
+			<race>HUMAN</race>
+		</skill>
+		<skill skillName="Blessing of Water" skillId="1906" skillLvl="1" getLevel="85" autoGet="true">
+			<race>ELF</race>
+		</skill>
+		<skill skillName="Delicacy" skillId="1908" skillLvl="1" getLevel="85" autoGet="true">
+			<race>ELF</race>
+		</skill>
+		<skill skillName="Sharpness" skillId="1909" skillLvl="1" getLevel="85" autoGet="true">
+			<race>DARK_ELF</race>
+		</skill>
+		<skill skillName="Blessing of Wind" skillId="1911" skillLvl="1" getLevel="85" autoGet="true">
+			<race>DARK_ELF</race>
+		</skill>
+		<skill skillName="Blessing of Fire" skillId="1915" skillLvl="1" getLevel="85" autoGet="true">
+			<race>ORC</race>
+		</skill>
+		<skill skillName="Energetic" skillId="1916" skillLvl="1" getLevel="85" autoGet="true">
+			<race>ORC</race>
+		</skill>
+		<skill skillName="Dexterity" skillId="1919" skillLvl="1" getLevel="85" autoGet="true">
+			<race>DWARF</race>
+		</skill>
+		<skill skillName="Blessing of Earth" skillId="1921" skillLvl="1" getLevel="85" autoGet="true">
+			<race>DWARF</race>
+		</skill>
+		<skill skillName="Battle Instinct" skillId="1923" skillLvl="1" getLevel="85" autoGet="true">
+			<race>KAMAEL</race>
+		</skill>
+		<skill skillName="Dark Silence" skillId="1924" skillLvl="1" getLevel="85" autoGet="true">
+			<race>KAMAEL</race>
+		</skill>
+		<skill skillName="Body Reinforcement" skillId="1926" skillLvl="1" getLevel="85" autoGet="true">
+			<race>KAMAEL</race>
+		</skill>
+		<skill skillName="Flying Body Reinforcement" skillId="1954" skillLvl="1" getLevel="85" autoGet="true">
+			<race>KAMAEL</race>
+		</skill>
+
+		<!-- This have also in dualjob_sharing -->
+		<skill skillName="Dual Maximum HP" skillId="1986" skillLvl="1" getLevel="85" getDualClassLevel="85" levelUpSp="10000" />
+		<skill skillName="Dual Maximum HP" skillId="1986" skillLvl="2" getLevel="90" getDualClassLevel="90" levelUpSp="370000" />
+		<skill skillName="Dual Maximum HP" skillId="1986" skillLvl="3" getLevel="95" getDualClassLevel="95" levelUpSp="1000000" />
+		<skill skillName="Dual Maximum HP" skillId="1986" skillLvl="4" getLevel="99" getDualClassLevel="99" levelUpSp="5000000" />
+		
 		<skill skillName="Crippling Attack" skillId="11509" skillLvl="1" getLevel="85" levelUpSp="10000">
 			<removeSkill id="1245" /> <!-- Steal Essence -->
 			<removeSkill id="1209" /> <!-- Seal of Poison -->
@@ -134,6 +184,11 @@
 		</skill>
 		<skill skillName="Frenzied Daring Sonata" skillId="11601" skillLvl="1" getLevel="85" levelUpSp="10000" />
 		<skill skillName="Frenzied Refreshing Sonata" skillId="11602" skillLvl="1" getLevel="85" levelUpSp="10000" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="1" getLevel="85" autoGet="true" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="2" getLevel="85" autoGet="true" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="3" getLevel="85" autoGet="true" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="4" getLevel="85" autoGet="true" />
+		<skill skillName="Crystallize" skillId="248" skillLvl="5" getLevel="85" autoGet="true" />
 		<skill skillName="Crystallize" skillId="248" skillLvl="6" getLevel="85" autoGet="true" />
 		<skill skillName="Pa'agrio's Fist" skillId="1416" skillLvl="4" getLevel="85" levelUpSp="10000" />
 		<skill skillName="Weight Limit" skillId="150" skillLvl="3" getLevel="85" autoGet="true" />
@@ -362,7 +417,6 @@
 		<skill skillName="Death Strike" skillId="11511" skillLvl="8" getLevel="98" levelUpSp="4990000" />
 
 		<skill skillName="Assault Rush" skillId="11508" skillLvl="6" getLevel="99" levelUpSp="5000000" />
-		<skill skillName="Blessing Barrier" skillId="11621" skillLvl="1" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Superior Anti Magic" skillId="11505" skillLvl="4" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Superior Light Armor Mastery" skillId="11503" skillLvl="4" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Superior Robe Mastery" skillId="11502" skillLvl="4" getLevel="99" levelUpSp="5000000" />
@@ -396,10 +450,19 @@
 		<skill skillName="Create Item" skillId="172" skillLvl="14" getLevel="99" autoGet="true" />
 		<skill skillName="Mass Shadow Blade" skillId="11514" skillLvl="8" getLevel="99" levelUpSp="5000000" />
 		<skill skillName="Frezied Battle Ditty" skillId="11617" skillLvl="1" getLevel="99" levelUpSp="5000000">
-			<item id="39738" count="8" />
+			<item id="39738" count="8" /> <!-- Rune Stone -->
 		</skill>
 		<skill skillName="Frenzied Protective Ditty" skillId="11618" skillLvl="1" getLevel="99" levelUpSp="5000000">
-			<item id="39738" count="8" />
+			<item id="39738" count="8" /> <!-- Rune Stone -->
+		</skill>
+		<skill skillName="Blessing Barrier" skillId="11621" skillLvl="1" getLevel="99" levelUpSp="5000000">
+			<item id="39738" count="4" /> <!-- Rune Stone -->
+		</skill>
+		<skill skillName="Divine Inspiration" skillId="1405" skillLvl="5" getLevel="99" levelUpSp="5000000">
+			<item id="40064" count="1" /> <!-- Ancient Book: Divine Inspiration (Beginner) -->
+		</skill>
+		<skill skillName="Divine Inspiration" skillId="1405" skillLvl="6" getLevel="99" levelUpSp="5000000">
+			<item id="40065" count="1" /> <!-- Ancient Book: Divine Inspiration (Intermediate) -->
 		</skill>
 
 		<skill skillName="Superior Anti Magic" skillId="11505" skillLvl="5" getLevel="100" levelUpSp="88099899" />
@@ -411,6 +474,9 @@
 		<skill skillName="Superior HP Recovery" skillId="11547" skillLvl="5" getLevel="100" levelUpSp="88099899" />
 		<skill skillName="Superior MP Boost" skillId="11507" skillLvl="5" getLevel="100" levelUpSp="88099899" />
 		<skill skillName="Superior HP Boost" skillId="11506" skillLvl="5" getLevel="100" levelUpSp="88099899" />
+		<skill skillName="Divine Expansion" skillId="10956" skillLvl="1" getLevel="100" levelUpSp="88099899">
+			<item id="39738" count="8" /> <!-- Rune Stone -->
+		</skill>
 
 		<skill skillName="Crippling Attack" skillId="11509" skillLvl="9" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Assault Rush" skillId="11508" skillLvl="7" getLevel="101" levelUpSp="211440000" />
@@ -427,6 +493,9 @@
 		<skill skillName="Chaos Symphony" skillId="11546" skillLvl="2" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Mass Shadow Blade" skillId="11514" skillLvl="9" getLevel="101" levelUpSp="211440000" />
 		<skill skillName="Death Strike" skillId="11511" skillLvl="9" getLevel="101" levelUpSp="211440000" />
+		<skill skillName="Seal of Restriction" skillId="19208" skillLvl="1" getLevel="101" levelUpSp="211440000">
+			<item id="39738" count="8" /> <!-- Rune Stone -->
+		</skill>
 
 		<skill skillName="Superior Anti Magic" skillId="11505" skillLvl="6" getLevel="102" levelUpSp="507455418" />
 		<skill skillName="Superior Light Armor Mastery" skillId="11503" skillLvl="6" getLevel="102" levelUpSp="507455418" />

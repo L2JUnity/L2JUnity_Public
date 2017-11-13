@@ -23,7 +23,7 @@
 		<magicCriticalRate>-5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
 		<effects>
-			<effect name="BlockAbnormalSlot">
+			<effect name="p_block_buff_slot">
 				<slot>SPEED_DOWN</slot>
 			</effect>
 		</effects>
@@ -95,7 +95,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-1050</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16106" toLevel="5" name="Chain Smash">
 		<!-- AUTO GENERATED SKILL -->
@@ -114,7 +114,7 @@
 		<coolTime>1000</coolTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>-150</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16107" toLevel="3" name="Fatal Blow">
 		<!-- AUTO GENERATED SKILL -->
@@ -215,7 +215,7 @@
 		<reuseDelay>1000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16114" toLevel="1" name="Curse of the Dead">
 		<!-- AUTO GENERATED SKILL -->
@@ -239,7 +239,7 @@
 		<coolTime>1000</coolTime>
 		<reuseDelay>1000</reuseDelay>
 		<effectPoint>-150</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16116" toLevel="2" name="Self-Devastation">
 		<!-- AUTO GENERATED SKILL -->
@@ -295,7 +295,7 @@
 		<hitTime>500</hitTime>
 		<coolTime>1000</coolTime>
 		<effectPoint>-150</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16121" toLevel="5" name="Sleeping Cloud">
 		<!-- AUTO GENERATED SKILL -->
@@ -315,7 +315,7 @@
 		<isMagic>1</isMagic>
 		<effectPoint>-700</effectPoint>
 		<abnormalTime>30</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16122" toLevel="1" name="Flare Breath">
 		<!-- AUTO GENERATED SKILL -->
@@ -329,7 +329,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16123" toLevel="1" name="Flare Outburst">
 		<!-- AUTO GENERATED SKILL -->
@@ -401,7 +401,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16129" toLevel="5" name="Desert Thirst">
 		<!-- AUTO GENERATED SKILL -->
@@ -420,7 +420,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-500</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16130" toLevel="1" name="Oasis Energy">
 		<!-- The Oasis has quenched your thirst, suddenly wearing you out. Atk./ Casting Spd. - 25%, and Speed - 50. -->
@@ -435,17 +435,17 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>650</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-50</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -462,7 +462,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>650</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16132" toLevel="1" name="Oasis Mirage">
 		<!-- AUTO GENERATED SKILL -->
@@ -654,7 +654,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-150</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16149" toLevel="5" name="Poison">
 		<!-- AUTO GENERATED SKILL -->
@@ -673,7 +673,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-150</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16150" toLevel="5" name="Decrease Speed">
 		<!-- AUTO GENERATED SKILL -->
@@ -692,7 +692,7 @@
 		<reuseDelay>3000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16151" toLevel="7" name="Aura Spike">
 		<!-- AUTO GENERATED SKILL -->
@@ -762,7 +762,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>1000</reuseDelay>
 		<effectPoint>-700</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16154" toLevel="6" name="Mass Chain Smash">
 		<!-- TODO: Auto level parse, Requires manual update -->
@@ -776,7 +776,7 @@
 		<coolTime>1000</coolTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-2140</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16155" toLevel="1" name="Charmed Kefensis">
 		<!-- AUTO GENERATED SKILL -->
@@ -802,7 +802,7 @@
 		<reuseDelay>6000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-1578</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16157" toLevel="5" name="Bleed">
 		<!-- AUTO GENERATED SKILL -->
@@ -822,7 +822,7 @@
 		<reuseDelay>3000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16158" toLevel="1" name="Beleth's Volcano">
 		<!-- AUTO GENERATED SKILL -->
@@ -860,7 +860,7 @@
 		<reuseDelay>6000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16161" toLevel="1" name="Darion's Bleed">
 		<!-- AUTO GENERATED SKILL -->
@@ -873,7 +873,7 @@
 		<reuseDelay>6000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16162" toLevel="1" name="Beleth's Meteor">
 		<!-- AUTO GENERATED SKILL -->
@@ -964,7 +964,7 @@
 		<coolTime>1000</coolTime>
 		<reuseDelay>7000</reuseDelay>
 		<effectPoint>-150</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16170" toLevel="1" name="Hellbound Tornado">
 		<!-- AUTO GENERATED SKILL -->
@@ -975,7 +975,7 @@
 		<hitTime>7000</hitTime>
 		<coolTime>500</coolTime>
 		<effectPoint>-1</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16171" toLevel="1" name="Summon Poison Zone">
 		<!-- AUTO GENERATED SKILL -->
@@ -985,7 +985,7 @@
 		<hitTime>300</hitTime>
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-707</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16172" toLevel="1" name="Poisoned">
 		<!-- AUTO GENERATED SKILL -->
@@ -994,7 +994,7 @@
 		<operateType>A2</operateType>
 		<mpConsume>1</mpConsume>
 		<effectPoint>-707</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16173" toLevel="1" name="Invincibility">
 		<!-- AUTO GENERATED SKILL -->
@@ -1048,7 +1048,7 @@
 		<hitTime>1500</hitTime>
 		<reuseDelay>3000</reuseDelay>
 		<effectPoint>500</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16179" toLevel="1" name="Beleth">
 		<!-- AUTO GENERATED SKILL -->
@@ -1095,7 +1095,7 @@
 		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16185" toLevel="1" name="Sword Storm">
 		<!-- AUTO GENERATED SKILL -->
@@ -1190,7 +1190,7 @@
 		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-1500</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16194" toLevel="1" name="Quiet Path to Death">
 		<!-- AUTO GENERATED SKILL -->
@@ -1224,7 +1224,7 @@
 		<hitTime>1500</hitTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-1500</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="16197" toLevel="1" name="Haughty Slaughter">
 		<!-- AUTO GENERATED SKILL -->

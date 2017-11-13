@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  */
 public interface IParseBoardHandler
 {
-	Logger LOG = LoggerFactory.getLogger(IParseBoardHandler.class);
+	Logger LOGGER = LoggerFactory.getLogger(IParseBoardHandler.class);
 	
 	/**
 	 * Parses a community board command.

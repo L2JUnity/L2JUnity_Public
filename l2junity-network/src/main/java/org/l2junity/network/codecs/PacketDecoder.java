@@ -18,7 +18,6 @@
  */
 package org.l2junity.network.codecs;
 
-import java.nio.ByteOrder;
 import java.util.List;
 
 import org.l2junity.network.IConnectionState;
@@ -40,13 +39,11 @@ public class PacketDecoder<T> extends ByteToMessageDecoder
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PacketDecoder.class);
 	
-	private final ByteOrder _byteOrder;
 	private final IIncomingPackets<T>[] _incomingPackets;
 	private final T _client;
 	
-	public PacketDecoder(ByteOrder byteOrder, IIncomingPackets<T>[] incomingPackets, T client)
+	public PacketDecoder(IIncomingPackets<T>[] incomingPackets, T client)
 	{
-		_byteOrder = byteOrder;
 		_incomingPackets = incomingPackets;
 		_client = client;
 	}
@@ -57,11 +54,6 @@ public class PacketDecoder<T> extends ByteToMessageDecoder
 		if ((in == null) || !in.isReadable())
 		{
 			return;
-		}
-		
-		if (in.order() != _byteOrder)
-		{
-			in = in.order(_byteOrder);
 		}
 		
 		try

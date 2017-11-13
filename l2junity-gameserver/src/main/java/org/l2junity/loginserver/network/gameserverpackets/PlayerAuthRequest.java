@@ -18,7 +18,7 @@
  */
 package org.l2junity.loginserver.network.gameserverpackets;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.loginserver.GameServerThread;
 import org.l2junity.loginserver.LoginController;
 import org.l2junity.loginserver.SessionKey;
@@ -49,14 +49,14 @@ public class PlayerAuthRequest extends BaseRecievePacket
 		SessionKey sessionKey = new SessionKey(loginKey1, loginKey2, playKey1, playKey2);
 		
 		PlayerAuthResponse authResponse;
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			_log.info("auth request received for Player " + account);
 		}
 		SessionKey key = LoginController.getInstance().getKeyForAccount(account);
 		if ((key != null) && key.equals(sessionKey))
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
 				_log.info("auth request: OK");
 			}
@@ -65,7 +65,7 @@ public class PlayerAuthRequest extends BaseRecievePacket
 		}
 		else
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
 				_log.info("auth request: NO");
 				_log.info("session key from self: " + key);

@@ -30,11 +30,13 @@ public class OnCreatureZoneExit implements IBaseEvent
 {
 	private final Creature _creature;
 	private final ZoneType _zone;
+	private final boolean _isLogout;
 	
-	public OnCreatureZoneExit(Creature creature, ZoneType zone)
+	public OnCreatureZoneExit(Creature creature, ZoneType zone, boolean isLogout)
 	{
 		_creature = creature;
 		_zone = zone;
+		_isLogout = isLogout;
 	}
 	
 	public Creature getCreature()
@@ -45,6 +47,11 @@ public class OnCreatureZoneExit implements IBaseEvent
 	public ZoneType getZone()
 	{
 		return _zone;
+	}
+	
+	public boolean isLogout()
+	{
+		return _isLogout;
 	}
 	
 	@Override

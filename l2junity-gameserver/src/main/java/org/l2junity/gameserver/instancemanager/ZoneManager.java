@@ -18,17 +18,24 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
-import java.io.File;
 import java.lang.reflect.Constructor;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.OptionalInt;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
+import org.l2junity.commons.util.IXmlReader;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -43,9 +50,9 @@ import org.l2junity.gameserver.model.zone.form.ZoneCuboid;
 import org.l2junity.gameserver.model.zone.form.ZoneCylinder;
 import org.l2junity.gameserver.model.zone.form.ZoneNPoly;
 import org.l2junity.gameserver.model.zone.type.ArenaZone;
-import org.l2junity.gameserver.model.zone.type.SpawnTerritory;
 import org.l2junity.gameserver.model.zone.type.OlympiadStadiumZone;
 import org.l2junity.gameserver.model.zone.type.RespawnZone;
+import org.l2junity.gameserver.model.zone.type.SpawnTerritory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -62,9 +69,9 @@ public final class ZoneManager implements IGameXmlReader
 	
 	private static final Map<String, AbstractZoneSettings> SETTINGS = new HashMap<>();
 	
-	public static final int SHIFT_BY = 15;
-	public static final int OFFSET_X = Math.abs(World.MAP_MIN_X >> SHIFT_BY);
-	public static final int OFFSET_Y = Math.abs(World.MAP_MIN_Y >> SHIFT_BY);
+	private static final int SHIFT_BY = 15;
+	private static final int OFFSET_X = Math.abs(World.MAP_MIN_X >> SHIFT_BY);
+	private static final int OFFSET_Y = Math.abs(World.MAP_MIN_Y >> SHIFT_BY);
 	
 	private final Map<Class<? extends ZoneType>, Map<Integer, ? extends ZoneType>> _classZones = new HashMap<>();
 	private final Map<String, SpawnTerritory> _spawnTerritories = new HashMap<>();
@@ -86,58 +93,10 @@ public final class ZoneManager implements IGameXmlReader
 			}
 		}
 		LOGGER.info("{} by {} Zone Region Grid set up.", _zoneRegions.length, _zoneRegions[0].length);
-		
-		load();
-	}
-	
-	/**
-	 * Reload.
-	 */
-	public void reload()
-	{
-		// Get the world regions
-		int count = 0;
-		
-		// Backup old zone settings
-		for (Map<Integer, ? extends ZoneType> map : _classZones.values())
-		{
-			for (ZoneType zone : map.values())
-			{
-				if (zone.getSettings() != null)
-				{
-					SETTINGS.put(zone.getName(), zone.getSettings());
-				}
-			}
-		}
-		
-		// Clear zones
-		for (ZoneRegion[] zoneRegions : _zoneRegions)
-		{
-			for (ZoneRegion zoneRegion : zoneRegions)
-			{
-				zoneRegion.getZones().clear();
-				count++;
-			}
-		}
-		LOGGER.info("Removed zones in {} regions.", count);
-		
-		// Load the zones
-		load();
-		
-		// Re-validate all characters in zones
-		for (WorldObject obj : World.getInstance().getVisibleObjects())
-		{
-			if (obj instanceof Creature)
-			{
-				((Creature) obj).revalidateZone(true);
-			}
-		}
-		
-		SETTINGS.clear();
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		NamedNodeMap attrs;
 		Node attribute;
@@ -146,6 +105,8 @@ public final class ZoneManager implements IGameXmlReader
 		int zoneId, minZ, maxZ;
 		String zoneType, zoneShape;
 		final List<int[]> rs = new ArrayList<>();
+		final List<int[]> blockedRs = new ArrayList<>();
+		final List<L2ZoneForm> blockedZones = new ArrayList<>();
 		
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -164,48 +125,27 @@ public final class ZoneManager implements IGameXmlReader
 					{
 						attrs = d.getAttributes();
 						
-						attribute = attrs.getNamedItem("type");
-						if (attribute != null)
+						zoneType = parseString(attrs, "type", null);
+						if (zoneType == null)
 						{
-							zoneType = attribute.getNodeValue();
-						}
-						else
-						{
-							LOGGER.warn("ZoneData: Missing type for zone in file: {}", f.getName());
+							LOGGER.warn("ZoneData: Missing type for zone in file: {}", path);
 							continue;
 						}
 						
-						attribute = attrs.getNamedItem("id");
-						if (attribute != null)
-						{
-							zoneId = Integer.parseInt(attribute.getNodeValue());
-						}
-						else
-						{
-							zoneId = zoneType.equalsIgnoreCase("NpcSpawnTerritory") ? 0 : _lastDynamicId++;
-						}
-						
-						attribute = attrs.getNamedItem("name");
-						if (attribute != null)
-						{
-							zoneName = attribute.getNodeValue();
-						}
-						else
-						{
-							zoneName = null;
-						}
+						zoneId = parseInteger(attrs, "id", zoneType.equalsIgnoreCase("NpcSpawnTerritory") ? 0 : _lastDynamicId++);
+						zoneName = parseString(attrs, "name", null);
 						
 						// Check zone name for NpcSpawnTerritory. Must exist and to be unique
 						if (zoneType.equalsIgnoreCase("NpcSpawnTerritory"))
 						{
 							if (zoneName == null)
 							{
-								LOGGER.warn("ZoneData: Missing name for NpcSpawnTerritory in file: {}, skipping zone", f.getName());
+								LOGGER.warn("ZoneData: Missing name for NpcSpawnTerritory in file: {}, skipping zone", path);
 								continue;
 							}
 							else if (_spawnTerritories.containsKey(zoneName))
 							{
-								LOGGER.warn("ZoneData: Name {} already used for another zone, check file: {}. Skipping zone", zoneName, f.getName());
+								LOGGER.warn("ZoneData: Name {} already used for another zone, check file: {}. Skipping zone", zoneName, path);
 								continue;
 							}
 						}
@@ -216,28 +156,68 @@ public final class ZoneManager implements IGameXmlReader
 						zoneType = parseString(attrs, "type");
 						zoneShape = parseString(attrs, "shape");
 						
+						if (maxZ < minZ)
+						{
+							LOGGER.warn("ZoneData: Zone {} has minZ of {} which is higher than maxZ of {}, check file: {}.", zoneName, minZ, maxZ, path);
+						}
+						
 						// Get the zone shape from xml
 						L2ZoneForm zoneForm = null;
 						try
 						{
-							for (Node cd = d.getFirstChild(); cd != null; cd = cd.getNextSibling())
+							forEach(d, IXmlReader::isNode, node ->
 							{
-								if ("node".equalsIgnoreCase(cd.getNodeName()))
+								switch (node.getNodeName())
 								{
-									attrs = cd.getAttributes();
-									int[] point = new int[2];
-									point[0] = parseInteger(attrs, "X");
-									point[1] = parseInteger(attrs, "Y");
-									rs.add(point);
+									case "node":
+									{
+										rs.add(new int[]
+										{
+											parseInteger(node.getAttributes(), "X"),
+											parseInteger(node.getAttributes(), "Y")
+										});
+										break;
+									}
+									case "bannedAreas":
+									{
+										forEach(node, "area", areaNode ->
+										{
+											int bannedMinZ = parseInteger(areaNode.getAttributes(), "minZ");
+											int bannedMaxZ = parseInteger(areaNode.getAttributes(), "maxZ");
+											forEach(areaNode, "node", pointNode ->
+											{
+												blockedRs.add(new int[]
+												{
+													parseInteger(pointNode.getAttributes(), "X"),
+													parseInteger(pointNode.getAttributes(), "Y")
+												});
+											});
+											int[][] blockedCoords = blockedRs.toArray(new int[blockedRs.size()][2]);
+											blockedRs.clear();
+											
+											if (blockedCoords.length > 2)
+											{
+												final int[] aX = new int[blockedCoords.length];
+												final int[] aY = new int[blockedCoords.length];
+												for (int i = 0; i < blockedCoords.length; i++)
+												{
+													aX[i] = blockedCoords[i][0];
+													aY[i] = blockedCoords[i][1];
+												}
+												blockedZones.add(new ZoneNPoly(aX, aY, bannedMinZ, bannedMaxZ));
+											}
+										});
+										break;
+									}
 								}
-							}
+							});
 							
 							coords = rs.toArray(new int[rs.size()][2]);
 							rs.clear();
 							
 							if ((coords == null) || (coords.length == 0))
 							{
-								LOGGER.warn("ZoneData: missing data for zone: {} XML file: {}", zoneId, f.getName());
+								LOGGER.warn("ZoneData: missing data for zone: {} XML file: {}", zoneId, path);
 								continue;
 							}
 							
@@ -254,7 +234,7 @@ public final class ZoneManager implements IGameXmlReader
 								}
 								else
 								{
-									LOGGER.warn("ZoneData: Missing cuboid vertex data for zone: {} in file: {}", zoneId, f.getName());
+									LOGGER.warn("ZoneData: Missing cuboid vertex data for zone: {} in file: {}", zoneId, path);
 									continue;
 								}
 							}
@@ -274,7 +254,7 @@ public final class ZoneManager implements IGameXmlReader
 								}
 								else
 								{
-									LOGGER.warn("ZoneData: Bad data for zone: {} in file: {}", zoneId, f.getName());
+									LOGGER.warn("ZoneData: Bad data for zone: {} in file: {}", zoneId, path);
 									continue;
 								}
 							}
@@ -290,13 +270,13 @@ public final class ZoneManager implements IGameXmlReader
 								}
 								else
 								{
-									LOGGER.warn("ZoneData: Bad data for zone: {} in file: {}", zoneId, f.getName());
+									LOGGER.warn("ZoneData: Bad data for zone: {} in file: {}", zoneId, path);
 									continue;
 								}
 							}
 							else
 							{
-								LOGGER.warn("ZoneData: Unknown shape: \"{}\"  for zone: {} in file: {}", zoneShape, zoneId, f.getName());
+								LOGGER.warn("ZoneData: Unknown shape: \"{}\"  for zone: {} in file: {}", zoneShape, zoneId, path);
 								continue;
 							}
 						}
@@ -322,11 +302,19 @@ public final class ZoneManager implements IGameXmlReader
 							zoneConstructor = newZone.getConstructor(int.class);
 							temp = (ZoneType) zoneConstructor.newInstance(zoneId);
 							temp.setZone(zoneForm);
+							if (!blockedZones.isEmpty())
+							{
+								temp.setBlockedZones(Collections.unmodifiableList(blockedZones));
+							}
 						}
 						catch (Exception e)
 						{
-							LOGGER.warn("ZoneData: No such zone type: {} in file: {}", zoneType, f.getName());
+							LOGGER.warn("ZoneData: No such zone type: {} in file: {}", zoneType, path);
 							continue;
+						}
+						finally
+						{
+							blockedZones.clear();
 						}
 						
 						// Check for additional parameters
@@ -360,7 +348,7 @@ public final class ZoneManager implements IGameXmlReader
 						}
 						if (checkId(zoneId))
 						{
-							LOGGER.info("Caution: Zone ({}) from file: {} overrides previos definition.", zoneId, f.getName());
+							LOGGER.warn("Caution: Zone ({}) from file: {} overrides previos definition.", zoneId, path);
 						}
 						
 						if ((zoneName != null) && !zoneName.isEmpty())
@@ -395,8 +383,8 @@ public final class ZoneManager implements IGameXmlReader
 		}
 	}
 	
-	@Override
-	public final void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_classZones.clear();
 		_spawnTerritories.clear();
@@ -406,6 +394,49 @@ public final class ZoneManager implements IGameXmlReader
 		LOGGER.info("Loaded {} NPC spawn territoriers.", _spawnTerritories.size());
 		final OptionalInt maxId = _classZones.values().stream().flatMap(map -> map.keySet().stream()).mapToInt(Integer.class::cast).filter(value -> value < 300000).max();
 		LOGGER.info("Last static id: {}", maxId.getAsInt());
+	}
+	
+	@Reload("zone")
+	private void reload() throws Exception
+	{
+		// Get the world regions
+		int count = 0;
+		
+		// Backup old zone settings
+		for (Map<Integer, ? extends ZoneType> map : _classZones.values())
+		{
+			for (ZoneType zone : map.values())
+			{
+				if (zone.getSettings() != null)
+				{
+					SETTINGS.put(zone.getName(), zone.getSettings());
+				}
+			}
+		}
+		
+		// Clear zones
+		for (ZoneRegion[] zoneRegions : _zoneRegions)
+		{
+			for (ZoneRegion zoneRegion : zoneRegions)
+			{
+				zoneRegion.getZones().clear();
+				count++;
+			}
+		}
+		LOGGER.info("Removed zones in {} regions.", count);
+		
+		load();
+		
+		// Re-validate all characters in zones
+		for (WorldObject obj : World.getInstance().getVisibleObjects())
+		{
+			if (obj instanceof Creature)
+			{
+				((Creature) obj).revalidateZone(true);
+			}
+		}
+		
+		SETTINGS.clear();
 	}
 	
 	/**
@@ -492,6 +523,24 @@ public final class ZoneManager implements IGameXmlReader
 	}
 	
 	/**
+	 * Get zone by name.
+	 * @param name the zone name
+	 * @return the zone by name
+	 */
+	public ZoneType getZoneByName(String name)
+	{
+		for (Map<Integer, ? extends ZoneType> map : _classZones.values())
+		{
+			final Optional<? extends ZoneType> zoneType = map.values().stream().filter(z -> (z.getName() != null) && z.getName().equals(name)).findAny();
+			if (zoneType.isPresent())
+			{
+				return zoneType.get();
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * Get zone by ID and zone class.
 	 * @param <T> the generic type
 	 * @param id the id
@@ -502,6 +551,24 @@ public final class ZoneManager implements IGameXmlReader
 	public <T extends ZoneType> T getZoneById(int id, Class<T> zoneType)
 	{
 		return (T) _classZones.get(zoneType).get(id);
+	}
+	
+	/**
+	 * Get zone by name.
+	 * @param <T> the generic type
+	 * @param name the zone name
+	 * @param zoneType the zone type
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public <T extends ZoneType> T getZoneByName(String name, Class<T> zoneType)
+	{
+		final Optional<? extends ZoneType> zone = _classZones.get(zoneType).values().stream().filter(z -> (z.getName() != null) && z.getName().equals(name)).findAny();
+		if (zone.isPresent())
+		{
+			return (T) zone.get();
+		}
+		return null;
 	}
 	
 	/**
@@ -536,10 +603,10 @@ public final class ZoneManager implements IGameXmlReader
 	 * @param y the y
 	 * @return zones
 	 */
-	public List<ZoneType> getZones(int x, int y)
+	public List<ZoneType> getZones(double x, double y)
 	{
 		final List<ZoneType> temp = new ArrayList<>();
-		for (ZoneType zone : getRegion(x, y).getZones().values())
+		for (ZoneType zone : getRegion((int) x, (int) y).getZones().values())
 		{
 			if (zone.isInsideZone(x, y))
 			{
@@ -556,10 +623,10 @@ public final class ZoneManager implements IGameXmlReader
 	 * @param z the z
 	 * @return zones
 	 */
-	public List<ZoneType> getZones(int x, int y, int z)
+	public List<ZoneType> getZones(double x, double y, double z)
 	{
 		final List<ZoneType> temp = new ArrayList<>();
-		for (ZoneType zone : getRegion(x, y).getZones().values())
+		for (ZoneType zone : getRegion((int) x, (int) y).getZones().values())
 		{
 			if (zone.isInsideZone(x, y, z))
 			{
@@ -579,9 +646,9 @@ public final class ZoneManager implements IGameXmlReader
 	 * @return zone from given coordinates
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends ZoneType> T getZone(int x, int y, int z, Class<T> type)
+	public <T extends ZoneType> T getZone(double x, double y, double z, Class<T> type)
 	{
-		for (ZoneType zone : getRegion(x, y).getZones().values())
+		for (ZoneType zone : getRegion((int) x, (int) y).getZones().values())
 		{
 			if (zone.isInsideZone(x, y, z) && type.isInstance(zone))
 			{
@@ -727,12 +794,20 @@ public final class ZoneManager implements IGameXmlReader
 	
 	public ZoneRegion getRegion(int x, int y)
 	{
-		return _zoneRegions[(x >> SHIFT_BY) + OFFSET_X][(y >> SHIFT_BY) + OFFSET_Y];
+		try
+		{
+			return _zoneRegions[(x >> SHIFT_BY) + OFFSET_X][(y >> SHIFT_BY) + OFFSET_Y];
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			LOGGER.warn("Incorrect zone region X: {} Y: {} for coordinates x: {} y: {}", ((x >> SHIFT_BY) + OFFSET_X), ((y >> SHIFT_BY) + OFFSET_Y), x, y);
+			return null;
+		}
 	}
 	
 	public ZoneRegion getRegion(ILocational point)
 	{
-		return getRegion(point.getX(), point.getY());
+		return getRegion((int) point.getX(), (int) point.getY());
 	}
 	
 	/**
@@ -749,6 +824,7 @@ public final class ZoneManager implements IGameXmlReader
 	 * Gets the single instance of ZoneManager.
 	 * @return single instance of ZoneManager
 	 */
+	@InstanceGetter
 	public static ZoneManager getInstance()
 	{
 		return SingletonHolder._instance;

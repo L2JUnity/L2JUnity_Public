@@ -35,10 +35,10 @@ public class ExShowTerritory implements IClientOutgoingPacket
 	private final int _maxZ;
 	private final List<ILocational> _vertices = new ArrayList<>();
 	
-	public ExShowTerritory(int minZ, int maxZ)
+	public ExShowTerritory(double minZ, double maxZ)
 	{
-		_minZ = minZ;
-		_maxZ = maxZ;
+		_minZ = (int) minZ;
+		_maxZ = (int) maxZ;
 	}
 	
 	public void addVertice(ILocational loc)
@@ -56,8 +56,8 @@ public class ExShowTerritory implements IClientOutgoingPacket
 		packet.writeD(_maxZ);
 		for (ILocational loc : _vertices)
 		{
-			packet.writeD(loc.getX());
-			packet.writeD(loc.getY());
+			packet.writeD((int) loc.getX());
+			packet.writeD((int) loc.getY());
 		}
 		return true;
 	}

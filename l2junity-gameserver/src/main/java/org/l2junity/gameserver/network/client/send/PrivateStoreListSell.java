@@ -18,7 +18,6 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.gameserver.instancemanager.SellBuffsManager;
 import org.l2junity.gameserver.model.TradeItem;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
@@ -38,25 +37,18 @@ public class PrivateStoreListSell extends AbstractItemPacket
 	@Override
 	public boolean write(PacketWriter packet)
 	{
-		if (_seller.isSellingBuffs())
+		OutgoingPackets.PRIVATE_STORE_LIST.writeId(packet);
+		
+		packet.writeD(_seller.getObjectId());
+		packet.writeD(_seller.getSellList().isPackaged() ? 1 : 0);
+		packet.writeQ(_player.getAdena());
+		packet.writeD(0x00);
+		packet.writeD(_seller.getSellList().getItems().length);
+		for (TradeItem item : _seller.getSellList().getItems())
 		{
-			SellBuffsManager.getInstance().sendBuffMenu(_player, _seller, 0);
-		}
-		else
-		{
-			OutgoingPackets.PRIVATE_STORE_LIST.writeId(packet);
-			
-			packet.writeD(_seller.getObjectId());
-			packet.writeD(_seller.getSellList().isPackaged() ? 1 : 0);
-			packet.writeQ(_player.getAdena());
-			packet.writeD(0x00);
-			packet.writeD(_seller.getSellList().getItems().length);
-			for (TradeItem item : _seller.getSellList().getItems())
-			{
-				writeItem(packet, item);
-				packet.writeQ(item.getPrice());
-				packet.writeQ(item.getItem().getReferencePrice() * 2);
-			}
+			writeItem(packet, item);
+			packet.writeQ(item.getPrice());
+			packet.writeQ(item.getItem().getReferencePrice() * 2);
 		}
 		return true;
 	}

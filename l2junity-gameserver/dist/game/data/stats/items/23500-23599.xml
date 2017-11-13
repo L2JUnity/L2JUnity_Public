@@ -211,6 +211,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22452" level="1" /> <!-- Santa Girl's Gift Box -->
 		</skills>
@@ -224,6 +225,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22807" level="1" /> <!-- Monster Weapon Appearance Stone Pack -->
 		</skills>
@@ -530,6 +532,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23552" min="500" max="500" chance="100" /> <!-- Mysterious Soulshot (R-grade) - Event -->
 		</capsuled_items>
@@ -545,6 +548,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23553" min="500" max="500" chance="100" /> <!-- Mysterious Spiritshot (R-grade) - Event -->
 		</capsuled_items>
@@ -957,6 +961,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22803" level="1" /> <!-- Fantasy Top Appearance Stone Pack -->
 		</skills>
@@ -970,6 +975,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22804" level="1" /> <!-- Fantasy Pants Appearance Stone Pack -->
 		</skills>
@@ -983,6 +989,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22805" level="1" /> <!-- Fantasy Gloves Appearance Stone Pack -->
 		</skills>
@@ -996,6 +1003,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22806" level="1" /> <!-- Fantasy Shoes Appearance Stone Pack -->
 		</skills>
@@ -1010,6 +1018,7 @@
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="22794" level="1" /> <!-- Shining Accessory Pack -->
 		</skills>
@@ -1322,7 +1331,7 @@
 	<item id="23596" name="Blessed Scroll: Enchant Weapon (R-grade)" name_additional="Event" type="EtcItem">
 		<!-- When enchanted, P. Atk. for one-handed sword/blunt, dagger, spear, etc. (R-grade) + 6, and two-handed sword/blunt/fist, dagger, crossbow + 7. P. Atk. for bows + 12. M. Atk. for all weapons + 5. When enchanted to +4 or above, P. Atk. and M. Atk. Increase greatly. Blessed weapons have greater increases than standard weapons. If enchanting fails, the item will not be crystallized but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.blessed_scroll_of_enchant_weapon_i06" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />
@@ -1340,7 +1349,7 @@
 	<item id="23597" name="Blessed Scroll: Enchant Armor (R-grade)" name_additional="Event" type="EtcItem">
 		<!-- When enchanted, P. Def. for armor/accessories (R-grade) + 2. When enchanted to + 4 or above, P. Def. Increases greatly. Can be safely enchanted up to + 3. HP gradually increases with each enchant level starting from + 4. If enchanting fails, the item will not be crystallized, but the enchant value will be reset to 0. -->
 		<set name="icon" val="icon.blessed_scroll_of_enchant_armor_i06" />
-		<set name="weight" val="120" />
+		<set name="weight" val="10" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_commissionable" val="false" />

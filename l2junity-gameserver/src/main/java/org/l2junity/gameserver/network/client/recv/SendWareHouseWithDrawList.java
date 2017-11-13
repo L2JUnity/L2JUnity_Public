@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.ClanPrivilege;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -47,7 +48,7 @@ public final class SendWareHouseWithDrawList implements IClientIncomingPacket
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
 		final int count = packet.readD();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((count <= 0) || (count > PlayerConfig.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -106,12 +107,12 @@ public final class SendWareHouseWithDrawList implements IClientIncomingPacket
 		}
 		
 		// Alt game - Karma punishment
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (player.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (player.getReputation() < 0))
 		{
 			return;
 		}
 		
-		if (Config.ALT_MEMBERS_CAN_WITHDRAW_FROM_CLANWH)
+		if (PlayerConfig.ALT_MEMBERS_CAN_WITHDRAW_FROM_CLANWH)
 		{
 			if ((warehouse instanceof ClanWarehouse) && !player.hasClanPrivilege(ClanPrivilege.CL_VIEW_WAREHOUSE))
 			{
@@ -136,7 +137,7 @@ public final class SendWareHouseWithDrawList implements IClientIncomingPacket
 			ItemInstance item = warehouse.getItemByObjectId(i.getId());
 			if ((item == null) || (item.getCount() < i.getCount()))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to withdraw non-existent item from warehouse.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to withdraw non-existent item from warehouse.", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			
@@ -166,19 +167,19 @@ public final class SendWareHouseWithDrawList implements IClientIncomingPacket
 		}
 		
 		// Proceed to the transfer
-		InventoryUpdate playerIU = Config.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
+		InventoryUpdate playerIU = GeneralConfig.FORCE_INVENTORY_UPDATE ? null : new InventoryUpdate();
 		for (ItemHolder i : _items)
 		{
 			ItemInstance oldItem = warehouse.getItemByObjectId(i.getId());
 			if ((oldItem == null) || (oldItem.getCount() < i.getCount()))
 			{
-				_log.warn("Error withdrawing a warehouse object for char " + player.getName() + " (olditem == null)");
+				LOGGER.warn("Error withdrawing a warehouse object for char " + player.getName() + " (olditem == null)");
 				return;
 			}
 			final ItemInstance newItem = warehouse.transferItem(warehouse.getName(), i.getId(), i.getCount(), player.getInventory(), player, manager);
 			if (newItem == null)
 			{
-				_log.warn("Error withdrawing a warehouse object for char " + player.getName() + " (newitem == null)");
+				LOGGER.warn("Error withdrawing a warehouse object for char " + player.getName() + " (newitem == null)");
 				return;
 			}
 			

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.friend.FriendList;
@@ -38,7 +38,7 @@ public final class RequestExFriendListExtended implements IClientIncomingPacket
 	@Override
 	public void run(L2GameClient client)
 	{
-		if (!Config.ALLOW_MAIL)
+		if (!GeneralConfig.ALLOW_MAIL)
 		{
 			return;
 		}

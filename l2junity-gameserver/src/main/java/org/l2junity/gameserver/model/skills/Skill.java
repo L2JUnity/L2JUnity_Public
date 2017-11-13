@@ -30,8 +30,10 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.config.AdminConfig;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.EnchantSkillGroupsData;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
@@ -40,12 +42,13 @@ import org.l2junity.gameserver.enums.BasicProperty;
 import org.l2junity.gameserver.enums.MountType;
 import org.l2junity.gameserver.enums.NextActionType;
 import org.l2junity.gameserver.enums.ShotType;
-import org.l2junity.gameserver.handler.AffectScopeHandler;
+import org.l2junity.gameserver.handler.IAffectObjectHandler;
 import org.l2junity.gameserver.handler.IAffectScopeHandler;
 import org.l2junity.gameserver.handler.ITargetTypeHandler;
 import org.l2junity.gameserver.handler.TargetHandler;
 import org.l2junity.gameserver.instancemanager.HandysBlockCheckerManager;
 import org.l2junity.gameserver.model.ArenaParticipantsHolder;
+import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.PcCondOverride;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.WorldObject;
@@ -53,27 +56,28 @@ import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.L2BlockInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.cubic.CubicInstance;
+import org.l2junity.gameserver.model.debugger.DebugType;
 import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.model.effects.EffectFlag;
 import org.l2junity.gameserver.model.effects.L2EffectType;
+import org.l2junity.gameserver.model.events.ListenersContainer;
 import org.l2junity.gameserver.model.holders.AlterSkillHolder;
 import org.l2junity.gameserver.model.holders.AttachSkillHolder;
 import org.l2junity.gameserver.model.interfaces.IIdentifiable;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
-import org.l2junity.gameserver.model.skills.targets.AffectObject;
-import org.l2junity.gameserver.model.skills.targets.AffectScope;
-import org.l2junity.gameserver.model.skills.targets.TargetType;
+import org.l2junity.gameserver.model.items.type.ActionType;
 import org.l2junity.gameserver.model.stats.BasicPropertyResist;
+import org.l2junity.gameserver.model.stats.BooleanStat;
 import org.l2junity.gameserver.model.stats.Formulas;
 import org.l2junity.gameserver.model.stats.TraitType;
+import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class Skill implements IIdentifiable
+public final class Skill extends ListenersContainer implements IIdentifiable
 {
-	private static final Logger _log = LoggerFactory.getLogger(Skill.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Skill.class);
 	
 	/** Skill ID. */
 	private final int _id;
@@ -104,6 +108,10 @@ public final class Skill implements IIdentifiable
 	private final int _itemConsumeCount;
 	/** Id of item consumed by this skill from caster. */
 	private final int _itemConsumeId;
+	/** Fame points consumed by this skill from caster */
+	private final int _pvpPointConsume;
+	/** Clan points consumed by this skill from caster's clan */
+	private final int _pledgeNvConsume;
 	/** Cast range: how far can be the target. */
 	private final int _castRange;
 	/** Effect range: how far the skill affect the target. */
@@ -114,6 +122,8 @@ public final class Skill implements IIdentifiable
 	private final int _abnormalLvl;
 	/** Abnormal type: global effect "group". */
 	private final AbnormalType _abnormalType;
+	/** Abnormal type: local effect "group". */
+	private final AbnormalType _subordinationAbnormalType;
 	/** Abnormal time: global effect duration time. */
 	private final int _abnormalTime;
 	/** Abnormal visual effect: the visual effect displayed ingame. */
@@ -126,7 +136,7 @@ public final class Skill implements IIdentifiable
 	private final int _refId;
 	// all times in milliseconds
 	private final int _hitTime;
-	// private final int _skillInterruptTime;
+	private final double _hitCancelTime;
 	private final int _coolTime;
 	private final long _reuseHashCode;
 	private final int _reuseDelay;
@@ -141,9 +151,9 @@ public final class Skill implements IIdentifiable
 	// Effecting area of the skill, in radius.
 	// The radius center varies according to the _targetType:
 	// "caster" if targetType = AURA/PARTY/CLAN or "target" if targetType = AREA
-	private final TargetType _targetType;
-	private final AffectScope _affectScope;
-	private final AffectObject _affectObject;
+	private final ITargetTypeHandler _targetTypeHandler;
+	private final IAffectScopeHandler _affectScopeHandler;
+	private final IAffectObjectHandler _affectObjectHandler;
 	private final int _affectRange;
 	private final int[] _fanRange = new int[4]; // unk;startDegree;fanAffectRange;fanAffectAngle
 	private final int[] _affectLimit = new int[3]; // TODO: Third value is unknown... find it out!
@@ -163,6 +173,7 @@ public final class Skill implements IIdentifiable
 	
 	private final int _minPledgeClass;
 	private final int _soulMaxConsume;
+	private final int _chargeConsume;
 	
 	private final boolean _isTriggeredSkill; // If true the skill will take activation buff slot instead of a normal buff slot
 	private final int _effectPoint;
@@ -171,7 +182,7 @@ public final class Skill implements IIdentifiable
 	private final Map<SkillConditionScope, List<ISkillCondition>> _conditionLists = new EnumMap<>(SkillConditionScope.class);
 	private final Map<EffectScope, List<AbstractEffect>> _effectLists = new EnumMap<>(EffectScope.class);
 	
-	private final boolean _isDebuff;
+	private final int _isDebuff;
 	
 	private final boolean _isSuicideAttack;
 	private final boolean _canBeDispelled;
@@ -185,8 +196,8 @@ public final class Skill implements IIdentifiable
 	
 	// Channeling data
 	private final int _channelingSkillId;
-	private final int _channelingTickInitialDelay;
-	private final int _channelingTickInterval;
+	private final long _channelingStart;
+	private final long _channelingTickInterval;
 	
 	// Mentoring
 	private final boolean _isMentoring;
@@ -195,7 +206,6 @@ public final class Skill implements IIdentifiable
 	private final int _doubleCastSkill;
 	
 	private final boolean _canDoubleCast;
-	private final boolean _canCastWhileDisabled;
 	private final boolean _isSharedWithSummon;
 	private final boolean _isNecessaryToggle;
 	private final boolean _deleteAbnormalOnLeave;
@@ -209,6 +219,8 @@ public final class Skill implements IIdentifiable
 	private final Set<AbnormalType> _abnormalResists;
 	
 	private final double _magicCriticalRate;
+	
+	private final boolean _displayInList;
 	
 	public Skill(StatsSet set)
 	{
@@ -229,22 +241,25 @@ public final class Skill implements IIdentifiable
 		_hpConsume = set.getInt("hpConsume", 0);
 		_itemConsumeCount = set.getInt("itemConsumeCount", 0);
 		_itemConsumeId = set.getInt("itemConsumeId", 0);
+		_pvpPointConsume = set.getInt("pvpPointConsume", 0);
+		_pledgeNvConsume = set.getInt("pledgeNvConsume", 0);
 		
 		_castRange = set.getInt("castRange", -1);
 		_effectRange = set.getInt("effectRange", -1);
 		_abnormalLvl = set.getInt("abnormalLvl", 0);
 		_abnormalType = set.getEnum("abnormalType", AbnormalType.class, AbnormalType.NONE);
+		_subordinationAbnormalType = set.getEnum("subordinationAbnormalType", AbnormalType.class, AbnormalType.NONE);
 		
 		int abnormalTime = set.getInt("abnormalTime", 0);
-		if (Config.ENABLE_MODIFY_SKILL_DURATION && Config.SKILL_DURATION_LIST.containsKey(getId()))
+		if (PlayerConfig.ENABLE_MODIFY_SKILL_DURATION && PlayerConfig.SKILL_DURATION_LIST.containsKey(getId()))
 		{
 			if ((getLevel() < 100) || (getLevel() > 140))
 			{
-				abnormalTime = Config.SKILL_DURATION_LIST.get(getId());
+				abnormalTime = PlayerConfig.SKILL_DURATION_LIST.get(getId());
 			}
 			else if ((getLevel() >= 100) && (getLevel() < 140))
 			{
-				abnormalTime += Config.SKILL_DURATION_LIST.get(getId());
+				abnormalTime += PlayerConfig.SKILL_DURATION_LIST.get(getId());
 			}
 		}
 		
@@ -255,17 +270,18 @@ public final class Skill implements IIdentifiable
 		_stayAfterDeath = set.getBoolean("stayAfterDeath", false);
 		
 		_hitTime = set.getInt("hitTime", 0);
+		_hitCancelTime = set.getDouble("hitCancelTime", 0);
 		_coolTime = set.getInt("coolTime", 0);
-		_isDebuff = set.getBoolean("isDebuff", false);
+		_isDebuff = set.getInt("isDebuff", 0);
 		_isRecoveryHerb = set.getBoolean("isRecoveryHerb", false);
 		
-		if (Config.ENABLE_MODIFY_SKILL_REUSE && Config.SKILL_REUSE_LIST.containsKey(_id))
+		if (PlayerConfig.ENABLE_MODIFY_SKILL_REUSE && PlayerConfig.SKILL_REUSE_LIST.containsKey(_id))
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.info("*** Skill {} ({}) changed reuse from {} to {} seconds.", _name, _level, set.getInt("reuseDelay", 0), Config.SKILL_REUSE_LIST.get(_id));
+				LOGGER.info("*** Skill {} ({}) changed reuse from {} to {} seconds.", _name, _level, set.getInt("reuseDelay", 0), PlayerConfig.SKILL_REUSE_LIST.get(_id));
 			}
-			_reuseDelay = Config.SKILL_REUSE_LIST.get(_id);
+			_reuseDelay = PlayerConfig.SKILL_REUSE_LIST.get(_id);
 		}
 		else
 		{
@@ -275,9 +291,27 @@ public final class Skill implements IIdentifiable
 		_reuseDelayGroup = set.getInt("reuseDelayGroup", -1);
 		_reuseHashCode = SkillData.getSkillHashCode(_reuseDelayGroup > 0 ? _reuseDelayGroup : _id, _level, _subLevel);
 		
-		_targetType = set.getEnum("targetType", TargetType.class, TargetType.SELF);
-		_affectScope = set.getEnum("affectScope", AffectScope.class, AffectScope.SINGLE);
-		_affectObject = set.getEnum("affectObject", AffectObject.class, AffectObject.ALL);
+		final String targetType = set.getString("targetType", "NONE");
+		_targetTypeHandler = TargetHandler.getInstance().getTargetTypeHandler(targetType);
+		if (_targetTypeHandler == null)
+		{
+			throw new RuntimeException("Target Type not found for Skill Id[" + _id + "] Level[" + _level + "] SubLevel[" + _subLevel + "] TargetType[" + targetType + "].");
+		}
+		
+		final String affectScope = set.getString("affectScope", "SINGLE");
+		_affectScopeHandler = TargetHandler.getInstance().getAffectScopeHandler(affectScope);
+		if (_affectScopeHandler == null)
+		{
+			throw new RuntimeException("Affect Scope not found for Skill Id[" + _id + "] Level[" + _level + "] SubLevel[" + _subLevel + "] AffectScope[" + affectScope + "].");
+		}
+		
+		final String affectObject = set.getString("affectObject", "ALL");
+		_affectObjectHandler = TargetHandler.getInstance().getAffectObjectHandler(affectObject);
+		if (_affectObjectHandler == null)
+		{
+			throw new RuntimeException("Affect Object not found for Skill Id[" + _id + "] Level[" + _level + "] SubLevel[" + _subLevel + "] AffectObject[" + affectObject + "].");
+		}
+		
 		_affectRange = set.getInt("affectRange", 0);
 		
 		final String rideState = set.getString("rideState", null);
@@ -295,7 +329,7 @@ public final class Skill implements IIdentifiable
 					}
 					catch (Exception e)
 					{
-						_log.warn("Bad data in rideState for skill {}!", this, e);
+						LOGGER.warn("Bad data in rideState for skill {}!", this, e);
 					}
 				}
 			}
@@ -359,8 +393,8 @@ public final class Skill implements IIdentifiable
 		_magicLevel = set.getInt("magicLvl", 0);
 		_lvlBonusRate = set.getInt("lvlBonusRate", 0);
 		_activateRate = set.getInt("activateRate", -1);
-		_minChance = set.getInt("minChance", Config.MIN_ABNORMAL_STATE_SUCCESS_RATE);
-		_maxChance = set.getInt("maxChance", Config.MAX_ABNORMAL_STATE_SUCCESS_RATE);
+		_minChance = set.getInt("minChance", PlayerConfig.MIN_ABNORMAL_STATE_SUCCESS_RATE);
+		_maxChance = set.getInt("maxChance", PlayerConfig.MAX_ABNORMAL_STATE_SUCCESS_RATE);
 		
 		_nextAction = set.getEnum("nextAction", NextActionType.class, NextActionType.NONE);
 		
@@ -379,6 +413,7 @@ public final class Skill implements IIdentifiable
 		_minPledgeClass = set.getInt("minPledgeClass", 0);
 		
 		_soulMaxConsume = set.getInt("soulMaxConsumeCount", 0);
+		_chargeConsume = set.getInt("chargeConsume", 0);
 		
 		_isTriggeredSkill = set.getBoolean("isTriggeredSkill", false);
 		_effectPoint = set.getInt("effectPoint", 0);
@@ -391,15 +426,14 @@ public final class Skill implements IIdentifiable
 		_icon = set.getString("icon", "icon.skill0000");
 		
 		_channelingSkillId = set.getInt("channelingSkillId", 0);
-		_channelingTickInterval = set.getInt("channelingTickInterval", 2000);
-		_channelingTickInitialDelay = set.getInt("channelingTickInitialDelay", _channelingTickInterval);
+		_channelingTickInterval = (long) set.getFloat("channelingTickInterval", 2000f) * 1000;
+		_channelingStart = (long) (set.getFloat("channelingStart", 0f) * 1000);
 		
 		_isMentoring = set.getBoolean("isMentoring", false);
 		
 		_doubleCastSkill = set.getInt("doubleCastSkill", 0);
 		
 		_canDoubleCast = set.getBoolean("canDoubleCast", false);
-		_canCastWhileDisabled = set.getBoolean("canCastWhileDisabled", false);
 		_isSharedWithSummon = set.getBoolean("isSharedWithSummon", true);
 		
 		_isNecessaryToggle = set.getBoolean("isNecessaryToggle", false);
@@ -427,7 +461,7 @@ public final class Skill implements IIdentifiable
 					}
 					catch (Exception e)
 					{
-						_log.warn("Skill ID[{}] Expected AbnormalType for abnormalResists but found {}", _id, s, e);
+						LOGGER.warn("Skill ID[{}] Expected AbnormalType for abnormalResists but found {}", _id, s, e);
 					}
 				}
 			}
@@ -442,6 +476,7 @@ public final class Skill implements IIdentifiable
 		}
 		
 		_magicCriticalRate = set.getDouble("magicCriticalRate", 0);
+		_displayInList = set.getBoolean("displayInList", true);
 	}
 	
 	public TraitType getTraitType()
@@ -457,29 +492,6 @@ public final class Skill implements IIdentifiable
 	public int getAttributeValue()
 	{
 		return _attributeValue;
-	}
-	
-	public boolean isAOE()
-	{
-		switch (_affectScope)
-		{
-			case FAN:
-			case FAN_PB:
-			case POINT_BLANK:
-			case RANGE:
-			case RING_RANGE:
-			case SQUARE:
-			case SQUARE_PB:
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public boolean isDamage()
-	{
-		return hasEffectType(L2EffectType.MAGICAL_ATTACK, L2EffectType.HP_DRAIN, L2EffectType.PHYSICAL_ATTACK, L2EffectType.PHYSICAL_ATTACK_HP_LINK);
 	}
 	
 	public boolean isSuicideAttack()
@@ -509,6 +521,15 @@ public final class Skill implements IIdentifiable
 	public AbnormalType getAbnormalType()
 	{
 		return _abnormalType;
+	}
+	
+	/**
+	 * Gets the skill subordination abnormal type.
+	 * @return the abnormal type
+	 */
+	public AbnormalType getSubordinationAbnormalType()
+	{
+		return _subordinationAbnormalType;
 	}
 	
 	/**
@@ -668,6 +689,11 @@ public final class Skill implements IIdentifiable
 	 */
 	public boolean isDebuff()
 	{
+		return _isDebuff > 0;
+	}
+	
+	public int getDebuffValue()
+	{
 		return _isDebuff;
 	}
 	
@@ -713,6 +739,22 @@ public final class Skill implements IIdentifiable
 	public int getItemConsumeId()
 	{
 		return _itemConsumeId;
+	}
+	
+	/**
+	 * @return Fame points consumed by this skill from caster
+	 */
+	public int getPvPPointConsume()
+	{
+		return _pvpPointConsume;
+	}
+	
+	/**
+	 * @return Clan points consumed by this skill from caster's clan
+	 */
+	public int getPledgeNvConsume()
+	{
+		return _pledgeNvConsume;
 	}
 	
 	/**
@@ -837,6 +879,11 @@ public final class Skill implements IIdentifiable
 		return _hitTime;
 	}
 	
+	public double getHitCancelTime()
+	{
+		return _hitCancelTime;
+	}
+	
 	/**
 	 * @return the cool time
 	 */
@@ -848,25 +895,25 @@ public final class Skill implements IIdentifiable
 	/**
 	 * @return the target type of the skill : SELF, TARGET, SUMMON, GROUND...
 	 */
-	public TargetType getTargetType()
+	public ITargetTypeHandler getTargetTypeHandler()
 	{
-		return _targetType;
+		return _targetTypeHandler;
 	}
 	
 	/**
 	 * @return the affect scope of the skill : SINGLE, FAN, SQUARE, PARTY, PLEDGE...
 	 */
-	public AffectScope getAffectScope()
+	public IAffectScopeHandler getAffectScopeHandler()
 	{
-		return _affectScope;
+		return _affectScopeHandler;
 	}
 	
 	/**
 	 * @return the affect object of the skill : All, Clan, Friend, NotFriend, Invisible...
 	 */
-	public AffectObject getAffectObject()
+	public IAffectObjectHandler getAffectObjectHandler()
 	{
-		return _affectObject;
+		return _affectObjectHandler;
 	}
 	
 	/**
@@ -930,7 +977,7 @@ public final class Skill implements IIdentifiable
 	
 	public boolean isHidingMesseges()
 	{
-		return _operateType.isHidingMesseges();
+		return _operateType.isHidingMessages();
 	}
 	
 	public boolean isNotBroadcastable()
@@ -989,17 +1036,12 @@ public final class Skill implements IIdentifiable
 	
 	public boolean useSoulShot()
 	{
-		return hasEffectType(L2EffectType.PHYSICAL_ATTACK, L2EffectType.PHYSICAL_ATTACK_HP_LINK);
+		return _magic == 0;
 	}
 	
 	public boolean useSpiritShot()
 	{
 		return _magic == 1;
-	}
-	
-	public boolean useFishShot()
-	{
-		return hasEffectType(L2EffectType.FISHING);
 	}
 	
 	public int getMinPledgeClass()
@@ -1036,6 +1078,11 @@ public final class Skill implements IIdentifiable
 		return _soulMaxConsume;
 	}
 	
+	public int getChargeConsume()
+	{
+		return _chargeConsume;
+	}
+	
 	public boolean isStayAfterDeath()
 	{
 		return _stayAfterDeath || isIrreplacableBuff() || isNecessaryToggle();
@@ -1048,7 +1095,12 @@ public final class Skill implements IIdentifiable
 	
 	public boolean checkCondition(Creature activeChar, WorldObject object)
 	{
-		if (activeChar.canOverrideCond(PcCondOverride.SKILL_CONDITIONS) && !Config.GM_SKILL_RESTRICTION)
+		return checkCondition(activeChar, object, null);
+	}
+	
+	public boolean checkCondition(Creature activeChar, WorldObject object, ItemInstance item)
+	{
+		if (activeChar.canOverrideCond(PcCondOverride.SKILL_CONDITIONS) && !AdminConfig.GM_SKILL_RESTRICTION)
 		{
 			return true;
 		}
@@ -1061,7 +1113,58 @@ public final class Skill implements IIdentifiable
 			return false;
 		}
 		
-		return checkConditions(SkillConditionScope.GENERAL, activeChar, object) && checkConditions(SkillConditionScope.TARGET, activeChar, object);
+		if (isBad() && object.isNpc() && !object.canBeAttacked() && !activeChar.getActingPlayer().getAccessLevel().allowPeaceAttack())
+		{
+			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+			return false;
+		}
+		
+		// Check general conditions.
+		if (!checkConditions(SkillConditionScope.GENERAL, activeChar, object) || !checkConditions(SkillConditionScope.TARGET, activeChar, object))
+		{
+			final SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.S1_CANNOT_BE_USED_DUE_TO_UNSUITABLE_TERMS);
+			sm.addSkillName(_id);
+			activeChar.sendPacket(sm);
+			return false;
+		}
+		
+		// Consume the required items. Should happen after use message is displayed and SetupGauge
+		if ((getItemConsumeId() > 0) && (getItemConsumeCount() > 0))
+		{
+			// Check if item is consumed from its own action type.
+			if ((item != null) && ((item.getItem().getDefaultAction() == ActionType.CAPSULE) || (item.getItem().getDefaultAction() == ActionType.SKILL_REDUCE) || (item.getItem().getDefaultAction() == ActionType.SKILL_REDUCE_ON_SKILL_SUCCESS)))
+			{
+				// Consume item only if its action type is to be consumed on cast, otherwise check if its available to be consumed after cast is successful.
+				if ((item.getCount() < getItemConsumeCount()) || (((item.getItem().getDefaultAction() == ActionType.CAPSULE) || (item.getItem().getDefaultAction() == ActionType.SKILL_REDUCE)) && !activeChar.destroyItem(item.toString(), item.getObjectId(), getItemConsumeCount(), object, true)))
+				{
+					return false;
+				}
+			}
+		}
+		
+		// Consume the required fame
+		if ((getPvPPointConsume() > 0) && activeChar.isPlayer())
+		{
+			final PlayerInstance player = activeChar.getActingPlayer();
+			if (player.getFame() < getPvPPointConsume())
+			{
+				player.sendPacket(SystemMessageId.YOU_DON_T_HAVE_ENOUGH_FAME_TO_DO_THAT);
+				return false;
+			}
+		}
+		
+		// Consume clan reputation points
+		if ((getPledgeNvConsume() > 0) && (activeChar.getClan() != null))
+		{
+			final L2Clan clan = activeChar.getClan();
+			if (clan.getReputationScore() < getPledgeNvConsume())
+			{
+				activeChar.sendPacket(SystemMessageId.THE_CLAN_REPUTATION_IS_TOO_LOW);
+				return false;
+			}
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -1096,17 +1199,13 @@ public final class Skill implements IIdentifiable
 	 */
 	public WorldObject getTarget(Creature activeChar, WorldObject seletedTarget, boolean forceUse, boolean dontMove, boolean sendMessage)
 	{
-		final ITargetTypeHandler handler = TargetHandler.getInstance().getHandler(getTargetType());
-		if (handler != null)
+		try
 		{
-			try
-			{
-				return handler.getTarget(activeChar, seletedTarget, this, forceUse, dontMove, sendMessage);
-			}
-			catch (Exception e)
-			{
-				_log.warn("Exception in Skill.getTarget(): {}", e.getMessage(), e);
-			}
+			return _targetTypeHandler.getTarget(activeChar, seletedTarget, this, forceUse, dontMove, sendMessage);
+		}
+		catch (Exception e)
+		{
+			LOGGER.warn("Exception in Skill.getTarget(): {}", e.getMessage(), e);
 		}
 		activeChar.sendMessage("Target type of skill " + this + " is not currently handled.");
 		return null;
@@ -1123,20 +1222,20 @@ public final class Skill implements IIdentifiable
 		{
 			return null;
 		}
-		activeChar.sendDebugMessage("-> " + this + "\n      TT: " + getTargetType() + "\n      AS: " + getAffectScope() + "\n      AO: " + getAffectObject());
-		final IAffectScopeHandler handler = AffectScopeHandler.getInstance().getHandler(getAffectScope());
-		if (handler != null)
+		activeChar.sendDebugMessage("-> " + this + "\n      TT: " + getTargetTypeHandler() + "\n      AS: " + getAffectScopeHandler() + "\n      AO: " + getAffectObjectHandler(), DebugType.SKILLS);
+		try
 		{
-			try
+			final List<WorldObject> result = new LinkedList<>();
+			_affectScopeHandler.forEachAffected(activeChar, target, this, o -> result.add(o));
+			if (activeChar.isDebug())
 			{
-				final List<WorldObject> result = new LinkedList<>();
-				handler.forEachAffected(activeChar, target, this, o -> result.add(o));
-				return result;
+				_affectScopeHandler.drawEffected(activeChar, target, this);
 			}
-			catch (Exception e)
-			{
-				_log.warn("Exception in Skill.getTargetsAffected(): {}", e.getMessage(), e);
-			}
+			return result;
+		}
+		catch (Exception e)
+		{
+			LOGGER.warn("Exception in Skill.getTargetsAffected(): {}", e.getMessage(), e);
 		}
 		activeChar.sendMessage("Target affect scope of skill " + this + " is not currently handled.");
 		return null;
@@ -1154,21 +1253,17 @@ public final class Skill implements IIdentifiable
 			return;
 		}
 		
-		final IAffectScopeHandler handler = AffectScopeHandler.getInstance().getHandler(getAffectScope());
-		if (handler != null)
+		try
 		{
-			try
+			_affectScopeHandler.forEachAffected(activeChar, target, this, action);
+			if (activeChar.isDebug())
 			{
-				handler.forEachAffected(activeChar, target, this, action);
-			}
-			catch (Exception e)
-			{
-				_log.warn("Exception in Skill.forEachTargetAffected(): {}", e.getMessage(), e);
+				_affectScopeHandler.drawEffected(activeChar, target, this);
 			}
 		}
-		else
+		catch (Exception e)
 		{
-			activeChar.sendMessage("Target affect scope of skill " + this + " is not currently handled.");
+			LOGGER.warn("Exception in Skill.forEachTargetAffected(): {}", e.getMessage(), e);
 		}
 	}
 	
@@ -1189,7 +1284,7 @@ public final class Skill implements IIdentifiable
 	 */
 	public List<AbstractEffect> getEffects(EffectScope effectScope)
 	{
-		return _effectLists.get(effectScope);
+		return _effectLists.getOrDefault(effectScope, Collections.emptyList());
 	}
 	
 	/**
@@ -1199,59 +1294,57 @@ public final class Skill implements IIdentifiable
 	 */
 	public boolean hasEffects(EffectScope effectScope)
 	{
-		final List<AbstractEffect> effects = _effectLists.get(effectScope);
-		return (effects != null) && !effects.isEmpty();
+		return !getEffects(effectScope).isEmpty();
 	}
 	
 	/**
-	 * Applies the effects from this skill to the target for the given effect scope.
+	 * Applies the instant effects of this skill effect scope to the target from caster for the given effect scope.
 	 * @param effectScope the effect scope
-	 * @param info the buff info
-	 * @param applyInstantEffects if {@code true} instant effects will be applied to the effected
-	 * @param addContinuousEffects if {@code true} continuous effects will be applied to the effected
+	 * @param caster the caster
+	 * @param target the target
+	 * @param skill the skill
+	 * @param item the item
 	 */
-	public void applyEffectScope(EffectScope effectScope, BuffInfo info, boolean applyInstantEffects, boolean addContinuousEffects)
+	public void applyInstantEffects(EffectScope effectScope, Creature caster, WorldObject target, Skill skill, ItemInstance item)
 	{
-		if ((effectScope != null) && hasEffects(effectScope))
+		for (AbstractEffect effect : getEffects(effectScope))
 		{
-			for (AbstractEffect effect : getEffects(effectScope))
+			if (effect.calcSuccess(caster, target, skill))
 			{
-				if (effect.isInstant())
-				{
-					if (applyInstantEffects && effect.calcSuccess(info.getEffector(), info.getEffected(), info.getSkill()))
-					{
-						effect.instant(info.getEffector(), info.getEffected(), info.getSkill(), info.getItem());
-					}
-				}
-				else if (addContinuousEffects)
-				{
-					if (applyInstantEffects)
-					{
-						effect.continuousInstant(info.getEffector(), info.getEffected(), info.getSkill(), info.getItem());
-					}
-					
-					if (effect.canStart(info))
-					{
-						info.addEffect(effect);
-					}
-				}
+				effect.instant(caster, target, skill, item);
 			}
 		}
 	}
 	
 	/**
-	 * Method overload for {@link Skill#applyEffects(Creature, Creature, boolean, boolean, boolean, int, ItemInstance)}.<br>
+	 * Applies the continuous effects of this skill to the buff info for the given effect scope.
+	 * @param effectScope the effect scope
+	 * @param info the buff info
+	 */
+	public void applyContinuousEffects(EffectScope effectScope, BuffInfo info)
+	{
+		for (AbstractEffect effect : getEffects(effectScope))
+		{
+			if (effect.checkPumpCondition(info.getEffector(), info.getEffected(), info.getSkill()))
+			{
+				info.addEffect(effect);
+			}
+		}
+	}
+	
+	/**
+	 * Method overload for {@link Skill#applyEffects(Creature, Creature, boolean, boolean, int, ItemInstance)}.<br>
 	 * Simplify the calls.
 	 * @param effector the caster of the skill
 	 * @param effected the target of the effect
 	 */
 	public void applyEffects(Creature effector, Creature effected)
 	{
-		applyEffects(effector, effected, false, false, true, 0, null);
+		applyEffects(effector, effected, false, true, 0, null);
 	}
 	
 	/**
-	 * Method overload for {@link Skill#applyEffects(Creature, Creature, boolean, boolean, boolean, int, ItemInstance)}.<br>
+	 * Method overload for {@link Skill#applyEffects(Creature, Creature, boolean, boolean, int, ItemInstance)}.<br>
 	 * Simplify the calls.
 	 * @param effector the caster of the skill
 	 * @param effected the target of the effect
@@ -1259,11 +1352,11 @@ public final class Skill implements IIdentifiable
 	 */
 	public void applyEffects(Creature effector, Creature effected, ItemInstance item)
 	{
-		applyEffects(effector, effected, false, false, true, 0, item);
+		applyEffects(effector, effected, false, true, 0, item);
 	}
 	
 	/**
-	 * Method overload for {@link Skill#applyEffects(Creature, Creature, boolean, boolean, boolean, int, ItemInstance)}.<br>
+	 * Method overload for {@link Skill#applyEffects(Creature, Creature, boolean, boolean, int, ItemInstance)}.<br>
 	 * Simplify the calls, allowing abnormal time time customization.
 	 * @param effector the caster of the skill
 	 * @param effected the target of the effect
@@ -1272,7 +1365,7 @@ public final class Skill implements IIdentifiable
 	 */
 	public void applyEffects(Creature effector, Creature effected, boolean instant, int abnormalTime)
 	{
-		applyEffects(effector, effected, false, false, instant, abnormalTime, null);
+		applyEffects(effector, effected, false, instant, abnormalTime, null);
 	}
 	
 	/**
@@ -1280,12 +1373,11 @@ public final class Skill implements IIdentifiable
 	 * @param effector the caster of the skill
 	 * @param effected the target of the effect
 	 * @param self if {@code true} self-effects will be casted on the caster
-	 * @param passive if {@code true} passive effects will be applied to the effector
 	 * @param instant if {@code true} instant effects will be applied to the effected
 	 * @param abnormalTime custom abnormal time, if equal or lesser than zero will be ignored
 	 * @param item
 	 */
-	public void applyEffects(Creature effector, Creature effected, boolean self, boolean passive, boolean instant, int abnormalTime, ItemInstance item)
+	public void applyEffects(Creature effector, Creature effected, boolean self, boolean instant, int abnormalTime, ItemInstance item)
 	{
 		// null targets cannot receive any effects.
 		if (effected == null)
@@ -1295,37 +1387,48 @@ public final class Skill implements IIdentifiable
 		
 		if (effected.isIgnoringSkillEffects(getId(), getLevel()))
 		{
-			effected.sendDebugMessage("Skill " + toString() + " has been ignored (ignoring skill effects)");
+			effected.sendDebugMessage("Skill " + toString() + " has been ignored (ignoring skill effects)", DebugType.SKILLS);
 			return;
 		}
 		
-		boolean addContinuousEffects = !passive && (_operateType.isToggle() || (_operateType.isContinuous() && Formulas.calcEffectSuccess(effector, effected, this)));
-		if (!self && !passive)
+		boolean addContinuousEffects = _operateType.isToggle() || (_operateType.isContinuous() && Formulas.calcEffectSuccess(effector, effected, this));
+		if (!self)
 		{
-			final BuffInfo info = new BuffInfo(effector, effected, this, !instant, item, null);
-			if (addContinuousEffects && (abnormalTime > 0))
-			{
-				info.setAbnormalTime(abnormalTime);
-			}
-			
-			applyEffectScope(EffectScope.GENERAL, info, instant, addContinuousEffects);
-			
-			EffectScope pvpOrPveEffectScope = effector.isPlayable() && effected.isAttackable() ? EffectScope.PVE : effector.isPlayable() && effected.isPlayable() ? EffectScope.PVP : null;
-			applyEffectScope(pvpOrPveEffectScope, info, instant, addContinuousEffects);
-			
-			applyEffectScope(EffectScope.CHANNELING, info, instant, addContinuousEffects);
-			
 			if (addContinuousEffects)
 			{
-				effected.getEffectList().add(info);
+				final BuffInfo info = new BuffInfo(effector, effected, this, !instant, item, null);
+				if (abnormalTime > 0)
+				{
+					info.setAbnormalTime(abnormalTime);
+				}
+				
+				applyContinuousEffects(EffectScope.GENERAL, info);
+				applyContinuousEffects((effector.isPlayable() && effected.isPlayable()) ? EffectScope.PVP : EffectScope.PVE, info);
+				
+				// Aura skills reset the abnormal time.
+				final BuffInfo existingInfo = _operateType.isAura() ? effected.getEffectList().getBuffInfoBySkillId(getId()) : null;
+				if (existingInfo != null)
+				{
+					existingInfo.resetAbnormalTime(info.getAbnormalTime());
+				}
+				else
+				{
+					effected.getEffectList().add(info);
+				}
 				
 				// Check for mesmerizing debuffs and increase resist level.
 				if (isDebuff() && (getBasicProperty() != BasicProperty.NONE) && effected.hasBasicPropertyResist())
 				{
 					final BasicPropertyResist resist = effected.getBasicPropertyResist(getBasicProperty());
 					resist.increaseResistLevel();
-					effected.sendDebugMessage(toString() + " has increased your " + getBasicProperty() + " debuff resistance to " + resist.getResistLevel() + " level for " + resist.getRemainTime().toMillis() + " milliseconds.");
+					effected.sendDebugMessage(toString() + " has increased your " + getBasicProperty() + " debuff resistance to " + resist.getResistLevel() + " level for " + resist.getRemainTime().toMillis() + " milliseconds.", DebugType.SKILLS);
 				}
+			}
+			
+			if (instant)
+			{
+				applyInstantEffects(EffectScope.GENERAL, effector, effected, this, item);
+				applyInstantEffects((effector.isPlayable() && effected.isPlayable()) ? EffectScope.PVP : EffectScope.PVE, effector, effected, this, item);
 			}
 			
 			// Support for buff sharing feature including healing herbs.
@@ -1337,38 +1440,65 @@ public final class Skill implements IIdentifiable
 				}
 			}
 		}
-		
-		if (self)
+		else
 		{
-			addContinuousEffects = !passive && (_operateType.isToggle() || (_operateType.isSelfContinuous() && Formulas.calcEffectSuccess(effector, effector, this)));
-			
-			final BuffInfo info = new BuffInfo(effector, effector, this, !instant, item, null);
-			if (addContinuousEffects && (abnormalTime > 0))
-			{
-				info.setAbnormalTime(abnormalTime);
-			}
-			
-			applyEffectScope(EffectScope.SELF, info, instant, addContinuousEffects);
+			addContinuousEffects = _operateType.isToggle() || (_operateType.isSelfContinuous() && Formulas.calcEffectSuccess(effector, effector, this));
 			
 			if (addContinuousEffects)
 			{
-				info.getEffector().getEffectList().add(info);
+				final BuffInfo info = new BuffInfo(effector, effector, this, !instant, item, null);
+				if (abnormalTime > 0)
+				{
+					info.setAbnormalTime(abnormalTime);
+				}
+				
+				applyContinuousEffects(EffectScope.SELF, info);
+				// Aura skills reset the abnormal time.
+				final BuffInfo existingInfo = _operateType.isAura() ? effector.getEffectList().getBuffInfoBySkillId(getId()) : null;
+				if (existingInfo != null)
+				{
+					existingInfo.resetAbnormalTime(info.getAbnormalTime());
+				}
+				else
+				{
+					info.getEffector().getEffectList().add(info);
+				}
+			}
+			
+			if (instant)
+			{
+				applyInstantEffects(EffectScope.SELF, effector, effector, this, item);
 			}
 			
 			// Support for buff sharing feature.
 			// Avoiding Servitor Share since it's implementation already "shares" the effect.
-			if (addContinuousEffects && isSharedWithSummon() && info.getEffected().isPlayer() && isContinuous() && !isDebuff() && info.getEffected().hasServitors())
+			if (addContinuousEffects && isSharedWithSummon() && effector.isPlayer() && isContinuous() && !isDebuff() && effector.hasServitors())
 			{
-				info.getEffected().getServitors().values().forEach(s -> applyEffects(effector, s, false, 0));
+				effector.getServitors().values().forEach(s -> applyEffects(effector, s, false, 0));
 			}
 		}
-		
-		if (passive)
+	}
+	
+	/**
+	 * Applies the channeling effects from this skill to the target.
+	 * @param effector the caster of the skill
+	 * @param effected the target of the effect
+	 */
+	public void applyChannelingEffects(Creature effector, Creature effected)
+	{
+		// null targets cannot receive any effects.
+		if (effected == null)
 		{
-			final BuffInfo info = new BuffInfo(effector, effector, this, true, item, null);
-			applyEffectScope(EffectScope.GENERAL, info, false, true);
-			effector.getEffectList().add(info);
+			return;
 		}
+		
+		if (effected.isIgnoringSkillEffects(getId(), getLevel()))
+		{
+			effected.sendDebugMessage("Skill " + toString() + " has been ignored (ignoring skill effects)", DebugType.SKILLS);
+			return;
+		}
+		
+		applyInstantEffects(EffectScope.CHANNELING, effector, effected, this, null);
 	}
 	
 	/**
@@ -1462,13 +1592,8 @@ public final class Skill implements IIdentifiable
 						// and continuous effects on caster
 						applyEffects(target, caster, false, 0);
 						
-						final BuffInfo info = new BuffInfo(caster, target, this, false, item, null);
-						applyEffectScope(EffectScope.GENERAL, info, true, false);
-						
-						EffectScope pvpOrPveEffectScope = caster.isPlayable() && target.isAttackable() ? EffectScope.PVE : caster.isPlayable() && target.isPlayable() ? EffectScope.PVP : null;
-						applyEffectScope(pvpOrPveEffectScope, info, true, false);
-						
-						applyEffectScope(EffectScope.CHANNELING, info, true, false);
+						applyInstantEffects(EffectScope.GENERAL, caster, target, this, item);
+						applyInstantEffects((caster.isPlayable() && target.isPlayable()) ? EffectScope.PVP : EffectScope.PVE, caster, target, this, item);
 					}
 					else
 					{
@@ -1482,22 +1607,18 @@ public final class Skill implements IIdentifiable
 		// Self Effect
 		if (hasEffects(EffectScope.SELF))
 		{
-			if (caster.isAffectedBySkill(getId()))
-			{
-				caster.stopSkillEffects(true, getId());
-			}
-			applyEffects(caster, caster, true, false, true, 0, item);
+			applyEffects(caster, caster, true, true, 0, item);
 		}
 		
 		if (cubic == null)
 		{
 			if (useSpiritShot())
 			{
-				caster.setChargedShot(caster.isChargedShot(ShotType.BLESSED_SPIRITSHOTS) ? ShotType.BLESSED_SPIRITSHOTS : ShotType.SPIRITSHOTS, false);
+				caster.unchargeShot(caster.isChargedShot(ShotType.BLESSED_SPIRITSHOTS) ? ShotType.BLESSED_SPIRITSHOTS : ShotType.SPIRITSHOTS);
 			}
 			else if (useSoulShot())
 			{
-				caster.setChargedShot(ShotType.SOULSHOTS, false);
+				caster.unchargeShot(ShotType.SOULSHOTS);
 			}
 		}
 		
@@ -1555,7 +1676,7 @@ public final class Skill implements IIdentifiable
 	 */
 	public boolean canBeStolen()
 	{
-		return !isPassive() && !isToggle() && !isDebuff() && !isHeroSkill() && !isGMSkill() && !(isStatic() && (getId() != CommonSkill.CARAVANS_SECRET_MEDICINE.getId())) && canBeDispelled() && (getId() != CommonSkill.SERVITOR_SHARE.getId());
+		return !isPassive() && !isToggle() && !isDebuff() && !isIrreplacableBuff() && !isHeroSkill() && !isGMSkill() && !(isStatic() && (getId() != CommonSkill.CARAVANS_SECRET_MEDICINE.getId())) && canBeDispelled();
 	}
 	
 	public boolean isClanSkill()
@@ -1592,7 +1713,7 @@ public final class Skill implements IIdentifiable
 				}
 				else
 				{
-					_log.warn("Invalid AbnormalVisualEffect({}) found for Skill({})", aveString, this);
+					LOGGER.warn("Invalid AbnormalVisualEffect({}) found for Skill({})", aveString, this);
 				}
 			}
 			
@@ -1690,14 +1811,14 @@ public final class Skill implements IIdentifiable
 		return _icon;
 	}
 	
-	public int getChannelingTickInterval()
+	public long getChannelingTickInterval()
 	{
 		return _channelingTickInterval;
 	}
 	
-	public int getChannelingTickInitialDelay()
+	public long getChannelingTickInitialDelay()
 	{
-		return _channelingTickInitialDelay;
+		return _channelingStart;
 	}
 	
 	public Set<MountType> getRideState()
@@ -1717,7 +1838,7 @@ public final class Skill implements IIdentifiable
 	public Skill getAttachedSkill(Creature activeChar)
 	{
 		// If character is double casting, return double cast skill.
-		if ((getDoubleCastSkill() > 0) && activeChar.isAffected(EffectFlag.DOUBLE_CAST))
+		if ((getDoubleCastSkill() > 0) && activeChar.getStat().has(BooleanStat.DOUBLE_CAST))
 		{
 			return SkillData.getInstance().getSkill(getDoubleCastSkill(), getLevel(), getSubLevel());
 		}
@@ -1729,10 +1850,10 @@ public final class Skill implements IIdentifiable
 		}
 		
 		//@formatter:off
-		final int toggleSkillId = activeChar.getEffectList().getToggles().stream()
-		.filter(info -> info.getSkill().getToggleGroupId() == getAttachToggleGroupId())
-		.mapToInt(info -> info.getSkill().getId())
-		.findAny().orElse(0);
+		final int toggleSkillId = activeChar.getEffectList().getEffects().stream()
+			.filter(info -> info.getSkill().getToggleGroupId() == getAttachToggleGroupId())
+			.mapToInt(info -> info.getSkill().getId())
+			.findAny().orElse(0);
 		//@formatter:on
 		
 		// No active toggles with this toggle group ID found.
@@ -1762,11 +1883,6 @@ public final class Skill implements IIdentifiable
 		return _doubleCastSkill;
 	}
 	
-	public boolean canCastWhileDisabled()
-	{
-		return _canCastWhileDisabled;
-	}
-	
 	public boolean isSharedWithSummon()
 	{
 		return _isSharedWithSummon;
@@ -1782,9 +1898,18 @@ public final class Skill implements IIdentifiable
 		return _deleteAbnormalOnLeave;
 	}
 	
+	/**
+	 * @return {@code true} if the buff cannot be replaced, canceled, removed on death, etc.<br>
+	 *         It can be only overriden by higher stack, but buff still remains ticking and activates once the higher stack buff has passed away.
+	 */
 	public boolean isIrreplacableBuff()
 	{
 		return _irreplacableBuff;
+	}
+	
+	public boolean isDisplayInList()
+	{
+		return _displayInList;
 	}
 	
 	/**
@@ -1823,6 +1948,11 @@ public final class Skill implements IIdentifiable
 	public double getMagicCriticalRate()
 	{
 		return _magicCriticalRate;
+	}
+	
+	public SkillBuffType getBuffType()
+	{
+		return isTriggeredSkill() ? SkillBuffType.TRIGGER : isToggle() ? SkillBuffType.TOGGLE : isDance() ? SkillBuffType.DANCE : isDebuff() ? SkillBuffType.DEBUFF : !isHealingPotionSkill() ? SkillBuffType.BUFF : SkillBuffType.NONE;
 	}
 	
 	public boolean isEnchantable()

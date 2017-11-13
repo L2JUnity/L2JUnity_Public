@@ -25,7 +25,6 @@ import org.l2junity.gameserver.network.client.send.ExRotation;
 import org.l2junity.gameserver.network.client.send.SocialAction;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
-import org.l2junity.gameserver.util.Util;
 import org.l2junity.network.PacketReader;
 
 /**
@@ -65,19 +64,17 @@ public class AnswerCoupleAction implements IClientIncomingPacket
 		}
 		else if (_answer == 1) // approve
 		{
-			final int distance = (int) activeChar.calculateDistance(target, false, false);
+			final int distance = (int) activeChar.distance3d(target);
 			if ((distance > 125) || (distance < 15) || (activeChar.getObjectId() == target.getObjectId()))
 			{
 				client.sendPacket(SystemMessageId.THE_REQUEST_CANNOT_BE_COMPLETED_BECAUSE_THE_TARGET_DOES_NOT_MEET_LOCATION_REQUIREMENTS);
 				target.sendPacket(SystemMessageId.THE_REQUEST_CANNOT_BE_COMPLETED_BECAUSE_THE_TARGET_DOES_NOT_MEET_LOCATION_REQUIREMENTS);
 				return;
 			}
-			int heading = Util.calculateHeadingFrom(activeChar, target);
-			activeChar.broadcastPacket(new ExRotation(activeChar.getObjectId(), heading));
-			activeChar.setHeading(heading);
-			heading = Util.calculateHeadingFrom(target, activeChar);
-			target.setHeading(heading);
-			target.broadcastPacket(new ExRotation(target.getObjectId(), heading));
+			activeChar.setHeadingTo(target);
+			activeChar.broadcastPacket(new ExRotation(activeChar.getObjectId(), activeChar.getHeading()));
+			target.setHeadingTo(activeChar);
+			target.broadcastPacket(new ExRotation(target.getObjectId(), target.getHeading()));
 			activeChar.broadcastPacket(new SocialAction(activeChar.getObjectId(), _actionId));
 			target.broadcastPacket(new SocialAction(_charObjId, _actionId));
 		}

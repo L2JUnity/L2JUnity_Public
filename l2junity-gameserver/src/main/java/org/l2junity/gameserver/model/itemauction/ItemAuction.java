@@ -24,13 +24,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
-import org.l2junity.gameserver.instancemanager.ItemAuctionManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.enums.ItemLocation;
 import org.l2junity.gameserver.model.ItemInfo;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
@@ -43,7 +45,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class ItemAuction
 {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ItemAuctionManager.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ItemAuction.class);
 	private static final long ENDING_TIME_EXTEND_5 = TimeUnit.MILLISECONDS.convert(5, TimeUnit.MINUTES);
 	private static final long ENDING_TIME_EXTEND_3 = TimeUnit.MILLISECONDS.convert(3, TimeUnit.MINUTES);
 	
@@ -87,6 +89,7 @@ public final class ItemAuction
 		_auctionEndingExtendState = ItemAuctionExtendState.INITIAL;
 		
 		final ItemInstance item = _auctionItem.createNewItemInstance();
+		item.setItemLocation(ItemLocation.LEASE);
 		_itemInfo = new ItemInfo(item);
 		World.getInstance().removeObject(item);
 		
@@ -258,9 +261,9 @@ public final class ItemAuction
 			return;
 		}
 		
-		if (newBid > 100000000000L)
+		if (!ItemContainer.validateCount(Inventory.ADENA_ID, newBid))
 		{
-			player.sendPacket(SystemMessageId.BIDDING_IS_NOT_ALLOWED_BECAUSE_THE_MAXIMUM_BIDDING_PRICE_EXCEEDS_100_BILLION);
+			player.sendPacket(SystemMessageId.THE_HIGHEST_BID_IS_OVER_999_9_BILLION_THEREFORE_YOU_CANNOT_PLACE_A_BID);
 			return;
 		}
 		
@@ -336,7 +339,9 @@ public final class ItemAuction
 			final PlayerInstance old = _highestBid.getPlayer();
 			if (old != null)
 			{
-				old.sendPacket(SystemMessageId.YOU_HAVE_BEEN_OUTBID);
+				final SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.YOU_WERE_OUTBID_THE_NEW_HIGHEST_BID_IS_S1_ADENA);
+				msg.addLong(bid.getLastBid());
+				old.sendPacket(msg);
 			}
 			
 			_highestBid = bid;
@@ -364,12 +369,12 @@ public final class ItemAuction
 					break;
 				}
 				case EXTEND_BY_3_MIN:
-					if (Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID > 0)
+					if (GeneralConfig.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID > 0)
 					{
 						if (getAndSetLastBidPlayerObjectId(player.getObjectId()) != player.getObjectId())
 						{
 							_auctionEndingExtendState = ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_A;
-							_endingTime += Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
+							_endingTime += GeneralConfig.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
 						}
 					}
 					break;
@@ -380,7 +385,7 @@ public final class ItemAuction
 						if (_scheduledAuctionEndingExtendState == ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_B)
 						{
 							_auctionEndingExtendState = ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_B;
-							_endingTime += Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
+							_endingTime += GeneralConfig.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
 						}
 					}
 					break;
@@ -391,7 +396,7 @@ public final class ItemAuction
 					{
 						if (_scheduledAuctionEndingExtendState == ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_A)
 						{
-							_endingTime += Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
+							_endingTime += GeneralConfig.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
 							_auctionEndingExtendState = ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_A;
 						}
 					}
@@ -402,7 +407,7 @@ public final class ItemAuction
 	
 	public final void broadcastToAllBidders(final IClientOutgoingPacket packet)
 	{
-		ThreadPoolManager.getInstance().executeGeneral(() -> broadcastToAllBiddersInternal(packet));
+		ThreadPool.execute(() -> broadcastToAllBiddersInternal(packet));
 	}
 	
 	public final void broadcastToAllBiddersInternal(final IClientOutgoingPacket packet)
@@ -432,9 +437,9 @@ public final class ItemAuction
 		{
 			case CREATED:
 				return false;
-				
+			
 			case FINISHED:
-				if (_startingTime < (System.currentTimeMillis() - TimeUnit.MILLISECONDS.convert(Config.ALT_ITEM_AUCTION_EXPIRED_AFTER, TimeUnit.DAYS)))
+				if (_startingTime < (System.currentTimeMillis() - TimeUnit.MILLISECONDS.convert(GeneralConfig.ALT_ITEM_AUCTION_EXPIRED_AFTER, TimeUnit.DAYS)))
 				{
 					return false;
 				}

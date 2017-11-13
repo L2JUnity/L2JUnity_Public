@@ -40,9 +40,9 @@ public class VehicleCheckLocation implements IClientOutgoingPacket
 		OutgoingPackets.VEHICLE_CHECK_LOCATION.writeId(packet);
 		
 		packet.writeD(_boat.getObjectId());
-		packet.writeD(_boat.getX());
-		packet.writeD(_boat.getY());
-		packet.writeD(_boat.getZ());
+		packet.writeD((int) _boat.getX());
+		packet.writeD((int) _boat.getY());
+		packet.writeD((int) _boat.getZ());
 		packet.writeD(_boat.getHeading());
 		return true;
 	}

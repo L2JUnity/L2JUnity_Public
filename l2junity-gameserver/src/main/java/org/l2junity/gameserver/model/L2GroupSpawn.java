@@ -28,6 +28,7 @@ import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
  */
 public class L2GroupSpawn extends L2Spawn
 {
+	private static final long serialVersionUID = 4168058788708225067L;
 	private final L2NpcTemplate _template;
 	
 	public L2GroupSpawn(L2NpcTemplate mobTemplate) throws SecurityException, ClassNotFoundException, NoSuchMethodException
@@ -47,9 +48,9 @@ public class L2GroupSpawn extends L2Spawn
 				return null;
 			}
 			
-			int newlocx = 0;
-			int newlocy = 0;
-			int newlocz = 0;
+			double newlocx = 0;
+			double newlocy = 0;
+			double newlocz = 0;
 			
 			if ((getX() == 0) && (getY() == 0))
 			{

@@ -49,9 +49,9 @@ public class ExStopMoveInAirShip implements IClientOutgoingPacket
 		
 		packet.writeD(_activeChar.getObjectId());
 		packet.writeD(_shipObjId);
-		packet.writeD(_loc.getX());
-		packet.writeD(_loc.getY());
-		packet.writeD(_loc.getZ());
+		packet.writeD((int) _loc.getX());
+		packet.writeD((int) _loc.getY());
+		packet.writeD((int) _loc.getZ());
 		packet.writeD(_h);
 		return true;
 	}

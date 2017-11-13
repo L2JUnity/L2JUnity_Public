@@ -30,6 +30,7 @@ public class OneDayRewardPlayerEntry
 	private OneDayRewardStatus _status = OneDayRewardStatus.NOT_AVAILABLE;
 	private int _progress;
 	private long _lastCompleted;
+	private boolean _recentlyCompleted; // Has been completed this login session.
 	
 	public OneDayRewardPlayerEntry(int objectId, int rewardId)
 	{
@@ -63,6 +64,16 @@ public class OneDayRewardPlayerEntry
 	public void setStatus(OneDayRewardStatus status)
 	{
 		_status = status;
+	}
+	
+	public boolean getRecentlyCompleted()
+	{
+		return _recentlyCompleted;
+	}
+	
+	public void setRecentlyCompleted(boolean recentlyCompleted)
+	{
+		_recentlyCompleted = recentlyCompleted;
 	}
 	
 	public int getProgress()

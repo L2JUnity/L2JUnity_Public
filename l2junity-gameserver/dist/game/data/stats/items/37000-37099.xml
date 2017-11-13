@@ -13,6 +13,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
 		<set name="icon" val="icon.special_cube_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37001" name="9th Anniversary Cube (10-day) (Event)" type="EtcItem">
 		<!-- Lineage II's 9th Anniversary Cube. Double-click to obtain one of the following: Kaliel's Energy (Annihilation/Hellfire/Desire), Honey Wheat Cake, Honey Rice Cake, and Blessed Scroll of Resurrection. Can be used once a day. -->
@@ -27,6 +28,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
 		<set name="icon" val="icon.special_cube_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37002" name="9th Anniversary Cube (5-day) (Event)" type="EtcItem">
 		<!-- Lineage II's 9th Anniversary Cube. Double-click to obtain one of the following: Kaliel's Energy (Annihilation/Hellfire/Desire), Honey Wheat Cake, Honey Rice Cake, and Blessed Scroll of Resurrection. Can be used once a day. -->
@@ -41,6 +43,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
 		<set name="icon" val="icon.special_cube_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37003" name="Letter Collector's Pouch: TOGETHER" type="EtcItem">
 		<!-- Magic pouch that contains the letters of TOGETHE. Double-click to get one of the following letters: T, O, G, E, T, H and E. The letter R can be obtained from the RIIS pouch at a certain probability. -->
@@ -49,6 +52,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37004" name="Letter Collector's Pouch: LINEAGE II" type="EtcItem">
 		<!-- Magic pouch that contains the letters of LINEAGE. Double-click to get one of the following letters: L, I, N, E, A, G and E. The letter II can be obtained from the RIIS pouch at a certain probability. -->
@@ -57,6 +61,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37005" name="Letter Collector's Pouch: NCSOFT" type="EtcItem">
 		<!-- Magic pouch that contains the letters of NCOFT. Double-click to get one of the following letters: N, C, O, F and T. The letter S can be obtained from the RIIS pouch at a certain probability. -->
@@ -65,6 +70,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37006" name="Letter Collector's Pouch: RIIS" type="EtcItem">
 		<!-- Magic pouch that contains the letters of RIIS. Double-click to get one of the following letters: R, II and S. -->
@@ -73,6 +79,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37007" name="Letter Collector's Lucky Pouch" type="EtcItem">
 		<!-- Chance to test your luck! You can get Letter Collector's Pouch: RIIS at a certain probability. If you fail, you won't get anything. -->
@@ -81,12 +88,14 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37008" name="Strawberry Cake (HP)" type="EtcItem">
 		<!-- Restores HP by 50%. Cooldown is 2 min. -->
 		<set name="icon" val="BranchSys.icon.br_valentine_cake_3_i00" />
 		<set name="weight" val="2" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -99,6 +108,7 @@
 		<!-- Restores MP by 20%. Cooldown is 2 min. -->
 		<set name="icon" val="BranchSys.icon.br_valentine_cake_2_i00" />
 		<set name="weight" val="2" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -112,6 +122,7 @@
 		<set name="icon" val="BranchSys.icon.br_valentine_cake_1_i00" />
 		<set name="weight" val="2" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -128,6 +139,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37012" name="9th Anniversary Buff Scroll (M. Atk.)" type="EtcItem">
 		<!-- For 30 minutes, provides the effects of Horn Melody, Guitar Melody, Pipe Organ Melody, Lute Melody, Harp Melody, Drum Melody, and Wizard's Harmony Lv. 1. -->
@@ -137,6 +149,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37013" name="9th Anniversary Buff Scroll (P. Def.)" type="EtcItem">
 		<!-- For 30 minutes, provides the effects of Horn Melody, Guitar Melody, Pipe Organ Melody, Lute Melody, Harp Melody, Drum Melody, and Knight's Harmony Lv. 1. -->
@@ -146,6 +159,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37014" name="Arcana Reaper" type="Weapon">
 		<set name="icon" val="icon.weapon_monster_i00" />
@@ -213,6 +227,7 @@
 	<item id="37017" name="Scroll of Escape: Raider's Crossroads" type="EtcItem">
 		<!-- Scroll for teleporting to Raider's Crossroads. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="weight" val="30" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -223,6 +238,7 @@
 	<item id="37018" name="Scroll of Escape: Land of Chaos" type="EtcItem">
 		<!-- Scroll for teleporting to the Land of Chaos. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="weight" val="30" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -233,6 +249,7 @@
 	<item id="37019" name="Scroll of Escape: Gainak" type="EtcItem">
 		<!-- Scroll for teleporting to Gainak. -->
 		<set name="icon" val="icon.etc_scroll_of_return_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="weight" val="30" />
 		<set name="is_freightable" val="false" />
 		<set name="is_stackable" val="true" />
@@ -254,6 +271,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37021" name="Elmore's Mysterious Box" type="EtcItem">
 		<!-- Mysterious box from Elmore. Double-click to receive an item at a certain probability. -->
@@ -269,6 +287,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37022" name="Elmore's Noble Box" type="EtcItem">
 		<!-- Noble box from Elmore. Double-click to receive an item at a certain probability. -->
@@ -284,6 +303,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37023" name="Eternal Ingredient Pouch" type="EtcItem">
 		<!-- Eternal Ingredient Pouch. Double-click to receive an Eternal ingredient at a certain probability. -->
@@ -299,6 +319,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37024" name="Eternal Recipe Pouch" type="EtcItem">
 		<!-- Eternal Recipe Pouch. Double-click to receive an Eternal recipe at a certain probability. -->
@@ -314,6 +335,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="CAPSULE" />
 	</item>
 	<item id="37025" name="Scroll of Escape: Alligator Island" type="EtcItem">
 		<!-- Teleports you to Alligator Island. -->
@@ -322,6 +344,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -340,6 +363,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -358,6 +382,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -376,6 +401,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -486,6 +512,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -525,6 +552,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -543,6 +571,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -561,6 +590,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -579,6 +609,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -597,6 +628,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -615,6 +647,7 @@
 		<set name="is_clan_depositable" val="false" />
 		<set name="is_mailable" val="false" />
 		<set name="is_freightable" val="false" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -629,12 +662,17 @@
 	<item id="37041" name="Divine Protection Elixir" type="EtcItem">
 		<!-- Double-click to increase Max HP/MP/CP, Defense and M. Def. by 30% for 30 min. If you receive the 'Cannibalistic Stakato Captain' from Improved Rose Spirit while this is in effect, the effect will disappear. Can be used by characters of level 85 or higher. Cannot be used in the Olympiad. Can be used in the Ceremony of Chaos. Cooldown is 5 min. -->
 		<set name="icon" val="icon.etc_evil_soul_core_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
+		<set name="immediate_effect" val="true" />
+		<set name="reuse_delay" val="300000" />
 		<set name="weight" val="1" />
 		<set name="is_stackable" val="true" />
 		<set name="is_freightable" val="false" />
+		<set name="is_oly_restricted" val="true" />
 		<set name="crystal_type" val="R" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="commissionItemType" val="POTION" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9982" level="1" /> <!-- Elixir: Divine Protection -->
 		</skills>
@@ -650,6 +688,7 @@
 		<set name="commissionItemType" val="RECIPE" />
 		<set name="recipe_id" val="4152" /> <!-- rp_power_of_chaos -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37043" name="Recipe: Divine Protection Elixir" type="EtcItem">
 		<!-- For those who have completed the fourth class transfer only. Recipe for making Divine Protection Elixir. Requires Create Common Item (Lv. 10). Success rate is 100%. -->
@@ -661,6 +700,7 @@
 		<set name="is_stackable" val="true" />
 		<set name="recipe_id" val="4153" /> <!-- rp_power_of_chaos_common -->
 		<set name="handler" val="Recipes" />
+		<set name="default_action" val="RECIPE" />
 	</item>
 	<item id="37044" name="Immortal Scroll" type="EtcItem">
 		<!-- Enchants a skill to the next grade with the success rate of 100% without consuming extra materials. -->
@@ -703,6 +743,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="ELIXIR" />
 		<set name="icon" val="icon.special_cube_i00" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37047" name="Theor's Sword" type="Weapon">
 		<!-- Monster Weapon. One-handed sword style. Initial Monster Weapon Appearance Stone. -->
@@ -1202,6 +1243,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37068" name="Monster Weapon Appearance Stone: Sword of Corruption" type="EtcItem">
 		<!-- Changes the appearance of a one-handed sword to that of a Sword of Corruption. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1213,6 +1255,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37069" name="Monster Weapon Appearance Stone: Octavis' Sword" type="EtcItem">
 		<!-- Changes the appearance of a one-handed sword to that of Octavis's Sword. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1224,6 +1267,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37070" name="Monster Weapon Appearance Stone: Tegaffe's Dualsword" type="EtcItem">
 		<!-- Changes the appearance of a dualsword to that of Tegaffe's Dualsword. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1235,6 +1279,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37071" name="Monster Weapon Appearance Stone: Seknus' One-handed Magic Sword" type="EtcItem">
 		<!-- Changes the appearance of a one-handed magic sword to that of Seknus's Sword. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1246,6 +1291,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37072" name="Monster Weapon Appearance Stone: Tebot's Axe" type="EtcItem">
 		<!-- Changes the appearance of a one-handed blunt to that of Tebot's Axe. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1257,6 +1303,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37073" name="Monster Weapon Appearance Stone: Glakias' Hammer" type="EtcItem">
 		<!-- Changes the appearance of a one-handed blunt to that of Glakias' Hammer. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1268,6 +1315,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37074" name="Monster Weapon Appearance Stone: Tebot's Dual Blunt Weapon" type="EtcItem">
 		<!-- Changes the appearance of a dual blunt to that of Tebot's Dual Blunt. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1279,6 +1327,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37075" name="Monster Weapon Appearance Stone: Drakos' Dagger" type="EtcItem">
 		<!-- Changes the appearance of a dagger to that of Drakos' Dagger. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1290,6 +1339,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37076" name="Monster Weapon Appearance Stone: Drakos' Dual Dagger" type="EtcItem">
 		<!-- Changes the appearance of a dual dagger to that of Drakos' Dual Dagger. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1301,6 +1351,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37077" name="Monster Weapon Appearance Stone: Guillotine's Greatsword" type="EtcItem">
 		<!-- Changes the appearance of a two-handed sword to that of Guillotine's Greatsword. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1312,6 +1363,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37078" name="Monster Weapon Appearance Stone: Thesakar's Spear" type="EtcItem">
 		<!-- Changes the appearance of a spear to that of Thesakar's Spear. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1323,6 +1375,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37079" name="Monster Weapon Appearance Stone: Mimilead's Staff" type="EtcItem">
 		<!-- Changes the appearance of a two-handed blunt to that of Mimilead's Staff. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1334,6 +1387,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37080" name="Monster Weapon Appearance Stone: Satyr's Staff" type="EtcItem">
 		<!-- Changes the appearance of a two-handed blunt to that of Satyr's Staff. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1345,6 +1399,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37081" name="Monster Weapon Appearance Stone: Kanadis' Hand" type="EtcItem">
 		<!-- Changes the appearance of a fist weapon to that of Kanadis' Hand. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1356,6 +1411,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37082" name="Monster Weapon Appearance Stone: Kanadis' Bow" type="EtcItem">
 		<!-- Changes the appearance of a bow to that of Kanadis' Bow. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1367,6 +1423,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37083" name="Monster Weapon Appearance Stone: Centaur's Bow" type="EtcItem">
 		<!-- Changes the appearance of a bow to that of Centaur's Bow. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1378,6 +1435,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37084" name="Monster Weapon Appearance Stone: Spicula's Crossbow" type="EtcItem">
 		<!-- Changes the appearance of a crossbow to that of Spicula's Crossbow. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1389,6 +1447,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_WP_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37085" name="Monster Weapon Appearance Stone: Theor's Shield" type="EtcItem">
 		<!-- Changes the appearance of a shield to that of Theor's Shield. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1400,6 +1459,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37086" name="Monster Weapon Appearance Stone: Shield of Corruption" type="EtcItem">
 		<!-- Changes the appearance of a shield to that of a Shield of Corruption. An appearance-modified item has no change in abilities. Double click to use. -->
@@ -1411,6 +1471,7 @@
 		<set name="is_sellable" val="false" />
 		<set name="etcitem_type" val="SHAPE_SHIFTING_AM_FIXED" />
 		<set name="commissionItemType" val="SCROLL_OTHER" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37087" name="Dimensional Energy - Stage 1" type="EtcItem">
 		<!-- Energy with the power of dimension. Required to receive a reward or increase the stage level through Mermoden. If you use it to increase the stage level, you can later receive more rewards. To increase the level to Stage 2, you have to succeed in defense in the next cycle. 15-day. -->
@@ -1477,6 +1538,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="37092" name="Dimensional Cloak of Light" type="Armor">
 		<!-- Cloak that symbolizes glory and light. With the power of dimension, characters of all levels can wear it. Defense + 50, M. Def. + 40 and STR/MEN/DEX/WIT/INT/CON + 2. Damage received during PvP decreases by 5%. Can use Escape:ﾠCastle skill. Part of its effect does not apply when you are chaotic. Cannot be used while in a chaotic state. Cannot be transferred between servers. -->
@@ -1533,6 +1595,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37095" name="Dimensional Treasure Chest (Mid-grade)" type="EtcItem">
 		<!-- Treasure Chest obtained in dimensional space. -->
@@ -1547,6 +1610,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37096" name="Dimensional Treasure Chest (High-grade)" type="EtcItem">
 		<!-- Treasure Chest obtained in dimensional space. -->
@@ -1561,12 +1625,14 @@
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="PEEL" />
 	</item>
 	<item id="37097" name="High-grade Elixir of Life (R-grade)" type="EtcItem">
 		<!-- Recovers HP. Only characters above level 85 can use on themselves. Cooldown is 2 min. -->
 		<set name="icon" val="icon.etc_super_potion_i02" />
 		<set name="weight" val="5" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="crystal_type" val="R" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -1580,6 +1646,7 @@
 		<set name="icon" val="icon.etc_super_potion_i00" />
 		<set name="weight" val="5" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="crystal_type" val="R" />
 		<set name="etcitem_type" val="ELIXIR" />
@@ -1593,6 +1660,7 @@
 		<set name="icon" val="icon.etc_super_potion_i01" />
 		<set name="weight" val="5" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="is_freightable" val="false" />
 		<set name="crystal_type" val="R" />
 		<set name="etcitem_type" val="ELIXIR" />

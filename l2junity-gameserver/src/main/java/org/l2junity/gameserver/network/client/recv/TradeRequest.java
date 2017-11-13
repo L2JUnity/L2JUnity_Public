@@ -18,16 +18,16 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.datatables.BotReportTable;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.BlockList;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.model.skills.AbnormalType;
-import org.l2junity.gameserver.model.skills.BuffInfo;
+import org.l2junity.gameserver.model.events.EventDispatcher;
+import org.l2junity.gameserver.model.events.impl.restriction.CanPlayerTrade;
+import org.l2junity.gameserver.model.events.returns.BooleanReturn;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.SendTradeRequest;
@@ -65,20 +65,6 @@ public final class TradeRequest implements IClientIncomingPacket
 			return;
 		}
 		
-		BuffInfo info = player.getEffectList().getBuffInfoByAbnormalType(AbnormalType.BOT_PENALTY);
-		if (info != null)
-		{
-			for (AbstractEffect effect : info.getEffects())
-			{
-				if (!effect.checkCondition(BotReportTable.TRADE_ACTION_BLOCK_ID))
-				{
-					client.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_SO_YOUR_ACTIONS_HAVE_BEEN_RESTRICTED);
-					client.sendPacket(ActionFailed.STATIC_PACKET);
-					return;
-				}
-			}
-		}
-		
 		final WorldObject target = World.getInstance().findObject(_objectId);
 		// If there is no target, target is far away or
 		// they are in different instances
@@ -103,42 +89,33 @@ public final class TradeRequest implements IClientIncomingPacket
 		}
 		
 		final PlayerInstance partner = target.getActingPlayer();
+		
+		final BooleanReturn term = EventDispatcher.getInstance().notifyEvent(new CanPlayerTrade(player, partner), player, BooleanReturn.class);
+		if ((term != null) && !term.getValue())
+		{
+			return;
+		}
+		
 		if (partner.isInOlympiadMode() || player.isInOlympiadMode())
 		{
 			player.sendMessage("A user currently participating in the Olympiad cannot accept or request a trade.");
 			return;
 		}
 		
-		info = partner.getEffectList().getBuffInfoByAbnormalType(AbnormalType.BOT_PENALTY);
-		if (info != null)
-		{
-			for (AbstractEffect effect : info.getEffects())
-			{
-				if (!effect.checkCondition(BotReportTable.TRADE_ACTION_BLOCK_ID))
-				{
-					final SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.C1_HAS_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_AND_IS_CURRENTLY_BEING_INVESTIGATED);
-					sm.addCharName(partner);
-					client.sendPacket(sm);
-					client.sendPacket(ActionFailed.STATIC_PACKET);
-					return;
-				}
-			}
-		}
-		
 		// L2J Customs: Karma punishment
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_TRADE && (player.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_TRADE && (player.getReputation() < 0))
 		{
 			player.sendMessage("You cannot trade while you are in a chaotic state.");
 			return;
 		}
 		
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_TRADE && (partner.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_TRADE && (partner.getReputation() < 0))
 		{
 			player.sendMessage("You cannot request a trade while your target is in a chaotic state.");
 			return;
 		}
 		
-		if (Config.JAIL_DISABLE_TRANSACTION && (player.isJailed() || partner.isJailed()))
+		if (GeneralConfig.JAIL_DISABLE_TRANSACTION && (player.isJailed() || partner.isJailed()))
 		{
 			player.sendMessage("You cannot trade while you are in in Jail.");
 			return;
@@ -152,9 +129,9 @@ public final class TradeRequest implements IClientIncomingPacket
 		
 		if (player.isProcessingTransaction())
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.debug("Already trading with someone else.");
+				LOGGER.debug("Already trading with someone else.");
 			}
 			client.sendPacket(SystemMessageId.YOU_ARE_ALREADY_TRADING_WITH_SOMEONE);
 			return;
@@ -163,9 +140,9 @@ public final class TradeRequest implements IClientIncomingPacket
 		SystemMessage sm;
 		if (partner.isProcessingRequest() || partner.isProcessingTransaction())
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.info("Transaction already in progress.");
+				LOGGER.info("Transaction already in progress.");
 			}
 			sm = SystemMessage.getSystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
 			sm.addString(partner.getName());
@@ -187,7 +164,7 @@ public final class TradeRequest implements IClientIncomingPacket
 			return;
 		}
 		
-		if (player.calculateDistance(partner, true, false) > 150)
+		if (!player.isInRadius3d(partner, 150))
 		{
 			client.sendPacket(SystemMessageId.YOUR_TARGET_IS_OUT_OF_RANGE);
 			return;

@@ -18,6 +18,9 @@
  */
 package org.l2junity.gameserver.handler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author UnAfraid
  * @param <K>
@@ -25,6 +28,8 @@ package org.l2junity.gameserver.handler;
  */
 public interface IHandler<K, V>
 {
+	Logger LOGGER = LoggerFactory.getLogger(IHandler.class);
+	
 	void registerHandler(K handler);
 	
 	void removeHandler(K handler);
@@ -32,4 +37,9 @@ public interface IHandler<K, V>
 	K getHandler(V val);
 	
 	int size();
+	
+	default void report()
+	{
+		LOGGER.info("Loaded {} {}(s).", size(), getClass().getSimpleName().replaceAll("([a-z])([A-Z])", "$1 $2"));
+	}
 }

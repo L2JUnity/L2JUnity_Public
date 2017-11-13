@@ -25,7 +25,7 @@ import org.l2junity.gameserver.model.events.impl.IBaseEvent;
 /**
  * @author UnAfraid
  */
-public class OnPlayerReputationChanged  implements IBaseEvent
+public class OnPlayerReputationChanged implements IBaseEvent
 {
 	private final PlayerInstance _activeChar;
 	private final int _oldReputation;

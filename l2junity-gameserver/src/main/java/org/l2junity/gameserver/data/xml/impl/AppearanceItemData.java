@@ -18,21 +18,25 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.Race;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
+import org.l2junity.gameserver.model.holders.AppearanceHolder;
 import org.l2junity.gameserver.model.items.appearance.AppearanceStone;
 import org.l2junity.gameserver.model.items.appearance.AppearanceTargetType;
 import org.l2junity.gameserver.model.items.type.CrystalType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 /**
@@ -46,40 +50,19 @@ public class AppearanceItemData implements IGameXmlReader
 	
 	protected AppearanceItemData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("appearance")
+	@Load(group = LoadGroup.class)
+	protected void load() throws Exception
 	{
 		parseDatapackFile("data/AppearanceStones.xml");
 		LOGGER.info("Loaded: {} Stones", _stones.size());
-		
-		//@formatter:off
-		/*
-		for (L2Item item : ItemTable.getInstance().getAllItems())
-		{
-			if ((item == null) || !item.getName().contains("Appearance Stone"))
-			{
-				continue;
-			}
-			if (item.getName().contains("Pack") || _stones.containsKey(item.getId()))
-			{
-				continue;
-			}
-			
-			System.out.println("Unhandled appearance stone: " + item);
-		}
-		*/
-		//@formatter:on
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
-		StatsSet set;
-		Node att;
-		NamedNodeMap attrs;
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
 			if ("list".equalsIgnoreCase(n.getNodeName()))
@@ -88,15 +71,7 @@ public class AppearanceItemData implements IGameXmlReader
 				{
 					if ("appearance_stone".equalsIgnoreCase(d.getNodeName()))
 					{
-						attrs = d.getAttributes();
-						set = new StatsSet();
-						for (int i = 0; i < attrs.getLength(); i++)
-						{
-							att = attrs.item(i);
-							set.set(att.getNodeName(), att.getNodeValue());
-						}
-						
-						final AppearanceStone stone = new AppearanceStone(set);
+						final AppearanceStone stone = new AppearanceStone(new StatsSet(parseAttributes(d)));
 						for (Node c = d.getFirstChild(); c != null; c = c.getNextSibling())
 						{
 							switch (c.getNodeName())
@@ -131,6 +106,10 @@ public class AppearanceItemData implements IGameXmlReader
 									stone.addRaceNot(raceNot);
 									break;
 								}
+								case "visual":
+								{
+									stone.addVisualId(new AppearanceHolder(new StatsSet(parseAttributes(c))));
+								}
 							}
 						}
 						_stones.put(stone.getId(), stone);
@@ -138,6 +117,11 @@ public class AppearanceItemData implements IGameXmlReader
 				}
 			}
 		}
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _stones.size();
 	}
 	
 	public AppearanceStone getStone(int stone)
@@ -149,6 +133,7 @@ public class AppearanceItemData implements IGameXmlReader
 	 * Gets the single instance of AppearanceItemData.
 	 * @return single instance of AppearanceItemData
 	 */
+	@InstanceGetter
 	public static final AppearanceItemData getInstance()
 	{
 		return SingletonHolder._instance;

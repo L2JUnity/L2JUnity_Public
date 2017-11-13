@@ -27,23 +27,23 @@ import org.l2junity.gameserver.model.actor.Creature;
  */
 public class StatsHolder
 {
-	private final Stats _stat;
+	private final DoubleStat _stat;
 	private final double _value;
 	private final BiPredicate<Creature, StatsHolder> _condition;
 	
-	public StatsHolder(Stats stat, double value, BiPredicate<Creature, StatsHolder> condition)
+	public StatsHolder(DoubleStat stat, double value, BiPredicate<Creature, StatsHolder> condition)
 	{
 		_stat = stat;
 		_value = value;
 		_condition = condition;
 	}
 	
-	public StatsHolder(Stats stat, double value)
+	public StatsHolder(DoubleStat stat, double value)
 	{
 		this(stat, value, null);
 	}
 	
-	public Stats getStat()
+	public DoubleStat getStat()
 	{
 		return _stat;
 	}

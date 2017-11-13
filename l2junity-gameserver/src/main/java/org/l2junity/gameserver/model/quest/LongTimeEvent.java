@@ -18,14 +18,15 @@
  */
 package org.l2junity.gameserver.model.quest;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.data.sql.impl.AnnouncementsTable;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
@@ -48,7 +49,7 @@ import org.w3c.dom.Node;
  */
 public class LongTimeEvent extends Quest
 {
-	protected Logger _log = LoggerFactory.getLogger(getClass());
+	protected final Logger _logger = LoggerFactory.getLogger(getClass());
 	protected String _eventName;
 	
 	// Messages
@@ -86,17 +87,17 @@ public class LongTimeEvent extends Quest
 			if (_eventPeriod.isWithinRange(new Date()))
 			{
 				startEvent();
-				_log.info("Event " + _eventName + " active till " + _eventPeriod.getEndDate());
+				_logger.info("Event " + _eventName + " active till " + _eventPeriod.getEndDate());
 			}
 			else if (_eventPeriod.getStartDate().after(new Date()))
 			{
 				long delay = _eventPeriod.getStartDate().getTime() - System.currentTimeMillis();
-				ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleStart(), delay);
-				_log.info("Event " + _eventName + " will be started at " + _eventPeriod.getEndDate());
+				ThreadPool.schedule(new ScheduleStart(), delay, TimeUnit.MILLISECONDS);
+				_logger.info("Event " + _eventName + " will be started at " + _eventPeriod.getEndDate());
 			}
 			else
 			{
-				_log.info("Event " + _eventName + " has passed... Ignored ");
+				_logger.info("Event " + _eventName + " has passed... Ignored");
 			}
 		}
 	}
@@ -108,14 +109,20 @@ public class LongTimeEvent extends Quest
 	{
 		new IGameXmlReader()
 		{
-			@Override
-			public void load()
+			protected void load()
 			{
-				parseDatapackFile("data/scripts/events/" + getScriptName() + "/config.xml");
+				try
+				{
+					parseDatapackFile("data/scripts/" + getPath() + "/config.xml");
+				}
+				catch (Exception e)
+				{
+					LOGGER.error("Failed loading " + getScriptName() + " event config.", e);
+				}
 			}
 			
 			@Override
-			public void parseDocument(Document doc, File f)
+			public void parseDocument(Document doc, Path path)
 			{
 				if (!doc.getDocumentElement().getNodeName().equalsIgnoreCase("event"))
 				{
@@ -174,19 +181,19 @@ public class LongTimeEvent extends Quest
 										
 										if (ItemTable.getInstance().getTemplate(itemId) == null)
 										{
-											_log.warn(getScriptName() + " event: " + itemId + " is wrong item id, item was not added in droplist");
+											_logger.warn(getScriptName() + " event: " + itemId + " is wrong item id, item was not added in droplist");
 											continue;
 										}
 										
 										if (minCount > maxCount)
 										{
-											_log.warn(getScriptName() + " event: item " + itemId + " - min greater than max, item was not added in droplist");
+											_logger.warn(getScriptName() + " event: item " + itemId + " - min greater than max, item was not added in droplist");
 											continue;
 										}
 										
 										if ((finalChance < 10000) || (finalChance > 1000000))
 										{
-											_log.warn(getScriptName() + " event: item " + itemId + " - incorrect drop chance, item was not added in droplist");
+											_logger.warn(getScriptName() + " event: item " + itemId + " - incorrect drop chance, item was not added in droplist");
 											continue;
 										}
 										
@@ -194,7 +201,7 @@ public class LongTimeEvent extends Quest
 									}
 									catch (NumberFormatException nfe)
 									{
-										_log.warn("Wrong number format in config.xml droplist block for " + getScriptName() + " event");
+										_logger.warn("Wrong number format in config.xml droplist block for " + getScriptName() + " event");
 									}
 								}
 							}
@@ -216,7 +223,7 @@ public class LongTimeEvent extends Quest
 										
 										if (NpcData.getInstance().getTemplate(npcId) == null)
 										{
-											_log.warn(getScriptName() + " event: " + npcId + " is wrong NPC id, NPC was not added in spawnlist");
+											_logger.warn(getScriptName() + " event: " + npcId + " is wrong NPC id, NPC was not added in spawnlist");
 											continue;
 										}
 										
@@ -224,7 +231,7 @@ public class LongTimeEvent extends Quest
 									}
 									catch (NumberFormatException nfe)
 									{
-										_log.warn("Wrong number format in config.xml spawnlist block for " + getScriptName() + " event");
+										_logger.warn("Wrong number format in config.xml spawnlist block for " + getScriptName() + " event");
 									}
 								}
 							}
@@ -290,7 +297,7 @@ public class LongTimeEvent extends Quest
 		AnnouncementsTable.getInstance().addAnnouncement(new EventAnnouncement(_eventPeriod, _onEnterMsg));
 		
 		// Schedule event end (now only for message sending)
-		ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleEnd(), millisToEventEnd);
+		ThreadPool.schedule(new ScheduleEnd(), millisToEventEnd, TimeUnit.MILLISECONDS);
 	}
 	
 	/**

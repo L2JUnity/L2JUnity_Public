@@ -18,12 +18,16 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.SayuneEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,18 +46,18 @@ public class SayuneData implements IGameXmlReader
 	
 	protected SayuneData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Reload("sayune")
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		parseDatapackFile("data/SayuneData.xml");
 		LOGGER.info("Loaded: {} maps.", _maps.size());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -73,7 +77,7 @@ public class SayuneData implements IGameXmlReader
 		}
 	}
 	
-	private final void parseEntries(SayuneEntry lastEntry, Node n)
+	private void parseEntries(SayuneEntry lastEntry, Node n)
 	{
 		NamedNodeMap attrs;
 		for (Node d = n.getFirstChild(); d != null; d = d.getNextSibling())
@@ -105,6 +109,7 @@ public class SayuneData implements IGameXmlReader
 	 * Gets the single instance of SayuneData.
 	 * @return single instance of SayuneData
 	 */
+	@InstanceGetter
 	public static final SayuneData getInstance()
 	{
 		return SingletonHolder._instance;

@@ -64,7 +64,7 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		_attacker = attacker;
 		_title = (summon.getOwner() != null) && summon.getOwner().isOnline() ? summon.getOwner().getName() : "";
 		_val = val;
-		_abnormalVisualEffects = summon.getCurrentAbnormalVisualEffects();
+		_abnormalVisualEffects = summon.getEffectList().getCurrentAbnormalVisualEffects();
 		
 		if (summon.getTemplate().getDisplayId() != summon.getTemplate().getId())
 		{
@@ -147,6 +147,11 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		if (summon.isShowSummonAnimation())
 		{
 			addComponentType(NpcInfoType.SUMMONED);
+		}
+		
+		if (summon.getReputation() != 0)
+		{
+			addComponentType(NpcInfoType.REPUTATION);
 		}
 		
 		if (summon.getOwner().getClan() != null)
@@ -258,9 +263,9 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (containsMask(NpcInfoType.POSITION))
 		{
-			packet.writeD(_summon.getX());
-			packet.writeD(_summon.getY());
-			packet.writeD(_summon.getZ());
+			packet.writeD((int) _summon.getX());
+			packet.writeD((int) _summon.getY());
+			packet.writeD((int) _summon.getZ());
 		}
 		if (containsMask(NpcInfoType.HEADING))
 		{
@@ -278,7 +283,7 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		if (containsMask(NpcInfoType.SPEED_MULTIPLIER))
 		{
 			packet.writeE((float) _summon.getStat().getMovementSpeedMultiplier());
-			packet.writeE(_summon.getStat().getAttackSpeedMultiplier());
+			packet.writeE((float) _summon.getStat().getAttackSpeedMultiplier());
 		}
 		if (containsMask(NpcInfoType.EQUIPPED))
 		{
@@ -368,9 +373,9 @@ public class ExPetInfo extends AbstractMaskPacket<NpcInfoType>
 		{
 			packet.writeC(_summon.getPvpFlag()); // PVP flag
 		}
-		if (containsMask(NpcInfoType.NAME_COLOR))
+		if (containsMask(NpcInfoType.REPUTATION))
 		{
-			packet.writeD(0x00); // Name color
+			packet.writeD(_summon.getReputation()); // Name color
 		}
 		if (containsMask(NpcInfoType.CLAN))
 		{

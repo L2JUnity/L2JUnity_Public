@@ -18,13 +18,18 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.util.IXmlReader;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.templates.L2PcTemplate;
@@ -32,163 +37,192 @@ import org.l2junity.gameserver.model.base.ClassId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
 
 /**
  * Loads player's base stats.
- * @author Forsaiken, Zoey76, GKR
+ * @author UnAfraid
  */
 public final class PlayerTemplateData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PlayerTemplateData.class);
 	
-	private final Map<ClassId, L2PcTemplate> _playerTemplates = new HashMap<>();
-	
-	private int _dataCount = 0;
+	private final Map<Integer, L2PcTemplate> _playerTemplates = new HashMap<>();
 	
 	protected PlayerTemplateData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ExperienceData.class))
+	private void load() throws Exception
 	{
-		_playerTemplates.clear();
 		parseDatapackDirectory("data/stats/chars/baseStats", false);
 		LOGGER.info("Loaded {} character templates.", _playerTemplates.size());
-		LOGGER.info("Loaded {} level up gain records.", _dataCount);
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
-		NamedNodeMap attrs;
-		int classId = 0;
-		
-		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
+		final StatsSet set = new StatsSet();
+		forEach(doc, "list", listNode -> forEach(listNode, IXmlReader::isNode, firstNode ->
 		{
-			if ("list".equalsIgnoreCase(n.getNodeName()))
+			switch (firstNode.getNodeName())
 			{
-				for (Node d = n.getFirstChild(); d != null; d = d.getNextSibling())
+				case "classId":
 				{
-					if ("classId".equalsIgnoreCase(d.getNodeName()))
+					set.set("classId", Integer.parseInt(firstNode.getTextContent()));
+					break;
+				}
+				case "staticData":
+				{
+					forEach(firstNode, IXmlReader::isNode, staticDataNode ->
 					{
-						classId = Integer.parseInt(d.getTextContent());
-					}
-					else if ("staticData".equalsIgnoreCase(d.getNodeName()))
-					{
-						StatsSet set = new StatsSet();
-						set.set("classId", classId);
-						List<Location> creationPoints = new ArrayList<>();
-						
-						for (Node nd = d.getFirstChild(); nd != null; nd = nd.getNextSibling())
+						switch (staticDataNode.getNodeName())
 						{
-							// Skip odd nodes
-							if (nd.getNodeName().equals("#text"))
+							case "creationPoints":
 							{
-								continue;
-							}
-							
-							if (nd.getChildNodes().getLength() > 1)
-							{
-								for (Node cnd = nd.getFirstChild(); cnd != null; cnd = cnd.getNextSibling())
+								final List<Location> creationPoints = new ArrayList<>();
+								forEach(staticDataNode, "node", innerNode ->
 								{
-									// use L2CharTemplate(superclass) fields for male collision height and collision radius
-									if (nd.getNodeName().equalsIgnoreCase("collisionMale"))
-									{
-										if (cnd.getNodeName().equalsIgnoreCase("radius"))
-										{
-											set.set("collision_radius", cnd.getTextContent());
-										}
-										else if (cnd.getNodeName().equalsIgnoreCase("height"))
-										{
-											set.set("collision_height", cnd.getTextContent());
-										}
-									}
-									if ("node".equalsIgnoreCase(cnd.getNodeName()))
-									{
-										attrs = cnd.getAttributes();
-										creationPoints.add(new Location(parseInteger(attrs, "x"), parseInteger(attrs, "y"), parseInteger(attrs, "z")));
-									}
-									else if ("walk".equalsIgnoreCase(cnd.getNodeName()))
-									{
-										set.set("baseWalkSpd", cnd.getTextContent());
-									}
-									else if ("run".equalsIgnoreCase(cnd.getNodeName()))
-									{
-										set.set("baseRunSpd", cnd.getTextContent());
-									}
-									else if ("slowSwim".equals(cnd.getNodeName()))
-									{
-										set.set("baseSwimWalkSpd", cnd.getTextContent());
-									}
-									else if ("fastSwim".equals(cnd.getNodeName()))
-									{
-										set.set("baseSwimRunSpd", cnd.getTextContent());
-									}
-									else if (!cnd.getNodeName().equals("#text"))
-									{
-										set.set((nd.getNodeName() + cnd.getNodeName()), cnd.getTextContent());
-									}
-								}
+									final int x = parseInteger(innerNode.getAttributes(), "x");
+									final int y = parseInteger(innerNode.getAttributes(), "y");
+									final int z = parseInteger(innerNode.getAttributes(), "z");
+									creationPoints.add(new Location(x, y, z));
+								});
+								set.set("creationPoints", creationPoints);
+								break;
 							}
-							else
+							case "basePDef":
 							{
-								set.set(nd.getNodeName(), nd.getTextContent());
+								forEach(staticDataNode, "chest|legs|head|feet|gloves|underwear|cloak", innerNode ->
+								{
+									set.set(staticDataNode.getNodeName() + innerNode.getNodeName(), innerNode.getTextContent());
+								});
+								break;
+							}
+							case "baseMDef":
+							{
+								forEach(staticDataNode, "rear|lear|rfinger|lfinger|neck", innerNode ->
+								{
+									set.set(staticDataNode.getNodeName() + innerNode.getNodeName(), innerNode.getTextContent());
+								});
+								break;
+							}
+							case "baseDamRange":
+							{
+								forEach(staticDataNode, "verticalDirection|horizontalDirection|distance|distance|width", innerNode ->
+								{
+									set.set(staticDataNode.getNodeName() + innerNode.getNodeName(), innerNode.getTextContent());
+								});
+								break;
+							}
+							case "baseMoveSpd":
+							{
+								forEach(staticDataNode, "walk|run|slowSwim|fastSwim", innerNode ->
+								{
+									set.set(staticDataNode.getNodeName() + innerNode.getNodeName(), innerNode.getTextContent());
+								});
+								break;
+							}
+							case "collisionMale":
+							{
+								forEach(staticDataNode, "radius|height", innerNode ->
+								{
+									set.set("collision_" + innerNode.getNodeName(), innerNode.getTextContent());
+								});
+								break;
+							}
+							case "collisionFemale":
+							{
+								forEach(staticDataNode, "radius|height", innerNode ->
+								{
+									set.set(staticDataNode.getNodeName() + innerNode.getNodeName(), innerNode.getTextContent());
+								});
+								break;
+							}
+							default:
+							{
+								set.set(staticDataNode.getNodeName(), staticDataNode.getTextContent());
+								break;
 							}
 						}
-						// calculate total pdef and mdef from parts
-						set.set("basePDef", (set.getInt("basePDefchest", 0) + set.getInt("basePDeflegs", 0) + set.getInt("basePDefhead", 0) + set.getInt("basePDeffeet", 0) + set.getInt("basePDefgloves", 0) + set.getInt("basePDefunderwear", 0) + set.getInt("basePDefcloak", 0)));
-						set.set("baseMDef", (set.getInt("baseMDefrear", 0) + set.getInt("baseMDeflear", 0) + set.getInt("baseMDefrfinger", 0) + set.getInt("baseMDefrfinger", 0) + set.getInt("baseMDefneck", 0)));
-						
-						_playerTemplates.put(ClassId.getClassId(classId), new L2PcTemplate(set, creationPoints));
-					}
-					else if ("lvlUpgainData".equalsIgnoreCase(d.getNodeName()))
+					});
+					
+					// calculate total pdef and mdef from parts
+					set.set("basePDef", (set.getInt("basePDefchest", 0) + set.getInt("basePDeflegs", 0) + set.getInt("basePDefhead", 0) + set.getInt("basePDeffeet", 0) + set.getInt("basePDefgloves", 0) + set.getInt("basePDefunderwear", 0) + set.getInt("basePDefcloak", 0)));
+					set.set("baseMDef", (set.getInt("baseMDefrear", 0) + set.getInt("baseMDeflear", 0) + set.getInt("baseMDefrfinger", 0) + set.getInt("baseMDefrfinger", 0) + set.getInt("baseMDefneck", 0)));
+					
+					_playerTemplates.compute(set.getInt("classId"), (key, value) ->
 					{
-						for (Node lvlNode = d.getFirstChild(); lvlNode != null; lvlNode = lvlNode.getNextSibling())
+						if (value == null)
 						{
-							if ("level".equalsIgnoreCase(lvlNode.getNodeName()))
+							return new L2PcTemplate(set);
+						}
+						value.set(set);
+						return value;
+					});
+					break;
+				}
+				case "lvlUpgainData":
+				{
+					forEach(firstNode, "level", lvlUpNode ->
+					{
+						final int level = parseInteger(lvlUpNode.getAttributes(), "val");
+						final L2PcTemplate template = _playerTemplates.get(set.getInt("classId"));
+						if (template == null)
+						{
+							LOGGER.warn("No template but parsing lvlUpgainData?? file: {}", path);
+							return;
+						}
+						
+						forEach(lvlUpNode, IXmlReader::isNode, innerNode ->
+						{
+							switch (innerNode.getNodeName())
 							{
-								attrs = lvlNode.getAttributes();
-								int level = parseInteger(attrs, "val");
-								
-								for (Node valNode = lvlNode.getFirstChild(); valNode != null; valNode = valNode.getNextSibling())
+								case "hp":
+								case "mp":
+								case "cp":
+								case "hpRegen":
+								case "mpRegen":
+								case "cpRegen":
 								{
-									String nodeName = valNode.getNodeName();
-									
-									if ((nodeName.startsWith("hp") || nodeName.startsWith("mp") || nodeName.startsWith("cp")) && _playerTemplates.containsKey(ClassId.getClassId(classId)))
+									if (level < ExperienceData.getInstance().getMaxLevel())
 									{
-										_playerTemplates.get(ClassId.getClassId(classId)).setUpgainValue(nodeName, level, Double.parseDouble(valNode.getTextContent()));
-										_dataCount++;
+										template.setUpgainValue(innerNode.getNodeName(), level, Double.parseDouble(innerNode.getTextContent()));
 									}
+									break;
 								}
 							}
-						}
-					}
+						});
+					});
+					break;
 				}
 			}
-		}
+		}));
 	}
 	
-	public L2PcTemplate getTemplate(ClassId classId)
+	public int getTemplateCount()
 	{
-		return _playerTemplates.get(classId);
+		return _playerTemplates.size();
 	}
 	
 	public L2PcTemplate getTemplate(int classId)
 	{
-		return _playerTemplates.get(ClassId.getClassId(classId));
+		return _playerTemplates.get(classId);
 	}
 	
+	public L2PcTemplate getTemplate(ClassId classId)
+	{
+		return _playerTemplates.get(classId.getId());
+	}
+	
+	@InstanceGetter
 	public static final PlayerTemplateData getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final PlayerTemplateData _instance = new PlayerTemplateData();
+		protected static final PlayerTemplateData INSTANCE = new PlayerTemplateData();
 	}
 }

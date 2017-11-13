@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.zone.type;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.zone.ZoneId;
@@ -43,13 +43,13 @@ public class PeaceZone extends ZoneType
 			PlayerInstance player = character.getActingPlayer();
 			// PVP possible during siege, now for siege participants only
 			// Could also check if this town is in siege, or if any siege is going on
-			if ((player.getSiegeState() != 0) && (Config.PEACE_ZONE_MODE == 1))
+			if ((player.getSiegeState() != 0) && (GeneralConfig.PEACE_ZONE_MODE == 1))
 			{
 				return;
 			}
 		}
 		
-		if (Config.PEACE_ZONE_MODE != 2)
+		if (GeneralConfig.PEACE_ZONE_MODE != 2)
 		{
 			character.setInsideZone(ZoneId.PEACE, true);
 		}
@@ -58,12 +58,17 @@ public class PeaceZone extends ZoneType
 		{
 			character.setInsideZone(ZoneId.NO_STORE, true);
 		}
+		
+		if (character.isPlayer())
+		{
+			character.asPlayer().broadcastRelationChanged();
+		}
 	}
 	
 	@Override
 	protected void onExit(Creature character)
 	{
-		if (Config.PEACE_ZONE_MODE != 2)
+		if (GeneralConfig.PEACE_ZONE_MODE != 2)
 		{
 			character.setInsideZone(ZoneId.PEACE, false);
 		}
@@ -71,6 +76,11 @@ public class PeaceZone extends ZoneType
 		if (!getAllowStore())
 		{
 			character.setInsideZone(ZoneId.NO_STORE, false);
+		}
+		
+		if (character.isPlayer())
+		{
+			character.asPlayer().broadcastRelationChanged();
 		}
 	}
 }

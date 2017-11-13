@@ -15,31 +15,34 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>NONE</targetType>
 		<effects>
-			<effect name="PveMagicalSkillDamageBonus">
+			<effect name="p_pve_magical_skill_dmg_bonus">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">55</value>
 					<value level="3">60</value>
 				</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_attack_dmg_bonus">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">55</value>
 					<value level="3">60</value>
 				</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvePhysicalAttackDamageBonus">
+			<effect name="p_pve_physical_skill_dmg_bonus">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">55</value>
 					<value level="3">60</value>
 				</amount>
+				<type>ENEMY_ALL</type>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>30</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -75,7 +78,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -92,7 +95,7 @@
 		<effectPoint>-687</effectPoint>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
-		<nexActionAttack>true</nexActionAttack>
+		<nextAction>ATTACK</nextAction>
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>200</effectRange>
 		<magicLvl>85</magicLvl>
@@ -107,7 +110,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>10000</power>
 			</effect>
 		</effects>
@@ -122,7 +125,7 @@
 		<effectPoint>-687</effectPoint>
 		<rideState>NONE</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
-		<nexActionAttack>true</nexActionAttack>
+		<nextAction>ATTACK</nextAction>
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1100</effectRange>
 		<magicLvl>85</magicLvl>
@@ -137,7 +140,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>10000</power>
 			</effect>
 		</effects>
@@ -162,14 +165,14 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>85</magicLvl>
 		<effects>
-			<effect name="SkillCritical">
+			<effect name="p_skill_critical">
 				<stat>INT</stat>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>24</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">981</value>
 					<value level="2">1138</value>
@@ -184,11 +187,11 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>6</amount>
 				<mode>PER</mode>
 			</effect>
@@ -241,7 +244,7 @@
 			<value level="10">103</value>
 			<value level="11">105</value>
 		</magicLvl>
-		<operateType>A2</operateType>
+		<operateType>A4</operateType>
 		<icon>icon.skill11752</icon>
 		<hitTime>500</hitTime>
 		<effectPoint>
@@ -261,7 +264,6 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effectRange>1100</effectRange>
-		<abnormalLvl>1</abnormalLvl>
 		<isMagic>1</isMagic>
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -270,8 +272,16 @@
 				<includeMe>true</includeMe>
 			</condition>
 		</conditions>
+		<selfEffects>
+			<effect name="i_call_skill">
+				<!-- Sustain -->
+				<skillId>11753</skillId>
+				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
+			</effect>
+		</selfEffects>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">172</value>
 					<value level="2">173</value>
@@ -288,7 +298,7 @@
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">13</value>
@@ -305,26 +315,17 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ManaCharge" fromLevel="7" toLevel="11" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_mana_charge" fromLevel="7" toLevel="11" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="7" toLevel="11" fromSubLevel="2001" toSubLevel="2030">{subIndex}</value>
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
 		</effects>
-		<selfEffects>
-			<effect name="CallSkill">
-				<!-- Sustain -->
-				<skillId>11753</skillId>
-				<skillLevel>1</skillLevel>
-				<skillLevelScaleTo>3</skillLevelScaleTo>
-			</effect>
-		</selfEffects>
 	</skill>
 	<skill id="11753" toLevel="3" name="Sustain">
 		<!-- Glory Days confirmed -->
 		<!-- For 10 seconds, increases Healing power by 50. If triggered again, the effect will increase. -->
-		<table name="#healPower"> 50 100 200 </table>
 		<abnormalTime>15</abnormalTime>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalType>LIFE_FORCE_HEALER_SELF</abnormalType>
@@ -340,7 +341,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -417,7 +418,7 @@
 			</condition>
 		</targetConditions>
 		<effects>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<!-- On retail activated every ~2 attacks with ~2sec cooldown -->
 				<attackerType>L2Character</attackerType>
 				<minAttackerLevel>1</minAttackerLevel>
@@ -434,7 +435,7 @@
 					<value level="5">5</value>
 				</skillLevel>
 			</effect>
-			<effect name="SummonCubic">
+			<effect name="i_summon_cubic">
 				<cubicId>17</cubicId>
 				<cubicLvl>
 					<value level="1">1</value>
@@ -531,7 +532,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpCpHeal">
+			<effect name="i_heal_special">
 				<power>
 					<value level="1">1488</value>
 					<value level="2">1495</value>
@@ -552,7 +553,6 @@
 	<skill id="11756" toLevel="11" name="Panic Heal">
 		<!-- Glory Days confirmed -->
 		<!-- Heals target with 1488 Power added to M. Atk. If HP is full, CP is restored. -->
-		<table name="#power"> 1488 1495 1507 1519 1532 1544 1557 1570 1749 1763 1777 </table>
 		<icon>icon.skill11756</icon>
 		<operateType>A1</operateType>
 		<magicLvl>
@@ -621,7 +621,7 @@
 		<targetType>TARGET</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpCpHeal">
+			<effect name="i_heal_special">
 				<power>
 					<value level="1">1488</value>
 					<value level="2">1495</value>
@@ -698,7 +698,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="HpCpHeal">
+			<effect name="i_heal_special">
 				<power>
 					<value level="1">1191</value>
 					<value level="2">1200</value>
@@ -748,21 +748,18 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
-			<effect name="BlockAbnormalSlot">
-				<slot>INVINCIBILITY_SPECIAL</slot>
-			</effect>
-			<effect name="Heal" fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">
+			<effect name="i_heal" fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">
 				<power>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1001">1936</value>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1002" toSubLevel="1002">2072</value>
@@ -796,14 +793,11 @@
 					<value fromLevel="1" toLevel="1" fromSubLevel="1030" toSubLevel="1030">5405</value>
 				</power>
 			</effect>
-		</effects>
-		<endEffects>
-			<effect name="CallSkill">
-				<!-- Lingering Protection -->
-				<skillId>11833</skillId>
+			<effect name="i_call_skill">
+				<skillId>11833</skillId> <!-- Lingering Protection -->
 				<skillLevel>1</skillLevel>
 			</effect>
-		</endEffects>
+		</effects>
 	</skill>
 	<skill id="11759" toLevel="1" name="Celestial Party Protection">
 		<!-- Updated to Ertheia -->
@@ -831,21 +825,18 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
-			<effect name="BlockAbnormalSlot">
-				<slot>INVINCIBILITY_SPECIAL</slot>
-			</effect>
-			<effect name="Heal" fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">
+			<effect name="i_heal" fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">
 				<power>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1001">1936</value>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1002" toSubLevel="1002">2072</value>
@@ -879,14 +870,11 @@
 					<value fromLevel="1" toLevel="1" fromSubLevel="1030" toSubLevel="1030">5405</value>
 				</power>
 			</effect>
-		</effects>
-		<endEffects>
-			<effect name="CallSkill">
-				<!-- Lingering Protection -->
-				<skillId>11834</skillId>
+			<effect name="i_call_skill">
+				<skillId>11834</skillId> <!-- Lingering Protection -->
 				<skillLevel>1</skillLevel>
 			</effect>
-		</endEffects>
+		</effects>
 	</skill>
 	<skill id="11760" toLevel="11" name="Radiant Recharge">
 		<!-- Glory Days confirmed -->
@@ -977,7 +965,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="ManaHealByLevel">
+			<effect name="i_mp_by_level">
 				<power>
 					<value level="1">166</value>
 					<value level="2">167</value>
@@ -993,19 +981,19 @@
 					<value fromLevel="7" toLevel="11" fromSubLevel="1001" toSubLevel="1030">{base + base / 100 * subIndex}</value>
 				</power>
 			</effect>
-			<effect name="ManaHealOverTime">
+			<effect name="t_mp">
 				<power>
-					<value level="1">12</value>
-					<value level="2">12</value>
-					<value level="3">12</value>
-					<value level="4">12</value>
-					<value level="5">13</value>
-					<value level="6">13</value>
-					<value level="7">13</value>
-					<value level="8">13</value>
-					<value level="9">13</value>
-					<value level="10">13</value>
-					<value level="11">13</value>
+					<value level="1">-12</value>
+					<value level="2">-12</value>
+					<value level="3">-12</value>
+					<value level="4">-12</value>
+					<value level="5">-13</value>
+					<value level="6">-13</value>
+					<value level="7">-13</value>
+					<value level="8">-13</value>
+					<value level="9">-13</value>
+					<value level="10">-13</value>
+					<value level="11">-13</value>
 					<value fromLevel="7" toLevel="11" fromSubLevel="1001" toSubLevel="1030">{base + base / 100 * subIndex}</value>
 				</power>
 				<ticks>1</ticks>
@@ -1015,8 +1003,6 @@
 	<skill id="11761" toLevel="8" name="Brilliant Recharge">
 		<!-- Glory Days confirmed -->
 		<!-- Instantly recovers party members' MP with a maximum of 700 Power depending on their level. Also, for 10 seconds, recovers 50 MP per second. -->
-		<table name="#amount"> 700 715 725 740 750 768 786 804 </table>
-		<table name="#amoutOverTime"> 10 10 10 10 11 11 11 11 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalType>MP_RECOVER</abnormalType>
 		<abnormalTime>10</abnormalTime>
@@ -1075,7 +1061,7 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="ManaHealByLevel">
+			<effect name="i_mp_by_level">
 				<power>
 					<value level="1">700</value>
 					<value level="2">715</value>
@@ -1088,21 +1074,21 @@
 					<value fromLevel="4" toLevel="8" fromSubLevel="1001" toSubLevel="1030">{base + base / 100 * subIndex}</value>
 				</power>
 			</effect>
-			<effect name="ManaHealOverTime">
+			<effect name="t_mp">
 				<power>
-					<value level="1">10</value>
-					<value level="2">10</value>
-					<value level="3">10</value>
-					<value level="4">10</value>
-					<value level="5">11</value>
-					<value level="6">11</value>
-					<value level="7">11</value>
-					<value level="8">11</value>
+					<value level="1">-10</value>
+					<value level="2">-10</value>
+					<value level="3">-10</value>
+					<value level="4">-10</value>
+					<value level="5">-11</value>
+					<value level="6">-11</value>
+					<value level="7">-11</value>
+					<value level="8">-11</value>
 					<value fromLevel="4" toLevel="8" fromSubLevel="1001" toSubLevel="1030">{base + base / 100 * subIndex}</value>
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="Heal" fromLevel="4" toLevel="8" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="i_heal" fromLevel="4" toLevel="8" fromSubLevel="2001" toSubLevel="2030">
 				<power>
 					<value fromLevel="4" toLevel="8" fromSubLevel="2001" toSubLevel="2001">1936</value>
 					<value fromLevel="4" toLevel="8" fromSubLevel="2002" toSubLevel="2002">2072</value>
@@ -1162,15 +1148,15 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="RebalanceHP" />
-			<effect name="HealOverTime">
+			<effect name="i_rebalance_hp" />
+			<effect name="t_hp">
 				<power>
 					<value fromLevel="1" toLevel="1">333</value>
 					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="ManaCharge" fromLevel="1" toLevel="1" fromSubLevel="3001" toSubLevel="3030">
+			<effect name="p_mana_charge" fromLevel="1" toLevel="1" fromSubLevel="3001" toSubLevel="3030">
 				<amount>
 					<value fromLevel="1" toLevel="1" fromSubLevel="3001" toSubLevel="3030">{subIndex}</value>
 				</amount>
@@ -1198,12 +1184,12 @@
 		<targetType>ENEMY_NOT</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelByCategory">
+			<effect name="i_dispel_by_category">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>10</max>
 			</effect>
-			<effect name="Heal" fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">
+			<effect name="i_heal" fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">
 				<power>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1001">1936</value>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1002" toSubLevel="1002">2072</value>
@@ -1265,13 +1251,13 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="DispelByCategory">
+			<effect name="i_dispel_by_category">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>10</max>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="Heal" fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">
+			<effect name="p_block_debuff" />
+			<effect name="i_heal" fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1030">
 				<power>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1001">1936</value>
 					<value fromLevel="1" toLevel="1" fromSubLevel="1002" toSubLevel="1002">2072</value>
@@ -1364,13 +1350,13 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="DamageBlock">
+			<effect name="p_block_act" />
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="BuffBlock" />
-			<effect name="DebuffBlock" />
-			<effect name="HealOverTime">
+			<effect name="p_block_buff" />
+			<effect name="p_block_debuff" />
+			<effect name="t_hp">
 				<power>
 					<value level="1">266</value>
 					<value level="2">273</value>
@@ -1383,7 +1369,7 @@
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="ManaHealOverTime">
+			<effect name="t_mp">
 				<power>
 					<value level="1">74</value>
 					<value level="2">77</value>
@@ -1462,7 +1448,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">153</value>
 					<value level="2">158</value>
@@ -1565,7 +1551,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">117</value>
 					<value level="2">119</value>
@@ -1604,12 +1590,13 @@
 					<value fromLevel="7" toLevel="11" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 			</effect>
-			<effect name="AddHate">
+			<effect name="i_add_hate">
 				<power>1240</power>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="11768" toLevel="1" name="Rebirth">
+		<!-- Updated to Helios -->
 		<!-- Glory Days confirmed -->
 		<!-- Restores all party members' HP/MP/CP and has a chance of dispelling their debuffs. -->
 		<icon>icon.skill11768</icon>
@@ -1630,17 +1617,16 @@
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
 		<effects>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>100</power>
 			</effect>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>100</power>
 			</effect>
-			<effect name="Cp">
-				<amount>20000</amount>
-				<mode>DIFF</mode>
+			<effect name="i_cp_per_max">
+				<power>100</power>
 			</effect>
-			<effect name="DispelByCategory">
+			<effect name="i_dispel_by_category">
 				<slot>DEBUFF</slot>
 				<rate>
 					<value fromLevel="1" toLevel="1">40</value>
@@ -1716,11 +1702,11 @@
 		<effectRange>1100</effectRange>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">-20</value>
 					<value level="2">-20</value>
@@ -1734,7 +1720,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">-20</value>
 					<value level="2">-20</value>
@@ -1748,7 +1734,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">150</value>
@@ -1763,7 +1749,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">150</value>
@@ -1778,7 +1764,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">150</value>
@@ -1793,13 +1779,13 @@
 				<mode>PER</mode>
 				<magicType>3</magicType>
 			</effect>
-			<effect name="PhysicalDefence" fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_physical_defence" fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">{-0.6 - 0.4 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence" fromLevel="5" toLevel="9" fromSubLevel="3001" toSubLevel="3030">
+			<effect name="p_magical_defence" fromLevel="5" toLevel="9" fromSubLevel="3001" toSubLevel="3030">
 				<amount>
 					<value fromLevel="5" toLevel="9" fromSubLevel="3001" toSubLevel="3030">{-0.6 - 0.4 * subIndex}</value>
 				</amount>
@@ -1827,12 +1813,12 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DeleteHate">
+			<effect name="i_delete_hate">
 				<chance>100</chance>
 			</effect>
 		</effects>
 		<selfEffects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>11835</skillId>
 				<skillLevel>1</skillLevel>
 				<skillSubLevel>
@@ -1861,7 +1847,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>13300</npcId>
 				<npcCount>1</npcCount>
 			</effect>
@@ -1884,7 +1870,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>600000</reuseDelay>
 		<staticReuse>true</staticReuse>
-		<isMagic>2</isMagic>
+		<isMagic>1</isMagic>
 		<magicLvl>
 			<value level="1">85</value>
 			<value level="2">90</value>
@@ -1918,7 +1904,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">1000</value>
 					<value level="2">1500</value>
@@ -1930,7 +1916,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">1000</value>
 					<value level="2">1500</value>
@@ -1942,7 +1928,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">1000</value>
 					<value level="2">1500</value>
@@ -1954,7 +1940,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceCriticalDamage" fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_defence_critical_damage" fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="3" toLevel="7" fromSubLevel="2001" toSubLevel="2030">{-1 - ((subIndex - 1} * 0.5)}</value>
 				</amount>
@@ -1965,7 +1951,6 @@
 	<skill id="11773" toLevel="2" name="Lakcis Disc">
 		<!-- Glory Days confirmed -->
 		<!-- Directly manipulates the power of light to Heal nearby allies and damage nearby enemies. Continuously consumes MP. -->
-		<table name="#skillLevel"> 1 2 </table>
 		<icon>icon.skill11773</icon>
 		<operateType>AU</operateType>
 		<effectPoint>
@@ -1980,11 +1965,11 @@
 		<toggleGroupId>0</toggleGroupId>
 		<isMagic>1</isMagic>
 		<effects>
-			<effect name="MpConsumePerLevel">
-				<power>2</power>
+			<effect name="c_mp_by_level">
+				<power>-2</power>
 				<ticks>3</ticks>
 			</effect>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Elegance of Light -->
 				<skillId>11808</skillId>
 				<skillLevel>
@@ -1993,7 +1978,7 @@
 				</skillLevel>
 				<ticks>15</ticks>
 			</effect>
-			<effect name="CallSkillOnActionTime">
+			<effect name="p_aura">
 				<!-- Elegance of Light -->
 				<skillId>11809</skillId>
 				<skillLevel>
@@ -2007,7 +1992,6 @@
 	<skill id="11774" toLevel="4" name="Summon Tree of Life">
 		<!-- Glory Days confirmed -->
 		<!-- Summons a Tree of Life. The summoned tree heals nearby party members for 30 seconds. Can also cast a debuff canceling blessing. -->
-		<table name="#npcIds"> 14933 14943 15010 15011 </table>
 		<icon>icon.skill11774</icon>
 		<operateType>A1</operateType>
 		<magicLvl>
@@ -2046,7 +2030,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Summon">
+			<effect name="i_summon">
 				<npcId>
 					<value level="1">14933</value>
 					<value level="2">14943</value>
@@ -2075,7 +2059,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="TeleportToSummon">
+			<effect name="i_teleport_to_summon">
 				<distance>1000</distance>
 			</effect>
 		</effects>
@@ -2084,7 +2068,6 @@
 		<!-- Updated to IO -->
 		<!-- Glory Days confirmed -->
 		<!-- Summons a Spirit of Light. -->
-		<table name="#npcIds"> 14925 14944 14945 14946 </table>
 		<icon>icon.skill11776</icon>
 		<operateType>A1</operateType>
 		<magicLvl>
@@ -2115,7 +2098,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Summon">
+			<effect name="i_summon">
 				<npcId>
 					<value level="1">14925</value>
 					<value level="2">14944</value>
@@ -2130,8 +2113,6 @@
 		<!-- Updated to IO -->
 		<!-- Glory Days confirmed -->
 		<!-- Leaves a mark that decreases target's P. Def. and M. Def. by 10%, and consumes 113 HP every second for 60 seconds. -->
-		<table name="#dot"> 113 118 123 128 134 134 134 134 </table>
-		<table name="#defences"> 0.9 0.85 0.8 0.75 0.7 0.7 0.7 0.7 </table>
 		<abnormalTime>60</abnormalTime>
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalType>MARK_OF_LUMI</abnormalType>
@@ -2191,25 +2172,25 @@
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">113</value>
-					<value level="2">118</value>
-					<value level="3">123</value>
-					<value level="4">128</value>
-					<value level="5">134</value>
-					<value level="6">134</value>
-					<value level="7">134</value>
-					<value level="8">134</value>
+					<value level="1">-113</value>
+					<value level="2">-118</value>
+					<value level="3">-123</value>
+					<value level="4">-128</value>
+					<value level="5">-134</value>
+					<value level="6">-134</value>
+					<value level="7">-134</value>
+					<value level="8">-134</value>
 					<value fromLevel="4" toLevel="8" fromSubLevel="1001" toSubLevel="1030">{base + base / 100 * subIndex}</value>
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-15</value>
@@ -2222,7 +2203,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-15</value>
@@ -2279,7 +2260,7 @@
 		<reuseDelay>30000</reuseDelay>
 		<removedOnDamage>true</removedOnDamage>
 		<isMagic>1</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<lvlBonusRate>30</lvlBonusRate>
@@ -2298,19 +2279,19 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="DefenceTrait">
+			<effect name="p_block_act" />
+			<effect name="p_defence_trait">
 				<SLEEP>100</SLEEP>
 			</effect>
-			<effect name="MagicalDefence" fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">
- 				<amount>
- 					<value fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">{-0.6 - 0.4 * subIndex}</value>
- 				</amount>
- 				<mode>PER</mode>
- 			</effect>
+			<effect name="p_magical_defence" fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">{-0.6 - 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 		</effects>
 		<endEffects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>11779</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
@@ -2320,7 +2301,6 @@
 		<!-- Updated to Ertheia -->
 		<!-- Glory Days confirmed -->
 		<!-- Decreases Speed, Atk. Spd. and Casting Spd. by 50%. -->
-		<table name="#speeds"> 0.5 0.4 0.3 0.2 0.1 0.1 0.1 0.1 </table>
 		<icon>icon.skill1394</icon>
 		<abnormalTime>10</abnormalTime>
 		<abnormalLvl>1</abnormalLvl>
@@ -2344,11 +2324,11 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">-50</value>
 					<value level="2">-60</value>
@@ -2361,7 +2341,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">-50</value>
 					<value level="2">-60</value>
@@ -2374,7 +2354,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">-50</value>
 					<value level="2">-60</value>
@@ -2393,7 +2373,6 @@
 		<!-- Updated to IO -->
 		<!-- Glory Days confirmed -->
 		<!-- Decreases target's Recovery by 50%. -->
-		<table name="#healEffect"> 0.5 0.48 0.44 0.4 0.35 0.3 0.3 0.3 0.3 </table>
 		<abnormalTime>60</abnormalTime>
 		<abnormalLvl>3</abnormalLvl>
 		<abnormalType>HEAL_EFFECT_DOWN</abnormalType>
@@ -2457,11 +2436,11 @@
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effectRange>1100</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">-50</value>
 					<value level="2">-52</value>
@@ -2475,18 +2454,18 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence" fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">
- 				<amount>
- 					<value fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">{-0.6 - 0.4 * subIndex}</value>
- 				</amount>
- 				<mode>PER</mode>
- 			</effect>
-			<effect name="Speed" fromLevel="5" toLevel="9" fromSubLevel="3001" toSubLevel="3030">
- 				<amount>
- 					<value fromLevel="5" toLevel="9" fromSubLevel="3001" toSubLevel="3030">{-2 * subIndex}</value>
- 				</amount>
- 				<mode>PER</mode>
- 			</effect>
+			<effect name="p_magical_defence" fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="5" toLevel="9" fromSubLevel="2001" toSubLevel="2030">{-0.6 - 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed" fromLevel="5" toLevel="9" fromSubLevel="3001" toSubLevel="3030">
+				<amount>
+					<value fromLevel="5" toLevel="9" fromSubLevel="3001" toSubLevel="3030">{-2 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="11781" toLevel="6" name="Dark Devour">
@@ -2513,7 +2492,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="HpCpHeal">
+			<effect name="i_heal_special">
 				<power>666</power>
 			</effect>
 		</effects>
@@ -2522,7 +2501,6 @@
 		<!-- Updated to IO -->
 		<!-- Glory Days confirmed -->
 		<!-- Casting Spd. + 30% when equipped with a Robe/ Light Armor. MP is continuously consumed. -->
-		<table name="#mAtkSpd"> 1.30 1.50 </table>
 		<icon>icon.skill11782</icon>
 		<magicLvl>
 			<value level="1">93</value>
@@ -2533,12 +2511,12 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<targetType>NONE</targetType>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>30</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">50</value>
@@ -2546,7 +2524,7 @@
 				<mode>PER</mode>
 				<armorType>
 					<item>LIGHT</item>
-					<item> MAGIC</item>
+					<item>MAGIC</item>
 				</armorType>
 			</effect>
 		</effects>
@@ -2569,14 +2547,14 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AbnormalTimeChange" />
+			<effect name="i_abnormal_time_change">
+				<slot>ALL_ABNS</slot>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="11784" toLevel="4" name="Blessed Resurrection">
 		<!-- Glory Days confirmed -->
 		<!-- Resurrects a dead target and restores 85% of the XP lost. -->
-		<table name="#mpInitialConsume"> 7 7 8 9 </table>
-		<table name="#power"> 85 90 95 100 </table>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<castRange>400</castRange>
 		<hitTime>2000</hitTime>
@@ -2609,7 +2587,7 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="Resurrection">
+			<effect name="i_resurrection">
 				<power>
 					<value level="1">85</value>
 					<value level="2">90</value>
@@ -2666,7 +2644,7 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="Resurrection">
+			<effect name="i_resurrection">
 				<power>
 					<value level="1">80</value>
 					<value level="2">90</value>
@@ -2694,7 +2672,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DebuffBlock" />
+			<effect name="p_block_debuff" />
 		</effects>
 	</skill>
 	<skill id="11787" toLevel="10" name="Superior Armor Mastery">
@@ -2716,15 +2694,15 @@
 		</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>10</amount>
 				<mode>PER</mode>
 				<armorType>
 					<item>LIGHT</item>
-					<item> MAGIC</item>
+					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">1212</value>
 					<value level="2">1330</value>
@@ -2740,10 +2718,10 @@
 				<mode>DIFF</mode>
 				<armorType>
 					<item>LIGHT</item>
-					<item> MAGIC</item>
+					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="HpRegen">
+			<effect name="p_hp_regen">
 				<amount>
 					<value level="1">2.8</value>
 					<value level="2">3.4</value>
@@ -2758,7 +2736,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">3.6</value>
 					<value level="2">4.2</value>
@@ -2773,16 +2751,16 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>4299</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>LIGHT</item>
-					<item> MAGIC</item>
+					<item>MAGIC</item>
 				</armorType>
 			</effect>
 		</effects>
@@ -2806,11 +2784,11 @@
 		</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>23</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">313</value>
 					<value level="2">374</value>
@@ -2825,16 +2803,16 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-25</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -2860,7 +2838,7 @@
 		</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">862</value>
 					<value level="2">976</value>
@@ -2875,11 +2853,11 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="p_resist_dd_magic">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>INT</stat>
 			</effect>
@@ -2904,7 +2882,7 @@
 		</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -2919,7 +2897,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -2934,7 +2912,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -2949,7 +2927,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -2964,7 +2942,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>INT</stat>
 			</effect>
@@ -2978,18 +2956,18 @@
 		<magicLvl>85</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen_add">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 				<armorType>
 					<item>SIGIL</item>
 				</armorType>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>40</amount>
 				<mode>DIFF</mode>
 				<armorType>
@@ -3018,7 +2996,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -3104,17 +3082,16 @@
 					<value level="10">40</value>
 				</DERANGEMENT>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>INT</stat>
 			</effect>
-			<effect name="ReflectSkill">
+			<effect name="p_reflect_skill">
 				<amount>10</amount>
-				<mode>DIFF</mode>
+				<type>PHYSICAL</type>
 			</effect>
-			<effect name="ReflectSkill">
+			<effect name="p_reflect_skill">
 				<amount>10</amount>
-				<mode>DIFF</mode>
 				<type>MAGIC</type>
 			</effect>
 		</effects>
@@ -3150,8 +3127,16 @@
 				<includeMe>true</includeMe>
 			</condition>
 		</conditions>
+		<selfEffects>
+			<effect name="i_call_skill">
+				<!-- Sustain -->
+				<skillId>11794</skillId>
+				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
+			</effect>
+		</selfEffects>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">103</value>
 					<value level="2">138</value>
@@ -3159,7 +3144,7 @@
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -3168,20 +3153,11 @@
 				<mode>PER</mode>
 			</effect>
 		</effects>
-		<selfEffects>
-			<effect name="CallSkill">
-				<!-- Sustain -->
-				<skillId>11794</skillId>
-				<skillLevel>1</skillLevel>
-				<skillLevelScaleTo>3</skillLevelScaleTo>
-			</effect>
-		</selfEffects>
 	</skill>
 	<skill id="11794" toLevel="3" name="Sustain">
 		<!-- Updated to Ertheia -->
 		<!-- Glory Days confirmed -->
 		<!-- For 10 second, increases Healing power by 50. If triggered again, the effect will increase. -->
-		<table name="#healPower"> 50 100 200 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>10</abnormalTime>
 		<abnormalType>LIFE_FORCE_HEALER_SELF</abnormalType>
@@ -3197,7 +3173,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -3210,9 +3186,6 @@
 	<skill id="11795" toLevel="3" name="Sustain">
 		<!-- Updated to Ertheia -->
 		<!-- For 15 seconds, Heals allies over time. Also increases your Healing power. If triggered again, the effect will increase. -->
-		<table name="#power"> 1.10 1.20 1.30 </table> <!-- Custom -->
-		<!-- Custom -->
-		<table name="#hotValue"> 172 174 176 </table> <!-- Custom -->
 		<icon>icon.skill1217</icon>
 		<abnormalTime>15</abnormalTime>
 		<castRange>600</castRange>
@@ -3244,8 +3217,15 @@
 				<includeMe>true</includeMe>
 			</condition>
 		</conditions>
+		<selfEffects>
+			<effect name="i_call_skill">
+				<skillId>11796</skillId>
+				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
+			</effect>
+		</selfEffects>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">172</value>
 					<value level="2">174</value>
@@ -3253,7 +3233,7 @@
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -3262,19 +3242,10 @@
 				<mode>PER</mode>
 			</effect>
 		</effects>
-		<selfEffects>
-			<effect name="CallSkill">
-				<skillId>11796</skillId>
-				<skillLevel>1</skillLevel>
-				<skillLevelScaleTo>3</skillLevelScaleTo>
-			</effect>
-		</selfEffects>
 	</skill>
 	<skill id="11796" toLevel="3" name="Sustain">
 		<!-- Updated to Ertheia -->
 		<!-- For 10 second, increases Healing power by 50. If triggered again, the effect will increase. -->
-		<table name="#healPower"> 50 100 200 </table>
-		<table name="#abnormalLevel"> 1 2 3 </table>
 		<abnormalTime>10</abnormalTime>
 		<icon>icon.skill1217</icon>
 		<operateType>A4</operateType>
@@ -3290,7 +3261,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -3302,10 +3273,8 @@
 	</skill>
 	<skill id="11797" toLevel="3" name="Sustain">
 		<!-- Updated to Ertheia -->
-		<!-- For 15 seconds, Heals allies over time. Also increases your Healing power. If triggered again, the effect will increase. -->
-		<table name="#power"> 1.10 1.20 1.30 </table> <!-- Custom -->
-		<!-- Custom -->
-		<table name="#hotValue"> 172 174 176 </table> <!-- Custom -->
+		<!-- For 15 seconds, Heals allies over time. Also increases your Healing power. If triggered again, the effect will increase. --> <!-- Custom -->
+		<!-- Custom --> <!-- Custom -->
 		<icon>icon.skill1217</icon>
 		<abnormalTime>15</abnormalTime>
 		<castRange>600</castRange>
@@ -3337,8 +3306,15 @@
 				<includeMe>true</includeMe>
 			</condition>
 		</conditions>
+		<selfEffects>
+			<effect name="i_call_skill">
+				<skillId>11798</skillId>
+				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
+			</effect>
+		</selfEffects>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">172</value>
 					<value level="2">174</value>
@@ -3346,7 +3322,7 @@
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -3355,19 +3331,10 @@
 				<mode>PER</mode>
 			</effect>
 		</effects>
-		<selfEffects>
-			<effect name="CallSkill">
-				<skillId>11798</skillId>
-				<skillLevel>1</skillLevel>
-				<skillLevelScaleTo>3</skillLevelScaleTo>
-			</effect>
-		</selfEffects>
 	</skill>
 	<skill id="11798" toLevel="3" name="Sustain">
 		<!-- Updated to Ertheia -->
 		<!-- For 10 second, increases Healing power by 50. If triggered again, the effect will increase. -->
-		<table name="#healPower"> 50 100 200 </table>
-		<table name="#abnormalLevel"> 1 2 3 </table>
 		<abnormalTime>10</abnormalTime>
 		<icon>icon.skill1217</icon>
 		<operateType>A4</operateType>
@@ -3383,7 +3350,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -3395,10 +3362,8 @@
 	</skill>
 	<skill id="11799" toLevel="3" name="Sustain">
 		<!-- Updated to Ertheia -->
-		<!-- For 15 seconds, Heals allies over time. Also increases your Healing power. If triggered again, the effect will increase. -->
-		<table name="#power"> 1.10 1.20 1.30 </table> <!-- Custom -->
-		<!-- Custom -->
-		<table name="#hotValue"> 172 174 176 </table> <!-- Custom -->
+		<!-- For 15 seconds, Heals allies over time. Also increases your Healing power. If triggered again, the effect will increase. --> <!-- Custom -->
+		<!-- Custom --> <!-- Custom -->
 		<icon>icon.skill1217</icon>
 		<abnormalTime>15</abnormalTime>
 		<castRange>600</castRange>
@@ -3430,8 +3395,15 @@
 				<includeMe>true</includeMe>
 			</condition>
 		</conditions>
+		<selfEffects>
+			<effect name="i_call_skill">
+				<skillId>11800</skillId>
+				<skillLevel>1</skillLevel>
+				<skillLevelScaleTo>3</skillLevelScaleTo>
+			</effect>
+		</selfEffects>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>
 					<value level="1">172</value>
 					<value level="2">174</value>
@@ -3439,7 +3411,7 @@
 				</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -3448,12 +3420,5 @@
 				<mode>PER</mode>
 			</effect>
 		</effects>
-		<selfEffects>
-			<effect name="CallSkill">
-				<skillId>11800</skillId>
-				<skillLevel>1</skillLevel>
-				<skillLevelScaleTo>3</skillLevelScaleTo>
-			</effect>
-		</selfEffects>
 	</skill>
 </list>

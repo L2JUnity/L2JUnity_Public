@@ -47,15 +47,18 @@ public class DropItem implements IClientOutgoingPacket
 		packet.writeD(_item.getObjectId());
 		packet.writeD(_item.getDisplayId());
 		
-		packet.writeD(_item.getX());
-		packet.writeD(_item.getY());
-		packet.writeD(_item.getZ());
+		packet.writeD((int) _item.getX());
+		packet.writeD((int) _item.getY());
+		packet.writeD((int) _item.getZ());
 		// only show item count if it is a stackable item
 		packet.writeC(_item.isStackable() ? 0x01 : 0x00);
 		packet.writeQ(_item.getCount());
 		
 		packet.writeC(0x00);
 		// packet.writeD(0x01); if above C == true (1) then packet.readD()
+		packet.writeC(_item.getEnchantLevel());
+		packet.writeC(_item.getAugmentation() != null ? 1 : 0);
+		packet.writeC(_item.getSpecialAbilities().size());
 		return true;
 	}
 }

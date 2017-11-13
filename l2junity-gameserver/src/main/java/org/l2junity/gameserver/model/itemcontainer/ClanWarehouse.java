@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.itemcontainer;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.ItemLocation;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -64,7 +64,7 @@ public final class ClanWarehouse extends Warehouse
 	@Override
 	public boolean validateCapacity(long slots)
 	{
-		return ((_items.size() + slots) <= Config.WAREHOUSE_SLOTS_CLAN);
+		return ((_items.size() + slots) <= PlayerConfig.WAREHOUSE_SLOTS_CLAN);
 	}
 	
 	@Override

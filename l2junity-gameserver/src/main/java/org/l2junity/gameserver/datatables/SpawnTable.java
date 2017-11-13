@@ -28,9 +28,13 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.L2Spawn;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
@@ -44,18 +48,24 @@ import org.slf4j.LoggerFactory;
 public final class SpawnTable
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpawnTable.class);
+	
 	// SQL
 	private static final String SELECT_CUSTOM_SPAWNS = "SELECT count, npc_templateid, locx, locy, locz, heading, respawn_delay, respawn_random, loc_id, periodOfDay FROM custom_spawnlist";
 	private static final String INSERT_CUSTOM_SPAWN = "INSERT INTO custom_spawnlist (count,npc_templateid,locx,locy,locz,heading,respawn_delay,respawn_random,loc_id) values(?,?,?,?,?,?,?,?,?)";
 	private static final String DELETE_CUSTOM_SPAWN = "DELETE FROM custom_spawnlist WHERE locx=? AND locy=? AND locz=? AND npc_templateid=? AND heading=?";
-	private static final Map<Integer, Set<L2Spawn>> _spawnTable = new ConcurrentHashMap<>();
+	private final Map<Integer, Set<L2Spawn>> _spawnTable = new ConcurrentHashMap<>();
+	
+	protected SpawnTable()
+	{
+	}
 	
 	/**
 	 * Wrapper to load all spawns.
 	 */
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = NpcData.class))
 	public void load()
 	{
-		if (!Config.ALT_DEV_NO_SPAWNS && Config.CUSTOM_SPAWNLIST_TABLE)
+		if (GeneralConfig.CUSTOM_SPAWNLIST_TABLE)
 		{
 			fillSpawnTable();
 			LOGGER.info("Loaded " + _spawnTable.size() + " custom npc spawns.");
@@ -137,9 +147,7 @@ public final class SpawnTable
 		{
 			spawnDat = new L2Spawn(spawnInfo.getInt("npcTemplateid"));
 			spawnDat.setAmount(spawnInfo.getInt("count", 1));
-			spawnDat.setX(spawnInfo.getInt("x", 0));
-			spawnDat.setY(spawnInfo.getInt("y", 0));
-			spawnDat.setZ(spawnInfo.getInt("z", 0));
+			spawnDat.setXYZ(spawnInfo.getInt("x", 0), spawnInfo.getInt("y", 0), spawnInfo.getInt("z", 0));
 			spawnDat.setHeading(spawnInfo.getInt("heading", -1));
 			spawnDat.setRespawnDelay(spawnInfo.getInt("respawnDelay", 0), spawnInfo.getInt("respawnRandom", 0));
 			spawnDat.setLocationId(spawnInfo.getInt("locId", 0));
@@ -219,16 +227,16 @@ public final class SpawnTable
 	{
 		addSpawn(spawn);
 		
-		if (storeInDb)
+		if (storeInDb && GeneralConfig.CUSTOM_SPAWNLIST_TABLE)
 		{
 			try (Connection con = DatabaseFactory.getInstance().getConnection();
 				PreparedStatement ps = con.prepareStatement(INSERT_CUSTOM_SPAWN))
 			{
 				ps.setInt(1, spawn.getAmount());
 				ps.setInt(2, spawn.getId());
-				ps.setInt(3, spawn.getX());
-				ps.setInt(4, spawn.getY());
-				ps.setInt(5, spawn.getZ());
+				ps.setInt(3, (int) spawn.getX());
+				ps.setInt(4, (int) spawn.getY());
+				ps.setInt(5, (int) spawn.getZ());
 				ps.setInt(6, spawn.getHeading());
 				ps.setInt(7, spawn.getRespawnDelay() / 1000);
 				ps.setInt(8, spawn.getRespawnMaxDelay() - spawn.getRespawnMinDelay());
@@ -259,9 +267,9 @@ public final class SpawnTable
 			try (Connection con = DatabaseFactory.getInstance().getConnection();
 				PreparedStatement ps = con.prepareStatement(DELETE_CUSTOM_SPAWN))
 			{
-				ps.setInt(1, spawn.getX());
-				ps.setInt(2, spawn.getY());
-				ps.setInt(3, spawn.getZ());
+				ps.setInt(1, (int) spawn.getX());
+				ps.setInt(2, (int) spawn.getY());
+				ps.setInt(3, (int) spawn.getZ());
 				ps.setInt(4, spawn.getId());
 				ps.setInt(5, spawn.getHeading());
 				ps.execute();
@@ -333,6 +341,7 @@ public final class SpawnTable
 		return true;
 	}
 	
+	@InstanceGetter
 	public static SpawnTable getInstance()
 	{
 		return SingletonHolder._instance;

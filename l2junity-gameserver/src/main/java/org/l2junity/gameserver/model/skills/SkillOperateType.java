@@ -47,7 +47,7 @@ public enum SkillOperateType
 	A2,
 	
 	/**
-	 * Active Skill with "Instant effect for target + Continuous effect for self"
+	 * Active Skill with "Instant effect for target + Continuous effect for self" (continuous applies only if there are targets affected by instant effect).
 	 */
 	A3,
 	
@@ -212,9 +212,9 @@ public enum SkillOperateType
 	/**
 	 * @return {@code true} if the operate type skill type should not send messeges for start/finish, {@code false} otherwise
 	 */
-	public boolean isHidingMesseges()
+	public boolean isHidingMessages()
 	{
-		return (this == A5) || (this == A6) || (this == TG);
+		return (this == P) || (this == A5) || (this == A6) || (this == TG) || (this == T);
 	}
 	
 	/**
@@ -222,7 +222,7 @@ public enum SkillOperateType
 	 */
 	public boolean isNotBroadcastable()
 	{
-		return (this == A5) || (this == A6) || (this == AU) || (this == TG);
+		return (this == A5) || (this == A6) || (this == AU) || (this == TG) || (this == T);
 	}
 	
 	/**

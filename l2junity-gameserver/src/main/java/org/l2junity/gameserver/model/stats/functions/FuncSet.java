@@ -21,7 +21,7 @@ package org.l2junity.gameserver.model.stats.functions;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.conditions.Condition;
 import org.l2junity.gameserver.model.skills.Skill;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 
 /**
  * Returns the function value, if the condition are met.
@@ -29,7 +29,7 @@ import org.l2junity.gameserver.model.stats.Stats;
  */
 public class FuncSet extends AbstractFunction
 {
-	public FuncSet(Stats stat, int order, Object owner, double value, Condition applayCond)
+	public FuncSet(DoubleStat stat, int order, Object owner, double value, Condition applayCond)
 	{
 		super(stat, order, owner, value, applayCond);
 	}

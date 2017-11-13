@@ -96,9 +96,7 @@ public final class RequestFriendInvite implements IClientIncomingPacket
 		// Target already in friend list.
 		if (activeChar.getFriendList().contains(friend.getObjectId()))
 		{
-			sm = SystemMessage.getSystemMessage(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_ON_YOUR_FRIENDS_LIST);
-			sm.addString(_name);
-			activeChar.sendPacket(sm);
+			activeChar.sendPacket(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_ON_YOUR_FRIENDS_LIST);
 			return;
 		}
 		// Target is busy.

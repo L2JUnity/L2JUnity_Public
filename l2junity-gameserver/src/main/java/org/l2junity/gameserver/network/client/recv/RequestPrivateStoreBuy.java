@@ -23,17 +23,16 @@ import static org.l2junity.gameserver.model.actor.Npc.INTERACTION_DISTANCE;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.model.ItemRequest;
 import org.l2junity.gameserver.model.TradeList;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.ceremonyofchaos.CeremonyOfChaosEvent;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
-import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.gameserver.util.Util;
 import org.l2junity.network.PacketReader;
 
@@ -53,7 +52,7 @@ public final class RequestPrivateStoreBuy implements IClientIncomingPacket
 	{
 		_storePlayerId = packet.readD();
 		int count = packet.readD();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((count <= 0) || (count > PlayerConfig.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -91,13 +90,6 @@ public final class RequestPrivateStoreBuy implements IClientIncomingPacket
 			return;
 		}
 		
-		// Cannot set private store in Ceremony of Chaos event.
-		if (player.isOnEvent(CeremonyOfChaosEvent.class))
-		{
-			client.sendPacket(SystemMessageId.YOU_CANNOT_OPEN_A_PRIVATE_STORE_OR_WORKSHOP_IN_THE_CEREMONY_OF_CHAOS);
-			return;
-		}
-		
 		if (!client.getFloodProtectors().getTransaction().tryPerformAction("privatestorebuy"))
 		{
 			player.sendMessage("You are buying items too fast.");
@@ -111,7 +103,7 @@ public final class RequestPrivateStoreBuy implements IClientIncomingPacket
 		}
 		
 		PlayerInstance storePlayer = (PlayerInstance) object;
-		if (!player.isInsideRadius(storePlayer, INTERACTION_DISTANCE, true, false))
+		if (!player.isInRadius3d(storePlayer, INTERACTION_DISTANCE))
 		{
 			return;
 		}
@@ -144,7 +136,7 @@ public final class RequestPrivateStoreBuy implements IClientIncomingPacket
 			if (storeList.getItemCount() > _items.size())
 			{
 				String msgErr = "[RequestPrivateStoreBuy] player " + client.getActiveChar().getName() + " tried to buy less items than sold by package-sell, ban this player for bot usage!";
-				Util.handleIllegalPlayerAction(client.getActiveChar(), msgErr, Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(client.getActiveChar(), msgErr, GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 		}
@@ -155,7 +147,7 @@ public final class RequestPrivateStoreBuy implements IClientIncomingPacket
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			if (result > 1)
 			{
-				_log.warn("PrivateStore buy has failed due to invalid list or request. Player: " + player.getName() + ", Private store of: " + storePlayer.getName());
+				LOGGER.warn("PrivateStore buy has failed due to invalid list or request. Player: " + player.getName() + ", Private store of: " + storePlayer.getName());
 			}
 			return;
 		}

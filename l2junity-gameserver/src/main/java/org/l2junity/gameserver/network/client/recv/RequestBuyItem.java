@@ -19,20 +19,22 @@
 package org.l2junity.gameserver.network.client.recv;
 
 import static org.l2junity.gameserver.model.actor.Npc.INTERACTION_DISTANCE;
-import static org.l2junity.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.BuyListData;
+import org.l2junity.gameserver.enums.TaxType;
 import org.l2junity.gameserver.model.WorldObject;
-import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.L2MerchantInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.buylist.Product;
 import org.l2junity.gameserver.model.buylist.ProductList;
 import org.l2junity.gameserver.model.holders.ItemHolder;
+import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.ExBuySellList;
@@ -53,7 +55,7 @@ public final class RequestBuyItem implements IClientIncomingPacket
 	{
 		_listId = packet.readD();
 		int size = packet.readD();
-		if ((size <= 0) || (size > Config.MAX_ITEM_IN_PACKET) || ((size * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((size <= 0) || (size > PlayerConfig.MAX_ITEM_IN_PACKET) || ((size * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -95,40 +97,32 @@ public final class RequestBuyItem implements IClientIncomingPacket
 		}
 		
 		// Alt game - Karma punishment
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (player.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (player.getReputation() < 0))
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		WorldObject target = player.getTarget();
-		Creature merchant = null;
+		L2MerchantInstance merchant = null;
 		if (!player.isGM())
 		{
-			if (!(target instanceof L2MerchantInstance) || (!player.isInsideRadius(target, INTERACTION_DISTANCE, true, false)) || (player.getInstanceWorld() != target.getInstanceWorld()))
+			if (!(target instanceof L2MerchantInstance) || (!player.isInRadius3d(target, INTERACTION_DISTANCE)) || (player.getInstanceWorld() != target.getInstanceWorld()))
 			{
 				client.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
-			merchant = (Creature) target;
-		}
-		
-		double castleTaxRate = 0;
-		double baseTaxRate = 0;
-		
-		if ((merchant == null) && !player.isGM())
-		{
-			client.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
+			merchant = (L2MerchantInstance) target;
 		}
 		
 		final ProductList buyList = BuyListData.getInstance().getBuyList(_listId);
 		if (buyList == null)
 		{
-			Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId, Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId, GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
+		double castleTaxRate = 0;
 		if (merchant != null)
 		{
 			if (!buyList.isNpcAllowed(merchant.getId()))
@@ -136,16 +130,7 @@ public final class RequestBuyItem implements IClientIncomingPacket
 				client.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
-			
-			if (merchant instanceof L2MerchantInstance)
-			{
-				castleTaxRate = ((L2MerchantInstance) merchant).getMpc().getCastleTaxRate();
-				baseTaxRate = ((L2MerchantInstance) merchant).getMpc().getBaseTaxRate();
-			}
-			else
-			{
-				baseTaxRate = 0.5;
-			}
+			castleTaxRate = merchant.getCastleTaxRate(TaxType.BUY);
 		}
 		
 		long subTotal = 0;
@@ -155,39 +140,32 @@ public final class RequestBuyItem implements IClientIncomingPacket
 		long weight = 0;
 		for (ItemHolder i : _items)
 		{
-			long price = -1;
-			
 			final Product product = buyList.getProductByItemId(i.getId());
 			if (product == null)
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId + " and item_id " + i.getId(), Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId + " and item_id " + i.getId(), GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			
 			if (!product.getItem().isStackable() && (i.getCount() > 1))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase invalid quantity of items at the same time.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase invalid quantity of items at the same time.", GeneralConfig.DEFAULT_PUNISH);
 				client.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_EXCEEDED_THE_QUANTITY_THAT_CAN_BE_INPUTTED));
 				return;
 			}
 			
-			price = product.getPrice();
-			if ((product.getItemId() >= 3960) && (product.getItemId() <= 4026))
-			{
-				price *= Config.RATE_SIEGE_GUARDS_PRICE;
-			}
-			
+			long price = product.getPrice();
 			if (price < 0)
 			{
-				_log.warn("ERROR, no price found .. wrong buylist ??");
+				LOGGER.warn("ERROR, no price found .. wrong buylist ??");
 				client.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			
-			if ((price == 0) && !player.isGM() && Config.ONLY_GM_ITEMS_FREE)
+			if ((price == 0) && !player.isGM() && GeneralConfig.ONLY_GM_ITEMS_FREE)
 			{
 				player.sendMessage("Ohh Cheat dont work? You have a problem now!");
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried buy item for 0 adena.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried buy item for 0 adena.", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			
@@ -201,17 +179,17 @@ public final class RequestBuyItem implements IClientIncomingPacket
 				}
 			}
 			
-			if ((MAX_ADENA / i.getCount()) < price)
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, i.getCount() * price))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + MAX_ADENA + " adena worth of goods.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + ItemContainer.getMaximumAllowedCount(Inventory.ADENA_ID) + " adena worth of goods.", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			// first calculate price per item with tax, then multiply by count
-			price = (long) (price * (1 + castleTaxRate + baseTaxRate));
+			price = (long) (price * (1 + castleTaxRate + product.getBaseTaxRate()));
 			subTotal += i.getCount() * price;
-			if (subTotal > MAX_ADENA)
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, subTotal))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + MAX_ADENA + " adena worth of goods.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase " + subTotal + " adena worth of goods.", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			
@@ -250,7 +228,7 @@ public final class RequestBuyItem implements IClientIncomingPacket
 			Product product = buyList.getProductByItemId(i.getId());
 			if (product == null)
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId + " and item_id " + i.getId(), Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId + " and item_id " + i.getId(), GeneralConfig.DEFAULT_PUNISH);
 				continue;
 			}
 			
@@ -268,9 +246,9 @@ public final class RequestBuyItem implements IClientIncomingPacket
 		}
 		
 		// add to castle treasury
-		if (merchant instanceof L2MerchantInstance)
+		if (merchant != null)
 		{
-			((L2MerchantInstance) merchant).getCastle().addToTreasury((long) (subTotal * castleTaxRate));
+			merchant.handleTaxPayment((long) (subTotal * castleTaxRate));
 		}
 		
 		client.sendPacket(new ExUserInfoInvenWeight(player));

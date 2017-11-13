@@ -56,7 +56,7 @@ public final class PacketWriter
 	 */
 	public void writeH(int value)
 	{
-		_buf.writeShort(value);
+		_buf.writeShortLE(value);
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public final class PacketWriter
 	 */
 	public void writeD(int value)
 	{
-		_buf.writeInt(value);
+		_buf.writeIntLE(value);
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public final class PacketWriter
 	 */
 	public void writeQ(long value)
 	{
-		_buf.writeLong(value);
+		_buf.writeLongLE(value);
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public final class PacketWriter
 	 */
 	public void writeE(float value)
 	{
-		_buf.writeFloat(value);
+		_buf.writeIntLE(Float.floatToIntBits(value));
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public final class PacketWriter
 	 */
 	public void writeF(double value)
 	{
-		_buf.writeDouble(value);
+		_buf.writeLongLE(Double.doubleToLongBits(value));
 	}
 	
 	/**
@@ -105,7 +105,7 @@ public final class PacketWriter
 		{
 			for (int i = 0; i < value.length(); i++)
 			{
-				_buf.writeChar(value.charAt(i));
+				_buf.writeChar(Character.reverseBytes(value.charAt(i)));
 			}
 		}
 		
@@ -120,10 +120,10 @@ public final class PacketWriter
 	{
 		if (value != null)
 		{
-			_buf.writeShort(value.length());
+			_buf.writeShortLE(value.length());
 			for (int i = 0; i < value.length(); i++)
 			{
-				_buf.writeChar(value.charAt(i));
+				_buf.writeChar(Character.reverseBytes(value.charAt(i)));
 			}
 		}
 		else

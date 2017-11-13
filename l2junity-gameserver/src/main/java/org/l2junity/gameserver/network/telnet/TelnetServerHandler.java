@@ -18,26 +18,26 @@
  */
 package org.l2junity.gameserver.network.telnet;
 
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.channel.ChannelHandlerAdapter;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.AttributeKey;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.TelnetConfig;
+
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.AttributeKey;
 
 /**
  * @author UnAfraid
  */
 @Sharable
-public class TelnetServerHandler extends ChannelHandlerAdapter
+public class TelnetServerHandler extends ChannelInboundHandlerAdapter
 {
 	private static final Pattern COMMAND_ARGS_PATTERN = Pattern.compile("\"([^\"]*)\"|([^\\s]+)");
 	private static final AttributeKey<Boolean> AUTHORIZED = AttributeKey.valueOf(TelnetServerHandler.class, "AUTHORIZED");
@@ -50,7 +50,7 @@ public class TelnetServerHandler extends ChannelHandlerAdapter
 			return "Unknown command." + System.lineSeparator();
 		}
 		
-		String response = cmd.handle(ctx, args);
+		String response = cmd.handle(ctx.channel().remoteAddress().toString(), args);
 		if (response == null)
 		{
 			response = "Usage:" + System.lineSeparator() + cmd.getUsage() + System.lineSeparator();
@@ -60,12 +60,12 @@ public class TelnetServerHandler extends ChannelHandlerAdapter
 	}
 	
 	@Override
-	public void channelActive(ChannelHandlerContext ctx)
+	public void handlerAdded(ChannelHandlerContext ctx)
 	{
 		String ip = ctx.channel().remoteAddress().toString();
 		ip = ip.substring(1, ip.lastIndexOf(':')); // Trim out /127.0.0.1:14013
 		
-		if (!Config.TELNET_HOSTS.contains(ip))
+		if (!TelnetConfig.TELNET_HOSTS.contains(ip))
 		{
 			final ChannelFuture future = ctx.write("Your ip: " + ip + " is not allowed to connect." + System.lineSeparator());
 			future.addListener(ChannelFutureListener.CLOSE);
@@ -77,16 +77,16 @@ public class TelnetServerHandler extends ChannelHandlerAdapter
 		ctx.write("Welcome to the L2J Unity telnet session." + System.lineSeparator());
 		ctx.write("It is " + new Date() + " now." + System.lineSeparator());
 		ctx.write("Please enter your password:" + System.lineSeparator());
-		if (!Config.TELNET_PASSWORD.isEmpty())
+		if (!TelnetConfig.TELNET_PASSWORD.isEmpty())
 		{
 			// Ask password
 			ctx.write("Password:");
-			ctx.attr(AUTHORIZED).set(Boolean.FALSE);
+			ctx.channel().attr(AUTHORIZED).set(Boolean.FALSE);
 		}
 		else
 		{
 			ctx.write("Type 'help' to see all available commands." + System.lineSeparator());
-			ctx.attr(AUTHORIZED).set(Boolean.TRUE);
+			ctx.channel().attr(AUTHORIZED).set(Boolean.TRUE);
 		}
 		ctx.flush();
 	}
@@ -102,11 +102,11 @@ public class TelnetServerHandler extends ChannelHandlerAdapter
 		String response = null;
 		boolean close = false;
 		
-		if (Boolean.FALSE.equals(ctx.attr(AUTHORIZED).get()))
+		if (Boolean.FALSE.equals(ctx.channel().attr(AUTHORIZED).get()))
 		{
-			if (Config.TELNET_PASSWORD.equals(request))
+			if (TelnetConfig.TELNET_PASSWORD.equals(request))
 			{
-				ctx.attr(AUTHORIZED).set(Boolean.TRUE);
+				ctx.channel().attr(AUTHORIZED).set(Boolean.TRUE);
 				request = "";
 			}
 			else
@@ -116,7 +116,7 @@ public class TelnetServerHandler extends ChannelHandlerAdapter
 			}
 		}
 		
-		if (Boolean.TRUE.equals(ctx.attr(AUTHORIZED).get()))
+		if (Boolean.TRUE.equals(ctx.channel().attr(AUTHORIZED).get()))
 		{
 			if (request.isEmpty())
 			{

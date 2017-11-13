@@ -21,7 +21,8 @@ package org.l2junity.gameserver.network.client.recv;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.instancemanager.CastleManorManager;
 import org.l2junity.gameserver.model.CropProcure;
@@ -50,7 +51,7 @@ public class RequestProcureCropList implements IClientIncomingPacket
 	public boolean read(L2GameClient client, PacketReader packet)
 	{
 		final int count = packet.readD();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((count <= 0) || (count > PlayerConfig.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -149,7 +150,7 @@ public class RequestProcureCropList implements IClientIncomingPacket
 		}
 		
 		// Used when Config.ALT_MANOR_SAVE_ALL_ACTIONS == true
-		final int updateListSize = Config.ALT_MANOR_SAVE_ALL_ACTIONS ? _items.size() : 0;
+		final int updateListSize = GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS ? _items.size() : 0;
 		final List<CropProcure> updateList = new ArrayList<>(updateListSize);
 		
 		// Proceed the purchase
@@ -192,13 +193,13 @@ public class RequestProcureCropList implements IClientIncomingPacket
 			}
 			player.addItem("Manor", i.getRewardId(), rewardItemCount, manager, true);
 			
-			if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
+			if (GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS)
 			{
 				updateList.add(cp);
 			}
 		}
 		
-		if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
+		if (GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS)
 		{
 			manor.updateCurrentProcure(castleId, updateList);
 		}
@@ -206,6 +207,7 @@ public class RequestProcureCropList implements IClientIncomingPacket
 	
 	private final class CropHolder extends UniqueItemHolder
 	{
+		private static final long serialVersionUID = -8408582691243260781L;
 		private final int _manorId;
 		private CropProcure _cp;
 		private int _rewardId = 0;

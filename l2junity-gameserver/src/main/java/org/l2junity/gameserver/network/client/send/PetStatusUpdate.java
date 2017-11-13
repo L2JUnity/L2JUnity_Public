@@ -57,9 +57,9 @@ public class PetStatusUpdate implements IClientOutgoingPacket
 		
 		packet.writeD(_summon.getSummonType());
 		packet.writeD(_summon.getObjectId());
-		packet.writeD(_summon.getX());
-		packet.writeD(_summon.getY());
-		packet.writeD(_summon.getZ());
+		packet.writeD((int) _summon.getX());
+		packet.writeD((int) _summon.getY());
+		packet.writeD((int) _summon.getZ());
 		packet.writeS(_summon.getTitle());
 		packet.writeD(_curFed);
 		packet.writeD(_maxFed);

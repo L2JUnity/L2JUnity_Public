@@ -24,8 +24,6 @@ package org.l2junity.gameserver.enums;
 public enum AIType
 {
 	FIGHTER,
-	ARCHER,
-	BALANCED,
 	MAGE,
 	HEALER,
 	CORPSE

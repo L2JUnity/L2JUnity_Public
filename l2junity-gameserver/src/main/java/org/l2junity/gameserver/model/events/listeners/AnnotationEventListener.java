@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class AnnotationEventListener extends AbstractEventListener
 {
-	private static final Logger _log = LoggerFactory.getLogger(AnnotationEventListener.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AnnotationEventListener.class);
 	private final Method _callback;
 	
 	public AnnotationEventListener(ListenersContainer container, EventType type, Method callback, Object owner, int priority)
@@ -46,17 +46,23 @@ public class AnnotationEventListener extends AbstractEventListener
 	@Override
 	public <R extends AbstractEventReturn> R executeEvent(IBaseEvent event, Class<R> returnBackClass)
 	{
+		final Method method = _callback;
 		try
 		{
-			final Object result = _callback.invoke(getOwner(), event);
-			if (_callback.getReturnType() == returnBackClass)
+			if (!method.isAccessible())
+			{
+				method.setAccessible(true);
+			}
+			
+			final Object result = method.invoke(getOwner(), event);
+			if (method.getReturnType() == returnBackClass)
 			{
 				return returnBackClass.cast(result);
 			}
 		}
 		catch (Exception e)
 		{
-			_log.warn(getClass().getSimpleName() + ": Error while invoking " + _callback.getName() + " on " + getOwner(), e);
+			LOGGER.warn("Error while invoking {} on {}", method.getName(), getOwner(), e);
 		}
 		return null;
 	}

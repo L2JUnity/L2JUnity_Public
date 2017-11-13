@@ -27,8 +27,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.InstanceListManager;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.data.xml.impl.DoorData;
+import org.l2junity.gameserver.data.xml.impl.NpcData;
+import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.ClanMember;
 import org.l2junity.gameserver.model.L2Clan;
 import org.l2junity.gameserver.model.WorldObject;
@@ -38,7 +44,7 @@ import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class CastleManager implements InstanceListManager
+public final class CastleManager
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CastleManager.class);
 	
@@ -58,6 +64,10 @@ public final class CastleManager implements InstanceListManager
 		8182,
 		8183
 	};
+	
+	protected CastleManager()
+	{
+	}
 	
 	public final Castle findNearestCastle(WorldObject obj)
 	{
@@ -112,7 +122,7 @@ public final class CastleManager implements InstanceListManager
 		return null;
 	}
 	
-	public final Castle getCastle(int x, int y, int z)
+	public final Castle getCastle(double x, double y, double z)
 	{
 		for (Castle temp : getCastles())
 		{
@@ -132,6 +142,12 @@ public final class CastleManager implements InstanceListManager
 	public final Collection<Castle> getCastles()
 	{
 		return _castles.values();
+	}
+	
+	public boolean isCastleInSiege(int castleId)
+	{
+		final Castle castle = getCastleById(castleId);
+		return (castle != null) && castle.getSiege().isInProgress();
 	}
 	
 	public boolean hasOwnedCastle()
@@ -214,8 +230,15 @@ public final class CastleManager implements InstanceListManager
 		}
 	}
 	
-	@Override
-	public void loadInstances()
+	@Load(group = LoadGroup.class, dependencies =
+	{
+		@Dependency(clazz = NpcData.class),
+		@Dependency(clazz = ZoneManager.class),
+		@Dependency(clazz = DoorData.class),
+		@Dependency(clazz = SkillTreesData.class)
+	
+	})
+	private void load()
 	{
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
 			Statement s = con.createStatement();
@@ -231,20 +254,6 @@ public final class CastleManager implements InstanceListManager
 		catch (Exception e)
 		{
 			LOGGER.warn("Exception: loadCastleData():", e);
-		}
-	}
-	
-	@Override
-	public void updateReferences()
-	{
-	}
-	
-	@Override
-	public void activateInstances()
-	{
-		for (final Castle castle : getCastles())
-		{
-			castle.activateInstance();
 		}
 	}
 	
@@ -266,13 +275,14 @@ public final class CastleManager implements InstanceListManager
 		return count;
 	}
 	
+	@InstanceGetter
 	public static CastleManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final CastleManager _instance = new CastleManager();
+		protected static final CastleManager INSTANCE = new CastleManager();
 	}
 }

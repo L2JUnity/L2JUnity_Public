@@ -18,6 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
+import org.l2junity.gameserver.data.xml.impl.OneDayRewardData;
+import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
@@ -26,16 +28,29 @@ import org.l2junity.network.PacketWriter;
  */
 public class ExConnectedTimeAndGettableReward implements IClientOutgoingPacket
 {
-	public static final ExConnectedTimeAndGettableReward STATIC_PACKET = new ExConnectedTimeAndGettableReward();
+	private final int _oneDayRewardAvailableCount;
+	
+	public ExConnectedTimeAndGettableReward(PlayerInstance player)
+	{
+		_oneDayRewardAvailableCount = OneDayRewardData.getInstance().getOneDayRewardData(player).size();
+	}
 	
 	@Override
 	public boolean write(PacketWriter packet)
 	{
 		OutgoingPackets.EX_CONNECTED_TIME_AND_GETTABLE_REWARD.writeId(packet);
-		for (int i = 0; i < 16; i++) // TODO : Find what the hell it is
-		{
-			packet.writeD(0x00);
-		}
+		packet.writeD(0x00);
+		packet.writeD(_oneDayRewardAvailableCount);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
+		packet.writeD(0x00);
 		return true;
 	}
 	

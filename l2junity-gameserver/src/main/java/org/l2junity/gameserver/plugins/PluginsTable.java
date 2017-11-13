@@ -26,7 +26,7 @@ import java.sql.Statement;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

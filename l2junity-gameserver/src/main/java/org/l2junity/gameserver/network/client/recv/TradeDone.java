@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.TradeList;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -58,9 +58,9 @@ public final class TradeDone implements IClientIncomingPacket
 		final TradeList trade = player.getActiveTradeList();
 		if (trade == null)
 		{
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
-				_log.warn("player.getTradeList == null in " + getClass().getSimpleName() + " for player " + player.getName());
+				LOGGER.warn("player.getTradeList == null in " + getClass().getSimpleName() + " for player " + player.getName());
 			}
 			return;
 		}
@@ -98,7 +98,7 @@ public final class TradeDone implements IClientIncomingPacket
 				return;
 			}
 			
-			if (player.calculateDistance(trade.getPartner(), true, false) > 150)
+			if (!player.isInRadius3d(trade.getPartner(), 150))
 			{
 				player.cancelActiveTrade();
 				return;

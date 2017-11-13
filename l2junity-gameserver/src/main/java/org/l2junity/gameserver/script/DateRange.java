@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
  */
 public class DateRange
 {
-	protected static final Logger _log = LoggerFactory.getLogger(DateRange.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(DateRange.class);
 	private final Date _startDate, _endDate;
 	
 	public DateRange(Date from, Date to)
@@ -53,7 +53,7 @@ public class DateRange
 			}
 			catch (ParseException e)
 			{
-				_log.warn("Invalid Date Format.", e);
+				LOGGER.warn("Invalid Date Format.", e);
 			}
 		}
 		return new DateRange(null, null);

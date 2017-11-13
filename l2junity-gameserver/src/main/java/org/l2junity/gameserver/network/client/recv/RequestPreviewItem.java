@@ -20,9 +20,11 @@ package org.l2junity.gameserver.network.client.recv;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.BuyListData;
 import org.l2junity.gameserver.enums.Race;
 import org.l2junity.gameserver.model.WorldObject;
@@ -32,6 +34,7 @@ import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.buylist.Product;
 import org.l2junity.gameserver.model.buylist.ProductList;
 import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.items.Armor;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.items.Weapon;
@@ -75,7 +78,7 @@ public final class RequestPreviewItem implements IClientIncomingPacket
 			}
 			catch (Exception e)
 			{
-				_log.error("", e);
+				LOGGER.error("", e);
 			}
 		}
 	}
@@ -129,7 +132,7 @@ public final class RequestPreviewItem implements IClientIncomingPacket
 		}
 		
 		// If Alternate rule Karma punishment is set to true, forbid Wear to player with Karma
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (activeChar.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (activeChar.getReputation() < 0))
 		{
 			return;
 		}
@@ -137,8 +140,8 @@ public final class RequestPreviewItem implements IClientIncomingPacket
 		// Check current target of the player and the INTERACTION_DISTANCE
 		WorldObject target = activeChar.getTarget();
 		if (!activeChar.isGM() && ((target == null // No target (i.e. GM Shop)
-			) || !((target instanceof L2MerchantInstance)) // Target not a merchant
-		|| !activeChar.isInsideRadius(target, Npc.INTERACTION_DISTANCE, false, false) // Distance is too far
+		) || !((target instanceof L2MerchantInstance)) // Target not a merchant
+			|| !activeChar.isInRadius2d(target, Npc.INTERACTION_DISTANCE) // Distance is too far
 		))
 		{
 			return;
@@ -154,14 +157,14 @@ public final class RequestPreviewItem implements IClientIncomingPacket
 		final L2MerchantInstance merchant = (target instanceof L2MerchantInstance) ? (L2MerchantInstance) target : null;
 		if (merchant == null)
 		{
-			_log.warn("Null merchant!");
+			LOGGER.warn("Null merchant!");
 			return;
 		}
 		
 		final ProductList buyList = BuyListData.getInstance().getBuyList(_listId);
 		if (buyList == null)
 		{
-			Util.handleIllegalPlayerAction(activeChar, "Warning!! Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " sent a false BuyList list_id " + _listId, Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(activeChar, "Warning!! Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " sent a false BuyList list_id " + _listId, GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
@@ -175,7 +178,7 @@ public final class RequestPreviewItem implements IClientIncomingPacket
 			final Product product = buyList.getProductByItemId(itemId);
 			if (product == null)
 			{
-				Util.handleIllegalPlayerAction(activeChar, "Warning!! Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " sent a false BuyList list_id " + _listId + " and item_id " + itemId, Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(activeChar, "Warning!! Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " sent a false BuyList list_id " + _listId + " and item_id " + itemId, GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			
@@ -223,10 +226,10 @@ public final class RequestPreviewItem implements IClientIncomingPacket
 			}
 			
 			itemList.put(slot, itemId);
-			totalPrice += Config.WEAR_PRICE;
-			if (totalPrice > Inventory.MAX_ADENA)
+			totalPrice += GeneralConfig.WEAR_PRICE;
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, totalPrice))
 			{
-				Util.handleIllegalPlayerAction(activeChar, "Warning!! Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to purchase over " + Inventory.MAX_ADENA + " adena worth of goods.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(activeChar, "Warning!! Character " + activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to purchase " + totalPrice + " adena worth of goods.", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 		}
@@ -242,7 +245,7 @@ public final class RequestPreviewItem implements IClientIncomingPacket
 		{
 			activeChar.sendPacket(new ShopPreviewInfo(itemList));
 			// Schedule task
-			ThreadPoolManager.getInstance().scheduleGeneral(new RemoveWearItemsTask(activeChar), Config.WEAR_DELAY * 1000);
+			ThreadPool.schedule(new RemoveWearItemsTask(activeChar), GeneralConfig.WEAR_DELAY * 1000, TimeUnit.MILLISECONDS);
 		}
 	}
 	

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,12 +34,17 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.ManorMode;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.ClanMember;
 import org.l2junity.gameserver.model.CropProcure;
 import org.l2junity.gameserver.model.L2Clan;
@@ -80,59 +85,60 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 	private final Map<Integer, List<SeedProduction>> _production = new HashMap<>();
 	private final Map<Integer, List<SeedProduction>> _productionNext = new HashMap<>();
 	
-	public CastleManorManager()
+	protected CastleManorManager()
 	{
-		if (Config.ALLOW_MANOR)
-		{
-			load(); // Load seed data (XML)
-			loadDb(); // Load castle manor data (DB)
-			
-			// Set mode and start timer
-			final Calendar currentTime = Calendar.getInstance();
-			final int hour = currentTime.get(Calendar.HOUR_OF_DAY);
-			final int min = currentTime.get(Calendar.MINUTE);
-			final int maintenanceMin = Config.ALT_MANOR_REFRESH_MIN + Config.ALT_MANOR_MAINTENANCE_MIN;
-			
-			if (((hour >= Config.ALT_MANOR_REFRESH_TIME) && (min >= maintenanceMin)) || (hour < Config.ALT_MANOR_APPROVE_TIME) || ((hour == Config.ALT_MANOR_APPROVE_TIME) && (min <= Config.ALT_MANOR_APPROVE_MIN)))
-			{
-				_mode = ManorMode.MODIFIABLE;
-			}
-			else if ((hour == Config.ALT_MANOR_REFRESH_TIME) && ((min >= Config.ALT_MANOR_REFRESH_MIN) && (min < maintenanceMin)))
-			{
-				_mode = ManorMode.MAINTENANCE;
-			}
-			
-			// Schedule mode change
-			scheduleModeChange();
-			
-			// Schedule autosave
-			if (!Config.ALT_MANOR_SAVE_ALL_ACTIONS)
-			{
-				ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this::storeMe, Config.ALT_MANOR_SAVE_PERIOD_RATE, Config.ALT_MANOR_SAVE_PERIOD_RATE, TimeUnit.HOURS);
-			}
-			
-			// Send debug message
-			if (Config.DEBUG)
-			{
-				LOGGER.info("Current mode {}", _mode.toString());
-			}
-		}
-		else
+		// visibility
+	}
+	
+	@Load(group = LoadGroup.class, dependencies = @Dependency(clazz = ItemTable.class))
+	private void load() throws Exception
+	{
+		if (!GeneralConfig.ALLOW_MANOR)
 		{
 			_mode = ManorMode.DISABLED;
 			LOGGER.info("Manor system is deactivated.");
+			return;
+		}
+		
+		// Load seed data (XML)
+		parseDatapackFile("data/seeds.xml");
+		LOGGER.info("Loaded {} seeds.", _seeds.size());
+		
+		loadDb(); // Load castle manor data (DB)
+		
+		// Set mode and start timer
+		final Calendar currentTime = Calendar.getInstance();
+		final int hour = currentTime.get(Calendar.HOUR_OF_DAY);
+		final int min = currentTime.get(Calendar.MINUTE);
+		final int maintenanceMin = GeneralConfig.ALT_MANOR_REFRESH_MIN + GeneralConfig.ALT_MANOR_MAINTENANCE_MIN;
+		
+		if (((hour >= GeneralConfig.ALT_MANOR_REFRESH_TIME) && (min >= maintenanceMin)) || (hour < GeneralConfig.ALT_MANOR_APPROVE_TIME) || ((hour == GeneralConfig.ALT_MANOR_APPROVE_TIME) && (min <= GeneralConfig.ALT_MANOR_APPROVE_MIN)))
+		{
+			_mode = ManorMode.MODIFIABLE;
+		}
+		else if ((hour == GeneralConfig.ALT_MANOR_REFRESH_TIME) && ((min >= GeneralConfig.ALT_MANOR_REFRESH_MIN) && (min < maintenanceMin)))
+		{
+			_mode = ManorMode.MAINTENANCE;
+		}
+		
+		// Schedule mode change
+		scheduleModeChange();
+		
+		// Schedule autosave
+		if (!GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS)
+		{
+			ThreadPool.scheduleAtFixedRate(this::storeMe, GeneralConfig.ALT_MANOR_SAVE_PERIOD_RATE, GeneralConfig.ALT_MANOR_SAVE_PERIOD_RATE, TimeUnit.HOURS);
+		}
+		
+		// Send debug message
+		if (GeneralConfig.DEBUG)
+		{
+			LOGGER.info("Current mode {}", _mode.toString());
 		}
 	}
 	
 	@Override
-	public final void load()
-	{
-		parseDatapackFile("data/seeds.xml");
-		LOGGER.info("Loaded {} seeds.", _seeds.size());
-	}
-	
-	@Override
-	public final void parseDocument(Document doc, File f)
+	public final void parseDocument(Document doc, Path path)
 	{
 		StatsSet set;
 		NamedNodeMap attrs;
@@ -262,24 +268,24 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 		switch (_mode)
 		{
 			case MODIFIABLE:
-				_nextModeChange.set(Calendar.HOUR_OF_DAY, Config.ALT_MANOR_APPROVE_TIME);
-				_nextModeChange.set(Calendar.MINUTE, Config.ALT_MANOR_APPROVE_MIN);
+				_nextModeChange.set(Calendar.HOUR_OF_DAY, GeneralConfig.ALT_MANOR_APPROVE_TIME);
+				_nextModeChange.set(Calendar.MINUTE, GeneralConfig.ALT_MANOR_APPROVE_MIN);
 				if (_nextModeChange.before(Calendar.getInstance()))
 				{
 					_nextModeChange.add(Calendar.DATE, 1);
 				}
 				break;
 			case MAINTENANCE:
-				_nextModeChange.set(Calendar.HOUR_OF_DAY, Config.ALT_MANOR_REFRESH_TIME);
-				_nextModeChange.set(Calendar.MINUTE, Config.ALT_MANOR_REFRESH_MIN + Config.ALT_MANOR_MAINTENANCE_MIN);
+				_nextModeChange.set(Calendar.HOUR_OF_DAY, GeneralConfig.ALT_MANOR_REFRESH_TIME);
+				_nextModeChange.set(Calendar.MINUTE, GeneralConfig.ALT_MANOR_REFRESH_MIN + GeneralConfig.ALT_MANOR_MAINTENANCE_MIN);
 				break;
 			case APPROVED:
-				_nextModeChange.set(Calendar.HOUR_OF_DAY, Config.ALT_MANOR_REFRESH_TIME);
-				_nextModeChange.set(Calendar.MINUTE, Config.ALT_MANOR_REFRESH_MIN);
+				_nextModeChange.set(Calendar.HOUR_OF_DAY, GeneralConfig.ALT_MANOR_REFRESH_TIME);
+				_nextModeChange.set(Calendar.MINUTE, GeneralConfig.ALT_MANOR_REFRESH_MIN);
 				break;
 		}
 		// Schedule mode change
-		ThreadPoolManager.getInstance().scheduleGeneral(this::changeMode, (_nextModeChange.getTimeInMillis() - System.currentTimeMillis()));
+		ThreadPool.schedule(this::changeMode, (_nextModeChange.getTimeInMillis() - System.currentTimeMillis()), TimeUnit.MILLISECONDS);
 	}
 	
 	public final void changeMode()
@@ -395,7 +401,7 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 					int slots = 0;
 					final int castleId = castle.getResidenceId();
 					final ItemContainer cwh = owner.getWarehouse();
-					for (CropProcure crop : _procureNext.get(castleId))
+					for (CropProcure crop : _procureNext.getOrDefault(castleId, Collections.emptyList()))
 					{
 						if ((crop.getStartAmount() > 0) && (cwh.getItemsByItemId(getSeedByCrop(crop.getId()).getMatureId()) == null))
 						{
@@ -423,7 +429,7 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 				}
 				
 				// Store changes
-				if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
+				if (GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS)
 				{
 					storeMe();
 				}
@@ -431,7 +437,7 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 			}
 		}
 		scheduleModeChange();
-		if (Config.DEBUG)
+		if (GeneralConfig.DEBUG)
 		{
 			LOGGER.info("Manor mode changed to {}!", _mode.toString());
 		}
@@ -440,7 +446,7 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 	public final void setNextSeedProduction(List<SeedProduction> list, int castleId)
 	{
 		_productionNext.put(castleId, list);
-		if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
+		if (GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS)
 		{
 			try (Connection con = DatabaseFactory.getInstance().getConnection();
 				PreparedStatement dps = con.prepareStatement("DELETE FROM castle_manor_production WHERE castle_id = ? AND next_period = 1");
@@ -476,7 +482,7 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 	public final void setNextCropProcure(List<CropProcure> list, int castleId)
 	{
 		_procureNext.put(castleId, list);
-		if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
+		if (GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS)
 		{
 			try (Connection con = DatabaseFactory.getInstance().getConnection();
 				PreparedStatement dps = con.prepareStatement("DELETE FROM castle_manor_procure WHERE castle_id = ? AND next_period = 1");
@@ -701,7 +707,7 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 		_production.get(castleId).clear();
 		_productionNext.get(castleId).clear();
 		
-		if (Config.ALT_MANOR_SAVE_ALL_ACTIONS)
+		if (GeneralConfig.ALT_MANOR_SAVE_ALL_ACTIONS)
 		{
 			try (Connection con = DatabaseFactory.getInstance().getConnection();
 				PreparedStatement ds = con.prepareStatement("DELETE FROM castle_manor_production WHERE castle_id = ?");
@@ -810,16 +816,14 @@ public final class CastleManorManager implements IGameXmlReader, IStorable
 		return null;
 	}
 	
-	// -------------------------------------------------------
-	// Static methods
-	// -------------------------------------------------------
+	@InstanceGetter
 	public static CastleManorManager getInstance()
 	{
-		return SingletonHolder._instance;
+		return SingletonHolder.INSTANCE;
 	}
 	
 	private static class SingletonHolder
 	{
-		protected static final CastleManorManager _instance = new CastleManorManager();
+		protected static final CastleManorManager INSTANCE = new CastleManorManager();
 	}
 }

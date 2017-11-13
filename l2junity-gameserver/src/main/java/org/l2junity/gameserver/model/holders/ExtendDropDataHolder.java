@@ -22,10 +22,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.handler.IConditionHandler;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.actor.Npc;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.conditions.ICondition;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 
 /**
@@ -35,14 +35,14 @@ public class ExtendDropDataHolder
 {
 	private final int _id;
 	private final List<ExtendDropItemHolder> _items;
-	private final List<ICondition> _conditions;
+	private final List<IConditionHandler> _conditions;
 	private final Map<Long, SystemMessageId> _systemMessages;
 	
 	public ExtendDropDataHolder(StatsSet set)
 	{
 		_id = set.getInt("id");
 		_items = set.getList("items", ExtendDropItemHolder.class);
-		_conditions = set.getList("conditions", ICondition.class);
+		_conditions = set.getList("conditions", IConditionHandler.class);
 		_systemMessages = set.getMap("systemMessages", Long.class, SystemMessageId.class);
 	}
 	
@@ -52,7 +52,7 @@ public class ExtendDropDataHolder
 		{
 			_items.forEach(i ->
 			{
-				final long currentAmount = player.getVariables().getExtendDropCount(_id);
+				final long currentAmount = player.getVariables().getExtendDropCount(_id, i.getId());
 				if ((Rnd.nextDouble() < i.getChance()) && (currentAmount < i.getMaxCount()))
 				{
 					boolean sendMessage = true;
@@ -67,7 +67,7 @@ public class ExtendDropDataHolder
 						}
 					}
 					player.addItem("ExtendDrop", i.getId(), i.getCount(), player, sendMessage);
-					player.getVariables().updateExtendDrop(_id, newAmount);
+					player.getVariables().updateExtendDrop(_id, i.getId(), newAmount);
 				}
 			});
 		}

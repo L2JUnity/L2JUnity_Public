@@ -18,7 +18,7 @@
  */
 package org.l2junity.loginserver.network.gameserverpackets;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.loginserver.GameServerTable;
 import org.l2junity.loginserver.GameServerThread;
 import org.l2junity.util.network.BaseRecievePacket;
@@ -44,7 +44,7 @@ public class PlayerInGame extends BaseRecievePacket
 		{
 			String account = readS();
 			server.addAccountOnGameServer(account);
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
 				_log.info("Account " + account + " logged in GameServer: [" + server.getServerId() + "] " + GameServerTable.getInstance().getServerNameById(server.getServerId()));
 			}

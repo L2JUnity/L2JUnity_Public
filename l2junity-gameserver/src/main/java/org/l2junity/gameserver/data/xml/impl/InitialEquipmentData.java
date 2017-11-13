@@ -18,14 +18,17 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.l2junity.Config;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.base.ClassId;
 import org.l2junity.gameserver.model.items.PcItemTemplate;
@@ -53,19 +56,18 @@ public final class InitialEquipmentData implements IGameXmlReader
 	 */
 	protected InitialEquipmentData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_initialEquipmentList.clear();
-		parseDatapackFile(Config.INITIAL_EQUIPMENT_EVENT ? EVENT : NORMAL);
+		parseDatapackFile(PlayerConfig.INITIAL_EQUIPMENT_EVENT ? EVENT : NORMAL);
 		LOGGER.info("Loaded {} Initial Equipment data.", _initialEquipmentList.size());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -108,6 +110,11 @@ public final class InitialEquipmentData implements IGameXmlReader
 		_initialEquipmentList.put(classId, equipList);
 	}
 	
+	public int getInitialEquipmentCount()
+	{
+		return _initialEquipmentList.size();
+	}
+	
 	/**
 	 * Gets the equipment list.
 	 * @param cId the class Id for the required initial equipment.
@@ -132,6 +139,7 @@ public final class InitialEquipmentData implements IGameXmlReader
 	 * Gets the single instance of InitialEquipmentData.
 	 * @return single instance of InitialEquipmentData
 	 */
+	@InstanceGetter
 	public static InitialEquipmentData getInstance()
 	{
 		return SingletonHolder._instance;

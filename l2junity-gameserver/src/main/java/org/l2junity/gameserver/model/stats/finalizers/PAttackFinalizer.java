@@ -18,14 +18,15 @@
  */
 package org.l2junity.gameserver.model.stats.finalizers;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.stats.BaseStats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.model.stats.IStatsFunction;
-import org.l2junity.gameserver.model.stats.Stats;
 
 /**
  * @author UnAfraid
@@ -33,7 +34,7 @@ import org.l2junity.gameserver.model.stats.Stats;
 public class PAttackFinalizer implements IStatsFunction
 {
 	@Override
-	public double calc(Creature creature, Optional<Double> base, Stats stat)
+	public double calc(Creature creature, OptionalDouble base, DoubleStat stat)
 	{
 		throwIfPresent(base);
 		
@@ -46,18 +47,18 @@ public class PAttackFinalizer implements IStatsFunction
 			baseValue += calcEnchantBodyPart(creature, L2Item.SLOT_CHEST, L2Item.SLOT_FULL_ARMOR);
 		}
 		
-		if (Config.L2JMOD_CHAMPION_ENABLE && creature.isChampion())
+		if (L2JModsConfig.L2JMOD_CHAMPION_ENABLE && creature.isChampion())
 		{
-			baseValue *= Config.L2JMOD_CHAMPION_ATK;
+			baseValue *= L2JModsConfig.L2JMOD_CHAMPION_ATK;
 		}
 		if (creature.isRaid())
 		{
-			baseValue *= Config.RAID_PATTACK_MULTIPLIER;
+			baseValue *= NpcConfig.RAID_PATTACK_MULTIPLIER;
 		}
 		final double chaBonus = creature.isPlayer() ? BaseStats.CHA.calcBonus(creature) : 1.;
 		final double strBonus = creature.getSTR() > 0 ? BaseStats.STR.calcBonus(creature) : 1.;
 		baseValue *= strBonus * creature.getLevelMod() * chaBonus;
-		return Stats.defaultValue(creature, stat, baseValue);
+		return DoubleStat.defaultValue(creature, stat, baseValue);
 	}
 	
 	@Override

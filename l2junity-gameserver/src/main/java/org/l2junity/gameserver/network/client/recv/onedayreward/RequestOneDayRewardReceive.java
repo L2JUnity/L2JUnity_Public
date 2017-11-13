@@ -25,6 +25,7 @@ import org.l2junity.gameserver.model.OneDayRewardDataHolder;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
+import org.l2junity.gameserver.network.client.send.ExConnectedTimeAndGettableReward;
 import org.l2junity.gameserver.network.client.send.onedayreward.ExOneDayReceiveRewardList;
 import org.l2junity.network.PacketReader;
 
@@ -52,12 +53,13 @@ public class RequestOneDayRewardReceive implements IClientIncomingPacket
 		}
 		
 		final Collection<OneDayRewardDataHolder> reward = OneDayRewardData.getInstance().getOneDayRewardData(_id);
-		if (reward.isEmpty())
+		if ((reward == null) || reward.isEmpty())
 		{
 			return;
 		}
 		
 		reward.stream().filter(o -> o.isDisplayable(player)).forEach(r -> r.requestReward(player));
-		player.sendPacket(new ExOneDayReceiveRewardList(player));
+		player.sendPacket(new ExConnectedTimeAndGettableReward(player));
+		player.sendPacket(new ExOneDayReceiveRewardList(player, true));
 	}
 }

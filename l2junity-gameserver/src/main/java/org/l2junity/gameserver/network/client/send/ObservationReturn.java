@@ -36,9 +36,9 @@ public class ObservationReturn implements IClientOutgoingPacket
 	{
 		OutgoingPackets.OBSERVER_END.writeId(packet);
 		
-		packet.writeD(_loc.getX());
-		packet.writeD(_loc.getY());
-		packet.writeD(_loc.getZ());
+		packet.writeD((int) _loc.getX());
+		packet.writeD((int) _loc.getY());
+		packet.writeD((int) _loc.getZ());
 		return true;
 	}
 }

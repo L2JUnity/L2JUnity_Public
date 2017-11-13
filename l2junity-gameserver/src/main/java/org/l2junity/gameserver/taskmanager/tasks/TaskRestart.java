@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.taskmanager.tasks;
 
-import org.l2junity.gameserver.Shutdown;
+import org.l2junity.commons.lang.management.ShutdownManager;
+import org.l2junity.commons.lang.management.TerminationStatus;
 import org.l2junity.gameserver.taskmanager.Task;
 import org.l2junity.gameserver.taskmanager.TaskManager.ExecutedTask;
 
@@ -38,7 +39,6 @@ public final class TaskRestart extends Task
 	@Override
 	public void onTimeElapsed(ExecutedTask task)
 	{
-		final Shutdown handler = new Shutdown(Integer.parseInt(task.getParams()[2]), true);
-		handler.start();
+		ShutdownManager.start(TerminationStatus.MANUAL_RESTART, Integer.parseInt(task.getParams()[2]), 1, "Task");
 	}
 }

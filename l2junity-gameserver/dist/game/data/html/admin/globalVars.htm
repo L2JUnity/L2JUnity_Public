@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Edit Global Variables</title>
+</head>
+<body>
+<center>
+	<table width=270 border=0 bgcolor="444444">
+		<tr>
+			<td><button value="Main" action="bypass -h admin_admin" width=65 height=21 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df"></td>
+			<td><button value="Char" action="bypass -h admin_admin6" width=65 height=21 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df"></td>
+			<td><button value="Game" action="bypass -h admin_admin2" width=65 height=21 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df"></td>
+			<td><button value="GM" action="bypass -h admin_admin7" width=65 height=21 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df"></td>
+		</tr>
+	</table>
+	<br>
+</center>
+<table width=280 height=20 cellspacing=0 background="L2UI_CT1.Button_DF_Calculator">
+	<tr>
+		<td fixwidth=5></td>
+		<td fixwidth=110>Property</td>
+		<td fixwidth=110 align=center>Value</td>
+		<td fixwidth=50></td>
+	</tr>
+</table>
+<table width=275 cellspacing=0 background="L2UI_CT1.Windows.Windows_DF_TooltipBG">
+%vars%
+</table>
+<table width=275 height=50 cellspacing=0 background="L2UI_CT1.Windows.Windows_DF_TooltipBG">
+	<tr>
+		<td fixwidth=5></td>
+		<td fixwidth=45 align=left valign=center>Name :</td>
+		<td fixwidth=230 align=left><multiedit var="name" width=215 height=15></td>
+	</tr>
+	<tr>
+		<td fixwidth=5></td>
+		<td fixwidth=45 align=left valign=center>Value :</td>
+		<td fixwidth=230 align=left><multiedit var="value" width=215 height=15></td>
+	</tr>
+</table>
+<br1>
+<center>
+		<button action="bypass admin_vars global set $name $value" value="Set" width=230 height=19 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"><br1>
+		<button action="bypass admin_vars global unset $name" value="Unset" width=230 height=19 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF">
+</center>
+</body>
+</html>

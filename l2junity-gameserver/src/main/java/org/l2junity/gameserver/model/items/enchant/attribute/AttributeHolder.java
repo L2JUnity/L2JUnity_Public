@@ -55,6 +55,31 @@ public class AttributeHolder
 	}
 	
 	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = (prime * result) + ((_type == null) ? 0 : _type.hashCode());
+		result = (prime * result) + _value;
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (!(obj instanceof AttributeHolder))
+		{
+			return false;
+		}
+		else if (obj == this)
+		{
+			return true;
+		}
+		final AttributeHolder objInstance = (AttributeHolder) obj;
+		return (_type == objInstance.getType()) && (_value == objInstance.getValue());
+	}
+	
+	@Override
 	public String toString()
 	{
 		return _type.name() + " +" + _value;

@@ -48,10 +48,6 @@ public class HqZone extends ZoneType
 		{
 			// TODO
 		}
-		else if ("territoryId".equals(name))
-		{
-			// TODO
-		}
 		else
 		{
 			super.setParameter(name, value);

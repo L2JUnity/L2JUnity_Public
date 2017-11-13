@@ -37,7 +37,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="450" />
+		<ai clanHelpRange="300" dodge="15" aggroRange="450" />
 		<collision>
 			<radius normal="14" />
 			<height normal="25" />
@@ -374,7 +374,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="450" />
+		<ai clanHelpRange="300" dodge="15" aggroRange="450" />
 		<collision>
 			<radius normal="14" />
 			<height normal="25" />
@@ -511,6 +511,22 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<ai clanHelpRange="300" aggroRange="450" />
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3" max="8" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="4.144">
+					<item id="36521" min="1" max="1" chance="100" /> <!-- Iron Ore -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36531" min="1" max="1" chance="3.695" /> <!-- Thread -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="12" grown="14" />
 			<height normal="22" grown="26.4" />
@@ -1174,6 +1190,23 @@
 				<clan>ALL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="12.23">
+					<item id="318" min="1" max="1" chance="100" /> <!-- Crucifix of Blood -->
+				</group>
+				<group chance="6.152">
+					<item id="437" min="1" max="1" chance="69.180754226268" /> <!-- Mithril Tunic -->
+					<item id="470" min="1" max="1" chance="30.819245773732" /> <!-- Mithril Stockings -->
+				</group>
+				<group chance="34.78">
+					<item id="955" min="1" max="3" chance="100" /> <!-- Scroll: Enchant Weapon (D-grade) -->
+				</group>
+			</death>
+			<luck>
+				<item id="39629" min="1" max="1" chance="50.92" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="13.5" />
 			<height normal="25" />
@@ -2064,7 +2097,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="450">
+		<ai clanHelpRange="300" dodge="15" aggroRange="450">
 			<clan_list>
 				<clan>ORC</clan>
 			</clan_list>
@@ -2298,7 +2331,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="450">
+		<ai clanHelpRange="300" dodge="15" aggroRange="450">
 			<clan_list>
 				<clan>ORC</clan>
 			</clan_list>
@@ -2438,7 +2471,7 @@
 			<skill id="4416" level="6" /> <!-- Humanoids -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="ARCHER" clanHelpRange="300" dodge="15" aggroRange="450">
+		<ai clanHelpRange="300" dodge="15" aggroRange="450">
 			<clan_list>
 				<clan>ORC</clan>
 			</clan_list>

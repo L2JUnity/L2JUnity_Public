@@ -156,7 +156,7 @@
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 	</skill>
-	<skill id="18431" toLevel="1" name="Drew Protection Box">
+	<skill id="18431" toLevel="1" name="Nuke Pocket">
 		<!-- AUTO GENERATED SKILL -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
@@ -193,9 +193,35 @@
 		<reuseDelay>3600000</reuseDelay>
 	</skill>
 	<skill id="18438" toLevel="1" name="Agathion - Anakim Holy Barrier Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<itemConsumeId>46188</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpEncumbered">
+				<weightPercent>10</weightPercent>
+				<slotsPercent>10</slotsPercent>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_restoration_random">
+				<items>
+					<item chance="50.0">
+						<item id="46185" count="1" /> <!-- Agathion - Anakim Holy Barrier -->
+					</item>
+					<item chance="50.0">
+						<item id="46186" count="1" /> <!-- Agathion - Anakim Holy Barrier (30-day) -->
+					</item>
+				</items>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18439" toLevel="1" name="Vampiric Style Appearance Stone Pack">
 		<!-- AUTO GENERATED SKILL -->
@@ -213,41 +239,316 @@
 		<operateType>A1</operateType>
 	</skill>
 	<skill id="18442" toLevel="1" name="Anakim Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- XP/SP + 3% when equipped. -->
 		<icon>icon.bracelet_tersi_agathion</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_exp_modify">
+				<amount>3</amount>
+			</effect>
+			<effect name="p_sp_modify">
+				<amount>3</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18443" toLevel="1" name="Release Agathion's Seal - Anakaim Holy Barrier">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Releases Agathion's Seal. -->
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<operateType>A1</operateType>
 		<hitTime>3000</hitTime>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<hitCancelTime>0</hitCancelTime>
+		<isMagic>2</isMagic>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="SummonAgathion">
+				<npcId>8550</npcId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18444" toLevel="6" name="Physical Reflect Shirt Enchant Effect">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- P. Def. + 5%. -->
 		<icon>icon.reflect_attack_shirt</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_physical_defence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">6</value>
+					<value level="3">8</value>
+					<value level="4">10</value>
+					<value level="5">12</value>
+					<value level="6">15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_defence_critical_damage" fromLevel="2" toLevel="6">
+				<amount>
+					<value level="2">-8</value>
+					<value level="3">-12</value>
+					<value level="4">-16</value>
+					<value level="5">-20</value>
+					<value level="6">-25</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reflect_skill" fromLevel="3" toLevel="6">
+				<amount>
+					<value level="3">7</value>
+					<value level="4">9</value>
+					<value level="5">12</value>
+					<value level="6">15</value>
+				</amount>
+				<type>PHYSICAL</type>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18445" toLevel="6" name="Magical Reflect Shirt Enchant Effect">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- M. Def. + 5%. -->
 		<icon>icon.reflect_magic_shirt</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_magical_defence">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">6</value>
+					<value level="3">8</value>
+					<value level="4">10</value>
+					<value level="5">12</value>
+					<value level="6">15</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_defence_critical_dmg" fromLevel="2" toLevel="6">
+				<amount>
+					<value level="2">-8</value>
+					<value level="3">-12</value>
+					<value level="4">-16</value>
+					<value level="5">-20</value>
+					<value level="6">-25</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reflect_skill" fromLevel="3" toLevel="6">
+				<amount>
+					<value level="3">7</value>
+					<value level="4">9</value>
+					<value level="5">12</value>
+					<value level="6">15</value>
+				</amount>
+				<type>MAGIC</type>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18446" toLevel="1" name="Reflect Shirt Basic Effect">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- M. Def. + 8. -->
 		<icon>BranchSys2.icon.etc_scroll_of_enchant_shirt_i01</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_magical_defence">
+				<amount>8</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18447" toLevel="10" name="Reflect Shirt Basic Effect">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- M. Def. + 9. -->
 		<icon>BranchSys2.icon.etc_scroll_of_enchant_shirt_i00</icon>
 		<operateType>P</operateType>
+		<effects>
+			<effect name="p_magical_defence">
+				<amount>
+					<value level="1">9</value>
+					<value level="2">10</value>
+					<value level="3">11</value>
+					<value level="4">12</value>
+					<value level="5">13</value>
+					<value level="6">14</value>
+					<value level="7">15</value>
+					<value level="8">16</value>
+					<value level="9">17</value>
+					<value level="10">18</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>
+					<value level="1">29</value>
+					<value level="2">30</value>
+					<value level="3">31</value>
+					<value level="4">34</value>
+					<value level="5">37</value>
+					<value level="6">40</value>
+					<value level="7">43</value>
+					<value level="8">46</value>
+					<value level="9">49</value>
+					<value level="10">52</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_speed" fromLevel="4" toLevel="10">
+				<amount>7</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_hp" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">510</value>
+					<value level="5">520</value>
+					<value level="6">531</value>
+					<value level="7">536</value>
+					<value level="8">541</value>
+					<value level="9">547</value>
+					<value level="10">552</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_mp" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">510</value>
+					<value level="5">520</value>
+					<value level="6">531</value>
+					<value level="7">536</value>
+					<value level="8">541</value>
+					<value level="9">547</value>
+					<value level="10">552</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">6</value>
+					<value level="5">12</value>
+					<value level="6">18</value>
+					<value level="7">24</value>
+					<value level="8">30</value>
+					<value level="9">36</value>
+					<value level="10">42</value>
+				</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">6</value>
+					<value level="5">12</value>
+					<value level="6">18</value>
+					<value level="7">24</value>
+					<value level="8">30</value>
+					<value level="9">36</value>
+					<value level="10">42</value>
+				</amount>
+				<attribute>WATER</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">6</value>
+					<value level="5">12</value>
+					<value level="6">18</value>
+					<value level="7">24</value>
+					<value level="8">30</value>
+					<value level="9">36</value>
+					<value level="10">42</value>
+				</amount>
+				<attribute>WIND</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">6</value>
+					<value level="5">12</value>
+					<value level="6">18</value>
+					<value level="7">24</value>
+					<value level="8">30</value>
+					<value level="9">36</value>
+					<value level="10">42</value>
+				</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">6</value>
+					<value level="5">12</value>
+					<value level="6">18</value>
+					<value level="7">24</value>
+					<value level="8">30</value>
+					<value level="9">36</value>
+					<value level="10">42</value>
+				</amount>
+				<attribute>DARK</attribute>
+			</effect>
+			<effect name="p_defence_attribute" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">6</value>
+					<value level="5">12</value>
+					<value level="6">18</value>
+					<value level="7">24</value>
+					<value level="8">30</value>
+					<value level="9">36</value>
+					<value level="10">42</value>
+				</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+			<effect name="p_stat_up" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">1</value>
+					<value level="5">2</value>
+					<value fromLevel="6" toLevel="7">3</value>
+					<value fromLevel="8" toLevel="10">4</value>
+				</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">1</value>
+					<value level="5">2</value>
+					<value fromLevel="6" toLevel="7">3</value>
+					<value fromLevel="8" toLevel="10">4</value>
+				</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">1</value>
+					<value level="5">2</value>
+					<value fromLevel="6" toLevel="7">3</value>
+					<value fromLevel="8" toLevel="10">4</value>
+				</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">1</value>
+					<value level="5">2</value>
+					<value fromLevel="6" toLevel="7">3</value>
+					<value fromLevel="8" toLevel="10">4</value>
+				</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">1</value>
+					<value fromLevel="5" toLevel="6">2</value>
+					<value fromLevel="7" toLevel="8">3</value>
+					<value fromLevel="9" toLevel="10">4</value>
+				</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up" fromLevel="4" toLevel="10">
+				<amount>
+					<value level="4">1</value>
+					<value fromLevel="5" toLevel="6">2</value>
+					<value fromLevel="7" toLevel="8">3</value>
+					<value fromLevel="9" toLevel="10">4</value>
+				</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="18448" toLevel="1" name="Summon Piero">
 		<!-- AUTO GENERATED SKILL -->
@@ -263,7 +564,7 @@
 		<hitTime>3000</hitTime>
 		<reuseDelay>10000</reuseDelay>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>34084</npcId>
 				<npcCount>1</npcCount>
 				<despawnDelay>180000</despawnDelay>
@@ -295,15 +596,19 @@
 		<isMagic>1</isMagic>
 	</skill>
 	<skill id="18451" toLevel="2" name="11th Anniversary Buff">
-		<!-- AUTO GENERATED SKILL -->
-		<!-- Receive an additional 11% XP/SP when hunting. Receive an 11th Anniversary Coin once the buff ends. (Note:) Cannot receive item if you are dead or don't have space in your inventory. -->
+		<!-- Updated to Helios -->
+		<!-- Receive an additional 50% XP/SP when hunting. Receive an L2 Anniversary Coin once the buff ends. (Note:) Cannot receive item if you are dead or don't have space in your inventory. -->
 		<!-- When level 1 ends, you get 11 coins and lvl 2 is casted. It cannot be canceled. Lv2 gives no coins. NPC which gives this buff doesnt give again, until it disappears. -->
-		<icon>icon.ev_buff_11th</icon>
-		<table name="#bonusExp"> 1.11 1.30 </table>
+		<abnormalLvl>
+			<value level="1">1</value>
+			<value level="2">2</value>
+		</abnormalLvl>
 		<abnormalTime>
 			<value level="1">3600</value>
 			<value level="2">7200</value>
 		</abnormalTime>
+		<abnormalType>VOTE</abnormalType>
+		<icon>icon.ev_buff_11th</icon>
 		<canBeDispelled>false</canBeDispelled>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
@@ -312,14 +617,24 @@
 		<effectPoint>1</effectPoint>
 		<isMagic>4</isMagic>
 		<effects>
-			<effect name="ExpModify">
+			<effect name="p_exp_modify">
 				<amount>
-					<value level="1">11</value>
-					<value level="2">30</value>
+					<value level="1">50</value>
+					<value level="2">100</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
+		<endEffects>
+			<effect name="i_restoration" fromLevel="1" toLevel="1">
+				<itemId>46244</itemId>
+				<itemCount>11</itemCount>
+			</effect>
+			<effect name="i_call_skill" fromLevel="1" toLevel="1">
+				<skillId>18451</skillId>
+				<skillLevel>2</skillLevel>
+			</effect>
+		</endEffects>
 	</skill>
 	<skill id="18452" toLevel="1" name="Participation Reward: Vitality Recovery">
 		<!-- AUTO GENERATED SKILL -->

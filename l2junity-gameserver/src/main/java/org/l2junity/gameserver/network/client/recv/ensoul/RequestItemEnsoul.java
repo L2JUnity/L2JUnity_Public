@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RequestItemEnsoul implements IClientIncomingPacket
 {
-	private static final Logger LOGGER = LoggerFactory.getLogger(IClientIncomingPacket.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(RequestItemEnsoul.class);
 	private int _itemObjectId;
 	private EnsoulItemOption[] _options;
 	
@@ -55,13 +55,13 @@ public class RequestItemEnsoul implements IClientIncomingPacket
 			_options = new EnsoulItemOption[options];
 			for (int i = 0; i < options; i++)
 			{
-				final int type = packet.readC();
+				final int slotType = packet.readC();
 				final int position = packet.readC();
 				final int soulCrystalObjectId = packet.readD();
 				final int soulCrystalOption = packet.readD();
-				if ((position > 0) && (position <= 3) && ((type == 1) || (type == 2)))
+				if ((position > 0) && (position < 3) && ((slotType == 1) || (slotType == 2)))
 				{
-					_options[i] = new EnsoulItemOption(type, position, soulCrystalObjectId, soulCrystalOption);
+					_options[i] = new EnsoulItemOption(slotType, position, soulCrystalObjectId, soulCrystalOption);
 				}
 			}
 			return true;
@@ -174,6 +174,18 @@ public class RequestItemEnsoul implements IClientIncomingPacket
 				continue;
 			}
 			
+			if (stone.getSlotType() != itemOption.getSlotType())
+			{
+				LOGGER.warn("Player: {} attempting to ensoul item with a wrong slot type!", player);
+				continue;
+			}
+			
+			if ((stone.getSlotType() == 2) && (position != 0))
+			{
+				LOGGER.warn("Player: {} attempting to ensoul item with a wrong position!", player);
+				continue;
+			}
+			
 			if (!stone.getOptions().contains(itemOption.getSoulCrystalOption()))
 			{
 				LOGGER.warn("Player: {} attempting to ensoul item option that stone doesn't contains!", player);
@@ -187,52 +199,8 @@ public class RequestItemEnsoul implements IClientIncomingPacket
 				continue;
 			}
 			
-			final ItemHolder fee;
-			if (itemOption.getType() == 1)
-			{
-				fee = EnsoulData.getInstance().getEnsoulFee(item.getItem().getCrystalType(), position);
-				if ((itemOption.getPosition() == 1) || (itemOption.getPosition() == 2))
-				{
-					if (item.getSpecialAbility(position) != null)
-					{
-						LOGGER.warn("Player: {} attempting to ensoul item option add but he's actually trying to replace!", player);
-						continue;
-					}
-				}
-				else if (itemOption.getPosition() == 3)
-				{
-					if (item.getAdditionalSpecialAbility(position) != null)
-					{
-						LOGGER.warn("Player: {} attempting to ensoul special item option add but he's actually trying to replace!", player);
-						continue;
-					}
-				}
-			}
-			else if (itemOption.getType() == 2)
-			{
-				fee = EnsoulData.getInstance().getResoulFee(item.getItem().getCrystalType(), position);
-				if ((itemOption.getPosition() == 1) || (itemOption.getPosition() == 2))
-				{
-					if (item.getSpecialAbility(position) == null)
-					{
-						LOGGER.warn("Player: {} attempting to ensoul item option replace but he's actually trying to add!", player);
-						continue;
-					}
-				}
-				else if (itemOption.getPosition() == 3)
-				{
-					if (item.getAdditionalSpecialAbility(position) == null)
-					{
-						LOGGER.warn("Player: {} attempting to ensoul special item option replace but he's actually trying to add!", player);
-						continue;
-					}
-				}
-			}
-			else
-			{
-				LOGGER.warn("Player: {} attempting to ensoul item option with unhandled type: {}!", player, itemOption.getType());
-				continue;
-			}
+			boolean isResoul = itemOption.getSlotType() == 2 ? (item.getAdditionalSpecialAbility(position) != null) : (item.getSpecialAbility(position) != null);
+			final ItemHolder fee = isResoul ? EnsoulData.getInstance().getResoulFee(item.getItem().getCrystalType(), position) : EnsoulData.getInstance().getEnsoulFee(item.getItem().getCrystalType(), position);
 			
 			if (fee == null)
 			{
@@ -252,8 +220,22 @@ public class RequestItemEnsoul implements IClientIncomingPacket
 				success = 1;
 			}
 			
-			iu.addModifiedItem(soulCrystal);
-			iu.addModifiedItem(gemStones);
+			if (soulCrystal.getCount() == 0)
+			{
+				iu.addRemovedItem(soulCrystal);
+			}
+			else
+			{
+				iu.addModifiedItem(soulCrystal);
+			}
+			if (gemStones.getCount() == 0)
+			{
+				iu.addRemovedItem(gemStones);
+			}
+			else
+			{
+				iu.addModifiedItem(gemStones);
+			}
 			iu.addModifiedItem(item);
 		}
 		player.sendInventoryUpdate(iu);
@@ -266,22 +248,22 @@ public class RequestItemEnsoul implements IClientIncomingPacket
 	
 	static class EnsoulItemOption
 	{
-		private final int _type;
+		private final int _slotType;
 		private final int _position;
 		private final int _soulCrystalObjectId;
 		private final int _soulCrystalOption;
 		
-		EnsoulItemOption(int type, int position, int soulCrystalObjectId, int soulCrystalOption)
+		EnsoulItemOption(int slotType, int position, int soulCrystalObjectId, int soulCrystalOption)
 		{
-			_type = type;
+			_slotType = slotType;
 			_position = position;
 			_soulCrystalObjectId = soulCrystalObjectId;
 			_soulCrystalOption = soulCrystalOption;
 		}
 		
-		public int getType()
+		public int getSlotType()
 		{
-			return _type;
+			return _slotType;
 		}
 		
 		public int getPosition()

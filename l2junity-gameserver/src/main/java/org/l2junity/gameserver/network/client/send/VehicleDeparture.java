@@ -27,14 +27,14 @@ import org.l2junity.network.PacketWriter;
  */
 public class VehicleDeparture implements IClientOutgoingPacket
 {
-	private final int _objId, _x, _y, _z, _moveSpeed, _rotationSpeed;
+	private final int _objectId, _x, _y, _z, _moveSpeed, _rotationSpeed;
 	
 	public VehicleDeparture(L2BoatInstance boat)
 	{
-		_objId = boat.getObjectId();
-		_x = boat.getXdestination();
-		_y = boat.getYdestination();
-		_z = boat.getZdestination();
+		_objectId = boat.getObjectId();
+		_x = (int) boat.getXdestination();
+		_y = (int) boat.getYdestination();
+		_z = (int) boat.getZdestination();
 		_moveSpeed = (int) boat.getMoveSpeed();
 		_rotationSpeed = (int) boat.getStat().getRotationSpeed();
 	}
@@ -44,7 +44,7 @@ public class VehicleDeparture implements IClientOutgoingPacket
 	{
 		OutgoingPackets.VEHICLE_DEPARTURE.writeId(packet);
 		
-		packet.writeD(_objId);
+		packet.writeD(_objectId);
 		packet.writeD(_moveSpeed);
 		packet.writeD(_rotationSpeed);
 		packet.writeD(_x);

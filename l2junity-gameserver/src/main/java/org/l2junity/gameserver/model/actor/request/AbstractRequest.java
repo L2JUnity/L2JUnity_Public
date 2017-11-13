@@ -20,8 +20,9 @@ package org.l2junity.gameserver.model.actor.request;
 
 import java.util.Objects;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 
 /**
@@ -57,7 +58,7 @@ public abstract class AbstractRequest
 	
 	public void scheduleTimeout(long delay)
 	{
-		_timeOutTask = ThreadPoolManager.getInstance().scheduleGeneral(this::onTimeout, delay);
+		_timeOutTask = ThreadPool.schedule(this::onTimeout, delay, TimeUnit.MILLISECONDS);
 	}
 	
 	public boolean isTimeout()

@@ -38,14 +38,14 @@ public class Dice implements IClientOutgoingPacket
 	 * @param y
 	 * @param z
 	 */
-	public Dice(int charObjId, int itemId, int number, int x, int y, int z)
+	public Dice(int charObjId, int itemId, int number, double x, double y, double z)
 	{
 		_charObjId = charObjId;
 		_itemId = itemId;
 		_number = number;
-		_x = x;
-		_y = y;
-		_z = z;
+		_x = (int) x;
+		_y = (int) y;
+		_z = (int) z;
 	}
 	
 	@Override

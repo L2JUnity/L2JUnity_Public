@@ -20,8 +20,9 @@ package org.l2junity.gameserver.instancemanager.tasks;
 
 import java.util.Calendar;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.instancemanager.FourSepulchersManager;
 
 /**
@@ -56,7 +57,7 @@ public final class FourSepulchersChangeCoolDownTimeTask implements Runnable
 		
 		long interval = time.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
 		
-		manager.setChangeEntryTimeTask(ThreadPoolManager.getInstance().scheduleGeneral(new FourSepulchersChangeEntryTimeTask(), interval));
+		manager.setChangeEntryTimeTask(ThreadPool.schedule(new FourSepulchersChangeEntryTimeTask(), interval, TimeUnit.MILLISECONDS));
 		final ScheduledFuture<?> changeCoolDownTimeTask = manager.getChangeCoolDownTimeTask();
 		
 		if (changeCoolDownTimeTask != null)

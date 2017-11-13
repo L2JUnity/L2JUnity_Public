@@ -248,21 +248,29 @@
 	<skill id="17048" toLevel="1" name="Premium Buff">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Premium Buff for paid users. XP/SP + 200% while hunting. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>-1</abnormalTime>
+		<abnormalType>PREMIUM_BUFF</abnormalType>
 		<icon>icon.etc_blessed_kalie_i00</icon>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>PREMIUM_BUFF</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-2</specialLevel>
 		<magicLvl>-2</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>-1</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>3</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_exp_modify">
+				<amount>200</amount>
+			</effect>
+			<effect name="p_sp_modify">
+				<amount>200</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17049" toLevel="1" name="Scroll of Escape: Gainak">
 		<!-- AUTO GENERATED SKILL -->
@@ -295,7 +303,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>20583</x>
 				<y>-129571</y>
 				<z>-1720</z>
@@ -356,148 +364,525 @@
 		<isMagic>4</isMagic>
 	</skill>
 	<skill id="17059" toLevel="1" name="Talisman - Escape: Town of Gludio">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Town of Gludio. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>-12728</x>
+				<y>122726</y>
+				<z>-3112</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17060" toLevel="1" name="Talisman - Escape: Town of Dion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Town of Dion. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>16014</x>
+				<y>142326</y>
+				<z>-2688</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17061" toLevel="1" name="Talisman - Escape: Town of Giran">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Town of Giran. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>86733</x>
+				<y>148616</y>
+				<z>-3400</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17062" toLevel="1" name="Talisman - Escape: Heine">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to Heine. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>108458</x>
+				<y>221652</y>
+				<z>-3592</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17063" toLevel="1" name="Talisman - Escape: Town of Oren">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Town of Oren. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>83676</x>
+				<y>55510</y>
+				<z>-1512</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17064" toLevel="1" name="Talisman - Escape: Town of Aden">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Town of Aden. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>147540</x>
+				<y>24661</y>
+				<z>-1984</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17065" toLevel="1" name="Talisman - Escape: Town of Goddard">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Town of Goddard. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>147491</x>
+				<y>-56633</y>
+				<z>-2776</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17066" toLevel="1" name="Talisman - Escape: Town of Rune">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Town of Rune. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>42682</x>
+				<y>-47986</y>
+				<z>-792</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17067" toLevel="1" name="Talisman - Escape: Town of Schuttgart">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Town of Schuttgart. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>87326</x>
+				<y>-143370</y>
+				<z>-1319</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17068" toLevel="1" name="Talisman - Escape: Talking Island Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to Talking Island Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>-114558</x>
+				<y>253605</y>
+				<z>-1536</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17069" toLevel="1" name="Talisman - Escape: Elven Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Elven Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>44992</x>
+				<y>49214</y>
+				<z>-3061</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17070" toLevel="1" name="Talisman - Escape: Dark Elf Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Dark Elf Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>11265</x>
+				<y>15862</y>
+				<z>-4586</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17071" toLevel="1" name="Talisman - Escape: Orc Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Return to the Orc Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>-44048</x>
+				<y>-113552</y>
+				<z>-240</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17072" toLevel="1" name="Talisman - Escape: Dwarven Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Dwarven Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>115196</x>
+				<y>-178199</y>
+				<z>-916</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17073" toLevel="1" name="Talisman - Escape: Floran Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to Floran Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>17860</x>
+				<y>170191</y>
+				<z>-3496</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17074" toLevel="1" name="Talisman - Escape: Hardin's Academy">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to Hardin's Academy. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>105760</x>
+				<y>113064</y>
+				<z>-3176</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17075" toLevel="1" name="Talisman - Escape: Ivory Tower">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to Ivory Tower. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>85289</x>
+				<y>16225</y>
+				<z>-3672</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17076" toLevel="1" name="Talisman - Escape: Hunters' Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Hunter's Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>117052</x>
+				<y>76884</y>
+				<z>-2688</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17077" toLevel="1" name="Talisman - Escape: Ketra Orc Village">
 		<!-- AUTO GENERATED SKILL -->
@@ -516,12 +901,33 @@
 		<reuseDelay>14400000</reuseDelay>
 	</skill>
 	<skill id="17079" toLevel="1" name="Talisman - Escape: Kamael Village">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
+		<!-- TO DO: op_not_territory -->
 		<!-- Return to the Kamael Village. -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>20000</hitTime>
 		<reuseDelay>14400000</reuseDelay>
+		<magicLvl>1</magicLvl>
+		<isMagic>2</isMagic>
+		<magicCriticalRate>5</magicCriticalRate>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="OpAlignment">
+				<affectType>CASTER</affectType>
+				<alignment>LAWFUL</alignment>
+			</condition>
+			<condition name="OpCanEscape" />
+		</conditions>
+		<effects>
+			<effect name="i_teleport"> <!-- Guessed -->
+				<x>-120050</x>
+				<y>44500</y>
+				<z>360</z>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17080" toLevel="1" name="Hair Accessory Restoration Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -535,28 +941,190 @@
 		<hitTime>1500</hitTime>
 	</skill>
 	<skill id="17082" toLevel="1" name="Mentor's Prevailing Sonata">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Mentor's assistance. Atk. Spd. + 10%, Casting Spd. + 20%, Max HP + 20%, and MP Recovery Bonus + 10%. M. Skill MP Consumption - 5%, and decreases chance of cancellation while casting. Applied only when mentor is logged in. Lasts 5 min. after mentor logs out. -->
+		<abnormalTime>-1</abnormalTime>
+		<canBeDispelled>false</canBeDispelled>
 		<icon>icon.skill11529</icon>
+		<isMagic>1</isMagic>
+		<magicLvl>-2</magicLvl>
 		<operateType>A2</operateType>
 		<effectPoint>687</effectPoint>
-		<isMagic>1</isMagic>
+		<abnormalType>BUFF_SPECIAL_AURA</abnormalType>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-2</specialLevel>
+		<abnormalLvl>0</abnormalLvl>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMentoring>true</isMentoring>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_mp_regen">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_reduce_cancel">
+				<amount>-40</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17083" toLevel="1" name="Mentor's Daring Sonata">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Mentor's assistance. P. Atk. + 5%, M. Atk. + 10%, and Atk./Casting Spd. + 5%. P. Def./M. Def. - 4%, and P. Evasion - 4. Has a chance of 5% Vampiric Rage effect, and reflects 10% of received damage back to enemy. Applied only when mentor is logged in. Lasts 5 min. after mentor logs out. -->
+		<abnormalTime>-1</abnormalTime>
+		<canBeDispelled>false</canBeDispelled>
 		<icon>icon.skill11530</icon>
+		<isMagic>1</isMagic>
+		<magicLvl>-2</magicLvl>
 		<operateType>A2</operateType>
 		<effectPoint>696</effectPoint>
-		<isMagic>1</isMagic>
+		<abnormalType>ENCHANTER_MOD</abnormalType>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-2</specialLevel>
+		<abnormalLvl>0</abnormalLvl>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMentoring>true</isMentoring>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>5</amount>
+				<chance>30</chance>
+			</effect>
+			<effect name="p_physical_attack">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>-4</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence">
+				<amount>-4</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_avoid">
+				<amount>-4</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_attack_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>5</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_damage_shield">
+				<amount>10</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17084" toLevel="1" name="Mentor's Refreshing Sonata">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Mentor's assistance. HP Recovery Bonus + 10%, P. Accuracy + 2, P. Evasion + 2, and Speed + 10. Skill MP Consumption - 10%, and Skill Cooldown - 5%. Applied only when mentor is logged in. Lasts 5 min. after mentor logs out. -->
+		<abnormalTime>-1</abnormalTime>
+		<canBeDispelled>false</canBeDispelled>
 		<icon>icon.skill11532</icon>
+		<isMagic>1</isMagic>
+		<magicLvl>-2</magicLvl>
 		<operateType>A2</operateType>
 		<effectPoint>696</effectPoint>
-		<isMagic>1</isMagic>
+		<abnormalType>SYNERGY_IS</abnormalType>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-2</specialLevel>
+		<abnormalLvl>0</abnormalLvl>
+		<irreplacableBuff>true</irreplacableBuff>
+		<isMentoring>true</isMentoring>
+		<targetType>SELF</targetType>
+		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="i_dispel_by_slot_probability">
+				<dispel>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</dispel>
+				<rate>100</rate>
+			</effect>
+			<effect name="p_block_buff_slot">
+				<slot>DANCE_OF_BLADESTORM;SONG_OF_CHAMPION;SONG_OF_EARTH;SONG_OF_HUNTER;SONG_OF_LIFE;SONG_OF_MEDITATION;SONG_OF_RENEWAL;SONG_OF_VENGEANCE;SONG_OF_VITALITY;SONG_OF_WARDING;SONG_OF_WATER;SONG_OF_WIND;DANCE_OF_BERSERKER;DANCE_OF_CONCENTRATION;DANCE_OF_FIRE;DANCE_OF_FURY;DANCE_OF_INSPIRATION;DANCE_OF_MYSTIC;DANCE_OF_SIREN;DANCE_OF_VAMPIRE;DANCE_OF_WARRIOR;SONG_OF_PURIFICATION;WISPERING_OF_BATTLE;SONG_OF_WINDSTORM;MOTION_OF_DEFENCE;BUFF_UNICORN_SERAPHIM;BUFF_QUEEN_OF_CAT;KNIGHT_AURA;DMG_SHIELD</slot>
+			</effect>
+			<effect name="p_speed">
+				<amount>10</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_avoid">
+				<amount>2</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_hit">
+				<amount>2</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_hp_regen">
+				<amount>10</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magic_mp_cost">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-10</amount>
+				<mode>PER</mode>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_reuse_delay">
+				<amount>-5</amount>
+				<mode>PER</mode>
+				<magicType>1</magicType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="17085" toLevel="1" name="Kisung's Power Up">
 		<!-- AUTO GENERATED SKILL -->

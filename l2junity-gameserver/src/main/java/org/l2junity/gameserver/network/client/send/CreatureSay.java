@@ -125,6 +125,14 @@ public final class CreatureSay implements IClientOutgoingPacket
 		_npcString = sysString.getId();
 	}
 	
+	public CreatureSay(int objectId, ChatType messageType, String charName, SystemMessageId sysString)
+	{
+		_objectId = objectId;
+		_textType = messageType;
+		_charName = charName;
+		_npcString = sysString.getId();
+	}
+	
 	/**
 	 * String parameter for argument S1,S2,.. in npcstring-e.dat
 	 * @param text

@@ -156,7 +156,7 @@
 		<icon>icon.etc_potion_gold_i00</icon>
 		<operateType>P</operateType>
 	</skill>
-	<skill id="17922" toLevel="4" name="Low-grade Love Potion">
+	<skill id="17922" toLevel="5" name="Low-grade Love Potion">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Converts Low-grade Love Potion. Elementary Alchemy. -->
 		<icon>icon.love_potion_party</icon>
@@ -400,6 +400,7 @@
 			<value level="2">icon.alchemy_mix_cube</value>
 		</icon>
 		<operateType>P</operateType>
+		<displayInList>false</displayInList>
 	</skill>
 	<skill id="17944" toLevel="1" name="Scroll of Escape: Talking Island Village">
 		<!-- AUTO GENERATED SKILL -->
@@ -435,16 +436,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Town of Rune (Bard NPC) -->
 				<x>44065</x>
 				<y>-48183</y>
@@ -465,16 +466,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Town of Aden (Bard NPC) -->
 				<x>147205</x>
 				<y>25784</y>
@@ -494,16 +495,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>83633</x>
 				<y>53064</y>
 				<z>-1456</z>
@@ -522,16 +523,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>64328</x>
 				<y>26803</y>
 				<z>-3768</z>
@@ -550,16 +551,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Einhasad Temple near High Priest Orwen -->
 				<x>147446</x>
 				<y>22761</y>
@@ -579,16 +580,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Forsaken Plains near NPC camp. -->
 				<x>174470</x>
 				<y>40112</y>
@@ -608,16 +609,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>147446</x>
 				<y>22761</y>
 				<z>-1984</z>
@@ -636,16 +637,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>183543</x>
 				<y>-14974</y>
 				<z>-2768</z>
@@ -664,16 +665,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Einhasad Temple at High Priest NPC -->
 				<x>36563</x>
 				<y>-49178</y>
@@ -693,16 +694,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Swamp of Screams near Dokara NPC -->
 				<x>69340</x>
 				<y>-50203</y>
@@ -722,16 +723,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>36563</x>
 				<y>-49178</y>
 				<z>-1128</z>
@@ -750,16 +751,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>52107</x>
 				<y>-54328</y>
 				<z>-3136</z>
@@ -779,16 +780,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Einhasad Temple of Goddard -->
 				<x>147711</x>
 				<y>-52956</y>
@@ -817,16 +818,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Einhasad Temple of Giran -->
 				<x>86733</x>
 				<y>148616</y>
@@ -846,16 +847,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Near Namo NPC -->
 				<x>72090</x>
 				<y>116824</y>
@@ -985,7 +986,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>SEED_TALISMAN1,-1</dispel>
 			</effect>
 		</effects>
@@ -1012,7 +1013,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CreateItemRandom" />
+			<effect name="i_create_item_random" />
 		</effects>
 	</skill>
 	<skill id="17981" toLevel="1" name="Scroll of Escape: Gludin Village">
@@ -1026,16 +1027,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>-79816</x>
 				<y>150828</y>
 				<z>-3040</z>
@@ -1053,16 +1054,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>-93649</x>
 				<y>89763</y>
 				<z>-3208</z>
@@ -1080,16 +1081,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>-79816</x>
 				<y>150828</y>
 				<z>-3040</z>
@@ -1107,16 +1108,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>-85585</x>
 				<y>106831</y>
 				<z>-3544</z>
@@ -1134,16 +1135,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>16272</x>
 				<y>142292</y>
 				<z>-2688</z>
@@ -1161,16 +1162,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Cruma Marshlands -->
 				<x>16452</x>
 				<y>113707</y>
@@ -1189,16 +1190,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>16014</x>
 				<y>142326</y>
 				<z>-2688</z>
@@ -1216,16 +1217,16 @@
 		<itemConsumeCount>1</itemConsumeCount>
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Inside Cruma Tower -->
 				<x>17776</x>
 				<y>114851</y>
@@ -1253,16 +1254,16 @@
 		<itemConsumeId>39495</itemConsumeId> <!-- Scroll of Escape: Seed of Annihilation -->
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Seed of Annihilation (Entrance) -->
 				<x>-178257</x>
 				<y>154054</y>
@@ -1298,16 +1299,16 @@
 		<itemConsumeId>39498</itemConsumeId> <!-- Scroll of Escape: Fairy Settlement -->
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Fairy Settlement (Peace Zone) -->
 				<x>214432</x>
 				<y>79857</y>
@@ -1335,16 +1336,16 @@
 		<itemConsumeId>39500</itemConsumeId> <!-- Scroll of Escape: Prison of Darkness -->
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Ancient City Arcan (Gatekeeper) -->
 				<x>207480</x>
 				<y>86749</y>
@@ -1372,16 +1373,16 @@
 		<itemConsumeId>39502</itemConsumeId> <!-- Scroll of Escape: Isle of Souls -->
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Stronghold II -->
 				<x>-95435</x>
 				<y>52324</y>
@@ -1401,16 +1402,16 @@
 		<itemConsumeId>39503</itemConsumeId> <!-- Scroll of Escape: Nornil's Cave -->
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Mimir's Forest -->
 				<x>-86215</x>
 				<y>37924</y>
@@ -1430,16 +1431,16 @@
 		<itemConsumeId>39504</itemConsumeId> <!-- Scroll of Escape: Seal of Shilen -->
 		<magicLvl>1</magicLvl>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<cond msgId="113" addName="1">
+		<!-- TODO: Update or cleanup <cond msgId="113" addName="1">
 			<and>
 				<player canEscape="true" />
 				<not>
 					<player insideZoneId="10501, 10502, 10503, 10504, 10505, 10506, 10507, 10508" />
 				</not>
 			</and>
-		</cond>
+		</cond> -->
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<!-- Seal of Shilen (Entrance) -->
 				<x>184729</x>
 				<y>19759</y>

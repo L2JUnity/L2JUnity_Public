@@ -1,0 +1,1 @@
+ALTER TABLE `character_summons` CHANGE `time` `time` INT(10) NOT NULL DEFAULT '0';

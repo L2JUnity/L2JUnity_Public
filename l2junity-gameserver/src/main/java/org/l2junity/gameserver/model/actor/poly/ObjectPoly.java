@@ -18,33 +18,26 @@
  */
 package org.l2junity.gameserver.model.actor.poly;
 
-import org.l2junity.gameserver.model.WorldObject;
+import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 
 public class ObjectPoly
 {
-	private final WorldObject _activeObject;
+	private final PlayerInstance _activeObject;
 	private int _polyId;
-	private String _polyType;
 	
-	public ObjectPoly(WorldObject activeObject)
+	public ObjectPoly(PlayerInstance activeObject)
 	{
 		_activeObject = activeObject;
 	}
 	
-	public void setPolyInfo(String polyType, String polyId)
-	{
-		setPolyId(Integer.parseInt(polyId));
-		setPolyType(polyType);
-	}
-	
-	public final WorldObject getActiveObject()
+	public final PlayerInstance getActiveObject()
 	{
 		return _activeObject;
 	}
 	
 	public final boolean isMorphed()
 	{
-		return getPolyType() != null;
+		return _polyId != 0;
 	}
 	
 	public final int getPolyId()
@@ -55,15 +48,5 @@ public class ObjectPoly
 	public final void setPolyId(int value)
 	{
 		_polyId = value;
-	}
-	
-	public final String getPolyType()
-	{
-		return _polyType;
-	}
-	
-	public final void setPolyType(String value)
-	{
-		_polyType = value;
 	}
 }

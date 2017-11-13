@@ -23,22 +23,20 @@ import java.util.Map;
 import java.util.function.Function;
 
 import org.l2junity.gameserver.model.StatsSet;
-import org.l2junity.gameserver.model.conditions.ICondition;
-import org.l2junity.gameserver.scripting.ScriptEngineManager;
 
 /**
  * @author Sdw
  */
 public final class ConditionHandler
 {
-	private final Map<String, Function<StatsSet, ICondition>> _conditionHandlerFactories = new HashMap<>();
+	private final Map<String, Function<StatsSet, IConditionHandler>> _conditionHandlerFactories = new HashMap<>();
 	
-	public void registerHandler(String name, Function<StatsSet, ICondition> handlerFactory)
+	public void registerHandler(String name, Function<StatsSet, IConditionHandler> handlerFactory)
 	{
 		_conditionHandlerFactories.put(name, handlerFactory);
 	}
 	
-	public Function<StatsSet, ICondition> getHandlerFactory(String name)
+	public Function<StatsSet, IConditionHandler> getHandlerFactory(String name)
 	{
 		return _conditionHandlerFactories.get(name);
 	}
@@ -48,23 +46,15 @@ public final class ConditionHandler
 		return _conditionHandlerFactories.size();
 	}
 	
-	public void executeScript()
+	protected ConditionHandler()
 	{
-		try
-		{
-			ScriptEngineManager.getInstance().executeConditionMasterHandler();
-		}
-		catch (Exception e)
-		{
-			throw new Error("Problems while running ConditionMasterHandler", e);
-		}
 	}
 	
 	private static final class SingletonHolder
 	{
 		protected static final ConditionHandler _instance = new ConditionHandler();
 	}
-	
+
 	public static ConditionHandler getInstance()
 	{
 		return SingletonHolder._instance;

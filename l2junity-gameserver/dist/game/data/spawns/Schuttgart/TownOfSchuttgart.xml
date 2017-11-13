@@ -2,16 +2,15 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
 	<spawn name="TownOfSchuttgart">
 		<group>
-			<npc id="18919" x="87770" y="-143197" z="-1288" heading="20384" respawnTime="60sec" /> <!--  -->
+			<npc id="18919" x="87770" y="-143197" z="-1288" heading="20384" respawnTime="60sec" /> <!-- -->
 			<npc id="30535" x="85572" y="-142477" z="-1336" heading="60060" respawnTime="60sec" /> <!-- Filaur -->
 			<npc id="30537" x="87700" y="-143253" z="-1288" heading="17472" respawnTime="60sec" /> <!-- Daichir -->
 			<npc id="30539" x="87770" y="-143197" z="-1288" heading="20384" respawnTime="60sec" /> <!-- Chichirin -->
-			<npc id="30767" x="85849" y="-142801" z="-1336" heading="15000" respawnTime="60sec" > <!-- Auctioneer -->
+			<npc id="30767" x="85849" y="-142801" z="-1336" heading="15000" respawnTime="60sec"> <!-- Auctioneer -->
 				<parameters>
-					<param name="fnAgitMap" value="schuttgart"/>
+					<param name="fnAgitMap" value="schuttgart" />
 				</parameters>
 			</npc>
-			<npc id="30994" x="87096" y="-143472" z="-1288" heading="16500" respawnTime="60sec" /> <!-- Lottery Ticket Seller -->
 			<npc id="31031" x="87983" y="-140658" z="-1536" respawnTime="60sec" /> <!-- Broadcasting Tower -->
 			<npc id="31092" x="89856" y="-143760" z="-1536" respawnTime="60sec" /> <!-- Black Marketeer of Mammon -->
 			<npc id="31673" x="92080" y="-139696" z="-2304" heading="5000" respawnTime="60sec" /> <!-- Patrol -->
@@ -79,15 +78,19 @@
 			<npc id="31988" x="90376" y="-140872" z="-1536" heading="7000" respawnTime="60sec" /> <!-- Singa -->
 			<npc id="31989" x="85824" y="-141056" z="-1528" heading="55000" respawnTime="60sec" /> <!-- Batidae -->
 			<npc id="31990" x="88444" y="-139680" z="-1528" heading="57000" respawnTime="60sec" /> <!-- Siger -->
-			<npc id="31991" x="87088" y="-140784" z="-1536" heading="16500" respawnTime="60sec" /> <!-- Adventure Guildsman -->
-			<npc id="31992" x="88208" y="-142336" z="-1336" heading="60000" respawnTime="60sec" /> <!-- Adventure Guildsman -->
-			<npc id="31993" x="86545" y="-142400" z="-1336" heading="51081" respawnTime="60sec" /> <!-- Adventure Guildsman -->
-			<npc id="31995" x="90348" y="-141336" z="-1536" heading="32000" respawnTime="60sec" /> <!-- Adventure Guildsman -->
 			<npc id="31996" x="88486" y="-145063" z="-1288" heading="49152" respawnTime="60sec" /> <!-- Javier -->
 			<npc id="32057" x="90087" y="-143200" z="-1520" respawnTime="60sec" /> <!-- Totem Spirit of Gandi -->
-			<npc id="32070" x="84460" y="-144052" z="-1530" heading="53247" respawnTime="60sec" /> <!-- Adolph -->
+			<npc id="32070" x="84460" y="-144052" z="-1530" heading="53247" respawnTime="60sec"> <!-- Adolph -->
+				<parameters>
+					<param name="SuperPointName" value="running_boy" />
+				</parameters>
+			</npc>
 			<npc id="32071" x="84490" y="-144022" z="-1536" respawnTime="60sec" /> <!-- Linda -->
-			<npc id="32072" x="84460" y="-144052" z="-1530" heading="53247" respawnTime="60sec" /> <!-- Edwin -->
+			<npc id="32072" x="84460" y="-144052" z="-1530" heading="53247" respawnTime="60sec"> <!-- Edwin -->
+				<parameters>
+					<param name="SuperPointName" value="running_boy" />
+				</parameters>
+			</npc>
 			<npc id="32092" x="88517" y="-140809" z="-1520" heading="61908" respawnTime="60sec" /> <!-- Alder -->
 			<npc id="32093" x="88419" y="-139839" z="-1528" heading="40000" respawnTime="60sec" /> <!-- Bolin -->
 			<npc id="32094" x="86169" y="-145056" z="-1288" heading="49000" respawnTime="60sec" /> <!-- Schule -->
@@ -102,7 +105,11 @@
 			<npc id="32234" x="90438" y="-144275" z="-1520" heading="33580" respawnTime="60sec" /> <!-- Nizer -->
 			<npc id="32327" x="86453" y="-142407" z="-1336" heading="46787" respawnTime="60sec" /> <!-- Adventurers' Guide -->
 			<npc id="32478" x="88940" y="-140816" z="-1536" heading="11000" respawnTime="60sec" /> <!-- Dimensional Merchant -->
-			<npc id="32484" x="85894" y="-142108" z="-1336" heading="59284" respawnTime="60sec" /> <!-- Pathfinder Worker -->
+			<npc id="32484" x="85894" y="-142108" z="-1336" heading="59284" respawnTime="60sec"> <!-- Pathfinder Worker -->
+				<parameters>
+					<param name="Level" value="60" />
+				</parameters>
+			</npc>
 			<npc id="32882" x="88254" y="-139601" z="-1528" heading="45000" respawnTime="60sec" /> <!-- Prouse -->
 			<npc id="33359" x="85752" y="-142799" z="-1336" heading="7296" respawnTime="60sec" /> <!-- Kerry -->
 			<npc id="33500" x="86030" y="-141011" z="-1528" heading="40215" respawnTime="60sec" /> <!-- Pruna -->
@@ -114,6 +121,7 @@
 			<npc id="33854" x="86215" y="-143518" z="-1336" heading="46696" respawnTime="60sec" /> <!-- Beauty Shop Helper -->
 			<npc id="33855" x="86226" y="-143444" z="-1336" heading="50330" respawnTime="60sec" /> <!-- Beauty Shop Helper -->
 			<npc id="33856" x="86203" y="-143399" z="-1336" heading="56334" respawnTime="60sec" /> <!-- Beauty Shop Helper -->
+			<npc id="33946" x="86545" y="-142400" z="-1336" heading="51081" respawnTime="60sec" /> <!-- Adventure Guildsman -->
 			<npc id="35558" x="89340" y="-141591" z="-1536" heading="3000" respawnTime="60sec" /> <!-- Manor Manager -->
 			<npc id="35580" x="86064" y="-143120" z="-1320" heading="33000" respawnTime="60sec" /> <!-- Carol -->
 			<npc id="35581" x="86144" y="-143264" z="-1336" respawnTime="60sec" /> <!-- Osho -->

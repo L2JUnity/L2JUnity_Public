@@ -41,35 +41,11 @@ public class ConditionLogicAnd extends Condition
 		{
 			return;
 		}
-		if (getListener() != null)
-		{
-			condition.setListener(this);
-		}
 		final int len = conditions.length;
 		final Condition[] tmp = new Condition[len + 1];
 		System.arraycopy(conditions, 0, tmp, 0, len);
 		tmp[len] = condition;
 		conditions = tmp;
-	}
-	
-	@Override
-	void setListener(ConditionListener listener)
-	{
-		if (listener != null)
-		{
-			for (Condition c : conditions)
-			{
-				c.setListener(this);
-			}
-		}
-		else
-		{
-			for (Condition c : conditions)
-			{
-				c.setListener(null);
-			}
-		}
-		super.setListener(listener);
 	}
 	
 	@Override

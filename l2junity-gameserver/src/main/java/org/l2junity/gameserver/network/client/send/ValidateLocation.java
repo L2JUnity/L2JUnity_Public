@@ -40,9 +40,9 @@ public class ValidateLocation implements IClientOutgoingPacket
 		OutgoingPackets.VALIDATE_LOCATION.writeId(packet);
 		
 		packet.writeD(_charObjId);
-		packet.writeD(_loc.getX());
-		packet.writeD(_loc.getY());
-		packet.writeD(_loc.getZ());
+		packet.writeD((int) _loc.getX());
+		packet.writeD((int) _loc.getY());
+		packet.writeD((int) _loc.getZ());
 		packet.writeD(_loc.getHeading());
 		packet.writeC(0xFF); // TODO: Find me!
 		return true;

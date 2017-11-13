@@ -48,9 +48,9 @@ public class ExMoveToLocationInAirShip implements IClientOutgoingPacket
 		
 		packet.writeD(_charObjId);
 		packet.writeD(_airShipId);
-		packet.writeD(_destination.getX());
-		packet.writeD(_destination.getY());
-		packet.writeD(_destination.getZ());
+		packet.writeD((int) _destination.getX());
+		packet.writeD((int) _destination.getY());
+		packet.writeD((int) _destination.getZ());
 		packet.writeD(_heading);
 		return true;
 	}

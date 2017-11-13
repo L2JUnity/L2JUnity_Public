@@ -19,9 +19,10 @@
 package org.l2junity.gameserver.instancemanager.tasks;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.instancemanager.FourSepulchersManager;
 
 /**
@@ -37,7 +38,7 @@ public final class FourSepulchersManagerSayTask implements Runnable
 		{
 			final Calendar tmp = Calendar.getInstance();
 			tmp.setTimeInMillis(Calendar.getInstance().getTimeInMillis() - FourSepulchersManager.getInstance().getWarmUpTimeEnd());
-			if ((tmp.get(Calendar.MINUTE) + 5) < Config.FS_TIME_ATTACK)
+			if ((tmp.get(Calendar.MINUTE) + 5) < GeneralConfig.FS_TIME_ATTACK)
 			{
 				FourSepulchersManager.getInstance().managerSay((byte) tmp.get(Calendar.MINUTE)); // byte
 				// because
@@ -45,10 +46,10 @@ public final class FourSepulchersManagerSayTask implements Runnable
 				// cannot be
 				// more than
 				// 59
-				ThreadPoolManager.getInstance().scheduleGeneral(new FourSepulchersManagerSayTask(), 5 * 60000);
+				ThreadPool.schedule(new FourSepulchersManagerSayTask(), 5 * 60000, TimeUnit.MILLISECONDS);
 			}
 			// attack time ending chat
-			else if ((tmp.get(Calendar.MINUTE) + 5) >= Config.FS_TIME_ATTACK)
+			else if ((tmp.get(Calendar.MINUTE) + 5) >= GeneralConfig.FS_TIME_ATTACK)
 			{
 				FourSepulchersManager.getInstance().managerSay((byte) 90); // sending a unique id :D
 			}

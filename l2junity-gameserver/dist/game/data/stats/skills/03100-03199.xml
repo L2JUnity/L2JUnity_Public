@@ -12,7 +12,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -36,8 +36,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="DefenceTrait">
+			<effect name="p_block_act" />
+			<effect name="p_defence_trait">
 				<SLEEP>100</SLEEP>
 			</effect>
 		</effects>
@@ -53,7 +53,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -77,21 +77,21 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 		<endEffects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>6126</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
@@ -111,7 +111,7 @@
 		<attributeType>EARTH</attributeType>
 		<attributeValue>20</attributeValue>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -134,7 +134,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="3103" toLevel="10" name="Item Skill: Fear">
@@ -149,7 +149,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -173,7 +173,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 			<effect name="Fear" />
 		</effects>
 	</skill>
@@ -202,6 +202,7 @@
 			<value level="20">8</value>
 		</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>40</activateRate>
@@ -210,7 +211,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -244,28 +245,28 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">41</value>
-					<value level="2">41</value>
-					<value level="3">50</value>
-					<value level="4">50</value>
-					<value level="5">50</value>
-					<value level="6">58</value>
-					<value level="7">58</value>
-					<value level="8">58</value>
-					<value level="9">63</value>
-					<value level="10">63</value>
-					<value level="11">67</value>
-					<value level="12">87</value>
-					<value level="13">87</value>
-					<value level="14">87</value>
-					<value level="15">98</value>
-					<value level="16">98</value>
-					<value level="17">98</value>
-					<value level="18">109</value>
-					<value level="19">109</value>
-					<value level="20">109</value>
+					<value level="1">-41</value>
+					<value level="2">-41</value>
+					<value level="3">-50</value>
+					<value level="4">-50</value>
+					<value level="5">-50</value>
+					<value level="6">-58</value>
+					<value level="7">-58</value>
+					<value level="8">-58</value>
+					<value level="9">-63</value>
+					<value level="10">-63</value>
+					<value level="11">-67</value>
+					<value level="12">-87</value>
+					<value level="13">-87</value>
+					<value level="14">-87</value>
+					<value level="15">-98</value>
+					<value level="16">-98</value>
+					<value level="17">-98</value>
+					<value level="18">-109</value>
+					<value level="19">-109</value>
+					<value level="20">-109</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -296,6 +297,7 @@
 			<value level="20">8</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>40</activateRate>
@@ -304,7 +306,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -339,28 +341,28 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">44</value>
-					<value level="2">44</value>
-					<value level="3">54</value>
-					<value level="4">54</value>
-					<value level="5">54</value>
-					<value level="6">62</value>
-					<value level="7">62</value>
-					<value level="8">62</value>
-					<value level="9">67</value>
-					<value level="10">67</value>
-					<value level="11">67</value>
-					<value level="12">87</value>
-					<value level="13">87</value>
-					<value level="14">87</value>
-					<value level="15">98</value>
-					<value level="16">98</value>
-					<value level="17">98</value>
-					<value level="18">109</value>
-					<value level="19">109</value>
-					<value level="20">109</value>
+					<value level="1">-44</value>
+					<value level="2">-44</value>
+					<value level="3">-54</value>
+					<value level="4">-54</value>
+					<value level="5">-54</value>
+					<value level="6">-62</value>
+					<value level="7">-62</value>
+					<value level="8">-62</value>
+					<value level="9">-67</value>
+					<value level="10">-67</value>
+					<value level="11">-67</value>
+					<value level="12">-87</value>
+					<value level="13">-87</value>
+					<value level="14">-87</value>
+					<value level="15">-98</value>
+					<value level="16">-98</value>
+					<value level="17">-98</value>
+					<value level="18">-109</value>
+					<value level="19">-109</value>
+					<value level="20">-109</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -378,7 +380,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -402,7 +404,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute" />
+			<effect name="p_block_spell" />
 		</effects>
 	</skill>
 	<skill id="3107" toLevel="10" name="Item Skill: Doom">
@@ -417,7 +419,7 @@
 		<effectPoint>-100</effectPoint>
 		<effectRange>1500</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -441,8 +443,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute" />
-			<effect name="PhysicalMute" />
+			<effect name="p_block_spell" />
+			<effect name="p_block_skill_physical" />
 		</effects>
 	</skill>
 	<skill id="3108" toLevel="15" name="Item Skill: Aggression Up">
@@ -482,14 +484,13 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TargetMeProbability">
+			<effect name="i_target_me">
 				<chance>40</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="3109" toLevel="15" name="Item Skill: Aggression Down">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> -219 -234 -248 -262 -275 -287 -299 -309 -318 -330 -342 -354 -366 -378 -390 </table>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
@@ -525,7 +526,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AddHate">
+			<effect name="i_add_hate">
 				<power>
 					<value level="1">-219</value>
 					<value level="2">-234</value>
@@ -548,7 +549,6 @@
 	</skill>
 	<skill id="3110" toLevel="10" name="Item Skill: Mana Burn">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 49 53 57 61 66 70 74 78 82 88 </table>
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
@@ -573,7 +573,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackMp">
+			<effect name="i_m_attack_mp">
 				<power>
 					<value level="1">49</value>
 					<value level="2">53</value>
@@ -601,7 +601,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -634,7 +634,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -650,7 +650,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -683,7 +683,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -700,7 +700,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -724,7 +724,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="3114" toLevel="15" name="Item Skill: Hold">
@@ -738,7 +738,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -772,8 +772,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Root" />
-			<effect name="DefenceTrait">
+			<effect name="p_block_move" />
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 			</effect>
 		</effects>
@@ -789,7 +789,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -813,8 +813,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="DefenceTrait">
+			<effect name="p_block_act" />
+			<effect name="p_defence_trait">
 				<SLEEP>100</SLEEP>
 			</effect>
 		</effects>
@@ -829,7 +829,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -853,21 +853,21 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 		<endEffects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>6126</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
@@ -886,7 +886,7 @@
 		<attributeType>EARTH</attributeType>
 		<attributeValue>20</attributeValue>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -909,7 +909,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="3118" toLevel="10" name="Item Skill: Fear">
@@ -923,7 +923,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -947,13 +947,12 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 			<effect name="Fear" />
 		</effects>
 	</skill>
 	<skill id="3119" toLevel="15" name="Item Skill: Poison">
 		<!-- Confirmed CT2.5 -->
-		<table name="#dot"> 41 41 50 50 50 58 58 58 63 63 63 63 63 63 63 </table> <!-- Guessed starting level 10 -->
 		<abnormalLvl>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -977,6 +976,7 @@
 			<value level="20">8</value>
 		</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>40</activateRate>
@@ -984,25 +984,25 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
-			<value level="1">46</value>
-			<value level="2">49</value>
-			<value level="3">52</value>
-			<value level="4">55</value>
-			<value level="5">58</value>
-			<value level="6">61</value>
-			<value level="7">64</value>
-			<value level="8">67</value>
-			<value level="9">70</value>
-			<value level="10">75</value>
-			<value level="11">80</value>
-			<value level="12">85</value>
-			<value level="13">90</value>
-			<value level="14">95</value>
-			<value level="15">99</value>
+			<value level="1">41</value>
+			<value level="2">41</value>
+			<value level="3">50</value>
+			<value level="4">50</value>
+			<value level="5">50</value>
+			<value level="6">58</value>
+			<value level="7">58</value>
+			<value level="8">58</value>
+			<value level="9">63</value>
+			<value level="10">63</value>
+			<value level="11">67</value>
+			<value level="12">87</value>
+			<value level="13">87</value>
+			<value level="14">87</value>
+			<value level="15">98</value>
 			<value level="16">101</value>
 			<value level="17">103</value>
 			<value level="18">105</value>
@@ -1018,28 +1018,28 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">41</value>
-					<value level="2">41</value>
-					<value level="3">50</value>
-					<value level="4">50</value>
-					<value level="5">50</value>
-					<value level="6">58</value>
-					<value level="7">58</value>
-					<value level="8">58</value>
-					<value level="9">63</value>
-					<value level="10">63</value>
-					<value level="11">67</value>
-					<value level="12">87</value>
-					<value level="13">87</value>
-					<value level="14">87</value>
-					<value level="15">98</value>
-					<value level="16">98</value>
-					<value level="17">98</value>
-					<value level="18">109</value>
-					<value level="19">109</value>
-					<value level="20">109</value>
+					<value level="1">-41</value>
+					<value level="2">-41</value>
+					<value level="3">-50</value>
+					<value level="4">-50</value>
+					<value level="5">-50</value>
+					<value level="6">-58</value>
+					<value level="7">-58</value>
+					<value level="8">-58</value>
+					<value level="9">-63</value>
+					<value level="10">-63</value>
+					<value level="11">-67</value>
+					<value level="12">-87</value>
+					<value level="13">-87</value>
+					<value level="14">-87</value>
+					<value level="15">-98</value>
+					<value level="16">-98</value>
+					<value level="17">-98</value>
+					<value level="18">-109</value>
+					<value level="19">-109</value>
+					<value level="20">-109</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -1070,6 +1070,7 @@
 			<value level="20">8</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>40</activateRate>
@@ -1077,7 +1078,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -1112,28 +1113,28 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">44</value>
-					<value level="2">44</value>
-					<value level="3">54</value>
-					<value level="4">54</value>
-					<value level="5">54</value>
-					<value level="6">62</value>
-					<value level="7">62</value>
-					<value level="8">62</value>
-					<value level="9">67</value>
-					<value level="10">67</value>
-					<value level="11">67</value>
-					<value level="12">67</value>
-					<value level="13">67</value>
-					<value level="14">67</value>
-					<value level="15">67</value>
-					<value level="16">67</value>
-					<value level="17">67</value>
-					<value level="18">67</value>
-					<value level="19">67</value>
-					<value level="20">67</value>
+					<value level="1">-44</value>
+					<value level="2">-44</value>
+					<value level="3">-54</value>
+					<value level="4">-54</value>
+					<value level="5">-54</value>
+					<value level="6">-62</value>
+					<value level="7">-62</value>
+					<value level="8">-62</value>
+					<value level="9">-67</value>
+					<value level="10">-67</value>
+					<value level="11">-67</value>
+					<value level="12">-67</value>
+					<value level="13">-67</value>
+					<value level="14">-67</value>
+					<value level="15">-67</value>
+					<value level="16">-67</value>
+					<value level="17">-67</value>
+					<value level="18">-67</value>
+					<value level="19">-67</value>
+					<value level="20">-67</value>
 				</power>
 				<ticks>5</ticks>
 			</effect>
@@ -1150,7 +1151,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -1174,7 +1175,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute" />
+			<effect name="p_block_spell" />
 		</effects>
 	</skill>
 	<skill id="3122" toLevel="10" name="Item Skill: Doom">
@@ -1188,7 +1189,7 @@
 		<castRange>40</castRange>
 		<effectRange>400</effectRange>
 		<icon>icon.skill3080</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -1212,13 +1213,12 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute" />
-			<effect name="PhysicalMute" />
+			<effect name="p_block_spell" />
+			<effect name="p_block_skill_physical" />
 		</effects>
 	</skill>
 	<skill id="3123" toLevel="10" name="Item Skill: Heal">
 		<!-- Confirmed CT2.5 -->
-		<table name="#amount"> 308 337 365 393 421 448 474 498 520 552 </table>
 		<effectPoint>
 			<value level="1">440</value>
 			<value level="2">481</value>
@@ -1278,7 +1278,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>
 					<value level="1">308</value>
 					<value level="2">337</value>
@@ -1296,7 +1296,6 @@
 	</skill>
 	<skill id="3124" toLevel="10" name="Item Skill: Blessed Body">
 		<!-- Confirmed CT2.5 -->
-		<table name="#maxHp"> 30 60 90 120 150 180 210 240 270 300 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -1359,7 +1358,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">60</value>
@@ -1440,7 +1439,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>3</amount>
 				<mode>PER</mode>
 				<heal>true</heal>
@@ -1449,7 +1448,6 @@
 	</skill>
 	<skill id="3126" toLevel="10" name="Item Skill: Prayer">
 		<!-- Confirmed CT2.5 -->
-		<table name="#healEffect"> 1.04 1.04 1.04 1.05 1.05 1.05 1.06 1.06 1.06 1.07 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -1512,7 +1510,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">4</value>
 					<value level="2">4</value>
@@ -1531,7 +1529,6 @@
 	</skill>
 	<skill id="3127" toLevel="10" name="Item Skill: Recharge">
 		<!-- Confirmed CT2.5 -->
-		<table name="#amount"> 41 44 47 50 53 57 59 62 65 69 </table>
 		<castRange>400</castRange>
 		<effectPoint>
 			<value level="1">440</value>
@@ -1592,7 +1589,7 @@
 		<targetType>OTHERS</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ManaHealByLevel">
+			<effect name="i_mp_by_level">
 				<power>
 					<value level="1">41</value>
 					<value level="2">44</value>
@@ -1610,7 +1607,6 @@
 	</skill>
 	<skill id="3128" toLevel="10" name="Item Skill: Blessed Soul">
 		<!-- Confirmed CT2.5 -->
-		<table name="#maxMp"> 20 40 60 80 100 120 140 160 180 200 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -1673,7 +1669,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">40</value>
@@ -1692,7 +1688,6 @@
 	</skill>
 	<skill id="3129" toLevel="15" name="Item Skill: Mana Gain">
 		<!-- Confirmed CT2.5 -->
-		<table name="#manaCharge"> 25 27 30 31 32 36 37 38 39 41 42 43 44 45 46 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -1780,7 +1775,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="ManaCharge">
+			<effect name="p_mana_charge">
 				<amount>
 					<value level="1">25</value>
 					<value level="2">27</value>
@@ -1862,7 +1857,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>
 					<value level="1">264</value>
 					<value level="2">289</value>
@@ -1881,7 +1876,6 @@
 	</skill>
 	<skill id="3131" toLevel="10" name="Item Skill: Cheer">
 		<!-- Confirmed CT2.5 -->
-		<table name="#maxCp"> 30 60 90 120 150 180 210 240 270 300 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -1944,7 +1938,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>
 					<value level="1">30</value>
 					<value level="2">60</value>
@@ -1962,8 +1956,7 @@
 		</effects>
 	</skill>
 	<skill id="3132" toLevel="15" name="Item Skill: Might">
-		<!-- Confirmed CT2.5 -->
-		<table name="#pAtk"> 23.64 27.96 32.76 37.98 43.62 49.62 55.86 62.28 68.88 79.74 85 89 93 97 101 </table> <!-- Guessed -->
+		<!-- Confirmed CT2.5 --> <!-- Guessed -->
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -2051,7 +2044,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">23.64</value>
 					<value level="2">27.96</value>
@@ -2074,8 +2067,7 @@
 		</effects>
 	</skill>
 	<skill id="3133" toLevel="15" name="Item Skill: Empower">
-		<!-- Confirmed CT2.5 -->
-		<table name="#mAtk"> 15.9 18.65 21.6 24.9 28.4 32.15 36.05 40.1 44.2 50.95 57.7 64.45 71.2 78.05 84.75 </table> <!-- Guessed -->
+		<!-- Confirmed CT2.5 --> <!-- Guessed -->
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -2163,7 +2155,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">15.9</value>
 					<value level="2">18.65</value>
@@ -2249,11 +2241,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2261,7 +2253,6 @@
 	</skill>
 	<skill id="3135" toLevel="15" name="Item Skill: Shield">
 		<!-- Confirmed CT2.5 -->
-		<table name="#pDef"> 30.2 33.72 37.4 41.28 45.32 49.52 53.88 58.32 62.88 70.6 79 87 95 103 111 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -2349,7 +2340,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">30.2</value>
 					<value level="2">33.72</value>
@@ -2373,7 +2364,6 @@
 	</skill>
 	<skill id="3136" toLevel="15" name="Item Skill: Magic Barrier">
 		<!-- Confirmed CT2.5 -->
-		<table name="#mDef"> 37 40 44 48 52 56 61 65 70 77 85 94 104 115 117 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -2461,7 +2451,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">37</value>
 					<value level="2">40</value>
@@ -2505,7 +2495,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -2552,11 +2542,11 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PvpPhysicalAttackDamageBonus">
+			<effect name="p_pvp_physical_attack_dmg_bonus">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PvpPhysicalSkillDamageBonus">
+			<effect name="p_pvp_physical_skill_dmg_bonus">
 				<amount>-5</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2564,7 +2554,6 @@
 	</skill>
 	<skill id="3138" toLevel="10" name="Item Skill: Heal Empower">
 		<!-- Confirmed CT2.5 -->
-		<table name="#healEffect"> 44 49 53 57 61 64 68 72 75 79 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -2627,7 +2616,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">44</value>
 					<value level="2">49</value>
@@ -2646,7 +2635,6 @@
 	</skill>
 	<skill id="3139" toLevel="15" name="Item Skill: Agility">
 		<!-- Confirmed CT2.5 -->
-		<table name="#rEvas"> 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -2729,7 +2717,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">1</value>
@@ -2753,7 +2741,6 @@
 	</skill>
 	<skill id="3140" toLevel="15" name="Item Skill: Guidance">
 		<!-- Confirmed CT2.5 -->
-		<table name="#accCombat"> 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -2836,7 +2823,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">1</value>
@@ -2860,7 +2847,6 @@
 	</skill>
 	<skill id="3141" toLevel="10" name="Item Skill: Focus">
 		<!-- Confirmed CT2.5 -->
-		<table name="#rCrit"> 0.05 0.05 0.05 0.1 0.1 0.1 0.15 0.15 0.15 0.2 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -2923,7 +2909,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">5</value>
@@ -2942,7 +2928,6 @@
 	</skill>
 	<skill id="3142" toLevel="10" name="Item Skill: Wild Magic">
 		<!-- Confirmed CT2.5 -->
-		<table name="#mCritRate"> 1 1 1 2 2 2 3 3 3 4 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -3005,7 +2990,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">1</value>
@@ -3086,7 +3071,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Breath">
+			<effect name="p_breath">
 				<amount>600</amount>
 				<mode>PER</mode>
 			</effect>
@@ -3156,7 +3141,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="SafeFallHeight">
+			<effect name="p_safe_fall_height">
 				<amount>-100</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -3164,7 +3149,6 @@
 	</skill>
 	<skill id="3145" toLevel="15" name="Item Skill: Iron Body">
 		<!-- Confirmed CT2.5 -->
-		<table name="#damageZoneVuln"> 10 10 10 20 20 20 30 30 30 40 40 40 50 50 50 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -3247,7 +3231,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AreaDamage">
+			<effect name="p_area_damage">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-10</value>
@@ -3288,7 +3272,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
@@ -3312,14 +3296,13 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="3148" toLevel="10" name="Item Skill: Vampiric Rage">
 		<!-- Confirmed CT2.5 -->
-		<table name="#absorbDam"> 3 3 3 4 4 4 5 5 5 6 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>120</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -3382,7 +3365,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>
 					<value level="1">3</value>
 					<value level="2">3</value>
@@ -3465,14 +3448,13 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TargetMeProbability">
+			<effect name="i_target_me">
 				<chance>40</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="3150" toLevel="15" name="Item Skill: Charm">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> -219 -234 -248 -262 -275 -287 -299 -309 -318 -330 -342 -354 -366 -378 -390 </table>
 		<castRange>600</castRange>
 		<effectRange>1100</effectRange>
 		<hitTime>1500</hitTime>
@@ -3537,7 +3519,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="AddHate">
+			<effect name="i_add_hate">
 				<power>
 					<value level="1">-219</value>
 					<value level="2">-234</value>
@@ -3624,7 +3606,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DeleteHate">
+			<effect name="i_delete_hate">
 				<chance>80</chance>
 			</effect>
 		</effects>
@@ -3668,14 +3650,13 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="TargetCancel">
+			<effect name="i_target_cancel">
 				<chance>80</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="3153" toLevel="10" name="Item Skill: Vampiric Touch">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 49 53 57 61 66 70 74 78 82 88 </table>
 		<castRange>600</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -3739,7 +3720,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HpDrain">
+			<effect name="i_hp_drain">
 				<power>
 					<value level="1">49</value>
 					<value level="2">53</value>
@@ -3758,7 +3739,6 @@
 	</skill>
 	<skill id="3154" toLevel="10" name="Item Skill: Mana Burn">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 68 73 79 84 90 96 101 107 112 120 </table>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -3820,7 +3800,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttackMp">
+			<effect name="i_m_attack_mp">
 				<power>
 					<value level="1">68</value>
 					<value level="2">73</value>
@@ -3959,10 +3939,10 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
 		</effects>
@@ -4002,11 +3982,11 @@
 			<effect name="SilentMove">
 				<chance>100</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>-45</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">-45</value>
 					<value level="2">-30</value>
@@ -4014,7 +3994,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">-45</value>
 					<value level="2">-30</value>
@@ -4022,7 +4002,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>
 					<value level="1">-12</value>
 					<value level="2">-8</value>
@@ -4030,7 +4010,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Accuracy">
+			<effect name="p_hit">
 				<amount>-12</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -4038,7 +4018,6 @@
 	</skill>
 	<skill id="3160" toLevel="9" name="Item Skill: Resurrection">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 0 20 30 40 50 55 60 65 70 </table>
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<castRange>400</castRange>
 		<effectPoint>
@@ -4099,7 +4078,7 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="Resurrection">
+			<effect name="i_resurrection">
 				<power>
 					<value level="1">0</value>
 					<value level="2">20</value>
@@ -4116,7 +4095,6 @@
 	</skill>
 	<skill id="3161" toLevel="8" name="Item Skill: Skill Clarity">
 		<!-- Confirmed CT2.5 -->
-		<table name="#PhysicalMpConsumeRate"> 0.96 0.93 0.9 0.9 0.9 0.9 0.9 0.9 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -4174,7 +4152,7 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-4</value>
 					<value level="2">-7</value>
@@ -4192,7 +4170,6 @@
 	</skill>
 	<skill id="3162" toLevel="8" name="Item Skill: Spell Clarity">
 		<!-- Confirmed CT2.5 -->
-		<table name="#MagicalMpConsumeRate"> 0.9 0.85 0.8 0.8 0.8 0.8 0.8 0.8 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -4247,7 +4224,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-15</value>
@@ -4265,7 +4242,6 @@
 	</skill>
 	<skill id="3163" toLevel="3" name="Item Skill: Music Clarity">
 		<!-- Confirmed CT2.5 -->
-		<table name="#DanceMpConsumeRate"> 0.96 0.93 0.9 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -4300,7 +4276,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-4</value>
 					<value level="2">-7</value>
@@ -4313,8 +4289,6 @@
 	</skill>
 	<skill id="3164" toLevel="3" name="Item Skill: Clarity">
 		<!-- Confirmed CT2.5 -->
-		<table name="#MagicalMpConsumeRate"> 0.96 0.93 0.9 </table>
-		<table name="#PhysicalMpConsumeRate"> 0.9 0.85 0.8 </table>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>60</abnormalTime>
 		<abnormalType>ABNORMAL_ITEM</abnormalType>
@@ -4349,7 +4323,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-4</value>
 					<value level="2">-7</value>
@@ -4358,7 +4332,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-15</value>
@@ -4367,7 +4341,7 @@
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-10</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -4376,7 +4350,6 @@
 	</skill>
 	<skill id="3165" toLevel="10" name="Item Skill: Prominence">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 61 66 72 77 82 87 92 97 102 110 </table>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -4440,7 +4413,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">61</value>
 					<value level="2">66</value>
@@ -4458,7 +4431,6 @@
 	</skill>
 	<skill id="3167" toLevel="10" name="Item Skill: Hydro Blast">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 61 66 72 77 82 78 92 78 102 110 </table>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -4522,7 +4494,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">61</value>
 					<value level="2">66</value>
@@ -4540,7 +4512,6 @@
 	</skill>
 	<skill id="3168" toLevel="10" name="Item Skill: Hurricane">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 61 66 72 77 82 87 92 97 102 110 </table>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -4604,7 +4575,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">61</value>
 					<value level="2">66</value>
@@ -4622,7 +4593,6 @@
 	</skill>
 	<skill id="3169" toLevel="10" name="Item Skill: Stone">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 61 66 72 77 82 87 92 97 102 110 </table>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -4686,7 +4656,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">61</value>
 					<value level="2">66</value>
@@ -4704,7 +4674,6 @@
 	</skill>
 	<skill id="3170" toLevel="10" name="Item Skill: Solar Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 61 66 72 77 82 87 92 97 102 110 </table>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -4768,7 +4737,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">61</value>
 					<value level="2">66</value>
@@ -4786,7 +4755,6 @@
 	</skill>
 	<skill id="3171" toLevel="10" name="Item Skill: Shadow Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 61 66 72 77 82 87 92 97 102 110 </table>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -4850,7 +4818,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">61</value>
 					<value level="2">66</value>
@@ -4868,7 +4836,6 @@
 	</skill>
 	<skill id="3172" toLevel="10" name="Item Skill: Aura Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 61 66 72 77 82 87 92 97 102 110 </table>
 		<castRange>900</castRange>
 		<effectPoint>
 			<value level="1">-436</value>
@@ -4930,7 +4897,7 @@
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">61</value>
 					<value level="2">66</value>
@@ -4948,7 +4915,6 @@
 	</skill>
 	<skill id="3173" toLevel="10" name="Item Skill: Prominence">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -5015,7 +4981,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5033,7 +4999,6 @@
 	</skill>
 	<skill id="3174" toLevel="10" name="Item Skill: Hydro Blast">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -5100,7 +5065,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5118,7 +5083,6 @@
 	</skill>
 	<skill id="3175" toLevel="10" name="Item Skill: Hurricane">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -5185,7 +5149,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5203,7 +5167,6 @@
 	</skill>
 	<skill id="3176" toLevel="10" name="Item Skill: Stone">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -5270,7 +5233,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5288,7 +5251,6 @@
 	</skill>
 	<skill id="3177" toLevel="10" name="Item Skill: Solar Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -5355,7 +5317,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5373,7 +5335,6 @@
 	</skill>
 	<skill id="3178" toLevel="10" name="Item Skill: Shadow Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -5440,7 +5401,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5458,7 +5419,6 @@
 	</skill>
 	<skill id="3179" toLevel="10" name="Item Skill: Aura Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<castRange>500</castRange>
@@ -5523,7 +5483,7 @@
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5541,7 +5501,6 @@
 	</skill>
 	<skill id="3180" toLevel="10" name="Item Skill: Prominence">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<effectPoint>
@@ -5606,7 +5565,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5624,7 +5583,6 @@
 	</skill>
 	<skill id="3181" toLevel="10" name="Item Skill: Hydro Blast">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<effectPoint>
@@ -5689,7 +5647,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5707,7 +5665,6 @@
 	</skill>
 	<skill id="3182" toLevel="10" name="Item Skill: Hurricane">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<effectPoint>
@@ -5772,7 +5729,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5790,7 +5747,6 @@
 	</skill>
 	<skill id="3183" toLevel="10" name="Item Skill: Stone">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<effectPoint>
@@ -5855,7 +5811,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5873,7 +5829,6 @@
 	</skill>
 	<skill id="3184" toLevel="10" name="Item Skill: Solar Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<effectPoint>
@@ -5938,7 +5893,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -5956,7 +5911,6 @@
 	</skill>
 	<skill id="3185" toLevel="10" name="Item Skill: Shadow Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<effectPoint>
@@ -6021,7 +5975,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -6039,7 +5993,6 @@
 	</skill>
 	<skill id="3186" toLevel="10" name="Item Skill: Aura Flare">
 		<!-- Confirmed CT2.5 -->
-		<table name="#power"> 31 33 36 39 41 44 46 49 51 55 </table>
 		<affectLimit>6-12</affectLimit>
 		<affectRange>200</affectRange>
 		<effectPoint>
@@ -6102,7 +6055,7 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">31</value>
 					<value level="2">33</value>
@@ -6146,7 +6099,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -6208,7 +6161,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -6242,7 +6195,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -6304,7 +6257,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-23</amount>
 				<mode>PER</mode>
 			</effect>
@@ -6334,7 +6287,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -6381,7 +6334,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="3190" toLevel="10" name="Item Skill: Hold">
@@ -6408,7 +6361,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -6456,8 +6409,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Root" />
-			<effect name="DefenceTrait">
+			<effect name="p_block_move" />
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 			</effect>
 		</effects>
@@ -6486,7 +6439,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -6535,8 +6488,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
-			<effect name="DefenceTrait">
+			<effect name="p_block_act" />
+			<effect name="p_defence_trait">
 				<SLEEP>100</SLEEP>
 			</effect>
 		</effects>
@@ -6564,7 +6517,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -6612,21 +6565,21 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 		<endEffects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>6126</skillId>
 				<skillLevel>1</skillLevel>
 			</effect>
@@ -6658,7 +6611,7 @@
 		<attributeValue>20</attributeValue>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -6705,7 +6658,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockActions" />
+			<effect name="p_block_act" />
 		</effects>
 	</skill>
 	<skill id="3194" toLevel="10" name="Item Skill: Fear">
@@ -6732,7 +6685,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -6780,13 +6733,12 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="BlockControl" />
+			<effect name="p_block_controll" />
 			<effect name="Fear" />
 		</effects>
 	</skill>
 	<skill id="3195" toLevel="15" name="Item Skill: Poison">
 		<!-- Confirmed CT2.5 -->
-		<table name="#dmg"> 41 41 50 50 50 58 58 58 63 63 63 63 63 63 63 </table>
 		<abnormalLvl>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -6805,6 +6757,7 @@
 			<value level="15">8</value>
 		</abnormalLvl>
 		<abnormalTime>30</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<activateRate>40</activateRate>
@@ -6830,7 +6783,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -6893,23 +6846,23 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">41</value>
-					<value level="2">41</value>
-					<value level="3">50</value>
-					<value level="4">50</value>
-					<value level="5">50</value>
-					<value level="6">58</value>
-					<value level="7">58</value>
-					<value level="8">58</value>
-					<value level="9">63</value>
-					<value level="10">63</value>
-					<value level="11">63</value>
-					<value level="12">63</value>
-					<value level="13">63</value>
-					<value level="14">63</value>
-					<value level="15">63</value>
+					<value level="1">-41</value>
+					<value level="2">-41</value>
+					<value level="3">-50</value>
+					<value level="4">-50</value>
+					<value level="5">-50</value>
+					<value level="6">-58</value>
+					<value level="7">-58</value>
+					<value level="8">-58</value>
+					<value level="9">-63</value>
+					<value level="10">-63</value>
+					<value level="11">-63</value>
+					<value level="12">-63</value>
+					<value level="13">-63</value>
+					<value level="14">-63</value>
+					<value level="15">-63</value>
 				</power>
 				<ticks>3</ticks>
 			</effect>
@@ -6917,7 +6870,6 @@
 	</skill>
 	<skill id="3196" toLevel="15" name="Item Skill: Bleed">
 		<!-- Confirmed CT2.5 -->
-		<table name="#dmg"> 44 44 54 54 54 62 62 62 67 67 67 67 67 67 67 </table>
 		<abnormalLvl>
 			<value level="1">5</value>
 			<value level="2">5</value>
@@ -6936,6 +6888,7 @@
 			<value level="15">8</value>
 		</abnormalLvl>
 		<abnormalTime>20</abnormalTime>
+		<subordinationAbnormalType>BLEEDING</subordinationAbnormalType>
 		<abnormalType>BLEEDING</abnormalType>
 		<abnormalVisualEffect>DOT_BLEEDING</abnormalVisualEffect>
 		<activateRate>40</activateRate>
@@ -6961,7 +6914,7 @@
 		<effectRange>400</effectRange>
 		<hitTime>1500</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<lvlBonusRate>1</lvlBonusRate>
 		<magicLvl>
@@ -7024,23 +6977,23 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamOverTime">
+			<effect name="t_hp">
 				<power>
-					<value level="1">44</value>
-					<value level="2">44</value>
-					<value level="3">54</value>
-					<value level="4">54</value>
-					<value level="5">54</value>
-					<value level="6">62</value>
-					<value level="7">62</value>
-					<value level="8">62</value>
-					<value level="9">67</value>
-					<value level="10">67</value>
-					<value level="11">67</value>
-					<value level="12">67</value>
-					<value level="13">67</value>
-					<value level="14">67</value>
-					<value level="15">67</value>
+					<value level="1">-44</value>
+					<value level="2">-44</value>
+					<value level="3">-54</value>
+					<value level="4">-54</value>
+					<value level="5">-54</value>
+					<value level="6">-62</value>
+					<value level="7">-62</value>
+					<value level="8">-62</value>
+					<value level="9">-67</value>
+					<value level="10">-67</value>
+					<value level="11">-67</value>
+					<value level="12">-67</value>
+					<value level="13">-67</value>
+					<value level="14">-67</value>
+					<value level="15">-67</value>
 				</power>
 				<ticks>3</ticks>
 			</effect>
@@ -7070,7 +7023,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -7118,7 +7071,7 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute" />
+			<effect name="p_block_spell" />
 		</effects>
 	</skill>
 	<skill id="3198" toLevel="10" name="Item Skill: Doom">
@@ -7145,7 +7098,7 @@
 		<effectRange>1100</effectRange>
 		<hitTime>4000</hitTime>
 		<icon>icon.skill3123</icon>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>1</isMagic> <!-- Magic Skill -->
 		<lvlBonusRate>10</lvlBonusRate>
 		<magicLvl>
@@ -7193,8 +7146,8 @@
 		<targetType>ENEMY_ONLY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Mute" />
-			<effect name="PhysicalMute" />
+			<effect name="p_block_spell" />
+			<effect name="p_block_skill_physical" />
 		</effects>
 	</skill>
 	<skill id="3199" toLevel="3" name="Item Skill: Skill Refresh">
@@ -7233,7 +7186,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>-15</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>

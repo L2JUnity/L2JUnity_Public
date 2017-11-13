@@ -26,12 +26,16 @@ import org.l2junity.gameserver.model.L2Spawn;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.Tower;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class for Control Tower instance.
  */
 public class L2ControlTowerInstance extends Tower
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(L2ControlTowerInstance.class);
+
 	private volatile Set<L2Spawn> _guards;
 	
 	public L2ControlTowerInstance(L2NpcTemplate template)
@@ -62,7 +66,7 @@ public class L2ControlTowerInstance extends Tower
 					}
 					catch (Exception e)
 					{
-						_log.warn("Error at L2ControlTowerInstance", e);
+						LOGGER.warn("Error at L2ControlTowerInstance", e);
 					}
 				}
 				_guards.clear();

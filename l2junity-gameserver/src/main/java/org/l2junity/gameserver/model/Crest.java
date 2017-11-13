@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.HexIDConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.interfaces.IIdentifiable;
 import org.l2junity.gameserver.network.client.send.AllyCrest;
@@ -101,7 +101,7 @@ public final class Crest implements IIdentifiable
 			case PLEDGE:
 			{
 				activeChar.sendPacket(new PledgeCrest(getId(), getData()));
-				path = "Crest.crest_" + Config.SERVER_ID + "_" + getId();
+				path = "Crest.crest_" + HexIDConfig.SERVER_ID + "_" + getId();
 				break;
 			}
 			case PLEDGE_LARGE:
@@ -125,13 +125,13 @@ public final class Crest implements IIdentifiable
 						}
 					}
 				}
-				path = "Crest.crest_" + Config.SERVER_ID + "_" + getId() + "_l";
+				path = "Crest.crest_" + HexIDConfig.SERVER_ID + "_" + getId() + "_l";
 				break;
 			}
 			case ALLY:
 			{
 				activeChar.sendPacket(new AllyCrest(getId(), getData()));
-				path = "Crest.crest_" + Config.SERVER_ID + "_" + getId();
+				path = "Crest.crest_" + HexIDConfig.SERVER_ID + "_" + getId();
 				break;
 			}
 		}

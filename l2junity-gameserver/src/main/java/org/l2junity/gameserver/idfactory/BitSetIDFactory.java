@@ -19,9 +19,10 @@
 package org.l2junity.gameserver.idfactory;
 
 import java.util.BitSet;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.util.PrimeFinder;
 
 /**
@@ -55,7 +56,7 @@ public class BitSetIDFactory extends IdFactory
 		
 		synchronized (BitSetIDFactory.class)
 		{
-			ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new BitSetCapacityCheck(), 30000, 30000);
+			ThreadPool.scheduleAtFixedRate(new BitSetCapacityCheck(), 30000, 30000, TimeUnit.MILLISECONDS);
 			initialize();
 		}
 		LOGGER.info("{} id's available.", _freeIds.size());

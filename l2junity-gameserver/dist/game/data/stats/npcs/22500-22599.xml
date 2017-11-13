@@ -25,7 +25,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="148" /> <!-- Sword of Valhalla -->
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="34114" hpRegen="119.343181906062" mp="1607.4" mpRegen="3" />
+			<vitals hp="34114.9474043184" hpRegen="119.343181906062" mp="1607.4" mpRegen="3" />
 			<attack physical="5411.70496793952" magical="3695.4930113615" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="532.320976" magical="584.294088" />
 			<attribute>
@@ -55,11 +55,29 @@
 			<skill id="5464" level="1" /> <!-- Wind Attacks -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ABYSS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="80" max="185" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="5.428">
+					<item id="36517" min="1" max="1" chance="100" /> <!-- Leather -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36531" min="1" max="1" chance="29.79" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="0.75" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.003" /> <!-- Recipe: Thread - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="13.5" grown="16" />
 			<height normal="36.5" grown="42.5" />
@@ -87,7 +105,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="148" /> <!-- Sword of Valhalla -->
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="34114" hpRegen="119.343181906062" mp="1607.4" mpRegen="3" />
+			<vitals hp="34114.9474043184" hpRegen="119.343181906062" mp="1607.4" mpRegen="3" />
 			<attack physical="5411.70496793952" magical="3695.4930113615" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="532.320976" magical="584.294088" />
 			<attribute>
@@ -117,11 +135,29 @@
 			<skill id="5464" level="1" /> <!-- Wind Attacks -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ABYSS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="80" max="185" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="5.428">
+					<item id="36517" min="1" max="1" chance="100" /> <!-- Leather -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36531" min="1" max="1" chance="29.79" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="0.75" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.003" /> <!-- Recipe: Thread - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="13.5" grown="16" />
 			<height normal="36.5" grown="42.5" />
@@ -152,7 +188,7 @@
 		<sex>FEMALE</sex>
 		<equipment rhand="6717" /> <!-- Monster Only (Einhasad Warrior) -->
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="68176" hpRegen="119.249184145668" mp="1607.4" mpRegen="3" />
+			<vitals hp="68176.1551881449" hpRegen="119.249184145668" mp="1607.4" mpRegen="3" />
 			<attack physical="5290.96371101051" magical="3613.0423837298" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="532.320976" magical="584.294088" />
 			<attribute>
@@ -183,7 +219,7 @@
 			<skill id="5465" level="1" /> <!-- Earth Attacks -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ABYSS</clan>
 			</clan_list>
@@ -218,7 +254,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="10278" lhand="10278" /> <!-- Monster Only (Behamah Dual) / Monster Only (Behamah Dual) -->
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="33903" hpRegen="116.510535585003" mp="1708.8" mpRegen="3" />
+			<vitals hp="33903.5162107711" hpRegen="116.510535585003" mp="1708.8" mpRegen="3" />
 			<attack physical="5953.77196777846" magical="4277.99509727735" random="10" critical="4" accuracy="5" attackSpeed="253" type="DUAL" range="40" distance="80" width="120" />
 			<defence physical="552.978032" magical="606.967992" />
 			<attribute>
@@ -248,11 +284,29 @@
 			<skill id="5467" level="1" /> <!-- Dark Attacks -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ABYSS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="80" max="185" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="5.428">
+					<item id="36517" min="1" max="1" chance="100" /> <!-- Leather -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36531" min="1" max="1" chance="29.79" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="0.75" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.003" /> <!-- Recipe: Thread - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="25" grown="32" />
 			<height normal="37.5" grown="46.8" />
@@ -280,7 +334,7 @@
 		<sex>MALE</sex>
 		<equipment rhand="10278" lhand="10278" /> <!-- Monster Only (Behamah Dual) / Monster Only (Behamah Dual) -->
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="33903" hpRegen="116.510535585003" mp="1708.8" mpRegen="3" />
+			<vitals hp="33903.5162107711" hpRegen="116.510535585003" mp="1708.8" mpRegen="3" />
 			<attack physical="5953.77196777846" magical="4277.99509727735" random="10" critical="4" accuracy="5" attackSpeed="253" type="DUAL" range="40" distance="80" width="120" />
 			<defence physical="552.978032" magical="606.967992" />
 			<attribute>
@@ -310,11 +364,29 @@
 			<skill id="5467" level="1" /> <!-- Dark Attacks -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ABYSS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="80" max="185" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="5.428">
+					<item id="36517" min="1" max="1" chance="100" /> <!-- Leather -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36531" min="1" max="1" chance="29.79" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="0.75" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.003" /> <!-- Recipe: Thread - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="25" grown="32" />
 			<height normal="37.5" grown="46.8" />
@@ -344,7 +416,7 @@
 		<race>CONSTRUCT</race>
 		<sex>MALE</sex>
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="67753" hpRegen="116.418244088663" mp="1708.8" mpRegen="3" />
+			<vitals hp="67753.320433582" hpRegen="116.418244088663" mp="1708.8" mpRegen="3" />
 			<attack physical="5820.93658315993" magical="4182.54818946522" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="552.978032" magical="606.967992" />
 			<attribute>
@@ -375,7 +447,7 @@
 			<skill id="5464" level="1" /> <!-- Wind Attacks -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ABYSS</clan>
 			</clan_list>
@@ -423,7 +495,7 @@
 		</skill_list>
 		<corpse_time>0</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="33" />
 			<height normal="13.5" />
@@ -467,7 +539,7 @@
 		</skill_list>
 		<corpse_time>0</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="33" />
 			<height normal="13.5" />
@@ -511,7 +583,7 @@
 		</skill_list>
 		<corpse_time>0</corpse_time>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="33" />
 			<height normal="13.5" />
@@ -531,7 +603,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="66.543822714681" sp="12198" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="110.577296732991" mp="22058" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="110.577296732991" mp="22058.0" mpRegen="3" />
 			<attack physical="5940.3994655008" magical="4128.10845732292" random="30" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="582.692054494118" magical="639.583141129412" />
 			<attribute>
@@ -563,7 +635,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -587,7 +659,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="14.593573407202" sp="2681" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="110.577296732991" mp="33087" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="110.577296732991" mp="33087.0" mpRegen="3" />
 			<attack physical="5940.3994655008" magical="4128.10845732292" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="582.692054494118" magical="639.583141129412" />
 			<attribute>
@@ -619,7 +691,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -644,7 +716,7 @@
 		<equipment rhand="13978" /> <!-- Monster Only (Dragontroop Commander) -->
 		<acquire expRate="19.302936288089" sp="3630" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="111.50705124295" mp="22058" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="111.50705124295" mp="22058.0" mpRegen="3" />
 			<attack physical="5883.7041177888" magical="4065.07551523469" random="30" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="572.839225223529" magical="628.768339764706" />
 			<attribute>
@@ -676,7 +748,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -701,7 +773,7 @@
 		<equipment rhand="13978" /> <!-- Monster Only (Dragontroop Commander) -->
 		<acquire expRate="19.561662049861" sp="3725" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="112.558039826218" mp="22058" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="112.558039826218" mp="22058.0" mpRegen="3" />
 			<attack physical="5827.40072171705" magical="4002.76724651153" random="30" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="562.931629835294" magical="617.893411764706" />
 			<attribute>
@@ -733,7 +805,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -758,7 +830,7 @@
 		<equipment rhand="13979" lhand="13980" /> <!-- Monster Only (Dragontroop Commando) / Monster Only (Dragontroop Defender) -->
 		<acquire expRate="16.381274238227" sp="3135" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="113.419259781018" mp="22058" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="113.419259781018" mp="22058.0" mpRegen="3" />
 			<attack physical="5770.14557436436" magical="3940.26143244462" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="552.978032" magical="606.967992" />
 			<attribute>
@@ -790,7 +862,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -815,7 +887,7 @@
 		<equipment rhand="13979" lhand="13980" /> <!-- Monster Only (Dragontroop Commando) / Monster Only (Dragontroop Defender) -->
 		<acquire expRate="16.978610230874" sp="3224" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="313367" hpRegen="114.399578021039" mp="21690" mpRegen="3" />
+			<vitals hp="313367.483038276" hpRegen="114.399578021039" mp="21690.0" mpRegen="3" />
 			<attack physical="5746.81895750842" magical="3924.33235398589" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="546.2" magical="599.528184" />
 			<attribute>
@@ -847,7 +919,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -872,7 +944,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="38.596897506925" sp="7618" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="112.558039826218" mp="33087" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="112.558039826218" mp="33087.0" mpRegen="3" />
 			<attack physical="5827.40072171705" magical="4002.76724651153" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="562.931629835294" magical="617.893411764706" />
 			<attribute>
@@ -904,7 +976,7 @@
 			<skill id="5833" level="1" /> <!-- Shield -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -929,7 +1001,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="15.854404432133" sp="3023" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="113.419259781018" mp="33087" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="113.419259781018" mp="33087.0" mpRegen="3" />
 			<attack physical="5770.14557436436" magical="3940.26143244462" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="552.978032" magical="606.967992" />
 			<attribute>
@@ -962,7 +1034,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -988,7 +1060,7 @@
 		<equipment rhand="13981" /> <!-- Monster Only (Dragontoop Tactician) -->
 		<acquire expRate="17.30239927569" sp="3273" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="313367" hpRegen="114.399578021039" mp="32535" mpRegen="3" />
+			<vitals hp="313367.483038276" hpRegen="114.399578021039" mp="32535.0" mpRegen="3" />
 			<attack physical="5746.81895750842" magical="3924.33235398589" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="546.2" magical="599.528184" />
 			<attribute>
@@ -1021,7 +1093,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1045,7 +1117,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="40.630249307479" sp="7920" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="111.50705124295" mp="22058" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="111.50705124295" mp="22058.0" mpRegen="3" />
 			<attack physical="5883.7041177888" magical="4065.07551523469" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="572.839225223529" magical="628.768339764706" />
 			<attribute>
@@ -1077,7 +1149,7 @@
 			<skill id="5828" level="1" /> <!-- Unholy Flare -->
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1098,7 +1170,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="17.171811770147" sp="3115" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="312844" hpRegen="115.295936105422" mp="21324" mpRegen="3" />
+			<vitals hp="312844.449201519" hpRegen="115.295936105422" mp="21324.0" mpRegen="3" />
 			<attack physical="5679.07860126925" magical="3878.0744848375" random="10" critical="4" accuracy="4.75" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="539.312128" magical="591.967824" />
 			<attribute>
@@ -1129,7 +1201,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1152,7 +1224,7 @@
 		<equipment rhand="13981" /> <!-- Monster Only (Dragontoop Tactician) -->
 		<acquire expRate="12.286044629437" sp="2238" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="312844" hpRegen="115.295936105422" mp="31986" mpRegen="3" />
+			<vitals hp="312844.449201519" hpRegen="115.295936105422" mp="31986.0" mpRegen="3" />
 			<attack physical="5679.07860126925" magical="3878.0744848375" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="539.312128" magical="591.967824" />
 			<attribute>
@@ -1184,7 +1256,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1207,7 +1279,7 @@
 		<equipment rhand="13843" /> <!-- Draconic Peltast Weapon -->
 		<acquire expRate="19.346084200996" sp="3694" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="313367" hpRegen="114.399578021039" mp="21690" mpRegen="3" />
+			<vitals hp="313367.483038276" hpRegen="114.399578021039" mp="21690.0" mpRegen="3" />
 			<attack physical="5746.81895750842" magical="3924.33235398589" random="10" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="546.2" magical="599.528184" />
 			<attribute>
@@ -1237,7 +1309,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1260,7 +1332,7 @@
 		<equipment rhand="13843" /> <!-- Draconic Peltast Weapon -->
 		<acquire expRate="19.346084200996" sp="3694" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="313367" hpRegen="114.399578021039" mp="21690" mpRegen="3" />
+			<vitals hp="313367.483038276" hpRegen="114.399578021039" mp="21690.0" mpRegen="3" />
 			<attack physical="5746.81895750842" magical="3924.33235398589" random="10" critical="8" accuracy="0" attackSpeed="253" reuseDelay="1500" type="BOW" range="1100" distance="10" width="0" />
 			<defence physical="546.2" magical="599.528184" />
 			<attribute>
@@ -1291,7 +1363,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1316,7 +1388,7 @@
 		<equipment rhand="13987" /> <!-- Monster Only (Savage Warrior) -->
 		<acquire expRate="21.56480517979" sp="3861" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="312844" hpRegen="69.074398826847" mp="21324" mpRegen="3" />
+			<vitals hp="312844.449201519" hpRegen="69.074398826847" mp="21324.0" mpRegen="3" />
 			<attack physical="4149.83975268227" magical="2833.8026342934" random="50" critical="1" accuracy="9" attackSpeed="253" type="BLUNT" range="40" distance="80" width="120" />
 			<defence physical="525.233168" magical="576.514248" />
 			<attribute>
@@ -1348,7 +1420,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1370,7 +1442,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="19.932940224303" sp="3513" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="312844" hpRegen="69.5153124125026" mp="31986" mpRegen="3" />
+			<vitals hp="312844.449201519" hpRegen="69.5153124125026" mp="31986.0" mpRegen="3" />
 			<attack physical="4090.13416907694" magical="2793.03141458148" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="518.05528" magical="568.635576" />
 			<attribute>
@@ -1401,7 +1473,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1421,7 +1493,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="19.218869233437" sp="3461" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="312844" hpRegen="116.187487396794" mp="21324" mpRegen="3" />
+			<vitals hp="312844.449201519" hpRegen="116.187487396794" mp="21324.0" mpRegen="3" />
 			<attack physical="5606.1418676707" magical="3828.26821037257" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="532.320976" magical="584.294088" />
 			<attribute>
@@ -1451,7 +1523,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1489,7 +1561,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="62" />
 			<height normal="140" />
@@ -1523,7 +1595,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="62" />
 			<height normal="140" />
@@ -1557,7 +1629,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="62" />
 			<height normal="140" />
@@ -1591,7 +1663,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300" />
+		<ai clanHelpRange="300" aggroRange="300" />
 		<collision>
 			<radius normal="62" />
 			<height normal="140" />
@@ -1637,7 +1709,7 @@
 			<skill id="5961" level="1" /> <!-- Barrier Thunder Storm -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="450" />
+		<ai clanHelpRange="300" aggroRange="450" />
 		<collision>
 			<radius normal="86" />
 			<height normal="133.5" />
@@ -1682,7 +1754,7 @@
 			<skill id="5962" level="1" /> <!-- Air Defense Cannon -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="450" />
+		<ai clanHelpRange="300" aggroRange="450" />
 		<collision>
 			<radius normal="86" />
 			<height normal="133.5" />
@@ -1704,7 +1776,7 @@
 		<equipment rhand="13981" /> <!-- Monster Only (Dragontoop Tactician) -->
 		<acquire expRate="17.885921231326" sp="3388" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="313367" hpRegen="114.399578021039" mp="32535" mpRegen="3" />
+			<vitals hp="313367.483038276" hpRegen="114.399578021039" mp="32535.0" mpRegen="3" />
 			<attack physical="5746.81895750842" magical="3924.33235398589" random="30" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="546.2" magical="599.528184" />
 			<attribute>
@@ -1737,7 +1809,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1762,7 +1834,7 @@
 		<equipment rhand="13979" lhand="13980" /> <!-- Monster Only (Dragontroop Commando) / Monster Only (Dragontroop Defender) -->
 		<acquire expRate="17.544265927978" sp="3368" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="321920" hpRegen="113.419259781018" mp="22058" mpRegen="3" />
+			<vitals hp="321920.871586548" hpRegen="113.419259781018" mp="22058.0" mpRegen="3" />
 			<attack physical="5770.14557436436" magical="3940.26143244462" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="552.978032" magical="606.967992" />
 			<attribute>
@@ -1796,7 +1868,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>
@@ -1821,7 +1893,7 @@
 		<equipment rhand="13979" lhand="13980" /> <!-- Monster Only (Dragontroop Commando) / Monster Only (Dragontroop Defender) -->
 		<acquire expRate="18.184925305568" sp="3464" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="313367" hpRegen="114.399578021039" mp="21690" mpRegen="3" />
+			<vitals hp="313367.483038276" hpRegen="114.399578021039" mp="21690.0" mpRegen="3" />
 			<attack physical="5746.81895750842" magical="3924.33235398589" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="546.2" magical="599.528184" />
 			<attribute>
@@ -1855,7 +1927,7 @@
 		</skill_list>
 		<ex_crt_effect>true</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>DES_DRAGON</clan>
 			</clan_list>

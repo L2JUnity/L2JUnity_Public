@@ -23,8 +23,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.ClanRewardType;
 import org.l2junity.gameserver.instancemanager.SiegeManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -413,6 +413,11 @@ public class ClanMember
 		return _clan;
 	}
 	
+	public boolean isAcademyMember()
+	{
+		return getPledgeType() == L2Clan.SUBUNIT_ACADEMY;
+	}
+	
 	/**
 	 * Calculate pledge class.
 	 * @param player the player
@@ -752,28 +757,28 @@ public class ClanMember
 	{
 		_onlineTime = 0;
 		final PlayerVariables vars = getVariables();
-		vars.set("CLAIMED_CLAN_REWARDS", 0);
+		vars.set(PlayerVariables.CLAN_REWARD_CLAIMED, 0);
 		vars.storeMe();
 	}
 	
 	public int getOnlineStatus()
 	{
-		return !isOnline() ? 0 : _onlineTime >= (Config.ALT_CLAN_MEMBERS_TIME_FOR_BONUS) ? 2 : 1;
+		return !isOnline() ? 0 : _onlineTime >= (PlayerConfig.ALT_CLAN_MEMBERS_TIME_FOR_BONUS) ? 2 : 1;
 	}
 	
 	public boolean isRewardClaimed(ClanRewardType type)
 	{
 		final PlayerVariables vars = getVariables();
-		final int claimedRewards = vars.getInt("CLAIMED_CLAN_REWARDS", ClanRewardType.getDefaultMask());
+		final int claimedRewards = vars.getInt(PlayerVariables.CLAN_REWARD_CLAIMED, ClanRewardType.getDefaultMask());
 		return (claimedRewards & type.getMask()) == type.getMask();
 	}
 	
 	public void setRewardClaimed(ClanRewardType type)
 	{
 		final PlayerVariables vars = getVariables();
-		int claimedRewards = vars.getInt("CLAIMED_CLAN_REWARDS", ClanRewardType.getDefaultMask());
+		int claimedRewards = vars.getInt(PlayerVariables.CLAN_REWARD_CLAIMED, ClanRewardType.getDefaultMask());
 		claimedRewards |= type.getMask();
-		vars.set("CLAIMED_CLAN_REWARDS", claimedRewards);
+		vars.set(PlayerVariables.CLAN_REWARD_CLAIMED, claimedRewards);
 		vars.storeMe();
 	}
 	

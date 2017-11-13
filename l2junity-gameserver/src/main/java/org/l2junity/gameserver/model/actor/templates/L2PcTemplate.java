@@ -44,15 +44,15 @@ public class L2PcTemplate extends L2CharTemplate
 	private final double[] _baseMpReg;
 	private final double[] _baseCpReg;
 	
-	private final double _fCollisionHeightFemale;
-	private final double _fCollisionRadiusFemale;
+	private double _fCollisionHeightFemale;
+	private double _fCollisionRadiusFemale;
 	
-	private final int _baseSafeFallHeight;
+	private int _baseSafeFallHeight;
 	
-	private final List<Location> _creationPoints;
-	private final Map<Integer, Integer> _baseSlotDef;
+	private List<Location> _creationPoints;
+	private Map<Integer, Integer> _baseSlotDef;
 	
-	public L2PcTemplate(StatsSet set, List<Location> creationPoints)
+	public L2PcTemplate(StatsSet set)
 	{
 		super(set);
 		_classId = ClassId.getClassId(set.getInt("classId"));
@@ -63,26 +63,32 @@ public class L2PcTemplate extends L2CharTemplate
 		_baseHpReg = new double[ExperienceData.getInstance().getMaxLevel()];
 		_baseMpReg = new double[ExperienceData.getInstance().getMaxLevel()];
 		_baseCpReg = new double[ExperienceData.getInstance().getMaxLevel()];
+	}
+	
+	@Override
+	public void set(StatsSet set)
+	{
+		super.set(set);
 		
 		_baseSlotDef = new HashMap<>(12);
-		_baseSlotDef.put(Inventory.PAPERDOLL_CHEST, set.getInt("basePDefchest", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_LEGS, set.getInt("basePDeflegs", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_HEAD, set.getInt("basePDefhead", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_FEET, set.getInt("basePDeffeet", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_GLOVES, set.getInt("basePDefgloves", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_UNDER, set.getInt("basePDefunderwear", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_CLOAK, set.getInt("basePDefcloak", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_REAR, set.getInt("baseMDefrear", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_LEAR, set.getInt("baseMDeflear", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_RFINGER, set.getInt("baseMDefrfinger", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_LFINGER, set.getInt("baseMDefrfinger", 0));
-		_baseSlotDef.put(Inventory.PAPERDOLL_NECK, set.getInt("baseMDefneck", 0));
+		_baseSlotDef.put(Inventory.PAPERDOLL_CHEST, set.getInt("basePDefchest"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_LEGS, set.getInt("basePDeflegs"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_HEAD, set.getInt("basePDefhead"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_FEET, set.getInt("basePDeffeet"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_GLOVES, set.getInt("basePDefgloves"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_UNDER, set.getInt("basePDefunderwear"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_CLOAK, set.getInt("basePDefcloak"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_REAR, set.getInt("baseMDefrear"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_LEAR, set.getInt("baseMDeflear"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_RFINGER, set.getInt("baseMDefrfinger"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_LFINGER, set.getInt("baseMDefrfinger"));
+		_baseSlotDef.put(Inventory.PAPERDOLL_NECK, set.getInt("baseMDefneck"));
 		
 		_fCollisionRadiusFemale = set.getDouble("collisionFemaleradius");
 		_fCollisionHeightFemale = set.getDouble("collisionFemaleheight");
 		
-		_baseSafeFallHeight = set.getInt("baseSafeFall", 333);
-		_creationPoints = creationPoints;
+		_baseSafeFallHeight = set.getInt("baseSafeFall");
+		_creationPoints = set.getList("creationPoints", Location.class);
 	}
 	
 	/**

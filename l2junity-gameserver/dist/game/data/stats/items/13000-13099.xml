@@ -395,6 +395,7 @@
 		<set name="is_mailable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="handler" val="NicknameColor" />
+		<set name="etcitem_type" val="NICK_COLOR_OLD" />
 	</item>
 	<item id="13022" name="Mount - Darkmane Pacer" name_additional="7-day" type="Armor">
 		<set name="icon" val="icon.etc_rbracelet_aga_agit_i00" />
@@ -597,7 +598,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_questitem" val="true" />
+		<set name="is_questitem" val="false" />
 		<set name="for_npc" val="true" />
 		<cond addName="1" msgId="113">
 			<player instanceId="43,44,45" />
@@ -625,7 +626,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_questitem" val="true" />
+		<set name="is_questitem" val="false" />
 		<set name="is_coc_restricted" val="true" />
 		<set name="for_npc" val="true" />
 		<cond addName="1" msgId="113">
@@ -1063,7 +1064,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_questitem" val="true" />
+		<set name="is_questitem" val="false" />
 		<cond addName="1" msgId="113">
 			<player instanceId="44" />
 		</cond>
@@ -1366,7 +1367,7 @@
 		<set name="is_freightable" val="false" />
 		<set name="is_commissionable" val="false" />
 		<set name="is_private_storeable" val="false" />
-		<set name="is_questitem" val="true" />
+		<set name="is_questitem" val="false" />
 		<set name="for_npc" val="true" />
 		<cond addName="1" msgId="113">
 			<player instanceId="44" />

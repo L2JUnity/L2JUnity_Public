@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -26,13 +26,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
 import org.l2junity.gameserver.handler.ConditionHandler;
+import org.l2junity.gameserver.handler.IConditionHandler;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.StatsSet;
-import org.l2junity.gameserver.model.conditions.ICondition;
 import org.l2junity.gameserver.model.holders.ExtendDropDataHolder;
 import org.l2junity.gameserver.model.holders.ExtendDropItemHolder;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
+import org.l2junity.gameserver.scripting.ScriptsManager;
+import org.l2junity.gameserver.scripting.annotations.ConditionScript;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -41,26 +46,28 @@ import org.w3c.dom.Node;
 /**
  * @author Sdw
  */
+
 public class ExtendDropData implements IGameXmlReader
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExtendDropData.class);
+	
 	private final Map<Integer, ExtendDropDataHolder> _extendDrop = new HashMap<>();
 	
 	protected ExtendDropData()
 	{
-		load();
 	}
 	
-	@Override
-	public void load()
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_extendDrop.clear();
+		ScriptsManager.getInstance().runScripts(ConditionScript.class);
 		parseDatapackFile("data/ExtendDrop.xml");
 		LOGGER.info("Loaded {} ExtendDrop.", _extendDrop.size());
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		forEach(doc, "list", listNode -> forEach(listNode, "drop", dropNode ->
 		{
@@ -78,12 +85,12 @@ public class ExtendDropData implements IGameXmlReader
 			}));
 			set.set("items", items);
 			
-			final List<ICondition> conditions = new ArrayList<>(1);
+			final List<IConditionHandler> conditions = new ArrayList<>(1);
 			forEach(dropNode, "conditions", conditionsNode -> forEach(conditionsNode, "condition", conditionNode ->
 			{
 				final String conditionName = parseString(conditionNode.getAttributes(), "name");
 				final StatsSet params = (StatsSet) parseValue(conditionNode);
-				final Function<StatsSet, ICondition> conditionFunction = ConditionHandler.getInstance().getHandlerFactory(conditionName);
+				final Function<StatsSet, IConditionHandler> conditionFunction = ConditionHandler.getInstance().getHandlerFactory(conditionName);
 				if (conditionFunction != null)
 				{
 					conditions.add(conditionFunction.apply(params));
@@ -190,11 +197,17 @@ public class ExtendDropData implements IGameXmlReader
 		return statsSet;
 	}
 	
+	public int getLoadedElementsCount()
+	{
+		return _extendDrop.size();
+	}
+	
 	public ExtendDropDataHolder getExtendDropById(int id)
 	{
 		return _extendDrop.getOrDefault(id, null);
 	}
 	
+	@InstanceGetter
 	public static ExtendDropData getInstance()
 	{
 		return SingletonHolder._instance;

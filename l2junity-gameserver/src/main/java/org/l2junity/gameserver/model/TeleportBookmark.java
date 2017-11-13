@@ -23,6 +23,7 @@ package org.l2junity.gameserver.model;
  */
 public class TeleportBookmark extends Location
 {
+	private static final long serialVersionUID = -8779239977253363659L;
 	private final int _id;
 	private int _icon;
 	private String _name, _tag;

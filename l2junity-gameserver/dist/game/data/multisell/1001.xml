@@ -1,421 +1,1102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list applyTaxes="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
 	<npcs>
-		<npc>30283</npc> <!-- Altran -->
-		<npc>30298</npc> <!-- Pinter -->
-		<npc>30300</npc> <!-- Pushkin -->
-		<npc>30307</npc> <!-- Karrod -->
-		<npc>30317</npc> <!-- Kluto -->
-		<npc>30363</npc> <!-- Aios -->
-		<npc>30458</npc> <!-- Poitan -->
-		<npc>30471</npc> <!-- Rupio -->
-		<npc>30526</npc> <!-- Brunon -->
-		<npc>30527</npc> <!-- Silvera -->
-		<npc>30564</npc> <!-- Sumari -->
-		<npc>30688</npc> <!-- Duning -->
-		<npc>30898</npc> <!-- Morning -->
-		<npc>31583</npc> <!-- Feynn -->
-		<npc>31990</npc> <!-- Siger -->
-		<npc>32159</npc> <!-- Kincaid -->
+		<npc>30283</npc> <!-- Altran (Blacksmith) -->
+		<npc>30298</npc> <!-- Pinter (Blacksmith) -->
+		<npc>30300</npc> <!-- Pushkin (Blacksmith) -->
+		<npc>30307</npc> <!-- Karrod (Blacksmith) -->
+		<npc>30317</npc> <!-- Kluto (Blacksmith) -->
+		<npc>30363</npc> <!-- Aios (Blacksmith) -->
+		<npc>30458</npc> <!-- Poitan (Blacksmith) -->
+		<npc>30471</npc> <!-- Rupio (Blacksmith) -->
+		<npc>30526</npc> <!-- Brunon (Blacksmith) -->
+		<npc>30527</npc> <!-- Silvera (Blacksmith) -->
+		<npc>30564</npc> <!-- Sumari (Blacksmith) -->
+		<npc>30688</npc> <!-- Duning (Blacksmith) -->
+		<npc>30898</npc> <!-- Morning (Blacksmith) -->
+		<npc>31583</npc> <!-- Feynn (Blacksmith) -->
+		<npc>31990</npc> <!-- Siger (Blacksmith) -->
+		<npc>32159</npc> <!-- Kincaid (Blacksmith) -->
+		<npc>34208</npc> <!-- Bartman (Blacksmith) -->
 	</npcs>
 	<item>
-		<ingredient id="72" count="1"/> <!-- StormBringer --> 
-		<ingredient id="75" count="1"/> <!-- Caliburs --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="183"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="164430"/> <!-- Adena --> 
-		<production id="2566" count="1" chance="100"/> <!-- StormBringer*Caliburs --> 
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31120" count="1"/> <!-- Bound Saber*Saber --> 
+	</item>
+	<item>
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31121" count="1"/> <!-- Bound Saber*Bastard Sword --> 
+	</item>
+	<item>
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31119" count="1"/> <!-- Bound Saber*Spinebone Sword --> 
+	</item>
+	<item>
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31116" count="1"/> <!-- Bound Saber*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31122" count="1"/> <!-- Bound Saber*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31115" count="1"/> <!-- Bound Saber*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31117" count="1"/> <!-- Bound Saber*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31114" count="1"/> <!-- Bound Saber*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="31123" count="1"/> <!-- Bound Saber --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31118" count="1"/> <!-- Bound Saber*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31251" count="1"/> <!-- Bound Bastard Sword*Bastard Sword --> 
+	</item>
+	<item>
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31250" count="1"/> <!-- Bound Bastard Sword*Spinebone Sword --> 
+	</item>
+	<item>
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31247" count="1"/> <!-- Bound Bastard Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31252" count="1"/> <!-- Bound Bastard Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31246" count="1"/> <!-- Bound Bastard Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31248" count="1"/> <!-- Bound Bastard Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31245" count="1"/> <!-- Bound Bastard Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="31253" count="1"/> <!-- Bound Bastard Sword --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31249" count="1"/> <!-- Bound Bastard Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31000" count="1"/> <!-- Bound Spinebone Sword*Spinebone Sword --> 
+	</item>
+	<item>
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="30997" count="1"/> <!-- Bound Spinebone Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31001" count="1"/> <!-- Bound Spinebone Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30996" count="1"/> <!-- Bound Spinebone Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30998" count="1"/> <!-- Bound Spinebone Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30995" count="1"/> <!-- Bound Spinebone Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="31002" count="1"/> <!-- Bound Spinebone Sword --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30999" count="1"/> <!-- Bound Spinebone Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="30751" count="1"/> <!-- Bound Artisan's Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="30754" count="1"/> <!-- Bound Artisan's Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30750" count="1"/> <!-- Bound Artisan's Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30752" count="1"/> <!-- Bound Artisan's Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30749" count="1"/> <!-- Bound Artisan's Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="30755" count="1"/> <!-- Bound Artisan's Sword --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30753" count="1"/> <!-- Bound Artisan's Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31508" count="1"/> <!-- Bound Knight's Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31504" count="1"/> <!-- Bound Knight's Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31505" count="1"/> <!-- Bound Knight's Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31503" count="1"/> <!-- Bound Knight's Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="31510" count="1"/> <!-- Bound Knight's Sword --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="31507" count="1"/> <!-- Bound Knight's Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30650" count="1"/> <!-- Bound Crimson Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30651" count="1"/> <!-- Bound Crimson Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="30649" count="1"/> <!-- Bound Crimson Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="30653" count="1"/> <!-- Bound Crimson Sword --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="30652" count="1"/> <!-- Bound Crimson Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30830" count="1"/> <!-- Bound Elven Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="30829" count="1"/> <!-- Bound Elven Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="30832" count="1"/> <!-- Bound Elven Sword --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="30831" count="1"/> <!-- Bound Elven Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="1458" count="1"/> <!-- Crystal (D-grade) --> 
+		<production id="30459" count="1"/> <!-- Bound Sword of Revolution*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="30461" count="1"/> <!-- Bound Sword of Revolution --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="30460" count="1"/> <!-- Bound Sword of Revolution*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="30842" count="1"/> <!-- Bound Elven Long Sword --> 
+		<ingredient id="1458" count="3"/> <!-- Crystal (D-grade) --> 
+		<production id="30841" count="1"/> <!-- Bound Elven Long Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="31015" count="1"/> <!-- Bound StormBringer - Focus --> 
+		<ingredient id="31015" count="1"/> <!-- Bound StormBringer - Focus --> 
+		<ingredient id="1458" count="3"/> <!-- Crystal (D-grade) --> 
+		<production id="31010" count="1"/> <!-- Bound StormBringer*StormBringer --> 
+	</item>
+	<item>
+		<ingredient id="31015" count="1"/> <!-- Bound StormBringer - Focus --> 
+		<ingredient id="31135" count="1"/> <!-- Bound Shamshir - Guidance --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31011" count="1"/> <!-- Bound StormBringer*Shamshir --> 
+	</item>
+	<item>
+		<ingredient id="31015" count="1"/> <!-- Bound StormBringer - Focus --> 
+		<ingredient id="30683" count="1"/> <!-- Bound Katana - Focus --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31008" count="1"/> <!-- Bound StormBringer*Katana --> 
+	</item>
+	<item>
+		<ingredient id="31015" count="1"/> <!-- Bound StormBringer - Focus --> 
+		<ingredient id="30988" count="1"/> <!-- Bound Spirit Sword - Critical Damage --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31009" count="1"/> <!-- Bound StormBringer*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="31015" count="1"/> <!-- Bound StormBringer - Focus --> 
+		<ingredient id="31345" count="1"/> <!-- Bound Raid Sword - Focus --> 
+		<ingredient id="1458" count="2"/> <!-- Crystal (D-grade) --> 
+		<production id="31012" count="1"/> <!-- Bound StormBringer*Raid Sword --> 
+	</item>
+	<item>
+		<ingredient id="31135" count="1"/> <!-- Bound Shamshir - Guidance --> 
+		<ingredient id="31135" count="1"/> <!-- Bound Shamshir - Guidance --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="31132" count="1"/> <!-- Bound Shamshir*Shamshir --> 
+	</item>
+	<item>
+		<ingredient id="31135" count="1"/> <!-- Bound Shamshir - Guidance --> 
+		<ingredient id="30683" count="1"/> <!-- Bound Katana - Focus --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="31130" count="1"/> <!-- Bound Shamshir*Katana --> 
+	</item>
+	<item>
+		<ingredient id="31135" count="1"/> <!-- Bound Shamshir - Guidance --> 
+		<ingredient id="30988" count="1"/> <!-- Bound Spirit Sword - Critical Damage --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="31131" count="1"/> <!-- Bound Shamshir*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="31135" count="1"/> <!-- Bound Shamshir - Guidance --> 
+		<ingredient id="31345" count="1"/> <!-- Bound Raid Sword - Focus --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="31133" count="1"/> <!-- Bound Shamshir*Raid Sword --> 
+	</item>
+	<item>
+		<ingredient id="30683" count="1"/> <!-- Bound Katana - Focus --> 
+		<ingredient id="30683" count="1"/> <!-- Bound Katana - Focus --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="30679" count="1"/> <!-- Bound Katana*Katana --> 
+	</item>
+	<item>
+		<ingredient id="30683" count="1"/> <!-- Bound Katana - Focus --> 
+		<ingredient id="30988" count="1"/> <!-- Bound Spirit Sword - Critical Damage --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="30680" count="1"/> <!-- Bound Katana*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="30683" count="1"/> <!-- Bound Katana - Focus --> 
+		<ingredient id="31345" count="1"/> <!-- Bound Raid Sword - Focus --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="30681" count="1"/> <!-- Bound Katana*Raid Sword --> 
+	</item>
+	<item>
+		<ingredient id="30988" count="1"/> <!-- Bound Spirit Sword - Critical Damage --> 
+		<ingredient id="30988" count="1"/> <!-- Bound Spirit Sword - Critical Damage --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="30985" count="1"/> <!-- Bound Spirit Sword*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="30988" count="1"/> <!-- Bound Spirit Sword - Critical Damage --> 
+		<ingredient id="31345" count="1"/> <!-- Bound Raid Sword - Focus --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="30986" count="1"/> <!-- Bound Spirit Sword*Raid Sword --> 
+	</item>
+	<item>
+		<ingredient id="31345" count="1"/> <!-- Bound Raid Sword - Focus --> 
+		<ingredient id="31345" count="1"/> <!-- Bound Raid Sword - Focus --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="31343" count="1"/> <!-- Bound Raid Sword*Raid Sword --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="1458" count="131"/> <!-- Crystal (D-grade) --> 
+		<production id="2516" count="1"/> <!-- Saber*Saber --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="1458" count="23"/> <!-- Crystal (D-grade) --> 
+		<production id="2517" count="1"/> <!-- Saber*Bastard Sword --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="1458" count="23"/> <!-- Crystal (D-grade) --> 
+		<production id="2518" count="1"/> <!-- Saber*Spinebone Sword --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="1458" count="23"/> <!-- Crystal (D-grade) --> 
+		<production id="2519" count="1"/> <!-- Saber*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="1458" count="23"/> <!-- Crystal (D-grade) --> 
+		<production id="2520" count="1"/> <!-- Saber*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="1458" count="46"/> <!-- Crystal (D-grade) --> 
+		<production id="2521" count="1"/> <!-- Saber*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="1458" count="46"/> <!-- Crystal (D-grade) --> 
+		<production id="2522" count="1"/> <!-- Saber*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="1458" count="326"/> <!-- Crystal (D-grade) --> 
+		<production id="2523" count="1"/> <!-- Saber*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="123" count="1"/> <!-- Saber --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="185"/> <!-- Crystal (D-grade) --> 
+		<production id="2524" count="1"/> <!-- Saber*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2525" count="1"/> <!-- Bastard Sword*Bastard Sword --> 
+	</item>
+	<item>
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2526" count="1"/> <!-- Bastard Sword*Spinebone Sword --> 
+	</item>
+	<item>
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2527" count="1"/> <!-- Bastard Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2528" count="1"/> <!-- Bastard Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="1458" count="105"/> <!-- Crystal (D-grade) --> 
+		<production id="2529" count="1"/> <!-- Bastard Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="1458" count="105"/> <!-- Crystal (D-grade) --> 
+		<production id="2530" count="1"/> <!-- Bastard Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="1458" count="167"/> <!-- Crystal (D-grade) --> 
+		<production id="2531" count="1"/> <!-- Bastard Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="69" count="1"/> <!-- Bastard Sword --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="68"/> <!-- Crystal (D-grade) --> 
+		<production id="2532" count="1"/> <!-- Bastard Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2533" count="1"/> <!-- Spinebone Sword*Spinebone Sword --> 
+	</item>
+	<item>
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2534" count="1"/> <!-- Spinebone Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2535" count="1"/> <!-- Spinebone Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="1458" count="105"/> <!-- Crystal (D-grade) --> 
+		<production id="2536" count="1"/> <!-- Spinebone Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="1458" count="105"/> <!-- Crystal (D-grade) --> 
+		<production id="2537" count="1"/> <!-- Spinebone Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="1458" count="167"/> <!-- Crystal (D-grade) --> 
+		<production id="2538" count="1"/> <!-- Spinebone Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="125" count="1"/> <!-- Spinebone Sword --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="68"/> <!-- Crystal (D-grade) --> 
+		<production id="2539" count="1"/> <!-- Spinebone Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2540" count="1"/> <!-- Artisan's Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2541" count="1"/> <!-- Artisan's Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="1458" count="105"/> <!-- Crystal (D-grade) --> 
+		<production id="2542" count="1"/> <!-- Artisan's Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="1458" count="105"/> <!-- Crystal (D-grade) --> 
+		<production id="2543" count="1"/> <!-- Artisan's Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="1458" count="167"/> <!-- Crystal (D-grade) --> 
+		<production id="2544" count="1"/> <!-- Artisan's Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="126" count="1"/> <!-- Artisan's Sword --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="68"/> <!-- Crystal (D-grade) --> 
+		<production id="2545" count="1"/> <!-- Artisan's Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="1458" count="241"/> <!-- Crystal (D-grade) --> 
+		<production id="2546" count="1"/> <!-- Knight's Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="1458" count="105"/> <!-- Crystal (D-grade) --> 
+		<production id="2547" count="1"/> <!-- Knight's Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="1458" count="105"/> <!-- Crystal (D-grade) --> 
+		<production id="2548" count="1"/> <!-- Knight's Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="1458" count="167"/> <!-- Crystal (D-grade) --> 
+		<production id="2549" count="1"/> <!-- Knight's Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="128" count="1"/> <!-- Knight's Sword --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="68"/> <!-- Crystal (D-grade) --> 
+		<production id="2550" count="1"/> <!-- Knight's Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="1458" count="49"/> <!-- Crystal (D-grade) --> 
+		<production id="2551" count="1"/> <!-- Crimson Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="1458" count="49"/> <!-- Crystal (D-grade) --> 
+		<production id="2552" count="1"/> <!-- Crimson Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="1458" count="239"/> <!-- Crystal (D-grade) --> 
+		<production id="2553" count="1"/> <!-- Crimson Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="127" count="1"/> <!-- Crimson Sword --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="234"/> <!-- Crystal (D-grade) --> 
+		<production id="2554" count="1"/> <!-- Crimson Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="1458" count="49"/> <!-- Crystal (D-grade) --> 
+		<production id="2555" count="1"/> <!-- Elven Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="1458" count="239"/> <!-- Crystal (D-grade) --> 
+		<production id="2556" count="1"/> <!-- Elven Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="130" count="1"/> <!-- Elven Sword --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="234"/> <!-- Crystal (D-grade) --> 
+		<production id="2557" count="1"/> <!-- Elven Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="1458" count="160"/> <!-- Crystal (D-grade) --> 
+		<production id="2558" count="1"/> <!-- Sword of Revolution*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="129" count="1"/> <!-- Sword of Revolution --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="319"/> <!-- Crystal (D-grade) --> 
+		<production id="2559" count="1"/> <!-- Sword of Revolution*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="2499" count="1"/> <!-- Elven Long Sword --> 
+		<ingredient id="1458" count="482"/> <!-- Crystal (D-grade) --> 
+		<production id="2560" count="1"/> <!-- Elven Long Sword*Elven Long Sword --> 
 	</item>
 	<item>
 		<ingredient id="72" count="1"/> <!-- StormBringer --> 
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="183"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="164430"/> <!-- Adena --> 
-		<production id="2567" count="1" chance="100"/> <!-- StormBringer*Ultimate Sword --> 
+		<ingredient id="72" count="1"/> <!-- StormBringer --> 
+		<ingredient id="1458" count="446"/> <!-- Crystal (D-grade) --> 
+		<production id="2561" count="1"/> <!-- StormBringer*StormBringer --> 
 	</item>
 	<item>
 		<ingredient id="72" count="1"/> <!-- StormBringer --> 
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="183"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="164430"/> <!-- Adena --> 
-		<production id="2568" count="1" chance="100"/> <!-- StormBringer*Sword of Delusion --> 
+		<ingredient id="73" count="1"/> <!-- Shamshir --> 
+		<ingredient id="1458" count="257"/> <!-- Crystal (D-grade) --> 
+		<production id="2562" count="1"/> <!-- StormBringer*Shamshir --> 
 	</item>
 	<item>
 		<ingredient id="72" count="1"/> <!-- StormBringer --> 
-		<ingredient id="134" count="1"/> <!-- Sword of Nightmare --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="183"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="164430"/> <!-- Adena --> 
-		<production id="2569" count="1" chance="100"/> <!-- StormBringer*Sword of Nightmare --> 
+		<ingredient id="74" count="1"/> <!-- Katana --> 
+		<ingredient id="1458" count="257"/> <!-- Crystal (D-grade) --> 
+		<production id="2563" count="1"/> <!-- StormBringer*Katana --> 
 	</item>
 	<item>
 		<ingredient id="72" count="1"/> <!-- StormBringer --> 
-		<ingredient id="77" count="1"/> <!-- Tsurugi --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="183"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="164430"/> <!-- Adena --> 
-		<production id="2570" count="1" chance="100"/> <!-- StormBringer*Tsurugi --> 
+		<ingredient id="131" count="1"/> <!-- Spirit Sword --> 
+		<ingredient id="1458" count="257"/> <!-- Crystal (D-grade) --> 
+		<production id="2564" count="1"/> <!-- StormBringer*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="72" count="1"/> <!-- StormBringer --> 
+		<ingredient id="133" count="1"/> <!-- Raid Sword --> 
+		<ingredient id="1458" count="257"/> <!-- Crystal (D-grade) --> 
+		<production id="2565" count="1"/> <!-- StormBringer*Raid Sword --> 
 	</item>
 	<item>
 		<ingredient id="73" count="1"/> <!-- Shamshir --> 
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="315"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="283500"/> <!-- Adena --> 
-		<production id="2577" count="1" chance="100"/> <!-- Shamshir*Ultimate Sword --> 
+		<ingredient id="73" count="1"/> <!-- Shamshir --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2572" count="1"/> <!-- Shamshir*Shamshir --> 
 	</item>
 	<item>
 		<ingredient id="73" count="1"/> <!-- Shamshir --> 
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="315"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="283500"/> <!-- Adena --> 
-		<production id="2578" count="1" chance="100"/> <!-- Shamshir*Sword of Delusion --> 
+		<ingredient id="74" count="1"/> <!-- Katana --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2573" count="1"/> <!-- Shamshir*Katana --> 
+	</item>
+	<item>
+		<ingredient id="73" count="1"/> <!-- Shamshir --> 
+		<ingredient id="131" count="1"/> <!-- Spirit Sword --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2574" count="1"/> <!-- Shamshir*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="73" count="1"/> <!-- Shamshir --> 
+		<ingredient id="133" count="1"/> <!-- Raid Sword --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2575" count="1"/> <!-- Shamshir*Raid Sword --> 
 	</item>
 	<item>
 		<ingredient id="74" count="1"/> <!-- Katana --> 
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="315"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="283500"/> <!-- Adena --> 
-		<production id="2586" count="1" chance="100"/> <!-- Katana*Ultimate Sword --> 
+		<ingredient id="74" count="1"/> <!-- Katana --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2582" count="1"/> <!-- Katana*Katana --> 
 	</item>
 	<item>
 		<ingredient id="74" count="1"/> <!-- Katana --> 
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="315"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="283500"/> <!-- Adena --> 
-		<production id="2587" count="1" chance="100"/> <!-- Katana*Sword of Delusion --> 
+		<ingredient id="131" count="1"/> <!-- Spirit Sword --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2583" count="1"/> <!-- Katana*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="74" count="1"/> <!-- Katana --> 
+		<ingredient id="133" count="1"/> <!-- Raid Sword --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2584" count="1"/> <!-- Katana*Raid Sword --> 
 	</item>
 	<item>
 		<ingredient id="131" count="1"/> <!-- Spirit Sword --> 
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="315"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="283500"/> <!-- Adena --> 
-		<production id="2594" count="1" chance="100"/> <!-- Spirit Sword*Ultimate Sword --> 
+		<ingredient id="131" count="1"/> <!-- Spirit Sword --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2591" count="1"/> <!-- Spirit Sword*Spirit Sword --> 
 	</item>
 	<item>
 		<ingredient id="131" count="1"/> <!-- Spirit Sword --> 
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="315"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="283500"/> <!-- Adena --> 
-		<production id="2595" count="1" chance="100"/> <!-- Spirit Sword*Sword of Delusion --> 
+		<ingredient id="133" count="1"/> <!-- Raid Sword --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2592" count="1"/> <!-- Spirit Sword*Raid Sword --> 
 	</item>
 	<item>
 		<ingredient id="133" count="1"/> <!-- Raid Sword --> 
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="315"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="283500"/> <!-- Adena --> 
-		<production id="2601" count="1" chance="100"/> <!-- Raid Sword*Ultimate Sword --> 
-	</item>
-	<item>
 		<ingredient id="133" count="1"/> <!-- Raid Sword --> 
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="315"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="283500"/> <!-- Adena --> 
-		<production id="2602" count="1" chance="100"/> <!-- Raid Sword*Sword of Delusion --> 
+		<ingredient id="1458" count="859"/> <!-- Crystal (D-grade) --> 
+		<production id="2599" count="1"/> <!-- Raid Sword*Raid Sword --> 
 	</item>
 	<item>
-		<ingredient id="72" count="1"/> <!-- StormBringer --> 
-		<ingredient id="135" count="1"/> <!-- Samurai Long Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="124"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="111780"/> <!-- Adena --> 
-		<production id="2571" count="1" chance="100"/> <!-- StormBringer*Samurai Long sword --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="1458" count="15"/> <!-- Crystal (D-grade) --> 
+		<production id="11658" count="1"/> <!-- Common Item - Saber*Saber --> 
 	</item>
 	<item>
-		<ingredient id="75" count="1"/> <!-- Caliburs --> 
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2607" count="1" chance="100"/> <!-- Caliburs*Ultimate Sword --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="1458" count="3"/> <!-- Crystal (D-grade) --> 
+		<production id="11680" count="1"/> <!-- Common Item - Saber*Bastard Sword --> 
 	</item>
 	<item>
-		<ingredient id="75" count="1"/> <!-- Caliburs --> 
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2608" count="1" chance="100"/> <!-- Caliburs*Sword of Delusion --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="1458" count="3"/> <!-- Crystal (D-grade) --> 
+		<production id="11681" count="1"/> <!-- Common Item - Saber*Spinebone Sword --> 
 	</item>
 	<item>
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2612" count="1" chance="100"/> <!-- Ultimate Sword*Ultimate Sword --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="1458" count="3"/> <!-- Crystal (D-grade) --> 
+		<production id="11682" count="1"/> <!-- Common Item - Saber*Artisan's Sword --> 
 	</item>
 	<item>
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2613" count="1" chance="100"/> <!-- Ultimate Sword*Sword of Delusion --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="1458" count="3"/> <!-- Crystal (D-grade) --> 
+		<production id="11679" count="1"/> <!-- Common Item - Saber*Knight's Sword --> 
 	</item>
 	<item>
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="134" count="1"/> <!-- Sword of Nightmare --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2614" count="1" chance="100"/> <!-- Ultimate Sword*Sword of Nightmare --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="11695" count="1"/> <!-- Common Item - Saber*Crimson Sword --> 
 	</item>
 	<item>
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="77" count="1"/> <!-- Tsurugi --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2615" count="1" chance="100"/> <!-- Ultimate Sword*Tsurugi --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="11694" count="1"/> <!-- Common Item - Saber*Elven Sword --> 
 	</item>
 	<item>
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2617" count="1" chance="100"/> <!-- Sword of Delusion*Sword of Delusion --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="1458" count="36"/> <!-- Crystal (D-grade) --> 
+		<production id="11738" count="1"/> <!-- Common Item - Saber*Sword of Revolution --> 
 	</item>
 	<item>
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="134" count="1"/> <!-- Sword of Nightmare --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2618" count="1" chance="100"/> <!-- Sword of Delusion*Sword of Nightmare --> 
+		<ingredient id="11614" count="1"/> <!-- Common Item - Saber --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="21"/> <!-- Crystal (D-grade) --> 
+		<production id="11752" count="1"/> <!-- Common Item - Saber*Elven Long Sword --> 
 	</item>
 	<item>
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="77" count="1"/> <!-- Tsurugi --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="38"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="34020"/> <!-- Adena --> 
-		<production id="2619" count="1" chance="100"/> <!-- Sword of Delusion*Tsurugi --> 
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11688" count="1"/> <!-- Common Item - Bastard Sword*Bastard Sword --> 
 	</item>
 	<item>
-		<ingredient id="132" count="1"/> <!-- Ultimate Sword --> 
-		<ingredient id="135" count="1"/> <!-- Samurai Long Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="438"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="394470"/> <!-- Adena --> 
-		<production id="2616" count="1" chance="100"/> <!-- Ultimate Sword*Samurai Long Sword --> 
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11689" count="1"/> <!-- Common Item - Bastard Sword*Spinebone Sword --> 
 	</item>
 	<item>
-		<ingredient id="76" count="1"/> <!-- Sword of Delusion --> 
-		<ingredient id="135" count="1"/> <!-- Samurai Long Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="438"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="394470"/> <!-- Adena --> 
-		<production id="2620" count="1" chance="100"/> <!-- Sword of Delusion*Samurai Long Sword --> 
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11690" count="1"/> <!-- Common Item - Bastard Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11687" count="1"/> <!-- Common Item - Bastard Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="1458" count="12"/> <!-- Crystal (D-grade) --> 
+		<production id="11719" count="1"/> <!-- Common Item - Bastard Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="1458" count="12"/> <!-- Crystal (D-grade) --> 
+		<production id="11718" count="1"/> <!-- Common Item - Bastard Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="1458" count="19"/> <!-- Crystal (D-grade) --> 
+		<production id="11743" count="1"/> <!-- Common Item - Bastard Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="11635" count="1"/> <!-- Common Item - Bastard Sword --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="8"/> <!-- Crystal (D-grade) --> 
+		<production id="11770" count="1"/> <!-- Common Item - Bastard Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11699" count="1"/> <!-- Common Item - Spinebone Sword*Spinebone Sword --> 
+	</item>
+	<item>
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11700" count="1"/> <!-- Common Item - Spinebone Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11698" count="1"/> <!-- Common Item - Spinebone Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="1458" count="12"/> <!-- Crystal (D-grade) --> 
+		<production id="11721" count="1"/> <!-- Common Item - Spinebone Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="1458" count="12"/> <!-- Crystal (D-grade) --> 
+		<production id="11720" count="1"/> <!-- Common Item - Spinebone Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="1458" count="19"/> <!-- Crystal (D-grade) --> 
+		<production id="11744" count="1"/> <!-- Common Item - Spinebone Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="11636" count="1"/> <!-- Common Item - Spinebone Sword --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="8"/> <!-- Crystal (D-grade) --> 
+		<production id="11771" count="1"/> <!-- Common Item - Spinebone Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11705" count="1"/> <!-- Common Item - Artisan's Sword*Artisan's Sword --> 
+	</item>
+	<item>
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11704" count="1"/> <!-- Common Item - Artisan's Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="1458" count="12"/> <!-- Crystal (D-grade) --> 
+		<production id="11723" count="1"/> <!-- Common Item - Artisan's Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="1458" count="12"/> <!-- Crystal (D-grade) --> 
+		<production id="11722" count="1"/> <!-- Common Item - Artisan's Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="1458" count="19"/> <!-- Crystal (D-grade) --> 
+		<production id="11745" count="1"/> <!-- Common Item - Artisan's Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="11643" count="1"/> <!-- Common Item - Artisan's Sword --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="8"/> <!-- Crystal (D-grade) --> 
+		<production id="11773" count="1"/> <!-- Common Item - Artisan's Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11684" count="1"/> <!-- Common Item - Knight's Sword*Knight's Sword --> 
+	</item>
+	<item>
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="1458" count="12"/> <!-- Crystal (D-grade) --> 
+		<production id="11717" count="1"/> <!-- Common Item - Knight's Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="1458" count="12"/> <!-- Crystal (D-grade) --> 
+		<production id="11716" count="1"/> <!-- Common Item - Knight's Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="1458" count="19"/> <!-- Crystal (D-grade) --> 
+		<production id="11742" count="1"/> <!-- Common Item - Knight's Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="11628" count="1"/> <!-- Common Item - Knight's Sword --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="8"/> <!-- Crystal (D-grade) --> 
+		<production id="11769" count="1"/> <!-- Common Item - Knight's Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="11741" count="1"/> <!-- Common Item - Crimson Sword*Crimson Sword --> 
+	</item>
+	<item>
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="11740" count="1"/> <!-- Common Item - Crimson Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11774" count="1"/> <!-- Common Item - Crimson Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="11675" count="1"/> <!-- Common Item - Crimson Sword --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="26"/> <!-- Crystal (D-grade) --> 
+		<production id="11795" count="1"/> <!-- Common Item - Crimson Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="1458" count="5"/> <!-- Crystal (D-grade) --> 
+		<production id="11739" count="1"/> <!-- Common Item - Elven Sword*Elven Sword --> 
+	</item>
+	<item>
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="1458" count="27"/> <!-- Crystal (D-grade) --> 
+		<production id="11772" count="1"/> <!-- Common Item - Elven Sword*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="11670" count="1"/> <!-- Common Item - Elven Sword --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="26"/> <!-- Crystal (D-grade) --> 
+		<production id="11791" count="1"/> <!-- Common Item - Elven Sword*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="1458" count="18"/> <!-- Crystal (D-grade) --> 
+		<production id="11796" count="1"/> <!-- Common Item - Sword of Revolution*Sword of Revolution --> 
+	</item>
+	<item>
+		<ingredient id="11714" count="1"/> <!-- Common Item - Sword of Revolution --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="35"/> <!-- Crystal (D-grade) --> 
+		<production id="11797" count="1"/> <!-- Common Item - Sword of Revolution*Elven Long Sword --> 
+	</item>
+	<item>
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="11733" count="1"/> <!-- Common Item - Elven Long Sword --> 
+		<ingredient id="1458" count="54"/> <!-- Crystal (D-grade) --> 
+		<production id="11798" count="1"/> <!-- Common Item - Elven Long Sword*Elven Long Sword --> 
 	</item>
 	<item>
 		<ingredient id="11756" count="1"/> <!-- Common Item - StormBringer --> 
-		<ingredient id="11821" count="1"/> <!-- Common Item - Caliburs --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="20"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="18270"/> <!-- Adena --> 
-		<production id="11868" count="1" chance="100"/> <!-- Common Item - StormBringer*Caliburs --> 
+		<ingredient id="11756" count="1"/> <!-- Common Item - StormBringer --> 
+		<ingredient id="1458" count="50"/> <!-- Crystal (D-grade) --> 
+		<production id="11831" count="1"/> <!-- Common Item - StormBringer*StormBringer --> 
 	</item>
 	<item>
 		<ingredient id="11756" count="1"/> <!-- Common Item - StormBringer --> 
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="20"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="18270"/> <!-- Adena --> 
-		<production id="11864" count="1" chance="100"/> <!-- Common Item - StormBringer*Ultimate Sword --> 
+		<ingredient id="11783" count="1"/> <!-- Common Item - Shamshir --> 
+		<ingredient id="1458" count="29"/> <!-- Crystal (D-grade) --> 
+		<production id="11835" count="1"/> <!-- Common Item - StormBringer*Shamshir --> 
 	</item>
 	<item>
 		<ingredient id="11756" count="1"/> <!-- Common Item - StormBringer --> 
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="20"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="18270"/> <!-- Adena --> 
-		<production id="11865" count="1" chance="100"/> <!-- Common Item - StormBringer*Sword of Delusion --> 
+		<ingredient id="11794" count="1"/> <!-- Common Item - Katana --> 
+		<ingredient id="1458" count="29"/> <!-- Crystal (D-grade) --> 
+		<production id="11837" count="1"/> <!-- Common Item - StormBringer*Katana --> 
 	</item>
 	<item>
 		<ingredient id="11756" count="1"/> <!-- Common Item - StormBringer --> 
-		<ingredient id="11815" count="1"/> <!-- Common Item - Sword of Nightmare --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="20"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="18270"/> <!-- Adena --> 
-		<production id="11866" count="1" chance="100"/> <!-- Common Item - StormBringer*Sword of Nightmare --> 
+		<ingredient id="11789" count="1"/> <!-- Common Item - Spirit Sword --> 
+		<ingredient id="1458" count="29"/> <!-- Crystal (D-grade) --> 
+		<production id="11836" count="1"/> <!-- Common Item - StormBringer*Spirit Sword --> 
 	</item>
 	<item>
 		<ingredient id="11756" count="1"/> <!-- Common Item - StormBringer --> 
-		<ingredient id="11820" count="1"/> <!-- Common Item - Tsurugi --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="20"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="18270"/> <!-- Adena --> 
-		<production id="11867" count="1" chance="100"/> <!-- Common Item - StormBringer*Tsurugi --> 
+		<ingredient id="11778" count="1"/> <!-- Common Item - Raid Sword --> 
+		<ingredient id="1458" count="29"/> <!-- Crystal (D-grade) --> 
+		<production id="11834" count="1"/> <!-- Common Item - StormBringer*Raid Sword --> 
 	</item>
 	<item>
 		<ingredient id="11783" count="1"/> <!-- Common Item - Shamshir --> 
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="35"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="31500"/> <!-- Adena --> 
-		<production id="11874" count="1" chance="100"/> <!-- Common Item - Shamshir*Ultimate Sword --> 
+		<ingredient id="11783" count="1"/> <!-- Common Item - Shamshir --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11846" count="1"/> <!-- Common Item - Shamshir*Shamshir --> 
 	</item>
 	<item>
 		<ingredient id="11783" count="1"/> <!-- Common Item - Shamshir --> 
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="35"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="31500"/> <!-- Adena --> 
-		<production id="11875" count="1" chance="100"/> <!-- Common Item - Shamshir*Sword of Delusion --> 
+		<ingredient id="11794" count="1"/> <!-- Common Item - Katana --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11848" count="1"/> <!-- Common Item - Shamshir*Katana --> 
+	</item>
+	<item>
+		<ingredient id="11783" count="1"/> <!-- Common Item - Shamshir --> 
+		<ingredient id="11789" count="1"/> <!-- Common Item - Spirit Sword --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11847" count="1"/> <!-- Common Item - Shamshir*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="11783" count="1"/> <!-- Common Item - Shamshir --> 
+		<ingredient id="11778" count="1"/> <!-- Common Item - Raid Sword --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11845" count="1"/> <!-- Common Item - Shamshir*Raid Sword --> 
 	</item>
 	<item>
 		<ingredient id="11794" count="1"/> <!-- Common Item - Katana --> 
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="35"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="31500"/> <!-- Adena --> 
-		<production id="11884" count="1" chance="100"/> <!-- Common Item - Katana*Ultimate Sword --> 
+		<ingredient id="11794" count="1"/> <!-- Common Item - Katana --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11862" count="1"/> <!-- Common Item - Katana*Katana --> 
 	</item>
 	<item>
 		<ingredient id="11794" count="1"/> <!-- Common Item - Katana --> 
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="35"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="31500"/> <!-- Adena --> 
-		<production id="11885" count="1" chance="100"/> <!-- Common Item - Katana*Sword of Delusion --> 
+		<ingredient id="11789" count="1"/> <!-- Common Item - Spirit Sword --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11861" count="1"/> <!-- Common Item - Katana*Spirit Sword --> 
+	</item>
+	<item>
+		<ingredient id="11794" count="1"/> <!-- Common Item - Katana --> 
+		<ingredient id="11778" count="1"/> <!-- Common Item - Raid Sword --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11860" count="1"/> <!-- Common Item - Katana*Raid Sword --> 
 	</item>
 	<item>
 		<ingredient id="11789" count="1"/> <!-- Common Item - Spirit Sword --> 
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="35"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="31500"/> <!-- Adena --> 
-		<production id="11879" count="1" chance="100"/> <!-- Common Item - Spirit Sword*Ultimate Sword --> 
+		<ingredient id="11789" count="1"/> <!-- Common Item - Spirit Sword --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11852" count="1"/> <!-- Common Item - Spirit Sword*Spirit Sword --> 
 	</item>
 	<item>
 		<ingredient id="11789" count="1"/> <!-- Common Item - Spirit Sword --> 
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="35"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="31500"/> <!-- Adena --> 
-		<production id="11880" count="1" chance="100"/> <!-- Common Item - Spirit Sword*Sword of Delusion --> 
+		<ingredient id="11778" count="1"/> <!-- Common Item - Raid Sword --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11851" count="1"/> <!-- Common Item - Spirit Sword*Raid Sword --> 
 	</item>
 	<item>
 		<ingredient id="11778" count="1"/> <!-- Common Item - Raid Sword --> 
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="35"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="31500"/> <!-- Adena --> 
-		<production id="11869" count="1" chance="100"/> <!-- Common Item - Raid Sword*Ultimate Sword --> 
-	</item>
-	<item>
 		<ingredient id="11778" count="1"/> <!-- Common Item - Raid Sword --> 
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="35"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="31500"/> <!-- Adena --> 
-		<production id="11870" count="1" chance="100"/> <!-- Common Item - Raid Sword*Sword of Delusion --> 
-	</item>
-	<item>
-		<ingredient id="11756" count="1"/> <!-- Common Item - StormBringer --> 
-		<ingredient id="11853" count="1"/> <!-- Common Item - Samurai Long Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="14"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="12420"/> <!-- Adena --> 
-		<production id="11901" count="1" chance="100"/> <!-- Common Item - StormBringer*Samurai Long Sword --> 
-	</item>
-	<item>
-		<ingredient id="11821" count="1"/> <!-- Common Item - Caliburs --> 
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11910" count="1" chance="100"/> <!-- Common Item - Caliburs*Ultimate Sword --> 
-	</item>
-	<item>
-		<ingredient id="11821" count="1"/> <!-- Common Item - Caliburs --> 
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11911" count="1" chance="100"/> <!-- Common Item - Caliburs*Sword of Delusion --> 
-	</item>
-	<item>
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11891" count="1" chance="100"/> <!-- Common Item - Ultimate Sword*Ultimate Sword --> 
-	</item>
-	<item>
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11892" count="1" chance="100"/> <!-- Common Item - Ultimate Sword*Sword of Delusion --> 
-	</item>
-	<item>
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="11815" count="1"/> <!-- Common Item - Sword of Nightmare --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11893" count="1" chance="100"/> <!-- Common Item - Ultimate Sword*Sword of Nightmare --> 
-	</item>
-	<item>
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="11820" count="1"/> <!-- Common Item - Tsurugi --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11894" count="1" chance="100"/> <!-- Common Item - Ultimate Sword*Tsurugi --> 
-	</item>
-	<item>
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11897" count="1" chance="100"/> <!-- Common Item - Sword of Delusion*Sword of Delusion --> 
-	</item>
-	<item>
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="11815" count="1"/> <!-- Common Item - Sword of Nightmare --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11898" count="1" chance="100"/> <!-- Common Item - Sword of Delusion*Sword of Nightmare --> 
-	</item>
-	<item>
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="11820" count="1"/> <!-- Common Item - Tsurugi --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="4"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="3780"/> <!-- Adena --> 
-		<production id="11899" count="1" chance="100"/> <!-- Common Item - Sword of Delusion*Tsurugi --> 
-	</item>
-	<item>
-		<ingredient id="11801" count="1"/> <!-- Common Item - Ultimate Sword --> 
-		<ingredient id="11853" count="1"/> <!-- Common Item - Samurai Long Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="49"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="43830"/> <!-- Adena --> 
-		<production id="11924" count="1" chance="100"/> <!-- Common Item - Ultimate Sword*Samurai Long Sword --> 
-	</item>
-	<item>
-		<ingredient id="11807" count="1"/> <!-- Common Item - Sword of Delusion --> 
-		<ingredient id="11853" count="1"/> <!-- Common Item - Samurai Long Sword --> 
-		<ingredient id="5126" count="1"/> <!-- Dual Weapon Crafting Stamp --> 
-		<ingredient id="1459" count="49"/> <!-- Crystal (C-grade) --> 
-		<ingredient id="57" count="43830"/> <!-- Adena --> 
-		<production id="11925" count="1" chance="100"/> <!-- Common Item - Sword of Delusion*Samurai Long Sword --> 
+		<ingredient id="1458" count="95"/> <!-- Crystal (D-grade) --> 
+		<production id="11841" count="1"/> <!-- Common Item - Raid Sword*Raid Sword --> 
 	</item>
 </list>

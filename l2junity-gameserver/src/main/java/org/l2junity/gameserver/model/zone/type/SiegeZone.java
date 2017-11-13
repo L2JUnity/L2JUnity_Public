@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.zone.type;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.FeatureConfig;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.enums.MountType;
 import org.l2junity.gameserver.instancemanager.FortManager;
@@ -31,6 +31,7 @@ import org.l2junity.gameserver.model.entity.Fort;
 import org.l2junity.gameserver.model.entity.FortSiege;
 import org.l2junity.gameserver.model.entity.Siegable;
 import org.l2junity.gameserver.model.skills.BuffInfo;
+import org.l2junity.gameserver.model.skills.CommonSkill;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.zone.AbstractZoneSettings;
 import org.l2junity.gameserver.model.zone.ZoneId;
@@ -158,7 +159,7 @@ public class SiegeZone extends ZoneType
 				}
 				
 				character.sendPacket(SystemMessageId.YOU_HAVE_ENTERED_A_COMBAT_ZONE);
-				if (!Config.ALLOW_WYVERN_DURING_SIEGE && (plyer.getMountType() == MountType.WYVERN))
+				if (!FeatureConfig.ALLOW_WYVERN_DURING_SIEGE && (plyer.getMountType() == MountType.WYVERN))
 				{
 					plyer.sendPacket(SystemMessageId.THIS_AREA_CANNOT_BE_ENTERED_WHILE_MOUNTED_ATOP_OF_A_WYVERN_YOU_WILL_BE_DISMOUNTED_FROM_YOUR_WYVERN_IF_YOU_DO_NOT_LEAVE);
 					plyer.enteredNoLanding(DISMOUNT_DELAY);
@@ -223,13 +224,13 @@ public class SiegeZone extends ZoneType
 			if (character.isPlayer() && character.getActingPlayer().isRegisteredOnThisSiegeField(getSettings().getSiegeableId()))
 			{
 				int lvl = 1;
-				final BuffInfo info = character.getEffectList().getBuffInfoBySkillId(5660);
+				final BuffInfo info = character.getEffectList().getBuffInfoBySkillId(CommonSkill.BATTLEFIELD_DEATH_SYNDROME.getId());
 				if (info != null)
 				{
 					lvl = Math.min(lvl + info.getSkill().getLevel(), 5);
 				}
 				
-				final Skill skill = SkillData.getInstance().getSkill(5660, lvl);
+				final Skill skill = SkillData.getInstance().getSkill(CommonSkill.BATTLEFIELD_DEATH_SYNDROME.getId(), lvl);
 				if (skill != null)
 				{
 					skill.applyEffects(character, character);

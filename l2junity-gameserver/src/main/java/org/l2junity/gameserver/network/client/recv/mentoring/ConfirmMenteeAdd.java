@@ -21,8 +21,7 @@ package org.l2junity.gameserver.network.client.recv.mentoring;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.enums.CategoryType;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.instancemanager.MentorManager;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -97,7 +96,7 @@ public class ConfirmMenteeAdd implements IClientIncomingPacket
 				}
 				catch (Exception e)
 				{
-					_log.warn(e.getMessage(), e);
+					LOGGER.warn(e.getMessage(), e);
 				}
 			}
 		}
@@ -119,7 +118,7 @@ public class ConfirmMenteeAdd implements IClientIncomingPacket
 			mentor.sendPacket(SystemMessageId.THAT_PLAYER_IS_NOT_ONLINE);
 			return false;
 		}
-		else if (!mentor.isInCategory(CategoryType.AWAKEN_GROUP))
+		else if (!mentor.isAwakenedClass())
 		{
 			mentor.sendPacket(SystemMessageId.YOU_MUST_AWAKEN_IN_ORDER_TO_BECOME_A_MENTOR);
 			return false;

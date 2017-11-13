@@ -23,7 +23,7 @@ import java.net.Socket;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.l2junity.Config;
+import org.l2junity.loginserver.config.LoginServerConfig;
 
 /**
  * @author KenM
@@ -34,7 +34,7 @@ public class GameServerListener extends FloodProtectedListener
 	
 	public GameServerListener() throws IOException
 	{
-		super(Config.GAME_SERVER_LOGIN_HOST, Config.GAME_SERVER_LOGIN_PORT);
+		super(LoginServerConfig.GAME_SERVER_LOGIN_HOST, LoginServerConfig.GAME_SERVER_LOGIN_PORT);
 		setName(getClass().getSimpleName());
 	}
 	

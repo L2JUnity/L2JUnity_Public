@@ -20,7 +20,8 @@ package org.l2junity.gameserver.network.client.send;
 
 import java.util.Set;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.L2JModsConfig;
+import org.l2junity.gameserver.config.NpcConfig;
 import org.l2junity.gameserver.data.sql.impl.ClanTable;
 import org.l2junity.gameserver.enums.NpcInfoType;
 import org.l2junity.gameserver.enums.Team;
@@ -58,41 +59,59 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 	private int _clanId = 0;
 	private int _statusMask = 0;
 	private final Set<AbnormalVisualEffect> _abnormalVisualEffects;
-	private final String _title;
+	private String _name;
+	private String _title;
 	
 	public NpcInfo(Npc npc)
 	{
 		_npc = npc;
-		_abnormalVisualEffects = npc.getCurrentAbnormalVisualEffects();
+		_abnormalVisualEffects = npc.getEffectList().getCurrentAbnormalVisualEffects();
 		
-		if (_npc.isInvisible())
+		if (npc.getNameParam() != null)
 		{
-			_title = "Invisible";
-		}
-		else if (Config.L2JMOD_CHAMPION_ENABLE && _npc.isChampion())
-		{
-			_title = (Config.L2JMOD_CHAMP_TITLE);
-		}
-		else if (_npc.getTemplate().isUsingServerSideTitle())
-		{
-			_title = _npc.getTemplate().getTitle();
+			_name = npc.getNameParam();
 		}
 		else
 		{
-			_title = _npc.getTitle();
+			_name = npc.getName();
 		}
 		
-		if (npc.getTemplate().getDisplayId() != npc.getTemplate().getId())
+		if (npc.getTitleParam() != null)
 		{
-			_masks[2] |= 0x10;
+			_title = npc.getTitleParam();
 		}
-		
-		addComponentType(NpcInfoType.ATTACKABLE, NpcInfoType.UNKNOWN1, NpcInfoType.TITLE, NpcInfoType.ID, NpcInfoType.POSITION, NpcInfoType.ALIVE, NpcInfoType.RUNNING);
-		
-		if (npc.getHeading() > 0)
+		else if (_npc.isInvisible())
 		{
-			addComponentType(NpcInfoType.HEADING);
+			_title = "Invisible";
 		}
+		else if (L2JModsConfig.L2JMOD_CHAMPION_ENABLE && npc.isChampion())
+		{
+			_title = (L2JModsConfig.L2JMOD_CHAMP_TITLE);
+		}
+		else if (npc.isTrap() && (npc.asTrap().getOwner() != null))
+		{
+			_title = npc.asTrap().getOwner().getName();
+		}
+		else if (npc.getTemplate().isUsingServerSideTitle())
+		{
+			_title = npc.getTemplate().getTitle();
+		}
+		else
+		{
+			_title = npc.getTitle();
+		}
+		
+		if ((npc.getTitleParam() == null) && NpcConfig.SHOW_NPC_LVL && npc.isMonster())
+		{
+			String t = "Lv " + npc.getLevel() + (npc.isAggressive() ? "*" : "");
+			if (_title != null)
+			{
+				t += " " + _title;
+			}
+			_title = t;
+		}
+		
+		addComponentType(NpcInfoType.ATTACKABLE, NpcInfoType.UNKNOWN1, NpcInfoType.TITLE, NpcInfoType.ID, NpcInfoType.POSITION, NpcInfoType.ALIVE, NpcInfoType.RUNNING, NpcInfoType.HEADING);
 		
 		if ((npc.getStat().getPAtkSpd() > 0) || (npc.getStat().getMAtkSpd() > 0))
 		{
@@ -154,7 +173,7 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 			addComponentType(NpcInfoType.CURRENT_MP);
 		}
 		
-		if (npc.getTemplate().getDisplayId() != npc.getTemplate().getId())
+		if ((npc.getNameParam() != null) || npc.getTemplate().isUsingServerSideName())
 		{
 			addComponentType(NpcInfoType.NAME);
 		}
@@ -167,6 +186,11 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 		if (npc.getTitleString() != null)
 		{
 			addComponentType(NpcInfoType.TITLE_NPCSTRINGID);
+		}
+		
+		if (_npc.getReputation() != 0)
+		{
+			addComponentType(NpcInfoType.REPUTATION);
 		}
 		
 		if (!_abnormalVisualEffects.isEmpty() || npc.isInvisible())
@@ -264,7 +288,7 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 			}
 			case NAME:
 			{
-				_blockSize += type.getBlockLength() + (npc.getName().length() * 2);
+				_blockSize += type.getBlockLength() + (_name.length() * 2);
 				break;
 			}
 			default:
@@ -309,9 +333,9 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (containsMask(NpcInfoType.POSITION))
 		{
-			packet.writeD(_npc.getX());
-			packet.writeD(_npc.getY());
-			packet.writeD(_npc.getZ());
+			packet.writeD((int) _npc.getX());
+			packet.writeD((int) _npc.getY());
+			packet.writeD((int) _npc.getZ());
 		}
 		if (containsMask(NpcInfoType.HEADING))
 		{
@@ -329,7 +353,7 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 		if (containsMask(NpcInfoType.SPEED_MULTIPLIER))
 		{
 			packet.writeE((float) _npc.getStat().getMovementSpeedMultiplier());
-			packet.writeE(_npc.getStat().getAttackSpeedMultiplier());
+			packet.writeE((float) _npc.getStat().getAttackSpeedMultiplier());
 		}
 		if (containsMask(NpcInfoType.EQUIPPED))
 		{
@@ -405,7 +429,7 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 		}
 		if (containsMask(NpcInfoType.NAME))
 		{
-			packet.writeS(_npc.getName());
+			packet.writeS(_name);
 		}
 		if (containsMask(NpcInfoType.NAME_NPCSTRINGID))
 		{
@@ -421,9 +445,9 @@ public class NpcInfo extends AbstractMaskPacket<NpcInfoType>
 		{
 			packet.writeC(_npc.getPvpFlag()); // PVP flag
 		}
-		if (containsMask(NpcInfoType.NAME_COLOR))
+		if (containsMask(NpcInfoType.REPUTATION))
 		{
-			packet.writeD(0x00); // Name color
+			packet.writeD(_npc.getReputation()); // Reputation
 		}
 		if (containsMask(NpcInfoType.CLAN))
 		{

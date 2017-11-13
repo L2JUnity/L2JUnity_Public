@@ -31,11 +31,11 @@ public enum WeaponType implements ItemType
 	BLUNT(TraitType.BLUNT),
 	DAGGER(TraitType.DAGGER),
 	POLE(TraitType.POLE),
-	DUALFIST(TraitType.DUALFIST),
+	FIST(TraitType.FIST), // 0 items with that type
 	BOW(TraitType.BOW),
 	ETC(TraitType.ETC),
 	DUAL(TraitType.DUAL),
-	FIST(TraitType.FIST), // 0 items with that type
+	DUALFIST(TraitType.DUALFIST),
 	FISHINGROD(TraitType.NONE),
 	RAPIER(TraitType.RAPIER),
 	CROSSBOW(TraitType.CROSSBOW),

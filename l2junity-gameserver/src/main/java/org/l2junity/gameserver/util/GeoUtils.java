@@ -20,7 +20,7 @@ package org.l2junity.gameserver.util;
 
 import java.awt.Color;
 
-import org.l2junity.gameserver.GeoData;
+import org.l2junity.gameserver.geodata.GeoData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.send.ExServerPrimitive;
 import org.l2junity.geodriver.Cell;
@@ -30,7 +30,7 @@ import org.l2junity.geodriver.Cell;
  */
 public final class GeoUtils
 {
-	public static void debug2DLine(PlayerInstance player, int x, int y, int tx, int ty, int z)
+	public static void debug2DLine(PlayerInstance player, double x, double y, double tx, double ty, double z)
 	{
 		int gx = GeoData.getInstance().getGeoX(x);
 		int gy = GeoData.getInstance().getGeoY(y);
@@ -45,8 +45,8 @@ public final class GeoUtils
 		
 		while (iter.next())
 		{
-			int wx = GeoData.getInstance().getWorldX(iter.x());
-			int wy = GeoData.getInstance().getWorldY(iter.y());
+			double wx = GeoData.getInstance().getWorldX(iter.x());
+			double wy = GeoData.getInstance().getWorldY(iter.y());
 			
 			prim.addPoint(Color.RED, wx, wy, z);
 		}
@@ -68,9 +68,9 @@ public final class GeoUtils
 		iter.next();
 		int prevX = iter.x();
 		int prevY = iter.y();
-		int wx = GeoData.getInstance().getWorldX(prevX);
-		int wy = GeoData.getInstance().getWorldY(prevY);
-		int wz = iter.z();
+		double wx = GeoData.getInstance().getWorldX(prevX);
+		double wy = GeoData.getInstance().getWorldY(prevY);
+		double wz = iter.z();
 		prim.addPoint(Color.RED, wx, wy, wz);
 		
 		while (iter.next())
@@ -93,7 +93,7 @@ public final class GeoUtils
 		player.sendPacket(prim);
 	}
 	
-	private static Color getDirectionColor(int x, int y, int z, int nswe)
+	private static Color getDirectionColor(int x, int y, double z, int nswe)
 	{
 		if (GeoData.getInstance().checkNearestNswe(x, y, z, nswe))
 		{
@@ -102,11 +102,10 @@ public final class GeoUtils
 		return Color.RED;
 	}
 	
-	public static void debugGrid(PlayerInstance player)
+	public static void debugGrid(PlayerInstance player, int radius)
 	{
-		int geoRadius = 20;
 		int blocksPerPacket = 40;
-		if (geoRadius < 0)
+		if (radius < 0)
 		{
 			throw new IllegalArgumentException("geoRadius < 0");
 		}
@@ -118,9 +117,9 @@ public final class GeoUtils
 		GeoData gd = GeoData.getInstance();
 		int playerGx = gd.getGeoX(player.getX());
 		int playerGy = gd.getGeoY(player.getY());
-		for (int dx = -geoRadius; dx <= geoRadius; ++dx)
+		for (int dx = -radius; dx <= radius; ++dx)
 		{
-			for (int dy = -geoRadius; dy <= geoRadius; ++dy)
+			for (int dy = -radius; dy <= radius; ++dy)
 			{
 				if (iBlock >= blocksPerPacket)
 				{
@@ -141,9 +140,9 @@ public final class GeoUtils
 				int gx = playerGx + dx;
 				int gy = playerGy + dy;
 				
-				int x = gd.getWorldX(gx);
-				int y = gd.getWorldY(gy);
-				int z = gd.getNearestZ(gx, gy, player.getZ());
+				double x = gd.getWorldX(gx);
+				double y = gd.getWorldY(gy);
+				double z = gd.getNearestZ(gx, gy, player.getZ());
 				
 				// north arrow
 				Color col = getDirectionColor(gx, gy, z, Cell.NSWE_NORTH);

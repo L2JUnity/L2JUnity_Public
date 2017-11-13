@@ -51,9 +51,9 @@ public class ExAirShipTeleportList implements IClientOutgoingPacket
 				packet.writeD(_fuelConsumption[i]);
 				final VehiclePathPoint[] path = _teleports[i];
 				final VehiclePathPoint dst = path[path.length - 1];
-				packet.writeD(dst.getX());
-				packet.writeD(dst.getY());
-				packet.writeD(dst.getZ());
+				packet.writeD((int) dst.getX());
+				packet.writeD((int) dst.getY());
+				packet.writeD((int) dst.getZ());
 			}
 		}
 		else

@@ -53,6 +53,7 @@ import org.l2junity.gameserver.model.instancezone.InstanceTemplate;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.network.client.send.DeleteObject;
 import org.l2junity.gameserver.network.client.send.ExUserInfoAbnormalVisualEffect;
+import org.l2junity.gameserver.network.client.send.ExUserInfoCubic;
 import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
 import org.l2junity.gameserver.network.client.send.SkillCoolTime;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
@@ -184,9 +185,7 @@ public class CeremonyOfChaosEvent extends AbstractEvent<CeremonyOfChaosMember>
 			}
 			
 			// Cancel any started action
-			player.abortAttack();
-			player.abortCast();
-			player.stopMove(null);
+			player.stopActions();
 			player.setTarget(null);
 			
 			// Unsummon pet
@@ -200,6 +199,8 @@ public class CeremonyOfChaosEvent extends AbstractEvent<CeremonyOfChaosMember>
 			if (player.getAgathionId() > 0)
 			{
 				player.setAgathionId(0);
+				player.sendPacket(new ExUserInfoCubic(player));
+				player.broadcastUserInfo();
 			}
 			
 			// The character’s HP, MP, and CP are fully recovered.
@@ -212,7 +213,7 @@ public class CeremonyOfChaosEvent extends AbstractEvent<CeremonyOfChaosMember>
 			{
 				if (skill.getReuseDelay() <= 900000)
 				{
-					player.enableSkill(skill);
+					player.removeTimeStamp(skill);
 				}
 			}
 			

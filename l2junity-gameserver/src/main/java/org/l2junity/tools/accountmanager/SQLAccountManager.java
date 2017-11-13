@@ -26,9 +26,12 @@ import java.sql.SQLException;
 import java.util.Base64;
 import java.util.Scanner;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.Server;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.AppInit;
+import org.l2junity.commons.util.AppInit.ApplicationMode;
+import org.l2junity.loginserver.LoginDatabaseConfig;
+import org.l2junity.loginserver.LoginThreadPools;
+import org.l2junity.loginserver.config.LoginConfigMarker;
 
 /**
  * This class SQL Account Manager
@@ -43,8 +46,7 @@ public class SQLAccountManager
 	
 	public static void main(String[] args)
 	{
-		Server.serverMode = Server.MODE_LOGINSERVER;
-		Config.load();
+		AppInit.defaultInit(ApplicationMode.LOGIN, LoginConfigMarker.class.getPackage().getName(), LoginThreadPools.class, LoginDatabaseConfig.class);
 		
 		try (Scanner _scn = new Scanner(System.in))
 		{
@@ -213,7 +215,7 @@ public class SQLAccountManager
 		catch (Exception e)
 		{
 			System.out.println("There was error while adding/updating account:");
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	

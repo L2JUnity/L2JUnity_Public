@@ -19,20 +19,21 @@
 package org.l2junity.gameserver.network.client.recv;
 
 import static org.l2junity.gameserver.model.actor.Npc.INTERACTION_DISTANCE;
-import static org.l2junity.gameserver.model.itemcontainer.Inventory.MAX_ADENA;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.BuyListData;
 import org.l2junity.gameserver.enums.TaxType;
 import org.l2junity.gameserver.model.WorldObject;
-import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.instance.L2MerchantInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.buylist.ProductList;
 import org.l2junity.gameserver.model.holders.UniqueItemHolder;
+import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.itemcontainer.ItemContainer;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
@@ -56,7 +57,7 @@ public final class RequestSellItem implements IClientIncomingPacket
 	{
 		_listId = packet.readD();
 		int size = packet.readD();
-		if ((size <= 0) || (size > Config.MAX_ITEM_IN_PACKET) || ((size * BATCH_LENGTH) != packet.getReadableBytes()))
+		if ((size <= 0) || (size > PlayerConfig.MAX_ITEM_IN_PACKET) || ((size * BATCH_LENGTH) != packet.getReadableBytes()))
 		{
 			return false;
 		}
@@ -99,24 +100,24 @@ public final class RequestSellItem implements IClientIncomingPacket
 		}
 		
 		// Alt game - Karma punishment
-		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (player.getReputation() < 0))
+		if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (player.getReputation() < 0))
 		{
 			client.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		WorldObject target = player.getTarget();
-		Creature merchant = null;
+		L2MerchantInstance merchant = null;
 		if (!player.isGM())
 		{
-			if ((target == null) || (!player.isInsideRadius(target, INTERACTION_DISTANCE, true, false)) || (player.getInstanceWorld() != target.getInstanceWorld()))
+			if ((target == null) || (!player.isInRadius3d(target, INTERACTION_DISTANCE)) || (player.getInstanceWorld() != target.getInstanceWorld()))
 			{
 				client.sendPacket(ActionFailed.STATIC_PACKET);
 				return;
 			}
 			if (target instanceof L2MerchantInstance)
 			{
-				merchant = (Creature) target;
+				merchant = (L2MerchantInstance) target;
 			}
 			else
 			{
@@ -125,26 +126,17 @@ public final class RequestSellItem implements IClientIncomingPacket
 			}
 		}
 		
-		if ((merchant == null) && !player.isGM())
-		{
-			client.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-		
 		final ProductList buyList = BuyListData.getInstance().getBuyList(_listId);
 		if (buyList == null)
 		{
-			Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId, Config.DEFAULT_PUNISH);
+			Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " sent a false BuyList list_id " + _listId, GeneralConfig.DEFAULT_PUNISH);
 			return;
 		}
 		
-		if (merchant != null)
+		if ((merchant != null) && !buyList.isNpcAllowed(merchant.getId()))
 		{
-			if (!buyList.isNpcAllowed(merchant.getId()))
-			{
-				client.sendPacket(ActionFailed.STATIC_PACKET);
-				return;
-			}
+			client.sendPacket(ActionFailed.STATIC_PACKET);
+			return;
 		}
 		
 		long totalPrice = 0;
@@ -159,29 +151,29 @@ public final class RequestSellItem implements IClientIncomingPacket
 			
 			long price = item.getReferencePrice() / 2;
 			totalPrice += price * i.getCount();
-			if (((MAX_ADENA / i.getCount()) < price) || (totalPrice > MAX_ADENA))
+			if (!ItemContainer.validateCount(Inventory.ADENA_ID, totalPrice))
 			{
-				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + MAX_ADENA + " adena worth of goods.", Config.DEFAULT_PUNISH);
+				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried to purchase " + totalPrice + " adena worth of goods.", GeneralConfig.DEFAULT_PUNISH);
 				return;
 			}
 			
-			if (Config.ALLOW_REFUND)
+			if (GeneralConfig.ALLOW_REFUND)
 			{
-				item = player.getInventory().transferItem("Sell", i.getObjectId(), i.getCount(), player.getRefund(), player, merchant);
+				player.getInventory().transferItem("Sell", i.getObjectId(), i.getCount(), player.getRefund(), player, merchant);
 			}
 			else
 			{
-				item = player.getInventory().destroyItem("Sell", i.getObjectId(), i.getCount(), player, merchant);
+				player.getInventory().destroyItem("Sell", i.getObjectId(), i.getCount(), player, merchant);
 			}
 		}
 		
 		// add to castle treasury
-		if (merchant instanceof L2MerchantInstance)
+		if (merchant != null)
 		{
-			final L2MerchantInstance npc = ((L2MerchantInstance) merchant);
-			final long taxCollection = (long) (totalPrice * npc.getMpc().getTotalTaxRate(TaxType.SELL));
-			npc.getCastle().addToTreasury(taxCollection);
-			totalPrice -= taxCollection;
+			// Keep here same formula as in {@link ExBuySellList} to produce same result.
+			final long profit = (long) (totalPrice * (1.0 - merchant.getCastleTaxRate(TaxType.SELL)));
+			merchant.handleTaxPayment(totalPrice - profit);
+			totalPrice = profit;
 		}
 		
 		player.addAdena("Sell", totalPrice, merchant, false);

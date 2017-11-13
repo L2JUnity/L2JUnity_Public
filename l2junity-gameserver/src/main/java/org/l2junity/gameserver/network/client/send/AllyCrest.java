@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.HexIDConfig;
 import org.l2junity.gameserver.data.sql.impl.CrestTable;
 import org.l2junity.gameserver.model.Crest;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
@@ -47,7 +47,7 @@ public class AllyCrest implements IClientOutgoingPacket
 	{
 		OutgoingPackets.ALLIANCE_CREST.writeId(packet);
 		
-		packet.writeD(Config.SERVER_ID);
+		packet.writeD(HexIDConfig.SERVER_ID);
 		packet.writeD(_crestId);
 		if (_data != null)
 		{

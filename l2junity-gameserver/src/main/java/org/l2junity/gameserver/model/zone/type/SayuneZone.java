@@ -18,8 +18,7 @@
  */
 package org.l2junity.gameserver.model.zone.type;
 
-import org.l2junity.gameserver.ThreadPoolManager;
-import org.l2junity.gameserver.enums.CategoryType;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.tasks.player.FlyMoveStartTask;
 import org.l2junity.gameserver.model.zone.ZoneId;
@@ -57,10 +56,10 @@ public class SayuneZone extends ZoneType
 	@Override
 	protected void onEnter(Creature character)
 	{
-		if (character.isPlayer() && character.isInCategory(CategoryType.AWAKEN_GROUP) && !character.getActingPlayer().isMounted() && !character.isTransformed())
+		if (character.isPlayer() && !character.getActingPlayer().isMounted() && !character.isTransformed() && character.getActingPlayer().isAwakenedClass())
 		{
 			character.setInsideZone(ZoneId.SAYUNE, true);
-			ThreadPoolManager.getInstance().executeGeneral(new FlyMoveStartTask(this, character.getActingPlayer()));
+			ThreadPool.execute(new FlyMoveStartTask(this, character.getActingPlayer()));
 		}
 	}
 	

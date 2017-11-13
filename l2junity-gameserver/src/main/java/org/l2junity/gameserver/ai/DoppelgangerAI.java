@@ -20,10 +20,9 @@ package org.l2junity.gameserver.ai;
 
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_ATTACK;
 import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_FOLLOW;
-import static org.l2junity.gameserver.ai.CtrlIntention.AI_INTENTION_IDLE;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.GameTimeController;
+import org.l2junity.gameserver.instancemanager.GameTimeManager;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -80,7 +79,7 @@ public class DoppelgangerAI extends CharacterAI
 			return;
 		}
 		clientStopMoving(null);
-		_actor.doAttack(attackTarget);
+		_actor.doAutoAttack(attackTarget);
 	}
 	
 	private void thinkCast()
@@ -103,7 +102,7 @@ public class DoppelgangerAI extends CharacterAI
 			return;
 		}
 		getActor().followSummoner(false);
-		setIntention(AI_INTENTION_IDLE);
+		setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 		_startFollow = val;
 		_actor.doCast(_skill, _item, _forceUse, _dontMove);
 	}
@@ -119,7 +118,7 @@ public class DoppelgangerAI extends CharacterAI
 		{
 			return;
 		}
-		setIntention(AI_INTENTION_IDLE);
+		setIntention(CtrlIntention.AI_INTENTION_ACTIVE);
 	}
 	
 	@Override
@@ -172,7 +171,6 @@ public class DoppelgangerAI extends CharacterAI
 		{
 			case AI_INTENTION_ACTIVE:
 			case AI_INTENTION_FOLLOW:
-			case AI_INTENTION_IDLE:
 			case AI_INTENTION_MOVE_TO:
 			case AI_INTENTION_PICK_UP:
 				getActor().followSummoner(_startFollow);
@@ -216,7 +214,7 @@ public class DoppelgangerAI extends CharacterAI
 			{
 				if (_clientMovingToPawnOffset == offset)
 				{
-					if (GameTimeController.getInstance().getGameTicks() < _moveToPawnTimeout)
+					if (GameTimeManager.getInstance().getGameTicks() < _moveToPawnTimeout)
 					{
 						return;
 					}
@@ -225,7 +223,7 @@ public class DoppelgangerAI extends CharacterAI
 				else if (_actor.isOnGeodataPath())
 				{
 					// minimum time to calculate new route is 2 seconds
-					if (GameTimeController.getInstance().getGameTicks() < (_moveToPawnTimeout + 10))
+					if (GameTimeManager.getInstance().getGameTicks() < (_moveToPawnTimeout + 10))
 					{
 						return;
 					}
@@ -236,8 +234,8 @@ public class DoppelgangerAI extends CharacterAI
 			_clientMoving = true;
 			_clientMovingToPawnOffset = offset;
 			setTarget(pawn);
-			_moveToPawnTimeout = GameTimeController.getInstance().getGameTicks();
-			_moveToPawnTimeout += 1000 / GameTimeController.MILLIS_IN_TICK;
+			_moveToPawnTimeout = GameTimeManager.getInstance().getGameTicks();
+			_moveToPawnTimeout += 1000 / GameTimeManager.MILLIS_IN_TICK;
 			
 			if (pawn == null)
 			{

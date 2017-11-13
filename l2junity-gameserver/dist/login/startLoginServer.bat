@@ -5,7 +5,7 @@ title Login Server Console
 echo Starting L2J Login Server.
 echo.
 
-java -Xms128m -Xmx256m -jar l2jlogin.jar
+java -Xms128m -Xmx256m -jar l2junity-login.jar
 
 if ERRORLEVEL 2 goto restart
 if ERRORLEVEL 1 goto error

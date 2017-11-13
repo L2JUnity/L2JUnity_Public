@@ -18,9 +18,9 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
@@ -31,7 +31,6 @@ public class ExStorageMaxCount implements IClientOutgoingPacket
 {
 	private final int _inventory;
 	private final int _warehouse;
-	private final int _freight;
 	private final int _clan;
 	private final int _privateSell;
 	private final int _privateBuy;
@@ -44,14 +43,13 @@ public class ExStorageMaxCount implements IClientOutgoingPacket
 	{
 		_inventory = activeChar.getInventoryLimit();
 		_warehouse = activeChar.getWareHouseLimit();
-		_freight = Config.ALT_FREIGHT_SLOTS;
 		_privateSell = activeChar.getPrivateSellStoreLimit();
 		_privateBuy = activeChar.getPrivateBuyStoreLimit();
-		_clan = Config.WAREHOUSE_SLOTS_CLAN;
+		_clan = PlayerConfig.WAREHOUSE_SLOTS_CLAN;
 		_receipeD = activeChar.getDwarfRecipeLimit();
 		_recipe = activeChar.getCommonRecipeLimit();
-		_inventoryExtraSlots = (int) activeChar.getStat().getValue(Stats.INVENTORY_NORMAL, 0);
-		_inventoryQuestItems = Config.INVENTORY_MAXIMUM_QUEST_ITEMS;
+		_inventoryExtraSlots = (int) activeChar.getStat().getValue(DoubleStat.INVENTORY_NORMAL, 0);
+		_inventoryQuestItems = PlayerConfig.INVENTORY_MAXIMUM_QUEST_ITEMS;
 	}
 	
 	@Override
@@ -61,7 +59,6 @@ public class ExStorageMaxCount implements IClientOutgoingPacket
 		
 		packet.writeD(_inventory);
 		packet.writeD(_warehouse);
-		packet.writeD(_freight);
 		packet.writeD(_clan);
 		packet.writeD(_privateSell);
 		packet.writeD(_privateBuy);

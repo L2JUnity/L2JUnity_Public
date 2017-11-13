@@ -12,27 +12,10 @@
 										<xs:simpleType>
 											<xs:restriction base="xs:token">
 												<xs:enumeration value="evolve" />
-												<xs:enumeration value="food" />
-												<xs:enumeration value="hungry_limit" />
-												<xs:enumeration value="load" />
-												<xs:enumeration value="sync_level" />
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="val" type="xs:token" use="required" />
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="skills" minOccurs="0" maxOccurs="1">
-								<xs:complexType>
-									<xs:sequence minOccurs="1" maxOccurs="1">
-										<xs:element name="skill" minOccurs="1" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:attribute name="minLvl" type="xs:positiveInteger" use="required" />
-												<xs:attribute name="skillId" type="xs:positiveInteger" use="required" />
-												<xs:attribute name="skillLvl" type="xs:integer" use="required" />
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="stats" minOccurs="1" maxOccurs="1">
@@ -69,6 +52,8 @@
 																		<xs:enumeration value="soulshot_count" />
 																		<xs:enumeration value="speed_on_ride" />
 																		<xs:enumeration value="spiritshot_count" />
+																		<xs:enumeration value="food" />
+																		<xs:enumeration value="hungry_limit" />
 																	</xs:restriction>
 																</xs:simpleType>
 															</xs:attribute>
@@ -77,8 +62,8 @@
 															<xs:attribute name="run" type="xs:positiveInteger" />
 															<xs:attribute name="slowSwim" type="xs:positiveInteger" />
 															<xs:attribute name="fastSwim" type="xs:positiveInteger" />
-															<xs:attribute name="slowFly" type="xs:positiveInteger" />
-															<xs:attribute name="fastFly" type="xs:positiveInteger" />
+															<xs:attribute name="slowFly" type="xs:integer" />
+															<xs:attribute name="fastFly" type="xs:integer" />
 														</xs:complexType>
 													</xs:element>
 												</xs:sequence>
@@ -92,6 +77,7 @@
 						<xs:attribute name="id" type="xs:positiveInteger" use="required" />
 						<xs:attribute name="itemId" type="xs:integer" use="required" />
 						<xs:attribute name="index" type="xs:positiveInteger" use="required" />
+						<xs:attribute name="syncLevel" type="xs:integer" use="required" />
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>

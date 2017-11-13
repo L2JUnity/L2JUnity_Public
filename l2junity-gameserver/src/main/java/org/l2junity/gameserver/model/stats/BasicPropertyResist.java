@@ -28,10 +28,10 @@ import java.time.Instant;
 public class BasicPropertyResist
 {
 	private static final Duration RESIST_DURATION = Duration.ofSeconds(15); // The resistance stays no longer than 15 seconds after last mesmerizing debuff.
-
+	
 	private volatile Instant _resistanceEndTime = Instant.MIN;
 	private volatile int _resistanceLevel;
-
+	
 	/**
 	 * Checks if the resist has expired.
 	 * @return {@code true} if it has expired, {@code false} otherwise
@@ -40,7 +40,7 @@ public class BasicPropertyResist
 	{
 		return Instant.now().isAfter(_resistanceEndTime);
 	}
-
+	
 	/**
 	 * Gets the remain time.
 	 * @return the remain time
@@ -49,7 +49,7 @@ public class BasicPropertyResist
 	{
 		return Duration.between(Instant.now(), _resistanceEndTime);
 	}
-
+	
 	/**
 	 * Gets the resist level.
 	 * @return the resist level
@@ -58,7 +58,7 @@ public class BasicPropertyResist
 	{
 		return !isExpired() ? _resistanceLevel : 0;
 	}
-
+	
 	/**
 	 * Increases the resist level while checking if the resist has expired so it starts counting it from 1.
 	 */

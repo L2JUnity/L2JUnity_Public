@@ -25,6 +25,7 @@ import org.l2junity.gameserver.enums.TryMixCubeResultType;
  */
 public class AlchemyResult extends ItemHolder
 {
+	private static final long serialVersionUID = -1177147033172358446L;
 	private final TryMixCubeResultType _type;
 	
 	public AlchemyResult(int id, long count, TryMixCubeResultType type)

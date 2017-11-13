@@ -18,11 +18,14 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.gameserver.data.xml.impl.EnchantItemData;
+import java.util.List;
+
+import org.l2junity.gameserver.enums.ItemSkillType;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.EnchantItemRequest;
-import org.l2junity.gameserver.model.items.enchant.EnchantScroll;
+import org.l2junity.gameserver.model.holders.ItemSkillHolder;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
+import org.l2junity.gameserver.model.skills.SkillConditionScope;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExPutEnchantTargetItemResult;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -66,18 +69,23 @@ public class RequestExTryToPutEnchantTargetItem implements IClientIncomingPacket
 			return;
 		}
 		
-		final EnchantScroll scrollTemplate = EnchantItemData.getInstance().getEnchantScroll(scroll);
-		if ((scrollTemplate == null) || !scrollTemplate.isValid(item, null))
+		final List<ItemSkillHolder> skills = scroll.getItem().getSkills(ItemSkillType.NORMAL);
+		if (skills == null)
 		{
-			client.sendPacket(SystemMessageId.DOES_NOT_FIT_STRENGTHENING_CONDITIONS_OF_THE_SCROLL);
-			activeChar.removeRequest(request.getClass());
-			client.sendPacket(new ExPutEnchantTargetItemResult(0));
-			if (scrollTemplate == null)
-			{
-				_log.warn(getClass().getSimpleName() + ": Undefined scroll have been used id: " + scroll.getId());
-			}
+			activeChar.sendPacket(SystemMessageId.DOES_NOT_FIT_STRENGTHENING_CONDITIONS_OF_THE_SCROLL);
+			request.setEnchantingItem(0);
+			activeChar.sendPacket(new ExPutEnchantTargetItemResult(0));
+			LOGGER.warn("Missing skills for scroll {}", scroll.getItem());
 			return;
 		}
+		if (!skills.stream().allMatch(skill -> skill.getSkill().checkConditions(SkillConditionScope.GENERAL, activeChar, item)))
+		{
+			activeChar.sendPacket(SystemMessageId.DOES_NOT_FIT_STRENGTHENING_CONDITIONS_OF_THE_SCROLL);
+			request.setEnchantingItem(0);
+			activeChar.sendPacket(new ExPutEnchantTargetItemResult(0));
+			return;
+		}
+		
 		request.setTimestamp(System.currentTimeMillis());
 		client.sendPacket(new ExPutEnchantTargetItemResult(_objectId));
 	}

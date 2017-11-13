@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="22600" toLevel="1" name="Ancient Kartia's Labyrinth Origins">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>100</hitTime>
@@ -25,9 +25,19 @@
 				<alignment>LAWFUL</alignment>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_get_exp">
+				<exp>1675000000</exp>
+				<minLevel>85</minLevel>
+				<underMinLevelExpPercent>20</underMinLevelExpPercent>
+			</effect>
+			<effect name="i_sp">
+				<sp>14000000</sp>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22601" toLevel="1" name="Ancient Kartia's Labyrinth Origins">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<hitTime>100</hitTime>
@@ -43,7 +53,7 @@
 		<conditions>
 			<condition name="CheckLevel">
 				<minLevel>95</minLevel>
-				<maxLevel>99</maxLevel>
+				<maxLevel>106</maxLevel>
 				<affectType>CASTER</affectType>
 			</condition>
 			<condition name="OpAlignment">
@@ -51,6 +61,16 @@
 				<alignment>LAWFUL</alignment>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_get_exp">
+				<exp>2425000000</exp>
+				<minLevel>85</minLevel>
+				<underMinLevelExpPercent>20</underMinLevelExpPercent>
+			</effect>
+			<effect name="i_sp">
+				<sp>21250000</sp>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22602" toLevel="1" name="Scroll: Decrease Vitality">
 		<!-- AUTO GENERATED SKILL -->
@@ -67,7 +87,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22603" toLevel="2" name="Expand Inventory Lv. 1">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -84,9 +104,18 @@
 				<hasLearned>false</hasLearned>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>1372</skillId>
+				<skillLvl>
+					<value level="1">1</value>
+					<value level="2">2</value>
+				</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22604" toLevel="2" name="Expand Warehouse Lv. 1">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -103,6 +132,15 @@
 				<hasLearned>false</hasLearned>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_set_skill">
+				<skillId>1371</skillId>
+				<skillLvl>
+					<value level="1">1</value>
+					<value level="2">2</value>
+				</skillLvl>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22605" toLevel="1" name="Scroll: Enchant Power Shirt">
 		<!-- AUTO GENERATED SKILL -->
@@ -115,6 +153,19 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESSORY</item>
+				</itemType>
+				<crystalType>NONE</crystalType>
+				<scrollGroup>5</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22606" toLevel="1" name="Blessed Scroll: Enchant Power Shirt">
 		<!-- AUTO GENERATED SKILL -->
@@ -127,6 +178,19 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESSORY</item>
+				</itemType>
+				<crystalType>NONE</crystalType>
+				<scrollGroup>5</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22607" toLevel="1" name="Extra Pass">
 		<!-- AUTO GENERATED SKILL -->
@@ -213,27 +277,31 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22614" toLevel="5" name="XP Rune III (Lv. 1-99) 50%">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Obtained XP + 50%. -->
 		<icon>br_cashtex.skill.br_cash_rune_of_exp_buff_5</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
-		<isDebuff>false</isDebuff>
+		<effects>
+			<effect name="p_exp_modify">
+				<amount>50</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22615" toLevel="1" name="Honeymoon Ticket - Joy of Vitality">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Maintains Vitality Lv.. -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>VP_KEEP</abnormalType>
 		<icon>BranchSys2.Icon.br_weddin_ticket_i00</icon>
 		<operateType>A2</operateType>
 		<hitTime>100</hitTime>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_KEEP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
@@ -244,9 +312,14 @@
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="22616" toLevel="1" name="Summon Big Wedding Cake">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -259,24 +332,30 @@
 		<conditions>
 			<condition name="OpCanNotUseAirship" />
 		</conditions>
+		<effects>
+			<effect name="i_summon_npc">
+				<npcId>137</npcId>
+				<npcCount>1</npcCount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22617" toLevel="1" name="Vitality Maintaining Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Maintains Vitality for 60 min. -->
+		<abnormalLvl>4</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<icon>BranchSys2.icon.br_essence_rose_i00</icon>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_KEEP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>4</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
 		<reuseDelay>3600000</reuseDelay>
 		<targetType>SELF</targetType>
@@ -285,9 +364,14 @@
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="22618" toLevel="1" name="STR Dye Pack (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -298,7 +382,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="25">
 						<item id="22982" count="1" />
@@ -350,7 +434,7 @@
 		</effects>
 	</skill>
 	<skill id="22619" toLevel="1" name="DEX Dye Pack (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -361,7 +445,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="25">
 						<item id="22983" count="1" />
@@ -413,7 +497,7 @@
 		</effects>
 	</skill>
 	<skill id="22620" toLevel="1" name="CON Dye Pack (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -424,7 +508,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="25">
 						<item id="22984" count="1" />
@@ -476,7 +560,7 @@
 		</effects>
 	</skill>
 	<skill id="22621" toLevel="1" name="INT Dye Pack (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -487,7 +571,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="25">
 						<item id="22985" count="1" />
@@ -539,7 +623,7 @@
 		</effects>
 	</skill>
 	<skill id="22622" toLevel="1" name="WIT Dye Pack (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -550,7 +634,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="25">
 						<item id="22986" count="1" />
@@ -602,7 +686,7 @@
 		</effects>
 	</skill>
 	<skill id="22623" toLevel="1" name="MEN Dye Pack (R-grade)">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -613,7 +697,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="25">
 						<item id="22987" count="1" />
@@ -677,7 +761,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22625" toLevel="1" name="Easter Egg">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23086</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -690,7 +774,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.0147">
 						<item id="21712" count="1" />
@@ -754,7 +838,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22627" toLevel="1" name="Exorcist's Gift">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23149</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_grave_goods_i00</icon>
@@ -767,7 +851,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.06">
 						<item id="19444" count="1" />
@@ -822,7 +906,7 @@
 		</effects>
 	</skill>
 	<skill id="22628" toLevel="1" name="Einhasad's Gift">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23150</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.event_july_seven_park_i00</icon>
@@ -835,7 +919,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21">
 						<item id="23207" count="1" />
@@ -905,7 +989,7 @@
 		</effects>
 	</skill>
 	<skill id="22629" toLevel="1" name="Shilen's Gift">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23151</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.event_big_july_seven_park_i00</icon>
@@ -918,7 +1002,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21">
 						<item id="23207" count="1" />
@@ -988,51 +1072,102 @@
 		</effects>
 	</skill>
 	<skill id="22630" toLevel="1" name="Ghost Potion">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 2 hr., P. Atk. + 20%, M. Atk. + 85%, and Speed + 20. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>7200</abnormalTime>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
+		<abnormalVisualEffect>CHANGE_GRADE_B</abnormalVisualEffect>
 		<icon>icon.etc_int_symbol_i01</icon>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-3</specialLevel>
 		<magicLvl>-3</magicLvl>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>7200</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>CHANGE_GRADE_B</abnormalVisualEffect>
 		<isMagic>2</isMagic>
 		<reuseDelay>3600000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_physical_attack">
+				<amount>20</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack">
+				<amount>85</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>20</amount>
+				<mode>DIFF</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22631" toLevel="2" name="Sweet Summer Slushie">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Change into the Beach Swimsuit. For 1 hr., Atk./Casting Spd. + 5%, Speed + 5, and Max HP/MP + 5%. Cooldown is 1 hr. -->
-		<icon>BranchSys3.icon1.g_ev_sweet_icewater</icon>
-		<operateType>A2</operateType>
-		<effectPoint>100</effectPoint>
-		<abnormalType>BR_EVENT_BUF1</abnormalType>
-		<basicProperty>NONE</basicProperty>
-		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
-		<magicCriticalRate>5</magicCriticalRate>
-		<specialLevel>-3</specialLevel>
-		<magicLvl>-3</magicLvl>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>3600</abnormalTime>
-		<irreplacableBuff>true</irreplacableBuff>
-		<staticReuse>true</staticReuse>
+		<abnormalType>BR_EVENT_BUF1</abnormalType>
 		<abnormalVisualEffect>
 			<value level="1">SWEET_ICE_FLAKES</value>
 			<value level="2">FANTASY_ICE_FLAKES</value>
 		</abnormalVisualEffect>
+		<icon>BranchSys3.icon1.g_ev_sweet_icewater</icon>
+		<operateType>A2</operateType>
+		<effectPoint>100</effectPoint>
+		<basicProperty>NONE</basicProperty>
+		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
+		<magicCriticalRate>5</magicCriticalRate>
+		<specialLevel>-3</specialLevel>
+		<magicLvl>-3</magicLvl>
+		<irreplacableBuff>true</irreplacableBuff>
+		<staticReuse>true</staticReuse>
 		<isMagic>2</isMagic>
 		<reuseDelay>3600000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<effects>
+			<effect name="p_attack_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_speed">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_hp">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_max_mp">
+				<amount>
+					<value level="1">5</value>
+					<value level="2">10</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22632" toLevel="1" name="Beach Swimsuit Appearance Stone">
 		<!-- AUTO GENERATED SKILL -->
@@ -1047,7 +1182,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22633" toLevel="1" name="Herina's Gift Box">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23174</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -1060,7 +1195,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="50">
 						<item id="23170" count="1" />
@@ -1220,36 +1355,92 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22645" toLevel="1" name="Alien Mask">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- CON + 1, MEN + 1, and INT + 1. -->
 		<icon>icon.etc_ev_draco_hair_acc</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22646" toLevel="1" name="Super Strong Giant's Mask">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- STR + 1, CON + 1, and DEX + 1. -->
 		<icon>icon.etc_ev_draco_hair_acc</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22647" toLevel="1" name="Shriek Mask">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- CON + 1, DEX + 1, and WIT + 1. -->
 		<icon>icon.etc_ev_draco_hair_acc</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22648" toLevel="1" name="Red Devil Mask">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- INT + 1, MEN + 1, and WIT + 1. -->
 		<icon>icon.etc_ev_draco_hair_acc</icon>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>MEN</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22649" toLevel="1" name="Mummy Mask">
 		<!-- AUTO GENERATED SKILL -->
@@ -1258,21 +1449,35 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<magicLvl>1</magicLvl>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_stat_up">
+				<amount>1</amount>
+				<stat>WIT</stat>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22650" toLevel="1" name="Transformation Scroll: Zombie">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Transformed into a Festering Zombie. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>TRANSFORM</abnormalType>
 		<icon>icon.skilltransform3</icon>
 		<operateType>A2</operateType>
 		<effectPoint>1</effectPoint>
-		<abnormalType>TRANSFORM</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
@@ -1282,9 +1487,20 @@
 				<transformId>20014</transformId>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_dispel_by_slot">
+				<dispel>CHANGEBODY,-1;TURN_STONE,-1;BUFF_SPECIAL_MULTI,-1</dispel>
+			</effect>
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
+			<effect name="p_transform">
+				<transformationId>20017</transformationId>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22651" toLevel="1" name="Playful Hair Accessory Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23207</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -1299,7 +1515,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="20">
 						<item id="23202" count="1" />
@@ -1465,7 +1681,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22664" toLevel="1" name="Monster Weapon Appearance Stone Pack A">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23207</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -1480,7 +1696,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16">
 						<item id="23211" count="1" />
@@ -1505,7 +1721,7 @@
 		</effects>
 	</skill>
 	<skill id="22665" toLevel="1" name="Monster Weapon Appearance Stone Pack B">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23207</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -1520,7 +1736,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="16">
 						<item id="23212" count="1" />
@@ -1563,71 +1779,82 @@
 		</conditions>
 	</skill>
 	<skill id="22667" toLevel="2" name="Apple Spritzer">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Maintains Vitality for 30 min. -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>VP_KEEP</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<icon>BranchSys3.icon1.g_apfelschorle_germany</icon>
 		<operateType>A2</operateType>
 		<reuseDelay>3600000</reuseDelay>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_KEEP</abnormalType>
 		<specialLevel>-1</specialLevel>
 		<magicCriticalRate>5</magicCriticalRate>
 		<basicProperty>NONE</basicProperty>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>false</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="22668" toLevel="1" name="Roasted Sausage">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 30 min., Vitality is replenished with XP gain through hunting. -->
+		<abnormalLvl>3</abnormalLvl>
+		<abnormalTime>1800</abnormalTime>
+		<abnormalType>VP_UP</abnormalType>
+		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<icon>BranchSys3.icon1.g_bratwurst_germany</icon>
 		<operateType>A2</operateType>
 		<effectPoint>100</effectPoint>
-		<abnormalType>VP_UP</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
-		<abnormalLvl>3</abnormalLvl>
-		<abnormalTime>1800</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_UP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
 		<reuseDelay>3600000</reuseDelay>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>23228</itemConsumeId> <!-- Roasted Sausage -->
+		<itemConsumeCount>1</itemConsumeCount>
 		<conditions>
 			<condition name="CanRestoreVitalPoint" />
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
+		<effects>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22669" toLevel="1" name="Pretzel">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 1 hr., obtained XP + 50%. -->
+		<abnormalLvl>1</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>VOTE</abnormalType>
+		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<icon>BranchSys3.icon1.g_brezel_germany</icon>
 		<operateType>A2</operateType>
-		<abnormalType>VOTE</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
-		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<irreplacableBuff>true</irreplacableBuff>
 		<staticReuse>true</staticReuse>
-		<abnormalVisualEffect>VP_KEEP</abnormalVisualEffect>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -1638,9 +1865,14 @@
 				<hasAbnormal>false</hasAbnormal>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="p_exp_modify">
+				<amount>50</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22670" toLevel="1" name="Snack Mix">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- Instantly recovers 500 HP and 200 MP. -->
 		<icon>BranchSys3.icon1.g_studentenfutter_germany</icon>
 		<operateType>A1</operateType>
@@ -1653,11 +1885,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>500</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>200</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1707,7 +1939,7 @@
 		<affectScope>SINGLE</affectScope>
 	</skill>
 	<skill id="22674" toLevel="1" name="Blessed Scroll: Enchant Elemental Shirt">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<icon>icon.skill0000</icon>
 		<operateType>A1</operateType>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
@@ -1717,9 +1949,24 @@
 		<isMagic>2</isMagic>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<itemConsumeId>23241</itemConsumeId>
+		<itemConsumeCount>1</itemConsumeCount>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>ARMOR</item>
+					<item>ACCESORY</item>
+				</itemType>
+				<crystalType>NONE</crystalType>
+				<scrollGroup>8</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_armor" />
+		</effects>
 	</skill>
 	<skill id="22675" toLevel="1" name="Blessed Scroll: Enchant Elemental Shirt Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23238</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -1732,7 +1979,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="99.9">
 						<item id="23241" count="30" />
@@ -1745,7 +1992,7 @@
 		</effects>
 	</skill>
 	<skill id="22676" toLevel="1" name="Weapon Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32782</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -1760,7 +2007,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5">
 						<item id="129" count="1" />
@@ -1827,7 +2074,7 @@
 		</effects>
 	</skill>
 	<skill id="22677" toLevel="1" name="Weapon Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32783</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -1842,7 +2089,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="6.25">
 						<item id="228" count="1" />
@@ -1897,7 +2144,7 @@
 		</effects>
 	</skill>
 	<skill id="22678" toLevel="1" name="Weapon Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32784</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -1912,7 +2159,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="8.34">
 						<item id="287" count="1" />
@@ -1955,7 +2202,7 @@
 		</effects>
 	</skill>
 	<skill id="22679" toLevel="1" name="Weapon Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32785</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -1970,7 +2217,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="9.1">
 						<item id="305" count="1" />
@@ -2010,7 +2257,7 @@
 		</effects>
 	</skill>
 	<skill id="22680" toLevel="1" name="Weapon Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32786</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -2025,7 +2272,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="10">
 						<item id="6372" count="1" />
@@ -2062,7 +2309,7 @@
 		</effects>
 	</skill>
 	<skill id="22681" toLevel="1" name="Armor Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32790</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -2077,7 +2324,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.08">
 						<item id="1124" count="1" />
@@ -2159,7 +2406,7 @@
 		</effects>
 	</skill>
 	<skill id="22682" toLevel="1" name="Armor Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32791</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -2174,7 +2421,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5.5">
 						<item id="2414" count="1" />
@@ -2226,7 +2473,7 @@
 		</effects>
 	</skill>
 	<skill id="22683" toLevel="1" name="Armor Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32792</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -2241,7 +2488,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="3.58">
 						<item id="2404" count="1" />
@@ -2314,7 +2561,7 @@
 		</effects>
 	</skill>
 	<skill id="22684" toLevel="1" name="Armor Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32793</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -2329,7 +2576,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="6.44">
 						<item id="5312" count="1" />
@@ -2384,7 +2631,7 @@
 		</effects>
 	</skill>
 	<skill id="22685" toLevel="1" name="Armor Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>32794</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.etc_pi_gift_box_i04</icon>
@@ -2399,7 +2646,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="1.77">
 						<item id="6674" count="1" />
@@ -2460,7 +2707,7 @@
 		</effects>
 	</skill>
 	<skill id="22686" toLevel="1" name="Blessed Scroll: Enchant Elemental Shirt Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23299</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -2473,7 +2720,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="99.9">
 						<item id="23241" count="30" />
@@ -2486,7 +2733,7 @@
 		</effects>
 	</skill>
 	<skill id="22687" toLevel="1" name="Blessed Scroll: Enchant Elemental Shirt Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23302</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -2499,7 +2746,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="99.9">
 						<item id="23241" count="30" />
@@ -2512,7 +2759,7 @@
 		</effects>
 	</skill>
 	<skill id="22688" toLevel="1" name="Blessed Scroll: Enchant Elemental Shirt Pack">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23305</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -2525,7 +2772,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="99.9">
 						<item id="23241" count="30" />
@@ -2538,31 +2785,39 @@
 		</effects>
 	</skill>
 	<skill id="22689" toLevel="1" name="Raid's Blessing">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- For 1 hr., obtained XP/SP + 10%. -->
+		<abnormalLvl>0</abnormalLvl>
+		<abnormalTime>3600</abnormalTime>
+		<abnormalType>FIELD_RAID_BUFF1</abnormalType>
 		<icon>BranchSys2.icon.br_vitality_day_i00</icon>
 		<operateType>A2</operateType>
 		<castRange>1500</castRange>
 		<hitTime>700</hitTime>
 		<effectPoint>1</effectPoint>
-		<abnormalType>FIELD_RAID_BUFF1</abnormalType>
 		<basicProperty>NONE</basicProperty>
 		<rideState>NONE;STRIDER;WYVERN;WOLF</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1600</effectRange>
-		<abnormalLvl>0</abnormalLvl>
-		<abnormalTime>3600</abnormalTime>
 		<affectRange>1500</affectRange>
 		<isMagic>22</isMagic>
 		<coolTime>300</coolTime>
 		<targetType>TARGET</targetType>
 		<affectScope>PARTY</affectScope>
 		<affectObject>FRIEND</affectObject>
+		<effects>
+			<effect name="p_exp_modify">
+				<amount>10</amount>
+			</effect>
+			<effect name="p_sp_modify">
+				<amount>10</amount>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22690" toLevel="1" name="Elven Radler">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23309</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -2575,7 +2830,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="10">
 						<item id="10134" count="1" />
@@ -2606,7 +2861,7 @@
 		</effects>
 	</skill>
 	<skill id="22691" toLevel="1" name="Dion Pilsner">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23310</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -2619,7 +2874,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="10">
 						<item id="22550" count="1" />
@@ -2638,7 +2893,7 @@
 		</effects>
 	</skill>
 	<skill id="22692" toLevel="1" name="Dwarven Royal Blue Cocktail">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23311</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -2651,7 +2906,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="10">
 						<item id="17264" count="1" />
@@ -2670,7 +2925,7 @@
 		</effects>
 	</skill>
 	<skill id="22693" toLevel="1" name="Aden White Beer">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23312</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -2683,7 +2938,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="5">
 						<item id="22560" count="1" />
@@ -2702,7 +2957,7 @@
 		</effects>
 	</skill>
 	<skill id="22694" toLevel="1" name="Gran Kain's Delight">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<itemConsumeId>23313</itemConsumeId>
 		<itemConsumeCount>1</itemConsumeCount>
 		<icon>icon.skill0000</icon>
@@ -2715,7 +2970,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="0.03333">
 						<item id="6656" count="1" />
@@ -2740,7 +2995,7 @@
 		</effects>
 	</skill>
 	<skill id="22695" toLevel="1" name="Harp's Sealed Rune of Power">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- STR + 7 permanently, and has a 5% chance of Stunning all enemies within 400 grids for 3 sec. during a standard attack. -->
 		<icon>br_cashtex.skill.br_cash_rune_of_exp_buff_1</icon>
 		<operateType>P</operateType>
@@ -2755,9 +3010,28 @@
 			</condition>
 			<condition name="OpNotOlympiad" />
 		</passiveConditions>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>7</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Range Stun -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>5</chance>
+				<targetType>TARGET</targetType>
+				<isCritical>true</isCritical>
+				<skillId>14194</skillId>
+				<skillLevel>1</skillLevel>
+				<allowWeapons>ALL</allowWeapons>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22696" toLevel="1" name="Harp's Sealed Rune of Magic">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- INT + 7 permanently, and has a 10% chance of decreasing M. Def. of all enemies within 400 grids by 20% for 10 sec. during a magical attack. -->
 		<icon>br_cashtex.skill.br_cash_rune_of_exp_buff_1</icon>
 		<operateType>P</operateType>
@@ -2772,9 +3046,23 @@
 			</condition>
 			<condition name="OpNotOlympiad" />
 		</passiveConditions>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>7</amount>
+				<stat>INT</stat>
+			</effect>
+			<effect name="p_trigger_skill_by_magic_type">
+				<!-- Harp's Sealed Rune of Magic_Trigger_Decrease Defense -->
+				<magicTypes>0;1;2;3;4;22</magicTypes>
+				<skillId>22702</skillId>
+				<skillLevel>1</skillLevel>
+				<chance>10</chance>
+				<targetType>ENEMY</targetType>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22697" toLevel="1" name="Flynt's Sealed Rune of Will">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- CON + 7 permanently, and has a 5% chance of becoming invincible for 5 sec. when attacked. -->
 		<icon>br_cashtex.skill.br_cash_rune_of_exp_buff_1</icon>
 		<operateType>P</operateType>
@@ -2789,9 +3077,26 @@
 			</condition>
 			<condition name="OpNotOlympiad" />
 		</passiveConditions>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>7</amount>
+				<stat>CON</stat>
+			</effect>
+			<effect name="p_trigger_skill_by_dmg">
+				<!-- Flynt's Sealed Rune of Will_Trigger -->
+				<attackerType>Attackable</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>5</chance>
+				<targetType>SELF</targetType>
+				<skillId>22703</skillId>
+				<skillLevel>1</skillLevel>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22698" toLevel="1" name="Flynt's Sealed Rune of Destruction">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- STR + 7 permanently, and has a 5% chance of inflicting 20% additional damage during a skill attack. -->
 		<icon>br_cashtex.skill.br_cash_rune_of_exp_buff_1</icon>
 		<operateType>P</operateType>
@@ -2806,9 +3111,28 @@
 			</condition>
 			<condition name="OpNotOlympiad" />
 		</passiveConditions>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>7</amount>
+				<stat>STR</stat>
+			</effect>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Flynt's Sealed Rune of Destruction_Trigger -->
+				<attackerType>Attackable</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>5</chance>
+				<targetType>TARGET</targetType>
+				<isCritical>true</isCritical>
+				<skillId>22704</skillId>
+				<skillLevel>1</skillLevel>
+				<allowWeapons>ALL</allowWeapons>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22699" toLevel="1" name="Dr. Destroy's Sealed Rune of Skill">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Glory Days confirmed -->
 		<!-- DEX + 7 permanently, and has a 5% chance of increasing Critical Damage and Critical Rate by 30% for 10 sec. -->
 		<icon>br_cashtex.skill.br_cash_rune_of_exp_buff_1</icon>
 		<operateType>P</operateType>
@@ -2823,5 +3147,24 @@
 			</condition>
 			<condition name="OpNotOlympiad" />
 		</passiveConditions>
+		<effects>
+			<effect name="p_stat_up">
+				<amount>7</amount>
+				<stat>DEX</stat>
+			</effect>
+			<effect name="p_trigger_skill_by_attack">
+				<!-- Dr. Destroy's Sealed Rune of Skill -->
+				<attackerType>L2Character</attackerType>
+				<minAttackerLevel>1</minAttackerLevel>
+				<maxAttackerLevel>100</maxAttackerLevel>
+				<minDamage>1</minDamage>
+				<chance>5</chance>
+				<targetType>TARGET</targetType>
+				<isCritical>true</isCritical>
+				<skillId>22704</skillId>
+				<skillLevel>1</skillLevel>
+				<allowWeapons>ALL</allowWeapons>
+			</effect>
+		</effects>
 	</skill>
 </list>

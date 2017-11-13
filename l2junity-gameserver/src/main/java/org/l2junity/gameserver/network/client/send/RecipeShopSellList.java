@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.gameserver.model.ManufactureItem;
+import java.util.Map.Entry;
+
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -49,11 +50,11 @@ public class RecipeShopSellList implements IClientOutgoingPacket
 		else
 		{
 			packet.writeD(_manufacturer.getManufactureItems().size());
-			for (ManufactureItem temp : _manufacturer.getManufactureItems().values())
+			for (Entry<Integer, Long> item : _manufacturer.getManufactureItems().entrySet())
 			{
-				packet.writeD(temp.getRecipeId());
-				packet.writeD(0x00); // unknown
-				packet.writeQ(temp.getCost());
+				packet.writeD(item.getKey());
+				packet.writeD(0x00); // CanCreate?
+				packet.writeQ(item.getValue());
 			}
 		}
 		return true;

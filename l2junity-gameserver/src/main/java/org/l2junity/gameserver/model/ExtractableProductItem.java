@@ -20,17 +20,17 @@ package org.l2junity.gameserver.model;
 
 import java.util.List;
 
-import org.l2junity.gameserver.model.holders.ItemHolder;
+import org.l2junity.gameserver.model.holders.EnchantedItemHolder;
 
 /**
  * @author Zoey76
  */
 public class ExtractableProductItem
 {
-	private final List<ItemHolder> _items;
+	private final List<EnchantedItemHolder> _items;
 	private final double _chance;
 	
-	public ExtractableProductItem(List<ItemHolder> items, double chance)
+	public ExtractableProductItem(List<EnchantedItemHolder> items, double chance)
 	{
 		_items = items;
 		_chance = chance;
@@ -39,7 +39,7 @@ public class ExtractableProductItem
 	/**
 	 * @return the the production list.
 	 */
-	public List<ItemHolder> getItems()
+	public List<EnchantedItemHolder> getItems()
 	{
 		return _items;
 	}

@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.skills.CommonSkill;
@@ -40,7 +39,7 @@ public class ExAlchemySkillList implements IClientOutgoingPacket
 	public ExAlchemySkillList(final PlayerInstance player)
 	{
 		_skills.addAll(player.getAllSkills().stream().filter(s -> SkillTreesData.getInstance().isAlchemySkill(s.getId(), s.getLevel())).collect(Collectors.toList()));
-		_skills.add(SkillData.getInstance().getSkill(CommonSkill.ALCHEMY_CUBE.getId(), 1));
+		_skills.add(CommonSkill.ALCHEMY_CUBE.getSkill());
 	}
 	
 	@Override

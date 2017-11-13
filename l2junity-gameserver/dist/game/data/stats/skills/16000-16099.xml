@@ -460,12 +460,12 @@
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PullBack">
+			<effect name="i_pull">
 				<speed>5000</speed>
 				<delay>5000</delay>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -523,7 +523,7 @@
 		<hitCancelTime>0</hitCancelTime>
 		<effectRange>1100</effectRange>
 		<magicLvl>85</magicLvl>
-		<channelingTickInitialDelay>1000</channelingTickInitialDelay>
+		<channelingStart>1</channelingStart>
 		<channelingTickInterval>0</channelingTickInterval>
 		<isMagic>2</isMagic>
 		<hitTime>10000</hitTime>
@@ -553,16 +553,16 @@
 		<affectLimit>10-10</affectLimit>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>TARGET</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="PhysicalAttack">
-				<amount>350000</amount>
+			<effect name="i_p_attack">
+				<power>350000</power>
 			</effect>
-			<effect name="DamOverTime">
-				<power>250</power>
+			<effect name="t_hp">
+				<power>-250</power>
 				<ticks>5</ticks>
 			</effect>
 		</effects>
@@ -589,12 +589,12 @@
 		<affectRange>200</affectRange>
 		<abnormalVisualEffect>STUN</abnormalVisualEffect>
 		<isMagic>2</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="RealDamage">
+			<effect name="i_real_damage">
 				<power>100000</power>
 			</effect>
 		</effects>

@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.conditions;
 
-import org.l2junity.commons.util.CommonUtil;
+import org.l2junity.commons.util.ArrayUtil;
 import org.l2junity.gameserver.enums.Race;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.items.L2Item;
@@ -48,6 +48,6 @@ public class ConditionPlayerRace extends Condition
 		{
 			return false;
 		}
-		return CommonUtil.contains(_races, effector.getActingPlayer().getRace());
+		return ArrayUtil.contains(_races, effector.getActingPlayer().getRace());
 	}
 }

@@ -29,14 +29,14 @@ public class ExAutoFishAvailable implements IClientOutgoingPacket
 {
 	public static ExAutoFishAvailable YES = new ExAutoFishAvailable(true);
 	public static ExAutoFishAvailable NO = new ExAutoFishAvailable(false);
-
+	
 	private final boolean _available;
-
+	
 	private ExAutoFishAvailable(boolean available)
 	{
 		_available = available;
 	}
-
+	
 	@Override
 	public boolean write(PacketWriter packet)
 	{

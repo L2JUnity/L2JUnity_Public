@@ -26,7 +26,7 @@ import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.network.PacketReader;
 
 /**
- * @author jeremy
+ * @author Sdw
  */
 public class RequestExOustFromMpccRoom implements IClientIncomingPacket
 {

@@ -156,9 +156,9 @@ public class L2BlockInstance extends L2MonsterInstance
 	private void dropItem(int id, BlockCheckerEngine eng, PlayerInstance player)
 	{
 		ItemInstance drop = ItemTable.getInstance().createItem("Loot", id, 1, player, this);
-		int x = getX() + Rnd.get(50);
-		int y = getY() + Rnd.get(50);
-		int z = getZ();
+		double x = getX() + Rnd.get(50);
+		double y = getY() + Rnd.get(50);
+		double z = getZ();
 		
 		drop.dropMe(this, x, y, z);
 		

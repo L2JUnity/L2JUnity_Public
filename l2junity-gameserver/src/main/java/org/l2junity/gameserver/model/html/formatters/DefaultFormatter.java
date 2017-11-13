@@ -26,7 +26,7 @@ import org.l2junity.gameserver.model.html.IBypassFormatter;
 public class DefaultFormatter implements IBypassFormatter
 {
 	public final static DefaultFormatter INSTANCE = new DefaultFormatter();
-
+	
 	@Override
 	public String formatBypass(String bypass, int page)
 	{

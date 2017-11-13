@@ -20,12 +20,13 @@ package org.l2junity.gameserver.model.actor.instance;
 
 import java.util.StringTokenizer;
 
-import org.l2junity.gameserver.data.sql.impl.TeleportLocationTable;
 import org.l2junity.gameserver.data.xml.impl.DoorData;
+import org.l2junity.gameserver.data.xml.impl.TeleportersData;
 import org.l2junity.gameserver.enums.InstanceType;
-import org.l2junity.gameserver.model.L2TeleportLocation;
+import org.l2junity.gameserver.enums.TeleportType;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
+import org.l2junity.gameserver.model.teleporter.TeleportHolder;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.NpcHtmlMessage;
 
@@ -94,7 +95,12 @@ public class L2DoormenInstance extends L2NpcInstance
 		{
 			if (isOwnerClan(player))
 			{
-				doTeleport(player, command);
+				final TeleportHolder holder = TeleportersData.getInstance().getHolder(getId(), TeleportType.OTHER.name());
+				if (holder != null)
+				{
+					final int locId = Integer.parseInt(command.substring(5).trim());
+					holder.doTeleport(player, this, locId);
+				}
 			}
 			return;
 		}
@@ -150,25 +156,6 @@ public class L2DoormenInstance extends L2NpcInstance
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player.getHtmlPrefix(), "data/html/doormen/" + getTemplate().getId() + "-busy.htm");
 		player.sendPacket(html);
-	}
-	
-	protected void doTeleport(PlayerInstance player, String command)
-	{
-		final int whereTo = Integer.parseInt(command.substring(5).trim());
-		L2TeleportLocation list = TeleportLocationTable.getInstance().getTemplate(whereTo);
-		if (list != null)
-		{
-			if (!player.isAlikeDead())
-			{
-				player.teleToLocation(list.getLocX(), list.getLocY(), list.getLocZ());
-			}
-		}
-		else
-		{
-			_log.warn("No teleport destination with id:" + whereTo);
-		}
-		
-		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 	
 	protected boolean isOwnerClan(PlayerInstance player)

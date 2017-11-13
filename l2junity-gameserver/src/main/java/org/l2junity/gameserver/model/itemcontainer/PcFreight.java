@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.model.itemcontainer;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.enums.ItemLocation;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 
@@ -70,7 +70,7 @@ public class PcFreight extends ItemContainer
 	@Override
 	public boolean validateCapacity(long slots)
 	{
-		int curSlots = _owner == null ? Config.ALT_FREIGHT_SLOTS : Config.ALT_FREIGHT_SLOTS;
+		int curSlots = _owner == null ? PlayerConfig.ALT_FREIGHT_SLOTS : PlayerConfig.ALT_FREIGHT_SLOTS;
 		return ((getSize() + slots) <= curSlots);
 	}
 	

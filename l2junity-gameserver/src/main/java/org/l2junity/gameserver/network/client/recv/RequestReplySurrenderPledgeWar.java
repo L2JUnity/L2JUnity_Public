@@ -52,11 +52,11 @@ public final class RequestReplySurrenderPledgeWar implements IClientIncomingPack
 		
 		if (_answer == 1)
 		{
-			ClanTable.getInstance().deleteclanswars(requestor.getClanId(), activeChar.getClanId());
+			ClanTable.getInstance().deleteClansWar(requestor.getClanId(), activeChar.getClanId());
 		}
 		else
 		{
-			_log.info(getClass().getSimpleName() + ": Missing implementation for answer: " + _answer + " and name: " + _reqName + "!");
+			LOGGER.warn("Missing implementation for answer: " + _answer + " and name: " + _reqName + "!");
 		}
 		activeChar.onTransactionRequest(requestor);
 	}

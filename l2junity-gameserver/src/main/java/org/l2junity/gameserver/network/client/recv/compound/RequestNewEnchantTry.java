@@ -18,9 +18,15 @@
  */
 package org.l2junity.gameserver.network.client.recv.compound;
 
+import org.l2junity.commons.util.CommonUtil;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.gameserver.data.xml.impl.CombinationItemsData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.actor.request.CompoundRequest;
+import org.l2junity.gameserver.model.debugger.DebugType;
+import org.l2junity.gameserver.model.items.combination.CombinationItem;
+import org.l2junity.gameserver.model.items.combination.CombinationItemReward;
+import org.l2junity.gameserver.model.items.combination.CombinationItemType;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
@@ -84,51 +90,41 @@ public class RequestNewEnchantTry implements IClientIncomingPacket
 		// Lets prevent using same item twice
 		if (itemOne.getObjectId() == itemTwo.getObjectId())
 		{
-			client.sendPacket(new ExEnchantFail(itemOne.getItem().getId(), itemTwo.getItem().getId()));
+			client.sendPacket(new ExEnchantFail(itemOne.getId(), itemTwo.getId()));
 			activeChar.removeRequest(request.getClass());
 			return;
 		}
 		
-		// Combining only same items!
-		if (itemOne.getItem().getId() != itemTwo.getItem().getId())
-		{
-			client.sendPacket(new ExEnchantFail(itemOne.getItem().getId(), itemTwo.getItem().getId()));
-			activeChar.removeRequest(request.getClass());
-			return;
-		}
+		final CombinationItem combinationItem = CombinationItemsData.getInstance().getItemsBySlots(itemOne.getId(), itemTwo.getId());
 		
 		// Not implemented or not able to merge!
-		if ((itemOne.getItem().getCompoundItem() == 0) || (itemOne.getItem().getCompoundChance() == 0))
+		if (combinationItem == null)
 		{
-			client.sendPacket(new ExEnchantFail(itemOne.getItem().getId(), itemTwo.getItem().getId()));
+			client.sendPacket(new ExEnchantFail(itemOne.getId(), itemTwo.getId()));
 			activeChar.removeRequest(request.getClass());
 			return;
 		}
 		
 		final InventoryUpdate iu = new InventoryUpdate();
-		final double random = Rnd.nextDouble() * 100;
+		iu.addRemovedItem(itemOne);
+		iu.addRemovedItem(itemTwo);
 		
-		// Success
-		if (random < itemOne.getItem().getCompoundChance())
+		if (activeChar.destroyItem("Compound-Item-One", itemOne, 1, null, true) && activeChar.destroyItem("Compound-Item-Two", itemTwo, 1, null, true))
 		{
-			iu.addRemovedItem(itemOne);
-			iu.addRemovedItem(itemTwo);
+			final double random = (Rnd.nextDouble() * 100);
+			final boolean success = random <= combinationItem.getChance();
+			final CombinationItemReward rewardItem = combinationItem.getReward(success ? CombinationItemType.ON_SUCCESS : CombinationItemType.ON_FAILURE);
+			final ItemInstance item = activeChar.addItem("Compound-Result", rewardItem.getId(), rewardItem.getCount(), null, true);
 			
-			if (activeChar.destroyItem("Compound-Item-One", itemOne, null, true) && activeChar.destroyItem("Compound-Item-Two", itemTwo, null, true))
+			if (success)
 			{
-				final ItemInstance item = activeChar.addItem("Compound-Result", itemOne.getItem().getCompoundItem(), 1, null, true);
-				client.sendPacket(new ExEnchantSucess(item.getItem().getId()));
+				client.sendPacket(new ExEnchantSucess(item.getId()));
 			}
-		}
-		else
-		{
-			iu.addRemovedItem(itemTwo);
-			
-			// Upon fail we destroy the second item.
-			if (activeChar.destroyItem("Compound-Item-Two-Fail", itemTwo, null, true))
+			else
 			{
-				client.sendPacket(new ExEnchantFail(itemOne.getItem().getId(), itemTwo.getItem().getId()));
+				client.sendPacket(new ExEnchantFail(itemOne.getId(), itemTwo.getId()));
 			}
+			activeChar.sendDebugMessage("Random: " + CommonUtil.formatDouble(random, "#.##") + " chance: " + combinationItem.getChance() + " success: " + success, DebugType.ITEMS);
 		}
 		
 		activeChar.sendInventoryUpdate(iu);

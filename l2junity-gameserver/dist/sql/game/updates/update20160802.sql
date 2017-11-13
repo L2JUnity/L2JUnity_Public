@@ -1,0 +1,1 @@
+ALTER TABLE `character_pet_skills_save` ADD `skill_sub_level` INT(4) NOT NULL DEFAULT '0' AFTER `skill_level`;

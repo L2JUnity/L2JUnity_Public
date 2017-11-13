@@ -73,6 +73,11 @@ public class ItemHandler implements IHandler<IItemHandler, EtcItem>
 		return _datatable.get(item.getHandlerName());
 	}
 	
+	public IItemHandler getHandler(String name)
+	{
+		return _datatable.get(name);
+	}
+	
 	/**
 	 * Returns the number of elements contained in datatable
 	 * @return int : Size of the datatable

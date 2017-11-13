@@ -6,7 +6,7 @@
 		<icon>icon.skill11011</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillBySkill">
+			<effect name="p_trigger_skill_by_skill">
 				<castSkillId>30001</castSkillId> <!-- Hydro Attack -->
 				<skillId>30002</skillId> <!-- Storm Sign -->
 				<skillLevel>1</skillLevel>
@@ -120,7 +120,10 @@
 			<value level="28">105</value>
 		</magicLvl>
 		<nextAction>CAST</nextAction>
-		<magicCriticalRate>6</magicCriticalRate>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="28">6</value>
+			<value fromLevel="24" toLevel="28" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -130,7 +133,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">6</value>
 					<value level="2">14</value>
@@ -160,6 +163,30 @@
 					<value level="26">231</value>
 					<value level="27">235</value>
 					<value level="28">239</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1006" toSubLevel="1006">{base + base / 100 * (2 + 0.8 * (subIndex - 5))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1007" toSubLevel="1007">{base + base / 100 * (3 + 0.3 * (subIndex - 6))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1008" toSubLevel="1008">{base + base / 100 * (3 + 0.3 * (subIndex - 7))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1009" toSubLevel="1011">{base + base / 100 * (4 + 0.4 * (subIndex - 8))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1012" toSubLevel="1012">{base + base / 100 * (5 + 0.1 * (subIndex - 11))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1013" toSubLevel="1013">{base + base / 100 * (5 + 0.5 * (subIndex - 12))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1014" toSubLevel="1014">{base + base / 100 * (5 + 0.9 * (subIndex - 13))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1015" toSubLevel="1015">{base + base / 100 * (6 + 0.2 * (subIndex - 14))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1016" toSubLevel="1016">{base + base / 100 * (6 + 0.6 * (subIndex - 15))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1017" toSubLevel="1017">{base + base / 100 * (7 * (subIndex - 16))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1018" toSubLevel="1018">{base + base / 100 * (7 + 0.4 * (subIndex - 17))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1019" toSubLevel="1019">{base + base / 100 * (7 + 0.7 * (subIndex - 18))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1020" toSubLevel="1020">{base + base / 100 * (8 + 0.1 * (subIndex - 19))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1021" toSubLevel="1021">{base + base / 100 * (8 + 0.5 * (subIndex - 20))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1022" toSubLevel="1022">{base + base / 100 * (8 + 0.8 * (subIndex - 21))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1023" toSubLevel="1023">{base + base / 100 * (9 + 0.2 * (subIndex - 22))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1024" toSubLevel="1024">{base + base / 100 * (9 + 0.6 * (subIndex - 23))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1025" toSubLevel="1025">{base + base / 100 * (10 * (subIndex - 24))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1026" toSubLevel="1026">{base + base / 100 * (10 + 0.3 * (subIndex - 25))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1027" toSubLevel="1027">{base + base / 100 * (10 + 0.7 * (subIndex - 26))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1028" toSubLevel="1028">{base + base / 100 * (11 + 0.1 * (subIndex - 27))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1029" toSubLevel="1029">{base + base / 100 * (11 + 0.4 * (subIndex - 28))}</value>
+					<value fromLevel="24" toLevel="28" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 				<debuffModifier>1.1</debuffModifier>
 			</effect>
@@ -181,18 +208,19 @@
 			<value level="3">STORM_SIGN1</value>
 		</abnormalVisualEffect>
 		<icon>icon.skill30027</icon>
+		<activateRate>100</activateRate> <!-- Guessed -->
 		<operateType>A2</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<isMagic>4</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-70</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -255,7 +283,10 @@
 			<value level="19">103</value>
 			<value level="20">105</value>
 		</magicLvl>
-		<magicCriticalRate>6</magicCriticalRate>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="20">6</value>
+			<value fromLevel="16" toLevel="20" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -270,7 +301,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">110</value>
 					<value level="2">120</value>
@@ -292,10 +323,34 @@
 					<value level="18">711</value>
 					<value level="19">725</value>
 					<value level="20">739</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1006" toSubLevel="1006">{base + base / 100 * (2 + 0.8 * (subIndex - 5))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1007" toSubLevel="1007">{base + base / 100 * (3 + 0.3 * (subIndex - 6))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1008" toSubLevel="1008">{base + base / 100 * (3 + 0.3 * (subIndex - 7))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1009" toSubLevel="1011">{base + base / 100 * (4 + 0.4 * (subIndex - 8))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1012" toSubLevel="1012">{base + base / 100 * (5 + 0.1 * (subIndex - 11))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1013" toSubLevel="1013">{base + base / 100 * (5 + 0.5 * (subIndex - 12))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1014" toSubLevel="1014">{base + base / 100 * (5 + 0.9 * (subIndex - 13))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1015" toSubLevel="1015">{base + base / 100 * (6 + 0.2 * (subIndex - 14))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1016" toSubLevel="1016">{base + base / 100 * (6 + 0.6 * (subIndex - 15))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1017" toSubLevel="1017">{base + base / 100 * (7 * (subIndex - 16))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1018" toSubLevel="1018">{base + base / 100 * (7 + 0.4 * (subIndex - 17))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1019" toSubLevel="1019">{base + base / 100 * (7 + 0.7 * (subIndex - 18))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1020" toSubLevel="1020">{base + base / 100 * (8 + 0.1 * (subIndex - 19))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1021" toSubLevel="1021">{base + base / 100 * (8 + 0.5 * (subIndex - 20))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1022" toSubLevel="1022">{base + base / 100 * (8 + 0.8 * (subIndex - 21))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1023" toSubLevel="1023">{base + base / 100 * (9 + 0.2 * (subIndex - 22))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1024" toSubLevel="1024">{base + base / 100 * (9 + 0.6 * (subIndex - 23))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1025" toSubLevel="1025">{base + base / 100 * (10 * (subIndex - 24))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1026" toSubLevel="1026">{base + base / 100 * (10 + 0.3 * (subIndex - 25))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1027" toSubLevel="1027">{base + base / 100 * (10 + 0.7 * (subIndex - 26))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1028" toSubLevel="1028">{base + base / 100 * (11 + 0.1 * (subIndex - 27))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1029" toSubLevel="1029">{base + base / 100 * (11 + 0.4 * (subIndex - 28))}</value>
+					<value fromLevel="16" toLevel="20" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 				<debuffModifier>1.1</debuffModifier>
 			</effect>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>STORM_SIGN,3</dispel>
 			</effect>
 		</effects>
@@ -307,6 +362,10 @@
 		<abnormalType>STUN</abnormalType>
 		<abnormalTime>5</abnormalTime>
 		<abnormalVisualEffect>WIND_STUN</abnormalVisualEffect>
+		<activateRate>
+			<value fromLevel="1" toLevel="25">120</value>
+			<value fromLevel="21" toLevel="25" fromSubLevel="1001" toSubLevel="1030">{base + base / 100 * subIndex}</value>
+		</activateRate>
 		<icon>icon.skill30004</icon>
 		<operateType>A2</operateType>
 		<targetType>ENEMY</targetType>
@@ -344,7 +403,7 @@
 		<hitTime>3000</hitTime>
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<magicLvl>
 			<value level="1">40</value>
 			<value level="2">44</value>
@@ -374,16 +433,21 @@
 		</magicLvl>
 		<trait>KNOCKBACK</trait>
 		<conditions>
-			<!-- TODO: Must be blended into wind. -->
 			<condition name="EquipWeapon">
 				<weaponType>
 					<item>SWORD</item>
 					<item>BLUNT</item>
 				</weaponType>
 			</condition>
+			<condition name="OpCheckAbnormal">
+				<type>HIDE</type>
+				<level>1</level>
+				<hasAbnormal>true</hasAbnormal>
+				<affectType>CASTER</affectType>
+			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">57</value>
 					<value level="2">66</value>
@@ -410,10 +474,40 @@
 					<value level="23">584</value>
 					<value level="24">594</value>
 					<value level="25">604</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1006" toSubLevel="1006">{base + base / 100 * (2 + 0.8 * (subIndex - 5))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1007" toSubLevel="1007">{base + base / 100 * (3 + 0.3 * (subIndex - 6))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1008" toSubLevel="1008">{base + base / 100 * (3 + 0.3 * (subIndex - 7))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1009" toSubLevel="1011">{base + base / 100 * (4 + 0.4 * (subIndex - 8))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1012" toSubLevel="1012">{base + base / 100 * (5 + 0.1 * (subIndex - 11))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1013" toSubLevel="1013">{base + base / 100 * (5 + 0.5 * (subIndex - 12))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1014" toSubLevel="1014">{base + base / 100 * (5 + 0.9 * (subIndex - 13))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1015" toSubLevel="1015">{base + base / 100 * (6 + 0.2 * (subIndex - 14))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1016" toSubLevel="1016">{base + base / 100 * (6 + 0.6 * (subIndex - 15))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1017" toSubLevel="1017">{base + base / 100 * (7 * (subIndex - 16))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1018" toSubLevel="1018">{base + base / 100 * (7 + 0.4 * (subIndex - 17))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1019" toSubLevel="1019">{base + base / 100 * (7 + 0.7 * (subIndex - 18))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1020" toSubLevel="1020">{base + base / 100 * (8 + 0.1 * (subIndex - 19))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1021" toSubLevel="1021">{base + base / 100 * (8 + 0.5 * (subIndex - 20))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1022" toSubLevel="1022">{base + base / 100 * (8 + 0.8 * (subIndex - 21))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1023" toSubLevel="1023">{base + base / 100 * (9 + 0.2 * (subIndex - 22))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1024" toSubLevel="1024">{base + base / 100 * (9 + 0.6 * (subIndex - 23))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1025" toSubLevel="1025">{base + base / 100 * (10 * (subIndex - 24))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1026" toSubLevel="1026">{base + base / 100 * (10 + 0.3 * (subIndex - 25))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1027" toSubLevel="1027">{base + base / 100 * (10 + 0.7 * (subIndex - 26))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1028" toSubLevel="1028">{base + base / 100 * (11 + 0.1 * (subIndex - 27))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1029" toSubLevel="1029">{base + base / 100 * (11 + 0.4 * (subIndex - 28))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
+			</effect>
+			<effect name="p_magical_defence" fromLevel="21" toLevel="25" fromSubLevel="3001" toSubLevel="3030">
+				<amount>
+					<value fromLevel="21" toLevel="25" fromSubLevel="3001" toSubLevel="3030">{-0.6 - 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -425,18 +519,19 @@
 		<abnormalType>STORM_SIGN</abnormalType>
 		<abnormalVisualEffect>STORM_SIGN2</abnormalVisualEffect>
 		<icon>icon.skill30027</icon>
+		<activateRate>100</activateRate> <!-- Guessed -->
 		<operateType>A2</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<isMagic>4</isMagic>
 		<effectPoint>-100</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-100</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -450,6 +545,10 @@
 		<abnormalType>STUN</abnormalType>
 		<abnormalTime>1</abnormalTime>
 		<abnormalVisualEffect>KNOCKBACK</abnormalVisualEffect>
+		<activateRate>
+			<value fromLevel="1" toLevel="11">120</value> <!-- Unconfirmed -->
+			<value fromLevel="7" toLevel="11" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</activateRate>
 		<affectLimit>5-10</affectLimit> <!-- Unconfirmed -->
 		<affectRange>100</affectRange> <!-- Unconfirmed -->
 		<operateType>A1</operateType>
@@ -488,8 +587,12 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
 		<isMagic>1</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>KNOCKBACK</trait>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="11">6</value>
+			<value fromLevel="7" toLevel="11" fromSubLevel="3001" toSubLevel="3030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -499,11 +602,11 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="KnockBack">
+			<effect name="i_knockback">
 				<distance>60</distance>
 				<type>THROW_UP</type>
 			</effect>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<debuffModifier>1.1</debuffModifier>
 				<power>
 					<value level="1">255</value>
@@ -517,6 +620,30 @@
 					<value level="9">359</value>
 					<value level="10">365</value>
 					<value level="11">371</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + base / 100 * (2 + 0.8 * (subIndex - 5))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + base / 100 * (3 + 0.3 * (subIndex - 6))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1008" toSubLevel="1008">{base + base / 100 * (3 + 0.3 * (subIndex - 7))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1009" toSubLevel="1011">{base + base / 100 * (4 + 0.4 * (subIndex - 8))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1012" toSubLevel="1012">{base + base / 100 * (5 + 0.1 * (subIndex - 11))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1013" toSubLevel="1013">{base + base / 100 * (5 + 0.5 * (subIndex - 12))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1014" toSubLevel="1014">{base + base / 100 * (5 + 0.9 * (subIndex - 13))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1015" toSubLevel="1015">{base + base / 100 * (6 + 0.2 * (subIndex - 14))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1016" toSubLevel="1016">{base + base / 100 * (6 + 0.6 * (subIndex - 15))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1017" toSubLevel="1017">{base + base / 100 * (7 * (subIndex - 16))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1018" toSubLevel="1018">{base + base / 100 * (7 + 0.4 * (subIndex - 17))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + base / 100 * (7 + 0.7 * (subIndex - 18))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + base / 100 * (8 + 0.1 * (subIndex - 19))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1021" toSubLevel="1021">{base + base / 100 * (8 + 0.5 * (subIndex - 20))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1022" toSubLevel="1022">{base + base / 100 * (8 + 0.8 * (subIndex - 21))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1023" toSubLevel="1023">{base + base / 100 * (9 + 0.2 * (subIndex - 22))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1024" toSubLevel="1024">{base + base / 100 * (9 + 0.6 * (subIndex - 23))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1025" toSubLevel="1025">{base + base / 100 * (10 * (subIndex - 24))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1026" toSubLevel="1026">{base + base / 100 * (10 + 0.3 * (subIndex - 25))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1027" toSubLevel="1027">{base + base / 100 * (10 + 0.7 * (subIndex - 26))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1028" toSubLevel="1028">{base + base / 100 * (11 + 0.1 * (subIndex - 27))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1029" toSubLevel="1029">{base + base / 100 * (11 + 0.4 * (subIndex - 28))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 			</effect>
 		</effects>
@@ -568,6 +695,10 @@
 		<hitTime>4000</hitTime>
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="15">6</value>
+			<value fromLevel="11" toLevel="15" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -582,7 +713,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">123</value>
 					<value level="2">127</value>
@@ -599,25 +730,48 @@
 					<value level="13">536</value>
 					<value level="14">546</value>
 					<value level="15">556</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1006" toSubLevel="1006">{base + base / 100 * (2 + 0.8 * (subIndex - 5))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1007" toSubLevel="1007">{base + base / 100 * (3 + 0.3 * (subIndex - 6))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1008" toSubLevel="1008">{base + base / 100 * (3 + 0.3 * (subIndex - 7))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1009" toSubLevel="1011">{base + base / 100 * (4 + 0.4 * (subIndex - 8))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1012" toSubLevel="1012">{base + base / 100 * (5 + 0.1 * (subIndex - 11))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1013" toSubLevel="1013">{base + base / 100 * (5 + 0.5 * (subIndex - 12))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1014" toSubLevel="1014">{base + base / 100 * (5 + 0.9 * (subIndex - 13))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1015" toSubLevel="1015">{base + base / 100 * (6 + 0.2 * (subIndex - 14))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1016" toSubLevel="1016">{base + base / 100 * (6 + 0.6 * (subIndex - 15))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1017" toSubLevel="1017">{base + base / 100 * (7 * (subIndex - 16))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1018" toSubLevel="1018">{base + base / 100 * (7 + 0.4 * (subIndex - 17))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1019" toSubLevel="1019">{base + base / 100 * (7 + 0.7 * (subIndex - 18))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1020" toSubLevel="1020">{base + base / 100 * (8 + 0.1 * (subIndex - 19))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1021" toSubLevel="1021">{base + base / 100 * (8 + 0.5 * (subIndex - 20))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1022" toSubLevel="1022">{base + base / 100 * (8 + 0.8 * (subIndex - 21))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1023" toSubLevel="1023">{base + base / 100 * (9 + 0.2 * (subIndex - 22))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1024" toSubLevel="1024">{base + base / 100 * (9 + 0.6 * (subIndex - 23))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1025" toSubLevel="1025">{base + base / 100 * (10 * (subIndex - 24))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1026" toSubLevel="1026">{base + base / 100 * (10 + 0.3 * (subIndex - 25))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1027" toSubLevel="1027">{base + base / 100 * (10 + 0.7 * (subIndex - 26))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1028" toSubLevel="1028">{base + base / 100 * (11 + 0.1 * (subIndex - 27))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1029" toSubLevel="1029">{base + base / 100 * (11 + 0.4 * (subIndex - 28))}</value>
+					<value fromLevel="11" toLevel="15" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 			</effect>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>STORM_SIGN,3</dispel>
 			</effect>
 		</effects>
 		<selfEffects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>10</power>
 			</effect>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>5</power>
 			</effect>
 		</selfEffects>
 	</skill>
 	<skill id="30008" toLevel="5" name="Wind Blend">
-		<!-- Updated to IO -->
+		<!-- Updated to Helios -->
 		<!-- For 3 sec., blends into the wind. Becomes one with the wind and disappears later on. Requires a sword or blunt weapon. -->
-		<icon>icon.skill30008</icon>
 		<abnormalLvl>
 			<value level="1">1</value>
 			<value level="2">2</value>
@@ -625,7 +779,10 @@
 			<value level="4">4</value>
 			<value level="5">5</value>
 		</abnormalLvl>
-		<abnormalTime>3</abnormalTime>
+		<abnormalTime>5</abnormalTime>
+		<abnormalType>WIND_BLEND</abnormalType>
+		<abnormalVisualEffect>WIND_BLEND</abnormalVisualEffect>
+		<icon>icon.skill30008</icon>
 		<effectPoint>687</effectPoint>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
@@ -652,6 +809,7 @@
 			<value level="5">20000</value>
 		</reuseDelay>
 		<isMagic>1</isMagic>
+		<withoutAction>true</withoutAction>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -661,12 +819,29 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="ReduceDamage">
-				<amount>50</amount>
+			<effect name="p_physical_defence">
+				<amount>
+					<value level="1">0</value>
+					<value level="2">20</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence">
+				<amount>
+					<value level="1">0</value>
+					<value level="2">20</value>
+					<value level="3">30</value>
+					<value level="4">40</value>
+					<value level="5">50</value>
+				</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 		<endEffects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>19227</skillId> <!-- Wind Hiding -->
 				<skillLevel>
 					<value level="1">1</value>
@@ -679,7 +854,7 @@
 		</endEffects>
 	</skill>
 	<skill id="30009" toLevel="10" name="Deceptive Blink">
-		<!-- Updated to Ertheia -->
+		<!-- Updated to Helios -->
 		<!-- For 5 sec., blends into the wind and teleports backward, and Speed + 100. Requires a sword or blunt weapon. -->
 		<icon>icon.skill30009</icon>
 		<abnormalLvl>
@@ -728,14 +903,26 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Blink">
+			<effect name="i_blink">
 				<angle>0</angle> <!-- Teleport to Back -->
 				<range>400</range>
 			</effect>
-			<effect name="Hide" />
-			<effect name="Speed">
-				<amount>100</amount>
+			<effect name="p_hide" />
+			<effect name="p_speed">
+				<amount>50</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_physical_defence" fromLevel="9" toLevel="10" fromSubLevel="1001" toSubLevel="1030">
+				<amount>
+					<value fromLevel="9" toLevel="10" fromSubLevel="1001" toSubLevel="1030">{0.6 + 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence" fromLevel="9" toLevel="10" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="9" toLevel="10" fromSubLevel="2001" toSubLevel="2030">{0.6 + 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -744,7 +931,10 @@
 		<!-- Cancels all debuffs and recovers HP/MP for 10 sec. inside a refuge of wind. Cannot move. -->
 		<icon>icon.skill30010</icon>
 		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>10</abnormalTime>
+		<abnormalTime>
+			<value fromLevel="1" toLevel="2">10</value>
+			<value fromLevel="1" toLevel="2" fromSubLevel="1001" toSubLevel="1030">{base + 0.5 * subIndex}</value>
+		</abnormalTime>
 		<abnormalVisualEffect>WIND_HIDE</abnormalVisualEffect>
 		<blockedInOlympiad>true</blockedInOlympiad> <!-- Unconfirmed -->
 		<effectPoint>687</effectPoint>
@@ -762,26 +952,60 @@
 		<reuseDelay>180000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effects>
-			<effect name="DispelByCategory">
+			<effect name="i_dispel_by_category">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>10</max>
 			</effect>
-			<effect name="BlockActions" />
-			<effect name="HealOverTime">
+			<effect name="p_block_act" />
+			<effect name="t_hp">
 				<!-- Unconfirmed -->
 				<power>60</power>
 				<ticks>5</ticks>
 			</effect>
-			<effect name="ManaHealOverTime">
+			<effect name="t_mp">
 				<!-- Unconfirmed -->
 				<power>10</power>
 				<ticks>5</ticks>
 			</effect>
+			<effect name="i_heal" fromLevel="1" toLevel="2" fromSubLevel="2001" toSubLevel="2030">
+				<power>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2001" toSubLevel="2001">1936</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2002" toSubLevel="2002">2072</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2003" toSubLevel="2003">2207</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2004" toSubLevel="2004">2342</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2005" toSubLevel="2005">2477</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2006" toSubLevel="2006">2612</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2007" toSubLevel="2007">2747</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2008" toSubLevel="2008">2882</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2009" toSubLevel="2009">3017</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2010" toSubLevel="2010">3152</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2011" toSubLevel="2011">3288</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2012" toSubLevel="2012">3423</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2013" toSubLevel="2013">3558</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2014" toSubLevel="2014">3693</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2015" toSubLevel="2015">3828</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2016" toSubLevel="2016">3964</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2017" toSubLevel="2017">4099</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2018" toSubLevel="2018">4234</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2019" toSubLevel="2019">4369</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2020" toSubLevel="2020">4504</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2021" toSubLevel="2021">4594</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2022" toSubLevel="2022">4684</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2023" toSubLevel="2023">4774</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2024" toSubLevel="2024">4864</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2025" toSubLevel="2025">4955</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2026" toSubLevel="2026">5044</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2027" toSubLevel="2027">5135</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2028" toSubLevel="2028">5224</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2029" toSubLevel="2029">5315</value>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2030" toSubLevel="2030">5405</value>
+				</power>
+			</effect>
 		</effects>
 	</skill>
 	<skill id="30011" toLevel="15" name="Threatening Wind">
-		<!-- Updated to IO -->
+		<!-- Updated to Helios -->
 		<!-- Sends a slashing wind to brand target with Storm Sign Stage 3. Requires a sword or blunt Weapon. -->
 		<icon>icon.skill30011</icon>
 		<effectRange>1200</effectRange>
@@ -822,7 +1046,7 @@
 			<value level="14">37</value>
 			<value level="15">38</value>
 		</mpConsume>
-		<castRange>900</castRange>
+		<castRange>600</castRange>
 		<hitTime>1200</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>15000</reuseDelay>
@@ -837,20 +1061,24 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>30002</skillId> <!-- Storm Sign -->
 				<skillLevel>3</skillLevel>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="30012" toLevel="25" name="Air Rush">
-		<!-- Updated to IO -->
+		<!-- Updated to Helios -->
 		<!-- Knocks down target and attacks with 57 Power added to M. Atk. 10% more damage if target is debuffed. If target has Storm Sign, eliminates it and inflicts additional damage. Requires a sword or blunt weapon. -->
 		<icon>icon.skill30012</icon>
 		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>5</abnormalTime>
 		<abnormalType>STUN</abnormalType>
 		<abnormalVisualEffect>KNOCKDOWN</abnormalVisualEffect>
+		<activateRate>
+			<value fromLevel="1" toLevel="25">120</value>
+			<value fromLevel="21" toLevel="25" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</activateRate>
 		<operateType>DA2</operateType>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
@@ -882,12 +1110,15 @@
 			<value level="25">73</value>
 		</mpConsume>
 		<effectPoint>-696</effectPoint>
-		<castRange>900</castRange>
+		<castRange>
+			<value fromLevel="1" toLevel="25">600</value>
+			<value fromLevel="21" toLevel="25" fromSubLevel="3001" toSubLevel="3030">{base + 10 * subIndex}</value>
+		</castRange>
 		<hitTime>1000</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>7000</reuseDelay>
 		<isMagic>1</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<trait>KNOCKBACK</trait>
 		<conditions>
 			<condition name="EquipWeapon">
@@ -901,7 +1132,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<debuffModifier>1.1</debuffModifier>
 				<power>
 					<value level="1">57</value>
@@ -929,18 +1160,42 @@
 					<value level="23">535</value>
 					<value level="24">545</value>
 					<value level="25">555</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1006" toSubLevel="1006">{base + base / 100 * (2 + 0.8 * (subIndex - 5))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1007" toSubLevel="1007">{base + base / 100 * (3 + 0.3 * (subIndex - 6))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1008" toSubLevel="1008">{base + base / 100 * (3 + 0.3 * (subIndex - 7))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1009" toSubLevel="1011">{base + base / 100 * (4 + 0.4 * (subIndex - 8))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1012" toSubLevel="1012">{base + base / 100 * (5 + 0.1 * (subIndex - 11))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1013" toSubLevel="1013">{base + base / 100 * (5 + 0.5 * (subIndex - 12))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1014" toSubLevel="1014">{base + base / 100 * (5 + 0.9 * (subIndex - 13))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1015" toSubLevel="1015">{base + base / 100 * (6 + 0.2 * (subIndex - 14))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1016" toSubLevel="1016">{base + base / 100 * (6 + 0.6 * (subIndex - 15))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1017" toSubLevel="1017">{base + base / 100 * (7 * (subIndex - 16))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1018" toSubLevel="1018">{base + base / 100 * (7 + 0.4 * (subIndex - 17))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1019" toSubLevel="1019">{base + base / 100 * (7 + 0.7 * (subIndex - 18))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1020" toSubLevel="1020">{base + base / 100 * (8 + 0.1 * (subIndex - 19))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1021" toSubLevel="1021">{base + base / 100 * (8 + 0.5 * (subIndex - 20))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1022" toSubLevel="1022">{base + base / 100 * (8 + 0.8 * (subIndex - 21))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1023" toSubLevel="1023">{base + base / 100 * (9 + 0.2 * (subIndex - 22))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1024" toSubLevel="1024">{base + base / 100 * (9 + 0.6 * (subIndex - 23))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1025" toSubLevel="1025">{base + base / 100 * (10 * (subIndex - 24))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1026" toSubLevel="1026">{base + base / 100 * (10 + 0.3 * (subIndex - 25))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1027" toSubLevel="1027">{base + base / 100 * (10 + 0.7 * (subIndex - 26))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1028" toSubLevel="1028">{base + base / 100 * (11 + 0.1 * (subIndex - 27))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1029" toSubLevel="1029">{base + base / 100 * (11 + 0.4 * (subIndex - 28))}</value>
+					<value fromLevel="21" toLevel="25" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 			</effect>
-			<effect name="DispelBySlot">
+			<effect name="i_dispel_by_slot">
 				<dispel>STORM_SIGN,3</dispel>
 			</effect>
-			<effect name="KnockBack"> <!-- Value are guessed -->
+			<effect name="i_knockback"> <!-- Value are guessed -->
 				<distance>50</distance>
 				<speed>400</speed>
 				<knockDown>true</knockDown>
 			</effect>
-			<effect name="BlockActions">
-				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912</allowedSkills>
+			<effect name="p_condition_block_act_skill">
+				<allowedSkills>10279;10517;10025;10776;11770;1904;11264;11093;13314;1912;30516</allowedSkills>
 			</effect>
 		</effects>
 	</skill>
@@ -969,15 +1224,22 @@
 			<condition name="OpTargetPc" />
 		</conditions>
 		<effects>
-			<effect name="BlinkSwap" />
+			<effect name="i_position_change" />
 		</effects>
 	</skill>
 	<skill id="30014" toLevel="15" name="Compelling Wind">
-		<!-- AUTO GENERATED SKILL -->
+		<!-- Updated to Helios -->
 		<!-- Sends a breeze that pushes target toward you. Requires a sword / blunt weapon. -->
-		<abnormalLevel>1</abnormalLevel>
+		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>5</abnormalTime>
+		<abnormalType>COMPELLING_WIND</abnormalType>
 		<abnormalVisualEffect>PSY_POWER</abnormalVisualEffect>
+		<activateRate>
+			<value fromLevel="1" toLevel="15">50</value>
+			<value fromLevel="11" toLevel="15" fromSubLevel="1001" toSubLevel="1030">{base + base / 100 * subIndex}</value>
+		</activateRate>
+		<basicProperty>MAGIC</basicProperty>
+		<trait>PSYCHIC</trait> <!-- retail confirmed {trait_psychic} -->
 		<icon>icon.skill30014</icon>
 		<effectPoint>-1371</effectPoint>
 		<operateType>A2</operateType>
@@ -998,12 +1260,15 @@
 			<value level="14">37</value>
 			<value level="15">38</value>
 		</mpConsume>
-		<castRange>900</castRange>
+		<castRange>
+			<value fromLevel="1" toLevel="15">600</value>
+			<value fromLevel="11" toLevel="15" fromSubLevel="3001" toSubLevel="3030">{base + 10 * subIndex}</value>
+		</castRange>
 		<hitTime>1200</hitTime>
 		<coolTime>500</coolTime>
 		<reuseDelay>10000</reuseDelay>
 		<isMagic>1</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -1014,12 +1279,23 @@
 				</weaponType>
 			</condition>
 		</conditions>
+		<effects>
+			<effect name="i_come_to_me" />
+			<effect name="p_block_controll" />
+			<effect name="p_magical_defence" fromLevel="11" toLevel="15" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="11" toLevel="15" fromSubLevel="2001" toSubLevel="2030">{-0.6 - 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+		</effects>
 	</skill>
 	<skill id="30015" toLevel="1" name="Mass Compelling Wind">
 		<!-- AUTO GENERATED SKILL -->
 		<!-- Sends a breeze that pushes target and nearby enemies toward you. -->
-		<abnormalLevel>1</abnormalLevel>
+		<abnormalLvl>1</abnormalLvl>
 		<abnormalTime>5</abnormalTime>
+		<abnormalType>COMPELLING_WIND</abnormalType>
 		<abnormalVisualEffect>PSY_POWER</abnormalVisualEffect>
 		<icon>icon.skill0028</icon>
 		<operateType>A2</operateType>
@@ -1028,7 +1304,7 @@
 		<coolTime>500</coolTime>
 		<isMagic>1</isMagic>
 		<effectPoint>-1371</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
@@ -1042,11 +1318,16 @@
 		</conditions>
 	</skill>
 	<skill id="30016" toLevel="4" name="Eye of the Storm">
-		<!-- Updated to IO -->
+		<!-- Updated to Helios -->
 		<!-- For 30 sec., M. Critical Rate + 100%, P./M. Def. + 30%. -->
 		<icon>icon.skill30016</icon>
 		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>30</abnormalTime>
+		<abnormalTime>
+			<value fromLevel="1" toLevel="4">30</value>
+			<value fromLevel="3" toLevel="4" fromSubLevel="1001" toSubLevel="1010">{base + subIndex}</value>
+			<value fromLevel="3" toLevel="4" fromSubLevel="1011" toSubLevel="1030">{base + 10 + 0.5 * subIndex}</value>
+		</abnormalTime>
+		<abnormalType>EYE_STORM</abnormalType>
 		<effectPoint>687</effectPoint>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
@@ -1062,30 +1343,37 @@
 		<reuseDelay>300000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effects>
-			<effect name="DefenceTrait" fromLevel="3" toLevel="4">
+			<effect name="p_defence_trait" fromLevel="3" toLevel="4">
 				<KNOCKDOWN>90</KNOCKDOWN>
 				<KNOCKBACK>90</KNOCKBACK>
 				<HATE>90</HATE>
 				<PULL>90</PULL>
+				<ZONE>90</ZONE>
 				<AIRBIND>90</AIRBIND>
 				<AGGRESSION>90</AGGRESSION>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>100</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost" fromLevel="2" toLevel="4">
+			<effect name="p_magic_mp_cost" fromLevel="2" toLevel="4">
 				<amount>-50</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
+			</effect>
+			<effect name="p_magical_attack" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{0.4 + 0.6 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1100,6 +1388,7 @@
 			<value level="4">4</value>
 		</abnormalLvl>
 		<abnormalTime>600</abnormalTime>
+		<abnormalType>SQUALL</abnormalType>
 		<abnormalVisualEffect>SQUALL</abnormalVisualEffect>
 		<effectPoint>2</effectPoint>
 		<operateType>A2</operateType>
@@ -1122,7 +1411,7 @@
 		<reuseDelay>30000</reuseDelay>
 		<isMagic>1</isMagic>
 		<effects>
-			<effect name="DefenceMagicCriticalDamage">
+			<effect name="p_magic_defence_critical_dmg">
 				<amount>
 					<value level="1">-15</value>
 					<value level="2">-15</value>
@@ -1131,7 +1420,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<chance>50</chance> <!-- Unconfirmed -->
 				<targetType>ENEMY</targetType>
 				<affectScope>SINGLE</affectScope>
@@ -1143,21 +1432,33 @@
 					<value level="4">4</value>
 				</skillLevel>
 			</effect>
-			<effect name="DispelByCategory" fromLevel="3" toLevel="4">
+			<effect name="i_dispel_by_category" fromLevel="3" toLevel="4">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>99</max>
 			</effect>
-			<effect name="Speed" fromLevel="2" toLevel="7">
+			<effect name="p_speed" fromLevel="2" toLevel="7">
 				<amount>7</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>
 					<value level="1">-15</value>
 					<value level="2">-15</value>
 					<value level="3">-15</value>
 					<value level="4">-20</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence" fromLevel="3" toLevel="4" fromSubLevel="1001" toSubLevel="1030">
+				<amount>
+					<value fromLevel="3" toLevel="4" fromSubLevel="1001" toSubLevel="1030">{0.6 + 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{0.6 + 0.4 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1181,8 +1482,8 @@
 		<effectPoint>100</effectPoint>
 		<isMagic>1</isMagic>
 		<effects>
-			<effect name="Untargetable" />
-			<effect name="DispelByCategory">
+			<effect name="p_disappear_target" />
+			<effect name="i_dispel_by_category">
 				<slot>DEBUFF</slot>
 				<rate>100</rate>
 				<max>10</max>
@@ -1207,6 +1508,10 @@
 			<value level="11">11</value>
 		</abnormalLvl>
 		<abnormalTime>10</abnormalTime>
+		<activateRate>
+			<value fromLevel="1" toLevel="11">80</value>
+			<value fromLevel="7" toLevel="11" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</activateRate>
 		<effectPoint>-687</effectPoint>
 		<operateType>A2</operateType>
 		<targetType>ENEMY</targetType>
@@ -1242,7 +1547,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>15000</reuseDelay>
 		<isMagic>1</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1252,11 +1557,11 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>30002</skillId> <!-- Storm Sign -->
 				<skillLevel>3</skillLevel>
 			</effect>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">533</value>
 					<value level="2">561</value>
@@ -1269,18 +1574,42 @@
 					<value level="9">743</value>
 					<value level="10">757</value>
 					<value level="11">771</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1006" toSubLevel="1006">{base + base / 100 * (2 + 0.8 * (subIndex - 5))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1007" toSubLevel="1007">{base + base / 100 * (3 + 0.3 * (subIndex - 6))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1008" toSubLevel="1008">{base + base / 100 * (3 + 0.3 * (subIndex - 7))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1009" toSubLevel="1011">{base + base / 100 * (4 + 0.4 * (subIndex - 8))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1012" toSubLevel="1012">{base + base / 100 * (5 + 0.1 * (subIndex - 11))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1013" toSubLevel="1013">{base + base / 100 * (5 + 0.5 * (subIndex - 12))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1014" toSubLevel="1014">{base + base / 100 * (5 + 0.9 * (subIndex - 13))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1015" toSubLevel="1015">{base + base / 100 * (6 + 0.2 * (subIndex - 14))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1016" toSubLevel="1016">{base + base / 100 * (6 + 0.6 * (subIndex - 15))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1017" toSubLevel="1017">{base + base / 100 * (7 * (subIndex - 16))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1018" toSubLevel="1018">{base + base / 100 * (7 + 0.4 * (subIndex - 17))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1019" toSubLevel="1019">{base + base / 100 * (7 + 0.7 * (subIndex - 18))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1020" toSubLevel="1020">{base + base / 100 * (8 + 0.1 * (subIndex - 19))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1021" toSubLevel="1021">{base + base / 100 * (8 + 0.5 * (subIndex - 20))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1022" toSubLevel="1022">{base + base / 100 * (8 + 0.8 * (subIndex - 21))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1023" toSubLevel="1023">{base + base / 100 * (9 + 0.2 * (subIndex - 22))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1024" toSubLevel="1024">{base + base / 100 * (9 + 0.6 * (subIndex - 23))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1025" toSubLevel="1025">{base + base / 100 * (10 * (subIndex - 24))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1026" toSubLevel="1026">{base + base / 100 * (10 + 0.3 * (subIndex - 25))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1027" toSubLevel="1027">{base + base / 100 * (10 + 0.7 * (subIndex - 26))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1028" toSubLevel="1028">{base + base / 100 * (11 + 0.1 * (subIndex - 27))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1029" toSubLevel="1029">{base + base / 100 * (11 + 0.4 * (subIndex - 28))}</value>
+					<value fromLevel="7" toLevel="11" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 				<debuffModifier>1.1</debuffModifier>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-180</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1291,7 +1620,12 @@
 		<!-- For 30 sec., Received P./M. Critical Damage - 50%, and Speed + 70. Has a chance of striking an attacker with lightning and branding them with Storm Sign Stage 4. Requires a sword or blunt weapon. -->
 		<icon>icon.skill30020</icon>
 		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>30</abnormalTime>
+		<abnormalTime>
+			<value fromLevel="1" toLevel="1">30</value>
+			<value fromLevel="1" toLevel="1" fromSubLevel="1001" toSubLevel="1010">{base + subIndex}</value>
+			<value fromLevel="1" toLevel="1" fromSubLevel="1011" toSubLevel="1030">{base + 10 + 0.5 * subIndex}</value>
+		</abnormalTime>
+		<abnormalType>SAYHA_FURY</abnormalType>
 		<abnormalVisualEffect>SAYHA_FURY</abnormalVisualEffect>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
@@ -1311,33 +1645,50 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="DefenceMagicCriticalDamage">
+			<effect name="p_magic_defence_critical_dmg">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="TriggerSkillByDamage">
+			<effect name="p_trigger_skill_by_dmg">
 				<chance>50</chance> <!-- Unconfirmed -->
 				<targetType>ENEMY</targetType>
 				<affectScope>SINGLE</affectScope>
 				<skillId>30027</skillId> <!-- Destructive Bolt -->
 				<skillLevel>1</skillLevel>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>70</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="DefenceCriticalDamage">
+			<effect name="p_defence_critical_damage">
 				<amount>-50</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_physical_defence" fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="1" toLevel="1" fromSubLevel="2001" toSubLevel="2030">{0.6 + 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_defence" fromLevel="1" toLevel="1" fromSubLevel="3001" toSubLevel="3030">
+				<amount>
+					<value fromLevel="1" toLevel="1" fromSubLevel="3001" toSubLevel="3030">{0.6 + 0.4 * subIndex}</value>
+				</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="30022" toLevel="2" name="Sayha's Blessing">
-		<!-- Updated to IO -->
+		<!-- Updated to Helios -->
 		<!-- For 30 sec., nearby party members' Speed + 50, and Knock Back / Knock Down / Pull / Aerial Yoke / Aggression Resistance + 30. Requires a sword or blunt weapon. -->
-		<icon>icon.skill30022</icon>
 		<abnormalLvl>1</abnormalLvl>
-		<abnormalTime>30</abnormalTime>
+		<abnormalTime>
+			<value fromLevel="1" toLevel="2">30</value>
+			<value fromLevel="1" toLevel="2" fromSubLevel="1001" toSubLevel="1010">{base + subIndex}</value>
+			<value fromLevel="1" toLevel="2" fromSubLevel="1011" toSubLevel="1030">{base + 10 + 0.5 * subIndex}</value>
+		</abnormalTime>
+		<abnormalType>SAYHA_BLESSING</abnormalType>
+		<icon>icon.skill30022</icon>
 		<effectPoint>687</effectPoint>
 		<operateType>A2</operateType>
 		<targetType>SELF</targetType>
@@ -1355,6 +1706,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>300000</reuseDelay>
 		<isMagic>1</isMagic>
+		<affectRange>1000</affectRange>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1364,7 +1716,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<KNOCKDOWN>
 					<value level="1">30</value>
 					<value level="2">40</value>
@@ -1377,6 +1729,10 @@
 					<value level="1">30</value>
 					<value level="2">40</value>
 				</PULL>
+				<ZONE>
+					<value level="1">30</value>
+					<value level="2">40</value>
+				</ZONE>
 				<AIRBIND>
 					<value level="1">30</value>
 					<value level="2">40</value>
@@ -1386,12 +1742,24 @@
 					<value level="2">40</value>
 				</AGGRESSION>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">50</value>
 					<value level="2">70</value>
 				</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_physical_attack" fromLevel="1" toLevel="2" fromSubLevel="1001" toSubLevel="1030">
+				<amount>
+					<value fromLevel="1" toLevel="2" fromSubLevel="1001" toSubLevel="1030">{0.6 + 0.4 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magical_attack" fromLevel="1" toLevel="2" fromSubLevel="2001" toSubLevel="2030">
+				<amount>
+					<value fromLevel="1" toLevel="2" fromSubLevel="2001" toSubLevel="2030">{0.4 + 0.6 * subIndex}</value>
+				</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1402,7 +1770,7 @@
 		<operateType>A2</operateType>
 		<hitTime>1000</hitTime>
 		<effectPoint>-102</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="30026" toLevel="4" name="Lightning Squall">
 		<!-- Updated to IO -->
@@ -1418,9 +1786,9 @@
 		<affectScope>SINGLE</affectScope>
 		<castRange>1100</castRange>
 		<isMagic>4</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">50</value>
 					<value level="2">100</value>
@@ -1428,7 +1796,7 @@
 					<value level="4">200</value>
 				</power>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1445,13 +1813,14 @@
 		<affectScope>SINGLE</affectScope>
 		<castRange>1100</castRange>
 		<isMagic>4</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>300</power>
 			</effect>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>30005</skillId> <!-- Storm Sign Lv. 4 -->
+				<skillLevel>4</skillLevel>
 				<chance>10</chance>
 			</effect>
 		</effects>
@@ -1459,8 +1828,13 @@
 	<skill id="30029" toLevel="4" name="Divine Storm">
 		<!-- Updated to IO -->
 		<!-- Attacks nearby target with 448 Power added to M. Atk. and locks them inside a storm for 5 sec. 10% more damage if target is debuffed. Requires a sword or blunt weapon. -->
-		<icon>icon.iconskill30007</icon>
 		<abnormalTime>5</abnormalTime>
+		<abnormalType>DIVINE_STORM</abnormalType>
+		<icon>icon.iconskill30007</icon>
+		<activateRate>
+			<value fromLevel="1" toLevel="4">90</value>
+			<value fromLevel="1" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{base + base / 100 * subIndex}</value>
+		</activateRate>
 		<affectLimit>10-10</affectLimit> <!-- Unconfirmed -->
 		<affectRange>200</affectRange> <!-- Unconfirmed -->
 		<effectPoint>-707</effectPoint>
@@ -1479,7 +1853,11 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
 		<isMagic>7</isMagic>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
+		<magicCriticalRate>
+			<value fromLevel="1" toLevel="4">6</value>
+			<value fromLevel="1" toLevel="4" fromSubLevel="3001" toSubLevel="3030">{base + base / 100 * subIndex}</value>
+		</magicCriticalRate>
 		<conditions>
 			<condition name="EquipWeapon">
 				<weaponType>
@@ -1489,12 +1867,36 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttack">
+			<effect name="i_m_attack">
 				<power>
 					<value level="1">448</value>
 					<value level="2">465</value>
 					<value level="3">473</value>
 					<value level="4">481</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1001" toSubLevel="1005">{base + base / 100 * (1 + 0.4 * (subIndex - 1))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1006" toSubLevel="1006">{base + base / 100 * (2 + 0.8 * (subIndex - 5))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1007" toSubLevel="1007">{base + base / 100 * (3 + 0.3 * (subIndex - 6))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1008" toSubLevel="1008">{base + base / 100 * (3 + 0.3 * (subIndex - 7))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1009" toSubLevel="1011">{base + base / 100 * (4 + 0.4 * (subIndex - 8))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1012" toSubLevel="1012">{base + base / 100 * (5 + 0.1 * (subIndex - 11))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1013" toSubLevel="1013">{base + base / 100 * (5 + 0.5 * (subIndex - 12))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1014" toSubLevel="1014">{base + base / 100 * (5 + 0.9 * (subIndex - 13))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1015" toSubLevel="1015">{base + base / 100 * (6 + 0.2 * (subIndex - 14))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1016" toSubLevel="1016">{base + base / 100 * (6 + 0.6 * (subIndex - 15))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1017" toSubLevel="1017">{base + base / 100 * (7 * (subIndex - 16))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1018" toSubLevel="1018">{base + base / 100 * (7 + 0.4 * (subIndex - 17))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1019" toSubLevel="1019">{base + base / 100 * (7 + 0.7 * (subIndex - 18))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1020" toSubLevel="1020">{base + base / 100 * (8 + 0.1 * (subIndex - 19))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1021" toSubLevel="1021">{base + base / 100 * (8 + 0.5 * (subIndex - 20))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1022" toSubLevel="1022">{base + base / 100 * (8 + 0.8 * (subIndex - 21))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1023" toSubLevel="1023">{base + base / 100 * (9 + 0.2 * (subIndex - 22))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1024" toSubLevel="1024">{base + base / 100 * (9 + 0.6 * (subIndex - 23))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1025" toSubLevel="1025">{base + base / 100 * (10 * (subIndex - 24))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1026" toSubLevel="1026">{base + base / 100 * (10 + 0.3 * (subIndex - 25))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1027" toSubLevel="1027">{base + base / 100 * (10 + 0.7 * (subIndex - 26))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1028" toSubLevel="1028">{base + base / 100 * (11 + 0.1 * (subIndex - 27))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1029" toSubLevel="1029">{base + base / 100 * (11 + 0.4 * (subIndex - 28))}</value>
+					<value fromLevel="1" toLevel="4" fromSubLevel="1030" toSubLevel="1030">{base + base / 100 * (11 + 0.8 * (subIndex - 29))}</value>
 				</power>
 				<debuffModifier>1.1</debuffModifier>
 			</effect>
@@ -1507,7 +1909,7 @@
 		<icon>icon.skill1042</icon>
 		<operateType>A2</operateType>
 		<effectPoint>-707</effectPoint>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="30031" toLevel="1" name="Magic Potential">
 		<!-- Increases Max. M. Critical Rate to 550. -->
@@ -1523,27 +1925,29 @@
 		<icon>icon.skill30023</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="TriggerSkillBySkill" fromLevel="3" toLevel="17">
+			<effect name="p_trigger_skill_by_skill" fromLevel="3" toLevel="17">
+				<chance>100</chance> <!-- 33% Chance to trigger Storm Sign Lv. 4 -->
 				<skillId>30002</skillId> <!-- Storm Sign -->
 				<skillLevel>1</skillLevel>
 				<skillLevelScaleTo>3</skillLevelScaleTo>
 				<allowWeapons>BLUNT</allowWeapons>
 				<castSkillId>30001</castSkillId> <!-- Hydro Attack -->
 			</effect>
-			<effect name="TriggerSkillBySkill" fromLevel="8" toLevel="17">
+			<effect name="p_trigger_skill_by_skill" fromLevel="8" toLevel="17">
+				<chance>100</chance> <!-- 33% Chance to trigger Storm Sign Lv. 4 -->
 				<castSkillId>30019</castSkillId> <!-- Sayha's Word -->
 				<allowWeapons>BLUNT</allowWeapons>
 				<skillId>30002</skillId> <!-- Storm Sign -->
 				<skillLevel>3</skillLevel>
 			</effect>
-			<effect name="TriggerSkillBySkill" fromLevel="4" toLevel="17">
+			<effect name="p_trigger_skill_by_skill" fromLevel="4" toLevel="17">
 				<chance>33</chance> <!-- 33% Chance to trigger Storm Sign Lv. 4 -->
 				<castSkillId>30003</castSkillId> <!-- Hydro Flare -->
 				<allowWeapons>BLUNT</allowWeapons>
 				<skillId>30005</skillId> <!-- Storm Sign Lv. 4 -->
 				<skillLevel>4</skillLevel>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">17</value>
 					<value level="2">17</value>
@@ -1568,7 +1972,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">57</value>
@@ -1593,7 +1997,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">5</value>
@@ -1618,7 +2022,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1643,7 +2047,7 @@
 					<item>BLUNT</item>
 				</weaponType>
 			</effect>
-			<effect name="MagicCriticalDamage">
+			<effect name="p_magic_critical_dmg">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1677,7 +2081,7 @@
 		<icon>icon.skill30024</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MagicalDefence" fromLevel="7" toLevel="17">
+			<effect name="p_magical_defence" fromLevel="7" toLevel="17">
 				<amount>
 					<value level="7">3</value>
 					<value fromLevel="8" toLevel="17">10</value>
@@ -1687,7 +2091,7 @@
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1712,7 +2116,7 @@
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">0</value>
@@ -1737,7 +2141,7 @@
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">7</value>
 					<value level="2">12</value>
@@ -1762,7 +2166,7 @@
 					<item>MAGIC</item>
 				</armorType>
 			</effect>
-			<effect name="ResistDDMagic">
+			<effect name="p_resist_dd_magic">
 				<amount>
 					<value level="1">0</value>
 					<value level="2">5</value>
@@ -1795,11 +2199,29 @@
 		<icon>icon.skill10504</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="MaxHp" fromLevel="4" toLevel="13">
+			<effect name="p_max_mp">
+				<amount>
+					<value level="1">33</value>
+					<value level="2">77</value>
+					<value level="3">223</value>
+					<value level="4">692</value>
+					<value level="5">758</value>
+					<value level="6">827</value>
+					<value level="7">883</value>
+					<value level="8">897</value>
+					<value level="9">925</value>
+					<value level="10">954</value>
+					<value level="11">983</value>
+					<value level="12">1013</value>
+					<value level="13">1043</value>
+				</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_max_hp" fromLevel="4" toLevel="13">
 				<amount>4891</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>
 					<value level="1">1</value>
 					<value level="2">3</value>
@@ -1808,7 +2230,7 @@
 				</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicMpCost" fromLevel="3" toLevel="13">
+			<effect name="p_magic_mp_cost" fromLevel="3" toLevel="13">
 				<amount>
 					<value level="3">-5</value>
 					<value fromLevel="4" toLevel="13">-7</value>
@@ -1816,7 +2238,7 @@
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">-10</value>
 					<value level="2">-15</value>
@@ -1847,22 +2269,7 @@
 			<value level="11">110</value>
 		</magicLvl>
 		<effects>
-			<effect name="AttackAttributeAdd">
-				<amount>
-					<value level="1">10</value>
-					<value level="2">20</value>
-					<value level="3">22</value>
-					<value level="4">24</value>
-					<value level="5">26</value>
-					<value level="6">30</value>
-					<value level="7">32</value>
-					<value level="8">34</value>
-					<value level="9">36</value>
-					<value level="10">38</value>
-					<value level="11">40</value>
-				</amount>
-			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_attack_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1878,7 +2285,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_attack_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1894,7 +2301,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_attack_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1910,7 +2317,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_attack_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1926,7 +2333,103 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_attack_attribute">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">22</value>
+					<value level="4">24</value>
+					<value level="5">26</value>
+					<value level="6">30</value>
+					<value level="7">32</value>
+					<value level="8">34</value>
+					<value level="9">36</value>
+					<value level="10">38</value>
+					<value level="11">40</value>
+				</amount>
+				<attribute>HOLY</attribute>
+			</effect>
+			<effect name="p_attack_attribute">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">22</value>
+					<value level="4">24</value>
+					<value level="5">26</value>
+					<value level="6">30</value>
+					<value level="7">32</value>
+					<value level="8">34</value>
+					<value level="9">36</value>
+					<value level="10">38</value>
+					<value level="11">40</value>
+				</amount>
+				<attribute>DARK</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">22</value>
+					<value level="4">24</value>
+					<value level="5">26</value>
+					<value level="6">30</value>
+					<value level="7">32</value>
+					<value level="8">34</value>
+					<value level="9">36</value>
+					<value level="10">38</value>
+					<value level="11">40</value>
+				</amount>
+				<attribute>FIRE</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">22</value>
+					<value level="4">24</value>
+					<value level="5">26</value>
+					<value level="6">30</value>
+					<value level="7">32</value>
+					<value level="8">34</value>
+					<value level="9">36</value>
+					<value level="10">38</value>
+					<value level="11">40</value>
+				</amount>
+				<attribute>WATER</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">22</value>
+					<value level="4">24</value>
+					<value level="5">26</value>
+					<value level="6">30</value>
+					<value level="7">32</value>
+					<value level="8">34</value>
+					<value level="9">36</value>
+					<value level="10">38</value>
+					<value level="11">40</value>
+				</amount>
+				<attribute>WIND</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
+				<amount>
+					<value level="1">10</value>
+					<value level="2">20</value>
+					<value level="3">22</value>
+					<value level="4">24</value>
+					<value level="5">26</value>
+					<value level="6">30</value>
+					<value level="7">32</value>
+					<value level="8">34</value>
+					<value level="9">36</value>
+					<value level="10">38</value>
+					<value level="11">40</value>
+				</amount>
+				<attribute>EARTH</attribute>
+			</effect>
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">20</value>
@@ -1945,18 +2448,22 @@
 		</effects>
 	</skill>
 	<skill id="30044" toLevel="2" name="Eminent Trait Resistance">
-		<!-- Updated to Ertheia -->
+		<!-- Updated to Helios -->
 		<!-- Hold/Mental Resistance + 30. -->
 		<icon>icon.skill10005</icon>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<HOLD>30</HOLD>
 				<DERANGEMENT>30</DERANGEMENT>
 				<PULL>
 					<value level="1">0</value>
 					<value level="2">30</value>
 				</PULL>
+				<ZONE>
+					<value level="1">0</value>
+					<value level="2">30</value>
+				</ZONE>
 				<HATE>
 					<value level="1">0</value>
 					<value level="2">30</value>
@@ -1974,10 +2481,10 @@
 			<value level="3">85</value>
 		</magicLvl>
 		<effects>
-			<effect name="SkillCritical">
+			<effect name="p_skill_critical">
 				<stat>INT</stat>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>
 					<value level="1">2</value>
 					<value level="2">4</value>

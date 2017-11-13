@@ -21,7 +21,6 @@ package org.l2junity.gameserver.model.zone.type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.gameserver.ThreadPoolManager;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
 import org.l2junity.gameserver.model.L2Spawn;
 import org.l2junity.gameserver.model.Location;
@@ -47,7 +46,6 @@ public class OlympiadStadiumZone extends L2ZoneRespawn
 	private final List<DoorInstance> _doors = new ArrayList<>(2);
 	private final List<L2Spawn> _buffers = new ArrayList<>(2);
 	private final List<Location> _spectatorLocations = new ArrayList<>(1);
-	private int _instanceTemplate = 0;
 	
 	public OlympiadStadiumZone(int id)
 	{
@@ -104,19 +102,6 @@ public class OlympiadStadiumZone extends L2ZoneRespawn
 		}
 	}
 	
-	@Override
-	public void setParameter(String name, String value)
-	{
-		if (name.equals("instanceTemplate"))
-		{
-			_instanceTemplate = Integer.parseInt(value);
-		}
-		else
-		{
-			super.setParameter(name, value);
-		}
-	}
-	
 	public final void registerTask(OlympiadGameTask task)
 	{
 		getSettings().setTask(task);
@@ -144,9 +129,9 @@ public class OlympiadStadiumZone extends L2ZoneRespawn
 			if (player != null)
 			{
 				// only participants, observers and GMs allowed
-				if (!player.canOverrideCond(PcCondOverride.ZONE_CONDITIONS) && !player.isInOlympiadMode())
+				if (!player.canOverrideCond(PcCondOverride.ZONE_CONDITIONS) && !player.isInOlympiadMode() && !player.inObserverMode())
 				{
-					ThreadPoolManager.getInstance().executeGeneral(new KickPlayer(player));
+					player.teleToLocation(TeleportWhereType.TOWN, null);
 				}
 				else
 				{
@@ -178,27 +163,6 @@ public class OlympiadStadiumZone extends L2ZoneRespawn
 		}
 	}
 	
-	private static final class KickPlayer implements Runnable
-	{
-		private PlayerInstance _player;
-		
-		protected KickPlayer(PlayerInstance player)
-		{
-			_player = player;
-		}
-		
-		@Override
-		public void run()
-		{
-			if (_player != null)
-			{
-				_player.getServitors().values().forEach(s -> s.unSummon(_player));
-				_player.teleToLocation(TeleportWhereType.TOWN, null);
-				_player = null;
-			}
-		}
-	}
-	
 	public List<DoorInstance> getDoors()
 	{
 		return _doors;
@@ -212,14 +176,5 @@ public class OlympiadStadiumZone extends L2ZoneRespawn
 	public List<Location> getSpectatorSpawns()
 	{
 		return _spectatorLocations;
-	}
-	
-	/**
-	 * Returns zone instanceTemplate
-	 * @return
-	 */
-	public int getInstanceTemplateId()
-	{
-		return _instanceTemplate;
 	}
 }

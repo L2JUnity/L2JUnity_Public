@@ -19,12 +19,18 @@
 package org.l2junity.gameserver.model.actor;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
 import org.l2junity.commons.util.Rnd;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.ItemsAutoDestroy;
-import org.l2junity.gameserver.ThreadPoolManager;
 import org.l2junity.gameserver.cache.HtmCache;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.NpcConfig;
+import org.l2junity.gameserver.config.OlympiadConfig;
+import org.l2junity.gameserver.config.PlayerConfig;
+import org.l2junity.gameserver.config.RatesConfig;
+import org.l2junity.gameserver.config.ServerConfig;
 import org.l2junity.gameserver.data.xml.impl.ClanHallData;
 import org.l2junity.gameserver.datatables.ItemTable;
 import org.l2junity.gameserver.enums.AISkillScope;
@@ -35,6 +41,7 @@ import org.l2junity.gameserver.enums.MpRewardAffectType;
 import org.l2junity.gameserver.enums.PrivateStoreType;
 import org.l2junity.gameserver.enums.Race;
 import org.l2junity.gameserver.enums.ShotType;
+import org.l2junity.gameserver.enums.TaxType;
 import org.l2junity.gameserver.enums.Team;
 import org.l2junity.gameserver.handler.BypassHandler;
 import org.l2junity.gameserver.handler.IBypassHandler;
@@ -42,8 +49,7 @@ import org.l2junity.gameserver.instancemanager.CastleManager;
 import org.l2junity.gameserver.instancemanager.DBSpawnManager;
 import org.l2junity.gameserver.instancemanager.DBSpawnManager.DBStatusType;
 import org.l2junity.gameserver.instancemanager.FortManager;
-import org.l2junity.gameserver.instancemanager.TownManager;
-import org.l2junity.gameserver.instancemanager.WalkingManager;
+import org.l2junity.gameserver.instancemanager.SuperpointManager;
 import org.l2junity.gameserver.instancemanager.ZoneManager;
 import org.l2junity.gameserver.model.L2Spawn;
 import org.l2junity.gameserver.model.Location;
@@ -57,7 +63,6 @@ import org.l2junity.gameserver.model.actor.instance.L2MerchantInstance;
 import org.l2junity.gameserver.model.actor.instance.L2TeleporterInstance;
 import org.l2junity.gameserver.model.actor.instance.L2WarehouseInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.actor.stat.NpcStat;
 import org.l2junity.gameserver.model.actor.status.NpcStatus;
 import org.l2junity.gameserver.model.actor.tasks.npc.RandomAnimationTask;
 import org.l2junity.gameserver.model.actor.templates.L2NpcTemplate;
@@ -78,10 +83,11 @@ import org.l2junity.gameserver.model.instancezone.Instance;
 import org.l2junity.gameserver.model.items.Weapon;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.model.olympiad.Olympiad;
+import org.l2junity.gameserver.model.skills.AbnormalVisualEffect;
 import org.l2junity.gameserver.model.skills.Skill;
 import org.l2junity.gameserver.model.spawns.NpcSpawnTemplate;
 import org.l2junity.gameserver.model.variables.NpcVariables;
-import org.l2junity.gameserver.model.zone.ZoneId;
+import org.l2junity.gameserver.model.zone.type.TaxZone;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.ExChangeNpcState;
 import org.l2junity.gameserver.network.client.send.ExShowChannelingEffect;
@@ -96,6 +102,8 @@ import org.l2junity.gameserver.network.client.send.string.NpcStringId;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.gameserver.taskmanager.DecayTaskManager;
 import org.l2junity.gameserver.util.Broadcast;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class represents a Non-Player-Character in the world.<br>
@@ -104,8 +112,10 @@ import org.l2junity.gameserver.util.Broadcast;
  */
 public class Npc extends Creature
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Npc.class);
+	
 	/** The interaction distance of the L2NpcInstance(is used as offset in MovetoLocation method) */
-	public static final int INTERACTION_DISTANCE = 150;
+	public static final int INTERACTION_DISTANCE = 250;
 	/** Maximum distance where the drop may appear given this NPC position. */
 	public static final int RANDOM_ITEM_DROP_LIMIT = 70;
 	/** The L2Spawn object that manage this L2NpcInstance */
@@ -129,24 +139,26 @@ public class Npc extends Creature
 	private int _currentLHandId; // normally this shouldn't change from the template, but there exist exceptions
 	private int _currentRHandId; // normally this shouldn't change from the template, but there exist exceptions
 	private int _currentEnchant; // normally this shouldn't change from the template, but there exist exceptions
-	private double _currentCollisionHeight; // used for npc grow effect skills
-	private double _currentCollisionRadius; // used for npc grow effect skills
 	
 	private int _soulshotamount = 0;
 	private int _spiritshotamount = 0;
 	private int _state = 0;
 	
-	private int _shotsMask = 0;
 	private int _killingBlowWeaponId;
 	
 	private int _cloneObjId; // Used in NpcInfo packet to clone the specified player.
 	private int _clanId; // Used in NpcInfo packet to show the specified clan.
 	
 	private NpcStringId _titleString;
+	private String _titleParam;
 	private NpcStringId _nameString;
+	private String _nameParam;
 	
 	private StatsSet _params;
 	private DBSpawnManager.DBStatusType _raidStatus;
+	
+	/** Contains information about local tax payments. */
+	private TaxZone _taxZone = null;
 	
 	/**
 	 * Constructor of L2NpcInstance (use L2Character constructor).<br>
@@ -170,11 +182,7 @@ public class Npc extends Creature
 		// initialize the "current" equipment
 		_currentLHandId = getTemplate().getLHandId();
 		_currentRHandId = getTemplate().getRHandId();
-		_currentEnchant = Config.ENABLE_RANDOM_ENCHANT_EFFECT ? Rnd.get(4, 21) : getTemplate().getWeaponEnchant();
-		
-		// initialize the "current" collisions
-		_currentCollisionHeight = getTemplate().getfCollisionHeight();
-		_currentCollisionRadius = getTemplate().getfCollisionRadius();
+		_currentEnchant = NpcConfig.ENABLE_RANDOM_ENCHANT_EFFECT ? Rnd.get(4, 21) : getTemplate().getWeaponEnchant();
 		
 		setIsFlying(template.isFlying());
 		initStatusUpdateCache();
@@ -231,7 +239,7 @@ public class Npc extends Creature
 	 */
 	public boolean hasRandomAnimation()
 	{
-		return ((Config.MAX_NPC_ANIMATION > 0) && _isRandomAnimationEnabled && !getAiType().equals(AIType.CORPSE));
+		return ((GeneralConfig.MAX_NPC_ANIMATION > 0) && _isRandomAnimationEnabled && !getAiType().equals(AIType.CORPSE));
 	}
 	
 	/**
@@ -262,15 +270,10 @@ public class Npc extends Creature
 	}
 	
 	@Override
-	public NpcStat getStat()
-	{
-		return (NpcStat) super.getStat();
-	}
-	
-	@Override
 	public void initCharStat()
 	{
-		setStat(new NpcStat(this));
+		super.initCharStat();
+		getStat().setLevel(getTemplate().getLevel());
 	}
 	
 	@Override
@@ -305,7 +308,7 @@ public class Npc extends Creature
 	@Override
 	public boolean canBeAttacked()
 	{
-		return Config.ALT_ATTACKABLE_NPCS;
+		return NpcConfig.ALT_ATTACKABLE_NPCS;
 	}
 	
 	/**
@@ -494,7 +497,7 @@ public class Npc extends Creature
 		{
 			return false;
 		}
-		else if (!isInsideRadius(player, INTERACTION_DISTANCE, true, false))
+		else if (!isInRadius3d(player, INTERACTION_DISTANCE))
 		{
 			return false;
 		}
@@ -507,6 +510,48 @@ public class Npc extends Creature
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * Set another tax zone which will be used for tax payments.
+	 * @param zone newly entered tax zone
+	 */
+	public final void setTaxZone(TaxZone zone)
+	{
+		_taxZone = ((zone != null) && !isInInstance()) ? zone : null;
+	}
+	
+	/**
+	 * Gets castle for tax payments.
+	 * @return instance of {@link Castle} when NPC is inside {@link TaxZone} otherwise {@code null}
+	 */
+	public final Castle getTaxCastle()
+	{
+		return (_taxZone != null) ? _taxZone.getCastle() : null;
+	}
+	
+	/**
+	 * Gets castle tax rate
+	 * @param type type of tax
+	 * @return tax rate when NPC is inside tax zone otherwise {@code 0}
+	 */
+	public final double getCastleTaxRate(TaxType type)
+	{
+		final Castle castle = getTaxCastle();
+		return (castle != null) ? (castle.getTaxPercent(type) / 100.0) : 0;
+	}
+	
+	/**
+	 * Increase castle vault by specified tax amount.
+	 * @param amount tax amount
+	 */
+	public final void handleTaxPayment(long amount)
+	{
+		final Castle taxCastle = getTaxCastle();
+		if (taxCastle != null)
+		{
+			taxCastle.addToTreasury(amount);
+		}
 	}
 	
 	/**
@@ -550,11 +595,6 @@ public class Npc extends Creature
 		return FortManager.getInstance().findNearestFort(this, maxDistance);
 	}
 	
-	public final boolean isInTown()
-	{
-		return TownManager.getTown(getX(), getY(), getZ()) != null;
-	}
-	
 	/**
 	 * Open a quest or chat window on client with the text of the L2NpcInstance in function of the command.<br>
 	 * <B><U> Example of use </U> :</B>
@@ -575,7 +615,7 @@ public class Npc extends Creature
 			}
 			else
 			{
-				_log.info(getClass().getSimpleName() + ": Unknown NPC bypass: \"" + command + "\" NpcId: " + getId());
+				LOGGER.info("Unknown NPC bypass: \"" + command + "\" NpcId: " + getId());
 			}
 		}
 	}
@@ -640,21 +680,20 @@ public class Npc extends Creature
 			pom = npcId + "-" + val;
 		}
 		
-		String temp = "data/html/default/" + pom + ".htm";
-		
-		if (!Config.LAZY_CACHE)
+		final String path = "data/html/default/" + pom + ".htm";
+		if (GeneralConfig.LAZY_CACHE)
 		{
-			// If not running lazy cache the file must be in the cache or it doesnt exist
-			if (HtmCache.getInstance().contains(temp))
+			if (HtmCache.getInstance().isLoadable(path))
 			{
-				return temp;
+				return path;
 			}
 		}
 		else
 		{
-			if (HtmCache.getInstance().isLoadable(temp))
+			// If not running lazy cache the file must be in the cache or it doesn't exist.
+			if (HtmCache.getInstance().contains(path))
 			{
-				return temp;
+				return path;
 			}
 		}
 		
@@ -680,10 +719,6 @@ public class Npc extends Creature
 		{
 			html = html.replaceAll("%objectId%", String.valueOf(getObjectId()));
 			player.sendPacket(new NpcHtmlMessage(getObjectId(), html));
-			if (player.isGM() && player.isDebug())
-			{
-				player.sendMessage("HTML : data/html/" + type + "/" + getId() + "-pk.htm");
-			}
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return true;
 		}
@@ -711,28 +746,28 @@ public class Npc extends Creature
 		
 		if (player.getReputation() < 0)
 		{
-			if (!Config.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (this instanceof L2MerchantInstance))
+			if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (this instanceof L2MerchantInstance))
 			{
 				if (showPkDenyChatWindow(player, "merchant"))
 				{
 					return;
 				}
 			}
-			else if (!Config.ALT_GAME_KARMA_PLAYER_CAN_USE_GK && (this instanceof L2TeleporterInstance))
+			else if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_USE_GK && (this instanceof L2TeleporterInstance))
 			{
 				if (showPkDenyChatWindow(player, "teleporter"))
 				{
 					return;
 				}
 			}
-			else if (!Config.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (this instanceof L2WarehouseInstance))
+			else if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (this instanceof L2WarehouseInstance))
 			{
 				if (showPkDenyChatWindow(player, "warehouse"))
 				{
 					return;
 				}
 			}
-			else if (!Config.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (this instanceof L2FishermanInstance))
+			else if (!PlayerConfig.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (this instanceof L2FishermanInstance))
 			{
 				if (showPkDenyChatWindow(player, "fisherman"))
 				{
@@ -778,7 +813,7 @@ public class Npc extends Creature
 			case 36402:
 				if (player.getOlympiadBuffCount() > 0)
 				{
-					filename = (player.getOlympiadBuffCount() == Config.ALT_OLY_MAX_BUFFS ? Olympiad.OLYMPIAD_HTML_PATH + "olympiad_buffs.htm" : Olympiad.OLYMPIAD_HTML_PATH + "olympiad_5buffs.htm");
+					filename = (player.getOlympiadBuffCount() == OlympiadConfig.ALT_OLY_MAX_BUFFS ? Olympiad.OLYMPIAD_HTML_PATH + "olympiad_buffs.htm" : Olympiad.OLYMPIAD_HTML_PATH + "olympiad_5buffs.htm");
 				}
 				else
 				{
@@ -811,11 +846,6 @@ public class Npc extends Creature
 		html.replace("%objectId%", String.valueOf(getObjectId()));
 		player.sendPacket(html);
 		
-		if (player.isGM() && player.isDebug())
-		{
-			player.sendMessage("HTML: " + filename);
-		}
-		
 		// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
@@ -833,11 +863,6 @@ public class Npc extends Creature
 		html.replace("%objectId%", String.valueOf(getObjectId()));
 		player.sendPacket(html);
 		
-		if (player.isGM() && player.isDebug())
-		{
-			player.sendMessage("HTML: " + filename);
-		}
-		
 		// Send a Server->Client ActionFailed to the L2PcInstance in order to avoid that the client wait another packet
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
@@ -845,21 +870,21 @@ public class Npc extends Creature
 	/**
 	 * @return the Exp Reward of this L2Npc (modified by RATE_XP).
 	 */
-	public long getExpReward()
+	public double getExpReward()
 	{
 		final Instance instance = getInstanceWorld();
-		float rateMul = instance != null ? instance.getExpRate() : Config.RATE_XP;
-		return (long) (getLevel() * getLevel() * getTemplate().getExpRate() * rateMul);
+		float rateMul = instance != null ? instance.getExpRate() : RatesConfig.RATE_XP;
+		return getLevel() * getLevel() * getTemplate().getExpRate() * rateMul;
 	}
 	
 	/**
 	 * @return the SP Reward of this L2Npc (modified by RATE_SP).
 	 */
-	public int getSpReward()
+	public double getSpReward()
 	{
 		final Instance instance = getInstanceWorld();
-		float rateMul = instance != null ? instance.getSPRate() : Config.RATE_SP;
-		return (int) (getTemplate().getSP() * rateMul);
+		float rateMul = instance != null ? instance.getSPRate() : RatesConfig.RATE_SP;
+		return getTemplate().getSP() * rateMul;
 	}
 	
 	/**
@@ -888,8 +913,6 @@ public class Npc extends Creature
 		// we do need to reset the weapons back to the initial template weapon.
 		_currentLHandId = getTemplate().getLHandId();
 		_currentRHandId = getTemplate().getRHandId();
-		_currentCollisionHeight = getTemplate().getfCollisionHeight();
-		_currentCollisionRadius = getTemplate().getfCollisionRadius();
 		
 		final Weapon weapon = (killer != null) ? killer.getActiveWeaponItem() : null;
 		_killingBlowWeaponId = (weapon != null) ? weapon.getId() : 0;
@@ -922,7 +945,7 @@ public class Npc extends Creature
 				{
 					for (PlayerInstance member : party.getMembers())
 					{
-						if ((member != killerPlayer) && (member.calculateDistance(getX(), getY(), getZ(), true, false) <= Config.ALT_PARTY_RANGE))
+						if ((member != killerPlayer) && (member.isInRadius3d(this, PlayerConfig.ALT_PARTY_RANGE)))
 						{
 							new MpRewardTask(member, this);
 							for (Summon summon : member.getServitors().values())
@@ -971,17 +994,7 @@ public class Npc extends Creature
 		
 		if (!isTeleporting())
 		{
-			WalkingManager.getInstance().onSpawn(this);
-		}
-		
-		// Display clan flag
-		if (isInsideZone(ZoneId.TOWN) && (getCastle() != null) && (Config.SHOW_CREST_WITHOUT_QUEST || getCastle().getShowNpcCrest()) && (getCastle().getOwnerId() != 0))
-		{
-			int townId = TownManager.getTown(getX(), getY(), getZ()).getTownId();
-			if ((townId != 33) && (townId != 22))
-			{
-				setClanId(getCastle().getOwnerId());
-			}
+			SuperpointManager.getInstance().onSpawn(this);
 		}
 	}
 	
@@ -990,20 +1003,18 @@ public class Npc extends Creature
 	 */
 	public void onRespawn()
 	{
-		// Stop all effects
-		stopAllEffects();
-		
 		// Make it alive
 		setIsDead(false);
+		
+		// Stop all effects and recalculate stats without broadcasting.
+		getEffectList().stopAllEffects(false);
 		
 		// Reset decay info
 		setDecayed(false);
 		
-		// Recalculate npcs stats
-		getStat().recalculateStats(true);
-		
-		// Set the HP and MP of the L2NpcInstance to the max
-		setCurrentHpMp(getMaxHp(), getMaxMp());
+		// Fully heal npc and don't broadcast packet.
+		setCurrentHp(getMaxHp(), false);
+		setCurrentMp(getMaxMp(), false);
 		
 		// Clear script variables
 		if (hasVariables())
@@ -1022,9 +1033,11 @@ public class Npc extends Creature
 		
 		// Reset NpcStringId for name
 		_nameString = null;
+		_nameParam = null;
 		
 		// Reset NpcStringId for title
 		_titleString = null;
+		_titleParam = null;
 		
 		// Reset parameters
 		_params = null;
@@ -1060,7 +1073,7 @@ public class Npc extends Creature
 		}
 		
 		// Notify Walking Manager
-		WalkingManager.getInstance().onDeath(this);
+		SuperpointManager.getInstance().onDeath(this);
 		
 		// Notify DP scripts
 		EventDispatcher.getInstance().notifyEventAsync(new OnNpcDespawn(this), this);
@@ -1093,7 +1106,7 @@ public class Npc extends Creature
 		}
 		catch (Exception e)
 		{
-			_log.error("Failed decayMe().", e);
+			LOGGER.error("Failed decayMe().", e);
 		}
 		
 		if (isChannelized())
@@ -1101,10 +1114,8 @@ public class Npc extends Creature
 			getSkillChannelized().abortChannelization();
 		}
 		
-		ZoneManager.getInstance().getRegion(this).removeFromZones(this);
+		ZoneManager.getInstance().getRegion(this).removeFromZones(this, false);
 		
-		// Remove L2Object object from _allObjects of L2World
-		World.getInstance().removeObject(this);
 		return super.deleteMe();
 	}
 	
@@ -1141,6 +1152,30 @@ public class Npc extends Creature
 		}
 	}
 	
+	/**
+	 * Unequips any displayed equipped weapon.
+	 * @return {@code true} if the current weapon has been unequipped, {@code false} otherwise.
+	 */
+	@Override
+	public boolean unequipWeapon()
+	{
+		// Check for equipped right hand item (left hand is usually shield)
+		if (_currentRHandId > 0)
+		{
+			// Check if equipped right hand item is two-handed item (both left and right hand IDs should match)
+			if (_currentRHandId == _currentLHandId)
+			{
+				setLRHandId(0, 0);
+				return true;
+			}
+			
+			setRHandId(0);
+			return true;
+		}
+		
+		return false;
+	}
+	
 	// Two functions to change the appearance of the equipped weapons on the NPC
 	// This is only useful for a few NPCs and is most likely going to be called from AI
 	public void setLHandId(int newWeaponId)
@@ -1173,26 +1208,24 @@ public class Npc extends Creature
 		return getTemplate().isShowName();
 	}
 	
-	public void setCollisionHeight(double height)
-	{
-		_currentCollisionHeight = height;
-	}
-	
-	public void setCollisionRadius(double radius)
-	{
-		_currentCollisionRadius = radius;
-	}
-	
 	@Override
 	public double getCollisionHeight()
 	{
-		return _currentCollisionHeight;
+		if (getEffectList().hasAbnormalVisualEffect(AbnormalVisualEffect.BIG_BODY))
+		{
+			return getTemplate().getCollisionHeightGrown();
+		}
+		return super.getCollisionHeight();
 	}
 	
 	@Override
 	public double getCollisionRadius()
 	{
-		return _currentCollisionRadius;
+		if (getEffectList().hasAbnormalVisualEffect(AbnormalVisualEffect.BIG_BODY))
+		{
+			return getTemplate().getCollisionRadiusGrown();
+		}
+		return super.getCollisionRadius();
 	}
 	
 	@Override
@@ -1200,7 +1233,7 @@ public class Npc extends Creature
 	{
 		if (isVisibleFor(activeChar))
 		{
-			if (Config.CHECK_KNOWN && activeChar.isGM())
+			if (ServerConfig.CHECK_KNOWN && activeChar.isGM())
 			{
 				activeChar.sendMessage("Added NPC: " + getName());
 			}
@@ -1218,13 +1251,13 @@ public class Npc extends Creature
 	
 	public Npc scheduleDespawn(long delay)
 	{
-		ThreadPoolManager.getInstance().scheduleGeneral(() ->
+		ThreadPool.schedule(() ->
 		{
 			if (!isDecayed())
 			{
 				deleteMe();
 			}
-		}, delay);
+		}, delay, TimeUnit.MILLISECONDS);
 		return this;
 	}
 	
@@ -1279,6 +1312,12 @@ public class Npc extends Creature
 	}
 	
 	@Override
+	public Npc asNpc()
+	{
+		return this;
+	}
+	
+	@Override
 	public void setTeam(Team team)
 	{
 		super.setTeam(team);
@@ -1291,26 +1330,7 @@ public class Npc extends Creature
 	@Override
 	public boolean isWalker()
 	{
-		return WalkingManager.getInstance().isRegistered(this);
-	}
-	
-	@Override
-	public boolean isChargedShot(ShotType type)
-	{
-		return (_shotsMask & type.getMask()) == type.getMask();
-	}
-	
-	@Override
-	public void setChargedShot(ShotType type, boolean charged)
-	{
-		if (charged)
-		{
-			_shotsMask |= type.getMask();
-		}
-		else
-		{
-			_shotsMask &= ~type.getMask();
-		}
+		return SuperpointManager.getInstance().isRegistered(this);
 	}
 	
 	@Override
@@ -1324,7 +1344,7 @@ public class Npc extends Creature
 			}
 			_soulshotamount--;
 			Broadcast.toSelfAndKnownPlayersInRadius(this, new MagicSkillUse(this, this, 2154, 1, 0, 0), 600);
-			setChargedShot(ShotType.SOULSHOTS, true);
+			chargeShot(ShotType.SOULSHOTS);
 		}
 		
 		if (magic && (_spiritshotamount > 0))
@@ -1335,7 +1355,7 @@ public class Npc extends Creature
 			}
 			_spiritshotamount--;
 			Broadcast.toSelfAndKnownPlayersInRadius(this, new MagicSkillUse(this, this, 2061, 1, 0, 0), 600);
-			setChargedShot(ShotType.SPIRITSHOTS, true);
+			chargeShot(ShotType.SPIRITSHOTS);
 		}
 	}
 	
@@ -1409,7 +1429,7 @@ public class Npc extends Creature
 	 */
 	public void broadcastEvent(String eventName, int radius, WorldObject reference)
 	{
-		World.getInstance().forEachVisibleObjectInRange(this, Npc.class, radius, obj ->
+		World.getInstance().forEachVisibleObjectInRadius(this, Npc.class, radius, obj ->
 		{
 			if (obj.hasListener(EventType.ON_NPC_EVENT_RECEIVED))
 			{
@@ -1461,13 +1481,13 @@ public class Npc extends Creature
 		for (int i = 0; i < itemCount; i++)
 		{
 			// Randomize drop position.
-			final int newX = (getX() + Rnd.get((RANDOM_ITEM_DROP_LIMIT * 2) + 1)) - RANDOM_ITEM_DROP_LIMIT;
-			final int newY = (getY() + Rnd.get((RANDOM_ITEM_DROP_LIMIT * 2) + 1)) - RANDOM_ITEM_DROP_LIMIT;
-			final int newZ = getZ() + 20;
+			final double newX = (getX() + Rnd.get((RANDOM_ITEM_DROP_LIMIT * 2) + 1)) - RANDOM_ITEM_DROP_LIMIT;
+			final double newY = (getY() + Rnd.get((RANDOM_ITEM_DROP_LIMIT * 2) + 1)) - RANDOM_ITEM_DROP_LIMIT;
+			final double newZ = getZ() + 20;
 			
 			if (ItemTable.getInstance().getTemplate(itemId) == null)
 			{
-				_log.error("Item doesn't exist so cannot be dropped. Item ID: " + itemId + " Quest: " + getName());
+				LOGGER.error("Item doesn't exist so cannot be dropped. Item ID: " + itemId + " Quest: " + getName());
 				return null;
 			}
 			
@@ -1485,9 +1505,9 @@ public class Npc extends Creature
 			item.dropMe(this, newX, newY, newZ);
 			
 			// Add drop to auto destroy item task.
-			if (!Config.LIST_PROTECTED_ITEMS.contains(itemId))
+			if (!GeneralConfig.LIST_PROTECTED_ITEMS.contains(itemId))
 			{
-				if (((Config.AUTODESTROY_ITEM_AFTER > 0) && !item.getItem().hasExImmediateEffect()) || ((Config.HERB_AUTO_DESTROY_TIME > 0) && item.getItem().hasExImmediateEffect()))
+				if (((GeneralConfig.AUTODESTROY_ITEM_AFTER > 0) && !item.getItem().hasExImmediateEffect()) || ((GeneralConfig.HERB_AUTO_DESTROY_TIME > 0) && item.getItem().hasExImmediateEffect()))
 				{
 					ItemsAutoDestroy.getInstance().addItem(item);
 				}
@@ -1495,7 +1515,7 @@ public class Npc extends Creature
 			item.setProtected(false);
 			
 			// If stackable, end loop as entire count is included in 1 instance of item.
-			if (item.isStackable() || !Config.MULTIPLE_ITEM_DROP)
+			if (item.isStackable() || !GeneralConfig.MULTIPLE_ITEM_DROP)
 			{
 				break;
 			}
@@ -1729,24 +1749,72 @@ public class Npc extends Creature
 		initSeenCreatures(getTemplate().getAggroRange());
 	}
 	
+	/**
+	 * @return the NpcStringId for name
+	 */
 	public NpcStringId getNameString()
 	{
 		return _nameString;
 	}
 	
+	/**
+	 * @return the NpcStringId for title
+	 */
 	public NpcStringId getTitleString()
 	{
 		return _titleString;
 	}
 	
+	/**
+	 * @return the parameter related to {@link #getNameString()}
+	 */
+	public String getNameParam()
+	{
+		return _nameParam;
+	}
+	
+	/**
+	 * @return the parameter related to {@link #getTitleString()}
+	 */
+	public String getTitleParam()
+	{
+		return _titleParam;
+	}
+	
+	/**
+	 * Sets the name using NpcStringId, you can use {@link #setNameParam(String)} to specify parameter
+	 * @param nameString
+	 */
 	public void setNameString(NpcStringId nameString)
 	{
 		_nameString = nameString;
 	}
 	
+	/**
+	 * Sets the title using NpcStringId, you can use {@link #setTitleParam(String)} to specify parameter
+	 * @param titleString
+	 */
 	public void setTitleString(NpcStringId titleString)
 	{
 		_titleString = titleString;
+	}
+	
+	/**
+	 * Set parameter related to {@link #setNameString(NpcStringId)}
+	 * @param param
+	 */
+	public void setNameParam(String param)
+	{
+		_nameParam = param;
+	}
+	
+	/**
+	 * Sets parameter related to {@link #setTitleString(NpcStringId)}
+	 * @param param
+	 */
+	public void setTitleParam(String param)
+	{
+		_titleParam = param;
 	}
 	
 	public void sendChannelingEffect(Creature target, int state)
@@ -1762,5 +1830,19 @@ public class Npc extends Creature
 	public DBStatusType getDBStatus()
 	{
 		return _raidStatus;
+	}
+	
+	public boolean isInMyTerritory()
+	{
+		final L2Spawn spawn = getSpawn();
+		if (spawn != null)
+		{
+			final NpcSpawnTemplate template = spawn.getNpcSpawnTemplate();
+			if (template != null)
+			{
+				return template.isInMyTerritory(this);
+			}
+		}
+		return true;
 	}
 }

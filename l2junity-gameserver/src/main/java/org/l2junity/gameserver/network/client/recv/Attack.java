@@ -23,9 +23,6 @@ import org.l2junity.gameserver.model.PcCondOverride;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.WorldObject;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
-import org.l2junity.gameserver.model.effects.AbstractEffect;
-import org.l2junity.gameserver.model.skills.AbnormalType;
-import org.l2junity.gameserver.model.skills.BuffInfo;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -67,26 +64,17 @@ public final class Attack implements IClientIncomingPacket
 			return;
 		}
 		
+		if (activeChar.isSpawnProtected())
+		{
+			activeChar.onActionRequest();
+		}
+		
 		// Avoid Attacks in Boat.
 		if (activeChar.isPlayable() && activeChar.isInBoat())
 		{
 			activeChar.sendPacket(SystemMessageId.THIS_IS_NOT_ALLOWED_WHILE_RIDING_A_FERRY_OR_BOAT);
 			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
-		}
-		
-		final BuffInfo info = activeChar.getEffectList().getBuffInfoByAbnormalType(AbnormalType.BOT_PENALTY);
-		if (info != null)
-		{
-			for (AbstractEffect effect : info.getEffects())
-			{
-				if (!effect.checkCondition(-1))
-				{
-					activeChar.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_SO_YOUR_ACTIONS_HAVE_BEEN_RESTRICTED);
-					activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-					return;
-				}
-			}
 		}
 		
 		// avoid using expensive operations if not needed

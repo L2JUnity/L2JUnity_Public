@@ -40,12 +40,20 @@ public final class BuyListSeed implements IClientOutgoingPacket
 		_money = currentMoney;
 		_manorId = castleId;
 		
-		for (SeedProduction s : CastleManorManager.getInstance().getSeedProduction(castleId, false))
+		final List<SeedProduction> production = CastleManorManager.getInstance().getSeedProduction(castleId, false);
+		if (production != null)
 		{
-			if ((s.getAmount() > 0) && (s.getPrice() > 0))
+			for (SeedProduction s : production)
 			{
-				_list.add(s);
+				if ((s.getAmount() > 0) && (s.getPrice() > 0))
+				{
+					_list.add(s);
+				}
 			}
+		}
+		else
+		{
+			LOGGER.warn("Seed production is null for castle {}", castleId);
 		}
 	}
 	

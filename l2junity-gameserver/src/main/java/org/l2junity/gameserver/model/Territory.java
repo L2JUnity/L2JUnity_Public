@@ -18,184 +18,64 @@
  */
 package org.l2junity.gameserver.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.Polygon;
 
 import org.l2junity.commons.util.Rnd;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.l2junity.gameserver.geodata.GeoData;
 
 /**
- * @version 0.1, 2005-03-12
- * @author Balancer
+ * @author UnAfraid
  */
-public class Territory
+public class Territory extends Polygon
 {
-	private static Logger _log = LoggerFactory.getLogger(Territory.class);
+	private static final long serialVersionUID = 7132757127831184920L;
+	private int _minZ;
+	private int _maxZ;
 	
-	protected static class Point
+	public Territory()
 	{
-		protected int _x, _y, _zmin, _zmax, _proc;
+		_minZ = 999999;
+		_maxZ = -999999;
+	}
+	
+	public void addPoint(int x, int y, int minZ, int maxZ)
+	{
+		super.addPoint(x, y);
 		
-		Point(int x, int y, int zmin, int zmax, int proc)
+		if (minZ < _minZ)
 		{
-			_x = x;
-			_y = y;
-			_zmin = zmin;
-			_zmax = zmax;
-			_proc = proc;
+			_minZ = minZ;
+		}
+		if (maxZ > _maxZ)
+		{
+			_maxZ = maxZ;
 		}
 	}
 	
-	private final List<Point> _points = new ArrayList<>();
-	private final int _terr;
-	private int _xMin;
-	private int _xMax;
-	private int _yMin;
-	private int _yMax;
-	private int _zMin;
-	private int _zMax;
-	private int _procMax;
-	
-	public Territory(int terr)
+	public boolean isInside(double x, double y, double z)
 	{
-		_terr = terr;
-		_xMin = 999999;
-		_xMax = -999999;
-		_yMin = 999999;
-		_yMax = -999999;
-		_zMin = 999999;
-		_zMax = -999999;
-		_procMax = 0;
-	}
-	
-	public void add(int x, int y, int zmin, int zmax, int proc)
-	{
-		_points.add(new Point(x, y, zmin, zmax, proc));
-		if (x < _xMin)
-		{
-			_xMin = x;
-		}
-		if (y < _yMin)
-		{
-			_yMin = y;
-		}
-		if (x > _xMax)
-		{
-			_xMax = x;
-		}
-		if (y > _yMax)
-		{
-			_yMax = y;
-		}
-		if (zmin < _zMin)
-		{
-			_zMin = zmin;
-		}
-		if (zmax > _zMax)
-		{
-			_zMax = zmax;
-		}
-		_procMax += proc;
-	}
-	
-	public void print()
-	{
-		for (Point p : _points)
-		{
-			_log.info("(" + p._x + "," + p._y + ")");
-		}
-	}
-	
-	public boolean isIntersect(int x, int y, Point p1, Point p2)
-	{
-		double dy1 = p1._y - y;
-		double dy2 = p2._y - y;
-		
-		if (Math.abs(Math.signum(dy1) - Math.signum(dy2)) <= 1e-6)
-		{
-			return false;
-		}
-		
-		double dx1 = p1._x - x;
-		double dx2 = p2._x - x;
-		
-		if ((dx1 >= 0) && (dx2 >= 0))
-		{
-			return true;
-		}
-		
-		if ((dx1 < 0) && (dx2 < 0))
-		{
-			return false;
-		}
-		
-		double dx0 = (dy1 * (p1._x - p2._x)) / (p1._y - p2._y);
-		
-		return dx0 <= dx1;
-	}
-	
-	public boolean isInside(int x, int y)
-	{
-		int intersect_count = 0;
-		for (int i = 0; i < _points.size(); i++)
-		{
-			Point p1 = _points.get(i > 0 ? i - 1 : _points.size() - 1);
-			Point p2 = _points.get(i);
-			
-			if (isIntersect(x, y, p1, p2))
-			{
-				intersect_count++;
-			}
-		}
-		
-		return (intersect_count % 2) == 1;
+		return super.contains(x, y) && (z >= _minZ) && (z <= _maxZ);
 	}
 	
 	public Location getRandomPoint()
 	{
-		if (_procMax > 0)
+		int x, y;
+		
+		int minX = getBounds().x;
+		int maxX = getBounds().x + getBounds().width;
+		int minY = getBounds().y;
+		int maxY = getBounds().y + getBounds().height;
+		
+		x = Rnd.get(minX, maxX);
+		y = Rnd.get(minY, maxY);
+		
+		int antiBlocker = 0;
+		while (!contains(x, y) && (antiBlocker++ < 1000))
 		{
-			int pos = 0;
-			int rnd = Rnd.nextInt(_procMax);
-			for (Point p1 : _points)
-			{
-				pos += p1._proc;
-				if (rnd <= pos)
-				{
-					return new Location(p1._x, p1._y, Rnd.get(p1._zmin, p1._zmax));
-				}
-			}
-			
+			x = Rnd.get(minX, maxX);
+			y = Rnd.get(minY, maxY);
 		}
-		for (int i = 0; i < 100; i++)
-		{
-			int x = Rnd.get(_xMin, _xMax);
-			int y = Rnd.get(_yMin, _yMax);
-			if (isInside(x, y))
-			{
-				double curdistance = 0;
-				int zmin = _zMin;
-				for (Point p1 : _points)
-				{
-					double dx = p1._x - x;
-					double dy = p1._y - y;
-					double distance = Math.sqrt((dx * dx) + (dy * dy));
-					if ((curdistance == 0) || (distance < curdistance))
-					{
-						curdistance = distance;
-						zmin = p1._zmin;
-					}
-				}
-				return new Location(x, y, Rnd.get(zmin, _zMax));
-			}
-		}
-		_log.warn("Can't make point for territory " + _terr);
-		return null;
-	}
-	
-	public int getProcMax()
-	{
-		return _procMax;
+		
+		return new Location(x, y, GeoData.getInstance().getHeight(x, y, _minZ));
 	}
 }

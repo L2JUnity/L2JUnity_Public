@@ -53,12 +53,12 @@ public class MoveToLocationInVehicle implements IClientOutgoingPacket
 		
 		packet.writeD(_charObjId);
 		packet.writeD(_boatId);
-		packet.writeD(_destination.getX());
-		packet.writeD(_destination.getY());
-		packet.writeD(_destination.getZ());
-		packet.writeD(_origin.getX());
-		packet.writeD(_origin.getY());
-		packet.writeD(_origin.getZ());
+		packet.writeD((int) _destination.getX());
+		packet.writeD((int) _destination.getY());
+		packet.writeD((int) _destination.getZ());
+		packet.writeD((int) _origin.getX());
+		packet.writeD((int) _origin.getY());
+		packet.writeD((int) _origin.getZ());
 		return true;
 	}
 }

@@ -21,8 +21,7 @@ package org.l2junity.gameserver.network.client.send.ability;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.data.xml.impl.AbilityPointsData;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.SkillTreesData;
 import org.l2junity.gameserver.model.SkillLearn;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -37,7 +36,6 @@ import org.l2junity.network.PacketWriter;
 public class ExAcquireAPSkillList implements IClientOutgoingPacket
 {
 	private final int _abilityPoints, _usedAbilityPoints;
-	private final long _price;
 	private final boolean _enable;
 	private final List<Skill> _skills = new ArrayList<>();
 	
@@ -45,7 +43,6 @@ public class ExAcquireAPSkillList implements IClientOutgoingPacket
 	{
 		_abilityPoints = activeChar.getAbilityPoints();
 		_usedAbilityPoints = activeChar.getAbilityPointsUsed();
-		_price = AbilityPointsData.getInstance().getPrice(_abilityPoints);
 		for (SkillLearn sk : SkillTreesData.getInstance().getAbilitySkillTree().values())
 		{
 			final Skill knownSkill = activeChar.getKnownSkill(sk.getSkillId());
@@ -57,7 +54,7 @@ public class ExAcquireAPSkillList implements IClientOutgoingPacket
 				}
 			}
 		}
-		_enable = (!activeChar.isSubClassActive() || activeChar.isDualClassActive()) && (activeChar.getLevel() >= 99) && activeChar.isNoble();
+		_enable = (!activeChar.isSubClassActive() || activeChar.isDualClassActive()) && (activeChar.getLevel() >= 85);
 	}
 	
 	@Override
@@ -66,9 +63,7 @@ public class ExAcquireAPSkillList implements IClientOutgoingPacket
 		OutgoingPackets.EX_ACQUIRE_AP_SKILL_LIST.writeId(packet);
 		
 		packet.writeD(_enable ? 1 : 0);
-		packet.writeQ(Config.ABILITY_POINTS_RESET_ADENA);
-		packet.writeQ(_price);
-		packet.writeD(Config.ABILITY_MAX_POINTS);
+		packet.writeQ(PlayerConfig.ABILITY_POINTS_RESET_SP);
 		packet.writeD(_abilityPoints);
 		packet.writeD(_usedAbilityPoints);
 		packet.writeD(_skills.size());

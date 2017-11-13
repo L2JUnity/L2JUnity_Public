@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Balok Warzone -->
+<instance id="167" maxWorlds="80" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/instance.xsd">
+	<time duration="60" empty="5" />
+	<removeBuffs type="ALL" />
+	<locations>
+		<enter type="FIXED">
+			<location x="153573" y="143772" z="-12704" />
+		</enter>
+		<exit type="FIXED">
+			<location x="149364" y="173631" z="-920" />
+		</exit>
+	</locations>
+	<conditions>
+		<condition type="Party" showMessageAndHtml="true">
+			<param name="html" value="condNoParty.html" />
+		</condition>
+		<condition type="PartyLeader" showMessageAndHtml="true">
+			<param name="html" value="condNoPartyLeader.html" />
+		</condition>
+		<condition type="CommandChannel" showMessageAndHtml="true">
+			<param name="html" value="condNoCommandLeader.html" />
+		</condition>
+		<condition type="CommandChannelLeader" showMessageAndHtml="true">
+			<param name="html" value="condNoCommandLeader.html" />
+		</condition>
+		<condition type="GroupMin">
+			<param name="limit" value="7" />
+		</condition>
+		<condition type="GroupMax">
+			<param name="html" value="condBigGroup.html"/>
+			<param name="limit" value="35" />
+		</condition>
+		<condition type="Level" showMessageAndHtml="true">
+			<param name="html" value="condNoLevelCommon.html" />
+			<param name="min" value="97" />
+		</condition>
+		<condition type="Distance" />
+		<condition type="Reenter" />
+	</conditions>
+	<reenter apply="NONE">
+		<reset day="WEDNESDAY" hour="6" minute="30" />
+		<reset day="SATURDAY" hour="6" minute="30" />
+	</reenter>
+	<doorlist>
+		<door id="24220008">
+			<openStatus default="open" />
+		</door>
+		<door id="24220009" />
+		<door id="24220010" />
+		<door id="24220011" />
+		<door id="24220012" />
+		<door id="24220013" />
+		<door id="24220014" />
+		<door id="24220015" />
+		<door id="24220016" />
+		<door id="24220017" />
+		<door id="24220018" />
+		<door id="24220019" />
+	</doorlist>
+	<spawnlist>
+		<group name="balrog_bossm1" spawnByDefault="false">
+			<territories>
+				<territory name="balrog_boss" minZ="-12786" maxZ="-12286">
+					<node x="153594" y="143391" />
+					<node x="152907" y="143252" />
+					<node x="152439" y="142800" />
+					<node x="152204" y="142110" />
+					<node x="152367" y="141422" />
+					<node x="152890" y="140905" />
+					<node x="153570" y="140756" />
+					<node x="154253" y="140939" />
+					<node x="154760" y="141434" />
+					<node x="154969" y="142116" />
+					<node x="154744" y="142791" />
+					<node x="154250" y="143278" />
+				</territory>
+			</territories>
+			<npc id="29218" x="153572" y="142074" z="-12752" heading="16336" count="1" /> <!-- Balok -->
+		</group>
+		<group name="balrog_boss_guardm1" spawnByDefault="false">
+			<territories>
+				<territory name="balrog_boss_guard" minZ="-12752" maxZ="-12252">
+					<node x="151582" y="140086" />
+					<node x="155581" y="140084" />
+					<node x="155546" y="144071" />
+					<node x="151561" y="144054" />
+				</territory>
+			</territories>
+			<npc id="23123" x="153571" y="140838" z="-12752" heading="16616" respawnTime="3min" count="1"> <!-- Isolation Room Warden -->
+			<parameters>
+				<param name="jail_number" value="0" />
+			</parameters>
+			</npc>
+			<npc id="23123" x="154190" y="141001" z="-12752" heading="20928" respawnTime="3min" count="1"> <!-- Isolation Room Warden -->
+			<parameters>
+				<param name="jail_number" value="1" />
+			</parameters>
+			</npc>
+			<npc id="23123" x="154672" y="141454" z="-12752" heading="25528" respawnTime="3min" count="1"> <!-- Isolation Room Warden -->
+			<parameters>
+				<param name="jail_number" value="2" />
+			</parameters>
+			</npc>
+			<npc id="23123" x="154847" y="142076" z="-12752" heading="32640" respawnTime="3min" count="1"> <!-- Isolation Room Warden -->
+			<parameters>
+				<param name="jail_number" value="3" />
+			</parameters>
+			</npc>
+			<npc id="23123" x="154203" y="143156" z="-12752" heading="-24816" respawnTime="3min" count="1"> <!-- Isolation Room Warden -->
+			<parameters>
+				<param name="jail_number" value="5" />
+			</parameters>
+			</npc>
+			<npc id="23123" x="152944" y="143160" z="-12752" heading="-11136" respawnTime="3min" count="1"> <!-- Isolation Room Warden -->
+			<parameters>
+				<param name="jail_number" value="6" />
+			</parameters>
+			</npc>
+			<npc id="23123" x="152311" y="142070" z="-12752" respawnTime="3min" count="1"> <!-- Isolation Room Warden -->
+			<parameters>
+				<param name="jail_number" value="8" />
+			</parameters>
+			</npc>
+			<npc id="23123" x="152468" y="141458" z="-12752" heading="7976" respawnTime="3min" count="1"> <!-- Isolation Room Warden -->
+			<parameters>
+				<param name="jail_number" value="9" />
+			</parameters>
+			</npc>
+		</group>
+	</spawnlist>
+</instance>

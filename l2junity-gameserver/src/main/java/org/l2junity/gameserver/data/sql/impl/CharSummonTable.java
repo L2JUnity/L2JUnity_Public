@@ -27,8 +27,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.data.xml.impl.NpcData;
 import org.l2junity.gameserver.data.xml.impl.PetDataTable;
 import org.l2junity.gameserver.data.xml.impl.SkillData;
@@ -69,9 +69,14 @@ public class CharSummonTable
 		return _servitors;
 	}
 	
-	public void init()
+	protected CharSummonTable()
 	{
-		if (Config.RESTORE_SERVITOR_ON_RECONNECT)
+		init();
+	}
+	
+	private void init()
+	{
+		if (PlayerConfig.RESTORE_SERVITOR_ON_RECONNECT)
 		{
 			try (Connection con = DatabaseFactory.getInstance().getConnection();
 				Statement s = con.createStatement();
@@ -88,7 +93,7 @@ public class CharSummonTable
 			}
 		}
 		
-		if (Config.RESTORE_PET_ON_RECONNECT)
+		if (PlayerConfig.RESTORE_PET_ON_RECONNECT)
 		{
 			try (Connection con = DatabaseFactory.getInstance().getConnection();
 				Statement s = con.createStatement();
@@ -200,7 +205,7 @@ public class CharSummonTable
 					int time = rs.getInt("time");
 					
 					skill = SkillData.getInstance().getSkill(skillId, activeChar.getSkillLevel(skillId));
-					if ((skill == null) || !activeChar.hasServitor(summonObjId))
+					if (skill == null)
 					{
 						removeServitor(activeChar, summonObjId);
 						return;
@@ -208,10 +213,13 @@ public class CharSummonTable
 					
 					skill.applyEffects(activeChar, activeChar);
 					
-					final L2ServitorInstance summon = (L2ServitorInstance) activeChar.getServitor(summonObjId);
-					summon.setCurrentHp(curHp);
-					summon.setCurrentMp(curMp);
-					summon.setLifeTimeRemaining(time);
+					if (activeChar.hasServitors())
+					{
+						final L2ServitorInstance summon = activeChar.getServitors().values().stream().map(s -> ((L2ServitorInstance) s)).filter(s -> s.getReferenceSkill() == skillId).findAny().orElse(null);
+						summon.setCurrentHp(curHp);
+						summon.setCurrentMp(curMp);
+						summon.setLifeTimeRemaining(time);
+					}
 				}
 			}
 		}
@@ -223,7 +231,7 @@ public class CharSummonTable
 	
 	public void saveSummon(L2ServitorInstance summon)
 	{
-		if ((summon == null) || (summon.getLifeTimeRemaining() <= 0))
+		if (summon == null)
 		{
 			return;
 		}

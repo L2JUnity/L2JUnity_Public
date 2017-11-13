@@ -18,7 +18,6 @@
  */
 package org.l2junity.gameserver.model.conditions;
 
-import org.l2junity.gameserver.model.OneDayRewardDataHolder;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.skills.Skill;
@@ -27,13 +26,11 @@ import org.l2junity.gameserver.model.skills.Skill;
  * The Class Condition.
  * @author mkizub
  */
-public abstract class Condition implements ConditionListener
+public abstract class Condition
 {
-	private ConditionListener _listener;
 	private String _msg;
 	private int _msgId;
 	private boolean _addName = false;
-	private boolean _result;
 	
 	/**
 	 * Sets the message.
@@ -88,49 +85,14 @@ public abstract class Condition implements ConditionListener
 		return _addName;
 	}
 	
-	/**
-	 * Sets the listener.
-	 * @param listener the new listener
-	 */
-	void setListener(ConditionListener listener)
-	{
-		_listener = listener;
-		notifyChanged();
-	}
-	
-	/**
-	 * Gets the listener.
-	 * @return the listener
-	 */
-	final ConditionListener getListener()
-	{
-		return _listener;
-	}
-	
 	public final boolean test(Creature caster, Creature target, Skill skill)
 	{
 		return test(caster, target, skill, null);
 	}
-	
-	public final boolean test(Creature caster, Creature target, L2Item item)
-	{
-		return test(caster, target, null, null);
-	}
-	
-	public final boolean test(Creature caster, OneDayRewardDataHolder onewayreward)
-	{
-		return test(caster, null, null, null);
-	}
-	
+
 	public final boolean test(Creature caster, Creature target, Skill skill, L2Item item)
 	{
-		boolean res = testImpl(caster, target, skill, item);
-		if ((_listener != null) && (res != _result))
-		{
-			_result = res;
-			notifyChanged();
-		}
-		return res;
+		return testImpl(caster, target, skill, item);
 	}
 	
 	/**
@@ -142,13 +104,4 @@ public abstract class Condition implements ConditionListener
 	 * @return {@code true} if successful, {@code false} otherwise
 	 */
 	public abstract boolean testImpl(Creature effector, Creature effected, Skill skill, L2Item item);
-	
-	@Override
-	public void notifyChanged()
-	{
-		if (_listener != null)
-		{
-			_listener.notifyChanged();
-		}
-	}
 }

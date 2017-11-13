@@ -97,7 +97,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -125,7 +125,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -248,11 +248,10 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
-			</effect>
-		</effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="21012" toLevel="1" name="Maintain Vitality">
 		<!-- Recovers energy when acquiring Exp. for 20 minutes -->
@@ -281,11 +280,10 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
-			</effect>
-		</effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="21013" toLevel="1" name="Maintain Vitality">
 		<!-- Recovers energy when acquiring Exp. for 20 minutes -->
@@ -314,11 +312,10 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
-			</effect>
-		</effects>
+			<effect name="StopConsumeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
+ 			</effect>
+ 		</effects>
 	</skill>
 	<skill id="21014" toLevel="1" name="Scissors">
 		<castRange>400</castRange>
@@ -393,121 +390,127 @@
 		</conditions>
 	</skill>
 	<skill id="21017" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="VampiricAttack">
-				<amount>10</amount>
-				<chance>30</chance>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>100</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>10</amount>
+				<chance>30</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21018" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
-				<amount>25</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>100</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>25</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21019" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="FatalBlowRate">
+			<effect name="p_fatal_blow_rate">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
-				<magicType>1</magicType>
+				<magicType>0</magicType>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21020" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="VampiricAttack">
-				<amount>10</amount>
-				<chance>30</chance>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>100</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>10</amount>
+				<chance>30</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21021" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
-				<amount>25</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>100</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>25</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21022" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicalAttackSpeed">
-				<amount>25</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_speed">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -515,20 +518,21 @@
 		</effects>
 	</skill>
 	<skill id="21023" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MAtk">
-				<amount>50</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magical_attack">
+				<amount>50</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
@@ -536,86 +540,90 @@
 		</effects>
 	</skill>
 	<skill id="21024" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="VampiricAttack">
-				<amount>10</amount>
-				<chance>30</chance>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
-				<magicType>1</magicType>
+				<magicType>0</magicType>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>10</amount>
+				<chance>30</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21025" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackRange">
+			<effect name="p_critical_rate">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_attack_range">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21026" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="VampiricAttack">
-				<amount>10</amount>
-				<chance>30</chance>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="HitNumber">
+			<effect name="p_hit_number">
 				<amount>10</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>10</amount>
+				<chance>30</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21027" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalAttackSpeed">
-				<amount>25</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_attack_speed">
+				<amount>25</amount>
+				<mode>PER</mode>
+			</effect>
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-20</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -623,62 +631,65 @@
 		</effects>
 	</skill>
 	<skill id="21028" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="VampiricAttack">
-				<amount>10</amount>
-				<chance>30</chance>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>100</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_vampiric_attack">
+				<amount>10</amount>
+				<chance>30</chance>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21029" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalDamage">
-				<amount>25</amount>
-				<mode>PER</mode>
-			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>100</amount>
 				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_critical_damage">
+				<amount>25</amount>
+				<mode>PER</mode>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21030" toLevel="1" name="Holiday Dream Weapon">
+		<!-- Glory Days confirmed -->
 		<icon>BranchSys.icon.br_xmas_weapon_i00</icon>
 		<magicLvl>1</magicLvl>
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="PhysicalEvasion">
-				<amount>5</amount>
-				<mode>DIFF</mode>
-			</effect>
-			<effect name="Accuracy">
-				<amount>5</amount>
-				<mode>DIFF</mode>
-			</effect>
-			<effect name="MaxCp">
+			<effect name="p_max_cp">
 				<amount>30</amount>
 				<mode>PER</mode>
+			</effect>
+			<effect name="p_hit">
+				<amount>5</amount>
+				<mode>DIFF</mode>
+			</effect>
+			<effect name="p_avoid">
+				<amount>5</amount>
+				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -895,10 +906,10 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealPercent">
+			<effect name="i_hp_per_max">
 				<power>100</power>
 			</effect>
-			<effect name="ManaHealPercent">
+			<effect name="i_mp_per_max">
 				<power>50</power>
 			</effect>
 		</effects>
@@ -1070,7 +1081,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>110</transformationId>
 			</effect>
 		</effects>
@@ -1096,7 +1107,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1123,7 +1134,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>25</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1149,7 +1160,7 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="Resurrection">
+			<effect name="i_resurrection">
 				<power>100</power>
 			</effect>
 		</effects>
@@ -1176,7 +1187,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1204,7 +1215,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1234,9 +1245,8 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>20</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1264,7 +1274,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>3.09</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1294,11 +1304,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>30</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>444</power>
 			</effect>
 		</effects>
@@ -1324,7 +1334,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1352,7 +1362,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1379,7 +1389,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1407,7 +1417,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1437,7 +1447,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>3.09</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1467,9 +1477,8 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>20</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1501,14 +1510,14 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
 	<skill id="21067" toLevel="1" name="Blessed Escape">
 		<!-- Confirmed CT2.5 -->
+		<!-- TO DO : op_not_territory -->
 		<blockedInOlympiad>true</blockedInOlympiad>
 		<hitTime>200</hitTime>
 		<icon>BranchSys.icon.br_plastic_hair_f_i00</icon>
@@ -1525,7 +1534,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Escape">
+			<effect name="i_escape">
 				<escapeType>TOWN</escapeType>
 			</effect>
 		</effects>
@@ -1554,7 +1563,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>30</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1582,7 +1591,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1609,7 +1618,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1637,7 +1646,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1664,7 +1673,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1694,7 +1703,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>3.09</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1724,9 +1733,8 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>20</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1754,11 +1762,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>30</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>444</power>
 			</effect>
 		</effects>
@@ -1787,7 +1795,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>30</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -1815,7 +1823,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1842,7 +1850,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
@@ -1870,7 +1878,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>4</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1897,7 +1905,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MagicCriticalRate">
+			<effect name="p_magic_critical_rate">
 				<amount>2</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1927,7 +1935,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MpRegen">
+			<effect name="p_mp_regen">
 				<amount>3.09</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -1957,9 +1965,8 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageShield">
+			<effect name="p_damage_shield">
 				<amount>20</amount>
-				<mode>DIFF</mode>
 			</effect>
 		</effects>
 	</skill>
@@ -1987,11 +1994,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="HealOverTime">
+			<effect name="t_hp">
 				<power>30</power>
 				<ticks>1</ticks>
 			</effect>
-			<effect name="Heal">
+			<effect name="i_heal">
 				<power>444</power>
 			</effect>
 		</effects>
@@ -2024,9 +2031,8 @@
 			<condition name="CanUseVitalityConsumeItem" />
 		</conditions>
 		<effects>
-			<effect name="VitalityPointsRate">
-				<amount>-10</amount>
-				<mode>DIFF</mode>
+			<effect name="RechargeVitalPoint">
+				<countVitalityItemUsed>true</countVitalityItemUsed>
 			</effect>
 		</effects>
 	</skill>
@@ -2072,14 +2078,14 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
@@ -2106,35 +2112,35 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MAtk">
+			<effect name="p_magical_attack">
 				<amount>16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>8</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-16</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>-8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>-4</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>8</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2167,7 +2173,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CallPc">
+			<effect name="i_call_pc">
 				<itemId>0</itemId>
 				<itemCount>0</itemCount>
 			</effect>
@@ -2199,7 +2205,7 @@
 			<effect name="SilentMove">
 				<chance>100</chance>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-50</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2290,7 +2296,7 @@
 			<condition name="OpResurrection" />
 		</conditions>
 		<effects>
-			<effect name="Resurrection">
+			<effect name="i_resurrection">
 				<power>100</power>
 			</effect>
 		</effects>
@@ -2316,11 +2322,11 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="CriticalDamage">
+			<effect name="p_critical_damage">
 				<amount>35</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="CriticalRate">
+			<effect name="p_critical_rate">
 				<amount>30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -2353,7 +2359,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="CallPc">
+			<effect name="i_call_pc">
 				<itemId>0</itemId>
 				<itemCount>0</itemCount>
 			</effect>
@@ -2380,19 +2386,19 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="MaxHp">
+			<effect name="p_max_hp">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>20</amount>
 				<mode>DIFF</mode>
 			</effect>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="ResistAbnormalByCategory">
+			<effect name="p_resist_abnormal_by_category">
 				<amount>-10</amount>
 				<slot>DEBUFF</slot>
 			</effect>
@@ -2419,19 +2425,19 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="VampiricAttack">
+			<effect name="p_vampiric_attack">
 				<amount>5</amount>
 				<chance>30</chance>
 			</effect>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>10</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>20</amount>
 				<mode>PER</mode>
 			</effect>

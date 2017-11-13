@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.model.Party;
 import org.l2junity.gameserver.model.World;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
@@ -77,7 +77,7 @@ public final class RequestDuelStart implements IClientIncomingPacket
 			return;
 		}
 		// Players may not be too far apart
-		else if (!activeChar.isInsideRadius(targetChar, 250, false, false))
+		else if (!activeChar.isInRadius2d(targetChar, 250))
 		{
 			SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.C1_IS_TOO_FAR_AWAY_TO_RECEIVE_A_DUEL_CHALLENGE);
 			msg.addString(targetChar.getName());
@@ -139,9 +139,9 @@ public final class RequestDuelStart implements IClientIncomingPacket
 					activeChar.onTransactionRequest(partyLeader);
 					partyLeader.sendPacket(new ExDuelAskStart(activeChar.getName(), _partyDuel));
 					
-					if (Config.DEBUG)
+					if (GeneralConfig.DEBUG)
 					{
-						_log.debug(activeChar.getName() + " requested a duel with " + partyLeader.getName());
+						LOGGER.debug(activeChar.getName() + " requested a duel with " + partyLeader.getName());
 					}
 					
 					SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.C1_S_PARTY_HAS_BEEN_CHALLENGED_TO_A_DUEL);
@@ -168,9 +168,9 @@ public final class RequestDuelStart implements IClientIncomingPacket
 				activeChar.onTransactionRequest(targetChar);
 				targetChar.sendPacket(new ExDuelAskStart(activeChar.getName(), _partyDuel));
 				
-				if (Config.DEBUG)
+				if (GeneralConfig.DEBUG)
 				{
-					_log.debug(activeChar.getName() + " requested a duel with " + targetChar.getName());
+					LOGGER.debug(activeChar.getName() + " requested a duel with " + targetChar.getName());
 				}
 				
 				SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.C1_HAS_BEEN_CHALLENGED_TO_A_DUEL);

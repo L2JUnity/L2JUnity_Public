@@ -28,6 +28,7 @@
 		<set name="is_private_storeable" val="false" />
 		<set name="default_action" val="PEEL" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23490" min="1" max="1" chance="100" /> <!-- PC Vitality (1-hour) - Event -->
 			<item id="22280" min="1" max="1" chance="100" /> <!-- Player Commendation - Blessing (1-hour) - Event -->
@@ -96,6 +97,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="22959" min="1" max="1" chance="100" /> <!-- SP Rune 50% - 1-hour -->
 		</capsuled_items>
@@ -304,6 +306,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23614" min="1" max="1" chance="100" /> <!-- Vitality Maintaining Potion (10-minute) - No Weekly Usage Limit -->
 		</capsuled_items>
@@ -319,6 +322,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23615" min="1" max="1" chance="100" /> <!-- Black Gem Mask - Vitality (7-day) (No Weekly Usage Limit) -->
 		</capsuled_items>
@@ -334,6 +338,7 @@
 		<set name="default_action" val="PEEL" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
 		<capsuled_items>
 			<item id="23616" min="1" max="1" chance="100" /> <!-- Artisan's Goggles - Vitality (7-day) (No Weekly Usage Limit) -->
 		</capsuled_items>
@@ -662,6 +667,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">170</stat>
+			<stat type="maxMp">59</stat>
 		</stats>
 	</item>
 	<item id="23638" name="Blessed Antharas' Earring" name_additional="7-day" type="Armor">
@@ -688,6 +694,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">170</stat>
+			<stat type="maxMp">59</stat>
 		</stats>
 	</item>
 	<item id="23639" name="Blessed Valakas' Necklace" name_additional="3-day" type="Armor">
@@ -714,6 +721,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">226</stat>
+			<stat type="maxMp">79</stat>
 		</stats>
 	</item>
 	<item id="23640" name="Blessed Valakas' Necklace" name_additional="7-day" type="Armor">
@@ -740,6 +748,7 @@
 		</skills>
 		<stats>
 			<stat type="mDef">226</stat>
+			<stat type="maxMp">79</stat>
 		</stats>
 	</item>
 	<item id="23641" name="Star Agathion Pack" type="EtcItem">
@@ -754,6 +763,7 @@
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
 		<skills>
 			<skill id="9632" level="1" /> <!-- Star Agathion Pack -->
 		</skills>
@@ -1491,6 +1501,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="23687" name="Dimension Traveler's Blue Vitality Potion" type="EtcItem">
 		<!-- Vitality Potion given as a reward from Aden Kingdom for clearing Kartia's Labyrinth. Restores more Vitality than the Dimension Traveler's Red Vitality Potion. -->
@@ -1501,6 +1512,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="23688" name="Dimension Traveler's Gold Vitality Potion" type="EtcItem">
 		<!-- Vitality Potion given as a reward from Aden Kingdom for clearing Kartia's Labyrinth. Restores more Vitality than the Dimension Traveler's Blue Vitality Potion. -->
@@ -1511,6 +1523,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="23689" name="Dimension Protector's Red Vitality Potion" type="EtcItem">
 		<!-- Vitality Potion given as a reward from Aden Kingdom for clearing Kartia's Labyrinth. Restores some Vitality. -->
@@ -1521,6 +1534,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="23690" name="Dimension Protector's Blue Vitality Potion" type="EtcItem">
 		<!-- Vitality Potion given as a reward from Aden Kingdom for clearing Kartia's Labyrinth. Restores more Vitality than the Dimension Protector's Red Vitality Potion. -->
@@ -1531,6 +1545,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="23691" name="Dimension Protector's Gold Vitality Potion" type="EtcItem">
 		<!-- Vitality Potion given as a reward from Aden Kingdom for clearing Kartia's Labyrinth. Restores more Vitality than the Dimension Protector's Blue Vitality Potion. -->
@@ -1541,6 +1556,7 @@
 		<set name="is_commissionable" val="false" />
 		<set name="etcitem_type" val="POTION" />
 		<set name="is_stackable" val="true" />
+		<set name="default_action" val="SKILL_REDUCE" />
 	</item>
 	<item id="23692" name="Ninja Top" name_additional="Modified Set" type="Armor">
 		<!-- Ninja Top. Part of a costume. Modifying the full set creates a new skill. -->

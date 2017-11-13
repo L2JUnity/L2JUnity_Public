@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.data.xml.impl;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +26,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.AccessLevel;
 import org.l2junity.gameserver.model.AdminCommandAccessRight;
 import org.l2junity.gameserver.model.StatsSet;
@@ -55,11 +59,11 @@ public final class AdminData implements IGameXmlReader
 	
 	protected AdminData()
 	{
-		load();
 	}
 	
-	@Override
-	public synchronized void load()
+	@Reload("access")
+	@Load(group = LoadGroup.class)
+	private void load() throws Exception
 	{
 		_accessLevels.clear();
 		_adminCommandAccessRights.clear();
@@ -70,7 +74,7 @@ public final class AdminData implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		NamedNodeMap attrs;
 		Node attr;
@@ -114,6 +118,11 @@ public final class AdminData implements IGameXmlReader
 				}
 			}
 		}
+	}
+	
+	public int getLoadedElementsCount()
+	{
+		return _accessLevels.size() + _adminCommandAccessRights.size();
 	}
 	
 	/**
@@ -345,6 +354,7 @@ public final class AdminData implements IGameXmlReader
 	 * Gets the single instance of AdminTable.
 	 * @return AccessLevels: the one and only instance of this class<br>
 	 */
+	@InstanceGetter
 	public static AdminData getInstance()
 	{
 		return SingletonHolder._instance;

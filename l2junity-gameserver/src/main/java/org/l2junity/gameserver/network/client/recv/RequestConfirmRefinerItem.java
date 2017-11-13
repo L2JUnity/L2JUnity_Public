@@ -18,9 +18,10 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
+import org.l2junity.gameserver.data.xml.impl.VariationData;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
-import org.l2junity.gameserver.model.items.type.CrystalType;
+import org.l2junity.gameserver.model.options.VariationFee;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.ExPutIntensiveResultForVariationMake;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
@@ -64,18 +65,13 @@ public class RequestConfirmRefinerItem extends AbstractRefinePacket
 			return;
 		}
 		
-		if (!isValid(activeChar, targetItem, refinerItem))
+		final VariationFee fee = VariationData.getInstance().getFee(targetItem.getId(), refinerItem.getId());
+		if ((fee == null) || !isValid(activeChar, targetItem, refinerItem))
 		{
 			activeChar.sendPacket(SystemMessageId.THIS_IS_NOT_A_SUITABLE_ITEM);
 			return;
 		}
 		
-		final int refinerItemId = refinerItem.getItem().getId();
-		final CrystalType grade = targetItem.getItem().getCrystalType();
-		final LifeStone ls = getLifeStone(refinerItemId);
-		final int gemStoneId = getGemStoneId(grade);
-		final int gemStoneCount = getGemStoneCount(grade, ls.getGrade());
-		
-		activeChar.sendPacket(new ExPutIntensiveResultForVariationMake(_refinerItemObjId, refinerItemId, gemStoneId, gemStoneCount));
+		activeChar.sendPacket(new ExPutIntensiveResultForVariationMake(_refinerItemObjId, refinerItem.getId(), fee.getItemId(), fee.getItemCount()));
 	}
 }

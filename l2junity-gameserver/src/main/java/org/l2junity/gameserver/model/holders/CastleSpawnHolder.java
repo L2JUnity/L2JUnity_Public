@@ -26,6 +26,7 @@ import org.l2junity.gameserver.model.Location;
  */
 public class CastleSpawnHolder extends Location
 {
+	private static final long serialVersionUID = -2901500054895111571L;
 	private final int _npcId;
 	private final CastleSide _side;
 	

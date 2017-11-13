@@ -50,14 +50,14 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_HP</type>
 			</effect>
-			<effect name="DamageBlock">
+			<effect name="p_block_getdamage">
 				<type>BLOCK_MP</type>
 			</effect>
-			<effect name="DebuffBlock" />
-			<effect name="ResistDispelByCategory">
+			<effect name="p_block_debuff" />
+			<effect name="p_resist_dispel_by_category">
 				<amount>-100</amount>
 				<slot>ALL</slot>
 			</effect>
@@ -88,7 +88,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>70</amount>
 				<mode>PER</mode>
 			</effect>
@@ -119,7 +119,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>250</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -144,7 +144,7 @@
 	<skill id="2905" toLevel="1" name="Growth Accelerator">
 		<effectPoint>-100</effectPoint>
 		<hitTime>4000</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
 		<itemConsumeId>14832</itemConsumeId> <!-- Growth Accelerator -->
@@ -200,7 +200,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Hp">
+			<effect name="i_hp">
 				<amount>1900</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -224,7 +224,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Mp">
+			<effect name="i_mp">
 				<amount>360</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -248,7 +248,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Cp">
+			<effect name="i_cp">
 				<amount>1000</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -309,7 +309,6 @@
 	</skill>
 	<skill id="2914" toLevel="3" name="Equipment Set Pack (10-day)">
 		<!-- Confirmed CT2.5 -->
-		<table name="#npcId"> 32702 32703 13284 </table>
 		<icon>icon.etc_summon_aga_agit_i00</icon>
 		<isMagic>2</isMagic> <!-- Static Skill -->
 		<itemConsumeCount>1</itemConsumeCount>
@@ -346,7 +345,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="SummonNpc">
+			<effect name="i_summon_npc">
 				<npcId>
 					<value level="1">32702</value>
 					<value level="2">32703</value>
@@ -373,7 +372,7 @@
 			<condition name="OpCanEscape" />
 		</conditions>
 		<effects>
-			<effect name="Teleport">
+			<effect name="i_teleport">
 				<x>89417</x>
 				<y>-44506</y>
 				<z>-2136</z>
@@ -392,7 +391,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="Feed">
+			<effect name="i_food_for_pet">
 				<normal>11000</normal>
 				<ride>11000</ride>
 				<wyvern>0</wyvern>
@@ -418,7 +417,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="2.77">
 						<item id="9575" count="1" />
@@ -500,7 +499,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="2.36">
 						<item id="9575" count="1" />
@@ -582,7 +581,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="40.0">
 						<item id="5942" count="1" />
@@ -628,7 +627,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="40.0">
 						<item id="5942" count="1" />
@@ -674,7 +673,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -705,7 +704,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -736,7 +735,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -767,7 +766,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -798,7 +797,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -829,7 +828,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -860,7 +859,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -891,7 +890,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -922,7 +921,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13898" count="1" />
@@ -953,7 +952,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -984,7 +983,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -1015,7 +1014,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -1046,7 +1045,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -1077,7 +1076,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -1108,7 +1107,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -1139,7 +1138,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -1170,7 +1169,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -1201,7 +1200,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13918" count="1" />
@@ -1232,7 +1231,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1263,7 +1262,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1294,7 +1293,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1325,7 +1324,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1356,7 +1355,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1387,7 +1386,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1418,7 +1417,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1449,7 +1448,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1480,7 +1479,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13894" count="1" />
@@ -1511,7 +1510,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1542,7 +1541,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1573,7 +1572,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1604,7 +1603,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1635,7 +1634,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1666,7 +1665,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1697,7 +1696,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1728,7 +1727,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1759,7 +1758,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13900" count="1" />
@@ -1790,7 +1789,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -1821,7 +1820,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -1852,7 +1851,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -1883,7 +1882,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -1914,7 +1913,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -1945,7 +1944,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -1976,7 +1975,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -2007,7 +2006,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -2038,7 +2037,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13920" count="1" />
@@ -2069,7 +2068,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2100,7 +2099,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2131,7 +2130,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2162,7 +2161,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2193,7 +2192,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2224,7 +2223,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2255,7 +2254,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2286,7 +2285,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2317,7 +2316,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="30.0">
 						<item id="13896" count="1" />
@@ -2348,7 +2347,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2379,7 +2378,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2410,7 +2409,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2441,7 +2440,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2472,7 +2471,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2503,7 +2502,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2534,7 +2533,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2565,7 +2564,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2596,7 +2595,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14902" count="1" />
@@ -2627,7 +2626,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2658,7 +2657,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2689,7 +2688,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2720,7 +2719,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2751,7 +2750,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2782,7 +2781,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2813,7 +2812,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2844,7 +2843,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2875,7 +2874,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="RestorationRandom">
+			<effect name="i_restoration_random">
 				<items>
 					<item chance="21.0">
 						<item id="14904" count="1" />
@@ -2890,6 +2889,7 @@
 	<skill id="2993" toLevel="1" name="Ancient herb - Deceiver">
 		<abnormalLvl>9</abnormalLvl>
 		<abnormalTime>3600</abnormalTime>
+		<subordinationAbnormalType>POISON</subordinationAbnormalType>
 		<abnormalType>POISON</abnormalType>
 		<abnormalVisualEffect>DOT_POISON</abnormalVisualEffect>
 		<icon>icon.freed_soul_core_i00</icon>
@@ -2902,7 +2902,7 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<specialLevel>-1</specialLevel>
 		<hitTime>100</hitTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -2936,7 +2936,7 @@
 			</condition>
 		</conditions>
 		<effects>
-			<effect name="Transformation">
+			<effect name="p_transform">
 				<transformationId>125</transformationId>
 			</effect>
 		</effects>
@@ -2950,6 +2950,18 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>D</crystalType>
+				<scrollGroup>2</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="2996" toLevel="1" name="Player Commendation - Scroll: Enchant Weapon (C-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2960,6 +2972,18 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>C</crystalType>
+				<scrollGroup>2</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="2997" toLevel="1" name="Player Commendation - Scroll: Enchant Weapon (B-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2970,6 +2994,18 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>B</crystalType>
+				<scrollGroup>2</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="2998" toLevel="1" name="Player Commendation - Scroll: Enchant Weapon (A-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2980,6 +3016,18 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>A</crystalType>
+				<scrollGroup>2</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 	<skill id="2999" toLevel="1" name="Player Commendation - Scroll: Enchant Weapon (S-grade)">
 		<isMagic>2</isMagic> <!-- Static Skill -->
@@ -2990,5 +3038,17 @@
 		<hitCancelTime>0</hitCancelTime>
 		<targetType>ITEM</targetType>
 		<affectScope>SINGLE</affectScope>
+		<conditions>
+			<condition name="TargetItemCrystalType">
+				<itemType>
+					<item>WEAPON</item>
+				</itemType>
+				<crystalType>S</crystalType>
+				<scrollGroup>2</scrollGroup>
+			</condition>
+		</conditions>
+		<effects>
+			<effect name="i_enchant_weapon" />
+		</effects>
 	</skill>
 </list>

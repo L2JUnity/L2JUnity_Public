@@ -27,17 +27,24 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.loader.annotations.Dependency;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.communitybbs.Manager.ForumsBBSManager;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.impl.ClanHallData;
+import org.l2junity.gameserver.data.xml.impl.ClanRewardData;
+import org.l2junity.gameserver.data.xml.impl.SkillData;
 import org.l2junity.gameserver.enums.UserInfoType;
 import org.l2junity.gameserver.idfactory.IdFactory;
 import org.l2junity.gameserver.instancemanager.FortManager;
 import org.l2junity.gameserver.instancemanager.FortSiegeManager;
 import org.l2junity.gameserver.instancemanager.SiegeManager;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.ClanMember;
 import org.l2junity.gameserver.model.ClanPrivilege;
 import org.l2junity.gameserver.model.ClanWar;
@@ -73,8 +80,17 @@ public class ClanTable
 	
 	protected ClanTable()
 	{
+	}
+	
+	@Load(group = LoadGroup.class, dependencies =
+	{
+		@Dependency(clazz = SkillData.class),
+		@Dependency(clazz = ClanRewardData.class)
+	})
+	protected void load()
+	{
 		// forums has to be loaded before clan data, because of last forum id used should have also memo included
-		if (Config.ENABLE_COMMUNITY_BOARD)
+		if (GeneralConfig.ENABLE_COMMUNITY_BOARD)
 		{
 			ForumsBBSManager.getInstance().initRoot();
 		}
@@ -104,7 +120,7 @@ public class ClanTable
 		}
 		LOGGER.info("Restored " + clanCount + " clans from the database.");
 		allianceCheck();
-		restorewars();
+		restoreClanWars();
 	}
 	
 	/**
@@ -147,17 +163,17 @@ public class ClanTable
 	 */
 	public L2Clan createClan(PlayerInstance player, String clanName)
 	{
-		if (null == player)
+		if (player == null)
 		{
 			return null;
 		}
 		
-		if (10 > player.getLevel())
+		if (player.getLevel() < 10)
 		{
 			player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_CRITERIA_IN_ORDER_TO_CREATE_A_CLAN);
 			return null;
 		}
-		if (0 != player.getClanId())
+		if (player.getClanId() != 0)
 		{
 			player.sendPacket(SystemMessageId.YOU_HAVE_FAILED_TO_CREATE_A_CLAN);
 			return null;
@@ -167,18 +183,18 @@ public class ClanTable
 			player.sendPacket(SystemMessageId.YOU_MUST_WAIT_10_DAYS_BEFORE_CREATING_A_NEW_CLAN);
 			return null;
 		}
-		if (!Util.isAlphaNumeric(clanName) || (2 > clanName.length()))
+		if (!Util.isAlphaNumeric(clanName) || (clanName.length() < 2))
 		{
 			player.sendPacket(SystemMessageId.CLAN_NAME_IS_INVALID);
 			return null;
 		}
-		if (16 < clanName.length())
+		if (clanName.length() > 16)
 		{
 			player.sendPacket(SystemMessageId.CLAN_NAME_S_LENGTH_IS_INCORRECT);
 			return null;
 		}
 		
-		if (null != getClanByName(clanName))
+		if (getClanByName(clanName) != null)
 		{
 			// clan name is already taken
 			SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.S1_ALREADY_EXISTS);
@@ -187,8 +203,8 @@ public class ClanTable
 			return null;
 		}
 		
-		L2Clan clan = new L2Clan(IdFactory.getInstance().getNextId(), clanName);
-		ClanMember leader = new ClanMember(clan, player);
+		final L2Clan clan = new L2Clan(IdFactory.getInstance().getNextId(), clanName);
+		final ClanMember leader = new ClanMember(clan, player);
 		clan.setLeader(leader);
 		leader.setPlayerInstance(player);
 		clan.store();
@@ -300,15 +316,6 @@ public class ClanTable
 				ps.execute();
 			}
 			
-			if (castleId != 0)
-			{
-				try (PreparedStatement ps = con.prepareStatement("UPDATE castle SET taxPercent = 0 WHERE id = ?"))
-				{
-					ps.setInt(1, castleId);
-					ps.execute();
-				}
-			}
-			
 			if (fortId != 0)
 			{
 				Fort fort = FortManager.getInstance().getFortById(fortId);
@@ -333,7 +340,7 @@ public class ClanTable
 	
 	public void scheduleRemoveClan(final int clanId)
 	{
-		ThreadPoolManager.getInstance().scheduleGeneral(() ->
+		ThreadPool.schedule(() ->
 		{
 			if (getClan(clanId) == null)
 			{
@@ -343,7 +350,7 @@ public class ClanTable
 			{
 				destroyClan(clanId);
 			}
-		} , Math.max(getClan(clanId).getDissolvingExpiryTime() - System.currentTimeMillis(), 300000));
+		}, Math.max(getClan(clanId).getDissolvingExpiryTime() - System.currentTimeMillis(), 300000), TimeUnit.MILLISECONDS);
 	}
 	
 	public boolean isAllyExists(String allyName)
@@ -358,10 +365,10 @@ public class ClanTable
 		return false;
 	}
 	
-	public void storeclanswars(ClanWar war)
+	public void storeClansWar(ClanWar war)
 	{
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
-			PreparedStatement ps = con.prepareStatement("REPLACE INTO clan_wars (clan1, clan2, clan1Kill, clan2Kill, winnerClan, startTime, endTime, state) VALUES(?,?,?,?,?,?,?)"))
+			PreparedStatement ps = con.prepareStatement("REPLACE INTO clan_wars (clan1, clan2, clan1Kill, clan2Kill, winnerClan, startTime, endTime, state) VALUES(?,?,?,?,?,?,?,?)"))
 		{
 			ps.setInt(1, war.getAttackerClanId());
 			ps.setInt(2, war.getAttackedClanId());
@@ -379,7 +386,7 @@ public class ClanTable
 		}
 	}
 	
-	public void deleteclanswars(int clanId1, int clanId2)
+	public void deleteClansWar(int clanId1, int clanId2)
 	{
 		final L2Clan clan1 = ClanTable.getInstance().getClan(clanId1);
 		final L2Clan clan2 = ClanTable.getInstance().getClan(clanId2);
@@ -404,7 +411,7 @@ public class ClanTable
 		}
 	}
 	
-	private void restorewars()
+	private void restoreClanWars()
 	{
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
 			Statement statement = con.createStatement();
@@ -480,6 +487,7 @@ public class ClanTable
 		}
 	}
 	
+	@InstanceGetter
 	public static ClanTable getInstance()
 	{
 		return SingletonHolder._instance;

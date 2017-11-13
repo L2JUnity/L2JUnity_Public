@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.instancemanager;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,9 +29,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.l2junity.Config;
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.loader.annotations.InstanceGetter;
+import org.l2junity.commons.loader.annotations.Load;
+import org.l2junity.commons.loader.annotations.Reload;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.gameserver.data.xml.IGameXmlReader;
+import org.l2junity.gameserver.loader.LoadGroup;
 import org.l2junity.gameserver.model.CursedWeapon;
 import org.l2junity.gameserver.model.actor.Attackable;
 import org.l2junity.gameserver.model.actor.Creature;
@@ -61,15 +65,11 @@ public final class CursedWeaponsManager implements IGameXmlReader
 	
 	private final Map<Integer, CursedWeapon> _cursedWeapons = new HashMap<>();
 	
-	protected CursedWeaponsManager()
+	@Reload("cw")
+	@Load(group = LoadGroup.class)
+	public void load() throws Exception
 	{
-		load();
-	}
-	
-	@Override
-	public void load()
-	{
-		if (!Config.ALLOW_CURSED_WEAPONS)
+		if (!GeneralConfig.ALLOW_CURSED_WEAPONS)
 		{
 			return;
 		}
@@ -81,7 +81,7 @@ public final class CursedWeaponsManager implements IGameXmlReader
 	}
 	
 	@Override
-	public void parseDocument(Document doc, File f)
+	public void parseDocument(Document doc, Path path)
 	{
 		for (Node n = doc.getFirstChild(); n != null; n = n.getNextSibling())
 		{
@@ -391,6 +391,7 @@ public final class CursedWeaponsManager implements IGameXmlReader
 		}
 	}
 	
+	@InstanceGetter
 	public static CursedWeaponsManager getInstance()
 	{
 		return SingletonHolder._instance;

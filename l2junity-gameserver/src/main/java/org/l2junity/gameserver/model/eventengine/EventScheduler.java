@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.l2junity.DatabaseFactory;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.sql.DatabaseFactory;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.StatsSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -118,7 +118,7 @@ public class EventScheduler
 		if (timeSchedule <= (30 * 1000))
 		{
 			LOGGER.warn("Wrong reschedule for {} end up run in {} seconds!", _eventManager.getClass().getSimpleName(), timeSchedule / 1000);
-			ThreadPoolManager.getInstance().scheduleEvent(this::startScheduler, timeSchedule + 1000);
+			ThreadPool.schedule(this::startScheduler, timeSchedule + 1000, TimeUnit.MILLISECONDS);
 			return;
 		}
 		
@@ -127,16 +127,16 @@ public class EventScheduler
 			_task.cancel(false);
 		}
 		
-		_task = ThreadPoolManager.getInstance().scheduleEvent(() ->
+		_task = ThreadPool.schedule(() ->
 		{
 			run();
 			updateLastRun();
 			
 			if (isRepeating())
 			{
-				ThreadPoolManager.getInstance().scheduleEvent(this::startScheduler, 1000);
+				ThreadPool.schedule(this::startScheduler, 1000, TimeUnit.MILLISECONDS);
 			}
-		}, timeSchedule);
+		}, timeSchedule, TimeUnit.MILLISECONDS);
 	}
 	
 	public boolean updateLastRun()

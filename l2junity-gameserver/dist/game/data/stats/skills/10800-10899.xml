@@ -19,7 +19,7 @@
 		</magicLvl>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -34,7 +34,7 @@
 				</amount>
 				<attribute>FIRE</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -49,7 +49,7 @@
 				</amount>
 				<attribute>WATER</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -64,7 +64,7 @@
 				</amount>
 				<attribute>WIND</attribute>
 			</effect>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>
 					<value level="1">20</value>
 					<value level="2">22</value>
@@ -79,7 +79,7 @@
 				</amount>
 				<attribute>EARTH</attribute>
 			</effect>
-			<effect name="StatUp">
+			<effect name="p_stat_up">
 				<amount>2</amount>
 				<stat>STR</stat>
 			</effect>
@@ -145,11 +145,11 @@
 			<value level="7">1400</value>
 			<value level="8">1400</value>
 		</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>
 					<value level="1">-40</value>
 					<value level="2">-45</value>
@@ -181,7 +181,7 @@
 					<value level="8">-60</value>
 				</CROSSBOW>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">-5</value>
 					<value level="2">-10</value>
@@ -194,13 +194,13 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence" fromLevel="4" toLevel="8" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_physical_defence" fromLevel="4" toLevel="8" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="4" toLevel="8" fromSubLevel="2001" toSubLevel="2030">{-0.6 - 0.4 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="4" toLevel="8" fromSubLevel="3001" toSubLevel="3030">
+			<effect name="p_speed" fromLevel="4" toLevel="8" fromSubLevel="3001" toSubLevel="3030">
 				<amount>
 					<value fromLevel="4" toLevel="8" fromSubLevel="3001" toSubLevel="3030">{-2 * subIndex}</value>
 				</amount>
@@ -240,27 +240,27 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effectRange>1400</effectRange>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>ENEMY</targetType>
 		<affectScope>RANGE</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BOW>-60</BOW>
 				<TWOHANDCROSSBOW>-60</TWOHANDCROSSBOW>
 				<CROSSBOW>-60</CROSSBOW>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>-25</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence" fromLevel="1" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_physical_defence" fromLevel="1" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="1" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{-0.6 - 0.4 * subIndex}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="1" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
+			<effect name="p_speed" fromLevel="1" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
 				<amount>
 					<value fromLevel="1" toLevel="4" fromSubLevel="3001" toSubLevel="3030">{-2 * subIndex}</value>
 				</amount>
@@ -268,7 +268,7 @@
 			</effect>
 		</effects>
 		<endEffects>
-			<effect name="CallSkill">
+			<effect name="i_call_skill">
 				<skillId>10804</skillId> <!-- Bullseye -->
 				<skillLevel>
 					<value level="1">1</value>
@@ -288,11 +288,11 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>97</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSaveHp">
+			<effect name="i_p_attack_save_hp">
 				<power>
 					<value level="1">30000</value>
 					<value level="2">33546</value>
@@ -312,11 +312,11 @@
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
 		<magicLvl>97</magicLvl>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalAttackSaveHp">
+			<effect name="i_p_attack_save_hp">
 				<power>
 					<value level="1">30000</value>
 					<value level="2">33546</value>
@@ -364,7 +364,7 @@
 		<rideState>NONE</rideState>
 		<magicCriticalRate>5</magicCriticalRate>
 		<hitCancelTime>0</hitCancelTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<conditions>
@@ -382,7 +382,6 @@
 	<skill id="10806" toLevel="4" name="Frost Trap">
 		<!-- Glory Days confirmed -->
 		<!-- Decreases Speed, Atk. Spd. and Casting Spd. -->
-		<table name="#magicLvl"> 99 101 103 105 </table>
 		<icon>icon.skill0516</icon>
 		<operateType>A2</operateType>
 		<effectPoint>-2</effectPoint>
@@ -398,21 +397,21 @@
 		<abnormalTime>15</abnormalTime>
 		<affectRange>300</affectRange>
 		<affectLimit>5-12</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="MagicalAttackSpeed">
+			<effect name="p_magic_speed">
 				<amount>-30</amount>
 				<mode>PER</mode>
 			</effect>
@@ -421,7 +420,6 @@
 	<skill id="10807" toLevel="4" name="Gravity Trap">
 		<!-- Glory Days confirmed -->
 		<!-- Inflicted with Hold and unable to move. -->
-		<table name="#magicLvl"> 99 101 103 105 </table>
 		<icon>icon.skill0518</icon>
 		<operateType>A2</operateType>
 		<effectPoint>-2</effectPoint>
@@ -439,14 +437,14 @@
 		<trait>HOLD</trait>
 		<affectRange>300</affectRange>
 		<affectLimit>5-12</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<isMagic>2</isMagic>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="Root" />
-			<effect name="DefenceTrait">
+			<effect name="p_block_move" />
+			<effect name="p_defence_trait">
 				<HOLD>100</HOLD>
 			</effect>
 		</effects>
@@ -474,12 +472,13 @@
 		<abnormalTime>10</abnormalTime>
 		<affectRange>300</affectRange>
 		<affectLimit>5-12</affectLimit>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 		<targetType>SELF</targetType>
 		<affectScope>POINT_BLANK</affectScope>
 		<affectObject>NOT_FRIEND</affectObject>
 		<effects>
-			<effect name="TargetMe" /> <!-- p_berserker ? -->
+			<effect name="p_target_me" />
+			<!-- TODO: p_berserker -->
 		</effects>
 	</skill>
 	<skill id="10809" toLevel="1" name="Survival Movement">
@@ -503,7 +502,7 @@
 		<targetType>SELF</targetType>
 		<affectScope>SINGLE</affectScope>
 		<effects>
-			<effect name="PhysicalEvasion">
+			<effect name="p_avoid">
 				<amount>15</amount>
 				<mode>DIFF</mode>
 			</effect>
@@ -521,7 +520,7 @@
 			<value fromLevel="1" toLevel="4">1800</value>
 			<value fromLevel="3" toLevel="4" fromSubLevel="1001" toSubLevel="1030">{1800 + subIndex * 90}</value>
 		</abnormalTime>
-		<!-- TODO: abnormalType -->
+		<abnormalType>YUL_EYE</abnormalType>
 		<effectPoint>687</effectPoint>
 		<icon>icon.skill11870</icon>
 		<magicLvl>
@@ -543,7 +542,7 @@
 		<coolTime>500</coolTime>
 		<reuseDelay>30000</reuseDelay>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -553,11 +552,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
-					<item> TWOHANDCROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="MagicalDefence">
+			<effect name="p_magical_defence">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -566,7 +565,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalDefence">
+			<effect name="p_physical_defence">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -575,7 +574,7 @@
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="PhysicalAttackSpeed">
+			<effect name="p_attack_speed">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -585,17 +584,17 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
-					<item> TWOHANDCROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="DefenceCriticalDamage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_defence_critical_damage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{-1 - ((subIndex - 1} * 0.5)}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
+			<effect name="p_speed" fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">{2 * subIndex}</value>
 				</amount>
@@ -614,7 +613,7 @@
 		</magicLvl>
 		<operateType>P</operateType>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -624,8 +623,8 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
-					<item> TWOHANDCROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
 		</effects>
@@ -660,7 +659,7 @@
 		<reuseDelay>5000</reuseDelay>
 		<effectPoint>-70</effectPoint>
 		<abnormalTime>5</abnormalTime>
-		<isDebuff>true</isDebuff>
+		<isDebuff>1</isDebuff>
 	</skill>
 	<skill id="10856" toLevel="4" name="Rapid Fire Position">
 		<!-- For 30 minutes when a bow or crossbow is equipped, P. Atk. + 5%, chance of receiving an M. Critical Hit - 5%, and P. Skill Cooldown - 5%. -->
@@ -674,7 +673,7 @@
 			<value fromLevel="1" toLevel="4">1800</value>
 			<value fromLevel="3" toLevel="4" fromSubLevel="1001" toSubLevel="1030">{1800 + subIndex * 90}</value>
 		</abnormalTime>
-		<!-- TODO: abnormalType -->
+		<abnormalType>YUL_EYE</abnormalType>
 		<icon>icon.skill11871</icon>
 		<magicLvl>
 			<value level="1">85</value>
@@ -696,7 +695,7 @@
 		<effectPoint>687</effectPoint>
 		<reuseDelay>30000</reuseDelay>
 		<effects>
-			<effect name="PAtk">
+			<effect name="p_physical_attack">
 				<amount>
 					<value level="1">5</value>
 					<value level="2">6</value>
@@ -706,11 +705,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
-					<item> TWOHANDCROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="DefenceCriticalRate">
+			<effect name="p_defence_critical_rate">
 				<amount>
 					<value level="1">-5</value>
 					<value level="2">-7</value>
@@ -720,11 +719,11 @@
 				<mode>PER</mode>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
-					<item> TWOHANDCROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="Reuse">
+			<effect name="p_reuse_delay">
 				<amount>
 					<value level="1">-5</value>
 					<value level="2">-5</value>
@@ -735,17 +734,17 @@
 				<magicType>0</magicType>
 				<weaponType>
 					<item>BOW</item>
-					<item> CROSSBOW</item>
-					<item> TWOHANDCROSSBOW</item>
+					<item>CROSSBOW</item>
+					<item>TWOHANDCROSSBOW</item>
 				</weaponType>
 			</effect>
-			<effect name="DefenceCriticalDamage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
+			<effect name="p_defence_critical_damage" fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="2001" toSubLevel="2030">{-1 - ((subIndex - 1} * 0.5)}</value>
 				</amount>
 				<mode>PER</mode>
 			</effect>
-			<effect name="Speed" fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
+			<effect name="p_speed" fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">
 				<amount>
 					<value fromLevel="3" toLevel="4" fromSubLevel="3001" toSubLevel="3030">{2 * subIndex}</value>
 				</amount>
@@ -764,7 +763,7 @@
 			<value level="4">99</value>
 		</magicLvl>
 		<effects>
-			<effect name="Speed">
+			<effect name="p_speed">
 				<amount>
 					<value level="1">10</value>
 					<value level="2">12</value>
@@ -798,17 +797,19 @@
 		</effectPoint>
 		<reuseDelay>30000</reuseDelay>
 		<effects>
-			<effect name="PhysicalAttack">
+			<effect name="i_p_attack">
 				<power>
 					<value level="1">29176</value>
 					<value level="2">30726</value>
 					<value level="3">32277</value>
 				</power>
 			</effect>
-			<effect name="TargetCancel" />
+			<effect name="i_target_cancel">
+				<chance>100</chance>
+			</effect>
 		</effects>
 		<selfEffects>
-			<effect name="Blink">
+			<effect name="i_blink">
 				<angle>0</angle> <!-- Teleport to Back -->
 				<range>400</range>
 			</effect>

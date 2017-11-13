@@ -18,7 +18,7 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.HexIDConfig;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
@@ -46,7 +46,7 @@ public class ExPledgeEmblem implements IClientOutgoingPacket
 	{
 		OutgoingPackets.EX_PLEDGE_EMBLEM.writeId(packet);
 		
-		packet.writeD(Config.SERVER_ID);
+		packet.writeD(HexIDConfig.SERVER_ID);
 		packet.writeD(_clanId);
 		packet.writeD(_crestId);
 		packet.writeD(_chunkId);

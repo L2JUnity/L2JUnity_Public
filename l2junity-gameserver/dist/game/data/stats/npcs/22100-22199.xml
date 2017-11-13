@@ -59,23 +59,23 @@
 				<group chance="70">
 					<item id="57" min="205" max="477" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="41.584">
-					<item id="36516" min="3" max="9" chance="42.179684494036" /> <!-- Worn Leather -->
-					<item id="36521" min="2" max="6" chance="23.350327048865" /> <!-- Iron Ore -->
-					<item id="36536" min="2" max="6" chance="12.759715275106" /> <!-- Worn Leather Braid -->
-					<item id="36551" min="1" max="1" chance="11.480377068103" /> <!-- Armor Fragment (Low-grade) -->
-					<item id="36561" min="1" max="1" chance="9.5084647941516" /> <!-- Cokes -->
-					<item id="36542" min="1" max="1" chance="0.72143131973836" /> <!-- Silver Wire -->
+				<group chance="41.487">
+					<item id="36516" min="3" max="9" chance="41.482874153349" /> <!-- Worn Leather -->
+					<item id="36521" min="2" max="6" chance="23.501337768458" /> <!-- Iron Ore -->
+					<item id="36536" min="2" max="6" chance="12.960686480102" /> <!-- Worn Leather Braid -->
+					<item id="36551" min="1" max="1" chance="11.601224479958" /> <!-- Armor Fragment (Low-grade) -->
+					<item id="36561" min="1" max="1" chance="9.7307590329501" /> <!-- Cokes -->
+					<item id="36542" min="1" max="1" chance="0.72311808518331" /> <!-- Silver Wire -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36531" min="1" max="1" chance="73.97" /> <!-- Thread -->
-				<item id="36532" min="1" max="1" chance="1.626" /> <!-- Thin Braid -->
-				<item id="36880" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thread - Downgrade -->
+				<item id="36531" min="1" max="1" chance="76.74" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="1.698" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thread - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="15" />
@@ -140,22 +140,22 @@
 				<group chance="0.075">
 					<item id="36552" min="1" max="1" chance="100" /> <!-- Armor Fragment -->
 				</group>
-				<group chance="8.354">
-					<item id="36546" min="1" max="1" chance="56.344266219775" /> <!-- Weapon Fragment (Low-grade) -->
-					<item id="36517" min="1" max="1" chance="24.802489825233" /> <!-- Leather -->
-					<item id="36522" min="1" max="1" chance="8.9777352166627" /> <!-- Silver -->
-					<item id="36537" min="1" max="1" chance="8.9777352166627" /> <!-- Leather Braid -->
-					<item id="36562" min="1" max="1" chance="0.89777352166627" /> <!-- Greater Cokes -->
+				<group chance="8.246">
+					<item id="36546" min="1" max="1" chance="57.033713315547" /> <!-- Weapon Fragment (Low-grade) -->
+					<item id="36517" min="1" max="1" chance="23.866116905166" /> <!-- Leather -->
+					<item id="36522" min="1" max="1" chance="9.0953189425176" /> <!-- Silver -->
+					<item id="36537" min="1" max="1" chance="9.0953189425176" /> <!-- Leather Braid -->
+					<item id="36562" min="1" max="1" chance="0.90953189425176" /> <!-- Greater Cokes -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36531" min="1" max="1" chance="64.37" /> <!-- Thread -->
-				<item id="36532" min="1" max="1" chance="1.473" /> <!-- Thin Braid -->
-				<item id="36880" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thread - Downgrade -->
+				<item id="36531" min="1" max="1" chance="65.52" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="1.376" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thread - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="16" />
@@ -208,6 +208,31 @@
 				<clan>ICE</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="179" max="418" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="36552" min="1" max="1" chance="100" /> <!-- Armor Fragment -->
+				</group>
+				<group chance="8.246">
+					<item id="36546" min="1" max="1" chance="57.033713315547" /> <!-- Weapon Fragment (Low-grade) -->
+					<item id="36517" min="1" max="1" chance="23.866116905166" /> <!-- Leather -->
+					<item id="36522" min="1" max="1" chance="9.0953189425176" /> <!-- Silver -->
+					<item id="36537" min="1" max="1" chance="9.0953189425176" /> <!-- Leather Braid -->
+					<item id="36562" min="1" max="1" chance="0.90953189425176" /> <!-- Greater Cokes -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36531" min="1" max="1" chance="65.52" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="1.376" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thread - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="16" />
 			<height normal="50" />
@@ -270,22 +295,22 @@
 				<group chance="70">
 					<item id="57" min="181" max="421" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="9.113">
-					<item id="36551" min="1" max="1" chance="55.426314056842" /> <!-- Armor Fragment (Low-grade) -->
-					<item id="36527" min="1" max="1" chance="29.759683967958" /> <!-- Synthetic Fiber -->
-					<item id="36522" min="1" max="1" chance="8.2300010973335" /> <!-- Silver -->
-					<item id="36542" min="1" max="1" chance="3.2920004389334" /> <!-- Silver Wire -->
-					<item id="36557" min="1" max="1" chance="3.2920004389334" /> <!-- Accessory Gem -->
+				<group chance="9.166">
+					<item id="36551" min="1" max="1" chance="56.03316604844" /> <!-- Armor Fragment (Low-grade) -->
+					<item id="36527" min="1" max="1" chance="29.238490072005" /> <!-- Synthetic Fiber -->
+					<item id="36522" min="1" max="1" chance="8.1824132664194" /> <!-- Silver -->
+					<item id="36542" min="1" max="1" chance="3.2729653065677" /> <!-- Silver Wire -->
+					<item id="36557" min="1" max="1" chance="3.2729653065677" /> <!-- Accessory Gem -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36531" min="1" max="1" chance="67.56" /> <!-- Thread -->
-				<item id="36532" min="1" max="1" chance="1.423" /> <!-- Thin Braid -->
-				<item id="36880" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thread - Downgrade -->
+				<item id="36531" min="1" max="1" chance="66.92" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="1.499" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thread - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="21" />
@@ -352,21 +377,21 @@
 				<group chance="0.3">
 					<item id="36552" min="1" max="1" chance="100" /> <!-- Armor Fragment -->
 				</group>
-				<group chance="39.162">
-					<item id="36526" min="3" max="9" chance="54.542668913743" /> <!-- Fiber -->
-					<item id="36536" min="2" max="6" chance="18.80138910168" /> <!-- Worn Leather Braid -->
-					<item id="36546" min="1" max="1" chance="15.474184158112" /> <!-- Weapon Fragment (Low-grade) -->
-					<item id="36561" min="1" max="1" chance="11.181757826464" /> <!-- Cokes -->
+				<group chance="38.351">
+					<item id="36526" min="3" max="9" chance="54.183724022842" /> <!-- Fiber -->
+					<item id="36536" min="2" max="6" chance="18.974733383745" /> <!-- Worn Leather Braid -->
+					<item id="36546" min="1" max="1" chance="15.548486349769" /> <!-- Weapon Fragment (Low-grade) -->
+					<item id="36561" min="1" max="1" chance="11.293056243644" /> <!-- Cokes -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36531" min="1" max="1" chance="70.02" /> <!-- Thread -->
-				<item id="36532" min="1" max="1" chance="1.478" /> <!-- Thin Braid -->
-				<item id="36880" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thread - Downgrade -->
+				<item id="36531" min="1" max="1" chance="70.08" /> <!-- Thread -->
+				<item id="36532" min="1" max="1" chance="1.573" /> <!-- Thin Braid -->
+				<item id="36880" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thread - Downgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="18" />
@@ -1358,7 +1383,7 @@
 		<equipment rhand="148" /> <!-- Sword of Valhalla -->
 		<acquire expRate="12.213182117028" sp="17" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="2974" hpRegen="8.5" mp="1607" mpRegen="3" />
+			<vitals hp="2974.35686398316" hpRegen="8.5" mp="1607.4" mpRegen="3" />
 			<attack physical="890.50085998804" magical="608.096657928153" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="332.70061" magical="243.45587" evasion="2" />
 			<speed>
@@ -1725,6 +1750,23 @@
 				<clan>SOLINA</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="12" max="27" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0309">
+					<item id="289" min="1" max="1" chance="2.9126213592233" /> <!-- Soul Bow -->
+					<item id="5534" min="1" max="1" chance="97.087378640777" /> <!-- Soul Bow Shaft -->
+				</group>
+				<group chance="0.003">
+					<item id="960" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Armor (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="6695" min="1" max="1" chance="0.03" /> <!-- Demon Splinter Blade -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="9" />
 			<height normal="15.6" />
@@ -1894,6 +1936,27 @@
 				<clan>SOLINA</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="63" max="146" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.606">
+					<item id="5326" min="1" max="1" chance="0.4950495049505" /> <!-- Sealed Robe of Nightmare -->
+					<item id="5329" min="1" max="1" chance="0.4950495049505" /> <!-- Sealed Majestic Robe -->
+					<item id="5487" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Robe of Nightmare Fabric -->
+					<item id="5488" min="1" max="1" chance="49.50495049505" /> <!-- Sealed Majestic Robe Fabric -->
+				</group>
+				<group chance="0.03">
+					<item id="960" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Armor (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="6704" min="1" max="1" chance="0.75" /> <!-- Sealed Imperial Crusader Boot Design -->
+				<item id="6705" min="1" max="1" chance="0.75" /> <!-- Sealed Imperial Crusader Shield Part -->
+				<item id="6706" min="1" max="1" chance="0.3" /> <!-- Sealed Imperial Crusader Helmet Pattern -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="11" grown="13" />
 			<height normal="38.5" grown="46.5" />
@@ -1947,6 +2010,24 @@
 				<clan>SOLINA</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="61" max="143" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.03">
+					<item id="6327" min="1" max="1" chance="100" /> <!-- Sealed Majestic Earring -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36532" min="1" max="1" chance="0.3" /> <!-- Thin Braid -->
+				<item id="36882" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Upgrade -->
+				<item id="36881" min="1" max="1" chance="0.0009" /> <!-- Recipe: Thin Braid - Downgrade -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="47" />
@@ -2000,11 +2081,30 @@
 			<skill id="4336" level="2" /> <!-- Dark Attack Vulnerability -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="450" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>SOLINA</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="15" max="36" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0309">
+					<item id="236" min="1" max="1" chance="2.9126213592233" /> <!-- Soul Separator -->
+					<item id="5537" min="1" max="1" chance="97.087378640777" /> <!-- Soul Separator Head -->
+				</group>
+				<group chance="0.0009">
+					<item id="959" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Weapon (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="6688" min="1" max="1" chance="0.03" /> <!-- Forgotten Blade Edge -->
+				<item id="6689" min="1" max="1" chance="0.03" /> <!-- Basalt Battlehammer Head -->
+				<item id="6690" min="1" max="1" chance="0.03" /> <!-- Imperial Staff Head -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="13" />
 			<height normal="22" />
@@ -2061,6 +2161,29 @@
 				<clan>SOLINA</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="40" max="92" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0927">
+					<item id="81" min="1" max="1" chance="0.97087378640777" /> <!-- Dragon Slayer -->
+					<item id="151" min="1" max="1" chance="0.97087378640777" /> <!-- Sword of Miracles -->
+					<item id="2500" min="1" max="1" chance="0.97087378640777" /> <!-- Dark Legion's Edge -->
+					<item id="5529" min="1" max="1" chance="32.362459546926" /> <!-- Dragon Slayer Edge -->
+					<item id="5545" min="1" max="1" chance="32.362459546926" /> <!-- Dark Legion's Edge Blade -->
+					<item id="5546" min="1" max="1" chance="32.362459546926" /> <!-- Sword of Miracles Edge -->
+				</group>
+				<group chance="0.0075">
+					<item id="960" min="1" max="1" chance="100" /> <!-- Scroll: Enchant Armor (S-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="6708" min="1" max="1" chance="0.3" /> <!-- Sealed Draconic Leather Glove Fabric -->
+				<item id="6709" min="1" max="1" chance="0.3" /> <!-- Sealed Draconic Leather Boot Design -->
+				<item id="6707" min="1" max="1" chance="0.075" /> <!-- Sealed Draconic Leather Armor Part -->
+			</corpse>
+		</drop_lists>
 		<collision>
 			<radius normal="14" />
 			<height normal="34.5" />
@@ -2133,7 +2256,7 @@
 		<equipment rhand="8217" /> <!-- Monster Only (Zombie Gate Guard Spear) -->
 		<acquire expRate="132.13733292521" sp="2072" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="5" />
 			<attribute>
@@ -2169,7 +2292,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -2197,7 +2320,7 @@
 		<equipment rhand="8217" /> <!-- Monster Only (Zombie Gate Guard Spear) -->
 		<acquire expRate="132.13733292521" sp="2072" />
 		<stats str="79" int="34" dex="42" wit="66" con="75" men="12">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="3" />
 			<attribute>
@@ -2263,7 +2386,7 @@
 		<equipment rhand="8217" /> <!-- Monster Only (Zombie Gate Guard Spear) -->
 		<acquire expRate="2388.9260279563" sp="37462" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -2330,7 +2453,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="463.74833402749" sp="2850" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15761" hpRegen="8.5" mp="2317" mpRegen="3" />
+			<vitals hp="15761.780463869" hpRegen="8.5" mp="2317.4" mpRegen="3" />
 			<attack physical="6432.48694948244" magical="1133.34154078035" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="515.39249724918" magical="297.335874351375" evasion="3" />
 			<attribute>
@@ -2366,7 +2489,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -2374,21 +2497,21 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="763" max="1777" chance="100" /> <!-- Adena -->
+					<item id="57" min="915" max="2133" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="2.8215">
-					<item id="36523" min="1" max="1" chance="89.172426014531" /> <!-- Adamantite -->
-					<item id="36524" min="1" max="1" chance="10.63264221159" /> <!-- Orichalcum -->
-					<item id="17526" min="1" max="1" chance="0.19493177387914" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="3.482">
+					<item id="36523" min="1" max="1" chance="90.522688110281" /> <!-- Adamantite -->
+					<item id="36524" min="1" max="1" chance="8.6157380815623" /> <!-- Orichalcum -->
+					<item id="17526" min="1" max="1" chance="0.86157380815623" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="7.402" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="8.841" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -2414,7 +2537,7 @@
 		<equipment rhand="123" /> <!-- Saber -->
 		<acquire expRate="463.74833402749" sp="2850" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15761" hpRegen="8.5" mp="2317" mpRegen="3" />
+			<vitals hp="15761.780463869" hpRegen="8.5" mp="2317.4" mpRegen="3" />
 			<attack physical="6432.48694948244" magical="1133.34154078035" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="515.39249724918" magical="297.335874351375" evasion="2" />
 			<attribute>
@@ -2457,21 +2580,21 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="763" max="1777" chance="100" /> <!-- Adena -->
+					<item id="57" min="915" max="2133" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="2.9435">
-					<item id="36523" min="1" max="1" chance="89.62119925259" /> <!-- Adamantite -->
-					<item id="36524" min="1" max="1" chance="10.191948360795" /> <!-- Orichalcum -->
-					<item id="17526" min="1" max="1" chance="0.18685238661457" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<group chance="3.387">
+					<item id="36523" min="1" max="1" chance="90.256864481842" /> <!-- Adamantite -->
+					<item id="36524" min="1" max="1" chance="8.8573959255979" /> <!-- Orichalcum -->
+					<item id="17526" min="1" max="1" chance="0.88573959255979" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="7.424" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="8.85" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="11" />
@@ -2497,7 +2620,7 @@
 		<equipment rhand="123" /> <!-- Saber -->
 		<acquire expRate="467.44950020825" sp="2873" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15761" hpRegen="8.5" mp="2317" mpRegen="3" />
+			<vitals hp="15761.780463869" hpRegen="8.5" mp="2317.4" mpRegen="3" />
 			<attack physical="6432.48694948244" magical="1133.34154078035" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="515.39249724918" magical="297.335874351375" evasion="2" />
 			<attribute>
@@ -2540,26 +2663,26 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="763" max="1777" chance="100" /> <!-- Adena -->
+					<item id="57" min="915" max="2133" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.0309">
-					<item id="17436" min="1" max="1" chance="2.9126213592233" /> <!-- Eternal Leather Helmet -->
+					<item id="17436" min="1" max="1" chance="2.9126213592233" /> <!-- Eternal Leather Helmet - Light Armor -->
 					<item id="35344" min="1" max="1" chance="97.087378640777" /> <!-- Eternal Leather Helmet Ingredient -->
 				</group>
 				<group chance="0.0369">
 					<item id="36563" min="1" max="1" chance="81.30081300813" /> <!-- Synthetic Cokes -->
 					<item id="17526" min="1" max="1" chance="8.130081300813" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 					<item id="36564" min="1" max="1" chance="8.130081300813" /> <!-- Greater Synthetic Cokes -->
-					<item id="35468" min="1" max="1" chance="2.4390243902439" /> <!-- Recipe: Eternal Leather Helmet (60%) -->
+					<item id="35468" min="1" max="1" chance="2.4390243902439" /> <!-- Recipe: Eternal Leather Helmet (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="7.364" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="8.862" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="11" />
@@ -2596,7 +2719,7 @@
 		<equipment rhand="8207" lhand="8207" /> <!-- Monster Only (Heretic Private Axe) / Monster Only (Heretic Private Axe) -->
 		<acquire expRate="463.74833402749" sp="2850" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15761" hpRegen="8.5" mp="2317" mpRegen="3" />
+			<vitals hp="15761.780463869" hpRegen="8.5" mp="2317.4" mpRegen="3" />
 			<attack physical="6432.48694948244" magical="1133.34154078035" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="515.39249724918" magical="297.335874351375" evasion="3" />
 			<attribute>
@@ -2632,7 +2755,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -2658,9 +2781,9 @@
 				<item id="36524" min="1" max="1" chance="0.3" /> <!-- Orichalcum -->
 				<item id="19447" min="1" max="1" chance="0.0009" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
@@ -2698,7 +2821,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="478.28842149105" sp="2939" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15761" hpRegen="8.5" mp="2317" mpRegen="3" />
+			<vitals hp="15761.780463869" hpRegen="8.5" mp="2317.4" mpRegen="3" />
 			<attack physical="6432.48694948244" magical="1133.34154078035" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="515.39249724918" magical="297.335874351375" evasion="4" />
 			<attribute>
@@ -2735,7 +2858,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -2743,23 +2866,23 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="763" max="1777" chance="100" /> <!-- Adena -->
+					<item id="57" min="915" max="2133" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.03">
 					<item id="35338" min="1" max="1" chance="100" /> <!-- Eternal Helmet Ingredient -->
 				</group>
 				<group chance="0.0039">
 					<item id="17526" min="1" max="1" chance="76.923076923077" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="35462" min="1" max="1" chance="23.076923076923" /> <!-- Recipe: Eternal Helmet (60%) -->
+					<item id="35462" min="1" max="1" chance="23.076923076923" /> <!-- Recipe: Eternal Helmet (60%) -->
 				</group>
 			</death>
 			<corpse>
 				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
 				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
@@ -2784,7 +2907,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="463.74833402749" sp="2850" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15761" hpRegen="8.5" mp="2317" mpRegen="3" />
+			<vitals hp="15761.780463869" hpRegen="8.5" mp="2317.4" mpRegen="3" />
 			<attack physical="6432.48694948244" magical="1133.34154078035" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="515.39249724918" magical="297.335874351375" evasion="4" />
 			<attribute>
@@ -2819,7 +2942,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -2827,7 +2950,7 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="763" max="1777" chance="100" /> <!-- Adena -->
+					<item id="57" min="915" max="2133" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.03">
 					<item id="35331" min="1" max="1" chance="100" /> <!-- Amaranthine Fighter Fragment -->
@@ -2836,17 +2959,17 @@
 					<item id="36563" min="1" max="1" chance="81.30081300813" /> <!-- Synthetic Cokes -->
 					<item id="17526" min="1" max="1" chance="8.130081300813" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 					<item id="36564" min="1" max="1" chance="8.130081300813" /> <!-- Greater Synthetic Cokes -->
-					<item id="35455" min="1" max="1" chance="2.4390243902439" /> <!-- Recipe: Amaranthine Fighter (60%) -->
+					<item id="35455" min="1" max="1" chance="2.4390243902439" /> <!-- Recipe: Amaranthine Fighter (60%) -->
 				</group>
 			</death>
 			<corpse>
 				<item id="36563" min="1" max="1" chance="0.3" /> <!-- Synthetic Cokes -->
 				<item id="36564" min="1" max="1" chance="0.03" /> <!-- Greater Synthetic Cokes -->
-				<item id="19448" min="1" max="1" chance="0.0055" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+				<item id="19448" min="1" max="1" chance="0.0075" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -2872,7 +2995,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="463.74833402749" sp="2850" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15761" hpRegen="8.5" mp="2317" mpRegen="3" />
+			<vitals hp="15761.780463869" hpRegen="8.5" mp="2317.4" mpRegen="3" />
 			<attack physical="6432.48694948244" magical="1133.34154078035" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="515.39249724918" magical="297.335874351375" evasion="3" />
 			<attribute>
@@ -2906,7 +3029,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -2914,7 +3037,7 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="763" max="1777" chance="100" /> <!-- Adena -->
+					<item id="57" min="915" max="2133" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.03">
 					<item id="35333" min="1" max="1" chance="100" /> <!-- Amaranthine Thrower Fragment -->
@@ -2923,17 +3046,17 @@
 					<item id="36563" min="1" max="1" chance="81.30081300813" /> <!-- Synthetic Cokes -->
 					<item id="19448" min="1" max="1" chance="8.130081300813" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
 					<item id="36564" min="1" max="1" chance="8.130081300813" /> <!-- Greater Synthetic Cokes -->
-					<item id="35457" min="1" max="1" chance="2.4390243902439" /> <!-- Recipe: Amaranthine Thrower (60%) -->
+					<item id="35457" min="1" max="1" chance="2.4390243902439" /> <!-- Recipe: Amaranthine Thrower (60%) -->
 				</group>
 			</death>
 			<corpse>
 				<item id="36563" min="1" max="1" chance="0.3" /> <!-- Synthetic Cokes -->
 				<item id="36564" min="1" max="1" chance="0.03" /> <!-- Greater Synthetic Cokes -->
-				<item id="17526" min="1" max="1" chance="0.0055" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<item id="17526" min="1" max="1" chance="0.0075" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="9" />
@@ -2970,7 +3093,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="895.43005815733" sp="14041" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="2" />
 			<attribute>
@@ -3007,7 +3130,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -3015,7 +3138,7 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="853" max="1986" chance="100" /> <!-- Adena -->
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.03">
 					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
@@ -3023,16 +3146,16 @@
 				<group chance="0.0069">
 					<item id="17526" min="1" max="1" chance="43.478260869565" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 					<item id="19448" min="1" max="1" chance="43.478260869565" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
-					<item id="35463" min="1" max="1" chance="13.04347826087" /> <!-- Recipe: Eternal Breastplate (60%) -->
+					<item id="35463" min="1" max="1" chance="13.04347826087" /> <!-- Recipe: Eternal Breastplate (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="8.293" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="8.246" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
@@ -3057,7 +3180,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="899.13141516172" sp="14099" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="5" />
 			<attribute>
@@ -3093,7 +3216,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -3101,22 +3224,22 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="853" max="1986" chance="100" /> <!-- Adena -->
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.3364">
-					<item id="36563" min="1" max="1" chance="89.179548156956" /> <!-- Synthetic Cokes -->
-					<item id="36564" min="1" max="1" chance="8.9179548156956" /> <!-- Greater Synthetic Cokes -->
-					<item id="17526" min="1" max="1" chance="1.6349583828775" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="19447" min="1" max="1" chance="0.26753864447087" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+				<group chance="0.3384">
+					<item id="36563" min="1" max="1" chance="88.652482269504" /> <!-- Synthetic Cokes -->
+					<item id="36564" min="1" max="1" chance="8.8652482269504" /> <!-- Greater Synthetic Cokes -->
+					<item id="17526" min="1" max="1" chance="2.2163120567376" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19447" min="1" max="1" chance="0.26595744680851" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="8.298" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="8.27" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -3143,7 +3266,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="895.43005815733" sp="14041" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="4" />
 			<attribute>
@@ -3180,11 +3303,34 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.03">
+					<item id="35338" min="1" max="1" chance="100" /> <!-- Eternal Helmet Ingredient -->
+				</group>
+				<group chance="0.0078">
+					<item id="17526" min="1" max="1" chance="38.461538461538" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="38.461538461538" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="19447" min="1" max="1" chance="11.538461538462" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35462" min="1" max="1" chance="11.538461538462" /> <!-- Recipe: Eternal Helmet (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -3209,7 +3355,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="895.43005815733" sp="14041" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="4" />
 			<attribute>
@@ -3245,7 +3391,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -3253,7 +3399,7 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="853" max="1986" chance="100" /> <!-- Adena -->
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.03">
 					<item id="35327" min="1" max="1" chance="100" /> <!-- Amaranthine Shaper Fragment -->
@@ -3261,16 +3407,16 @@
 				<group chance="0.0048">
 					<item id="17526" min="1" max="1" chance="62.5" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 					<item id="19447" min="1" max="1" chance="18.75" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
-					<item id="35451" min="1" max="1" chance="18.75" /> <!-- Recipe: Amaranthine Shaper (60%) -->
+					<item id="35451" min="1" max="1" chance="18.75" /> <!-- Recipe: Amaranthine Shaper (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="8.332" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="8.283" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -3298,7 +3444,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="897.80950923375" sp="14079" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="5" />
 			<attribute>
@@ -3336,11 +3482,34 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.03">
+					<item id="35338" min="1" max="1" chance="100" /> <!-- Eternal Helmet Ingredient -->
+				</group>
+				<group chance="0.0078">
+					<item id="17526" min="1" max="1" chance="38.461538461538" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="38.461538461538" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="19447" min="1" max="1" chance="11.538461538462" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35462" min="1" max="1" chance="11.538461538462" /> <!-- Recipe: Eternal Helmet (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -3377,7 +3546,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="909.97102336496" sp="14269" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -3415,11 +3584,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.03">
+					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
+				</group>
+				<group chance="0.0069">
+					<item id="17526" min="1" max="1" chance="43.478260869565" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="43.478260869565" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35463" min="1" max="1" chance="13.04347826087" /> <!-- Recipe: Eternal Breastplate (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="8.279" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -3444,7 +3635,7 @@
 		<equipment rhand="8215" /> <!-- Monster Only (Zombie Enlisted Man Sword) -->
 		<acquire expRate="899.13141516172" sp="14099" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="2" />
 			<attribute>
@@ -3488,7 +3679,7 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="853" max="1986" chance="100" /> <!-- Adena -->
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.03">
 					<item id="35340" min="1" max="1" chance="100" /> <!-- Eternal Gaiter Ingredient -->
@@ -3496,16 +3687,16 @@
 				<group chance="0.0069">
 					<item id="17526" min="1" max="1" chance="43.478260869565" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 					<item id="19448" min="1" max="1" chance="43.478260869565" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
-					<item id="35464" min="1" max="1" chance="13.04347826087" /> <!-- Recipe: Eternal Gaiters (60%) -->
+					<item id="35464" min="1" max="1" chance="13.04347826087" /> <!-- Recipe: Eternal Gaiters (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="8.299" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="8.23" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -3532,7 +3723,7 @@
 		<equipment rhand="8215" /> <!-- Monster Only (Zombie Enlisted Man Sword) -->
 		<acquire expRate="895.43005815733" sp="14041" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="2" />
 			<attribute>
@@ -3577,7 +3768,7 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="853" max="1986" chance="100" /> <!-- Adena -->
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.03">
 					<item id="35329" min="1" max="1" chance="100" /> <!-- Amaranthine Slasher Fragment -->
@@ -3585,16 +3776,16 @@
 				<group chance="0.0048">
 					<item id="19448" min="1" max="1" chance="62.5" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
 					<item id="19447" min="1" max="1" chance="18.75" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
-					<item id="35453" min="1" max="1" chance="18.75" /> <!-- Recipe: Amaranthine Slasher (60%) -->
+					<item id="35453" min="1" max="1" chance="18.75" /> <!-- Recipe: Amaranthine Slasher (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="8.251" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="8.213" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -3620,7 +3811,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="895.43005815733" sp="14041" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -3655,11 +3846,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="300" aggroRange="300">
+		<ai clanHelpRange="300" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="1024" max="2383" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3393">
+					<item id="36563" min="1" max="1" chance="88.41732979664" /> <!-- Synthetic Cokes -->
+					<item id="36564" min="1" max="1" chance="8.841732979664" /> <!-- Greater Synthetic Cokes -->
+					<item id="17526" min="1" max="1" chance="2.210433244916" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19447" min="1" max="1" chance="0.26525198938992" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35457" min="1" max="1" chance="0.26525198938992" /> <!-- Recipe: Amaranthine Thrower (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36563" min="1" max="1" chance="0.3" /> <!-- Synthetic Cokes -->
+				<item id="36564" min="1" max="1" chance="0.03" /> <!-- Greater Synthetic Cokes -->
+				<item id="17526" min="1" max="1" chance="0.0075" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="9" />
 			<height normal="25.8" />
@@ -3686,7 +3899,7 @@
 		<equipment rhand="8206" lhand="8206" /> <!-- Monster Only (Heretic Priest Sword) / Monster Only (Heretic Priest Sword) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -3723,7 +3936,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
@@ -3731,25 +3944,25 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="2813" max="6553" chance="100" /> <!-- Adena -->
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0805">
-					<item id="17449" min="1" max="1" chance="6.832298136646" /> <!-- Eternal Ring -->
-					<item id="35357" min="1" max="1" chance="93.167701863354" /> <!-- Eternal Ring Gem -->
+				<group chance="0.0825">
+					<item id="17449" min="1" max="1" chance="9.0909090909091" /> <!-- Eternal Ring -->
+					<item id="35357" min="1" max="1" chance="90.909090909091" /> <!-- Eternal Ring Gem -->
 				</group>
-				<group chance="0.0094">
-					<item id="35481" min="1" max="1" chance="31.914893617021" /> <!-- Recipe: Eternal Ring (60%) -->
-					<item id="19448" min="1" max="1" chance="58.510638297872" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
-					<item id="19447" min="1" max="1" chance="9.5744680851064" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+				<group chance="0.0114">
+					<item id="19448" min="1" max="1" chance="65.789473684211" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35481" min="1" max="1" chance="26.315789473684" /> <!-- Recipe: Eternal Ring (60%) -->
+					<item id="19447" min="1" max="1" chance="7.8947368421053" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="26.59" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="26.55" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="8" />
@@ -3778,7 +3991,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="728.71400877461" sp="11427" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -3812,11 +4025,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
+				</group>
+				<group chance="0.0159">
+					<item id="17526" min="1" max="1" chance="47.169811320755" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="47.169811320755" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35463" min="1" max="1" chance="5.6603773584906" /> <!-- Recipe: Eternal Breastplate (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="27.02" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -3844,7 +4079,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -3878,11 +4113,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
+				</group>
+				<group chance="0.0159">
+					<item id="17526" min="1" max="1" chance="47.169811320755" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="47.169811320755" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35463" min="1" max="1" chance="5.6603773584906" /> <!-- Recipe: Eternal Breastplate (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="28.6" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -3912,7 +4169,7 @@
 		<equipment rhand="8207" lhand="8207" /> <!-- Monster Only (Heretic Private Axe) / Monster Only (Heretic Private Axe) -->
 		<acquire expRate="728.71400877461" sp="11427" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -3948,11 +4205,34 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="35338" min="1" max="1" chance="100" /> <!-- Eternal Helmet Ingredient -->
+				</group>
+				<group chance="0.0123">
+					<item id="17526" min="1" max="1" chance="60.975609756098" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="24.390243902439" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="19447" min="1" max="1" chance="7.3170731707317" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35462" min="1" max="1" chance="7.3170731707317" /> <!-- Recipe: Eternal Helmet (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -3983,7 +4263,7 @@
 		<equipment rhand="8206" lhand="8206" /> <!-- Monster Only (Heretic Priest Sword) / Monster Only (Heretic Priest Sword) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -4025,6 +4305,29 @@
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0825">
+					<item id="17449" min="1" max="1" chance="9.0909090909091" /> <!-- Eternal Ring -->
+					<item id="35357" min="1" max="1" chance="90.909090909091" /> <!-- Eternal Ring Gem -->
+				</group>
+				<group chance="0.0114">
+					<item id="19448" min="1" max="1" chance="65.789473684211" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35481" min="1" max="1" chance="26.315789473684" /> <!-- Recipe: Eternal Ring (60%) -->
+					<item id="19447" min="1" max="1" chance="7.8947368421053" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="26.63" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="8" />
 			<height normal="19.1" />
@@ -4052,7 +4355,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="728.71400877461" sp="11427" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -4086,11 +4389,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
+				</group>
+				<group chance="0.0159">
+					<item id="17526" min="1" max="1" chance="47.169811320755" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="47.169811320755" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35463" min="1" max="1" chance="5.6603773584906" /> <!-- Recipe: Eternal Breastplate (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="26.48" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -4118,7 +4443,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="862.3004795429" sp="13522" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -4153,11 +4478,36 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="500" aggroRange="300">
+		<ai clanHelpRange="500" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35333" min="1" max="1" chance="100" /> <!-- Amaranthine Thrower Fragment -->
+				</group>
+				<group chance="0.3348">
+					<item id="36563" min="1" max="1" chance="89.605734767025" /> <!-- Synthetic Cokes -->
+					<item id="36564" min="1" max="1" chance="8.9605734767025" /> <!-- Greater Synthetic Cokes -->
+					<item id="17526" min="1" max="1" chance="0.89605734767025" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19447" min="1" max="1" chance="0.26881720430108" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35457" min="1" max="1" chance="0.26881720430108" /> <!-- Recipe: Amaranthine Thrower (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36563" min="1" max="1" chance="0.75" /> <!-- Synthetic Cokes -->
+				<item id="36564" min="1" max="1" chance="0.075" /> <!-- Greater Synthetic Cokes -->
+				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="9" />
 			<height normal="25.8" />
@@ -4187,7 +4537,7 @@
 		<equipment rhand="8207" lhand="8207" /> <!-- Monster Only (Heretic Private Axe) / Monster Only (Heretic Private Axe) -->
 		<acquire expRate="728.71400877461" sp="11427" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -4228,6 +4578,29 @@
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="35338" min="1" max="1" chance="100" /> <!-- Eternal Helmet Ingredient -->
+				</group>
+				<group chance="0.0123">
+					<item id="17526" min="1" max="1" chance="60.975609756098" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="24.390243902439" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="19447" min="1" max="1" chance="7.3170731707317" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35462" min="1" max="1" chance="7.3170731707317" /> <!-- Recipe: Eternal Helmet (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -4261,7 +4634,7 @@
 		<equipment rhand="8208" /> <!-- Monster Only (Heretic Private Staff) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -4300,11 +4673,34 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0825">
+					<item id="17449" min="1" max="1" chance="9.0909090909091" /> <!-- Eternal Ring -->
+					<item id="35357" min="1" max="1" chance="90.909090909091" /> <!-- Eternal Ring Gem -->
+				</group>
+				<group chance="0.0114">
+					<item id="19448" min="1" max="1" chance="65.789473684211" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35481" min="1" max="1" chance="26.315789473684" /> <!-- Recipe: Eternal Ring (60%) -->
+					<item id="19447" min="1" max="1" chance="7.8947368421053" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="26.24" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="8" />
 			<height normal="19.1" />
@@ -4332,7 +4728,7 @@
 		<equipment rhand="8207" lhand="8207" /> <!-- Monster Only (Heretic Private Axe) / Monster Only (Heretic Private Axe) -->
 		<acquire expRate="728.71400877461" sp="11427" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -4366,11 +4762,35 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="35338" min="1" max="1" chance="100" /> <!-- Eternal Helmet Ingredient -->
+				</group>
+				<group chance="0.0132">
+					<item id="35462" min="1" max="1" chance="6.8181818181818" /> <!-- Recipe: Eternal Helmet (60%) -->
+					<item id="17526" min="1" max="1" chance="56.818181818182" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="22.727272727273" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="19447" min="1" max="1" chance="6.8181818181818" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35462" min="1" max="1" chance="6.8181818181818" /> <!-- Recipe: Eternal Helmet (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -4400,7 +4820,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -4436,11 +4856,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
+				</group>
+				<group chance="0.0159">
+					<item id="17526" min="1" max="1" chance="47.169811320755" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="47.169811320755" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35463" min="1" max="1" chance="5.6603773584906" /> <!-- Recipe: Eternal Breastplate (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="26.44" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -4469,7 +4911,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -4504,11 +4946,34 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="35338" min="1" max="1" chance="100" /> <!-- Eternal Helmet Ingredient -->
+				</group>
+				<group chance="0.0123">
+					<item id="17526" min="1" max="1" chance="60.975609756098" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="24.390243902439" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="19447" min="1" max="1" chance="7.3170731707317" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35462" min="1" max="1" chance="7.3170731707317" /> <!-- Recipe: Eternal Helmet (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -4539,7 +5004,7 @@
 		<equipment rhand="8206" lhand="8206" /> <!-- Monster Only (Heretic Priest Sword) / Monster Only (Heretic Priest Sword) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="9" />
 			<attribute>
@@ -4581,6 +5046,29 @@
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0825">
+					<item id="17449" min="1" max="1" chance="9.0909090909091" /> <!-- Eternal Ring -->
+					<item id="35357" min="1" max="1" chance="90.909090909091" /> <!-- Eternal Ring Gem -->
+				</group>
+				<group chance="0.0114">
+					<item id="19448" min="1" max="1" chance="65.789473684211" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35481" min="1" max="1" chance="26.315789473684" /> <!-- Recipe: Eternal Ring (60%) -->
+					<item id="19447" min="1" max="1" chance="7.8947368421053" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="26.54" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="8" />
 			<height normal="19.1" />
@@ -4610,7 +5098,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="9" />
 			<attribute>
@@ -4646,11 +5134,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
+				</group>
+				<group chance="0.0159">
+					<item id="17526" min="1" max="1" chance="47.169811320755" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="47.169811320755" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35463" min="1" max="1" chance="5.6603773584906" /> <!-- Recipe: Eternal Breastplate (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="26.44" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -4678,7 +5188,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="862.3004795429" sp="13522" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -4713,11 +5223,36 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="500" aggroRange="300">
+		<ai clanHelpRange="500" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35333" min="1" max="1" chance="100" /> <!-- Amaranthine Thrower Fragment -->
+				</group>
+				<group chance="0.3348">
+					<item id="36563" min="1" max="1" chance="89.605734767025" /> <!-- Synthetic Cokes -->
+					<item id="36564" min="1" max="1" chance="8.9605734767025" /> <!-- Greater Synthetic Cokes -->
+					<item id="17526" min="1" max="1" chance="0.89605734767025" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19447" min="1" max="1" chance="0.26881720430108" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35457" min="1" max="1" chance="0.26881720430108" /> <!-- Recipe: Amaranthine Thrower (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36563" min="1" max="1" chance="0.75" /> <!-- Synthetic Cokes -->
+				<item id="36564" min="1" max="1" chance="0.075" /> <!-- Greater Synthetic Cokes -->
+				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="9" />
 			<height normal="25.8" />
@@ -4745,7 +5280,7 @@
 		<equipment rhand="8207" lhand="8207" /> <!-- Monster Only (Heretic Private Axe) / Monster Only (Heretic Private Axe) -->
 		<acquire expRate="728.71400877461" sp="11427" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -4784,6 +5319,29 @@
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="35338" min="1" max="1" chance="100" /> <!-- Eternal Helmet Ingredient -->
+				</group>
+				<group chance="0.0123">
+					<item id="17526" min="1" max="1" chance="60.975609756098" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="24.390243902439" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="19447" min="1" max="1" chance="7.3170731707317" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35462" min="1" max="1" chance="7.3170731707317" /> <!-- Recipe: Eternal Helmet (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -4817,7 +5375,7 @@
 		<equipment rhand="8208" /> <!-- Monster Only (Heretic Private Staff) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="9" />
 			<attribute>
@@ -4856,11 +5414,34 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>5</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.0825">
+					<item id="17449" min="1" max="1" chance="9.0909090909091" /> <!-- Eternal Ring -->
+					<item id="35357" min="1" max="1" chance="90.909090909091" /> <!-- Eternal Ring Gem -->
+				</group>
+				<group chance="0.0114">
+					<item id="19448" min="1" max="1" chance="65.789473684211" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35481" min="1" max="1" chance="26.315789473684" /> <!-- Recipe: Eternal Ring (60%) -->
+					<item id="19447" min="1" max="1" chance="7.8947368421053" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="27.05" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="8" />
 			<height normal="19.1" />
@@ -4888,7 +5469,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="862.3004795429" sp="13522" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -4923,11 +5504,36 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" clanHelpRange="500" aggroRange="300">
+		<ai clanHelpRange="500" aggroRange="300">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35333" min="1" max="1" chance="100" /> <!-- Amaranthine Thrower Fragment -->
+				</group>
+				<group chance="0.3348">
+					<item id="36563" min="1" max="1" chance="89.605734767025" /> <!-- Synthetic Cokes -->
+					<item id="36564" min="1" max="1" chance="8.9605734767025" /> <!-- Greater Synthetic Cokes -->
+					<item id="17526" min="1" max="1" chance="0.89605734767025" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19447" min="1" max="1" chance="0.26881720430108" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35457" min="1" max="1" chance="0.26881720430108" /> <!-- Recipe: Amaranthine Thrower (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36563" min="1" max="1" chance="0.75" /> <!-- Synthetic Cokes -->
+				<item id="36564" min="1" max="1" chance="0.075" /> <!-- Greater Synthetic Cokes -->
+				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="9" />
 			<height normal="25.8" />
@@ -4957,7 +5563,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="661.92082440567" sp="10380" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -4993,11 +5599,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
+				</group>
+				<group chance="0.0159">
+					<item id="17526" min="1" max="1" chance="47.169811320755" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="47.169811320755" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35463" min="1" max="1" chance="5.6603773584906" /> <!-- Recipe: Eternal Breastplate (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="28.01" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -5027,7 +5655,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="728.71400877461" sp="11427" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="94440.4117579731" magical="16609.7702753578" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -5063,11 +5691,33 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>4</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="500" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="500" isAggressive="true">
 			<clan_list>
 				<clan>TRIOLL</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="3376" max="7864" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.075">
+					<item id="35339" min="1" max="1" chance="100" /> <!-- Eternal Breastplate Ingredient -->
+				</group>
+				<group chance="0.0159">
+					<item id="17526" min="1" max="1" chance="47.169811320755" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="47.169811320755" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35463" min="1" max="1" chance="5.6603773584906" /> <!-- Recipe: Eternal Breastplate (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="40207" min="1" max="1" chance="26.85" /> <!-- Amaranthine Fragment -->
+				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="7.7" />
 			<height normal="28.4" />
@@ -5108,7 +5758,7 @@
 		<equipment rhand="8215" /> <!-- Monster Only (Zombie Enlisted Man Sword) -->
 		<acquire expRate="1954.7036016733" sp="30652" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -5144,7 +5794,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>0.25</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="300" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="300" isAggressive="true">
 			<clan_list>
 				<clan>ANDREAS</clan>
 			</clan_list>
@@ -5152,25 +5802,25 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="3749" max="8733" chance="100" /> <!-- Adena -->
+					<item id="57" min="4499" max="10480" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="35336" min="1" max="1" chance="100" /> <!-- Amaranthine Caster Fragment -->
 				</group>
-				<group chance="0.0128">
-					<item id="17526" min="1" max="1" chance="42.96875" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="19448" min="1" max="1" chance="42.96875" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
-					<item id="19447" min="1" max="1" chance="7.03125" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
-					<item id="35460" min="1" max="1" chance="7.03125" /> <!-- Recipe: Amaranthine Caster (60%) -->
+				<group chance="0.0168">
+					<item id="17526" min="1" max="1" chance="44.642857142857" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="44.642857142857" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="19447" min="1" max="1" chance="5.3571428571429" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35460" min="1" max="1" chance="5.3571428571429" /> <!-- Recipe: Amaranthine Caster (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="37.37" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="37.35" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -5200,7 +5850,7 @@
 		<equipment rhand="8215" /> <!-- Monster Only (Zombie Enlisted Man Sword) -->
 		<acquire expRate="1954.7036016733" sp="30652" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="7" />
 			<attribute>
@@ -5243,22 +5893,22 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="3749" max="8733" chance="100" /> <!-- Adena -->
+					<item id="57" min="4499" max="10480" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.314">
-					<item id="35353" min="1" max="1" chance="95.541401273885" /> <!-- Eternal Shoe Ingredient -->
-					<item id="17526" min="1" max="1" chance="1.7515923566879" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="19448" min="1" max="1" chance="1.7515923566879" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
-					<item id="35477" min="1" max="1" chance="0.95541401273885" /> <!-- Recipe: Eternal Shoes (60%) -->
+				<group chance="0.318">
+					<item id="35353" min="1" max="1" chance="94.339622641509" /> <!-- Eternal Shoe Ingredient -->
+					<item id="17526" min="1" max="1" chance="2.3584905660377" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="2.3584905660377" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35477" min="1" max="1" chance="0.94339622641509" /> <!-- Recipe: Eternal Shoes (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="40207" min="1" max="1" chance="37.2" /> <!-- Amaranthine Fragment -->
+				<item id="40207" min="1" max="1" chance="37.34" /> <!-- Amaranthine Fragment -->
 				<item id="40212" min="1" max="1" chance="0.0009" /> <!-- Recipe: R99 (100%) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="17" />
@@ -5288,7 +5938,7 @@
 		<equipment rhand="8208" /> <!-- Monster Only (Heretic Private Staff) -->
 		<acquire expRate="977.11753902663" sp="15322" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="9" />
 			<attribute>
@@ -5331,24 +5981,24 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="3749" max="8733" chance="100" /> <!-- Adena -->
+					<item id="57" min="4499" max="10480" chance="100" /> <!-- Adena -->
 				</group>
 				<group chance="0.3">
 					<item id="35336" min="1" max="1" chance="100" /> <!-- Amaranthine Caster Fragment -->
 				</group>
-				<group chance="0.0018">
-					<item id="19447" min="1" max="1" chance="50" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
-					<item id="35460" min="1" max="1" chance="50" /> <!-- Recipe: Amaranthine Caster (60%) -->
+				<group chance="0.033">
+					<item id="17526" min="1" max="1" chance="90.909090909091" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="35460" min="1" max="1" chance="9.0909090909091" /> <!-- Recipe: Amaranthine Caster (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36533" min="1" max="1" chance="8.587" /> <!-- Synthetic Braid -->
+				<item id="36533" min="1" max="1" chance="8.565" /> <!-- Synthetic Braid -->
 				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
 				<item id="19447" min="1" max="1" chance="0.003" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="13" />
@@ -5377,7 +6027,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="1023.959187838" sp="16057" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -5419,24 +6069,24 @@
 		<drop_lists>
 			<death>
 				<group chance="70">
-					<item id="57" min="3749" max="8733" chance="100" /> <!-- Adena -->
+					<item id="57" min="4499" max="10480" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="2.5375">
-					<item id="36523" min="1" max="1" chance="76.019704433498" /> <!-- Adamantite -->
-					<item id="35353" min="1" max="1" chance="11.822660098522" /> <!-- Eternal Shoe Ingredient -->
-					<item id="36524" min="1" max="1" chance="11.822660098522" /> <!-- Orichalcum -->
-					<item id="17526" min="1" max="1" chance="0.21674876847291" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="35477" min="1" max="1" chance="0.11822660098522" /> <!-- Recipe: Eternal Shoes (60%) -->
+				<group chance="2.5555">
+					<item id="36523" min="1" max="1" chance="76.110350225005" /> <!-- Adamantite -->
+					<item id="35353" min="1" max="1" chance="11.739385638818" /> <!-- Eternal Shoe Ingredient -->
+					<item id="36524" min="1" max="1" chance="11.739385638818" /> <!-- Orichalcum -->
+					<item id="17526" min="1" max="1" chance="0.29348464097046" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="35477" min="1" max="1" chance="0.11739385638818" /> <!-- Recipe: Eternal Shoes (60%) -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36523" min="1" max="1" chance="9.864" /> <!-- Adamantite -->
+				<item id="36523" min="1" max="1" chance="9.793" /> <!-- Adamantite -->
 				<item id="36524" min="1" max="1" chance="0.75" /> <!-- Orichalcum -->
 				<item id="19448" min="1" max="1" chance="0.03" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="13" />
@@ -5465,7 +6115,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="1117.6425874911" sp="17526" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -5505,6 +6155,30 @@
 				<clan>ANDREAS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="4499" max="10480" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.3">
+					<item id="35333" min="1" max="1" chance="100" /> <!-- Amaranthine Thrower Fragment -->
+				</group>
+				<group chance="0.3318">
+					<item id="36563" min="1" max="1" chance="90.415913200723" /> <!-- Synthetic Cokes -->
+					<item id="36564" min="1" max="1" chance="9.0415913200723" /> <!-- Greater Synthetic Cokes -->
+					<item id="19447" min="1" max="1" chance="0.27124773960217" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+					<item id="35457" min="1" max="1" chance="0.27124773960217" /> <!-- Recipe: Amaranthine Thrower (60%) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="36563" min="1" max="1" chance="0.75" /> <!-- Synthetic Cokes -->
+				<item id="36564" min="1" max="1" chance="0.075" /> <!-- Greater Synthetic Cokes -->
+				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="9" />
 			<height normal="25.8" />
@@ -5534,7 +6208,7 @@
 		<equipment rhand="8208" /> <!-- Monster Only (Heretic Private Staff) -->
 		<acquire expRate="977.11753902663" sp="15322" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="9" />
 			<attribute>
@@ -5571,7 +6245,7 @@
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
 		<s_npc_prop_hp_rate>2</s_npc_prop_hp_rate>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ANDREAS</clan>
 			</clan_list>
@@ -5581,9 +6255,9 @@
 				<group chance="70">
 					<item id="57" min="1912" max="4454" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.0355">
-					<item id="35340" min="1" max="1" chance="84.507042253521" /> <!-- Eternal Gaiter Ingredient -->
-					<item id="35339" min="1" max="1" chance="15.492957746479" /> <!-- Eternal Breastplate Ingredient -->
+				<group chance="0.0375">
+					<item id="35340" min="1" max="1" chance="80" /> <!-- Eternal Gaiter Ingredient -->
+					<item id="35339" min="1" max="1" chance="20" /> <!-- Eternal Breastplate Ingredient -->
 				</group>
 				<group chance="0.06">
 					<item id="35343" min="1" max="1" chance="50" /> <!-- Eternal Shield Ingredient -->
@@ -5594,13 +6268,13 @@
 					<item id="35341" min="1" max="1" chance="41.49377593361" /> <!-- Eternal Gauntlet Ingredient -->
 					<item id="19448" min="1" max="1" chance="4.149377593361" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
 					<item id="17526" min="1" max="1" chance="4.149377593361" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="35466" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Boots (60%) -->
-					<item id="35465" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Gauntlets (60%) -->
-					<item id="35464" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Gaiters (60%) -->
-					<item id="35463" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Breastplate (60%) -->
-					<item id="35462" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Helmet (60%) -->
+					<item id="35466" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Boots (60%) -->
+					<item id="35465" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Gauntlets (60%) -->
+					<item id="35464" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Gaiters (60%) -->
+					<item id="35463" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Breastplate (60%) -->
+					<item id="35462" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Helmet (60%) -->
 					<item id="19447" min="1" max="1" chance="1.2448132780083" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
-					<item id="35467" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Shield (60%) -->
+					<item id="35467" min="1" max="1" chance="1.2448132780083" /> <!-- Recipe: Eternal Shield (60%) -->
 				</group>
 			</death>
 			<corpse>
@@ -5636,7 +6310,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="977.11753902663" sp="15322" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -5671,7 +6345,7 @@
 			<skill id="15455" level="1" /> <!-- Sensitive Skin -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ANDREAS</clan>
 			</clan_list>
@@ -5681,11 +6355,11 @@
 				<group chance="70">
 					<item id="57" min="2068" max="4816" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="0.3115">
-					<item id="35348" min="1" max="1" chance="96.308186195827" /> <!-- Eternal Leather Boot Ingredient -->
-					<item id="17526" min="1" max="1" chance="1.7656500802568" /> <!-- Scroll: Enchant Weapon (R-grade) -->
-					<item id="19448" min="1" max="1" chance="0.96308186195827" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
-					<item id="35472" min="1" max="1" chance="0.96308186195827" /> <!-- Recipe: Eternal Leather Boots (60%) -->
+				<group chance="0.3135">
+					<item id="35348" min="1" max="1" chance="95.693779904306" /> <!-- Eternal Leather Boot Ingredient -->
+					<item id="17526" min="1" max="1" chance="2.3923444976077" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19448" min="1" max="1" chance="0.95693779904306" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
+					<item id="35472" min="1" max="1" chance="0.95693779904306" /> <!-- Recipe: Eternal Leather Boots (60%) -->
 				</group>
 			</death>
 			<corpse>
@@ -5720,7 +6394,7 @@
 		<equipment rhand="8205" /> <!-- Monster Only (Heretic Priest Sigil) -->
 		<acquire expRate="977.11753902663" sp="15322" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="356248" hpRegen="8.5" mp="23550" mpRegen="30" />
+			<vitals hp="356248.833567932" hpRegen="8.5" mp="23550.0" mpRegen="30" />
 			<attack physical="47220.2058789866" magical="8304.88513767892" random="10" critical="4" accuracy="5" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="8" />
 			<attribute>
@@ -5754,7 +6428,7 @@
 			<skill id="15455" level="1" /> <!-- Sensitive Skin -->
 		</skill_list>
 		<ex_crt_effect>false</ex_crt_effect>
-		<ai type="BALANCED" aggroRange="300" clanHelpRange="1000" isAggressive="true">
+		<ai aggroRange="300" clanHelpRange="1000" isAggressive="true">
 			<clan_list>
 				<clan>ANDREAS</clan>
 			</clan_list>
@@ -5768,7 +6442,7 @@
 					<item id="35347" min="1" max="1" chance="97.087378640777" /> <!-- Eternal Leather Glove Ingredient -->
 					<item id="17526" min="1" max="1" chance="0.97087378640777" /> <!-- Scroll: Enchant Weapon (R-grade) -->
 					<item id="19448" min="1" max="1" chance="0.97087378640777" /> <!-- Blessed Scroll: Enchant Armor (R-grade) -->
-					<item id="35471" min="1" max="1" chance="0.97087378640777" /> <!-- Recipe: Eternal Leather Gloves (60%) -->
+					<item id="35471" min="1" max="1" chance="0.97087378640777" /> <!-- Recipe: Eternal Leather Gloves (60%) -->
 				</group>
 			</death>
 			<corpse>
@@ -5800,7 +6474,7 @@
 		<equipment rhand="8217" /> <!-- Monster Only (Zombie Gate Guard Spear) -->
 		<acquire expRate="0.45066829915315" sp="1666" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="10" critical="4" accuracy="0" attackSpeed="253" type="POLE" range="80" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="3" />
 			<attribute>
@@ -5869,7 +6543,7 @@
 		<sex>MALE</sex>
 		<acquire expRate="234.18814406693" sp="3672" />
 		<stats str="88" int="79" dex="55" wit="78" con="82" men="78">
-			<vitals hp="15841" hpRegen="8.5" mp="2355" mpRegen="3" />
+			<vitals hp="15841.7282909073" hpRegen="8.5" mp="2355.0" mpRegen="3" />
 			<attack physical="6745.74369699808" magical="1186.41216252556" random="5" critical="4" accuracy="5" attackSpeed="253" type="FIST" range="40" distance="80" width="120" />
 			<defence physical="525.700347194163" magical="304.76927121016" evasion="3" />
 			<attribute>
@@ -5908,6 +6582,24 @@
 				<clan>ANDREAS</clan>
 			</clan_list>
 		</ai>
+		<drop_lists>
+			<death>
+				<group chance="70">
+					<item id="57" min="1912" max="4454" chance="100" /> <!-- Adena -->
+				</group>
+				<group chance="0.033">
+					<item id="17526" min="1" max="1" chance="90.909090909091" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+					<item id="19447" min="1" max="1" chance="9.0909090909091" /> <!-- Blessed Scroll: Enchant Weapon (R-grade) -->
+				</group>
+			</death>
+			<corpse>
+				<item id="17526" min="1" max="1" chance="0.03" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+				<item id="17526" min="1" max="1" chance="0.075" /> <!-- Scroll: Enchant Weapon (R-grade) -->
+			</corpse>
+			<luck>
+				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
+			</luck>
+		</drop_lists>
 		<collision>
 			<radius normal="9" />
 			<height normal="25.8" />
@@ -6001,9 +6693,9 @@
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -6083,9 +6775,9 @@
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -6174,9 +6866,9 @@
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
 				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="20" />
@@ -6255,24 +6947,22 @@
 				<group chance="70">
 					<item id="57" min="140" max="327" chance="100" /> <!-- Adena -->
 				</group>
-				<group chance="1.008">
-					<item id="9573" min="1" max="1" chance="29.761904761905" /> <!-- Life Stone - Lv. 80 -->
-					<item id="9574" min="1" max="1" chance="29.761904761905" /> <!-- Mid-grade Life Stone - Lv. 80 -->
-					<item id="36538" min="1" max="1" chance="29.761904761905" /> <!-- Durable Leather Braid -->
-					<item id="36543" min="1" max="1" chance="7.4404761904762" /> <!-- Adamantite Wire -->
-					<item id="9575" min="1" max="1" chance="2.9761904761905" /> <!-- High-grade Life Stone - Lv. 80 -->
-					<item id="9576" min="1" max="1" chance="0.29761904761905" /> <!-- Top-grade Life Stone - Lv. 80 -->
+				<group chance="0.408">
+					<item id="36538" min="1" max="1" chance="73.529411764706" /> <!-- Durable Leather Braid -->
+					<item id="36543" min="1" max="1" chance="18.382352941176" /> <!-- Adamantite Wire -->
+					<item id="45929" min="1" max="3" chance="7.3529411764706" /> <!-- Spirit Stone -->
+					<item id="45930" min="1" max="1" chance="0.73529411764706" /> <!-- Mid-grade Spirit Stone -->
 				</group>
 			</death>
 			<corpse>
-				<item id="36532" min="1" max="1" chance="1.5" /> <!-- Thin Braid -->
+				<item id="36532" min="1" max="1" chance="1.537" /> <!-- Thin Braid -->
 				<item id="36533" min="1" max="1" chance="0.3" /> <!-- Synthetic Braid -->
+				<item id="36882" min="1" max="1" chance="0.0075" /> <!-- Recipe: Thin Braid - Upgrade -->
 				<item id="36881" min="1" max="1" chance="0.003" /> <!-- Recipe: Thin Braid - Downgrade -->
-				<item id="36882" min="1" max="1" chance="0.0055" /> <!-- Recipe: Thin Braid - Upgrade -->
 			</corpse>
-			<lucky_corpse>
+			<luck>
 				<item id="39629" min="1" max="1" chance="100" /> <!-- Fortune Pocket - Stage 1 -->
-			</lucky_corpse>
+			</luck>
 		</drop_lists>
 		<collision>
 			<radius normal="36" />

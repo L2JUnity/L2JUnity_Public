@@ -31,9 +31,9 @@ public class ExAirShipInfo implements IClientOutgoingPacket
 	public ExAirShipInfo(L2AirShipInstance ship)
 	{
 		_ship = ship;
-		_x = ship.getX();
-		_y = ship.getY();
-		_z = ship.getZ();
+		_x = (int) ship.getX();
+		_y = (int) ship.getY();
+		_z = (int) ship.getZ();
 		_heading = ship.getHeading();
 		_moveSpeed = (int) ship.getStat().getMoveSpeed();
 		_rotationSpeed = (int) ship.getStat().getRotationSpeed();

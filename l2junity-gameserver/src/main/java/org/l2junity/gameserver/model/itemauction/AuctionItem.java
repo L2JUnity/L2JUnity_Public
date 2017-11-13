@@ -19,7 +19,6 @@
 package org.l2junity.gameserver.model.itemauction;
 
 import org.l2junity.gameserver.datatables.ItemTable;
-import org.l2junity.gameserver.model.Augmentation;
 import org.l2junity.gameserver.model.StatsSet;
 import org.l2junity.gameserver.model.items.L2Item;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
@@ -35,7 +34,6 @@ public final class AuctionItem
 	
 	private final int _itemId;
 	private final long _itemCount;
-	private final StatsSet _itemExtra;
 	
 	public AuctionItem(final int auctionItemId, final int auctionLength, final long auctionInitBid, final int itemId, final long itemCount, final StatsSet itemExtra)
 	{
@@ -45,7 +43,6 @@ public final class AuctionItem
 		
 		_itemId = itemId;
 		_itemCount = itemCount;
-		_itemExtra = itemExtra;
 	}
 	
 	public final boolean checkItemExists()
@@ -88,12 +85,6 @@ public final class AuctionItem
 		final ItemInstance item = ItemTable.getInstance().createItem("ItemAuction", _itemId, _itemCount, null, null);
 		
 		item.setEnchantLevel(item.getItem().getDefaultEnchantLevel());
-		
-		final int augmentationId = _itemExtra.getInt("augmentation_id", 0);
-		if (augmentationId > 0)
-		{
-			item.setAugmentation(new Augmentation(augmentationId));
-		}
 		
 		return item;
 	}

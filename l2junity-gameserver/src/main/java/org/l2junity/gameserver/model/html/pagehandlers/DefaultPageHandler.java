@@ -53,7 +53,7 @@ public class DefaultPageHandler implements IPageHandler
 			// Separator
 			sb.append(style.applySeparator());
 		}
-
+		
 		// Show current pages
 		for (int i = pagerStart; i < pagerFinish; i++)
 		{
@@ -65,7 +65,7 @@ public class DefaultPageHandler implements IPageHandler
 		{
 			// Separator
 			sb.append(style.applySeparator());
-
+			
 			for (int i = pages - _pagesOffset; i < pages; i++)
 			{
 				sb.append(style.applyBypass(bypassFormatter.formatBypass(bypass, i), String.valueOf(i + 1), currentPage == i));

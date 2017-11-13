@@ -22,8 +22,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.l2junity.gameserver.enums.AttributeType;
-import org.l2junity.gameserver.model.Elementals;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
+import org.l2junity.gameserver.model.actor.request.EnchantItemAttributeRequest;
 import org.l2junity.gameserver.model.items.instance.ItemInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -33,22 +33,23 @@ import org.l2junity.network.PacketWriter;
  */
 public class ExChooseInventoryAttributeItem implements IClientOutgoingPacket
 {
-	private final int _itemId;
-	private final long _count;
-	private final AttributeType _atribute;
-	private final int _level;
+	private int _itemId;
+	private long _count;
+	private AttributeType _atribute;
+	private int _level;
 	private final Set<Integer> _items = new HashSet<>();
 	
 	public ExChooseInventoryAttributeItem(PlayerInstance activeChar, ItemInstance stone)
 	{
+		final EnchantItemAttributeRequest request = activeChar.getRequest(EnchantItemAttributeRequest.class);
+		if (request == null)
+		{
+			return;
+		}
 		_itemId = stone.getDisplayId();
 		_count = stone.getCount();
-		_atribute = AttributeType.findByClientId(Elementals.getItemElement(_itemId));
-		if ((_atribute == AttributeType.NONE) || (_atribute == AttributeType.NONE_ARMOR))
-		{
-			throw new IllegalArgumentException("Undefined Atribute item: " + stone);
-		}
-		_level = Elementals.getMaxElementLevel(_itemId);
+		_atribute = request.getWeaponAttribute();
+		_level = request.getMaxLevel();
 		
 		// Register only items that can be put an attribute stone/crystal
 		for (ItemInstance item : activeChar.getInventory().getItems())

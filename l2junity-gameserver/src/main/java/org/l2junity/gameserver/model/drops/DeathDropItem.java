@@ -18,7 +18,11 @@
  */
 package org.l2junity.gameserver.model.drops;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.RatesConfig;
+import org.l2junity.gameserver.model.Party;
+import org.l2junity.gameserver.model.actor.Creature;
+import org.l2junity.gameserver.model.itemcontainer.Inventory;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 
 /**
  * @author NosBit
@@ -36,6 +40,40 @@ public class DeathDropItem extends GeneralDropItem
 		super(itemId, min, max, chance);
 	}
 	
+	@Override
+	protected double getChanceMultiplier(Creature killer)
+	{
+		// Adena is handled as count.
+		if (getItemId() == Inventory.ADENA_ID)
+		{
+			return 1d;
+		}
+		
+		final Party party = killer.getParty();
+		if (party != null)
+		{
+			return (party.getMembers().stream().mapToDouble(p -> p.getStat().getAdd(DoubleStat.BONUS_DROP) + 100).sum() / party.getMemberCount()) / 100;
+		}
+		return (killer.getStat().getAdd(DoubleStat.BONUS_DROP) + 100) / 100;
+	}
+	
+	@Override
+	protected double getAmountMultiplier(Creature killer)
+	{
+		// Non-Adena drops are handled as chance.
+		if (getItemId() != Inventory.ADENA_ID)
+		{
+			return 1d;
+		}
+		
+		final Party party = killer.getParty();
+		if (party != null)
+		{
+			return (party.getMembers().stream().mapToDouble(p -> p.getStat().getAdd(DoubleStat.BONUS_ADENA) + 100).sum() / party.getMemberCount()) / 100;
+		}
+		return (killer.getStat().getAdd(DoubleStat.BONUS_ADENA) + 100) / 100;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see org.l2junity.gameserver.model.drops.GeneralDropItem#getGlobalAmountMultiplier()
@@ -43,7 +81,7 @@ public class DeathDropItem extends GeneralDropItem
 	@Override
 	protected double getGlobalAmountMultiplier()
 	{
-		return Config.RATE_DEATH_DROP_AMOUNT_MULTIPLIER;
+		return RatesConfig.RATE_DEATH_DROP_AMOUNT_MULTIPLIER;
 	}
 	
 	/*
@@ -53,6 +91,6 @@ public class DeathDropItem extends GeneralDropItem
 	@Override
 	protected double getGlobalChanceMultiplier()
 	{
-		return Config.RATE_DEATH_DROP_CHANCE_MULTIPLIER;
+		return RatesConfig.RATE_DEATH_DROP_CHANCE_MULTIPLIER;
 	}
 }

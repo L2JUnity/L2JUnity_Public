@@ -18,7 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.send;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
+import org.l2junity.gameserver.config.HexIDConfig;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
 
@@ -44,10 +45,10 @@ public final class KeyPacket implements IClientOutgoingPacket
 			packet.writeC(_key[i]); // key
 		}
 		packet.writeD(0x01);
-		packet.writeD(Config.SERVER_ID); // server id
+		packet.writeD(HexIDConfig.SERVER_ID); // server id
 		packet.writeC(0x01);
 		packet.writeD(0x00); // obfuscation key
-		packet.writeC((Config.SERVER_LIST_TYPE & 0x400) == 0x400 ? 0x01 : 0x00); // isClassic
+		packet.writeC((GeneralConfig.SERVER_LIST_TYPE & 0x400) == 0x400 ? 0x01 : 0x00); // isClassic
 		return true;
 	}
 }

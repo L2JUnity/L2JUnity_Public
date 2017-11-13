@@ -2,7 +2,6 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="3900" toLevel="2" name="Staff of Divine Power">
 		<!-- CT2.5 retail confirmed -->
-		<table name="#healEffect"> 33 43 </table>
 		<icon>icon.skill1459</icon>
 		<magicLvl>
 			<value level="1">61</value>
@@ -11,7 +10,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="HealEffect">
+			<effect name="p_heal_effect">
 				<amount>
 					<value level="1">33</value>
 					<value level="2">43</value>
@@ -22,7 +21,6 @@
 	</skill>
 	<skill id="3901" toLevel="2" name="Staff of Mana Boost">
 		<!-- CT2.5 retail confirmed -->
-		<table name="#maxMp"> 239 289 </table>
 		<icon>icon.skill0213</icon>
 		<magicLvl>
 			<value level="1">67</value>
@@ -31,7 +29,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MaxMp">
+			<effect name="p_max_mp">
 				<amount>
 					<value level="1">239</value>
 					<value level="2">289</value>
@@ -47,17 +45,17 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>1</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>0</magicType>
 			</effect>
-			<effect name="MagicMpCost">
+			<effect name="p_magic_mp_cost">
 				<amount>-5</amount>
 				<mode>PER</mode>
 				<magicType>3</magicType>
@@ -71,7 +69,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -84,7 +82,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -97,7 +95,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -110,7 +108,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -123,7 +121,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -136,7 +134,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -149,7 +147,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -162,7 +160,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -175,7 +173,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -188,7 +186,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -201,7 +199,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -214,7 +212,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -227,7 +225,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -240,7 +238,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -253,7 +251,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -266,7 +264,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -279,7 +277,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -292,7 +290,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -305,7 +303,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -318,7 +316,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -331,7 +329,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -344,7 +342,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -357,7 +355,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -370,7 +368,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -383,7 +381,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -396,7 +394,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -409,7 +407,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -422,7 +420,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -435,7 +433,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -448,7 +446,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -461,7 +459,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -474,7 +472,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -487,7 +485,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -500,7 +498,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -513,7 +511,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -526,7 +524,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -539,7 +537,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -552,7 +550,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -565,7 +563,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -578,7 +576,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -591,7 +589,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -604,7 +602,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackAttribute">
+			<effect name="p_attack_attribute">
 				<amount>8.57</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -617,7 +615,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>HOLY</attribute>
 			</effect>
@@ -630,7 +628,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>DARK</attribute>
 			</effect>
@@ -643,7 +641,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>FIRE</attribute>
 			</effect>
@@ -656,7 +654,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>WATER</attribute>
 			</effect>
@@ -669,7 +667,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>WIND</attribute>
 			</effect>
@@ -682,7 +680,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceAttribute">
+			<effect name="p_defence_attribute">
 				<amount>8.57</amount>
 				<attribute>EARTH</attribute>
 			</effect>
@@ -696,7 +694,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>1.71</SHOCK>
 			</effect>
 		</effects>
@@ -709,7 +707,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<BLEED>1.71</BLEED>
 			</effect>
 		</effects>
@@ -722,7 +720,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<POISON>1.71</POISON>
 			</effect>
 		</effects>
@@ -735,7 +733,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SLEEP>1.71</SLEEP>
 			</effect>
 		</effects>
@@ -748,7 +746,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<PARALYZE>1.71</PARALYZE>
 			</effect>
 		</effects>
@@ -761,7 +759,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<DERANGEMENT>1.71</DERANGEMENT>
 			</effect>
 		</effects>
@@ -773,7 +771,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>1.71</SHOCK>
 			</effect>
 		</effects>
@@ -785,7 +783,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>1.71</BLEED>
 			</effect>
 		</effects>
@@ -797,7 +795,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>1.71</POISON>
 			</effect>
 		</effects>
@@ -809,7 +807,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>1.71</SLEEP>
 			</effect>
 		</effects>
@@ -821,7 +819,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>1.71</PARALYZE>
 			</effect>
 		</effects>
@@ -833,7 +831,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DERANGEMENT>1.71</DERANGEMENT>
 			</effect>
 		</effects>
@@ -846,7 +844,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>2.14</SHOCK>
 			</effect>
 		</effects>
@@ -859,7 +857,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<BLEED>2.14</BLEED>
 			</effect>
 		</effects>
@@ -872,7 +870,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<POISON>2.14</POISON>
 			</effect>
 		</effects>
@@ -885,7 +883,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SLEEP>2.14</SLEEP>
 			</effect>
 		</effects>
@@ -898,7 +896,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<PARALYZE>2.14</PARALYZE>
 			</effect>
 		</effects>
@@ -911,7 +909,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<DERANGEMENT>2.14</DERANGEMENT>
 			</effect>
 		</effects>
@@ -923,7 +921,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>2.14</SHOCK>
 			</effect>
 		</effects>
@@ -935,7 +933,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>2.14</BLEED>
 			</effect>
 		</effects>
@@ -947,7 +945,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>2.14</POISON>
 			</effect>
 		</effects>
@@ -959,7 +957,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>2.14</SLEEP>
 			</effect>
 		</effects>
@@ -971,7 +969,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>2.14</PARALYZE>
 			</effect>
 		</effects>
@@ -983,7 +981,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DERANGEMENT>2.14</DERANGEMENT>
 			</effect>
 		</effects>
@@ -996,7 +994,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>3</SHOCK>
 			</effect>
 		</effects>
@@ -1009,7 +1007,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<BLEED>3</BLEED>
 			</effect>
 		</effects>
@@ -1022,7 +1020,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<POISON>3</POISON>
 			</effect>
 		</effects>
@@ -1035,7 +1033,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SLEEP>3</SLEEP>
 			</effect>
 		</effects>
@@ -1048,7 +1046,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<PARALYZE>3</PARALYZE>
 			</effect>
 		</effects>
@@ -1061,7 +1059,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<DERANGEMENT>3</DERANGEMENT>
 			</effect>
 		</effects>
@@ -1073,7 +1071,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>3</SHOCK>
 			</effect>
 		</effects>
@@ -1085,7 +1083,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>3</BLEED>
 			</effect>
 		</effects>
@@ -1097,7 +1095,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>3</POISON>
 			</effect>
 		</effects>
@@ -1109,7 +1107,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>3</SLEEP>
 			</effect>
 		</effects>
@@ -1121,7 +1119,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>3</PARALYZE>
 			</effect>
 		</effects>
@@ -1133,7 +1131,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DERANGEMENT>3</DERANGEMENT>
 			</effect>
 		</effects>
@@ -1146,7 +1144,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SHOCK>3.42</SHOCK>
 			</effect>
 		</effects>
@@ -1159,7 +1157,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<BLEED>3.42</BLEED>
 			</effect>
 		</effects>
@@ -1172,7 +1170,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<POISON>3.42</POISON>
 			</effect>
 		</effects>
@@ -1185,7 +1183,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<SLEEP>3.42</SLEEP>
 			</effect>
 		</effects>
@@ -1198,7 +1196,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<PARALYZE>3.42</PARALYZE>
 			</effect>
 		</effects>
@@ -1211,7 +1209,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="AttackTrait">
+			<effect name="p_attack_trait">
 				<DERANGEMENT>3.42</DERANGEMENT>
 			</effect>
 		</effects>
@@ -1223,7 +1221,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SHOCK>3.42</SHOCK>
 			</effect>
 		</effects>
@@ -1235,7 +1233,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<BLEED>3.42</BLEED>
 			</effect>
 		</effects>
@@ -1247,7 +1245,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<POISON>3.42</POISON>
 			</effect>
 		</effects>
@@ -1259,7 +1257,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<SLEEP>3.42</SLEEP>
 			</effect>
 		</effects>
@@ -1271,7 +1269,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<PARALYZE>3.42</PARALYZE>
 			</effect>
 		</effects>
@@ -1283,7 +1281,7 @@
 		<operateType>P</operateType>
 		<magicCriticalRate>5</magicCriticalRate>
 		<effects>
-			<effect name="DefenceTrait">
+			<effect name="p_defence_trait">
 				<DERANGEMENT>3.42</DERANGEMENT>
 			</effect>
 		</effects>

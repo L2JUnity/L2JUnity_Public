@@ -18,11 +18,8 @@
  */
 package org.l2junity.gameserver.network.client.recv;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.data.xml.impl.AdminData;
 import org.l2junity.gameserver.enums.PlayerAction;
 import org.l2junity.gameserver.handler.AdminCommandHandler;
-import org.l2junity.gameserver.handler.IAdminCommandHandler;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.model.events.EventDispatcher;
 import org.l2junity.gameserver.model.events.impl.character.player.OnPlayerDlgAnswer;
@@ -31,7 +28,6 @@ import org.l2junity.gameserver.model.holders.DoorRequestHolder;
 import org.l2junity.gameserver.model.holders.SummonRequestHolder;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
-import org.l2junity.gameserver.util.GMAudit;
 import org.l2junity.network.PacketReader;
 
 /**
@@ -71,22 +67,15 @@ public final class DlgAnswer implements IClientIncomingPacket
 		{
 			if (activeChar.removeAction(PlayerAction.ADMIN_COMMAND))
 			{
-				String cmd = activeChar.getAdminConfirmCmd();
+				final String cmd = activeChar.getAdminConfirmCmd();
 				activeChar.setAdminConfirmCmd(null);
 				if (_answer == 0)
 				{
 					return;
 				}
-				String command = cmd.split(" ")[0];
-				IAdminCommandHandler ach = AdminCommandHandler.getInstance().getHandler(command);
-				if (AdminData.getInstance().hasAccess(command, activeChar.getAccessLevel()))
-				{
-					if (Config.GMAUDIT)
-					{
-						GMAudit.auditGMAction(activeChar.getName() + " [" + activeChar.getObjectId() + "]", cmd, (activeChar.getTarget() != null ? activeChar.getTarget().getName() : "no-target"));
-					}
-					ach.useAdminCommand(cmd, activeChar);
-				}
+				
+				// The 'useConfirm' must be disabled here, as we don't want to repeat that process.
+				AdminCommandHandler.getInstance().useAdminCommand(activeChar, cmd, false);
 			}
 		}
 		else if ((_messageId == SystemMessageId.C1_IS_ATTEMPTING_TO_DO_A_RESURRECTION_THAT_RESTORES_S2_S3_XP_ACCEPT.getId()) || (_messageId == SystemMessageId.YOUR_CHARM_OF_COURAGE_IS_TRYING_TO_RESURRECT_YOU_WOULD_YOU_LIKE_TO_RESURRECT_NOW.getId()))

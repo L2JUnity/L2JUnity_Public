@@ -22,7 +22,7 @@ import org.l2junity.gameserver.enums.StatFunction;
 import org.l2junity.gameserver.model.actor.Creature;
 import org.l2junity.gameserver.model.conditions.Condition;
 import org.l2junity.gameserver.model.skills.Skill;
-import org.l2junity.gameserver.model.stats.Stats;
+import org.l2junity.gameserver.model.stats.DoubleStat;
 
 /**
  * Function template.
@@ -33,11 +33,11 @@ public final class FuncTemplate
 	private final Class<?> _functionClass;
 	private final Condition _attachCond;
 	private final Condition _applayCond;
-	private final Stats _stat;
+	private final DoubleStat _stat;
 	private final int _order;
 	private final double _value;
 	
-	public FuncTemplate(Condition attachCond, Condition applayCond, String functionName, int order, Stats stat, double value)
+	public FuncTemplate(Condition attachCond, Condition applayCond, String functionName, int order, DoubleStat stat, double value)
 	{
 		final StatFunction function = StatFunction.valueOf(functionName.toUpperCase());
 		if (order >= 0)
@@ -56,7 +56,7 @@ public final class FuncTemplate
 		
 		try
 		{
-			_functionClass = Class.forName("org.l2junity.gameserver.model.stats.functions.Func" + function.getName());
+			_functionClass = Class.forName(AbstractFunction.class.getPackage().getName() + ".Func" + function.getName());
 		}
 		catch (ClassNotFoundException e)
 		{
@@ -73,7 +73,7 @@ public final class FuncTemplate
 	 * Gets the function stat.
 	 * @return the stat.
 	 */
-	public Stats getStat()
+	public DoubleStat getStat()
 	{
 		return _stat;
 	}

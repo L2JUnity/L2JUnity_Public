@@ -21,7 +21,7 @@ package org.l2junity.gameserver.network.client.send;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.PlayerConfig;
 import org.l2junity.gameserver.model.SkillLearn;
 import org.l2junity.gameserver.model.base.AcquireSkillType;
 import org.l2junity.gameserver.model.holders.ItemHolder;
@@ -78,36 +78,16 @@ public class AcquireSkillInfo implements IClientOutgoingPacket
 		_spCost = skillLearn.getLevelUpSp();
 		_type = skillType;
 		_reqs = new ArrayList<>();
-		if ((skillType != AcquireSkillType.PLEDGE) || Config.LIFE_CRYSTAL_NEEDED)
+		if ((skillType != AcquireSkillType.PLEDGE) || PlayerConfig.LIFE_CRYSTAL_NEEDED)
 		{
 			for (ItemHolder item : skillLearn.getRequiredItems())
 			{
-				if (!Config.DIVINE_SP_BOOK_NEEDED && (_id == CommonSkill.DIVINE_INSPIRATION.getId()))
+				if (!PlayerConfig.DIVINE_SP_BOOK_NEEDED && (_id == CommonSkill.DIVINE_INSPIRATION.getId()))
 				{
 					continue;
 				}
 				_reqs.add(new Req(99, item.getId(), item.getCount(), 50));
 			}
-		}
-	}
-	
-	/**
-	 * Special constructor for Alternate Skill Learning system.<br>
-	 * Sets a custom amount of SP.
-	 * @param skillType the skill learning type.
-	 * @param skillLearn the skill learn.
-	 * @param sp the custom SP amount.
-	 */
-	public AcquireSkillInfo(AcquireSkillType skillType, SkillLearn skillLearn, int sp)
-	{
-		_id = skillLearn.getSkillId();
-		_level = skillLearn.getSkillLevel();
-		_spCost = sp;
-		_type = skillType;
-		_reqs = new ArrayList<>();
-		for (ItemHolder item : skillLearn.getRequiredItems())
-		{
-			_reqs.add(new Req(99, item.getId(), item.getCount(), 50));
 		}
 	}
 	

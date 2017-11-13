@@ -19,9 +19,10 @@
 package org.l2junity.gameserver.model.zone.type;
 
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.l2junity.commons.util.Rnd;
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.model.Location;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 
@@ -64,7 +65,7 @@ public class ResidenceHallTeleportZone extends ResidenceTeleportZone
 	{
 		if ((_teleTask == null) || _teleTask.isDone())
 		{
-			_teleTask = ThreadPoolManager.getInstance().scheduleGeneral(new TeleportTask(), 30000);
+			_teleTask = ThreadPool.schedule(new TeleportTask(), 30000, TimeUnit.MILLISECONDS);
 		}
 	}
 	

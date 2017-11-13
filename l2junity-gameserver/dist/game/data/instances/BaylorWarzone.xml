@@ -2,7 +2,6 @@
 <!-- Baylor Warzone -->
 <instance id="166" maxWorlds="80" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/instance.xsd">
 	<time duration="60" empty="3" />
-	<removeBuffs type="ALL" />
 	<locations>
 		<enter type="FIXED">
 			<location x="153573" y="143772" z="-12704" />
@@ -10,10 +9,10 @@
 		<exit type="ORIGIN" />
 	</locations>
 	<conditions>
-		<condition type="Party">
+		<condition type="Party" showMessageAndHtml="true">
 			<param name="html" value="condNoParty.html" />
 		</condition>
-		<condition type="PartyLeader">
+		<condition type="PartyLeader" showMessageAndHtml="true">
 			<param name="html" value="condNoPartyLeader.html" />
 		</condition>
 		<condition type="GroupMin">
@@ -56,9 +55,6 @@
 	<spawnlist>
 		<group>
 			<npc id="29106" x="153568" y="142080" z="-12736" heading="60000" /> <!--  -->
-			<npc id="29107" x="152484" y="142710" z="-12736" heading="60000" /> <!--  -->
-			<npc id="29108" x="153351" y="142396" z="-12736" heading="60000" /> <!--  -->
-			<npc id="29109" x="153155" y="142317" z="-12736" heading="60000" /> <!--  -->
 		</group>
 		<group name="BAYLOR" spawnByDefault="false">
 			<npc id="29213" x="153776" y="141993" z="-12736" heading="60470" /> <!-- Baylor -->

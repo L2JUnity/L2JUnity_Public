@@ -22,7 +22,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import org.l2junity.DatabaseFactory;
+import org.l2junity.commons.sql.DatabaseFactory;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.send.IClientOutgoingPacket;
 import org.slf4j.Logger;
@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Mentee
 {
-	private static final Logger _log = LoggerFactory.getLogger(Mentee.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Mentee.class);
 	
 	private final int _objectId;
 	private String _name;
@@ -67,7 +67,7 @@ public class Mentee
 			}
 			catch (Exception e)
 			{
-				_log.warn(e.getMessage(), e);
+				LOGGER.warn(e.getMessage(), e);
 			}
 		}
 		else

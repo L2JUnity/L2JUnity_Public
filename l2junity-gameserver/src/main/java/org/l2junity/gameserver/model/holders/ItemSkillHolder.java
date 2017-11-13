@@ -25,13 +25,14 @@ import org.l2junity.gameserver.enums.ItemSkillType;
  */
 public class ItemSkillHolder extends SkillHolder
 {
+	private static final long serialVersionUID = 5212672298536237528L;
 	private final ItemSkillType _type;
 	private final int _chance;
 	private final int _value;
 	
-	public ItemSkillHolder(int skillId, int skillLvl, ItemSkillType type, int chance, int value)
+	public ItemSkillHolder(int skillId, int skillLvl, int skillSubLevel, ItemSkillType type, int chance, int value)
 	{
-		super(skillId, skillLvl);
+		super(skillId, skillLvl, skillSubLevel);
 		_type = type;
 		_chance = chance;
 		_value = value;

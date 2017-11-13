@@ -18,8 +18,10 @@
  */
 package org.l2junity.gameserver.model.olympiad;
 
-import org.l2junity.Config;
-import org.l2junity.gameserver.ThreadPoolManager;
+import java.util.concurrent.TimeUnit;
+
+import org.l2junity.commons.util.concurrent.ThreadPool;
+import org.l2junity.gameserver.config.OlympiadConfig;
 import org.l2junity.gameserver.network.client.send.SystemMessage;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.slf4j.Logger;
@@ -30,7 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class OlympiadGameTask implements Runnable
 {
-	protected static final Logger _log = LoggerFactory.getLogger(OlympiadGameTask.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(OlympiadGameTask.class);
 	
 	private static final int[] TELEPORT_TO_ARENA_TIMES =
 	{
@@ -164,14 +166,14 @@ public final class OlympiadGameTask implements Runnable
 	{
 		if ((game != null) && (_state != GameState.IDLE))
 		{
-			_log.warn("Attempt to overwrite non-finished game in state " + _state);
+			LOGGER.warn("Attempt to overwrite non-finished game in state " + _state);
 			return;
 		}
 		
 		_game = game;
 		_state = GameState.BEGIN;
 		_needAnnounce = false;
-		ThreadPoolManager.getInstance().executeGeneral(this);
+		ThreadPool.execute(this);
 	}
 	
 	@Override
@@ -186,10 +188,10 @@ public final class OlympiadGameTask implements Runnable
 				case BEGIN:
 				{
 					_state = GameState.TELEPORT_TO_ARENA;
-					_countDown = Config.ALT_OLY_WAIT_TIME;
+					_countDown = OlympiadConfig.ALT_OLY_WAIT_TIME;
 					break;
 				}
-					// Teleport to arena countdown
+				// Teleport to arena countdown
 				case TELEPORT_TO_ARENA:
 				{
 					if (_countDown > 0)
@@ -211,7 +213,7 @@ public final class OlympiadGameTask implements Runnable
 					}
 					break;
 				}
-					// Game start, port players to arena
+				// Game start, port players to arena
 				case GAME_STARTED:
 				{
 					if (!startGame())
@@ -226,7 +228,7 @@ public final class OlympiadGameTask implements Runnable
 					delay = 5;
 					break;
 				}
-					// Battle start countdown, first part (60-10)
+				// Battle start countdown, first part (60-10)
 				case BATTLE_COUNTDOWN_FIRST:
 				{
 					if (_countDown > 0)
@@ -256,7 +258,7 @@ public final class OlympiadGameTask implements Runnable
 					
 					break;
 				}
-					// Battle start countdown, second part (10-0)
+				// Battle start countdown, second part (10-0)
 				case BATTLE_COUNTDOWN_SECOND:
 				{
 					if (_countDown > 0)
@@ -274,7 +276,7 @@ public final class OlympiadGameTask implements Runnable
 					
 					break;
 				}
-					// Beginning of the battle
+				// Beginning of the battle
 				case BATTLE_STARTED:
 				{
 					_countDown = 0;
@@ -285,11 +287,11 @@ public final class OlympiadGameTask implements Runnable
 					}
 					break;
 				}
-					// Checks during battle
+				// Checks during battle
 				case BATTLE_IN_PROGRESS:
 				{
 					_countDown += 1000;
-					int remaining = (int) ((Config.ALT_OLY_BATTLE - _countDown) / 1000l);
+					int remaining = (int) ((OlympiadConfig.ALT_OLY_BATTLE - _countDown) / 1000l);
 					for (int announceTime : BATTLE_END_TIME_SECOND)
 					{
 						if (announceTime == remaining)
@@ -301,13 +303,13 @@ public final class OlympiadGameTask implements Runnable
 						}
 					}
 					
-					if (checkBattle() || (_countDown > Config.ALT_OLY_BATTLE))
+					if (checkBattle() || (_countDown > OlympiadConfig.ALT_OLY_BATTLE))
 					{
 						_state = GameState.GAME_STOPPED;
 					}
 					break;
 				}
-					// End of the battle
+				// End of the battle
 				case GAME_STOPPED:
 				{
 					_state = GameState.TELEPORT_TO_TOWN;
@@ -316,7 +318,7 @@ public final class OlympiadGameTask implements Runnable
 					delay = getDelay(TELEPORT_TO_TOWN_TIMES);
 					break;
 				}
-					// Teleport to town countdown
+				// Teleport to town countdown
 				case TELEPORT_TO_TOWN:
 				{
 					if (_countDown > 0)
@@ -333,7 +335,7 @@ public final class OlympiadGameTask implements Runnable
 					}
 					break;
 				}
-					// Removals
+				// Removals
 				case CLEANUP:
 				{
 					cleanupGame();
@@ -342,7 +344,7 @@ public final class OlympiadGameTask implements Runnable
 					return;
 				}
 			}
-			ThreadPoolManager.getInstance().scheduleGeneral(this, delay * 1000);
+			ThreadPool.schedule(this, delay * 1000, TimeUnit.MILLISECONDS);
 		}
 		catch (Exception e)
 		{
@@ -353,16 +355,16 @@ public final class OlympiadGameTask implements Runnable
 				case CLEANUP:
 				case IDLE:
 				{
-					_log.warn("Unable to return players back in town, exception: " + e.getMessage());
+					LOGGER.warn("Unable to return players back in town, exception: " + e.getMessage());
 					_state = GameState.IDLE;
 					_game = null;
 					return;
 				}
 			}
 			
-			_log.warn("Exception in " + _state + ", trying to port players back: " + e.getMessage(), e);
+			LOGGER.warn("Exception in " + _state + ", trying to port players back: " + e.getMessage(), e);
 			_state = GameState.GAME_STOPPED;
-			ThreadPoolManager.getInstance().scheduleGeneral(this, 1000);
+			ThreadPool.schedule(this, 1000, TimeUnit.MILLISECONDS);
 		}
 	}
 	
@@ -418,7 +420,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		return false;
 	}
@@ -447,7 +449,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		return false;
 	}
@@ -464,7 +466,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		
 		return true;
@@ -481,7 +483,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		
 		try
@@ -490,7 +492,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		
 		try
@@ -499,7 +501,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 	
@@ -514,7 +516,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		
 		try
@@ -523,7 +525,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		
 		try
@@ -532,7 +534,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 		
 		try
@@ -541,7 +543,7 @@ public final class OlympiadGameTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			_log.warn(e.getMessage(), e);
+			LOGGER.warn(e.getMessage(), e);
 		}
 	}
 }

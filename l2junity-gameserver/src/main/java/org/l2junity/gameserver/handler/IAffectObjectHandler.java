@@ -19,7 +19,6 @@
 package org.l2junity.gameserver.handler;
 
 import org.l2junity.gameserver.model.actor.Creature;
-import org.l2junity.gameserver.model.skills.targets.AffectObject;
 
 /**
  * @author Nik
@@ -33,6 +32,4 @@ public interface IAffectObjectHandler
 	 * @return {@code true} if target should be accepted, {@code false} otherwise
 	 **/
 	boolean checkAffectedObject(Creature activeChar, Creature target);
-	
-	Enum<AffectObject> getAffectObjectType();
 }

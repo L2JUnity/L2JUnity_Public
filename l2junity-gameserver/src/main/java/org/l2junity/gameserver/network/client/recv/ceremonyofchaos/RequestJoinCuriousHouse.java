@@ -23,6 +23,7 @@ import org.l2junity.gameserver.instancemanager.CeremonyOfChaosManager;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.L2GameClient;
 import org.l2junity.gameserver.network.client.recv.IClientIncomingPacket;
+import org.l2junity.gameserver.network.client.send.ActionFailed;
 import org.l2junity.gameserver.network.client.send.ceremonyofchaos.ExCuriousHouseState;
 import org.l2junity.gameserver.network.client.send.string.SystemMessageId;
 import org.l2junity.network.PacketReader;
@@ -45,6 +46,12 @@ public class RequestJoinCuriousHouse implements IClientIncomingPacket
 		final PlayerInstance player = client.getActiveChar();
 		if (player == null)
 		{
+			return;
+		}
+		
+		if (player.isInTraingCamp())
+		{
+			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		

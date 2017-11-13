@@ -43,9 +43,9 @@ public class ExGetOnAirShip implements IClientOutgoingPacket
 		
 		packet.writeD(_playerId);
 		packet.writeD(_airShipId);
-		packet.writeD(_pos.getX());
-		packet.writeD(_pos.getY());
-		packet.writeD(_pos.getZ());
+		packet.writeD((int) _pos.getX());
+		packet.writeD((int) _pos.getY());
+		packet.writeD((int) _pos.getZ());
 		return true;
 	}
 }

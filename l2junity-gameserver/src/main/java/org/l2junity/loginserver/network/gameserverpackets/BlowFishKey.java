@@ -22,7 +22,7 @@ import java.security.GeneralSecurityException;
 
 import javax.crypto.Cipher;
 
-import org.l2junity.Config;
+import org.l2junity.gameserver.config.GeneralConfig;
 import org.l2junity.loginserver.GameServerThread;
 import org.l2junity.loginserver.network.L2JGameServerPacketHandler.GameServerState;
 import org.l2junity.util.crypt.NewCrypt;
@@ -66,7 +66,7 @@ public class BlowFishKey extends BaseRecievePacket
 			System.arraycopy(tempDecryptKey, i, key, 0, len - i);
 			
 			server.SetBlowFish(new NewCrypt(key));
-			if (Config.DEBUG)
+			if (GeneralConfig.DEBUG)
 			{
 				_log.info("New BlowFish key received, Blowfih Engine initialized:");
 			}

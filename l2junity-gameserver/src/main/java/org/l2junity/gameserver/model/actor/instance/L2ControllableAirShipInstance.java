@@ -19,8 +19,9 @@
 package org.l2junity.gameserver.model.actor.instance;
 
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
-import org.l2junity.gameserver.ThreadPoolManager;
+import org.l2junity.commons.util.concurrent.ThreadPool;
 import org.l2junity.gameserver.enums.InstanceType;
 import org.l2junity.gameserver.idfactory.IdFactory;
 import org.l2junity.gameserver.model.actor.stat.ControllableAirShipStat;
@@ -123,9 +124,9 @@ public class L2ControllableAirShipInstance extends L2AirShipInstance
 		{
 			if ((_captain == null) && (player.getAirShip() == this))
 			{
-				final int x = player.getInVehiclePosition().getX() - 0x16e;
-				final int y = player.getInVehiclePosition().getY();
-				final int z = player.getInVehiclePosition().getZ() - 0x6b;
+				final double x = player.getInVehiclePosition().getX() - 0x16e;
+				final double y = player.getInVehiclePosition().getY();
+				final double z = player.getInVehiclePosition().getZ() - 0x6b;
 				if (((x * x) + (y * y) + (z * z)) > 2500)
 				{
 					player.sendPacket(SystemMessageId.YOU_CANNOT_CONTROL_BECAUSE_YOU_ARE_TOO_FAR);
@@ -255,8 +256,8 @@ public class L2ControllableAirShipInstance extends L2AirShipInstance
 	public void onSpawn()
 	{
 		super.onSpawn();
-		_checkTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new CheckTask(), 60000, 10000);
-		_consumeFuelTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new ConsumeFuelTask(), 60000, 60000);
+		_checkTask = ThreadPool.scheduleAtFixedRate(new CheckTask(), 60000, 10000, TimeUnit.MILLISECONDS);
+		_consumeFuelTask = ThreadPool.scheduleAtFixedRate(new ConsumeFuelTask(), 60000, 60000, TimeUnit.MILLISECONDS);
 	}
 	
 	@Override
@@ -328,7 +329,7 @@ public class L2ControllableAirShipInstance extends L2AirShipInstance
 			if (isSpawned() && isEmpty() && !isInDock())
 			{
 				// deleteMe() can't be called from CheckTask because task should not cancel itself
-				ThreadPoolManager.getInstance().executeGeneral(new DecayTask());
+				ThreadPool.execute(new DecayTask());
 			}
 		}
 	}

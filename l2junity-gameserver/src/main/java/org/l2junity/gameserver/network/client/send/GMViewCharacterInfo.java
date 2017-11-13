@@ -20,6 +20,7 @@ package org.l2junity.gameserver.network.client.send;
 
 import org.l2junity.gameserver.data.xml.impl.ExperienceData;
 import org.l2junity.gameserver.enums.AttributeType;
+import org.l2junity.gameserver.model.VariationInstance;
 import org.l2junity.gameserver.model.actor.instance.PlayerInstance;
 import org.l2junity.gameserver.network.client.OutgoingPackets;
 import org.l2junity.network.PacketWriter;
@@ -49,9 +50,9 @@ public class GMViewCharacterInfo implements IClientOutgoingPacket
 	{
 		OutgoingPackets.GM_VIEW_CHARACTER_INFO.writeId(packet);
 		
-		packet.writeD(_activeChar.getX());
-		packet.writeD(_activeChar.getY());
-		packet.writeD(_activeChar.getZ());
+		packet.writeD((int) _activeChar.getX());
+		packet.writeD((int) _activeChar.getY());
+		packet.writeD((int) _activeChar.getZ());
 		packet.writeD(_activeChar.getHeading());
 		packet.writeD(_activeChar.getObjectId());
 		packet.writeS(_activeChar.getName());
@@ -90,7 +91,9 @@ public class GMViewCharacterInfo implements IClientOutgoingPacket
 		
 		for (int slot : getPaperdollOrder())
 		{
-			packet.writeQ(_activeChar.getInventory().getPaperdollAugmentationId(slot));
+			final VariationInstance augment = _activeChar.getInventory().getPaperdollAugmentation(slot);
+			packet.writeD(augment != null ? augment.getOption1Id() : 0); // Confirmed
+			packet.writeD(augment != null ? augment.getOption2Id() : 0); // Confirmed
 		}
 		
 		packet.writeC(_activeChar.getInventory().getTalismanSlots()); // CT2.3
@@ -139,7 +142,7 @@ public class GMViewCharacterInfo implements IClientOutgoingPacket
 		packet.writeD(_activeChar.getAllyId()); // ally id
 		packet.writeC(_activeChar.getMountType().ordinal()); // mount type
 		packet.writeC(_activeChar.getPrivateStoreType().getId());
-		packet.writeC(_activeChar.hasDwarvenCraft() ? 1 : 0);
+		packet.writeC(_activeChar.getCreateItemLevel() > 0 ? 1 : 0);
 		packet.writeD(_activeChar.getPkKills());
 		packet.writeD(_activeChar.getPvpKills());
 		
@@ -156,7 +159,7 @@ public class GMViewCharacterInfo implements IClientOutgoingPacket
 		
 		packet.writeD(_activeChar.getPledgeClass()); // changes the text above CP on Status Window
 		
-		packet.writeC(_activeChar.isNoble() ? 0x01 : 0x00);
+		packet.writeC(_activeChar.getNobleStatus().getClientId());
 		packet.writeC(_activeChar.isHero() ? 0x01 : 0x00);
 		
 		packet.writeD(_activeChar.getAppearance().getNameColor());

@@ -32,9 +32,9 @@ public class VehicleInfo implements IClientOutgoingPacket
 	public VehicleInfo(L2BoatInstance boat)
 	{
 		_objId = boat.getObjectId();
-		_x = boat.getX();
-		_y = boat.getY();
-		_z = boat.getZ();
+		_x = (int) boat.getX();
+		_y = (int) boat.getY();
+		_z = (int) boat.getZ();
 		_heading = boat.getHeading();
 	}
 	
